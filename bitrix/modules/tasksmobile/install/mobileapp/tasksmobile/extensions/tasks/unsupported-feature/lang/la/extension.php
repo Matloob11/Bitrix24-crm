@@ -1,0 +1,22 @@
+<?php
+$MESS["TASKS_UNSUPPORTED_FEATURE_OPEN_WEB"] = "Abrir en la versión web";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_BUTTON"] = "Abrir en la versión web";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_FOOTNOTE"] = "La analítica aún no está disponible en la versión móvil.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_DEEP_RESEARCH"] = "Aproveche las plantillas de informes";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_METRIC"] = "Ponga atención a los puntos de saturación del equipo";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_PROCESS"] = "Encuentre cuellos de botella";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_QR_TITLE"] = "Analítica";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_TITLE"] = "Toma de decisiones basada en datos";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_BUTTON"] = "Abrir en la versión web";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_FOOTNOTE"] = "Utilice la versión web para agregar flujos.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_CUSTOMER_VISIBILITY"] = "El propietario de la tarea conoce al responsable, la fecha límite y el estado";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TEAM_LOAD"] = "La carga de trabajo del equipo y los cuellos de botella son fáciles de detectar";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TYPICAL_TASKS"] = "Agrupe tareas similares en un flujo";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_QR_TITLE"] = "Flujos";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_TITLE"] = "Distribuya y haga un seguimiento automático de las tareas con flujos";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_FOOTNOTE"] = "Scrum aún no está disponible en la versión móvil.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_BACKLOG"] = "Backlog y sprints unificados";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_DESKTOP"] = "Haga un seguimiento del progreso";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_PROCESS"] = "Concéntrese en las tareas actuales";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_QR_TITLE"] = "Scrum";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_TITLE"] = "Utilice scrum para administrar proyectos";

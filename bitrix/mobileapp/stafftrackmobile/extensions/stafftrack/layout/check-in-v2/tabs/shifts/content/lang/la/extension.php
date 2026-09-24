@@ -1,0 +1,11 @@
+<?php
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_CHECKIN"] = "Check-in";
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_CHECKINS"] = "Check-ins: #CHECKINS_COUNT#";
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_LAST"] = "Último check-in a las #TIME#";
+$MESS["M_STAFFTRACK_CHECK_IN_DATE_PICKER_BUTTON"] = "Mostrar";
+$MESS["M_STAFFTRACK_CHECK_IN_DATE_PICKER_TITLE"] = "Fecha del check-in";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_EMPTY_STATE_DESCRIPTION"] = "Intente con parámetros de búsqueda diferentes.";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_EMPTY_STATE_TITLE"] = "No hay check-ins";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_PRESET_DEPARTMENT"] = "Check-ins del departamento";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_PRESET_EMPLOYEES"] = "Empleados y departamentos";
+$MESS["M_STAFFTRACK_CHECK_IN_TOAST_ERROR"] = "No se puede completar la acción. Intente de nuevo más tarde.";

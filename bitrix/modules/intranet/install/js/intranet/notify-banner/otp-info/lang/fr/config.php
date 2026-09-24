@@ -1,0 +1,25 @@
+<?php
+$MESS["NOTIFY_BANNER_INFO_ALL_EMPLOYEE_BLOCK"] = "Toutes les données de votre Bitrix24 sont exposées si ne serait-ce qu'une seule personne au sein de votre entreprise n'utilise pas l'authentification à deux facteurs. Votre entreprise pourrait faire face à :";
+$MESS["NOTIFY_BANNER_INFO_CONFIRM_WITHOUT_TITLE_MSGVER_1"] = "Activez [SPAN]la nouvelle authentification à deux facteurs[/SPAN] pour confirmer votre connexion sans avoir à entrer un code.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE"] = "Activez l'<span class=\"intranet-otp-motivating-popup__title--accent\">authentification à deux facteurs</span> pour protéger les données de votre entreprise.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE_MSGVER_1"] = "Activez l'<span class=\"intranet-otp-motivating-popup__title--accent\">authentification à deux facteurs</span> pour protéger votre compte.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE"] = "Protégez vos données. Activez l'<span class=\"intranet-otp-motivating-popup__title--accent\">authentification à deux facteurs</span> pour tout le monde.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE_MSGVER_1"] = "Protégez les données de votre entreprise. Activez l'<span class=\"intranet-otp-motivating-popup__title--accent\">authentification à deux facteurs</span> pour tout le monde.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK"] = "L'authentification à deux facteurs empêche les cybercriminels d'accéder à votre compte même si votre mot de passe a été divulgué. Cela permettra d'assurer la sécurité de vos données personnelles et professionnelles.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK_MSGVER_1"] = "L'authentification à deux facteurs empêche les cybercriminels d'accéder à votre compte même si votre mot de passe a été divulgué. Cela permettra d'assurer la sécurité de vos données personnelles et professionnelles.";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_ALL_BTN"] = "Activer pour tout le monde";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_BTN"] = "Activer";
+$MESS["NOTIFY_BANNER_INFO_EXIST_BLOCK_MSGVER_1"] = "Il est désormais encore plus facile de protéger votre Bitrix24. Vous n'avez plus besoin de saisir de code. Confirmez votre connexion dans l'application mobile à la place.";
+$MESS["NOTIFY_BANNER_INFO_FIN_OPT"] = "Des dommages financiers et réputationnels";
+$MESS["NOTIFY_BANNER_INFO_IS_PROJECT_BLOCK"] = "L'authentification à deux facteurs fait partie de l'initiative <b>Sécurité des données personnelles</b> qui met en œuvre une gamme complète de solutions de protection de l'information.";
+$MESS["NOTIFY_BANNER_INFO_LATER_BTN"] = "Me le rappeler plus tard";
+$MESS["NOTIFY_BANNER_INFO_LEAK_OPT"] = "Des fuites d'informations confidentielles";
+$MESS["NOTIFY_BANNER_INFO_LEGAL_OPT"] = "Des conséquences légales";
+$MESS["NOTIFY_BANNER_INFO_MORE_BTN"] = "En savoir plus";
+$MESS["NOTIFY_BANNER_INFO_NEW_OTP_BLOCK"] = "Il est désormais encore plus facile de protéger votre Bitrix24. Vous n'avez plus besoin de saisir de code. Confirmez votre connexion dans l'application mobile à la place.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK"] = "Votre administrateur Bitrix24 a modifié les paramètres de sécurité. À partir du <b>#END_DATE#</b>, vous ne pourrez vous connecter à votre compte qu'en confirmant la connexion dans l'application mobile.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE"] = "À partir du <b>#END_DATE#</b>, vous ne pourrez vous connecter à votre compte qu'en confirmant la connexion dans l'application mobile.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE_MSGVER_1"] = "À partir du <b>#END_DATE#</b>, vous ne pourrez vous connecter à votre compte qu'en confirmant la connexion dans l'application mobile.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_MSGVER_1"] = "Votre administrateur Bitrix24 a modifié les paramètres de sécurité. À partir du <b>#END_DATE#</b>, vous ne pouvez vous connecter à votre compte qu'en utilisant un deuxième facteur d'authentification pour confirmer la connexion dans l'application mobile.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK"] = "Le nombre de cyberattaques contre les entreprises est en hausse. Les fuites d'informations entraînent inévitablement des dommages financiers et réputationnels.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK_MSGVER_1"] = "Le nombre de cyberattaques contre les entreprises est en hausse. Les fuites d'informations entraînent inévitablement des dommages financiers et réputationnels.";

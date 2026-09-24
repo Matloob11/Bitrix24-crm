@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_PUSH_CRM_SETTINGS_MENU_ITEM_TEXT"] = "Proaktywny CRM";
+$MESS["CRM_PUSH_CRM_SETTINGS_SORT_TOGGLE_TEXT"] = "Tryb ostrości";

@@ -1,0 +1,12 @@
+<?php
+$MESS["DOCGEN_TEMPLATES_DEFAULT_ENTITIES"] = "Powiąż z sekcją";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_ERROR_MODULE"] = "Moduł \"Generator dokumentów\" nie jest zainstalowany.";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_INSTALL"] = "Zainstaluj";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_MODULE_ERROR"] = "Nie można użyć modułu #MODULE_ID#";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_NAME"] = "Nazwa";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_REGION"] = "Kraj";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_REINSTALL"] = "Zainstaluj ponownie";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_SORT"] = "Sortuj";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TEMPLATE_NOT_FOUND"] = "Nie znaleziono szablonu";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TITLE"] = "Zainstaluj szablony";
+$MESS["DOCGEN_TEMPLATES_PERMISSIONS_ERROR"] = "Nie masz uprawnienia do edycji szablonów";

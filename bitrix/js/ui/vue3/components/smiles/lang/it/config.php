@@ -1,0 +1,3 @@
+<?php
+$MESS["UI_VUE_SMILES_SETS_EMOJI"] = "Emoji";
+$MESS["UI_VUE_SMILES_SETS_SMILES"] = "Faccine";

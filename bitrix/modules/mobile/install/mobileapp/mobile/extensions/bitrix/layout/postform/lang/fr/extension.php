@@ -1,0 +1,20 @@
+<?php
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_ATTACHMENTS_DIALOG_TITLE"] = "Fichiers dans la publication : #NUM#";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_BACKGROUNDS_DIALOG_TITLE"] = "Sélectionner le fond";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_BACKGROUND_CONFIRM_MESSAGE"] = "Vous allez changer le type de publication. Le fond des publications sera réinitialisé";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_BUTTON_CANCEL"] = "Annuler";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_BUTTON_OK"] = "OK";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_TITLE"] = "Attention !";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_IMPORTANT_CONFIRM_MESSAGE"] = "Vous allez changer le type de publication. Les données de priorité de publication seront perdues";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_MEDAL_CONFIRM_MESSAGE"] = "Vous allez changer le type de publication. Les données de récompense seront perdues";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_VOTE_CONFIRM_MESSAGE"] = "Vous allez changer le type de publication. Les données de sondage lié seront perdues";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_BUTTON_CANCEL"] = "Annuler";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_BUTTON_OK"] = "OK";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_MESSAGE"] = "Votre message sera perdu si vous fermez le formulaire. Continuer ?";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_TITLE"] = "Avertissement";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_DESTINATIONS_EMPTY"] = "Sélectionnez au moins un destinataire";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_DIALOG_MENTION_TITLE"] = "Mention";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_GRATITUDE_EMPLOYEE_EMPTY"] = "Aucun employé sélectionné pour recevoir une appréciation.";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_PANEL_ITEM_SELECTOR_VALUE_ALL"] = "A tous les employés";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_TEXT_EMPTY"] = "Saisissez le texte de la publication du flux";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_TITLE_PLACEHOLDER_MSGVER_1"] = "Saisissez le titre de la publication ici";

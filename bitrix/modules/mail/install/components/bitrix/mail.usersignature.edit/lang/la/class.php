@@ -1,0 +1,5 @@
+<?php
+$MESS["MAIL_USERSIGNATURE_ADD_TITLE"] = "Agregar firma";
+$MESS["MAIL_USERSIGNATURE_EDIT_TITLE"] = "Editar firma";
+$MESS["MAIL_USERSIGNATURE_MODULE_ERROR"] = "El módulo \"Mail\" no está instalado.";
+$MESS["MAIL_USERSIGNATURE_SENDER_SELECT"] = "Enlace a";

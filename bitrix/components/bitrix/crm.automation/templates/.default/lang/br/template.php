@@ -1,0 +1,19 @@
+<?php
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS"] = "Observar campos";
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS_1"] = "Acompanhar campos";
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS_CHOOSE"] = "Selecionar campos";
+$MESS["CRM_AUTOMATION_CMP_FILL_TRACKNUM_DELIVERY"] = "Serviço de entrega";
+$MESS["CRM_AUTOMATION_CMP_FILL_TRACKNUM_DELIVERY_ANY"] = "qualquer";
+$MESS["CRM_AUTOMATION_CMP_OPENLINE_ANSWER_CTRL_CONDITION"] = "Campos do bate-papo";
+$MESS["CRM_AUTOMATION_CMP_OPENLINE_MESSAGE_TEXT_CONDITION"] = "A mensagem contém texto";
+$MESS["CRM_AUTOMATION_CMP_SHIPMENT_CHANGED_CONDITION"] = "Campos de envio";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_ANY"] = "qualquer";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_CONDITION"] = "Campos da tarefa";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_LABEL"] = "Status";
+$MESS["CRM_AUTOMATION_CMP_TITLE_DEAL_EDIT"] = "Definir regras de automação para todos os negócios neste pipeline";
+$MESS["CRM_AUTOMATION_CMP_TITLE_DEAL_VIEW"] = "Estágio atual do negócio: \"#TITLE#\"";
+$MESS["CRM_AUTOMATION_CMP_TITLE_LEAD_EDIT"] = "Definir regras de automação para todos os Leads ";
+$MESS["CRM_AUTOMATION_CMP_TITLE_LEAD_VIEW"] = "Status atual do Lead: #TITLE#";
+$MESS["CRM_AUTOMATION_CMP_TITLE_ORDER_EDIT"] = "Editar regras de automação para todos os pedidos";
+$MESS["CRM_AUTOMATION_CMP_TITLE_ORDER_VIEW"] = "Status do pedido atual";
+$MESS["CRM_AUTOMATION_CMP_WEBHOOK_PASSWORD_ALERT"] = "O gatilho requer um webhook de entrada. Deseja #A1#criar um agora#A2#?";

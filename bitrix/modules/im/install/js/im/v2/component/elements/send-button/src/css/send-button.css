@@ -1,0 +1,54 @@
+.bx-im-elements-send-button {
+	--im-textarea__background-color_send-button: #00ace3;
+	--im-textarea__background-color_send-button-channel: var(--im-color-accent-turquoise);
+	--im-textarea__background-color_send-button-copilot: var(--im-color-palette-copilot-primary);
+
+	width: 36px;
+	height: 36px;
+	background-color: var(--im-textarea__background-color_send-button);
+	background-image: url('./images/send.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 26px 26px;
+	border-radius: 50%;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.bx-im-elements-send-button.--edit {
+	background-image: url('./images/check.svg');
+}
+
+.bx-im-elements-send-button.--disabled {
+	background-image: url('./images/send-inactive.svg');
+}
+
+.bx-im-elements-send-button.--channel,
+.bx-im-elements-send-button.--openChannel,
+.bx-im-elements-send-button.--generalChannel {
+	background-color: var(--im-textarea__background-color_send-button-channel);
+}
+
+.bx-im-elements-send-button.--copilot {
+	background-color: var(--im-textarea__background-color_send-button-copilot);
+}
+
+.bx-im-elements-send-button.--copilot-2026 {
+	--im-send-button__gradient: linear-gradient(
+		241deg,
+		var(--ui-color-design-filled-bitrix-gpt-bg-gradient-5) -0.17%,
+		var(--ui-color-design-filled-bitrix-gpt-bg-gradient-4) 20.73%,
+		var(--ui-color-design-filled-bitrix-gpt-bg-gradient-3) 52.5%,
+		var(--ui-color-design-filled-bitrix-gpt-bg-gradient-2) 77.37%,
+		var(--ui-color-design-filled-bitrix-gpt-bg-gradient-1) 98.95%
+	);
+
+	background-color: transparent;
+	background-image: url('./images/send.svg'), var(--im-send-button__gradient);
+	background-position: center, center;
+	background-size: 26px 26px, 100% 100%;
+}
+
+.bx-im-elements-send-button.--copilot-2026.--disabled {
+	background-image: url('./images/send-inactive.svg'), var(--im-send-button__gradient);
+}

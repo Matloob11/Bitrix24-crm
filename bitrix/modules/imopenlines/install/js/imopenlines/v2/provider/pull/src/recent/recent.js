@@ -1,0 +1,95 @@
+import { Messenger } from 'im.public';
+import { Core } from 'im.v2.application.core';
+import { Layout } from 'im.v2.const';
+import { LayoutManager } from 'im.v2.lib.layout';
+import { type ChatHideParams, type MessageAddParams } from 'im.v2.provider.pull';
+
+import { type ChatUserLeaveParams } from 'imopenlines.v2.provider.pull';
+
+export class LinesPullHandler
+{
+	constructor()
+	{
+		this.store = Core.getStore();
+	}
+
+	getModuleId(): string
+	{
+		return 'im';
+	}
+
+	handleMessage(params, extra)
+	{
+		this.handleMessageAdd(params, extra);
+	}
+
+	handleMessageChat(params)
+	{
+		this.handleMessageAdd(params);
+	}
+
+	handleMessageAdd(params: MessageAddParams)
+	{
+		if (!params.lines)
+		{
+			return;
+		}
+
+		const userId = Core.getUserId();
+		const userInChat = params.userInChat[params.chatId];
+
+		const isClosed = params.lines.isClosed;
+
+		if (userInChat.includes(userId) && !isClosed)
+		{
+			void this.store.dispatch('openLines/recent/set', {
+				id: params.dialogId,
+				messageId: params.message.id,
+				sessionId: params.lines.id,
+			});
+		}
+
+		void this.store.dispatch('openLines/sessions/set', {
+			...params.lines,
+			chatId: params.chatId,
+			status: params.lines.statusGroup,
+		});
+	}
+
+	handleChatHide(params: ChatHideParams)
+	{
+		const recentItem = this.store.getters['openLines/recent/get'](params.dialogId);
+
+		if (!recentItem)
+		{
+			return;
+		}
+
+		void this.store.dispatch('openLines/recent/delete', {
+			id: params.dialogId,
+		});
+	}
+
+	handleChatUserLeave(params: ChatUserLeaveParams)
+	{
+		const recentItem = this.store.getters['openLines/recent/get'](params.dialogId);
+		const chatIsOpened = Core.getStore().getters['application/isLinesChatOpen'](params.dialogId);
+
+		const userId = Core.getUserId();
+
+		if (chatIsOpened && params.userId === userId)
+		{
+			void Messenger.openLines();
+			LayoutManager.getInstance().setLastOpenedElement(Layout.openlinesV2, '');
+		}
+
+		if (!recentItem || params.userId !== Core.getUserId())
+		{
+			return;
+		}
+
+		void this.store.dispatch('openLines/recent/delete', {
+			id: params.dialogId,
+		});
+	}
+}

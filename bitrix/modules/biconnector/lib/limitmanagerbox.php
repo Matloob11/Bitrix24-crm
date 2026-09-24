@@ -1,0 +1,155 @@
+<?php
+namespace Bitrix\BIConnector;
+
+use Bitrix\BIConnector\Superset\Selfhost\SupersetHostMode;
+use Bitrix\Main\Config\Option;
+use Bitrix\Main\Type\Date;
+
+class LimitManagerBox extends LimitManager
+{
+	public const SUPERSET_LIMIT = 10_000_000;
+	public const DEFAULT_SELFHOST_LIMIT = 1_000_000;
+
+	protected $license = null;
+
+	public function __construct()
+	{
+		$this->license = \Bitrix\Main\Application::getInstance()->getLicense();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function fixLimit(int $rowsCount): bool
+	{
+		if (!$this->isSuperset() && $this->getLimit() === 0)
+		{
+			return false;
+		}
+
+		return parent::fixLimit($rowsCount);
+	}
+
+	/**
+	 * Returns maximum allowed records count.
+	 * 0 - unlimited.
+	 *
+	 * @return int
+	 */
+	public function getLimit(): int
+	{
+		if ($this->isSuperset())
+		{
+			if (SupersetHostMode::isSelfHosted())
+			{
+				return (int)Option::get('biconnector', 'selfhost_row_limit', static::DEFAULT_SELFHOST_LIMIT);
+			}
+
+			return static::SUPERSET_LIMIT;
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Sets row limit.
+	 * Available only for selfhost supersets in box.
+	 *
+	 * @param int $rowLimit
+	 * @return self
+	 */
+	public function setLimit(int $rowLimit): self
+	{
+		if ($rowLimit < 0)
+		{
+			Option::set('biconnector', 'selfhost_row_limit', self::DEFAULT_SELFHOST_LIMIT);
+		}
+		else if ($rowLimit === self::DEFAULT_SELFHOST_LIMIT)
+		{
+			Option::delete('biconnector', ['name' => 'selfhost_row_limit']);
+		}
+		else
+		{
+			Option::set('biconnector', 'selfhost_row_limit', $rowLimit);
+		}
+
+		return $this;
+	}
+
+	public function isLimitByLicence(): bool
+	{
+		$expireDate = $this->getLimitDate();
+		$daysLeft = $expireDate->getDiff(new Date())->days;
+
+		return $daysLeft < self::GRACE_PERIOD_DAYS;
+	}
+
+	/**
+	 * Returns a date when data export will be disabled.
+	 *
+	 * @return Date
+	 */
+	public function getLimitDate(): Date
+	{
+		if ($this->license->isTimeBound())
+		{
+			$date = $this->license->getExpireDate();
+			if ($date)
+			{
+				return $date;
+			}
+		}
+
+		$date = new Date();
+		$date->add(static::GRACE_PERIOD_DAYS . ' days');
+
+		return $date;
+	}
+
+	/**
+	 * Returns true if there is nothing to worry about.
+	 *
+	 * @return bool
+	 */
+	public function checkLimitWarning(): bool
+	{
+		if ($this->isSuperset() && !$this->isLimitByLicence())
+		{
+			return $this->getFirstOverLimitDate() === null;
+		}
+
+		$expireDate = $this->getLimitDate();
+		$daysLeft = $expireDate->getDiff(new Date())->days;
+
+		return $daysLeft >= static::GRACE_PERIOD_DAYS;
+	}
+
+	/**
+	 * Returns true if data export and some functions is not disabled.
+	 *
+	 * @return bool
+	 */
+	public function checkLimit(): bool
+	{
+		if ($this->isSuperset() && !$this->isLimitByLicence())
+		{
+			return !$this->isDataConnectionDisabled();
+		}
+
+		$expireDate = $this->getLimitDate();
+		$daysLeft = $expireDate->getDiff(new Date())->d;
+
+		return $daysLeft >= 0;
+	}
+
+	/**
+	 * Event OnAfterSetOption_~controller_group_name handler.
+	 *
+	 * @param \Bitrix\Main\Event $event Event parameters.
+	 *
+	 * @return void
+	 */
+	public function licenseChange(\Bitrix\Main\Event $event): void
+	{
+	}
+}

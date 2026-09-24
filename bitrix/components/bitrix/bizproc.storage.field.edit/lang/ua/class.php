@@ -1,0 +1,6 @@
+<?php
+$MESS["BIZPROC_STORAGE_EDIT_FIELD_NOT_FOUND_STORAGE"] = "Сховище не знайдено.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_NOT_INSTALLED"] = "Модуль «Бізнес-процеси» не встановлено.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_STORAGE_NOT_FOUND_ERROR"] = "Поле не знайдено.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_TITLE_ADD"] = "Нове поле";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_TITLE_EDIT"] = "Редагування поля";

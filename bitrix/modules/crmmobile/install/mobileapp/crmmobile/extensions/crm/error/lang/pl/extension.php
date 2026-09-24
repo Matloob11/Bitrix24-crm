@@ -1,0 +1,20 @@
+<?php
+$MESS["MCRM_ERROR_ACCESS_DENIED_TEXT"] = "Skontaktuj się z administratorem Bitrix24 lub osobą odpowiedzialną za CRM";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE"] = "Niewystarczające uprawnienia do wyświetlania pozycji";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_COMPANY"] = "Niewystarczające uprawnienia do wyświetlania firmy";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_CONTACT"] = "Niewystarczające uprawnienia do wyświetlania kontaktu";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_DEAL"] = "Niewystarczające uprawnienia do wyświetlania deala";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_LEAD"] = "Niewystarczające uprawnienia do wyświetlania leada";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_QUOTE_MSGVER_1"] = "Niewystarczające uprawnienia do wyświetlenia oferty";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_SMART_INVOICE"] = "Niewystarczające uprawnienia do wyświetlenia faktury";
+$MESS["MCRM_ERROR_ALERT_CONFIRM"] = "OK";
+$MESS["MCRM_ERROR_INTERNAL_ERROR_TEXT"] = "Spróbuj ponownie później.\nJeśli problem będzie się powtarzał, skontaktuj się z administratorem Bitrix24 lub osobą odpowiedzialną za CRM.";
+$MESS["MCRM_ERROR_INTERNAL_ERROR_TITLE"] = "Wystąpił błąd wewnętrzny";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE"] = "Nie znaleziono pozycji";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_COMPANY"] = "Nie znaleziono firmy";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_CONTACT"] = "Nie znaleziono kontaktu";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_DEAL"] = "Nie znaleziono deala";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_LEAD"] = "Nie znaleziono leada";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_QUOTE_MSGVER_1"] = "Oferta nie została odnaleziona";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_SMART_INVOICE"] = "Nie znaleziono faktury";
+$MESS["MCRM_ERROR_PUBLIC_ERROR_TITLE"] = "Błąd";

@@ -1,0 +1,7 @@
+<?php
+$MESS["DISK_SECTION_MENU_DISK_COMMON"] = "Загальний диск";
+$MESS["DISK_SECTION_MENU_DISK_MACOS_APP"] = "Диск для macOS";
+$MESS["DISK_SECTION_MENU_DISK_MP_APPS"] = "Застосунки";
+$MESS["DISK_SECTION_MENU_DISK_USER"] = "Мій диск";
+$MESS["DISK_SECTION_MENU_DISK_VOLUME"] = "Очищення місця";
+$MESS["DISK_SECTION_MENU_DISK_WINDOWS_APP"] = "Диск для Windows";

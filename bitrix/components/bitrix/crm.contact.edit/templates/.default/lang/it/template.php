@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_CONTACT_EDIT_DUP_CTRL_WARNING_CANCEL_BTN_TITLE"] = "Annulla";
+$MESS["CRM_TAB_1"] = "Contatto";
+?>

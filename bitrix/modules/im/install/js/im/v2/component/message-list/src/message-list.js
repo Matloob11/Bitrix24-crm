@@ -1,0 +1,311 @@
+import { type JsonObject } from 'main.core';
+import { type BaseEvent, type EventEmitter } from 'main.core.events';
+
+import { FadeAnimation } from 'im.v2.component.animation';
+import { ChatType, EventType, MessageComponent, ActionByRole } from 'im.v2.const';
+import { TariffManager } from 'im.v2.lib.feature';
+import { MessageMenuManager } from 'im.v2.lib.menu';
+import { MessageComponentManager } from 'im.v2.lib.message-component';
+import { PermissionManager } from 'im.v2.lib.permission';
+import { Quote } from 'im.v2.lib.quote';
+import { Utils } from 'im.v2.lib.utils';
+import { type ImModelChat, type ImModelMessage, type ImModelUser } from 'im.v2.model';
+
+import { AvatarMenu } from './classes/avatar-menu';
+import { CollectionManager, type DateGroupItem } from './classes/collection-manager/collection-manager';
+import { ObserverManager } from './classes/observer-manager';
+import { AuthorGroup } from './components/block/author-group';
+import { DateGroup } from './components/block/date-group';
+import { MarkedMessagesBlock } from './components/block/marked-messages';
+import { NewMessagesBlock } from './components/block/new-messages';
+import { DialogLoader } from './components/dialog-loader';
+import { DialogStatus } from './components/dialog-status/dialog-status';
+import { EmptyState } from './components/empty-state';
+import { HistoryLimitBanner } from './components/history-limit-banner';
+import { MessageComponents } from './utils/message-components';
+
+import './css/message-list.css';
+
+export { AvatarMenu } from './classes/avatar-menu';
+export { AuthorGroup } from './components/block/author-group';
+export { MessageComponents } from './utils/message-components';
+export { CollectionManager } from './classes/collection-manager/collection-manager';
+
+type ContextMenuEvent = BaseEvent<{
+	message: ImModelMessage,
+	dialogId: string,
+	event: PointerEvent,
+	bindElement?: HTMLElement
+}>
+
+// @vue/component
+export const MessageList = {
+	name: 'MessageList',
+	directives:
+	{
+		'message-observer': {
+			mounted(element, binding)
+			{
+				binding.instance.observer.observeMessage(element);
+			},
+			beforeUnmount(element, binding)
+			{
+				binding.instance.observer.unobserveMessage(element);
+			},
+		},
+	},
+	components:
+	{
+		DateGroup,
+		AuthorGroup,
+		NewMessagesBlock,
+		MarkedMessagesBlock,
+		DialogStatus,
+		DialogLoader,
+		EmptyState,
+		FadeAnimation,
+		HistoryLimitBanner,
+		...MessageComponents,
+	},
+	props:
+	{
+		dialogId: {
+			type: String,
+			required: true,
+		},
+		containerHeight: {
+			type: [Number, null],
+			default: null,
+		},
+	},
+	data(): JsonObject
+	{
+		return {
+			windowFocused: false,
+		};
+	},
+	computed:
+	{
+		dialog(): ImModelChat
+		{
+			return this.$store.getters['chats/get'](this.dialogId, true);
+		},
+		user(): ImModelUser
+		{
+			return this.$store.getters['users/get'](this.dialogId, true);
+		},
+		messageCollection(): ImModelMessage[]
+		{
+			return this.$store.getters['messages/getByChatId'](this.dialog.chatId);
+		},
+		isUser(): boolean
+		{
+			return this.dialog.type === ChatType.user;
+		},
+		dialogInited(): boolean
+		{
+			return this.dialog.inited;
+		},
+		formattedCollection(): DateGroupItem[]
+		{
+			if (!this.dialogInited && this.messageCollection.length === 0)
+			{
+				return [];
+			}
+
+			return this.getCollectionManager().formatMessageCollection(this.messageCollection);
+		},
+		noMessages(): boolean
+		{
+			return this.formattedCollection.length === 0;
+		},
+		isHistoryLimitExceeded(): boolean
+		{
+			return !TariffManager.chatHistory.isAvailable() && this.dialog.tariffRestrictions.isHistoryLimitExceeded;
+		},
+		showDialogStatus(): boolean
+		{
+			return this.messageCollection.some((message) => {
+				return message.id === this.dialog.lastMessageId;
+			});
+		},
+		showEmptyState(): boolean
+		{
+			return this.dialogInited && this.noMessages && this.isUser && !this.isHistoryLimitExceeded;
+		},
+	},
+	created()
+	{
+		this.initCollectionManager();
+		this.initObserverManager();
+	},
+	mounted()
+	{
+		this.subscribeToEvents();
+	},
+	beforeUnmount()
+	{
+		this.unsubscribeFromEvents();
+	},
+	methods:
+	{
+		subscribeToEvents(): void
+		{
+			this.getEmitter().subscribe(EventType.dialog.onClickMessageContextMenu, this.onMessageContextMenuClick);
+		},
+		unsubscribeFromEvents(): void
+		{
+			this.getEmitter().unsubscribe(EventType.dialog.onClickMessageContextMenu, this.onMessageContextMenuClick);
+		},
+		insertTextQuote(message: ImModelMessage): void
+		{
+			this.getEmitter().emit(EventType.textarea.insertText, {
+				text: Quote.prepareInlineMessageQuote(message),
+				withNewLine: true,
+				replace: false,
+				dialogId: this.dialogId,
+			});
+		},
+		insertMention(user: ImModelUser): void
+		{
+			this.getEmitter().emit(EventType.textarea.insertMention, {
+				mentionText: user.name,
+				mentionReplacement: Utils.text.getMentionBbCode(user.id, user.name),
+				dialogId: this.dialogId,
+			});
+		},
+		openReplyPanel(messageId: number): void
+		{
+			this.getEmitter().emit(EventType.textarea.replyMessage, {
+				messageId,
+				dialogId: this.dialogId,
+			});
+		},
+		onAvatarClick(params: { dialogId: string, $event: PointerEvent })
+		{
+			const { dialogId, $event: event } = params;
+			const user: ImModelUser = this.$store.getters['users/get'](dialogId);
+			if (Utils.key.isAltOrOption(event))
+			{
+				this.insertMention(user);
+
+				return;
+			}
+
+			const avatarMenu = new AvatarMenu({ emitter: this.getEmitter() });
+			avatarMenu.openMenu({ user, dialog: this.dialog }, event.currentTarget);
+		},
+		onMessageContextMenuClick(eventData: ContextMenuEvent)
+		{
+			const { message, event, dialogId, bindElement } = eventData.getData();
+			if (dialogId !== this.dialogId)
+			{
+				return;
+			}
+
+			const permissionManager = PermissionManager.getInstance();
+			if (!permissionManager.canPerformActionByRole(ActionByRole.openMessageMenu, this.dialogId))
+			{
+				return;
+			}
+
+			if (Utils.key.isCombination(event, ['Alt+Ctrl']))
+			{
+				this.insertTextQuote(message);
+
+				return;
+			}
+
+			if (Utils.key.isCmdOrCtrl(event))
+			{
+				this.openReplyPanel(message.id);
+
+				return;
+			}
+
+			const context = { dialogId: this.dialogId, ...message };
+
+			const messageMenuManager = MessageMenuManager.getInstance();
+
+			let target = {
+				left: event.pageX,
+				top: event.pageY,
+			};
+
+			if (bindElement)
+			{
+				target = bindElement;
+			}
+
+			messageMenuManager.openMenu({
+				messageContext: context,
+				applicationContext: { emitter: this.getEmitter() },
+				target,
+			});
+		},
+		initObserverManager()
+		{
+			this.observer = new ObserverManager({
+				dialogId: this.dialogId,
+				context: { emitter: this.getEmitter() },
+			});
+		},
+		getMessageComponentName(message: ImModelMessage): $Values<typeof MessageComponent>
+		{
+			return (new MessageComponentManager(message)).getName();
+		},
+		initCollectionManager()
+		{
+			this.collectionManager = new CollectionManager(this.dialogId);
+		},
+		getCollectionManager(): CollectionManager
+		{
+			return this.collectionManager;
+		},
+		getEmitter(): EventEmitter
+		{
+			return this.$Bitrix.eventEmitter;
+		},
+	},
+	template: `
+		<slot v-if="!dialogInited" name="loader">
+			<DialogLoader />
+		</slot>
+		<FadeAnimation :duration="200">
+			<div v-if="dialogInited" class="bx-im-message-list__container">
+				<EmptyState v-if="showEmptyState" :dialogId="dialogId" />
+				<slot name="before-messages" :getMessageComponentName="getMessageComponentName"></slot>
+				<HistoryLimitBanner v-if="isHistoryLimitExceeded" :dialogId="dialogId" :noMessages="noMessages" />
+				<DateGroup v-for="dateGroup in formattedCollection" :key="dateGroup.dateTitle" :item="dateGroup">
+					<!-- Slot for every date group item -->
+					<template #dateGroupItem="{ dateGroupItem, isMarkedBlock, isNewMessagesBlock, isAuthorBlock }">
+						<MarkedMessagesBlock v-if="isMarkedBlock" data-id="newMessages" />
+						<NewMessagesBlock v-else-if="isNewMessagesBlock" data-id="newMessages" />
+						<AuthorGroup 
+							v-else-if="isAuthorBlock" 
+							:item="dateGroupItem"
+							:contextDialogId="dialogId"
+							@avatarClick="onAvatarClick"
+						>
+							<!-- Slot for every message -->
+							<template #message="{ message, index }">
+								<component
+									v-message-observer
+									:is="getMessageComponentName(message)"
+									:withTitle="index === 0"
+									:item="message"
+									:dialogId="dialogId"
+									:key="message.id"
+									:data-viewed="message.viewed"
+									:containerHeight="containerHeight"
+								>
+								</component>
+							</template>
+						</AuthorGroup>
+					</template>
+				</DateGroup>
+				<DialogStatus v-if="showDialogStatus" :dialogId="dialogId" />
+			</div>
+		</FadeAnimation>
+	`,
+};

@@ -1,0 +1,22 @@
+<?php
+$MESS["BPFCT_DOCUMENT_EMPTY"] = "Das Feld \"Workflow-Element\" ist erforderlich.";
+$MESS["BP_CRM_AUTOMATED_SOLUTION_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn eine neue automatisierte Lösung erstellt wird.";
+$MESS["BP_CRM_AUTOMATED_SOLUTION_CREATE_FCT_DESCR_NAME"] = "Automatisierte Lösung erstellt";
+$MESS["BP_CRM_COMPANY_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein neues Unternehmen erstellt wird.";
+$MESS["BP_CRM_COMPANY_CREATE_FCT_DESCR_NAME"] = "Unternehmen hinzugefügt";
+$MESS["BP_CRM_CONTACT_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein neuer Kontakt erstellt wird.";
+$MESS["BP_CRM_CONTACT_CREATE_FCT_DESCR_NAME"] = "Kontakt erstellt";
+$MESS["BP_CRM_DEAL_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein neuer Auftrag erstellt wird.";
+$MESS["BP_CRM_DEAL_CREATE_FCT_DESCR_NAME"] = "Auftrag hinzugefügt";
+$MESS["BP_CRM_DYNAMIC_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein neuer Smartprozess erstellt wird.";
+$MESS["BP_CRM_DYNAMIC_CREATE_FCT_DESCR_NAME"] = "Smartprozess erstellt";
+$MESS["BP_CRM_ENTITY_CREATE_TRIGGER_CATEGORY_ID"] = "Verkaufs-Pipeline";
+$MESS["BP_CRM_FCT_DOCUMENT"] = "Workflow-Element";
+$MESS["BP_CRM_LEAD_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein neuer Lead erstellt wird.";
+$MESS["BP_CRM_LEAD_CREATE_FCT_DESCR_NAME"] = "Lead erstellt";
+$MESS["BP_CRM_ORDER_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn eine neue Bestellung erstellt wird.";
+$MESS["BP_CRM_ORDER_CREATE_FCT_DESCR_NAME"] = "Bestellung erstellt";
+$MESS["BP_CRM_QUOTE_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein neues Angebot erstellt wird.";
+$MESS["BP_CRM_QUOTE_CREATE_FCT_DESCR_NAME"] = "Angebot erstellt";
+$MESS["BP_CRM_SMART_INVOICE_CREATE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn eine neue Rechnung erstellt wird.";
+$MESS["BP_CRM_SMART_INVOICE_CREATE_FCT_DESCR_NAME"] = "Rechnung erstellt";

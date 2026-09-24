@@ -1,0 +1,10 @@
+<?php
+$MESS["IBLOCK_PROPERTY_DETAILS_MENU_ADDITIONAL"] = "Plus";
+$MESS["IBLOCK_PROPERTY_DETAILS_MENU_COMMON"] = "Principal";
+$MESS["IBLOCK_PROPERTY_DETAILS_MENU_DIRECTORY"] = "Valeurs du dictionnaire";
+$MESS["IBLOCK_PROPERTY_DETAILS_MENU_LIST"] = "Valeurs de la liste";
+$MESS["IBLOCK_PROPERTY_DETAILS_MENU_TITLE"] = "Paramètres";
+$MESS["IBLOCK_PROPERTY_DETAILS_NEW_RECORD_TITLE"] = "Nouvelle propriété";
+$MESS["IBLOCK_PROPERTY_DETAILS_POPUP_OPEN_SLIDER_CONFIRM_SAVE_BUTTON"] = "Enregistrer";
+$MESS["IBLOCK_PROPERTY_DETAILS_POPUP_OPEN_SLIDER_CONFIRM_TEXT"] = "Enregistrez la propriété pour compléter les valeurs.";
+$MESS["IBLOCK_PROPERTY_DETAILS_REMOVE_POPUP_MESSAGE"] = "Voulez-vous vraiment supprimer cette propriété ? Toutes les données seront perdues.";

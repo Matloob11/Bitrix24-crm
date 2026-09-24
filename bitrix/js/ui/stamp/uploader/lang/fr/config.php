@@ -1,0 +1,22 @@
+<?php
+$MESS["UI_STAMP_UPLOADER_CROP_BUTTON_LABEL"] = "Recadrer";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_HEADER"] = "Télécharger l'image de cachet";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_TEXT"] = "Ou faites simplement glisser le fichier image ici";
+$MESS["UI_STAMP_UPLOADER_HEADER_CHANGE_CONTACT_BUTTON_LABEL"] = "Changer";
+$MESS["UI_STAMP_UPLOADER_HEADER_TITLE"] = "Cachet à utiliser avec";
+$MESS["UI_STAMP_UPLOADER_PREPARING_STATUS"] = "Traitement";
+$MESS["UI_STAMP_UPLOADER_PREVIEW_TITLE"] = "Cliquez pour télécharger une autre image";
+$MESS["UI_STAMP_UPLOADER_SAVE_BUTTON_LABEL"] = "Enregistrer";
+$MESS["UI_STAMP_UPLOADER_SELECT_PHOTO_BUTTON_LABEL_1"] = "Téléverser l'image du cachet";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM"] = "Les modifications n'ont pas été enregistrées. Voulez-vous vraiment fermer le panneau curseur ?";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CANCEL"] = "Annuler";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CLOSE"] = "Fermer";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_DESCRIPTION"] = "Téléchargez l'image du cachet et utilisez-la pour signer des documents. L'image sera traitée par l'IA pour paraître authentique.";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_TITLE"] = "Cachet";
+$MESS["UI_STAMP_UPLOADER_TAKE_PHOTO_BUTTON_LABEL"] = "Prenez une photo avec votre téléphone";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_PERCENT"] = "{{number}} %";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE"] = "{{number}} {{text}}";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_B"] = "octets";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_KB"] = "KB";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_MB"] = "Mo";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_TEXT"] = "Téléchargement de fichier";

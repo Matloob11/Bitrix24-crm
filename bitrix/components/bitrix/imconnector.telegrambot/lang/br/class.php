@@ -1,0 +1,12 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_ESHOP_DEFAULT_NAME"] = "Loja on-line";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_MODULE_NOT_INSTALLED_MSGVER_1"] = "O módulo \"Conectores de Messenger Externo\" não está instalado.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_NO_ACTIVE_CONNECTOR"] = "Este conector está inativo.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_NO_CONNECT"] = "Falha ao estabelecer a conexão de teste usando os parâmetros fornecidos";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_NO_DATA_SAVE"] = "Não há dados para salvar";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_NO_SAVE"] = "Erro ao salvar os dados. Verifique seus dados e tente novamente.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_OK_CONNECT"] = "A conexão de teste foi estabelecida com sucesso";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_OK_REGISTER"] = "O registro foi bem sucedido";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_OK_SAVE"] = "A informação foi salva com sucesso.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_SESSION_HAS_EXPIRED"] = "Sua sessão expirou. Envie o formulário novamente.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_WELCOME_MESSAGE_DEFAULT"] = "Olá, este é o bot de bate-papo #COMPANY_TITLE#. Como posso ajudar você?";

@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_EMAIL"] = "również za pośrednictwem poczty elektronicznej";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_HINT"] = "Link do dokumentu zostanie dostarczony do komunikatora Bitrix24.";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_IDLE"] = "Czat Bitrix24";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_NOT_SET"] = "Wybierz inny kanał";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_SMS"] = "również za pośrednictwem SMS";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_TITLE_MSGVER_1"] = "Wyślij link do dokumentu do";
+$MESS["SIGN_DOCUMENT_SEND_DATETIME_LIMIT_SELECTOR_HINT"] = "Dokument musi zostać podpisany przez wszystkie strony przed tym dniem.";
+$MESS["SIGN_DOCUMENT_SEND_FIRST_PARTY"] = "Nadawca";
+$MESS["SIGN_DOCUMENT_SEND_FIRST_PARTY_TEMPLATE"] = "Strona podpisująca w imieniu firmy (przedstawiciel)";
+$MESS["SIGN_DOCUMENT_SEND_HEADER_1"] = "Sprawdź dane dokumentu";
+$MESS["SIGN_DOCUMENT_SEND_LANG_SELECTOR_HINT"] = "Certyfikat podpisu zostanie utworzony w wybranym języku.";
+$MESS["SIGN_DOCUMENT_SEND_REMINDER_TYPE_SELECTOR_HINT"] = "Bot HR będzie przypominał osobie odpowiedzialnej o nowym dokumencie przez trzy dni.";
+$MESS["SIGN_DOCUMENT_SEND_SECOND_PARTY"] = "Odbiorca";
+$MESS["SIGN_DOCUMENT_SUMMARY_TEMPLATE_TITLE"] = "Szablon";
+$MESS["SIGN_DOCUMENT_SUMMARY_TITLE"] = "Dokument do podpisu";
+$MESS["SIGN_SEND_CLOSE_BTN"] = "Zamknij tę stronę";
+$MESS["SIGN_SEND_CLOSE_DESCRIPTION"] = "To może trochę potrwać.Można zamknąć tę stronę. Wysyłanie będzie kontynuowane w tle.";
+$MESS["SIGN_SEND_PROGRESS_TITLE"] = "Wysyłanie dokumentów";
+$MESS["SIGN_SEND_SIGNING_COMPANY"] = "Twoja firma";
+$MESS["SIGN_SEND_SIGNING_EMPLOYEES"] = "Pracownicy";
+$MESS["SIGN_SEND_SIGNING_REPRESENTATIVE"] = "Przedstawiciel";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_EDITOR"] = "Wypełnij pola";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_REVIEWER"] = "Zatwierdź";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_REVIEWER_TEMPLATE"] = "Zatwierdzający";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_TITLE_EDITOR"] = "Uzupełnij informacje o pracowniku";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_TITLE_REVIEWER_MSGVER_1"] = "Dokument zostanie zatwierdzony przez";

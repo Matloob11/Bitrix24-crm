@@ -1,0 +1,20 @@
+<?php
+$MESS["STORE_SALE_PRODUCTS_FILTER_STORES_TITLE"] = "Almacenes";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN"] = "Cant. vendida, unidades";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN_HINT"] = "Cantidad total de productos que se vendieron durante el periodo del informe, tal como se informó en los Objetos del inventario de ventas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN"] = "Costo del producto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN_HINT"] = "Costo medio por unidad de mercancía para el periodo del informe según los objetos que están en el inventario de ventas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_NO_PRODUCTS"] = "No se encontraron transacciones para el periodo seleccionado.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PRODUCT_COLUMN_MSGVER_1"] = "Producto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN"] = "Margen bruto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN_HINT"] = "El margen bruto es el beneficio bruto dividido por los ingresos por las ventas y expresado en porcentaje.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN"] = "Beneficio bruto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN_HINT"] = "Beneficio bruto del periodo de referencia según los objetos del inventario de ventas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN"] = "Cantidad que llegó";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN_HINT"] = "Cantidad total de bienes que se recibieron en los almacenes como resultado de las operaciones de Recepción, Ajuste y Transferencia de existencias.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN"] = "Saldo inicial en existencias";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN_HINT"] = "Saldo de existencias registrado al comienzo del periodo que se informó.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN"] = "Costo total";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN_HINT"] = "Costo total de los productos que se vendieron durante el periodo del informe, tal como se informó en los objetos del inventario de ventas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN"] = "Ingresos por ventas";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN_HINT"] = "Cantidad total de dinero que se ganó por la venta de los bienes para el periodo del informe según lo que se informó para los objetos del inventario de ventas.";

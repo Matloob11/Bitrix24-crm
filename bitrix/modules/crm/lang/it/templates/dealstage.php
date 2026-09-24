@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_BP_DEAL_PROPERTIES_1"] = "Processo aziendale guidato dallo stato";
+$MESS["CRM_BP_DEAL_PROPERTIES_1_TITLE"] = "Stato: nuovo (analisi)";
+$MESS["CRM_BP_DEAL_PROPERTIES_2"] = "Shell eventi";
+$MESS["CRM_BP_DEAL_PROPERTIES_2_TITLE"] = "Crea un'offerta";
+$MESS["CRM_BP_DEAL_PROPERTIES_3_TITLE"] = "Imposta stato";
+$MESS["CRM_BP_DEAL_PROPERTIES_4_TITLE"] = "Inserisci stato";
+$MESS["CRM_BP_DEAL_PROPERTIES_5_TITLE"] = "Modifica documento";
+$MESS["CRM_BP_DEAL_PROPERTIES_6_TITLE"] = "Elaborazione";
+$MESS["CRM_BP_DEAL_PROPERTIES_7_TITLE"] = "Stato: nuova offerta";
+$MESS["CRM_BP_DEAL_PROPERTIES_8_TITLE"] = "Preventivo";
+$MESS["CRM_BP_DEAL_PROPERTIES_10_TITLE"] = "Non riuscito";
+$MESS["CRM_BP_DEAL_PROPERTIES_11_TITLE"] = "Fattura";
+$MESS["CRM_BP_DEAL_PROPERTIES_13_TITLE"] = "Stato: non riuscito";
+$MESS["CRM_BP_DEAL_PROPERTIES_14_TITLE"] = "Preventivo";
+$MESS["CRM_BP_DEAL_PROPERTIES_15_TITLE"] = "Stato: fattura";
+$MESS["CRM_BP_DEAL_PROPERTIES_16_TITLE"] = "Riuscito";
+$MESS["CRM_BP_DEAL_PROPERTIES_17_TITLE"] = "Stato: riuscito";
+$MESS["CRM_BP_DEAL_PROPERTIES_18_TITLE"] = "Codice PHP";
+$MESS["CRM_BP_DEAL_PROPERTIES_19_TITLE"] = "Prevendita";
+$MESS["CRM_BP_DEAL_PROPERTIES_20_TITLE"] = "Ora di inizio incarico";
+$MESS["CRM_BP_DEAL_TASK_NAME"] = "Prevendita sull'affare: {=Document:TITLE}  (impostata da processo aziendale)";
+$MESS["CRM_BP_DEAL_TASK_TEXT"] = "Esegui prevendita sull'affare: {=Document:TITLE}";
+$MESS["CRM_BP_DEAL_TITLE"] = "Esecuzione transazione per fase";

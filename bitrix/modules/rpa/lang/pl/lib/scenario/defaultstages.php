@@ -1,0 +1,7 @@
+<?
+$MESS["RPA_SCENARIO_DEFAULT_STAGES_ACCOUNTANT_APPROVAL"] = "Zatwierdzenie przez głównego księgowego";
+$MESS["RPA_SCENARIO_DEFAULT_STAGES_CHIEF_APPROVAL"] = "Zatwierdzenie przez przełożonego";
+$MESS["RPA_SCENARIO_DEFAULT_STAGES_FAIL"] = "Odrzucone";
+$MESS["RPA_SCENARIO_DEFAULT_STAGES_FIRST"] = "Start";
+$MESS["RPA_SCENARIO_DEFAULT_STAGES_SUCCESS"] = "Zatwierdzone";
+?>

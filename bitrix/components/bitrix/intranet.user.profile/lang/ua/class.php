@@ -1,0 +1,6 @@
+<?php
+$MESS["INTRANET_USER_PROFILE_NO_USER_ERROR"] = "Користувач не знайдений.";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATED_MSGVER_1"] = "Захист акаунту вимкнено";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATE_STATUS"] = "Автоматичне ввімкнення через #REMAINDER#.";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATE_STATUS_UNINITIALIZED"] = "Доступ буде закрито через #REMAINDER#.";
+$MESS["INTRANET_USER_PROFILE_OTP_UNINITIALIZED"] = "Захист акаунту не налаштовано";

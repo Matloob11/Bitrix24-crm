@@ -1,0 +1,26 @@
+<?php
+$MESS["SIGN_MEMBER_ACTION_APPROVE"] = "Approuver";
+$MESS["SIGN_MEMBER_ACTION_DOWNLOAD"] = "Télécharger";
+$MESS["SIGN_MEMBER_ACTION_EDIT"] = "Remplir les champs";
+$MESS["SIGN_MEMBER_ACTION_SIGN"] = "Signer";
+$MESS["SIGN_MEMBER_ACTION_SIGN_WITH_YOU"] = "Signé par vous";
+$MESS["SIGN_MEMBER_ACTION_VIEW"] = "Voir";
+$MESS["SIGN_MEMBER_APPROVED"] = "Approuvé";
+$MESS["SIGN_MEMBER_APPROVED_WITH_YOU"] = "Approuvé par vous";
+$MESS["SIGN_MEMBER_APPROVED_WITH_YOU_MSGVER_1"] = "Approuvé par moi";
+$MESS["SIGN_MEMBER_APPROVES"] = "Approbateur";
+$MESS["SIGN_MEMBER_EDIT"] = "Éditeur de champs";
+$MESS["SIGN_MEMBER_EDITED"] = "Rempli";
+$MESS["SIGN_MEMBER_EDITED_WITH_YOU"] = "Rempli par vous";
+$MESS["SIGN_MEMBER_EDITED_WITH_YOU_MSGVER_1"] = "Rempli par moi";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_ASSIGNEE"] = "Signer comme représentant de l'entreprise";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_EDITOR"] = "Éditeur de champs";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_REVIEWER"] = "Approbateur";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_SIGNER_B2E"] = "Signer comme employé(e)";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_SIGNER_E2B"] = "Expéditeur";
+$MESS["SIGN_MEMBER_SIGNED"] = "Signé";
+$MESS["SIGN_MEMBER_SIGNED_WITH_YOU_MSGVER_1"] = "Signé par moi";
+$MESS["SIGN_MEMBER_SIGNS"] = "Signataire";
+$MESS["SIGN_MEMBER_STOPPED"] = "Refusé";
+$MESS["SIGN_MEMBER_STOPPED_WITH_YOU"] = "Refusé par vous";
+$MESS["SIGN_MEMBER_STOPPED_WITH_YOU_MSGVER_1"] = "Refusé par moi";

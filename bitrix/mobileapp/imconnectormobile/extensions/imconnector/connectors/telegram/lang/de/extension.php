@@ -1,0 +1,37 @@
+<?php
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_BANNER_DESCRIPTION"] = "Chat-Bot [B]#BOT_NAME#[/B] verbunden.
+Kundennachrichten werden jetzt aus diesem Chat an Ihr Bitrix24 weitergeleitet";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_COPY_LINK"] = "Link kopieren";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_COPY_LINK_COMPLETE"] = "Link kopiert";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_DISABLE"] = "Verbindung mit Telegram trennen";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_DISABLE_ALERT_BUTTON"] = "Verbindung trennen";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_DISABLE_ALERT_TITLE"] = "Möchten Sie die Verbindung mit Telegram wirklich trennen?";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_GO_TO_WEB_HINT_MSGVER_1"] = "Nur in der Webversion verfügbar";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_GO_TO_WEB_TITLE_MSGVER_1"] = "Webversion öffnen";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_ADVANCED_SETTINGS"] = "Erweiterte Einstellungen";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_DESCRIPTION"] = "Nachricht wird an den ersten in der Warteschleife verfügbaren Mitarbeiter automatisch weitergeleitet";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_FIELD_TITLE"] = "Warteschleife der Mitarbeiter";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_SELECTOR_TITLE"] = "Empfänger auswählen";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_TITLE"] = "Warteschleife der Mitarbeiter einrichten";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_SAVE"] = "Speichern";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_SHARE_TITLE"] = "Sie können den Link kopieren und an Ihre Kunden senden, um mit ihnen in Telegram zu kommunizieren";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_TITLE"] = "Kommunikationskanäle: Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_BUTTON_NAME"] = "OK";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_INVALID_TOKEN_DESCRIPTION"] = "Stellen Sie sicher, dass Sie das Token korrekt kopiert haben";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_INVALID_TOKEN_TITLE"] = "Ungültiges Token";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_UNKNOWN_ERROR_DESCRIPTION"] = "Versuchen Sie es später erneut";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_UNKNOWN_ERROR_TITLE"] = "Es gab einen Fehler";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_BANNER_DESCRIPTION"] = "Ihre Kunden werden mit Ihnen im Messenger kommunizieren, den sie bevorzugen. Das Nachrichtenprotokoll wird in den Aufträgen abgespeichert";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_BANNER_TITLE"] = "Ihre Kunden in Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_COMPLETE_DESCRIPTION"] = "Ihre Kunden können jetzt die Nachrichten an Sie in Telegram senden. Das Nachrichtenprotokoll wird in den Aufträgen abgespeichert";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_COMPLETE_TITLE"] = "Telegram-Bot verbunden";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_CONTINUE"] = "Fortfahren";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_GO_TO_TELEGRAM"] = "Telegram öffnen";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_LOADER_DESCRIPTION"] = "Der Telegram-Bot wird mit Ihrem Bitrix24 verbunden. Das kann einige Zeit dauern";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_LOADER_TITLE"] = "Telegram verbinden";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_1_DESCRIPTION_MSGVER_1"] = "Nachdem dieser Schritt abgeschlossen wird, werden Sie ein Zugriffstoken erhalten. [URL]Wie funktioniert das?[/URL]";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_1_TITLE"] = "Einen Telegram-Bot einrichten";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_2_DESCRIPTION"] = "Kopieren Sie das Token im Chat der Bot-Konfiguration und fügen Sie es im Fenster weiter unten ein";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_2_TITLE"] = "Token eingeben";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_TITLE"] = "Telegram verbinden";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_TOKEN_INPUT_PLACEHOLDER"] = "Token hier eingeben";

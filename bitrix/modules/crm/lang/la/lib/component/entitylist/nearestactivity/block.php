@@ -1,0 +1,5 @@
+<?php
+$MESS["CRM_ACTIVITY_TIME_NOT_SPECIFIED_MSGVER_1"] = "sin fecha límite";
+$MESS["CRM_ENTITY_ACTIVITY_FOR_RESPONSIBLE"] = "para";
+$MESS["CRM_ENTITY_ADD_ACTIVITY"] = "Agregar actividad";
+$MESS["CRM_ENTITY_ADD_ACTIVITY_HINT"] = "No hay actividades";

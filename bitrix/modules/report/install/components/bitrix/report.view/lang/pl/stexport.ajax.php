@@ -1,0 +1,7 @@
+<?
+$MESS["REPORT_VIEW_STEXPORT_COMPLETED_SUMMARY1"] = "Utworzono plik raportu.";
+$MESS["REPORT_VIEW_STEXPORT_COMPLETED_SUMMARY2"] = "Przetworzone rekordy: #PROCESSED_ITEMS#.";
+$MESS["REPORT_VIEW_STEXPORT_DOWNLOAD"] = "Pobierz plik eksportu";
+$MESS["REPORT_VIEW_STEXPORT_NO_DATA"] = "Brak danych do wyeksportowania.";
+$MESS["REPORT_VIEW_STEXPORT_PROGRESS_SUMMARY"] = "Przetworzone rekordy: #PROCESSED_ITEMS# z #TOTAL_ITEMS#.";
+?>

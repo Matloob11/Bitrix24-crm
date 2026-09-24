@@ -1,0 +1,25 @@
+<?php
+$MESS["BI_GROUP_ADD_DASHBOARD"] = "Dashboards hinzufügen";
+$MESS["BI_GROUP_DASHBOARD_SCOPES_EMPTY"] = "Bereich auswählen";
+$MESS["BI_GROUP_EMPTY_SUBTITLE"] = "Klicken Sie auf \"Dashboards hinzufügen\", um Dashboards zu dieser Gruppe hinzuzufügen.";
+$MESS["BI_GROUP_EMPTY_TITLE"] = "In dieser Gruppe gibt es keine Dashboards.";
+$MESS["BI_GROUP_NAME_NEW"] = "Neue Gruppe";
+$MESS["BI_GROUP_SAVE"] = "Speichern";
+$MESS["BI_GROUP_SAVE_CANCEL_MSGVER_1"] = "Abbrechen";
+$MESS["BI_GROUP_SAVE_WARN_DONT_SHOW"] = "Nicht mehr anzeigen";
+$MESS["BI_GROUP_SAVE_WARN_NO"] = "Nein";
+$MESS["BI_GROUP_SAVE_WARN_TEXT_MSGVER_1"] = "Möchten Sie dieses Dashboard wirklich aus der Gruppe entfernen? Sie können dabei den Zugriff auf das Dashboard verlieren.";
+$MESS["BI_GROUP_SAVE_WARN_TITLE"] = "Dashboard aus der Gruppe entfernen";
+$MESS["BI_GROUP_SAVE_WARN_YES"] = "Ja";
+$MESS["BI_GROUP_SCOPES_DASHBOARD"] = "#FIRST_SCOPES# [hint]und noch #NUMBER#[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_EMPTY_MSGVER_1"] = "[title]Dashboard-Bereich:[/title] auswählen";
+$MESS["BI_GROUP_SCOPES_GROUP_MANY_MSGVER_1"] = "[title]Dashboard-Bereich:[/title] #FIRST_SCOPES# [hint]und  noch #NUMBER#[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_MSGVER_1"] = "[title]Dashboard-Bereich:[/title] #SCOPE#";
+$MESS["BI_GROUP_SCOPE_HINT_MSGVER_1"] = "Ausgewählte Bereiche werden auf alle Dashboards in der Gruppe angewendet. [link]Mehr[/link]";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_0"] = "#COUNT# Dashboard";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_1"] = "#COUNT# Dashboards";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_2"] = "#COUNT# Dashboards";
+$MESS["BI_GROUP_SYSTEM_NAME_HINT"] = "Eine Systemgruppe kann nicht umbenannt werden.";
+$MESS["BI_GROUP_SYSTEM_SCOPES_HINT"] = "Bereich einer Systemgruppe kann nicht geändert werden.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE"] = "Möchten Sie den Bereich dieses Dashboards löschen, <br>sollten Sie das Dashboard aus der Gruppe \"#GROUP_NAME#\" entfernen.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE_MANY"] = "Möchten Sie den Bereich dieses Dashboards löschen, <br>sollten Sie das Dashboard aus dieser Gruppe entfernen:";

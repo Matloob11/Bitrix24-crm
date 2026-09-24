@@ -1,0 +1,208 @@
+<?php
+namespace Bitrix\Im\Integration\Socialnetwork;
+
+use Bitrix\Im\V2\Entity\User\User;
+use Bitrix\Main\Localization\Loc;
+
+class Extranet
+{
+	const CACHE_TOKEN_TTL = 2592000; // 1 month
+
+	public static function checkModules()
+	{
+		return \Bitrix\Main\Loader::includeModule('extranet') && \Bitrix\Main\Loader::includeModule("socialnetwork");
+	}
+
+	public static function getGroup($params, $userId = null, bool $filterActiveUser = true)
+	{
+		if (!self::checkModules())
+			return false;
+
+		$params = is_array($params)? $params: [];
+
+		$userId = \Bitrix\Im\Common::getUserId($userId);
+		if ($userId <= 0)
+		{
+			return false;
+		}
+
+		$cacheId = 'im_sonet_extranet_v3_'.$userId;
+		$cachePath = '/bx/imc/sonet/extranet'.\Bitrix\Im\Common::getCacheUserPostfix($userId);
+
+		$cache = \Bitrix\Main\Application::getInstance()->getCache();
+		$taggedCache = \Bitrix\Main\Application::getInstance()->getTaggedCache();
+
+		if($cache->initCache(self::CACHE_TOKEN_TTL, $cacheId, $cachePath))
+		{
+			return $cache->getVars();
+		}
+
+		$cache->startDataCache();
+
+		$taggedCache->startTagCache($cachePath);
+
+		$db = \CSocNetUserToGroup::GetList(
+			array(),
+			array(
+				"USER_ID" => $userId,
+				"<=ROLE" => SONET_ROLES_USER,
+				"GROUP_SITE_ID" => \CExtranet::GetExtranetSiteID(),
+				"GROUP_ACTIVE" => "Y",
+				"GROUP_CLOSED" => "N"
+			),
+			false,
+			false,
+			array("ID", "GROUP_ID", "GROUP_NAME")
+		);
+
+		$groups = [];
+		$groupIds = [];
+		while ($row = $db->GetNext(true, false))
+		{
+			$groupIds[] = $row["GROUP_ID"];
+			$groups['SG'.$row['GROUP_ID']] = array(
+				'ID' => 'SG'.$row['GROUP_ID'],
+				'NAME' => Loc::getMessage('IM_INT_SN_GROUP_EXTRANET', Array('#GROUP_NAME#' => $row['GROUP_NAME'])),
+				'USERS' => []
+			);
+
+			$taggedCache->registerTag('sonet_group_'.$row['GROUP_ID']);
+			$taggedCache->registerTag('sonet_user2group_G'.$row['GROUP_ID']);
+		}
+
+		if (count($groups) <= 0)
+		{
+			return false;
+		}
+
+		$taggedCache->registerTag('sonet_user2group');
+
+		$taggedCache->endTagCache();
+
+		$filter = [
+			'@GROUP_ID' => $groupIds,
+			'<=ROLE' => SONET_ROLES_USER,
+			'USER_CONFIRM_CODE' => false
+		];
+
+		if ($filterActiveUser)
+		{
+			$filter['USER_ACTIVE'] = 'Y';
+		}
+
+		$db = \CSocNetUserToGroup::GetList(
+			[],
+			$filter,
+			false,
+			false,
+			['ID', 'USER_ID', 'GROUP_ID']
+		);
+		while ($row = $db->GetNext(true, false))
+		{
+			if($row['USER_ID'] == $userId || !isset($groups['SG'.$row['GROUP_ID']]))
+				continue;
+
+			$groups['SG'.$row['GROUP_ID']]['USERS'][] = $row['USER_ID'];
+		}
+
+		$cache->endDataCache($groups);
+
+		return $groups;
+	}
+
+	public static function isUserInGroup($userId, $currentUserId = null, bool $filterActiveUser = true)
+	{
+		$currentUserId = \Bitrix\Im\Common::getUserId($currentUserId);
+		if ($currentUserId <= 0)
+		{
+			return false;
+		}
+
+		if ($userId == $currentUserId)
+		{
+			return true;
+		}
+
+		$extranetUsers = self::getAccessibleExtranetUsers($currentUserId, $filterActiveUser);
+
+		return isset($extranetUsers[$userId]);
+	}
+
+	public static function filterUserList(array $userList, $currentUserId = null)
+	{
+		$currentUserId = \Bitrix\Im\Common::getUserId($currentUserId);
+		if ($currentUserId <= 0)
+		{
+			return false;
+		}
+
+		if (empty($userList))
+		{
+			return [];
+		}
+
+		return
+			User::getInstance((int)$currentUserId)->isExtranet()
+				? self::filterByExtranet((int)$currentUserId, $userList)
+				: self::filterByIntranet((int)$currentUserId, $userList)
+		;
+	}
+
+	protected static function filterByExtranet(int $currentUserId, array $userList): array
+	{
+		$extranetUsers = self::getAccessibleExtranetUsers($currentUserId);
+
+		return array_filter($userList, static function($userId) use ($extranetUsers) {
+			return isset($extranetUsers[$userId]);
+		});
+	}
+
+	protected static function filterByIntranet(int $currentUserId, array $userList): array
+	{
+		$intranetUsers = [];
+		$extranetUsers = [];
+
+		foreach ($userList as $userId)
+		{
+			if (User::getInstance($userId)->isExtranet())
+			{
+				$extranetUsers[$userId] = $userId;
+			}
+			else
+			{
+				$intranetUsers[$userId] = $userId;
+			}
+		}
+
+		if (empty($extranetUsers))
+		{
+			return $intranetUsers;
+		}
+
+		$accessibleExtranetUsers = self::getAccessibleExtranetUsers($currentUserId);
+		$extranetUsers = array_filter($extranetUsers, static function($userId) use ($accessibleExtranetUsers) {
+			return isset($accessibleExtranetUsers[$userId]);
+		});
+
+		return array_merge($intranetUsers, $extranetUsers);
+	}
+
+	protected static function getAccessibleExtranetUsers(int $currentUserId, bool $filterActiveUser = true): array
+	{
+		$extranetUsers = [$currentUserId => $currentUserId];
+		$groups = self::getGroup([], $currentUserId, $filterActiveUser);
+
+		if (is_array($groups))
+		{
+			foreach ($groups as $group)
+			{
+				foreach ($group['USERS'] as $uid)
+				{
+					$extranetUsers[$uid] = $uid;
+				}
+			}
+		}
+
+		return $extranetUsers;
+	}
+}

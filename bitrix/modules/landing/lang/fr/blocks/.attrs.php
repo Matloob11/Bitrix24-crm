@@ -1,0 +1,23 @@
+<?php
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION"] = "Animation du curseur";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_HINT"] = "Sélectionnez l'effet d'animation pour la transition entre des diapositives consécutives. L'animation en fondu n'est disponible que s'il n'y a qu'une seule diapositive.";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_OFF"] = "Aucun";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS"] = "Type de boutons";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS_0"] = "Aucun bouton";
+$MESS["LANDING_BLOCK_ATTRS_AUTO"] = "Auto";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY"] = "Lecture automatique";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY_SPEED"] = "Vitesse";
+$MESS["LANDING_BLOCK_ATTRS_DOTS"] = "Afficher les points de navigation";
+$MESS["LANDING_BLOCK_ATTRS_NO"] = "Non";
+$MESS["LANDING_BLOCK_ATTRS_OFF"] = "Désactiver";
+$MESS["LANDING_BLOCK_ATTRS_ON"] = "Activer";
+$MESS["LANDING_BLOCK_ATTRS_PAUSE_HOVER"] = "Pause si le curseur passe dessus";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW"] = "Diapositives à l'écran";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW_HINT"] = "Le nombre de diapositives simultanées que l'utilisateur verra à l'écran, placées côte à côte. Cette option n'est efficace que lorsque vous consultez le site sur un ordinateur de bureau ou un ordinateur portable.";
+$MESS["LANDING_BLOCK_ATTRS_TIME_1"] = "1 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_3"] = "3 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_5"] = "5 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_10"] = "10 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_15"] = "15 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_30"] = "30 sec";
+$MESS["LANDING_BLOCK_ATTRS_YES"] = "Oui";

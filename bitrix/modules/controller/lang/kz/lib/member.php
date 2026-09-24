@@ -1,0 +1,26 @@
+<?php
+$MESS["MEMBER_ENTITY_ACTIVE_FIELD"] = "Белсенділік жалауы";
+$MESS["MEMBER_ENTITY_CONTACT_PERSON_FIELD"] = "Байланысушы тұлға";
+$MESS["MEMBER_ENTITY_CONTROLLER_GROUP_ID_FIELD"] = "Топ идентификаторы";
+$MESS["MEMBER_ENTITY_COUNTERS_UPDATED_FIELD"] = "Есептеуіштерді соңғы жаңарту уақыты";
+$MESS["MEMBER_ENTITY_COUNTER_FREE_SPACE_FIELD"] = "Орын есептеуіші";
+$MESS["MEMBER_ENTITY_COUNTER_LAST_AUTH_FIELD"] = "Соңғы авторлану есептеуіші";
+$MESS["MEMBER_ENTITY_COUNTER_SITES_FIELD"] = "Сайттар саны есептеуіші";
+$MESS["MEMBER_ENTITY_COUNTER_USERS_FIELD"] = "Пайдаланушылар саны есептеуіші";
+$MESS["MEMBER_ENTITY_CREATED_BY_FIELD"] = "Кім жасады";
+$MESS["MEMBER_ENTITY_DATE_ACTIVE_FROM_FIELD"] = "Белсенділіктің басталуы";
+$MESS["MEMBER_ENTITY_DATE_ACTIVE_TO_FIELD"] = "Белсенділіктің аяқталуы";
+$MESS["MEMBER_ENTITY_DATE_CREATE_FIELD"] = "Жасау уақыты";
+$MESS["MEMBER_ENTITY_DISCONNECTED_FIELD"] = "Өшіру жалауы";
+$MESS["MEMBER_ENTITY_EMAIL_FIELD"] = "E-mail мекенжайы";
+$MESS["MEMBER_ENTITY_HOSTNAME_FIELD"] = "Хост атауы";
+$MESS["MEMBER_ENTITY_ID_FIELD"] = "Сайт идентификаторы";
+$MESS["MEMBER_ENTITY_MEMBER_ID_FIELD"] = "Бірегей код";
+$MESS["MEMBER_ENTITY_MODIFIED_BY_FIELD"] = "Кім өзгерткен";
+$MESS["MEMBER_ENTITY_NAME_FIELD"] = "Атауы";
+$MESS["MEMBER_ENTITY_NOTES_FIELD"] = "Сипаттама";
+$MESS["MEMBER_ENTITY_SECRET_ID_FIELD"] = "Бөлінетін құпия";
+$MESS["MEMBER_ENTITY_SHARED_KERNEL_FIELD"] = "Ортақ ядроның жалауы";
+$MESS["MEMBER_ENTITY_SITE_ACTIVE_FIELD"] = "Сайтқа келушілер үшін ашылу жалауы";
+$MESS["MEMBER_ENTITY_TIMESTAMP_X_FIELD"] = "Өзгеру уақыты";
+$MESS["MEMBER_ENTITY_URL_FIELD"] = "URL";

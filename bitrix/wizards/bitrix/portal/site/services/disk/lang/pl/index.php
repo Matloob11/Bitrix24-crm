@@ -1,0 +1,20 @@
+<?php
+$MESS["COMMON_DISK"] = "Dysk firmowy";
+$MESS["COMMON_FILE_NAME1"] = "Ogólna prezentacja produktu";
+$MESS["COMMON_FILE_NAME2"] = "Formularz ogólny";
+$MESS["COMMON_FILE_NAME3"] = "Faktura";
+$MESS["COMMON_FOLDER_NAME1"] = "Notatki i regulacje";
+$MESS["COMMON_FOLDER_NAME2"] = "Personel";
+$MESS["COMMON_FOLDER_NAME3"] = "Główne";
+$MESS["DIRECTORS_FILE_NAME1"] = "Notatki i regulacje";
+$MESS["DIRECTORS_FILE_NAME2"] = "W sprawie zmian na liście pracowników firmy";
+$MESS["DIRECTORS_FILE_NAME3"] = "Na nowych zasadach dotyczących zatrudniania pracowników kontraktowych i ich stawek płac";
+$MESS["DIRECTORS_FOLDER_NAME1"] = "Oświadczenia finansowe";
+$MESS["DIRECTORS_FOLDER_NAME2"] = "Notatki i regulacje";
+$MESS["DIRECTORS_STORAGE"] = "Dokumenty kierownictwa";
+$MESS["SALES_FILE_NAME1"] = "Strategia marketingowa";
+$MESS["SALES_FILE_NAME2"] = "Logo";
+$MESS["SALES_FILE_NAME3"] = "Oferta";
+$MESS["SALES_FOLDER_NAME1"] = "Marketing i reklamy";
+$MESS["SALES_FOLDER_NAME2"] = "Oferty";
+$MESS["SALES_STORAGE"] = "Sprzedaż i Marketing";

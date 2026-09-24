@@ -1,0 +1,20 @@
+<?
+$MESS["CRM_COMPANY_CREATE_TITLE"] = "Nuova azienda";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_BANK_DETAIL_SUMMARY_TITLE"] = "per dettagli bancari";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_EMAIL_SUMMARY_TITLE"] = "per e-mail";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_PHONE_SUMMARY_TITLE"] = "per telefono";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_REQUISITE_SUMMARY_TITLE"] = "per dettagli aziendali";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_SHORT_SUMMARY_TITLE"] = "trovato";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_SUMMARY_TITLE"] = "Corrispondenze trovate";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_TTL_SUMMARY_TITLE"] = "per nome";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_WARNING_ACCEPT_BTN_TITLE"] = "Ignora e salva";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_WARNING_CANCEL_BTN_TITLE"] = "Annulla";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_WARNING_DLG_TITLE"] = "Possibili cloni";
+$MESS["CRM_COMPANY_EDIT_TITLE"] = "Azienda ##ID# &mdash; #TITLE#";
+$MESS["CRM_TAB_1"] = "Azienda";
+$MESS["CRM_TAB_1_TITLE"] = "Proprietà azienda";
+$MESS["CRM_TAB_2"] = "Registro";
+$MESS["CRM_TAB_2_TITLE"] = "Registro azienda";
+$MESS["CRM_TAB_3"] = "Processi aziendali";
+$MESS["CRM_TAB_3_TITLE"] = "Processi aziendali dell'azienda";
+?>

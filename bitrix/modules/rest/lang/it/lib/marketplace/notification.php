@@ -1,0 +1,21 @@
+<?php
+$MESS["REST_MARKETPLACE_NOTIFICATION_HOLD_REST_OVERLOAD_BTN"] = "Visualizza";
+$MESS["REST_MARKETPLACE_NOTIFICATION_HOLD_REST_OVERLOAD_MESS"] = "L'API REST è stata parzialmente bloccata. Contatta l'Helpdesk per risolvere il problema. #BTN#";
+$MESS["REST_MARKETPLACE_NOTIFICATION_HOLD_REST_OVERLOAD_MESS_MSGVER_1"] = "L'API REST è stata parzialmente bloccata. Contatta l'Helpdesk per risolvere il problema.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_REST_BUY_BTN"] = "Dettagli";
+$MESS["REST_MARKETPLACE_NOTIFICATION_REST_BUY_MESS_MSGVER_1"] = "Dal 1 gennaio, Market e REST saranno disponibili solo sui piani commerciali. Seleziona in anticipo il piano desiderato per ricevere uno sconto fino al 40%.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_REST_BUY_MESS_MSGVER_2"] = "Dal 1 gennaio, le app Bitrix24 Market e REST saranno disponibili solo sui piani commerciali. Seleziona in anticipo il piano desiderato per ricevere uno sconto fino al 40%. #BTN#";
+$MESS["REST_MARKETPLACE_NOTIFICATION_REST_BUY_URL"] = "https://www.bitrix24.com/promo/sales/holiday-sale/";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_DEMO_END_BTN"] = "Seleziona piano";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_DEMO_END_BTN_MSGVER_1"] = "Abbonati ora";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_DEMO_END_MESS_MSGVER_1"] = "Il periodo di prova di Market è scaduto. Puoi installare fino a 2 applicazioni gratuite su qualsiasi piano commerciale.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_DEMO_END_MESS_MSGVER_2"] = "Il periodo di prova di Market è scaduto. Abbonati per continuare a utilizzare le applicazioni.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_DEMO_END_URL"] = "/settings/license_all.php";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TARIFF_MARKET_BTN"] = "Seleziona piano";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TARIFF_MARKET_MESS_MSGVER_1"] = "Il periodo di prova di Market è scaduto. Passa al piano di abbonamento esteso per continuare a utilizzare applicazioni o installarne di nuove.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TARIFF_MARKET_MESS_MSGVER_2"] = "Il periodo di prova di Market è scaduto. Passa al piano di abbonamento esteso per continuare a utilizzare applicazioni o installarne di nuove.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TARIFF_MARKET_URL"] = "/settings/license_all.php";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TRIAL_END_BTN"] = "Abbonati";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TRIAL_END_MESS_MSGVER_1"] = "Il periodo di prova di Market è scaduto. Abbonati per continuare a utilizzare le applicazioni.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TRIAL_END_MESS_MSGVER_2"] = "Il periodo di prova di Market è scaduto. Abbonati per continuare a utilizzare le applicazioni.";
+$MESS["REST_MARKETPLACE_NOTIFICATION_SUBSCRIPTION_MARKET_TRIAL_END_URL"] = "/settings/license_buy.php?product=subscr";

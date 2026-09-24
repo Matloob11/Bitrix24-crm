@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_B24_AGREEMENT_NOTIFY"] = "Debe aceptar los Términos para enviar una invitación mediante Bitrix24";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_EMAIL"] = "#CHANNEL# del correo electrónico #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_PHONE"] = "#CHANNEL# del número #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CONNECT"] = "Conectar";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_COPY_LINK"] = "Copiar enlace";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_1"] = "El cliente elegirá su horario preferido";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_2"] = "La reunión se agregará a sus actividades";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_HOW_IT_WORKS"] = "Editar los espacios disponibles";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_LINK_COPIED"] = "Enlace copiado";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_DESC"] = "Conecte un servicio de SMS para compartir con sus clientes los enlaces a sus espacios disponibles";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_TITLE"] = "El servicio SMS no está conectado";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC"] = "Especifique en la negociación el número de teléfono del cliente para enviarle un enlace con los espacios disponibles";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC_V2"] = "Indique el número de teléfono o el correo electrónico del cliente al que desea enviar el enlace.";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_TITLE"] = "Agregar contactos de los clientes";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_OK"] = "OK";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_RECEIVER"] = "Con";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SENDER"] = "Canal de comunicación";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SEND_LINK"] = "Compartir el enlace";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SETTINGS"] = "Vincular los parámetros compartidos";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_TITLE_TEXT"] = "Envíe al cliente un enlace para programar la reunión";

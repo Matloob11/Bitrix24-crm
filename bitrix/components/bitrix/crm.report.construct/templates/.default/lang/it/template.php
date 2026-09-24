@@ -1,0 +1,22 @@
+<?php
+$MESS["CRM_FF_CANCEL"] = "Annulla";
+$MESS["CRM_FF_CHANGE"] = "Modifica";
+$MESS["CRM_FF_CHOISE"] = "Seleziona";
+$MESS["CRM_FF_CLOSE"] = "Chiudi";
+$MESS["CRM_FF_COMPANY"] = "Aziende";
+$MESS["CRM_FF_CONTACT"] = "Contatti";
+$MESS["CRM_FF_DEAL"] = "Affari";
+$MESS["CRM_FF_LAST"] = "Ultimo";
+$MESS["CRM_FF_LEAD"] = "Lead";
+$MESS["CRM_FF_NO_RESULT"] = "Sfortunatamente, la tua richiesta di ricerca non ha restituito alcun risultato.";
+$MESS["CRM_FF_OK"] = "Seleziona";
+$MESS["CRM_FF_SEARCH"] = "Ricerca";
+$MESS["CRM_REPORT_CONSTRUCT_BUTTON_CANCEL"] = "Annulla";
+$MESS["CRM_REPORT_CONSTRUCT_BUTTON_CONTINUE"] = "Avanti...";
+$MESS["CRM_REPORT_INCLUDE_ALL"] = "Tutto";
+$MESS["CRM_REPORT_SELECT_OWNER"] = "Seleziona i campi per il nuovo rapporto";
+$MESS["REPORT_CHOOSE"] = "Seleziona";
+$MESS["REPORT_IGNORE_FILTER_VALUE"] = "Ignora";
+$MESS["REPORT_POPUP_COLUMN_TITLE"] = "Affare";
+$MESS["REPORT_POPUP_COLUMN_TITLE_CRM"] = "Affare";
+$MESS["REPORT_POPUP_COLUMN_TITLE_CRM_PRODUCT_ROW"] = "Prodotto";

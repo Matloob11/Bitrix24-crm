@@ -1,0 +1,19 @@
+<?php
+$MESS["ERROR_TASKS_GUID_NON_UNIQUE"] = "Il valore GUID deve essere univoco";
+$MESS["TASKS_BAD_ASSIGNEE_EX"] = "Utente specificato come responsabile non trovato.";
+$MESS["TASKS_BAD_ASSIGNEE_ID"] = "Responsabile non specificato.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_COLLAB"] = "Il responsabile dell'incarico non fa parte della collab selezionata.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_GROUP"] = "Il responsabile dell'incarico non fa parte del progetto selezionato.";
+$MESS["TASKS_BAD_CREATED_BY"] = "Il creatore dell'incarico non è specificato.";
+$MESS["TASKS_BAD_DURATION"] = "Il periodo di durata dell'incarico pianificato è troppo lungo";
+$MESS["TASKS_BAD_GROUP"] = "Nessun progetto associato a questo incarico.";
+$MESS["TASKS_BAD_PARENT_ID"] = "Un incarico specificato nel campo &quot;Incarico secondario&quot; non è stato trovato.";
+$MESS["TASKS_BAD_PLAN_DATES"] = "La data di fine pianificata è precedente alla data di inizio.";
+$MESS["TASKS_BAD_TITLE"] = "Il nome dell'incarico non è specificato.";
+$MESS["TASKS_DEADLINE_OUT_OF_PROJECT_RANGE"] = "La data di scadenza dell'incarico non è compresa nell'intervallo date del progetto";
+$MESS["TASKS_DEPENDS_ON_SELF"] = "Un incarico non può dipendere da se stesso.";
+$MESS["TASKS_INCORRECT_STATUS"] = "Stato non corretto";
+$MESS["TASKS_IS_LINKED_END_DATE_PLAN_REMOVE"] = "Impossibile eliminare il tempo di completamento dell'incarico poiché l'incarico ha dipendenze";
+$MESS["TASKS_IS_LINKED_SET_PARENT"] = "Impossibile assegnare un incarico principale poiché l'incarico dipende dall'incarico corrente";
+$MESS["TASKS_PLAN_DATE_END_OUT_OF_PROJECT_RANGE"] = "La data di fine pianificata non è compresa nell'intervallo date del progetto";
+$MESS["TASKS_PLAN_DATE_START_OUT_OF_PROJECT_RANGE"] = "La data di inizio pianificata non è compresa nell'intervallo date del progetto";

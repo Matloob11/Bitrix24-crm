@@ -1,0 +1,4 @@
+<?
+$MESS["LANDING_SOURCE_ACTION_TITLE_DETAIL"] = "Pagina di informazione";
+$MESS["LANDING_SOURCE_ACTION_TITLE_LINK"] = "Link";
+?>

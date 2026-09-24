@@ -1,0 +1,29 @@
+<?
+$MESS["ISV_ADD_DEPARTMENT"] = "Aggiungi reparto";
+$MESS["ISV_B24_INVITE"] = "Invita utenti";
+$MESS["ISV_CHILDREN_COUNT_1"] = "#NUM# altro reparto";
+$MESS["ISV_CHILDREN_COUNT_2"] = "#NUM# altri reparti";
+$MESS["ISV_CHILDREN_COUNT_3"] = "#NUM# altri reparti";
+$MESS["ISV_CHILDREN_COUNT_4"] = "#NUM# altri reparti";
+$MESS["ISV_CHILDREN_COUNT_MUL"] = "#NUM# altri reparti";
+$MESS["ISV_EMPLOYEES"] = "Dipendenti";
+$MESS["ISV_EMP_COUNT_1"] = "#NUM# dipendente";
+$MESS["ISV_EMP_COUNT_2"] = "#NUM# dipendenti";
+$MESS["ISV_EMP_COUNT_3"] = "#NUM# dipendenti";
+$MESS["ISV_EMP_COUNT_4"] = "#NUM# dipendenti";
+$MESS["ISV_EMP_COUNT_MUL"] = "#NUM# dipendenti";
+$MESS["ISV_EMP_LIST"] = "Elenco dipendenti";
+$MESS["ISV_HINT_ADD"] = "Aggiungi reparto secondario";
+$MESS["ISV_HINT_DELETE"] = "Elimina reparto";
+$MESS["ISV_HINT_EDIT"] = "Modifica reparto";
+$MESS["ISV_SHOW_SUBTREE"] = "Mostra struttura reparto";
+$MESS["ISV_UNDO"] = "Annulla";
+$MESS["ISV_add_dep"] = "Aggiungi sottoreparto";
+$MESS["ISV_add_emp"] = "Aggiungi dipendente";
+$MESS["ISV_confirm_change_department_0"] = "Trasferire #EMP_NAME# in #DPT_NAME#?";
+$MESS["ISV_confirm_change_department_1"] = "Assegnare #EMP_NAME# a #DPT_NAME#?";
+$MESS["ISV_confirm_delete_department"] = "Eliminare il reparto? In questo modo si sposteranno tutti i sottoreparti e i dipendenti sottostanti.";
+$MESS["ISV_confirm_move_department"] = "Trasferire #DPT_NAME# in #DPT_NAME_TO#?";
+$MESS["ISV_confirm_set_head"] = "Assegnare #EMP_NAME# come capo del reparto #DPT_NAME#?";
+$MESS["ISV_set_head"] = "Nomina come supervisore";
+?>

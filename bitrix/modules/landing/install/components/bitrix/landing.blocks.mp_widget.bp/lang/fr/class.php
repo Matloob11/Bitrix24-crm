@@ -1,0 +1,14 @@
+<?php
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_BUTTON"] = "Démarrer";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DAYS_ERROR"] = "Aucune donnée.";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DAYS_PLURAL_0"] = "#DAYS# jour";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DAYS_PLURAL_1"] = "#DAYS# jours";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DAYS_PLURAL_2"] = "#DAYS# jours";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DEMO_DATA_NAME_1"] = "Application de déplacements professionnels";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DEMO_DATA_NAME_2"] = "Demande de vacances";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DEMO_DATA_NAME_3"] = "Facture";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DEMO_DATA_NAME_4"] = "Contrat";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_DEMO_DATA_NAME_5"] = "Acheter ou réparer du matériel";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_TEXT"] = "Temps d'exécution moyen";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_TEXT_SHORT"] = "Temps moyen";
+$MESS["CLASS_BLOCK_MP_WIDGET_BP_TITLE"] = "Processus d'entreprise";

@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_70_4_NAME"] = "Blocos com título, texto e barra de cor à esquerda, tudo em moldura arredondada";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD"] = "Bloco";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_LINE"] = "Barra de cor do bloco";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_LINK"] = "Link";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_TEXT"] = "Texto do bloco";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_TITLE"] = "Título do bloco";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CONTAINER"] = "Contêiner";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_TEXT"] = "Texto";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_TITLE"] = "Título";

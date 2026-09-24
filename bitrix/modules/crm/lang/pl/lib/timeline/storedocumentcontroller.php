@@ -1,0 +1,9 @@
+<?php
+$MESS["STORE_DOCUMENT_ARRIVAL_STATUS_CHANGE"] = "Zmieniono status kwitu składowego";
+$MESS["STORE_DOCUMENT_DEDUCT_STATUS_CHANGE"] = "Zmieniono status odpisu";
+$MESS["STORE_DOCUMENT_MOVING_STATUS_CHANGE"] = "Zmieniono status transferu zasobu";
+$MESS["STORE_DOCUMENT_STATUS_CANCELLED"] = "Anulowano";
+$MESS["STORE_DOCUMENT_STATUS_CONDUCTED"] = "Przetworzono";
+$MESS["STORE_DOCUMENT_STATUS_DRAFT"] = "Wersja robocza";
+$MESS["STORE_DOCUMENT_STORE_ADJUSTMENT_STATUS_CHANGE"] = "Zmieniono status korekty zapasów";
+$MESS["STORE_DOCUMENT_TITLE"] = "#TITLE# z #DATE# za #PRICE_WITH_CURRENCY#";

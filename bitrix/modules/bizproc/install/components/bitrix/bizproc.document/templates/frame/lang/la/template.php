@@ -1,0 +1,21 @@
+<?php
+$MESS["IBEL_BIZPROC_ACTIVE_WORKFLOWS"] = "Flujos de trabajo activos";
+$MESS["IBEL_BIZPROC_ACTIVE_WORKFLOWS_EMPTY"] = "Actualmente no hay flujos de trabajo activos";
+$MESS["IBEL_BIZPROC_APPLY"] = "Ejecutar comandos";
+$MESS["IBEL_BIZPROC_CANCEL"] = "Cancelar";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS"] = "Flujos de trabajo completados";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_EMPTY"] = "No hay flujos de trabajo";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_SHOW"] = "Mostrar";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_SHOW_MORE"] = "Mostrar más";
+$MESS["IBEL_BIZPROC_DATE_MSGVER_1"] = "Fecha actual del estado:";
+$MESS["IBEL_BIZPROC_DEL"] = "eliminar";
+$MESS["IBEL_BIZPROC_LOG"] = "registro";
+$MESS["IBEL_BIZPROC_LOG_TITLE"] = "Registro del flujo de trabajo";
+$MESS["IBEL_BIZPROC_NEW"] = "Nuevo Proceso de Negocios";
+$MESS["IBEL_BIZPROC_RUN_CMD"] = "Ejecutar acción";
+$MESS["IBEL_BIZPROC_RUN_CMD_NO"] = "No";
+$MESS["IBEL_BIZPROC_SAVE"] = "Guardar";
+$MESS["IBEL_BIZPROC_START"] = "Ejecutar un Nuevo Proceso de Negocios";
+$MESS["IBEL_BIZPROC_STATE_MSGVER_1"] = "Estado actual:";
+$MESS["IBEL_BIZPROC_STOP"] = "parar";
+$MESS["IBEL_BIZPROC_TASKS_MSGVER_1"] = "Asignaciones en el flujo de trabajo:";

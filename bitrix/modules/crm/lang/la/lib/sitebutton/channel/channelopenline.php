@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_BUTTON_MANAGER_OPENLINE_VIRTUAL_WHATSAPP_TITLE"] = "Póngase en contacto mediante WhatsApp";
+$MESS["CRM_BUTTON_MANAGER_TYPE_NAME_OPENLINE"] = "Canal Abierto";

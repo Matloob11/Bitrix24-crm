@@ -1,0 +1,25 @@
+<?php
+$MESS["CPD_ACCESS_DENIED_ERROR_TITLE"] = "Autorizzazione insufficiente per visualizzare il prodotto.";
+$MESS["CPD_ADD_PRODUCT_DENIED_ERROR_TITLE"] = "Autorizzazione insufficiente per creare il prodotto.";
+$MESS["CPD_CREATE_DOCUMENT_BUTTON"] = "Crea oggetto dell'inventario";
+$MESS["CPD_CREATE_DOCUMENT_BUTTON_POPUP_ADJUSTMENT"] = "Ricevuta di giacenza";
+$MESS["CPD_CREATE_DOCUMENT_BUTTON_POPUP_DEDUCT"] = "Storno";
+$MESS["CPD_CREATE_DOCUMENT_BUTTON_POPUP_MOVING"] = "Trasferisci";
+$MESS["CPD_CREATE_DOCUMENT_BUTTON_POPUP_SHIPMENT"] = "Ordine di vendita";
+$MESS["CPD_EDIT_PRODUCT_DENIED_ERROR_TITLE"] = "Autorizzazione insufficiente per modificare il prodotto.";
+$MESS["CPD_ENABLE_INVENTORY_MANAGEMENT_DENIED_ERROR_TITLE"] = "Autorizzazione insufficiente per abilitare la gestione dell'inventario.";
+$MESS["CPD_ERROR_ADD_HIGHLOAD_BLOCK"] = "Impossibile creare un dizionario con questo nome";
+$MESS["CPD_ERROR_CATALOG_SERVICES_LIMIT_EDITION"] = "La tua edizione del prodotto non include la funzione Servizi.";
+$MESS["CPD_ERROR_CATALOG_SERVICES_LIMIT_TARIFF"] = "<a onclick=\"#LINK#\" style=\"cursor: pointer\">Il tuo piano attuale</a>  non supporta i servizi.";
+$MESS["CPD_ERROR_EMPTY_DIRECTORY_ITEMS"] = "Aggiungi elementi all'elenco dizionari";
+$MESS["CPD_ERROR_EMPTY_LIST_ITEMS"] = "Aggiungi elementi elenco";
+$MESS["CPD_ERROR_NOT_SUPPORTED_PRODUCT_TYPE"] = "Il tipo di prodotto \"#TYPE#\" selezionato non è supportato dal nuovo modulo di prodotto. È possibile visualizzare e modificare questo prodotto nell'area Online store.<br>#LINK#";
+$MESS["CPD_ERROR_NOT_SUPPORTED_PRODUCT_TYPE_BUS"] = "Il tipo di prodotto \"#TYPE#\" selezionato non è supportato dal nuovo modulo di prodotto. Per visualizzare o modificare questo prodotto, torna al prodotto precedente nelle impostazioni del catalogo.<br>#LINK#";
+$MESS["CPD_ERROR_SAVE"] = "Impossibile salvare le modifiche. Riprova.";
+$MESS["CPD_ERROR_UNKNOWN_PRODUCT_TYPE"] = "Tipo di prodotto sconosciuto.";
+$MESS["CPD_NEW_LIST_ELEMENT_EMPTY_NAME"] = "Nuovo elemento";
+$MESS["CPD_NEW_PRODUCT_TITLE"] = "Nuovo prodotto";
+$MESS["CPD_NEW_SERVICE_TITLE"] = "Nuovo servizio";
+$MESS["CPD_NOT_FOUND_ERROR_TITLE"] = "Prodotto non trovato. Potrebbe essere stato eliminato.";
+$MESS["CPD_SETS_ENABLE_PRODUCT_SLIDER_LINK"] = "Apri impostazioni";
+$MESS["CPD_SETS_NOT_SUPPORTED_LINK"] = "Procedi subito al negozio online";

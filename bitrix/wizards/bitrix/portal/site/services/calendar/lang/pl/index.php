@@ -1,0 +1,23 @@
+<?php
+$MESS["CAL_COMPANY_SECT_0"] = "Demonstracje i konferencje";
+$MESS["CAL_COMPANY_SECT_1"] = "Wydarzenia w biurze w Londynie";
+$MESS["CAL_COMPANY_SECT_2"] = "Wydarzenia w biurze w Paryżu";
+$MESS["CAL_COMPANY_SECT_DESC_0"] = "Demonstracje i konferencje, w które jesteśmy zaangażowani";
+$MESS["CAL_COMPANY_SECT_DESC_1"] = "Wydarzenia mające miejsce w biurze w Londynie";
+$MESS["CAL_COMPANY_SECT_DESC_2"] = "Wydarzenia mające miejsce w biurze w Paryżu";
+$MESS["CAL_COMP_EVENT_DESC_0"] = "Co tygodniowe seminarium dla partnerów";
+$MESS["CAL_COMP_EVENT_DESC_2"] = "Tygodniowy raport działu sprzedaży";
+$MESS["CAL_COMP_EVENT_DESC_3"] = "Szkolenie dla nowych pracowników";
+$MESS["CAL_COMP_EVENT_DESC_4"] = "Turniej piłki nożnej";
+$MESS["CAL_COMP_EVENT_DESC_5"] = "Miejski turniej paintballa! Wspieraj swój zespół!";
+$MESS["CAL_COMP_EVENT_NAME_0"] = "Seminarium z partnerem";
+$MESS["CAL_COMP_EVENT_NAME_1"] = "Pokaz nowego wyposażenia i sprzętu";
+$MESS["CAL_COMP_EVENT_NAME_2"] = "Raport działu sprzedaży";
+$MESS["CAL_COMP_EVENT_NAME_3"] = "Szkolenie ze sprzedaży bezpośredniej";
+$MESS["CAL_COMP_EVENT_NAME_4"] = "Piłka nożna";
+$MESS["CAL_COMP_EVENT_NAME_5"] = "Paintball";
+$MESS["CAL_TYPE_COMPANY_NAME"] = "Kalendarze firmy";
+$MESS["CAL_TYPE_GROUP_NAME"] = "Kalendarze grupy";
+$MESS["CAL_TYPE_LOCATION_NAME"] = "Dostępność sali konferencyjnej";
+$MESS["CAL_TYPE_USER_NAME"] = "Kalendarze użytkownika";
+$MESS["W_IB_CALENDAR_EMP_ABS"] = "Spotkanie z klientem w jego biurze";

@@ -1,0 +1,24 @@
+<?php
+$MESS["SIGN_BLANK_SELECTOR_CLEAR_ALL"] = "Tout supprimer";
+$MESS["SIGN_BLANK_SELECTOR_CREATED_MYSELF"] = "Vous";
+$MESS["SIGN_BLANK_SELECTOR_CREATE_NEW_PIC"] = "Image";
+$MESS["SIGN_BLANK_SELECTOR_DRAG_AREA"] = "Faites glisser vos fichiers ici";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_MIXED"] = "Documents ou images avec [highlight]champs modifiables[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_PLACEHOLDERS"] = "Documents ou formulaires avec [highlight]champs symboliques modifiables[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_FIELD_ADD_BUTTON_LABEL"] = "Sélectionnez un modèle de document";
+$MESS["SIGN_BLANK_SELECTOR_LOAD_MORE"] = "Afficher plus";
+$MESS["SIGN_BLANK_SELECTOR_MIXED"] = "Documents ou images avec champs modifiables.";
+$MESS["SIGN_BLANK_SELECTOR_NEW_BADGE"] = "Nouveau";
+$MESS["SIGN_BLANK_SELECTOR_NEW_DOC"] = "Microsoft Word";
+$MESS["SIGN_BLANK_SELECTOR_NEW_PDF"] = "Document PDF";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX"] = "Document avec champs symboliques";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX_MSGVER_1"] = "Documents ou formulaires avec champs symboliques modifiables.";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK_MSGVER_1"] = "Champs symboliques";
+$MESS["SIGN_BLANK_SELECTOR_RECENT_TEMPLATES_TITLE"] = "Modèles récents";
+$MESS["SIGN_BLANK_SELECTOR_SLIDER_SELECT_BLANK_BUTTON_LABEL"] = "Sélectionner";
+$MESS["SIGN_BLANK_SELECTOR_UPLOADER_ERROR_INCOMPLETE"] = "Impossible d'importer le fichier. Veuillez réessayer.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_HINT"] = "Vous pouvez soumettre pour signature un document PDF, DOC, DOCX, RTF ou ODT à la fois ou jusqu'à %imageCountLimit% images JPG/PNG.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_GROUP_HINT"] = "Chacun des fichiers image ne doit pas dépasser 10 Mo.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_HINT"] = "La taille du fichier image ne doit pas dépasser 10 Mo.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_LIMIT_HINT"] = "Le modèle ne peut contenir qu'un seul document. Pour remplacer ou supprimer le document téléchargé, utilisez le menu du document dans la zone ci-dessus.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_PLACEHOLDERS_HINT"] = "Seuls les fichiers DOCX avec champs symboliques modifiables sont pris en charge.";

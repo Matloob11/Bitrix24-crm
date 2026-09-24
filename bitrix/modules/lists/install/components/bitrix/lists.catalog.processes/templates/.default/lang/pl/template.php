@@ -1,0 +1,10 @@
+<?php
+$MESS["LISTS_LCP_TEMPLATE_BUTTON_INSTALL"] = "Instaluj";
+$MESS["LISTS_LCP_TEMPLATE_DESCRIPTION_PAGE"] = "Wybierz workflowy do zainstalowania";
+$MESS["LISTS_LCP_TEMPLATE_DESCRIPTION_PAGE_ALL_INSTALL"] = "Wszystkie dostępne workflowy są zainstalowane.";
+$MESS["LISTS_LCP_TEMPLATE_PROCESS_INSTALLED"] = " (zainstalowane)";
+$MESS["LISTS_LCP_TEMPLATE_STATUS_ACTION_ERROR"] = "To jest błąd.";
+$MESS["LISTS_LCP_TEMPLATE_STATUS_ACTION_SUCCESS"] = "Zakończone Pomyślnie";
+$MESS["LISTS_LCP_TEMPLATE_TITLE_SYSTEM_PROCESSES"] = "Standardowe workflowy";
+$MESS["LISTS_LCP_TEMPLATE_TITLE_USER_PROCESSES"] = "Niestandardowe workflowy";
+$MESS["LISTS_LCP_TEMPLATE_TRANSITION_PROCESSES"] = "Workflowy";

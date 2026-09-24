@@ -1,0 +1,63 @@
+<?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+return [
+	'css' => 'dist/openlines.bundle.css',
+	'js' => 'dist/openlines.bundle.js',
+	'rel' => [
+		'im.public',
+		'im.v2.application.core',
+		'im.v2.component.content.elements',
+		'im.v2.component.dialog.chat',
+		'im.v2.component.elements.button',
+		'im.v2.component.elements.loader',
+		'im.v2.component.elements.popup',
+		'im.v2.component.elements.scroll-with-gradient',
+		'im.v2.component.search',
+		'im.v2.component.textarea',
+		'im.v2.const',
+		'im.v2.lib.directives',
+		'im.v2.lib.layout',
+		'im.v2.lib.logger',
+		'im.v2.lib.menu',
+		'im.v2.lib.theme',
+		'im.v2.lib.utils',
+		'imopenlines.v2.const',
+		'imopenlines.v2.css.tokens',
+		'imopenlines.v2.lib.queue',
+		'imopenlines.v2.lib.quick-command',
+		'imopenlines.v2.lib.quick-reply',
+		'imopenlines.v2.lib.toolbar-buttons',
+		'imopenlines.v2.lib.utils',
+		'imopenlines.v2.provider.service',
+		'main.core',
+		'main.core.events',
+		'main.popup',
+		'ui.entity-selector',
+		'ui.icon-set.api.core',
+		'ui.icon-set.api.vue',
+		'ui.system.chip.vue',
+		'ui.system.input.vue',
+		'ui.system.menu',
+		'ui.vue3.components.button',
+		'ui.vue3.directives.hint',
+	],
+	'settings' => [
+		'salesHubUrl' => '/saleshub/app/',
+		'salesCenterParams' => [
+			'context' => 'chat',
+			'st[tool]' => 'crm',
+			'st[category]' => 'payments',
+			'st[event]' => 'payment_create_click',
+			'st[c_section]' => 'chats',
+			'st[c_sub_section]' => 'web',
+			'st[type]' => 'delivery_payment',
+		],
+		'marketplaceBotsUrl' => '/marketplace/category/chat_bots/',
+		'marketplaceAppsUrl' => '/marketplace/category/im/',
+	],
+	'skip_core' => false,
+];

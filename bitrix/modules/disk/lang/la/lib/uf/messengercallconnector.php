@@ -1,0 +1,4 @@
+<?php
+$MESS["DISK_UF_IM_CALL_CONNECTOR_CALL_DOCUMENT_UPDATED"] = "Documento actualizado";
+$MESS["DISK_UF_IM_CALL_CONNECTOR_CALL_RESUME_UPDATED"] = "Resumen del evento actualizado";
+$MESS["DISK_UF_IM_CALL_CONNECTOR_TITLE"] = "Chat \"#NAME#\"";

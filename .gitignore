@@ -1,0 +1,11 @@
+# GitHub rejects files larger than 100 MB
+dashboard_log.txt
+
+# Secrets. These stay on this machine only.
+bitrix/.settings.php
+bitrix/license_key.php
+bitrix/php_interface/a7_lead_wa.config.php
+bitrix/php_interface/a7_tl_phone_mask.config.php
+
+# Editor metadata
+.cursor/

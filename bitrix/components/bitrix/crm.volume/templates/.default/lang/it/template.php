@@ -1,0 +1,26 @@
+<?php
+$MESS["CRM_VOLUME_AGENT_FINISHED_COMMENT"] = "L'attività di pulizia è terminata. Devi eseguire nuovamente la scansione del drive.";
+$MESS["CRM_VOLUME_CANCEL"] = "Annulla";
+$MESS["CRM_VOLUME_CANCEL_WORKERS"] = "Annulla tutte le attività di pulizia";
+$MESS["CRM_VOLUME_CLEARING"] = "Pulizia CRM";
+$MESS["CRM_VOLUME_CLOSE_WARNING"] = "La pagina del portale deve rimanere aperta per completare la pulizia del drive.";
+$MESS["CRM_VOLUME_ERROR"] = "Questo è un errore.";
+$MESS["CRM_VOLUME_MEASURE_ACCEPT"] = "Sì, ripeti la scansione";
+$MESS["CRM_VOLUME_MEASURE_CONFIRM"] = "La funzione di scansione del drive interrompe il processo di pulizia. Potrai riavviarlo solo dopo aver completato questa scansione.";
+$MESS["CRM_VOLUME_MEASURE_CONFIRM_QUESTION"] = "Annullare la pulizia e ripetere la scansione del drive?";
+$MESS["CRM_VOLUME_MEASURE_DATA"] = "Avvia scansione";
+$MESS["CRM_VOLUME_MEASURE_DATA_REPEAT"] = "Ripeti scansione";
+$MESS["CRM_VOLUME_MEASURE_PROCESS"] = "La scansione potrebbe richiedere del tempo.";
+$MESS["CRM_VOLUME_MEASURE_TITLE"] = "Analisi spazio utilizzato...";
+$MESS["CRM_VOLUME_NEED_RELOAD_COMMENT"] = "I risultati della scansione precedente potrebbero non essere aggiornati.";
+$MESS["CRM_VOLUME_PERFORMING_CANCEL_MEASURE"] = "Annulla scansione";
+$MESS["CRM_VOLUME_PERFORMING_CANCEL_WORKERS"] = "Annulla attività di pulizia";
+$MESS["CRM_VOLUME_PERFORMING_MEASURE_DATA"] = "Raccolta dati";
+$MESS["CRM_VOLUME_PERFORMING_QUEUE"] = "Raccolta dati. Passaggio #QUEUE_STEP# di #QUEUE_LENGTH#";
+$MESS["CRM_VOLUME_SETUP_CLEANER"] = "Pianificazione pulizia";
+$MESS["CRM_VOLUME_START_COMMENT"] = "Bitrix24 analizzerà i tuoi documenti e ti chiederà di selezionare gli elementi che non ti servono più per liberare altro spazio.";
+$MESS["CRM_VOLUME_START_TITLE"] = "Spazio libero";
+$MESS["CRM_VOLUME_SUCCESS"] = "Riuscito";
+$MESS["CRM_VOLUME_TITLE"] = "Utilizzo drive";
+$MESS["CRM_VOLUME_TOTAL_FILES"] = "Utilizzato dai file: #FILE_SIZE#";
+$MESS["CRM_VOLUME_TOTAL_USEAGE"] = "Totale spazio utilizzato: #FILE_SIZE#";

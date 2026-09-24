@@ -1,0 +1,8 @@
+<?
+$MESS["CRM_BUTTON_LIST_ACTIONS_COPY"] = "Utwórz bazując na";
+$MESS["CRM_BUTTON_LIST_ACTIONS_EDIT"] = "Edytuj";
+$MESS["CRM_BUTTON_LIST_ACTIONS_REMOVE"] = "Usuń widżet";
+$MESS["CRM_BUTTON_LIST_ACTIONS_VIEW"] = "Widok";
+$MESS["CRM_BUTTON_LIST_FORMS_MINE"] = "Moje widżety";
+$MESS["CRM_BUTTON_LIST_FORMS_PRESET"] = "Standardowe widżety";
+?>

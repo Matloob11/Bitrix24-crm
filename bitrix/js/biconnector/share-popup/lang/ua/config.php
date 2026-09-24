@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Копіювати посилання";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Закрити доступ:";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "День уже минув.";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Виберіть дату";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "Виберіть дату.";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Гості без авторизації в Бітрікс24 не зможуть переглянути звіт, навіть якщо у них є посилання та пароль.";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Звіт зможуть переглядати всі, у кого є посилання і пароль.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "Не вдалося скопіювати посилання.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "Не вдалося ввімкнути публічне посилання.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "Не вдалося вимкнути публічне посилання.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "Не вдалося змінити публічне посилання.";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "У режимі перегляду фільтри за структурою компанії, бізнес-процесами та потоками будуть недоступні.";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Згенерувати пароль";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "Посилання скопійовано.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "Пароль згенеровано.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Пароль:";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Придумайте пароль";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "Введіть пароль.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "Максимум 32 символи.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "Щонайменше 8 символів.";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Публічне посилання";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "Вибраний час уже минув.";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "Доступ до звіту «#NAME#»";

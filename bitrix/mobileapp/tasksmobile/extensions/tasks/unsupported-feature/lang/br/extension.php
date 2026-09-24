@@ -1,0 +1,22 @@
+<?php
+$MESS["TASKS_UNSUPPORTED_FEATURE_OPEN_WEB"] = "Abrir na versão web";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_BUTTON"] = "Abrir na versão web";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_FOOTNOTE"] = "As análises ainda não estão disponíveis na versão para dispositivos móveis.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_DEEP_RESEARCH"] = "Aproveite os modelos de relatórios";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_METRIC"] = "Observe os pontos de exaustão da equipe";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_PROCESS"] = "Encontre gargalos";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_QR_TITLE"] = "Análises";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_TITLE"] = "Tomada de decisão baseada em dados";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_BUTTON"] = "Abrir na versão web";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_FOOTNOTE"] = "Use a versão web para adicionar fluxos.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_CUSTOMER_VISIBILITY"] = "O proprietário da tarefa conhece o responsável, o prazo e o status";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TEAM_LOAD"] = "Carga de trabalho da equipe e gargalos são fáceis de identificar";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TYPICAL_TASKS"] = "Agrupar tarefas semelhantes em um fluxo";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_QR_TITLE"] = "Fluxos";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_TITLE"] = "Distribuir automaticamente e rastrear tarefas com fluxos";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_FOOTNOTE"] = "O scrum ainda não está disponível na versão para dispositivos móveis.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_BACKLOG"] = "Lista de pendências e sprints unificados";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_DESKTOP"] = "Acompanhamento do andamento";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_PROCESS"] = "Foco nas tarefas atuais";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_QR_TITLE"] = "Scrum";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_TITLE"] = "Use scrum para gerenciar projetos";

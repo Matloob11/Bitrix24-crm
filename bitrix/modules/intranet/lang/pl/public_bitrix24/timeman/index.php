@@ -1,0 +1,4 @@
+<?php
+$MESS["ABSENCE_TARIFF_RESTRICTION_TITLE"] = "Wykres nieobecności i inne przydatne narzędzia są dostępne w wybranych planach płatnych.";
+$MESS["TARIFF_RESTRICTION_TEXT"] = "Wykres nieobecności pozwala w mgnieniu oka zobaczyć, gdzie dana osoba się znajduje oraz jaki jest powód jej nieobecności: wyjazd biznesowy, choroba lub urlop rodzicielski. Wykres jest przydatny również podczas planowania urlopów, ponieważ pozwala łatwo uniknąć niepożądanych nieobecności wielu pracowników w tym samym czasie. Jest bardzo łatwy w użyciu: urlopy mogą być dodane przez pracownika lub managera kadr. System może również automatycznie dodawać urlopy na podstawie workflowów zatwierdzania urlopów. <a href=\"javascript:void(0)\" onclick='top.BX.Helper.show(\"redirect=detail&code=5349195\");'>Szczegóły</a>";
+$MESS["TITLE"] = "Grafik Nieobecności";

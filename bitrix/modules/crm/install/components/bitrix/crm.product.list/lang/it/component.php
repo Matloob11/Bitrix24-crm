@@ -1,0 +1,26 @@
+<?
+$MESS["CRM_COLUMN_ACTIVE"] = "Attivo";
+$MESS["CRM_COLUMN_CATALOG_ID"] = "Catalogo";
+$MESS["CRM_COLUMN_CODE"] = "Codice simbolico";
+$MESS["CRM_COLUMN_DESCRIPTION"] = "Descrizione";
+$MESS["CRM_COLUMN_ID"] = "ID";
+$MESS["CRM_COLUMN_MEASURE"] = "Unità di misura";
+$MESS["CRM_COLUMN_NAME"] = "Nome";
+$MESS["CRM_COLUMN_PRICE"] = "Prezzo";
+$MESS["CRM_COLUMN_SECTION"] = "Sezione";
+$MESS["CRM_COLUMN_SORT"] = "Ordina";
+$MESS["CRM_COLUMN_VAT_ID"] = "Aliquota IVA";
+$MESS["CRM_COLUMN_VAT_INCLUDED"] = "IVA inclusa";
+$MESS["CRM_COLUMN_XML_ID"] = "ID esterno";
+$MESS["CRM_MEASURE_NOT_SELECTED"] = "[non selezionato]";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_NOT_SELECTED"] = "(nessuno)";
+$MESS["CRM_PRODUCT_FIELD_DETAIL_PICTURE"] = "Immagine completa";
+$MESS["CRM_PRODUCT_FIELD_PREVIEW_PICTURE"] = "Immagine di anteprima";
+$MESS["CRM_PRODUCT_LIST_FILTER_CHECKBOX_NO"] = "No";
+$MESS["CRM_PRODUCT_LIST_FILTER_CHECKBOX_NOT_SELECTED"] = "Non selezionato";
+$MESS["CRM_PRODUCT_LIST_FILTER_CHECKBOX_YES"] = "Sì";
+$MESS["CRM_PRODUCT_LIST_FILTER_SECTION_ALL"] = "(qualsiasi)";
+$MESS["CRM_PRODUCT_LIST_FILTER_SECTION_ROOT"] = "Radice";
+$MESS["CRM_PRODUCT_NAV_TITLE_LIST"] = "Prodotti";
+?>

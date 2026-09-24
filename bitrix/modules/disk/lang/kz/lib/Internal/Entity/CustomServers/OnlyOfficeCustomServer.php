@@ -1,0 +1,8 @@
+<?php
+$MESS["DISK_CUSTOM_SERVER_ONLYOFFICE_DISABLED_JWT"] = "JSON Web Token серверде өшірулі. Осы опцияны қосыңыз. #LINK#";
+$MESS["DISK_CUSTOM_SERVER_ONLYOFFICE_INVALID_JWT"] = "Қате құпия кілт көрсетілген. #LINK#";
+$MESS["DISK_CUSTOM_SERVER_ONLYOFFICE_INVALID_URL"] = "Қате URL";
+$MESS["DISK_CUSTOM_SERVER_ONLYOFFICE_NOT_CONFIGURED"] = "Қосылым орнатылмаған";
+$MESS["DISK_CUSTOM_SERVER_ONLYOFFICE_NO_SERVER_VERSION"] = "Сервер нұсқасын қайтарған жоқ";
+$MESS["DISK_CUSTOM_SERVER_ONLYOFFICE_UNAVAILABLE"] = "Сервер қолжетімсіз";
+$MESS["DISK_CUSTOM_SERVER_ONLYOFFICE_UNAVAILABLE_WITH_STATUS"] = "Сервер қолжетімсіз. #STATUS# мәртебесі";

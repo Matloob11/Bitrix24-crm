@@ -1,0 +1,11 @@
+<?php
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_LIST_EMPTY"] = "Nessuno";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_LIST_PLURAL_0"] = "#COUNT# flusso di lavoro";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_LIST_PLURAL_1"] = "#COUNT# flussi di lavoro";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_LIST_PLURAL_2"] = "#COUNT# flussi di lavoro";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_POPUP_AUTHOR"] = "Autore";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_POPUP_IN_PROGRESS_MSGVER_1"] = "Responsabile";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_POPUP_TEXT_P1"] = "Usa questo valore come stima dell'attuale carico di lavoro e del tempo di esecuzione del flusso.";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_POPUP_TEXT_P2"] = "Il tempo indicato inizia dall'avvio del flusso di lavoro.";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_POPUP_TIME"] = "Tempo";
+$MESS["BIZPROC_JS_WORKFLOW_INST_WIDGET_POPUP_TITLE"] = "In corso";

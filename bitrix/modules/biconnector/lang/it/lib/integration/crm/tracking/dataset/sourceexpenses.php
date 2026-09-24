@@ -1,0 +1,26 @@
+<?php
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_ACTIONS"] = "Azioni";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_AD_ID"] = "ID annuncio";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_AD_NAME"] = "Nome annuncio";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CAMPAIGN_ID"] = "ID campagna pubblicitaria";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CAMPAIGN_NAME"] = "Nome campagna pubblicitaria";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CLICKS"] = "Clic";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CPC"] = "Costo per clic";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CPM"] = "Costo per mille";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CURRENCY"] = "Valuta";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_DATE"] = "Data";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_EXPENSES"] = "Costo giornaliero";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_GROUP_ID"] = "ID gruppo di annunci";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_GROUP_NAME"] = "Nome gruppo di annunci";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_IMPRESSIONS"] = "Impressioni";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_SOURCE_ID"] = "ID origine";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CAMPAIGN"] = "ID campagna pubblicitaria";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CAMPAIGN_FULL"] = "Identifica la campagna pubblicitaria i cui dati saranno analizzati.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CONTENT"] = "ID elemento contenuto";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CONTENT_FULL"] = "Usa questo parametro per identificare la versione specifica del contenuto o dell'annuncio all'interno di una campagna pubblicitaria.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_MEDIUM"] = "ID contenuto multimediale";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_MEDIUM_FULL"] = "Identifica il mezzo tramite il quale il visitatore è stato indirizzato al tuo sito.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_SOURCE"] = "ID origine";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_SOURCE_FULL"] = "Identifica l'origine (sito, canale, ecc.) da cui proviene il visitatore.";
+$MESS["TRACKING_SOURCE_EXPENSES_TABLE"] = "Costi annuncio";
+$MESS["TRACKING_SOURCE_EXPENSES_TABLE_DESCRIPTION_FULL"] = "Fornisce statistiche giornaliere sui costi degli annunci, tra cui valuta, numero di clic, impressioni e azioni.";

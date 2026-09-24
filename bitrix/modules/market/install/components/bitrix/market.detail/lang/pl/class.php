@@ -1,0 +1,3 @@
+<?php
+$MESS["MARKET_DETAIL_ITEM_CONTACT_DEVELOPERS"] = "Kontakt z twórcą";
+$MESS["MARKET_DETAIL_ITEM_REQUEST_A_DEMO"] = "Poproś o demo";

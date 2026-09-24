@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_REPORT_FILTER_MY_REPORTS_PERIOD"] = "Período de reporte";
+$MESS["CRM_REPORT_FILTER_MY_REPORTS_RESPONSIBLE"] = "Persona responsable";
+?>

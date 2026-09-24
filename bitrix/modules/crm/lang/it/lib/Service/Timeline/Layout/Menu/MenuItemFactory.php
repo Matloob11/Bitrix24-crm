@@ -1,0 +1,12 @@
+<?php
+$MESS["CRM_TIMELINE_MENU_ADD_FILE"] = "Aggiungi file";
+$MESS["CRM_TIMELINE_MENU_CANCEL"] = "Annulla";
+$MESS["CRM_TIMELINE_MENU_CHANGE_RESPONSIBLE"] = "Modifica responsabile";
+$MESS["CRM_TIMELINE_MENU_DELETE"] = "Elimina";
+$MESS["CRM_TIMELINE_MENU_DELETE_TAG"] = "Elimina stato";
+$MESS["CRM_TIMELINE_MENU_DOWNLOAD_FILE"] = "Download";
+$MESS["CRM_TIMELINE_MENU_EDIT"] = "Modifica";
+$MESS["CRM_TIMELINE_MENU_FILTER_RELATED"] = "Record associati";
+$MESS["CRM_TIMELINE_MENU_MOVE_TO"] = "Sposta attività";
+$MESS["CRM_TIMELINE_MENU_REPEAT"] = "Ripeti";
+$MESS["CRM_TIMELINE_MENU_VIEW"] = "Visualizzazione";

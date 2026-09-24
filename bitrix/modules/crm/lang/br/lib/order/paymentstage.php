@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_PAYMENT_STAGE_CANCEL"] = "Cancelado";
+$MESS["CRM_PAYMENT_STAGE_NOT_PAID"] = "Não pago";
+$MESS["CRM_PAYMENT_STAGE_PAID"] = "Pago";
+$MESS["CRM_PAYMENT_STAGE_REFUND"] = "Reembolsado";
+$MESS["CRM_PAYMENT_STAGE_SENT_NO_VIEWED"] = "Enviado, não pago";
+$MESS["CRM_PAYMENT_STAGE_VIEWED_NO_PAID"] = "Visto, não pago";

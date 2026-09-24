@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_COLUMN_COMPANY_TITLE"] = "Firma";
+$MESS["CRM_COLUMN_CONTACT_FULL_NAME"] = "Kontakt";
+$MESS["CRM_COLUMN_DATE_MODIFY"] = "Zmodyfikowany";
+$MESS["CRM_COLUMN_OPPORTUNITY"] = "Razem";
+$MESS["CRM_COLUMN_PRODUCTS"] = "Produkt";
+$MESS["CRM_COLUMN_STATUS_ID_MSGVER_2"] = "Etap oferty";
+$MESS["CRM_OPER_EDIT"] = "Edytuj";
+$MESS["CRM_OPER_SHOW"] = "Wyświetl";

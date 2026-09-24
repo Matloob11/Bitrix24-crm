@@ -1,0 +1,20 @@
+<?php
+$MESS['FDATE_LAST_MESSAGE'] = "fecha del último mensaje";
+$MESS['FMESSAGE_TOPIC'] = "tema del mensaje";
+$MESS['FNUM_ANSWERS'] = "número de respuestas";
+$MESS['FNUM_VIEWS'] = "número de vistas";
+$MESS['FSTART_DATE'] = "fecha de creación del tema";
+$MESS['FAUTHOR_TOPIC'] = "autor del tema";
+$MESS['FASC'] = "ascendente";
+$MESS['FDESC'] = "descendente";
+$MESS['FNO_ACCESS'] = "sin acceso";
+$MESS['FREAD_ACCESS'] = "leer";
+$MESS['FANSWER_ACCESS'] = "responder";
+$MESS['FNEW_MESSAGE_ACCESS'] = "crear nuevo tema";
+$MESS['FMODERATE_ACCESS'] = "moderar";
+$MESS['FEDIT_ACCESS'] = "editar";
+$MESS['FFULL_ACCESS'] = "completo";
+$MESS['FSUBSC_NO_SPERMS'] = "Usted no tiene suficientes permisos para borrar esta suscripción";
+$MESS['FORUM_NO_MODULE'] = "El módulo Forum no está instalado";
+$MESS['FR_VIDEO'] = "Insertar Video";
+$MESS['FR_VIDEO_P'] = "Ruta del video";

@@ -1,0 +1,8 @@
+<?php
+$MESS["SIGN_KANBAN_ENTITY_FOOTER_CANCEL_TITLE"] = "Cancelar assinatura";
+$MESS["SIGN_KANBAN_ENTITY_FOOTER_EDIT_TITLE"] = "Preencher campos";
+$MESS["SIGN_KANBAN_ENTITY_FOOTER_MODIFY_TITLE"] = "Editar campos do documento";
+$MESS["SIGN_KANBAN_ENTITY_FOOTER_PREVIEW_TITLE"] = "Abrir documento";
+$MESS["SIGN_KANBAN_ENTITY_FOOTER_PROCESS_TITLE"] = "Ver progresso da assinatura";
+$MESS["SIGN_KANBAN_ENTITY_FOOTER_REVIEW_TITLE"] = "Aprovar documento";
+$MESS["SIGN_KANBAN_ENTITY_FOOTER_SIGN_TITLE"] = "Assinar documento";

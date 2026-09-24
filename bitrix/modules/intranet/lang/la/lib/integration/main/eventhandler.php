@@ -1,0 +1,4 @@
+<?php
+$MESS["MAIN_MAIL_CALLBACK_LIMIT_NOTIFICATION_MSGVER1"] = "El número de correos electrónicos que se enviaron desde #EMAIL# alcanzó el límite especificado por el servicio de correo electrónico. Cuando esto sucede, Bitrix24 activa su propio límite. Puede enviar hasta #LIMIT# correos electrónicos por día. Para enviar más correos electrónicos, póngase en contacto con el servicio de asistencia de su servicio de correo electrónico para aumentar el límite. Una vez que se haya resuelto el problema, cambie el límite diario en la configuración del remitente de Bitrix24.";
+$MESS["MAIN_MAIL_CALLBACK_LIMIT_NOTIFICATION_MSGVER2"] = "La dirección #EMAIL# se limitó temporalmente a #LIMIT# mensajes de correo electrónico por día. [URL=#HELPDESK_LINK#]Más información[/URL]";
+$MESS["MAIN_MAIL_CALLBACK_LIMIT_NOTIFICATION_TITLE"] = "Correo electrónico";

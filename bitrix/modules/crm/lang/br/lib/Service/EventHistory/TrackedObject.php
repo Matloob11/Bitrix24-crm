@@ -1,0 +1,5 @@
+<?php
+$MESS["CRM_TRACKED_OBJECT_DEPENDANT_UPDATE_TEXT"] = "Campo \"#FIELD_NAME#\" da entidade vinculada \"#ENTITY_NAME#\" alterado";
+$MESS["CRM_TRACKED_OBJECT_ENTITY_ADD_EVENT_NAME"] = "Link adicionado a \"#FIELD_NAME#\"";
+$MESS["CRM_TRACKED_OBJECT_ENTITY_DELETE_EVENT_NAME"] = "Link removido de \"#FIELD_NAME#\"";
+$MESS["CRM_TRACKED_OBJECT_UPDATE_EVENT_NAME"] = "Campo \"#FIELD_NAME#\" alterado";

@@ -1,0 +1,27 @@
+<?php
+$MESS["SALE_SLRI_ALL_LANGS_2"] = "Tutte le lingue";
+$MESS["SALE_SLRI_ALL_TYPES_2"] = "Tutti i tipi";
+$MESS["SALE_SLRI_AP_TIMELIMIT"] = "Fase di re-indicizzazione, sec.";
+$MESS["SALE_SLRI_ERROR"] = "Errore interno.";
+$MESS["SALE_SLRI_HEAVY_DUTY_HOST_NOTICE"] = "La re-indicizzazione potrebbe aumentare il carico del database e del server. Se stai per re-indicizzare quantità significative di dati, ti consigliamo di consultare il tuo helpdesk di hosting prima di procedere.";
+$MESS["SALE_SLRI_HEAVY_DUTY_NOTICE"] = "La re-indicizzazione può richiedere molto tempo, da mezz'ora a diverse ore, a seconda delle impostazioni web e hardware.";
+$MESS["SALE_SLRI_LANGS4INDEX_2"] = "Usa ricerca rapida per lingue";
+$MESS["SALE_SLRI_SETTINGS_BASE"] = "Impostazioni principali";
+$MESS["SALE_SLRI_STAGE_CLEANUP"] = "cancellazione indice di ricerca";
+$MESS["SALE_SLRI_STAGE_COMPLETE"] = "re-indicizzazione completata";
+$MESS["SALE_SLRI_STAGE_CREATE_DICTIONARY"] = "creazione dizionario";
+$MESS["SALE_SLRI_STAGE_CREATE_SEARCH_INDEX"] = "creazione indice di ricerca";
+$MESS["SALE_SLRI_STAGE_CREATE_SITE2LOCATION_INDEX"] = "creazione indice di associazione sito";
+$MESS["SALE_SLRI_STAGE_INITIAL"] = "in attesa di avvio";
+$MESS["SALE_SLRI_STAGE_INTERRUPTED"] = "re-indicizzazione interrotta";
+$MESS["SALE_SLRI_STAGE_INTERRUPTING"] = "interruzione in corso";
+$MESS["SALE_SLRI_STAGE_RESORT_DICTIONARY"] = "ordinamento dizionario";
+$MESS["SALE_SLRI_STAGE_RESTORE_DB_INDEXES"] = "ripristino indici database";
+$MESS["SALE_SLRI_START"] = "Re-indicizza ora";
+$MESS["SALE_SLRI_STATUS"] = "Stato";
+$MESS["SALE_SLRI_STOP"] = "Interrompi";
+$MESS["SALE_SLRI_STOPPING"] = "Interruzione della re-indicizzazione in corso...";
+$MESS["SALE_SLRI_SURE_REINDEX"] = "Sei sicuro di voler re-indicizzare ora?";
+$MESS["SALE_SLRI_TAB_REINDEX_TITLE"] = "Re-indicizza";
+$MESS["SALE_SLRI_TAB_REINDEX_TITLE_SETTINGS"] = "Re-indicizzazione parametri";
+$MESS["SALE_SLRI_TYPES4INDEX_2"] = "Usa ricerca rapida per tipi";

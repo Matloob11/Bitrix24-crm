@@ -1,0 +1,15 @@
+<?php
+$MESS["CRM_BANKDETAIL_ERR_INVALID_ENTITY_ID"] = "Brak szczegółów banku";
+$MESS["CRM_BANKDETAIL_ERR_INVALID_ENTITY_TYPE"] = "Niewłaściwy typ szczegółów banku";
+$MESS["CRM_BANKDETAIL_ERR_NOTHING_TO_DELETE"] = "Nie odnaleziono szczegółów banku do usunięcia";
+$MESS["CRM_BANKDETAIL_ERR_ON_DELETE"] = "Błąd podczas usuwania szczegółów banku";
+$MESS["CRM_BANK_DETAIL_EXPORT_FIELD_ACTIVE"] = "Aktywny";
+$MESS["CRM_BANK_DETAIL_EXPORT_FIELD_COMMENTS"] = "Komentarz";
+$MESS["CRM_BANK_DETAIL_EXPORT_FIELD_COUNTRY_ID"] = "ID kraju";
+$MESS["CRM_BANK_DETAIL_EXPORT_FIELD_COUNTRY_NAME"] = "Państwo";
+$MESS["CRM_BANK_DETAIL_EXPORT_FIELD_ID"] = "ID";
+$MESS["CRM_BANK_DETAIL_EXPORT_FIELD_NAME"] = "Nazwa";
+$MESS["CRM_BANK_DETAIL_EXPORT_FIELD_SORT"] = "Porządek sortowania";
+$MESS["CRM_BANK_DETAIL_FIELD_AUTOCOMPLETE_01"] = "Znajdź informacje";
+$MESS["CRM_BANK_DETAIL_FIELD_VALIDATOR_LENGTH_MAX"] = "„#FIELD_TITLE#” nie powinno zawierać więcej niż #MAX_LENGTH# znaków.";
+$MESS["CRM_BANK_DETAIL_FIELD_VALIDATOR_LENGTH_MIN"] = "„#FIELD_TITLE#” nie powinno zawierać mniej niż #MIN_LENGTH# znaków.";

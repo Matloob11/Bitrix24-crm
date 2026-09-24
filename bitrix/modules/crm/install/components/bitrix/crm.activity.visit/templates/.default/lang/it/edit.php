@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_ACTIVITY_BROWSER_ERROR"] = "Sfortunatamente, il tuo browser non supporta la registrazione audio. <br> Sono consigliati i seguenti browser: Mozilla Firefox e Google Chrome.";
+$MESS["CRM_ACTIVITY_VISIT_ACTIVITY"] = "Attività";
+$MESS["CRM_ACTIVITY_VISIT_CAMERA"] = "Videocamera:";
+$MESS["CRM_ACTIVITY_VISIT_CONTACT"] = "Contatto";
+$MESS["CRM_ACTIVITY_VISIT_CONTACT_OR_COMPANY"] = "Contatto o azienda";
+$MESS["CRM_ACTIVITY_VISIT_CREATE"] = "Crea:";
+$MESS["CRM_ACTIVITY_VISIT_DEAL"] = "Affare";
+$MESS["CRM_ACTIVITY_VISIT_FINISH"] = "Completa";
+$MESS["CRM_ACTIVITY_VISIT_INVOICE"] = "Fattura";
+$MESS["CRM_ACTIVITY_VISIT_LEAD"] = "Lead";
+$MESS["CRM_ACTIVITY_VISIT_MINUTES"] = "min";
+$MESS["CRM_ACTIVITY_VISIT_OWNER"] = "Con:";
+$MESS["CRM_ACTIVITY_VISIT_RECORDING"] = "registrazione in corso";
+$MESS["CRM_ACTIVITY_VISIT_SEARCH_IN_PROGRESS"] = "Ricerca...";
+$MESS["CRM_ACTIVITY_VISIT_SEARCH_VK"] = "Trova profilo VK";
+$MESS["CRM_ACTIVITY_VISIT_SELECT"] = "Seleziona:";
+$MESS["CRM_ACTIVITY_VISIT_TAB_SAVE_PHOTO"] = "Foto profilo";
+$MESS["CRM_ACTIVITY_VISIT_TAB_VISIT"] = "Registrazione live";
+$MESS["CRM_ACTIVITY_VISIT_VK"] = "VK";

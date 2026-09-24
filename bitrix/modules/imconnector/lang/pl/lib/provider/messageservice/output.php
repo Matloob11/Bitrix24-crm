@@ -1,0 +1,3 @@
+<?php
+$MESS["IMCONNECTOR_PROVIDER_MESSAGESERVICE_ERROR_DELETE_CONNECTION"] = "Błąd podczas rozłączania konektora.";
+$MESS["IMCONNECTOR_PROVIDER_MESSAGESERVICE_ERROR_MODULE_NOT_INSTALLED"] = "Moduł \"Komunikator\" nie jest zainstalowany.";

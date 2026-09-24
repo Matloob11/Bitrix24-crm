@@ -1,0 +1,2 @@
+<?php
+$MESS["MARKET_INTERNAL_EXCEPTION_REST_MODULE_NOT_INCLUDED"] = "O módulo \"REST API\" é necessário.";

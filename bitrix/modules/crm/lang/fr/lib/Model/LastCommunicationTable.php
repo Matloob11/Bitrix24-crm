@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_LAST_COMMUNICATION_CALL_TIME_TITLE"] = "Dernier appel";
+$MESS["CRM_LAST_COMMUNICATION_EMAIL_TIME_TITLE"] = "Dernier e-mail";
+$MESS["CRM_LAST_COMMUNICATION_IMOL_TIME_TITLE"] = "Dernière conversation Canal ouvert";
+$MESS["CRM_LAST_COMMUNICATION_TIME_TITLE"] = "Dernier contact";
+$MESS["CRM_LAST_COMMUNICATION_WEBFORM_TIME_TITLE"] = "Dernier formulaire CRM envoyé";

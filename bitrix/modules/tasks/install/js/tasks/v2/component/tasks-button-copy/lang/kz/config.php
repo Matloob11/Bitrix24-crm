@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_BUTTON_COPY_NOTIFICATION_FAIL"] = "Көшіру мүмкін болмады";
+$MESS["TASKS_BUTTON_COPY_NOTIFICATION_SUCCESS"] = "Мән көшірілді";

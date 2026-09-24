@@ -1,0 +1,26 @@
+<?php
+$MESS["SIGN_MEMBER_ACTION_APPROVE"] = "Zatwierdź";
+$MESS["SIGN_MEMBER_ACTION_DOWNLOAD"] = "Pobierz";
+$MESS["SIGN_MEMBER_ACTION_EDIT"] = "Wypełnij pola";
+$MESS["SIGN_MEMBER_ACTION_SIGN"] = "Podpisz";
+$MESS["SIGN_MEMBER_ACTION_SIGN_WITH_YOU"] = "Podpisane przez Ciebie";
+$MESS["SIGN_MEMBER_ACTION_VIEW"] = "Wyświetl";
+$MESS["SIGN_MEMBER_APPROVED"] = "Zatwierdzone";
+$MESS["SIGN_MEMBER_APPROVED_WITH_YOU"] = "Zatwierdzone przez Ciebie";
+$MESS["SIGN_MEMBER_APPROVED_WITH_YOU_MSGVER_1"] = "Zatwierdzone przeze mnie";
+$MESS["SIGN_MEMBER_APPROVES"] = "Zatwierdzający";
+$MESS["SIGN_MEMBER_EDIT"] = "Wypełniający pola";
+$MESS["SIGN_MEMBER_EDITED"] = "Wypełnione";
+$MESS["SIGN_MEMBER_EDITED_WITH_YOU"] = "Wypełnione przez Ciebie";
+$MESS["SIGN_MEMBER_EDITED_WITH_YOU_MSGVER_1"] = "Wypełnione przeze mnie";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_ASSIGNEE"] = "Podpisz jako przedstawiciel firmy";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_EDITOR"] = "Wypełniający pola";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_REVIEWER"] = "Zatwierdzający";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_SIGNER_B2E"] = "Podpisz jako pracownik";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_SIGNER_E2B"] = "Nadawca";
+$MESS["SIGN_MEMBER_SIGNED"] = "Podpisane";
+$MESS["SIGN_MEMBER_SIGNED_WITH_YOU_MSGVER_1"] = "Podpisane przeze mnie";
+$MESS["SIGN_MEMBER_SIGNS"] = "Podpisujący";
+$MESS["SIGN_MEMBER_STOPPED"] = "Odrzucone";
+$MESS["SIGN_MEMBER_STOPPED_WITH_YOU"] = "Odrzucone przez Ciebie";
+$MESS["SIGN_MEMBER_STOPPED_WITH_YOU_MSGVER_1"] = "Odrzucone przeze mnie";

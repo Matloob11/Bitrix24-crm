@@ -1,0 +1,20 @@
+<?php
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_HINT"] = "Será despedido y no podrá iniciar sesión en este Bitrix24 si confirma su despido.\n\n[USER=#USER_ID#]#USER_NAME#[/USER] se convertirá en el administrador principal.";
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_TITLE"] = "Confirmar la transferencia de privilegios y su despido";
+$MESS["M_INTRANET_FIRE_ADMIN_REQUEST_ERROR"] = "No se puede completar la acción.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONFIRM_BUTTON"] = "Enviar solicitud";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONSENT_INSTRUCTION"] = "¿Quiere enviar una solicitud para transferir sus privilegios y permitir el despido?";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_DESCRIPTION"] = "Este usuario no puede ser despedido sin su consentimiento.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_ERROR_TOAST"] = "No se puede enviar la solicitud de despido. Intente de nuevo.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_HINT"] = "[USER=#USER_ID#]#USER_NAME#[/USER] es el administrador principal de su Bitrix24. Tiene acceso total a todas las configuraciones y parámetros.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_REJECT_BUTTON"] = "Cancelar";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TITLE"] = "Despedir al administrador principal";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TOAST"] = "Solicitud enviada. Se le notificará cuando el administrador responda a su solicitud.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_BUTTON"] = "Confirmar";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_WORD"] = "Transferir";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONSENT_INSTRUCTION"] = "Escriba la palabra \"#CONFIRM_WORD#\" a continuación para confirmar su decisión:";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_DESCRIPTION"] = "Para confirmar esta acción, es necesario un paso adicional para evitar la transferencia accidental de privilegios.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_ERROR_INPUT_TEXT"] = "Escriba la palabra \"#CONFIRM_WORD#\"";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_HINT"] = "Perderá sus privilegios de acceso a las configuraciones y parámetros de Bitrix24 si confirma la transferencia.\n\n[USER=#USER_ID#]#USER_NAME#[/USER] se convertirá en el administrador principal.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_REJECT_BUTTON"] = "Rechazar";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_TITLE"] = "Confirmar la transferencia de privilegios";

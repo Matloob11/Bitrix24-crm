@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Papelera de reciclaje";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Estos incluyen (#COUNT#) artículos cuyo espacio original se eliminó. Seleccione un nuevo espacio para estos artículos.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Se restaurarán los #COUNT# artículos de la Papelera de reciclaje.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Restaurar artículos";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Comience a escribir el nombre del espacio";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "El espacio original del artículo \"#DOCUMENT#\" ya no existe. Seleccione un nuevo espacio para este artículo.";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Restaurar artículo";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Cancelar";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Todos los artículos de la Papelera de reciclaje se eliminarán permanentemente. Esta acción no se puede deshacer. ¿Seguro que desea continuar?";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "¿Desea restaurar todos los artículos de la Papelera de reciclaje?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Vaciar la Papelera de reciclaje";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Sí";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Vaciar la Papelera de reciclaje";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "La Papelera de reciclaje está vacía.";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "La Papelera de reciclaje se vació. Artículos eliminados: #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "No se puede completar la acción.";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "El artículo se eliminó de forma permanente.";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Acciones";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Restaurar";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Restaurar todo";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Artículos restaurados: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Artículos restaurados: #COUNT#. Se omitieron #SKIPPED# artículos porque necesitan un espacio nuevo.";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "El artículo se restauró.";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Los artículos se conservan en la Papelera de reciclaje durante 30 días. Una vez que finalice el periodo de retención de 30 días, se eliminarán de forma permanente.";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Papelera de reciclaje";

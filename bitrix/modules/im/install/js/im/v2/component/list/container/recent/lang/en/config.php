@@ -1,0 +1,21 @@
+<?php
+$MESS["IM_RECENT_CREATE_CHANNEL_SUBTITLE_MSGVER_1"] = "News, announcements, comments";
+$MESS["IM_RECENT_CREATE_CHANNEL_TITLE_V2"] = "Channel";
+$MESS["IM_RECENT_CREATE_CHAT_WHAT_TO_CHOOSE"] = "What's best for me?";
+$MESS["IM_RECENT_CREATE_COLLAB_DESCRIPTION_BANNER"] = "[color_highlight]Tasks, files, calendar[/color_highlight] and other tools";
+$MESS["IM_RECENT_CREATE_COLLAB_NEW_BADGE"] = "New";
+$MESS["IM_RECENT_CREATE_COLLAB_SUBTITLE_MSGVER_1"] = "Collaborate with outside teams and guests";
+$MESS["IM_RECENT_CREATE_COLLAB_TITLE"] = "Collab";
+$MESS["IM_RECENT_CREATE_COLLAB_V2_SUBTITLE"] = "Project management space";
+$MESS["IM_RECENT_CREATE_COLLAB_V2_TITLE"] = "Project";
+$MESS["IM_RECENT_CREATE_CONFERENCE_SUBTITLE_MSGVER_1"] = "Host video conferences with guests";
+$MESS["IM_RECENT_CREATE_CONFERENCE_TITLE"] = "Video conference";
+$MESS["IM_RECENT_CREATE_COPILOT_ROLE_SELECTION_TITLE_MSGVER_1"] = "Select #COPILOT_NAME# role";
+$MESS["IM_RECENT_CREATE_COPILOT_SUBTITLE_MSGVER_1"] = "AI-assisted problem solving";
+$MESS["IM_RECENT_CREATE_COPILOT_TITLE_MSGVER_1"] = "Chat with #COPILOT_NAME#";
+$MESS["IM_RECENT_CREATE_GROUP_CHAT_SUBTITLE_MSGVER_1"] = "Group discussions";
+$MESS["IM_RECENT_CREATE_GROUP_CHAT_TITLE_V2"] = "Group chat";
+$MESS["IM_RECENT_CREATE_INVITE_SUBTITLE"] = "Invite multiple users at once";
+$MESS["IM_RECENT_CREATE_INVITE_TITLE"] = "Invite users";
+$MESS["IM_RECENT_HEADER_MENU_CHAT_GROUPS_SUBTITLE"] = "Group chats into folders for faster access.";
+$MESS["IM_RECENT_HEADER_MENU_CHAT_GROUPS_TITLE"] = "Create folders";

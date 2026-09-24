@@ -1,0 +1,27 @@
+<?php
+$MESS["TASKS_SCRUM_BUTTON_TEXT_REMOVE"] = "Eliminar";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE"] = "¿Seguro que desea eliminar el tipo?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_NEW"] = "¿Seguro que desea eliminar la lista de verificación <b>#name#<b>?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_TITLE"] = "Eliminar la lista de verificación";
+$MESS["TASKS_SCRUM_CREATE_TYPE"] = "Crear tipo";
+$MESS["TASKS_SCRUM_CREATE_TYPE_PROMPT"] = "Crear nuevo tipo de tarea";
+$MESS["TASKS_SCRUM_DOD_BTN_CREATE_TYPE"] = "Agregar";
+$MESS["TASKS_SCRUM_DOD_BTN_EDIT_TYPE"] = "Renombrar";
+$MESS["TASKS_SCRUM_DOD_BTN_REMOVE_TYPE"] = "Eliminar";
+$MESS["TASKS_SCRUM_DOD_BTN_SAVE"] = "Guardar";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_COMPLETE_BUTTON_TEXT"] = "Cerrar la tarea";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_SAVE_BUTTON_TEXT"] = "Guardar";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_TEXT_COMPLETE"] = "¿Desea cerrar la tarea como completada o guardar la Definición de terminado?";
+$MESS["TASKS_SCRUM_DOD_INFO_TEXT"] = "Todos los elementos que se encuentran en Definición de terminado deben estar terminados para completar la tarea";
+$MESS["TASKS_SCRUM_DOD_LABEL_EMPTY"] = "La Definición de terminado debe <span>estar configurada</span> ";
+$MESS["TASKS_SCRUM_DOD_LABEL_TYPES"] = "Tipo de tarea";
+$MESS["TASKS_SCRUM_DOD_LABEL_USER_SELECTOR"] = "Preguntar por un DdT:";
+$MESS["TASKS_SCRUM_DOD_OPTIONS_REQUIRED_LABEL"] = "Estos elementos son necesarios para concluir";
+$MESS["TASKS_SCRUM_DOD_POPUP_EMPTY_NAME"] = "Introduzca un nombre";
+$MESS["TASKS_SCRUM_DOD_POPUP_INPUT_PLACEHOLDER"] = "Nombre";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_CREATE"] = "Crear una lista de verificación";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_EDIT"] = "Renombrar la lista de verificación";
+$MESS["TASKS_SCRUM_DOD_SAVE_SETTINGS_NOTIFY"] = "La configuración se guardó.";
+$MESS["TASKS_SCRUM_DOD_TITLE"] = "Definición de terminado";
+$MESS["TASKS_SCRUM_DOD_TOOLBAR_SETTINGS"] = "Configurar";
+$MESS["TSD_ERROR_POPUP_TITLE"] = "Eso es un error.";

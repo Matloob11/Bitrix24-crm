@@ -1,0 +1,19 @@
+<?php
+$MESS["VOTE_ANONYMOUS"] = "Sondaggio anonimo";
+$MESS["VOTE_BUTTON"] = "Vota";
+$MESS["VOTE_NOTICE_COMPLETED"] = "sondaggio terminato";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_COMPLETE"] = "Impossibile terminare il sondaggio.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_REVOKE"] = "Seconda votazione non riuscita.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_SUBMIT"] = "Impossibile votare. Riprova.";
+$MESS["VOTE_NOTICE_REVOKE_IS_NOT_AVAILABLE"] = "seconda votazione non disponibile";
+$MESS["VOTE_POPUP_BTN_CANCEL"] = "Annulla";
+$MESS["VOTE_POPUP_BTN_COMPLETE"] = "Termina sondaggio";
+$MESS["VOTE_POPUP_TEXT"] = "I risultati del sondaggio verranno salvati; la votazione verrà chiusa definitivamente e non potrà essere riaperta. Terminare il sondaggio?";
+$MESS["VOTE_POPUP_TITLE"] = "Termina sondaggio";
+$MESS["VOTE_PUBLIC"] = "Sondaggio pubblico";
+$MESS["VOTE_RESULT_COUNT_PLURAL_0"] = "#COUNT# voto";
+$MESS["VOTE_RESULT_COUNT_PLURAL_1"] = "#COUNT# voti";
+$MESS["VOTE_RESULT_COUNT_PLURAL_2"] = "#COUNT# voti";
+$MESS["VOTE_REVOKE"] = "Rivota";
+$MESS["VOTE_SHOW_RESULTS"] = "Vedi risultato sondaggio";
+$MESS["VOTE_SUMMARY_COUNT_NO_VOTES"] = "Nessun voto";

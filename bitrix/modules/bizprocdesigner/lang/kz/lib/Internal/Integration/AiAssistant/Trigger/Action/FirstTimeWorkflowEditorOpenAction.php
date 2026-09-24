@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_DESIGNER_INTERNAL_INTEGRATION_AI_ASSISTANT_TRIGGER_ACTION_FIRST_TIME_WORKFLOW_EDITOR_OPEN_ACTION_NAME_CONTENT"] = "Сәлем, #FIRST_NAME#! Мен — Марта, бизнес-процесс редакторында AI-көмекшісі. Автоматтандыруды орнатуға көмектесемін: процесті нөлден жинаңыз, нода жұмысын түсіндіріңіз немесе бар автоматтандыруды нақтылауға көмектесемін.";
+$MESS["BIZPROC_DESIGNER_INTERNAL_INTEGRATION_AI_ASSISTANT_TRIGGER_ACTION_FIRST_TIME_WORKFLOW_EDITOR_OPEN_ACTION_NAME_CONTENT_EMPTY_USER"] = "Сәлем! Мен — Марта, бизнес-процесс редакторында AI-көмекшісі. Автоматтандыруды орнатуға көмектесемін: процесті нөлден жинаңыз, нода жұмысын түсіндіріңіз немесе бар автоматтандыруды нақтылауға көмектесемін.";
+$MESS["BIZPROC_DESIGNER_INTERNAL_INTEGRATION_AI_ASSISTANT_TRIGGER_ACTION_FIRST_TIME_WORKFLOW_EDITOR_OPEN_ACTION_NAME_MESSAGE"] = "Бірінші процесті жинайық. Автоматтандырғыңыз келетін нәрсені жазыңыз.";

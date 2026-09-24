@@ -1,0 +1,6 @@
+<?php
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_BOTTOM"] = "Voci di menu in basso";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_LINK"] = "Link";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_NAME_3"] = "Menu verticale per CRM + modello di negozio online";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_NODES_MENU_ITEM"] = "Voce di menu";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_TOP"] = "Voci di menu in alto";

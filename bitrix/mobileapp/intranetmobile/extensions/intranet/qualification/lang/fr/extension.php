@@ -1,0 +1,6 @@
+<?php
+$MESS["QUALIFICATION_FIELDS_PHONE_BUTTON_DEFAULT_TEXT"] = "Suivant";
+$MESS["QUALIFICATION_FIELDS_PHONE_ERROR"] = "Un numéro de téléphone valide est requis.";
+$MESS["QUALIFICATION_FIELDS_PHONE_FOOTER"] = "En cliquant sur \"#BUTTON_TEXT#\", vous confirmez accepter la #URL_START#Privacy Policy#URL_END#.";
+$MESS["QUALIFICATION_FIELDS_USER_INVITATION_BUTTON"] = "Inviter";
+$MESS["QUALIFICATION_STEP_TITLE"] = "Étape #INDEX#";

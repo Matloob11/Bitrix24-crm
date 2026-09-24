@@ -1,0 +1,17 @@
+.bx-im-content-ai-assistant-empty-state__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	padding: 10%;
+	box-sizing: border-box;
+}
+
+.bx-im-content-ai-assistant-empty-state__container .bx-im-ai-assistant-empty-state-view__scope {
+	--bx-im-ai-assistant-empty-state-view-align-items: center;
+	--bx-im-ai-assistant-empty-state-view-title-text-align: center;
+	--bx-im-ai-assistant-empty-state-view-title-margin-bottom: 24px;
+
+	max-width: 640px;
+}

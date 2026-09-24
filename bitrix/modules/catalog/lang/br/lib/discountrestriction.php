@@ -1,0 +1,2 @@
+<?php
+$MESS["DISCOUNT_RESTRICTION_ENTITY_PRICE_TYPE_ID_FIELD"] = "ID do tipo de preço";

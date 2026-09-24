@@ -1,0 +1,1 @@
+{"version":3,"file":"extension.map.js","names":["jn","define","require","exports","module","preload","Promise","resolve"],"sources":["extension.js"],"mappings":"AAGAA,GAAGC,OAAO,kDAAkD,CAACC,EAASC,EAASC,KAC9E,SAASC,IAER,OAAOC,QAAQC,SAChB,CAEAH,EAAOD,QAAU,CAAEE,UAAS","ignoreList":[]}

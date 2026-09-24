@@ -1,0 +1,8 @@
+<?php
+$MESS["SELECTOR_COMPONENT_INVITE_BANNER_DESCRIPTION"] = "Explorez les outils professionnels de Bitrix24.";
+$MESS["SELECTOR_COMPONENT_INVITE_BANNER_TITLE"] = "Inviter des collègues";
+$MESS["SELECTOR_COMPONENT_INVITE_SEARCH_WITH_CREATION"] = "Chercher ou inviter";
+$MESS["SELECTOR_COMPONENT_INVITE_USER_TAG"] = "Inviter";
+$MESS["SELECTOR_COMPONENT_INVITING_USER_TAG"] = "Inviter";
+$MESS["SELECTOR_COMPONENT_PICK_USER_2"] = "Utilisateur";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_SEARCH_USER"] = "Commencez à saisir pour trouver un utilisateur";

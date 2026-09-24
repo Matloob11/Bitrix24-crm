@@ -1,0 +1,19 @@
+<?php
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE"] = "Le responsable peut modifier la date limite";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_SUBTITLE"] = "Le responsable peut modifier la date limite de la tâche à tout moment.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE"] = "Le responsable peut modifier la date limite";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE_MSGVER_1"] = "Le responsable peut modifier la date limite";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL"] = "Demander un examen de la tâche à la fermeture";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE"] = "Seul le créateur de la tâche peut fermer la tâche après avoir vérifié le résultat.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE_MSGVER_1"] = "La tâche terminée sera envoyée au propriétaire de la tâche pour révision. Il acceptera et fermera la tâche, ou la renverra pour révision.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_TITLE"] = "Nécessite une approbation à l'achèvement";
+$MESS["M_TASKS_EXTRA_SETTINGS_DEADLINE_AUTO_CHANGED"] = "La date limite de la tâche a été ajustée pour tenir compte des week-ends.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME"] = "Déplacer la date limite si elle tombe un week-end";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE"] = "La date limite sera ajustée si elle tombe sur un week-end.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE_MSGVER_1"] = "La date limite de la tâche sera prolongée si elle tombe un week-end ou un jour férié.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_TITLE"] = "Ignorer les week-ends";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED"] = "Ne pas fermer la tâche sans résumé de statut";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE"] = "Le responsable doit fournir un résumé du statut lorsqu'il ferme la tâche.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE_MSGVER_1"] = "Le responsable devra ajouter un résumé du statut pour marquer la tâche comme terminée.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE"] = "Résumé du statut de tâche exigé";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE_MSGVER_1"] = "Exiger un résumé du statut de tâche";

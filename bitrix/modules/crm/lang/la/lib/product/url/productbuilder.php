@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_PRODUCT_BUILDER_CONTEXT_MENU_ITEM_CSV_IMPORT_NAME"] = "Importación de productos";
+$MESS["CRM_PRODUCT_BUILDER_CONTEXT_MENU_ITEM_CSV_IMPORT_TITLE"] = "Importación de productos";

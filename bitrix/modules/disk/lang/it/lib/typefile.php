@@ -1,0 +1,10 @@
+<?php
+$MESS["DISK_TYPE_FILE_ARCHIVE"] = "Archivi";
+$MESS["DISK_TYPE_FILE_AUDIO"] = "Audio";
+$MESS["DISK_TYPE_FILE_BOARD"] = "Lavagne";
+$MESS["DISK_TYPE_FILE_DOCUMENT"] = "Documenti";
+$MESS["DISK_TYPE_FILE_IMAGE"] = "Immagini";
+$MESS["DISK_TYPE_FILE_SCRIPT"] = "Script";
+$MESS["DISK_TYPE_FILE_UNKNOWN"] = "Altro";
+$MESS["DISK_TYPE_FILE_VECTOR_IMAGE"] = "Immagini vettoriali";
+$MESS["DISK_TYPE_FILE_VIDEO"] = "Video";

@@ -1,0 +1,117 @@
+/* eslint-disable no-implicit-globals, no-console */
+
+/**
+ * @description Removing old event subscriptions after reload();
+ */
+function destructMessengerIfExist()
+{
+	const require = jn.require;
+	const { Type } = require('type');
+
+	console.warn('before execute destructor');
+	if (Type.isObject(window.messenger) && Type.isFunction(window.messenger.destructor))
+	{
+		console.warn('destructor is available. execute');
+
+		window.messenger.destructor();
+		window.messenger = undefined;
+	}
+	console.warn('after execute destructor');
+}
+
+/**
+ * @description Perform actions before the messenger launch.
+ * Attention! Adding resource-intensive operations to this method will degrade performance.
+ */
+function executeBeforeMessengerInit()
+{
+	const require = jn.require;
+	const { Loc } = require('im/messenger/loc');
+	const { SubscriptionManager } = require('im/messenger/global/subscription-manager');
+	const { serviceLocator } = require('im/messenger/lib/di/service-locator');
+
+	/**
+	 * @type {SubscriptionManager}
+	 */
+	window.subscriptionManager ??= new SubscriptionManager();
+	serviceLocator.add('subscription-manager', window.subscriptionManager);
+
+	window.tabs?.setActiveItem(BX.componentParameters.get('FIRST_TAB_ID', 'chats'));
+
+	Loc.initMessages();
+
+	/** region messenger developer tools */
+	window.messengerDebug = {};
+
+	window.messengerDebug.showDeveloperMenu = async () => {
+		const { showDeveloperMenu } = await requireLazy('im:messenger/lib/dev/menu').catch((error) => {
+			console.error('showDeveloperMenu requireLazy error:', error);
+		});
+		showDeveloperMenu();
+	};
+
+	window.messengerDebug.openConsole = async () => {
+		const { Console } = await requireLazy('im:messenger/lib/dev/tools');
+		Console.open();
+	};
+
+	window.messengerDebug.clearDatabaseAndRestart = async () => {
+		const { clearDatabaseAndRestart } = await requireLazy('im:messenger/api/cleaning');
+		void clearDatabaseAndRestart();
+	};
+
+	const { actionTimer } = require('im/messenger/lib/dev/action-timer');
+	window.messengerDebug.actionTimer = actionTimer;
+	/** endregion messenger developer tools */
+}
+
+/**
+ * @description messenger application entry point
+ * @return {Promise<void>}
+ */
+async function initMessenger()
+{
+	const require = jn.require;
+	const { Messenger } = require('im/messenger/application/messenger');
+
+	const messenger = new Messenger();
+	/** @description messenger object reference for debugging purposes only. */
+	window.messenger = messenger;
+
+	return messenger.init();
+}
+
+/**
+ * @description component entry point
+ * @return {Promise<void>}
+ */
+function launchComponent()
+{
+	const require = jn.require;
+	const { ActionTimer } = require('im/messenger/lib/dev/action-timer');
+	const { AsyncQueue } = require('im/messenger/lib/utils');
+
+	/** @type {AsyncQueue} */
+	window.launchComponentQueue ??= new AsyncQueue();
+
+	void window.launchComponentQueue.enqueue(
+		async () => {
+			const actionTimer = new ActionTimer();
+			actionTimer.start('launchComponent');
+
+			destructMessengerIfExist();
+			actionTimer.logDuration('launchComponent', '🗑️ 1. destructMessengerIfExist complete');
+
+			executeBeforeMessengerInit();
+			actionTimer.logDuration('launchComponent', '⚡️ 2. executeBeforeMessengerInit complete');
+
+			await initMessenger();
+			actionTimer.logDuration('launchComponent', '✅ 3. launchComponent complete');
+		},
+		(error) => {
+			console.error('🚨 launchComponent error', error);
+		},
+	);
+}
+
+launchComponent();

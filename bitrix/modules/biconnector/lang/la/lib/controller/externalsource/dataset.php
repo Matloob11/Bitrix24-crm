@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_EXTERNAL_SOURCE_DATASET_ACCESS_ERROR"] = "Permisos insuficientes para usar este conjunto de datos. Póngase en contacto con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_EXTERNAL_SOURCE_DATASET_ACCESS_ERROR_MSGVER_1"] = "Permisos insuficientes para usar esta tabla. Póngase en contacto con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ADD_ERROR"] = "Error al crear el conjunto de datos";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ADD_ERROR_MSGVER_1"] = "Error al crear la tabla";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ALREADY_EXIST_ERROR"] = "Ya hay un conjunto de datos con este nombre.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ALREADY_EXIST_ERROR_MSGVER_1"] = "Ya hay una tabla con este nombre.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_DELETE_ERROR"] = "Error al eliminar el conjunto de datos";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_DELETE_ERROR_MSGVER_1"] = "Error al eliminar la tabla.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_MAX_ROWS"] = "No se puede importar un archivo con más de 300,000 filas.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_NOT_FOUND_ERROR"] = "No se encontró el conjunto de datos.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_NOT_FOUND_ERROR_MSGVER_1"] = "No se encontró la tabla.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UNKNOWN_DATASET_TYPE"] = "Tipo de conjunto de datos desconocido";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UNKNOWN_DATASET_TYPE_MSGVER_1"] = "Tipo de tabla desconocida";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UPDATE_ERROR"] = "Error al actualizar el conjunto de datos";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UPDATE_ERROR_MSGVER_1"] = "Error al actualizar la tabla.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DIFFERENT_COUNT_FIELDS_ERROR"] = "El número de columnas del archivo no coincide con el del conjunto de datos. Trate de cambiar la configuración o seleccione un archivo diferente.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DIFFERENT_COUNT_FIELDS_ERROR_MSGVER_1"] = "El número de columnas del archivo no coincide con el de la tabla. Trate de cambiar la configuración o seleccione un archivo diferente.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_DATA_ERROR"] = "No se puede leer el archivo";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_DATA_ERROR_1C"] = "La tabla está vacía.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_FIELDS"] = "Campos no configurados";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_SETTINGS"] = "Formato de datos no proporcionado";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_IMPORT_ERROR"] = "Trate de cambiar los datos del archivo o seleccione un archivo diferente.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_SYNC_FIELDS_ERROR"] = "No se pudieron sincronizar las columnas de origen.";

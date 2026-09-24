@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_DEBUGGER_SESSION_MANAGER_ERROR_INCORRECT_MODE"] = "Mode test spécifié incorrect";
+$MESS["BIZPROC_DEBUGGER_SESSION_MANAGER_ERROR_SESSION_NOT_FOUND"] = "Le journal de test est introuvable";
+$MESS["BIZPROC_DEBUGGER_SESSION_MANAGER_ERROR_SESSION_STILL_ACTIVE"] = "Le mode test est toujours actif";

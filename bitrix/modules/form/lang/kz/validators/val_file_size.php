@@ -1,0 +1,6 @@
+<?php
+$MESS["FORM_VALIDATOR_FILE_SIZE_DESCRIPTION"] = "Файл өлшемі";
+$MESS["FORM_VALIDATOR_FILE_SIZE_ERROR_LESS"] = "#FIELD_NAME#: файл тым кішкентай";
+$MESS["FORM_VALIDATOR_FILE_SIZE_ERROR_MORE"] = "#FIELD_NAME#: файл тым үлкен";
+$MESS["FORM_VALIDATOR_FILE_SIZE_SETTINGS_SIZE_FROM"] = "Минималды өлшем (байт)";
+$MESS["FORM_VALIDATOR_FILE_SIZE_SETTINGS_SIZE_TO"] = "Максималды өлшемі (байт)";

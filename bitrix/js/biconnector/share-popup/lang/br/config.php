@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Copiar link";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Link válido até:";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "O dia e a hora devem estar no futuro.";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Selecionar data";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "A data é necessária.";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Até que o painel seja compartilhado, os convidados não podem visualizá-lo mesmo que tenham um link e uma senha.";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Qualquer pessoa com um link e uma senha pode visualizar este painel.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "Não foi possível copiar o link.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "Não foi possível compartilhar o painel.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "Não foi possível cancelar o compartilhamento do painel.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "Não foi possível atualizar o link.";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "Filtros de estrutura da empresa, fluxo de trabalho e fluxo não estão disponíveis ao visualizar um painel compartilhado.";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Gerar senha";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "O link foi copiado.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "A senha foi criada.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Senha:";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Criar senha";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "A senha é obrigatória.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "A senha não pode ter mais que 32 caracteres.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "A senha deve ter pelo menos 8 caracteres.";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Compartilhar painel";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "O dia e a hora devem estar no futuro.";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "Compartilhar painel \"#NAME#\"";

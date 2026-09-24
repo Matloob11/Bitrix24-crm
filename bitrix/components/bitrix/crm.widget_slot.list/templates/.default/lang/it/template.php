@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_WGT_SLST_ADD"] = "Aggiungi";
+$MESS["CRM_WGT_SLST_ADD_PRODUCT_SUM"] = "Aggiungi importo prodotto";
+$MESS["CRM_WGT_SLST_BY_DEFALT"] = "Predefinito";
+$MESS["CRM_WGT_SLST_CALCEL"] = "Annulla";
+$MESS["CRM_WGT_SLST_DLG_WAIT"] = "Attendi...";
+$MESS["CRM_WGT_SLST_EDIT"] = "Modifica";
+$MESS["CRM_WGT_SLST_ERR_FIELD_ALREADY_EXISTS"] = "Seleziona un altro campo. Il campo \"#FIELD#\" è già in uso.";
+$MESS["CRM_WGT_SLST_ERR_FIELD_LIMT_EXCEEDED"] = "Impossibile aggiungere un nuovo campo poiché vengono aggiunti i campi massimi possibili.";
+$MESS["CRM_WGT_SLST_ERR_NO_FREE_SLOTS"] = "Impossibile aggiungere un nuovo campo poiché non sono presenti slot liberi.";
+$MESS["CRM_WGT_SLST_ERR_SELECT_FIELD"] = "Seleziona un campo da elaborare.";
+$MESS["CRM_WGT_SLST_GENERAL_INTRO"] = "Seleziona in questa pagina i campi personalizzati da includere nei rapporti analitici CRM.";
+$MESS["CRM_WGT_SLST_LIMITS_INTRO"] = "È possibile selezionare fino a dieci campi; fino a cinque dello stesso tipo.";
+$MESS["CRM_WGT_SLST_LIMITS_TOTALS"] = "Selezionato: #TOTAL# di #OVERALL#";
+$MESS["CRM_WGT_SLST_LRP_DLG_BTN_CLOSE"] = "Chiudi";
+$MESS["CRM_WGT_SLST_LRP_DLG_BTN_START"] = "Esegui";
+$MESS["CRM_WGT_SLST_LRP_DLG_BTN_STOP"] = "Interrompi";
+$MESS["CRM_WGT_SLST_LRP_DLG_REQUEST_ERR"] = "Errore durante l'elaborazione della richiesta.";
+$MESS["CRM_WGT_SLST_NODE_TOOLTIP"] = "Se utilizzi un campo personalizzato per l'importo totale dell'affare, specificalo qui. Il totale dei prodotti di affare può essere aggiunto a questo campo. Per impostazione predefinita, i rapporti sono creati utilizzando il campo \"Totale\" dell'affare.";
+$MESS["CRM_WGT_SLST_NOT_SELECTED"] = "Non selezionato";
+$MESS["CRM_WGT_SLST_REMOVE"] = "Elimina";
+$MESS["CRM_WGT_SLST_RESET"] = "Ripristina";
+$MESS["CRM_WGT_SLST_SAVE"] = "Salva";
+$MESS["CRM_WGT_SLST_TOTAL_SUM"] = "Somma totale";
+$MESS["CRM_WGT_SLST_USER_FIELDS"] = "Campi personalizzati";

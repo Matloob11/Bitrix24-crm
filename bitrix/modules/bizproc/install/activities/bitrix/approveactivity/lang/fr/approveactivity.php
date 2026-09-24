@@ -1,0 +1,24 @@
+<?php
+$MESS["BPAA_ACT_APPROVE"] = "L'élément est accepté";
+$MESS["BPAA_ACT_APPROVERS_NONE"] = "aucun";
+$MESS["BPAA_ACT_APPROVE_TRACK"] = "L'utilisateur #PERSON# a approuvé l'élément #COMMENT#";
+$MESS["BPAA_ACT_BUTTON1"] = "Accepter";
+$MESS["BPAA_ACT_BUTTON2_MSGVER_1"] = "Refuser";
+$MESS["BPAA_ACT_COMMENT_1"] = "Notes";
+$MESS["BPAA_ACT_COMMENT_ERROR"] = "Le champ '#COMMENT_LABEL#'  est obligatoire.";
+$MESS["BPAA_ACT_COMMENT_REQUIRED_TO_APPROVE"] = "Requis lors de l'approbation d'un élément du processus d'entreprise";
+$MESS["BPAA_ACT_COMMENT_REQUIRED_TO_REJECT"] = "Requis lors du refus d'un élément du processus d'entreprise";
+$MESS["BPAA_ACT_INFO"] = "Voté #PERCENT#% (#VOTED# sur #TOTAL#)";
+$MESS["BPAA_ACT_NONAPPROVE"] = "L'élément est refusé";
+$MESS["BPAA_ACT_NONAPPROVE_TRACK"] = "L'utilisateur #PERSON# n'a pas approuvé l'élément #COMMENT#";
+$MESS["BPAA_ACT_NO_ACTION"] = "L'action disponible n'est pas indiquée.";
+$MESS["BPAA_ACT_PROP_EMPTY1"] = "La propriété 'Utilisateurs' n'est pas indiquée.";
+$MESS["BPAA_ACT_PROP_EMPTY2"] = "La propriété 'Type d'approbation' n'est pas indiquée.";
+$MESS["BPAA_ACT_PROP_EMPTY3"] = "La valeur de la propriété 'Type de validation' n'est pas correcte.";
+$MESS["BPAA_ACT_PROP_EMPTY4"] = "La propriété 'Nom' n'est pas spécifiée.";
+$MESS["BPAA_ACT_TRACK1"] = "L'élément doit être accepté par n'importe quel utilisateur de la liste : #VAL#";
+$MESS["BPAA_ACT_TRACK2"] = "L'élément doit être accepté par tous les utilisateurs de la liste : #VAL#";
+$MESS["BPAA_ACT_TRACK3"] = "L'élément doit être accepté par n'importe quel utilisateur de la liste : #VAL#";
+$MESS["BPAA_LOG_COMMENTS_1"] = "Notes";
+$MESS["BPAA_LOG_N_MSGVER_1"] = "Refusé";
+$MESS["BPAA_LOG_Y"] = "Approuvé";

@@ -1,0 +1,20 @@
+<?php
+$MESS["STAT_ADV_VISIBLE"] = "<a href='/bitrix/admin/adv_list.php?lang=#LANG#'>Жарнама есебіне</a> қосу:";
+$MESS["STAT_CLEAR"] = "Тазалау";
+$MESS["STAT_DELETE_EVENT_TYPE"] = "Оқиға түрін жою";
+$MESS["STAT_DELETE_EVENT_TYPE_CONFIRM"] = "Оқиға түрін жойғыңыз келетініне сенімдісіз бе?";
+$MESS["STAT_DESCRIPTION"] = "Сипаттамасы:";
+$MESS["STAT_DYNAMIC_KEEP_DAYS"] = "Оқиға түрінің динамикасын қанша күн сақтау керек:";
+$MESS["STAT_EDIT_RECORD"] = "Оқиға түрінің параметрлері # #ID#";
+$MESS["STAT_EVENT_TYPE"] = "Оқиға түрі";
+$MESS["STAT_KEEP_DAYS"] = "Осы оқиға түрінің әрбір данасын қанша күн сақтау керек:";
+$MESS["STAT_LIST"] = "Тізім";
+$MESS["STAT_NAME"] = "Атауы:";
+$MESS["STAT_NEW_EVENT_TYPE"] = "Жаңа оқиға түрі";
+$MESS["STAT_NEW_RECORD"] = "Жаңа оқиға түрі";
+$MESS["STAT_PIE_CHART"] = "Әдепкі бойынша диаграмма мен графикке қосу:";
+$MESS["STAT_RECORDS_LIST"] = "Оқиға түрлері";
+$MESS["STAT_RESET_EVENT_TYPE"] = "Оқиға түрін қалпына келтіру";
+$MESS["STAT_RESET_EVENT_TYPE_CONFIRM"] = "Оқиға түрін қалпына келтіргіңіз келетініне сенімдісіз бе?";
+$MESS["STAT_SAVE_ERROR"] = "Оқиғалар түрін сақтауда қате.";
+$MESS["STAT_SORT"] = "Сұрыптау тәртібі:";

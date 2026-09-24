@@ -1,0 +1,3 @@
+<?php
+$MESS["INTRANET_USER_WIDGET_CONTENT_SIGN_DOCUMENTS_DESCRIPTION"] = "Podpisz dokumenty wewnętrzne i poproś o podpis";
+$MESS["INTRANET_USER_WIDGET_CONTENT_SIGN_DOCUMENTS_TITLE"] = "Moje dokumenty";

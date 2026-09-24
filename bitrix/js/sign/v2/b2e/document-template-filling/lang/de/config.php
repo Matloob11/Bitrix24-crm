@@ -1,0 +1,22 @@
+<?php
+$MESS["DOCUMENT_IN_FINAL_STATUS"] = "Die Ablaufzeit kann für dieses Dokument nicht geändert werden.";
+$MESS["PERIOD_TOO_LONG_PLURAL_0"] = "Die Ablaufzeit des Dokuments darf #MAX_PERIOD# Monat nicht überschreiten.";
+$MESS["PERIOD_TOO_LONG_PLURAL_1"] = "Die Ablaufzeit des Dokuments darf #MAX_PERIOD# Monate nicht überschreiten.";
+$MESS["PERIOD_TOO_LONG_PLURAL_2"] = "Die Ablaufzeit des Dokuments darf #MAX_PERIOD# Monate nicht überschreiten.";
+$MESS["PERIOD_TOO_SHORT_PLURAL_0"] = "Die Ablaufzeit des Dokuments muss mindestens #MIN_PERIOD# Minute betragen.";
+$MESS["PERIOD_TOO_SHORT_PLURAL_1"] = "Die Ablaufzeit des Dokuments muss mindestens #MIN_PERIOD# Minuten betragen.";
+$MESS["PERIOD_TOO_SHORT_PLURAL_2"] = "Die Ablaufzeit des Dokuments muss mindestens #MIN_PERIOD# Minuten betragen.";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_APPLY_FOR_ALL_HINT"] = "Daten, die Sie hier eingeben, werden auf alle leeren Felder in allen Dokumenten angewendet.";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_APPLY_FOR_ALL_TITLE"] = "Auf alle Dokumente anwenden";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_DATE_CREATE_HCMLINK"] = "Aus 1C";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_DATE_CREATE_HCMLINK_HINT"] = "Datum Erstellt am wird aus 1C übermittelt";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_DATE_CREATE_LABEL"] = "Erstellt am";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_DATE_EXPIRE_LABEL"] = "Zu unterzeichnen vor";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_DOCUMENT_IN_PROCESS"] = "Dokument zur Unterschrift:";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_INPUT_REG_NUMBER_HCMLINK_HINT"] = "Referenznummer des Dokuments wird aus 1C übermittelt";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_INPUT_REG_NUMBER_LABEL"] = "Referenznummer";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_INPUT_REG_NUMBER_PLACEHOLDER"] = "keine";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_INPUT_REG_NUMBER_PLACEHOLDER_HCMLINK"] = "Aus 1C übermittelt";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_REMOVE_TEMPLATE"] = "Vorlage aus dem Paket entfernen";
+$MESS["SIGN_B2E_DOCUMENT_FILLING_TITLE_HEAD_LABEL"] = "Geben Sie Informationen ein";
+$MESS["SIGN_DOCUMENT_SEND_DATETIME_LIMIT_SELECTOR_GOSKEY_ALERT"] = "Dokumente, die an GK gesendet wurden, werden innerhalb von 24 Stunden nach der Unterzeichnung nicht gestoppt, auch wenn die von Ihnen angegebene Zeit abgelaufen ist.";

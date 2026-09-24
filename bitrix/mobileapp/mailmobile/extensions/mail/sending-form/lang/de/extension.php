@@ -1,0 +1,27 @@
+<?php
+$MESS["MESSAGE_SEND_BUTTON_SEND"] = "Senden";
+$MESS["MESSAGE_SEND_BUTTON_SENDING"] = "Wird gesendet";
+$MESS["MESSAGE_SEND_BUTTON_UPLOADING_FILES"] = "Dateien werden hochgeladen";
+$MESS["MESSAGE_SEND_CONNECT_NEW_MAILBOX"] = "Absender hinzufügen";
+$MESS["MESSAGE_SEND_CONTACT_PLACEHOLDER"] = "Geben Sie die E-Mail-Adresse ein";
+$MESS["MESSAGE_SEND_EXIT_ALERT_CANCEL"] = "Weiter bearbeiten";
+$MESS["MESSAGE_SEND_EXIT_ALERT_DISCARD"] = "Beenden ohne zu speichern";
+$MESS["MESSAGE_SEND_EXIT_ALERT_SAVE"] = "Senden und beenden";
+$MESS["MESSAGE_SEND_EXIT_ALERT_TEXT"] = "Alle Änderungen gehen verloren, wenn Sie jetzt beenden";
+$MESS["MESSAGE_SEND_EXIT_ALERT_TITLE"] = "E-Mail senden?";
+$MESS["MESSAGE_SEND_FIELD_BCC"] = "BCC";
+$MESS["MESSAGE_SEND_FIELD_CC"] = "Cc";
+$MESS["MESSAGE_SEND_FIELD_FROM"] = "Von";
+$MESS["MESSAGE_SEND_FIELD_MESSAGE_BODY_ERROR"] = "Leere E-Mails können nicht gesendet werden";
+$MESS["MESSAGE_SEND_FIELD_MESSAGE_BODY_PLACEHOLDER"] = "Geben Sie den Nachrichtentext ein";
+$MESS["MESSAGE_SEND_FIELD_SHOW_MORE"] = "Kopien";
+$MESS["MESSAGE_SEND_FIELD_SUBJECT"] = "Betreff";
+$MESS["MESSAGE_SEND_FIELD_SUBJECT_ERROR"] = "E-Mail-Betreff ist erforderlich";
+$MESS["MESSAGE_SEND_FIELD_SUBJECT_PLACEHOLDER"] = "Geben Sie den Betreff ein";
+$MESS["MESSAGE_SEND_FIELD_TO"] = "An";
+$MESS["MESSAGE_SEND_SELECT_SENDER_TITLE"] = "Absender auswählen";
+$MESS["MESSAGE_SEND_TITLE_FORWARD"] = "Weiterleiten";
+$MESS["MESSAGE_SEND_TITLE_NEW"] = "Neue Nachricht";
+$MESS["MESSAGE_SEND_TITLE_REPLY"] = "Antworten";
+$MESS["MESSAGE_SEND_WARNING_EMPTY_RECIPIENT_TEXT"] = "Öffnen Sie das Profil und fügen Sie eine E-Mail-Adresse hinzu";
+$MESS["MESSAGE_SEND_WARNING_EMPTY_RECIPIENT_TITLE"] = "Es gibt keine E-Mail-Adresse, um die Nachricht zu senden";

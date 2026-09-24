@@ -1,0 +1,19 @@
+<?php
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE"] = "O responsável pode alterar o prazo";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_SUBTITLE"] = "O responsável pode alterar o prazo a qualquer momento.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE"] = "O responsável pode alterar o prazo";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE_MSGVER_1"] = "O responsável pode alterar o prazo";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL"] = "Exigir revisão da tarefa ao fechar";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE"] = "Apenas o criador da tarefa pode fechar a tarefa após verificar o resultado.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE_MSGVER_1"] = "A tarefa concluída será enviada ao proprietário para revisão. Ele aceitará e fechará a tarefa ou a retornará para revisão.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_TITLE"] = "Exigir aprovação após conclusão";
+$MESS["M_TASKS_EXTRA_SETTINGS_DEADLINE_AUTO_CHANGED"] = "O prazo da tarefa foi ajustado para levar em conta os fins de semana.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME"] = "Mover prazo se cair em um fim de semana";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE"] = "O prazo será ajustado se cair em um final de semana.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE_MSGVER_1"] = "O prazo da tarefa será estendido se cair em um final de semana ou feriado.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_TITLE"] = "Pular finais de semana";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED"] = "Não fechar tarefa sem resumo do status";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE"] = "O responsável tem que fornecer um resumo do status quando fechar a tarefa.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE_MSGVER_1"] = "O responsável precisará adicionar um resumo do status para marcar a tarefa como concluída.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE"] = "Exigir resumo do status da tarefa";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE_MSGVER_1"] = "Exigir resumo do status da tarefa";

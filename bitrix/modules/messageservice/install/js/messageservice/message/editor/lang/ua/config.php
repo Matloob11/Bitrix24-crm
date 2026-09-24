@@ -1,0 +1,20 @@
+<?php
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE"] = "Файл";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE_DISK"] = "Знайти в Бітрікс24";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE_UPLOAD"] = "Вибрати на комп'ютері";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_ADD"] = "Додати";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_CANCEL"] = "Скасувати";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_NO_CHANNELS"] = "Увімкнути надсилання повідомлень";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_SEND"] = "Надіслати";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_COUNTER"] = "Знаків: [color]#COUNT#[/color]/#MAX#";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_FROM"] = "Надішлемо повідомлення з номера #FROM#";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_GENERIC_ERROR"] = "Не вдалося виконати дію. Спробуйте ще раз.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_RECEIVER"] = "Додайте телефон клієнта";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_TEMPLATE_BODY"] = "Зареєструйте свій шаблон в особистому кабінеті вашого каналу зв'язку, щоб надсилати клієнту повідомлення.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_TEMPLATE_TITLE"] = "Тут буде шаблон повідомлення";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PLACEHOLDER"] = "Напишіть повідомлення";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PLACEHOLDER_FILLED_LATER_HINT"] = "Деякі дані заповняться автоматично після надсилання повідомлення.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PREVIEW"] = "Що побачить клієнт";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_SUGGEST_TEMPLATE"] = "Запропонувати шаблон";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_TEMPLATES"] = "Шаблони";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_TEMPLATE_MESSAGE"] = "Повідомлення за шаблоном";

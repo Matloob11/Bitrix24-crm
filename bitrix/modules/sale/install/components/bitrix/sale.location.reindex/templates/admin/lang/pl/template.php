@@ -1,0 +1,27 @@
+<?php
+$MESS["SALE_SLRI_ALL_LANGS_2"] = "Wszystkie języki";
+$MESS["SALE_SLRI_ALL_TYPES_2"] = "Wszystkie typy";
+$MESS["SALE_SLRI_AP_TIMELIMIT"] = "Krok ponownego indeksowania, sek.";
+$MESS["SALE_SLRI_ERROR"] = "Wewnętrzny błąd.";
+$MESS["SALE_SLRI_HEAVY_DUTY_HOST_NOTICE"] = "Ponowne indeksowanie może zwiększyć obciążenie bazy danych i serwera. Jeśli masz zamiar ponownie przeindeksować dużą ilość danych, przed wykonaniem tej czynności skonsultuj się z działem pomocy firmy, z której hostingu korzystasz.";
+$MESS["SALE_SLRI_HEAVY_DUTY_NOTICE"] = "Ponowne indeksowanie może zająć dużo czasu, od pół godziny do kilku godzin, w zależności od ustawień sieciowych i sprzętu.";
+$MESS["SALE_SLRI_LANGS4INDEX_2"] = "Użyj szybkiego wyszukiwania języków";
+$MESS["SALE_SLRI_SETTINGS_BASE"] = "Ustawienia główne";
+$MESS["SALE_SLRI_STAGE_CLEANUP"] = "czyszczenie indeksu wyszukiwania";
+$MESS["SALE_SLRI_STAGE_COMPLETE"] = "zakończono ponowne indeksowanie";
+$MESS["SALE_SLRI_STAGE_CREATE_DICTIONARY"] = "tworzenie słownika";
+$MESS["SALE_SLRI_STAGE_CREATE_SEARCH_INDEX"] = "tworzenie indeksu wyszukiwania";
+$MESS["SALE_SLRI_STAGE_CREATE_SITE2LOCATION_INDEX"] = "tworzenie indeksu powiązań stron";
+$MESS["SALE_SLRI_STAGE_INITIAL"] = "oczekiwanie na rozpoczęcie";
+$MESS["SALE_SLRI_STAGE_INTERRUPTED"] = "przerwano ponowne indeksowanie";
+$MESS["SALE_SLRI_STAGE_INTERRUPTING"] = "przerywanie";
+$MESS["SALE_SLRI_STAGE_RESORT_DICTIONARY"] = "sortowanie słownika";
+$MESS["SALE_SLRI_STAGE_RESTORE_DB_INDEXES"] = "przywracanie indeksów bazy danych";
+$MESS["SALE_SLRI_START"] = "Ponownie indeksuj teraz";
+$MESS["SALE_SLRI_STATUS"] = "Status";
+$MESS["SALE_SLRI_STOP"] = "zatrzymaj";
+$MESS["SALE_SLRI_STOPPING"] = "Przerywanie ponownego indeksowania...";
+$MESS["SALE_SLRI_SURE_REINDEX"] = "Czy na pewno chcesz teraz ponownie przeindeksować?";
+$MESS["SALE_SLRI_TAB_REINDEX_TITLE"] = "Ponownie indeksuj";
+$MESS["SALE_SLRI_TAB_REINDEX_TITLE_SETTINGS"] = "Parametry ponownego indeksowania";
+$MESS["SALE_SLRI_TYPES4INDEX_2"] = "Użyj szybkiego wyszukiwania typów";

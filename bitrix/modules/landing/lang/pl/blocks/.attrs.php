@@ -1,0 +1,23 @@
+<?php
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION"] = "Animacja suwaka";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_HINT"] = "Wybierz efekt animacji dla przejścia między kolejnymi slajdami. Animacja zanikająca jest dostępna wyłącznie w przypadku jednego slajdu.";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_OFF"] = "Brak";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS"] = "Wygląd przycisku";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS_0"] = "Brak przycisków";
+$MESS["LANDING_BLOCK_ATTRS_AUTO"] = "Auto";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY"] = "Autoodtwarzanie";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY_SPEED"] = "Szybkość";
+$MESS["LANDING_BLOCK_ATTRS_DOTS"] = "Pokaż kropki nawigacyjne";
+$MESS["LANDING_BLOCK_ATTRS_NO"] = "Nie";
+$MESS["LANDING_BLOCK_ATTRS_OFF"] = "Wyłącz";
+$MESS["LANDING_BLOCK_ATTRS_ON"] = "Włącz";
+$MESS["LANDING_BLOCK_ATTRS_PAUSE_HOVER"] = "Wstrzymaj po najechaniu kursorem";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW"] = "Slajdy na ekranie";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW_HINT"] = "Liczba jednoczesnych slajdów umieszczonych obok siebie, które użytkownik zobaczy na ekranie. Opcja ta działa tylko w przypadku wyświetlania strony na komputerze stacjonarnym lub laptopie.";
+$MESS["LANDING_BLOCK_ATTRS_TIME_1"] = "1 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_3"] = "3 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_5"] = "5 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_10"] = "10 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_15"] = "15 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_30"] = "30 s";
+$MESS["LANDING_BLOCK_ATTRS_YES"] = "Tak";

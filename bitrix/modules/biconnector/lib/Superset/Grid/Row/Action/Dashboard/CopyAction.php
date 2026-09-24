@@ -1,0 +1,75 @@
+<?php
+
+namespace Bitrix\BIConnector\Superset\Grid\Row\Action\Dashboard;
+
+use Bitrix\BIConnector\Access\AccessController;
+use Bitrix\BIConnector\Access\ActionDictionary;
+use Bitrix\BIConnector\Access\Model\DashboardAccessItem;
+use Bitrix\BIConnector\Configuration\DashboardTariffConfigurator;
+use Bitrix\BIConnector\Superset\MarketAccessManager;
+use Bitrix\Main\HttpRequest;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Result;
+
+final class CopyAction extends BaseDashboardAction
+{
+	public static function getId(): ?string
+	{
+		return 'copy';
+	}
+
+	public function processRequest(HttpRequest $request): ?Result
+	{
+		return null;
+	}
+
+	protected function getText(): string
+	{
+		return Loc::getMessage('BICONNECTOR_DASHBOARD_GRID_ACTION_COPY_MSGVER_1') ?? '';
+	}
+
+	public function getControl(array $rawFields): ?array
+	{
+		if (!DashboardTariffConfigurator::isAvailableDashboard($rawFields['APP_ID']))
+		{
+			return null;
+		}
+
+		$accessItem = DashboardAccessItem::createFromArray([
+			'ID' => (int)$rawFields['ID'],
+			'TYPE' => $rawFields['TYPE'],
+			'STATUS' => $rawFields['STATUS'],
+		]);
+		if (!AccessController::getCurrent()->check(ActionDictionary::ACTION_BIC_DASHBOARD_COPY, $accessItem))
+		{
+			return null;
+		}
+
+		$dashboardId = (int)$rawFields['ID'];
+		$appId = \CUtil::JSEscape($rawFields['APP_ID']);
+		$type = \CUtil::JSEscape($rawFields['TYPE']);
+		$onClickHandler = <<<JS
+			BX.BIConnector.SupersetDashboardGridManager.Instance.duplicateDashboard({$dashboardId}, {
+				id: {$dashboardId},
+				appId: '{$appId}',
+				type: '{$type}'.toLowerCase(),
+				from: 'grid_menu',
+			})
+		JS;
+
+		if (!MarketAccessManager::getInstance()->isDashboardAvailableByType($rawFields['TYPE']))
+		{
+			$this->onclick = "BX.UI.InfoHelper.show(\"limit_benefit_market_active\")";
+
+			return parent::getControl($rawFields);
+		}
+
+		$this->onclick = $onClickHandler;
+
+		$result = parent::getControl($rawFields);
+
+		$result['html'] = $this->getMenuItem('--o-copy');
+
+		return $result;
+	}
+}

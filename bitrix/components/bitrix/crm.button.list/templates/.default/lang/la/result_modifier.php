@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_BUTTON_LIST_ACTIONS_COPY"] = "Crear basado en";
+$MESS["CRM_BUTTON_LIST_ACTIONS_EDIT"] = "Editar";
+$MESS["CRM_BUTTON_LIST_ACTIONS_REMOVE"] = "Eliminar widget";
+$MESS["CRM_BUTTON_LIST_ACTIONS_VIEW"] = "Ver";
+$MESS["CRM_BUTTON_LIST_FORMS_MINE"] = "Widgets de mi compañía";
+$MESS["CRM_BUTTON_LIST_FORMS_PRESET"] = "Widgets estándar";

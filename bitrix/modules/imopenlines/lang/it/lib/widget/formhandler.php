@@ -1,0 +1,22 @@
+<?php
+$MESS["IMOL_LCC_ERROR_ACCESS_DENIED"] = "Non disponi dell'autorizzazione sufficiente per accedere a questa conversazione.";
+$MESS["IMOL_LCC_ERROR_CHAT_ID"] = "ID chat non valido.";
+$MESS["IMOL_LCC_ERROR_CHAT_TYPE"] = "Questa chat non è un Canale aperto";
+$MESS["IMOL_LCC_ERROR_FORM_ID"] = "L'ID modulo è mancante";
+$MESS["IMOL_LCC_ERROR_IM_LOAD"] = "Errore durante l'inizializzazione del modulo Messaggistica immediata.";
+$MESS["IMOL_LCC_ERROR_PULL_LOAD"] = "Errore durante l'inizializzazione del modulo Push & Pull.";
+$MESS["IMOL_LCC_ERROR_USER_ID"] = "ID utente non valido.";
+$MESS["IMOL_LCC_FILL_FORM"] = "Compila il modulo:";
+$MESS["IMOL_LCC_FORM_ACTIVITY_LINK"] = "Visualizza i dati del modulo nel CRM";
+$MESS["IMOL_LCC_FORM_EMAIL"] = "E-mail";
+$MESS["IMOL_LCC_FORM_HISTORY"] = "Il cliente ha richiesto il registro conversazioni ##LINK#";
+$MESS["IMOL_LCC_FORM_HISTORY_2"] = "La cronologia della conversazione ##LINK# è stata inviata al cliente in accordo alla sua richiesta";
+$MESS["IMOL_LCC_FORM_LAST_NAME"] = "Cognome";
+$MESS["IMOL_LCC_FORM_NAME"] = "Nome";
+$MESS["IMOL_LCC_FORM_NONE"] = "non fornito";
+$MESS["IMOL_LCC_FORM_PHONE"] = "Telefono";
+$MESS["IMOL_LCC_FORM_SENT"] = "Link modulo inviato:";
+$MESS["IMOL_LCC_FORM_SUBMIT"] = "Modulo completato:";
+$MESS["IMOL_LCC_GUEST_NAME"] = "Ospite";
+$MESS["IMOL_TRACKER_BUTTON_CANCEL"] = "Annulla";
+$MESS["IMOL_TRACKER_BUTTON_CHANGE"] = "Modifica";

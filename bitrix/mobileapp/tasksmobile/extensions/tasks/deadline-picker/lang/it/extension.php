@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_DESCRIPTION"] = "Vuoi spostare la scadenza al primo giorno feriale?";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_NO_TODAY"] = "Imposta comunque per oggi";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_NO_TOMORROW"] = "Imposta comunque per domani";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_TITLE_TODAY"] = "Oggi non è un giorno feriale";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_TITLE_TOMORROW"] = "Domani non è un giorno feriale";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_YES"] = "Sposta al primo giorno feriale";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_DEADLINE_CHANGE_REASON_BUTTON"] = "Salva";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_DEADLINE_CHANGE_REASON_DESCRIPTION"] = "Il proprietario dell'incarico chiede di fornire un motivo per la modifica della scadenza. Il testo che invii qui sarà visibile nella chat dell'incarico.";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_DEADLINE_CHANGE_REASON_TITLE"] = "Motivo per la modifica della scadenza";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_CUSTOM_DATE"] = "Data personalizzata";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_NEXT_WEEK_END"] = "Fine della prossima settimana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_NEXT_WEEK_START"] = "Inizio della prossima settimana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_NO_DEADLINE"] = "Nessuna scadenza";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_THIS_WEEK"] = "Questa settimana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_TODAY"] = "Oggi";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_TOMORROW"] = "Domani";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_WEEK_END"] = "Fine della settimana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_RESTRICTED_BY_DATE"] = "La scadenza non può essere successiva alla data #DATE#.";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_TITLE"] = "Scadenza";

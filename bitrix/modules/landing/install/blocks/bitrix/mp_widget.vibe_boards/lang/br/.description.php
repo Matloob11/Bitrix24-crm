@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_VIBE_BOARDS_NAME"] = "Vibe das lousas";
+$MESS["LANDING_BLOCK_WIDGET_VIBE_BOARDS_NAME_NEW"] = "Modelo: lousas";

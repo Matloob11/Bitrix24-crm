@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_DAY"] = "1 dia";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_WEEK"] = "1 semana";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_2_WEEKS"] = "2 semanas";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_3_DAYS"] = "3 dias";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_CUSTOM"] = "Personalizado";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_EMPTY"] = "Sem prazo";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_HINT"] = "Esta data será definida como o prazo padrão para todas as novas tarefas que você criar. Você pode alterá-la sempre que quiser.";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_TITLE"] = "Prazo padrão";
+$MESS["TASKS_DEADLINE_MENU_ERROR_DESCRIPTION"] = "Recarregue a página e tente novamente.";
+$MESS["TASKS_DEADLINE_MENU_ERROR_TITLE"] = "Erro";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DELIMITER"] = "Notificação de prazo vazio";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DONT_SKIP"] = "Sempre que uma tarefa é criada";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_HINT"] = "Selecione como você deseja ser notificado sobre prazos vazios nas tarefas que criar.";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOREVER"] = "Nunca";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_DAY"] = "Não lembrar hoje";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_MONTH"] = "Não lembrar este mês";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_WEEK"] = "Não lembrar esta semana";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_TITLE"] = "Notificação de prazo vazio";

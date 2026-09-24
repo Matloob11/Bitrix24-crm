@@ -1,0 +1,8 @@
+<?php
+$MESS["CRM_ACTIVITY_INCOMING_CALL"] = "Chamada telefônica (recebida)";
+$MESS["CRM_ACTIVITY_INCOMING_EMAIL"] = "E-mail (recibido)";
+$MESS["CRM_ACTIVITY_OUTGOING_CALL"] = "Chamada telefônica (realizada)";
+$MESS["CRM_ACTIVITY_OUTGOING_EMAIL"] = "E-mail (enviado)";
+$MESS["CRM_ACTIVITY_PROVIDER_BASE_SOURCE_NONE"] = "(nenhuma)";
+$MESS["CRM_ACTIVITY_PROVIDER_BASE_SUBJECT"] = "Nova atividade (#DATE#)";
+$MESS["CRM_ACTIVITY_PROVIDER_COMMUNICATIONS_LABEL"] = "Com";

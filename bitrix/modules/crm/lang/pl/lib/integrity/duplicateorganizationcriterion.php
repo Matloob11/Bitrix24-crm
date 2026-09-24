@@ -1,0 +1,5 @@
+<?
+$MESS["CRM_DUP_CRITERION_ORG_ENTITY_TOTAL"] = "#QTY# dla firmy \"#DESCR#\"";
+$MESS["CRM_DUP_CRITERION_ORG_ENTITY_TOTAL_EXCEEDED"] = "Ponad #QTY# dla firmy \"#DESCR#\"";
+$MESS["CRM_DUP_CRITERION_ORG_SUMMARY"] = "Pasująca firma: #DESCR#";
+?>

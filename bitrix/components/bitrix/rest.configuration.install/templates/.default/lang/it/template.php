@@ -1,0 +1,25 @@
+<?php
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_BTN_CLOSE"] = "Interrompi ora";
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_BTN_CONTINUE"] = "Continua importazione";
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_DESCRIPTION"] = "Se scegli di interrompere ora e riavviare più tardi, la procedura di importazione ricomincerà da capo.";
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_TITLE"] = "Interrompere l'importazione?";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_ACCEPT_CLEAR"] = "Desidero sostituire le impostazioni Bitrix24 correnti con quelle della preimpostazione della soluzione CRM scaricata.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_ACCEPT_CLEAR_ROLLBACK"] = "Desidero sostituire le impostazioni Bitrix24 correnti con quelle della preimpostazione della soluzione CRM selezionata.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_DESCRIPTION"] = "Cliccando su \"Continua\", accetti che alcune o tutte le impostazioni Bitrix24 correnti possano essere modificate dalla preimpostazione della soluzione CRM importata e non possano essere ripristinate in seguito.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_DESCRIPTION_ROLLBACK"] = "Cliccando su \"Continua\", accetti che l'eliminazione dell'applicazione ripristinerà alcune o tutte le impostazioni Bitrix24 correnti ed eliminerà alcuni dei dati CRM esistenti e che questa azione non potrà essere annullata in seguito.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_BTN_CANCEL"] = "Annulla";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_BTN_CONTINUE"] = "Continua";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_CHECKBOX_LABEL"] = "Si, ho capito. Elimina i dati esistenti.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_TEXT"] = "Procedendo con l'installazione, alcuni o tutti i dati esistenti saranno eliminati. Procedere ed eliminare i dati?";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_DESCRIPTION"] = "Cliccando su \"Continua\", accetti che alcune o tutte le impostazioni Bitrix24 correnti possano essere modificate dalla preimpostazione della soluzione CRM importata e non possano essere ripristinate in seguito.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_DESCRIPTION_ROLLBACK"] = "Cliccando su \"Continua\", accetti che il recupero ripristinerà alcune o tutte le impostazioni Bitrix24 correnti ed eliminerà alcuni dei dati CRM esistenti e che questa azione non potrà essere annullata in seguito.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_FATAL_ERROR"] = "Errore interno. Ricarica la pagina e riprova. Se il problema persiste, contatta l'Helpdesk.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_FINISH_TEXT"] = "La preimpostazione della soluzione selezionata è stata importata correttamente";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_LATER_BTN"] = "Importerò più tardi";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_LATER_POPUP_CLOSE_BTN"] = "OK";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_PROGRESSBAR_TITLE"] = "Importazione impostazioni ora";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_START_BTN"] = "Continua";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_STEP_MSGVER_1"] = "Stiamo installando il modello che hai selezionato";
+$MESS["REST_CONFIGURATION_IMPORT_PRE_INSTALL_APP_DESCRIPTION"] = "Clicca su \"Continua\" per installare la preimpostazione della soluzione \"#APP_NAME#\".";
+$MESS["REST_CONFIGURATION_IMPORT_PRE_INSTALL_LATER_APP_POPUP_DESCRIPTION"] = "Puoi installare la preimpostazione della soluzione \"#APP_NAME#\" in qualsiasi momento, basta trovarlo nella lista delle soluzioni. Per ottenere maggiori informazioni visita #HELP_DESK_LINK#.";
+$MESS["REST_CONFIGURATION_IMPORT_PRE_INSTALL_LATER_APP_POPUP_HELP_DESK_LINK_LABEL"] = "qui";

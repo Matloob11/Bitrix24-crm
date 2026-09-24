@@ -1,0 +1,15 @@
+<?php
+$MESS["CATEGORY_DETAIL_CREATE_FAILED_STAGE"] = "Creazione fase fallita";
+$MESS["CATEGORY_DETAIL_CREATE_PROCESS_STAGE"] = "Crea fase";
+$MESS["CATEGORY_DETAIL_DEFAULT_CATEGORY_NAME2"] = "Nuova pipeline";
+$MESS["CATEGORY_DETAIL_DEFAULT_STAGE_NAME2"] = "Nuova fase";
+$MESS["CATEGORY_DETAIL_DELETE2"] = "Elimina pipeline";
+$MESS["CATEGORY_DETAIL_DELETE_CATEGORY2"] = "Eliminare la pipeline?";
+$MESS["CATEGORY_DETAIL_FUNNEL_NOT_LOADED2"] = "Pipeline";
+$MESS["CATEGORY_DETAIL_IS_DEFAULT_TEXT"] = "Puoi modificarla, ma non eliminarla";
+$MESS["CATEGORY_DETAIL_IS_DEFAULT_TITLE2_MSGVER_1"] = "Questa è una pipeline predefinita";
+$MESS["CATEGORY_DETAIL_NAME_ERROR"] = "Inserisci il nome della pipeline";
+$MESS["CATEGORY_DETAIL_NAME_TITLE"] = "Nome";
+$MESS["CATEGORY_DETAIL_SAVE"] = "Salva";
+$MESS["CATEGORY_DETAIL_SUCCESS_CREATION"] = "Fase creata";
+$MESS["CATEGORY_DETAIL_SUCCESS_UPDATE"] = "Fase modificata";

@@ -1,0 +1,8 @@
+<?php
+$MESS["BICONNECTOR_APACHE_SUPERSET_DATASET_GRID_ERROR_LOAD_MODULES"] = "Non sono stati caricati tutti i moduli richiesti.";
+$MESS["BICONNECTOR_APACHE_SUPERSET_DATASET_GRID_MENU_ITEM_EXTERNAL_CONNECTION"] = "Usa origine dati esterna";
+$MESS["BICONNECTOR_APACHE_SUPERSET_DATASET_GRID_MENU_ITEM_IMPORT_CSV_MSGVER_1"] = "Importa file CSV";
+$MESS["BICONNECTOR_APACHE_SUPERSET_DATASET_GRID_STUB_DESCRIPTION_MSGVER_1"] = "Importa un file CSV o crea una connessione esterna per creare un dataset.";
+$MESS["BICONNECTOR_APACHE_SUPERSET_DATASET_GRID_STUB_DESCRIPTION_MSGVER_2"] = "Importa un file CSV o crea una connessione esterna per creare una tabella.";
+$MESS["BICONNECTOR_APACHE_SUPERSET_DATASET_GRID_STUB_TITLE"] = "Non sono presenti dataset";
+$MESS["BICONNECTOR_APACHE_SUPERSET_DATASET_GRID_STUB_TITLE_MSGVER_1"] = "Non sono presenti tabelle";

@@ -1,0 +1,28 @@
+<?php
+$MESS["CRM_ALL"] = "Totale";
+$MESS["CRM_ORDER_PAYMENT_ACTION_PAID"] = "Paga";
+$MESS["CRM_ORDER_PAYMENT_ACTION_PAID_N"] = "Annulla pagamento";
+$MESS["CRM_ORDER_PAYMENT_BUILD_TIMELINE_DLG_TITLE"] = "Prepara cronologia pagamenti";
+$MESS["CRM_ORDER_PAYMENT_BUILD_TIMELINE_STATE"] = "#processed# di #total#";
+$MESS["CRM_ORDER_PAYMENT_DELETE"] = "Elimina";
+$MESS["CRM_ORDER_PAYMENT_DELETE_CONFIRM"] = "Eliminare questo elemento?";
+$MESS["CRM_ORDER_PAYMENT_DELETE_TITLE"] = "Elimina pagamento";
+$MESS["CRM_ORDER_PAYMENT_EDIT"] = "Modifica";
+$MESS["CRM_ORDER_PAYMENT_EDIT_TITLE"] = "Modifica pagamento";
+$MESS["CRM_ORDER_PAYMENT_LIST_ADD"] = "Aggiungi pagamento";
+$MESS["CRM_ORDER_PAYMENT_LIST_ADD_SHORT"] = "Pagamento";
+$MESS["CRM_ORDER_PAYMENT_LIST_CHOOSE_ACTION"] = "Seleziona azione";
+$MESS["CRM_ORDER_PAYMENT_LIST_FILTER_NAV_BUTTON_LIST"] = "Elenco";
+$MESS["CRM_ORDER_PAYMENT_LRP_DLG_BTN_CLOSE"] = "Chiudi";
+$MESS["CRM_ORDER_PAYMENT_LRP_DLG_BTN_START"] = "Esegui";
+$MESS["CRM_ORDER_PAYMENT_LRP_DLG_BTN_STOP"] = "Interrompi";
+$MESS["CRM_ORDER_PAYMENT_LRP_DLG_REQUEST_ERR"] = "Errore durante l'elaborazione della richiesta.";
+$MESS["CRM_ORDER_PAYMENT_LRP_DLG_WAIT"] = "Attendere...";
+$MESS["CRM_ORDER_PAYMENT_PAID"] = "Pagato";
+$MESS["CRM_ORDER_PAYMENT_PAYMENT_SUMMARY"] = "Pagamento ##ACCOUNT_NUMBER# del #DATE_BILL#";
+$MESS["CRM_ORDER_PAYMENT_REBUILD_ACCESS_ATTRS"] = "Le autorizzazioni di accesso aggiornate richiedono l'aggiornamento degli attributi di accesso correnti utilizzando la <a id=\"#ID#\" target=\"_blank\" href=\"#URL#\">pagina di gestione delle autorizzazioni</a>.";
+$MESS["CRM_ORDER_PAYMENT_SEND_TO_CHAT"] = "Invia in live chat";
+$MESS["CRM_ORDER_PAYMENT_SHOW"] = "Visualizza";
+$MESS["CRM_ORDER_PAYMENT_SHOW_TITLE"] = "Visualizza pagamento";
+$MESS["CRM_ORDER_PAYMENT_UNPAID"] = "Non pagato";
+$MESS["CRM_SHOW_ROW_COUNT"] = "Mostra quantità";

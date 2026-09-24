@@ -1,0 +1,20 @@
+<?php
+$MESS["UPLOADER_FILE_NAME_NOT_ALLOWED"] = "Nom de fichier non valide.";
+$MESS["UPLOADER_FILE_TYPE_NOT_ALLOWED"] = "Fichier de type non valide.";
+$MESS["UPLOADER_IMAGE_IS_TOO_BIG"] = "L'image est trop grande.";
+$MESS["UPLOADER_IMAGE_IS_TOO_BIG_DESC"] = "La taille maximale est #maxWidth#x#maxHeight#.";
+$MESS["UPLOADER_IMAGE_IS_TOO_SMALL"] = "L'image est trop petite.";
+$MESS["UPLOADER_IMAGE_IS_TOO_SMALL_DESC"] = "La taille minimale est #minWidth#x#minHeight#.";
+$MESS["UPLOADER_IMAGE_MAX_FILE_SIZE_EXCEEDED"] = "La taille du fichier image est trop grande.";
+$MESS["UPLOADER_IMAGE_MAX_FILE_SIZE_EXCEEDED_DESC"] = "La taille maximale du fichier image est #imageMaxFileSize#.";
+$MESS["UPLOADER_IMAGE_MIN_FILE_SIZE_EXCEEDED"] = "La taille du fichier image est trop petite.";
+$MESS["UPLOADER_IMAGE_MIN_FILE_SIZE_EXCEEDED_DESC"] = "La taille minimale du fichier image est #imageMinFileSize#.";
+$MESS["UPLOADER_IMAGE_TYPE_NOT_SUPPORTED"] = "Type d'image non pris en charge.";
+$MESS["UPLOADER_MAX_FILE_COUNT_EXCEEDED"] = "Nombre maximal de fichiers dépassé.";
+$MESS["UPLOADER_MAX_FILE_COUNT_EXCEEDED_DESC"] = "Le nombre maximal de fichiers est #maxFileCount#.";
+$MESS["UPLOADER_MAX_FILE_SIZE_EXCEEDED"] = "Le fichier est trop grand.";
+$MESS["UPLOADER_MAX_FILE_SIZE_EXCEEDED_DESC"] = "La taille maximale du fichier est #maxFileSize#.";
+$MESS["UPLOADER_MAX_TOTAL_FILE_SIZE_EXCEEDED"] = "Taille totale maximale dépassée.";
+$MESS["UPLOADER_MAX_TOTAL_FILE_SIZE_EXCEEDED_DESC"] = "La taille totale maximale des fichiers est #maxTotalFileSize#.";
+$MESS["UPLOADER_MIN_FILE_SIZE_EXCEEDED"] = "Le fichier est trop petit.";
+$MESS["UPLOADER_MIN_FILE_SIZE_EXCEEDED_DESC"] = "La taille minimale du fichier est #minFileSize#.";

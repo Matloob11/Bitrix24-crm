@@ -1,0 +1,797 @@
+<?php
+
+use Bitrix\Disk;
+use Bitrix\Disk\Document\LocalDocumentController;
+use Bitrix\Disk\Document\Models\DocumentSessionTable;
+use Bitrix\Disk\document\SharingControlType;
+use Bitrix\Disk\Driver;
+use Bitrix\Disk\Integration\Bitrix24Manager;
+use Bitrix\Disk\Internal\Service\UnifiedLink\UnifiedLinkAccessService;
+use Bitrix\Disk\Internals\BaseComponent;
+use Bitrix\Disk\User;
+use Bitrix\Disk\Document\OnlyOffice;
+use Bitrix\Main\Analytics\AnalyticsEvent;
+use Bitrix\Main\Application;
+use Bitrix\Main\ArgumentException;
+use Bitrix\Main\DI\ServiceLocator;
+use Bitrix\Main\Engine\Contract\Controllerable;
+use Bitrix\Main\Engine\CurrentUser;
+use Bitrix\Main\Engine\UrlManager;
+use Bitrix\Main\Loader;
+use Bitrix\Main\ModuleManager;
+use Bitrix\Main\NotImplementedException;
+use Bitrix\Main\Result;
+use Bitrix\Main\Session\SessionInterface;
+use Bitrix\Main\Web\Json;
+use Bitrix\Main\Web\Uri;
+use Bitrix\Pull\Config;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
+Loader::requireModule('disk');
+
+class CDiskFileEditorOnlyOfficeComponent extends BaseComponent implements Controllerable
+{
+	public const ERROR_CODE_EXCEEDED_LIMIT = 'exceeded_limit';
+	public const ERROR_CODE_COULD_NOT_LOCK = 'could_not_lock';
+	protected const SESSION_SHOW_IMMEDIATELY_KEY = 'disk.promoShowImmediately';
+	protected const AUTO_FORCE_RELOAD_AFTER = 300_000; // 5 minutes in ms
+
+	private const OPTION_CATEGORY_TO_CONTROL_BUTTON_WIDGET_DISPLAY = 'session-boost-in-editor';
+
+	protected User $currentUser;
+	protected OnlyOffice\Configuration $onlyOfficeConfiguration;
+	protected OnlyOffice\RestrictionManager $restrictionManager;
+	protected Disk\Integration\Baas\BaasSessionBoostService $sessionBoostService;
+	protected Disk\Public\Provider\CustomServerAvailabilityProvider $customServerAvailabilityProvider;
+	private bool $unifiedLinkAccessOnly = false;
+	private bool $unifiedLinkMode = false;
+
+	protected function processBeforeAction($actionName)
+	{
+		$this->onlyOfficeConfiguration = new OnlyOffice\Configuration();
+		$this->restrictionManager = new OnlyOffice\RestrictionManager();
+
+		if (!OnlyOffice\OnlyOfficeHandler::isEnabled())
+		{
+			return false;
+		}
+
+		$this->sessionBoostService = new Disk\Integration\Baas\BaasSessionBoostService();
+
+		$this->customServerAvailabilityProvider =
+			ServiceLocator::getInstance()
+				->get(Disk\Public\Provider\CustomServerAvailabilityProvider::class)
+		;
+
+		return parent::processBeforeAction($actionName);
+	}
+
+	public function prepareParams()
+	{
+		parent::prepareParams();
+
+		if (!isset($this->arParams['EDITOR_MODE']))
+		{
+			$this->arParams['EDITOR_MODE'] = OnlyOffice\Editor\ConfigBuilder::VISUAL_MODE_USUAL;
+		}
+
+		if (CurrentUser::get()->getId())
+		{
+			$this->currentUser = User::getById(CurrentUser::get()->getId());
+		}
+		else
+		{
+			$this->currentUser = Disk\Document\Models\GuestUser::create();
+		}
+
+		$this->unifiedLinkAccessOnly = (bool)($this->arParams['UNIFIED_LINK_ACCESS_ONLY'] ?? false);
+		$this->unifiedLinkMode = (bool)($this->arParams['UNIFIED_LINK_MODE'] ?? false);
+	}
+
+	public function configureActions()
+	{
+		return [];
+	}
+
+	protected function processActionDefault()
+	{
+		$this->arResult['UNIFIED_LINK_ACCESS_ONLY'] = $this->unifiedLinkAccessOnly;
+		$this->arResult['UNIFIED_LINK_MODE'] = $this->unifiedLinkMode;
+		$this->arResult['FILE_UNIQUE_CODE'] = $this->arParams['FILE_UNIQUE_CODE'] ?? '';
+		$this->arResult['SIGN_PLACEHOLDERS_ENABLED'] = $this->isSignPlaceholdersEnabled();
+
+		if (isset($this->arParams['TEMPLATE']) && $this->arParams['TEMPLATE'] === 'not-found')
+		{
+			$this->includeComponentTemplate('not-found');
+
+			return;
+		}
+
+		if (!isset($this->arParams['SHOW_BUTTON_OPEN_NEW_WINDOW']))
+		{
+			$this->arParams['SHOW_BUTTON_OPEN_NEW_WINDOW'] = true;
+		}
+		/** @var Disk\Document\Models\DocumentSession $documentSession */
+		$documentSession = $this->arParams['DOCUMENT_SESSION'];
+
+		if ($this->isCustomServerUnavailable())
+		{
+			$documentSession->setAsNonActive();
+			$this->includeComponentTemplate('custom-server-unavailable');
+
+			return;
+		}
+
+		$bitrix24Scenario = new OnlyOffice\Bitrix24Scenario();
+		if ($documentSession->isEdit())
+		{
+			if (!$bitrix24Scenario->canUseEdit())
+			{
+				LocalRedirect($this->processExceededLimit($documentSession));
+			}
+		}
+
+		$this->arResult['EXTERNAL_LINK_MODE'] = (bool)($this->arParams['EXTERNAL_LINK_MODE'] ?? false);
+		$documentInfo = $documentSession->getInfo();
+		if (!$documentInfo)
+		{
+			$documentInfo = $documentSession->createInfo();
+		}
+
+		if ($documentSession->isEdit() && $documentInfo->isAbandoned())
+		{
+			DocumentSessionTable::deactivateByHash($documentSession->getExternalHash());
+			$documentSession = $documentSession->cloneWithNewHash($documentSession->getUserId());
+			$documentInfo = $documentSession->getInfo();
+		}
+		if ($documentInfo->isSaving())
+		{
+			$this->processSavingTemplate($documentSession);
+
+			return;
+		}
+
+		if ($documentSession->isNonActive())
+		{
+			$documentSession->setAsActive();
+		}
+
+		$sessionGetParams = [
+			'userId' => $documentSession->getUserId(),
+			'sourceDocumentSessionId' => $documentSession->getId(),
+			'documentSessionHash' => $documentSession->getExternalHash(),
+		];
+		$onlyOfficeController = new Disk\Controller\OnlyOffice();
+
+		$allowRename = false;
+		$allowEdit = $this->isEditAllowed($documentSession);
+		if ($documentSession->isEdit() && !$documentSession->isVersion())
+		{
+			$allowRename = $documentSession->canUserRename(CurrentUser::get());
+		}
+
+		$configBuilder = new OnlyOffice\Editor\ConfigBuilder($documentSession);
+		$configBuilder
+			->allowEdit($allowEdit)
+			->allowRename($allowRename)
+			->setUser($this->currentUser)
+			/** @see Disk\Controller\OnlyOffice::handleOnlyOfficeAction() */
+			->setCallbackUrl($onlyOfficeController->getActionUri('handleOnlyOffice', $sessionGetParams, true))
+			/** @see Disk\Controller\OnlyOffice::downloadAction() */
+			->setDocumentUrl($onlyOfficeController->getActionUri('download', $sessionGetParams, true))
+		;
+
+		if ($this->arParams['EDITOR_MODE'] === OnlyOffice\Editor\ConfigBuilder::VISUAL_MODE_COMPACT)
+		{
+			$configBuilder
+				->hideRightMenu()
+				->hideRulers()
+				->setCompactHeader()
+				->setCompactToolbar()
+			;
+		}
+
+		$this->arResult['DOCUMENT_HANDLERS'] = $this->getDocumentHandlersForEditingFile();
+		$this->arResult['EDITOR'] = [
+			'MODE' => $configBuilder->getMode(),
+			'ALLOW_EDIT' => $allowEdit,
+		];
+		$this->arResult['DOCUMENT_SESSION'] = [
+			'ID' => $documentSession->getId(),
+			'HASH' => $documentSession->getExternalHash(),
+		];
+		$this->arResult['OBJECT'] = [
+			'ID' => $documentSession->getObjectId(),
+			'NAME' => $documentSession->getObject()->getName(),
+			'SIZE' => $documentSession->getObject()->getSize(),
+			'SIZE_READABLE' => CFile::FormatSize($documentSession->getObject()->getSize()),
+			'DOC_TYPE' => Disk\Analytics\Enum\DocumentTypeEnum::getByExtension($documentSession->getObject()->getExtension())?->value,
+		];
+		$this->arResult['ATTACHED_OBJECT'] = [
+			'ID' => $documentSession->getContext()->getAttachedObjectId(),
+		];
+		$this->arResult['LINK_OPEN_NEW_WINDOW'] = $this->getLinkToView($documentSession);
+
+		$this->arResult['LINK_TO_EDIT'] = $this->getLinkToEdit($documentSession);
+		$this->arResult['LINK_TO_DOWNLOAD'] = $this->getLinkToDownload($documentSession);
+
+		$infoToken = Disk\Document\Online\UserInfoToken::generateTimeLimitedToken(
+			$this->getUserIdForOnline(),
+			$documentSession->getObject()->getRealObjectId()
+		);
+
+		$this->arResult['CURRENT_USER_AS_GUEST'] = $this->currentUser instanceof Disk\Document\Models\GuestUser;
+		$this->arResult['CURRENT_USER'] = Json::encode([
+			'id' => $this->getUserIdForOnline(),
+			'name' => $this->currentUser->getFormattedName(),
+			'avatar' => $this->currentUser->getAvatarSrc(),
+			'infoToken' => $infoToken,
+		]);
+
+		$this->arResult['SHOULD_DISABLE_SHARING_BUTTON'] = $this->shouldDisableSharingButton();
+
+		if ($this->arResult['EXTERNAL_LINK_MODE'])
+		{
+			$configBuilder->allowDownload(false);
+		}
+		else
+		{
+			//for BX.desktopUtils.runningCheck
+			Loader::includeModule('im');
+		}
+
+		if ($this->arResult['EXTERNAL_LINK_MODE'] && ModuleManager::isModuleInstalled('bitrix24'))
+		{
+			$this->arResult['HEADER_LOGO_LINK'] = 'https://bitrix24.com';
+			if (Loader::includeModule('bitrix24') && !\CBitrix24::isCustomDomain())
+			{
+				$host = parse_url(UrlManager::getInstance()->getHostUrl(), PHP_URL_HOST);
+				$baseUrlToLogo = new Uri("https://bitrix24public.com/{$host}");
+
+				$configBuilder->setBaseUrlToLogo($baseUrlToLogo);
+			}
+		}
+		elseif ($this->arResult['EXTERNAL_LINK_MODE'] && !ModuleManager::isModuleInstalled('bitrix24'))
+		{
+			$this->arResult['HEADER_LOGO_LINK'] = UrlManager::getInstance()->getHostUrl();
+		}
+		else
+		{
+			$proxyTypeUser = Driver::getInstance()->getStorageByUserId($this->currentUser->getId())?->getProxyType();
+			if (!$proxyTypeUser)
+			{
+				$this->includeComponentTemplate('not-found');
+
+				return;
+			}
+			if($proxyTypeUser instanceof Disk\ProxyType\User)
+			{
+				$this->arResult['HEADER_LOGO_LINK'] = $proxyTypeUser->getBaseUrlDocumentList();
+			}
+		}
+
+		$this->arResult['SESSION_BOOST_OPTIONS'] = $this->getSessionBoostOptions($documentSession);
+
+		if ($allowEdit && $configBuilder->isEditMode() && $this->shouldUseRestriction())
+		{
+			if ($this->lockForRestriction())
+			{
+				if (
+					!$this->isAllowedEditByRestriction($documentSession->getExternalHash(), $this->currentUser->getId())
+				)
+				{
+					$this->errorCollection[] = new Disk\Internals\Error\Error('Exceeded limit.', self::ERROR_CODE_EXCEEDED_LIMIT, [
+						'limit' => $this->restrictionManager->getLimit(),
+					]);
+
+					AddEventToStatFile(
+						'disk',
+						'disk_oo_limit_edit',
+						$documentSession->getExternalHash(),
+						ServiceLocator::getInstance()->get('disk.onlyofficeConfiguration')->getServer(),
+						'',
+						$this->currentUser->getId()
+					);
+				}
+				else
+				{
+					$this->registerRestrictionUsage($documentSession->getExternalHash(), $this->currentUser->getId());
+				}
+			}
+
+			if ($this->getErrorByCode(self::ERROR_CODE_EXCEEDED_LIMIT) || $this->getErrorByCode(self::ERROR_CODE_COULD_NOT_LOCK))
+			{
+				$this->processRestrictionError($documentSession);
+
+				return;
+			}
+		}
+
+		$editorJsonConfigResult = $this->getEditorJsonConfig($configBuilder);
+		if (!$editorJsonConfigResult->isSuccess())
+		{
+			$this->processCloudError($editorJsonConfigResult, $documentSession);
+
+			return;
+		}
+
+		$editorConfigData = $editorJsonConfigResult->getData();
+		$this->arResult['SERVER'] = $this->getServerByEditorConfig($editorConfigData);
+
+		$this->arResult['EDITOR_JSON'] = Json::encode($editorConfigData);
+
+		$this->arResult['SHARING_CONTROL_TYPE'] = $this->getSharingControlType($documentSession)?->value;
+		$this->arResult['PULL_CONFIG'] = null;
+		$publicPullConfigurator = new Disk\Document\Online\PublicPullConfigurator();
+		if ($publicPullConfigurator->getErrors())
+		{
+			$this->errorCollection->add($publicPullConfigurator->getErrors());
+		}
+		else
+		{
+			$realObjectId = $documentSession->getObject()->getRealObjectId();
+			$this->arResult['PULL_CONFIG'] = $publicPullConfigurator->getConfig($realObjectId);
+
+			$this->arResult['PULL_USER_CONFIG'] = Config::get([
+				'JSON' => true,
+			]);
+
+			$this->arResult['PUBLIC_CHANNEL'] = $publicPullConfigurator->getChannel($realObjectId)->getSignedPublicId();
+		}
+
+		if (OnlyOffice\OnlyOfficeHandler::shouldRestrictedBySize($documentSession->getObject()->getSize()))
+		{
+			$this->includeComponentTemplate('large-file');
+		}
+		else
+		{
+			$this->processLimitSlider();
+
+			if ($configBuilder->isEditMode())
+			{
+				$realtimeForceReloadTag = new Disk\Realtime\Tags\OnlyOfficeForceReloadTag();
+				$this->arResult['REALTIME_FORCE_RELOAD_TAG'] = $realtimeForceReloadTag->getName();
+				$this->arResult['REALTIME_FORCE_RELOAD_COMMAND'] = Disk\Realtime\Events\OnlyOfficeForceReloadEvent::COMMAND;
+				$this->arResult['AUTO_FORCE_RELOAD_AFTER'] = self::AUTO_FORCE_RELOAD_AFTER;
+
+				$realtimeForceReloadTag->subscribe();
+			}
+
+			$this->includeComponentTemplate();
+		}
+
+		if ($this->shouldUseRestriction())
+		{
+			$this->unlockForRestriction();
+		}
+	}
+
+	protected function isCustomServerUnavailable(): bool
+	{
+		$customServerType = Disk\Configuration::getDefaultViewerCustomConfigType();
+
+		return
+			$customServerType instanceof Disk\Internal\Enum\CustomServerTypes &&
+			!$this->customServerAvailabilityProvider->isAvailableForUse();
+	}
+
+ 	/**
+	 * Fill necessary params for show selected slider.
+	 * @return void
+	 */
+	protected function processLimitSlider(): void
+	{
+		$session = $this->getSession();
+		$this->arResult['PROMO_SHOW_IMMEDIATELY'] = (bool)$session->get(self::SESSION_SHOW_IMMEDIATELY_KEY);
+
+		$session->remove(self::SESSION_SHOW_IMMEDIATELY_KEY);
+	}
+
+	private function shouldUseRestriction(): bool
+	{
+		return $this->restrictionManager->shouldUseRestriction();
+	}
+
+	private function isAllowedEditByRestriction(string $documentKey, int $userId): bool
+	{
+		return $this->restrictionManager->isAllowedEdit($documentKey, $userId);
+	}
+
+	private function registerRestrictionUsage(string $documentKey, int $userId): void
+	{
+		$this->restrictionManager->registerUsage($documentKey, $userId);
+	}
+
+	private function lockForRestriction(): bool
+	{
+		if (!$this->restrictionManager->lock())
+		{
+			$this->errorCollection[] = new Disk\Internals\Error\Error('Could not get exclusive lock', self::ERROR_CODE_COULD_NOT_LOCK);
+
+			return false;
+		}
+
+		return true;
+	}
+
+	private function unlockForRestriction(): void
+	{
+		$this->restrictionManager->unlock();
+	}
+
+	/**
+	 * Generate link for view document.
+	 *
+	 * @param Disk\Document\Models\DocumentSession $documentSession
+	 * @param bool $exactlyView open document exactly in view mode instead of any side effects (for e.g. redirect)
+	 * @return Uri|string
+	 */
+	protected function getLinkToView(
+		Disk\Document\Models\DocumentSession $documentSession,
+		bool $exactlyView = false,
+	): string|Uri
+	{
+		if ($this->unifiedLinkMode)
+		{
+			$unifiedLinkOptions = [];
+			$attachedObjectId = (int)$documentSession->getContext()?->getAttachedObjectId();
+			if ($attachedObjectId > 0)
+			{
+				$unifiedLinkOptions['attachedId'] = $attachedObjectId;
+			}
+
+			if ($exactlyView)
+			{
+				$unifiedLinkOptions['noRedirect'] = true;
+			}
+
+			return $this->getUrlManager()->getUnifiedLink($documentSession->getFile(), $unifiedLinkOptions);
+		}
+
+		/** @see \Bitrix\Disk\Controller\DocumentService::viewDocumentAction */
+		return (new Disk\Controller\DocumentService())->getActionUri(
+			'viewDocument',
+			['documentSessionId' => $documentSession->getId()]
+		);
+	}
+
+	protected function getLinkToEdit(Disk\Document\Models\DocumentSession $documentSession)
+	{
+		if ($this->unifiedLinkMode)
+		{
+			$unifiedLinkOptions = [
+				'additionalQueryParams' => [
+					'analytics' => $this->arParams['ANALYTICS'] ?? null,
+				],
+			];
+
+			$attachedObjectId = (int)$documentSession->getContext()?->getAttachedObjectId();
+			if ($attachedObjectId > 0)
+			{
+				$unifiedLinkOptions['attachedId'] = $attachedObjectId;
+			}
+
+			return $this->getUrlManager()->getUnifiedEditLink($documentSession->getFile(), $unifiedLinkOptions);
+		}
+
+		if (isset($this->arParams['LINK_TO_EDIT']))
+		{
+			return $this->arParams['LINK_TO_EDIT'];
+		}
+
+		return (new Disk\Controller\DocumentService())->getActionUri(
+			'goToEdit',
+			[
+				'documentSessionId' => $documentSession->getId(),
+				'documentSessionHash' => $documentSession->getExternalHash(),
+				'serviceCode' => OnlyOffice\OnlyOfficeHandler::getCode(),
+			]
+		);
+	}
+
+	protected function getLinkToDownload(Disk\Document\Models\DocumentSession $documentSession)
+	{
+		if (isset($this->arParams['LINK_TO_DOWNLOAD']))
+		{
+			return $this->arParams['LINK_TO_DOWNLOAD'];
+		}
+
+		/** @see \Bitrix\Disk\Controller\DocumentService::downloadDocumentAction */
+		return (new Disk\Controller\DocumentService())->getActionUri(
+			'downloadDocument',
+			[
+				'documentSessionId' => $documentSession->getId(),
+				'documentSessionHash' => $documentSession->getExternalHash(),
+			]
+		);
+	}
+
+	protected function getSharingControlType(Disk\Document\Models\DocumentSession $documentSession): ?SharingControlType
+	{
+		if ($this->arResult['EXTERNAL_LINK_MODE'] || !$documentSession->getObject())
+		{
+			return null;
+		}
+
+		if (
+			!Bitrix24Manager::isFeatureEnabled('disk_file_sharing')
+			&& !Bitrix24Manager::isFeatureEnabled('disk_onlyoffice_edit')
+		)
+		{
+			return SharingControlType::BlockedByFeature;
+		}
+
+		$currentUser = CurrentUser::get();
+		if (!$documentSession->canUserChangeRights($currentUser) && !$documentSession->canUserShare($currentUser))
+		{
+			return SharingControlType::WithoutEdit;
+		}
+		if ($documentSession->canUserChangeRights($currentUser))
+		{
+			return SharingControlType::WithChangeRights;
+		}
+		if ($documentSession->canUserShare($currentUser))
+		{
+			return SharingControlType::WithSharing;
+		}
+
+		return SharingControlType::WithoutEdit;
+	}
+
+	protected function processSavingTemplate(Disk\Document\Models\DocumentSession $documentSession): void
+	{
+		$this->arResult['DOCUMENT_SESSION'] = [
+			'ID' => $documentSession->getId(),
+			'HASH' => $documentSession->getExternalHash(),
+		];
+		$this->arResult['OBJECT'] = [
+			'ID' => $documentSession->getObjectId(),
+			'NAME' => $documentSession->getObject()->getName(),
+			'SIZE' => $documentSession->getObject()->getSize(),
+		];
+
+		$this->includeComponentTemplate('saving');
+	}
+
+	protected function getUserIdForOnline(): int
+	{
+		if ($this->currentUser instanceof Disk\Document\Models\GuestUser)
+		{
+			return $this->currentUser->getUniqueId();
+		}
+
+		return $this->currentUser->getId();
+	}
+
+	private function getDocumentHandlersForEditingFile(): array
+	{
+		$handlers = [];
+		foreach ($this->listCloudHandlersForCreatingFile() as $handler)
+		{
+			$handlers[] = [
+				'code' => $handler::getCode(),
+				'name' => $handler::getName(),
+			];
+		}
+
+		return array_merge($handlers, [
+			[
+				'code' => LocalDocumentController::getCode(),
+				'name' => LocalDocumentController::getName(),
+			],
+		]);
+	}
+
+	/**
+	 * @return Disk\Document\DocumentHandler[]
+	 */
+	private function listCloudHandlersForCreatingFile(): array
+	{
+		if (!\Bitrix\Disk\Configuration::canCreateFileByCloud())
+		{
+			return [];
+		}
+
+		return array_values(Driver::getInstance()->getDocumentHandlersManager()->getHandlersForCreatingFile());
+	}
+
+	protected function getEditorJsonConfig(OnlyOffice\Editor\ConfigBuilder $configBuilder): Result
+	{
+		$cloudRegistrationData = (new OnlyOffice\Configuration())->getCloudRegistrationData();
+		if ($cloudRegistrationData)
+		{
+			$configSigner = new OnlyOffice\Cloud\SingDocumentConfig(
+				$cloudRegistrationData['serverHost']
+			);
+
+			return $configSigner->sign($configBuilder->build());
+		}
+
+		return (new Result())->setData($configBuilder->build());
+	}
+
+	protected function processRestrictionError(Disk\Document\Models\DocumentSession $documentSession): void
+	{
+		$cloudErrorResult = [];
+		$error = $this->getErrorByCode(self::ERROR_CODE_EXCEEDED_LIMIT);
+
+		if ($error)
+		{
+			$cloudErrorResult['LIMIT'] = [
+				'RESTRICTION' => true,
+				'LIMIT_VALUE' => $this->getErrorByCode(self::ERROR_CODE_EXCEEDED_LIMIT)->getCustomData()['limit'],
+			];
+
+			if (!Disk\Internal\Service\OnlyOffice\Promo\PromoBlocker::shouldBlockPromoForUser())
+			{
+				LocalRedirect($this->processExceededLimit($documentSession));
+			}
+		}
+
+		$cloudErrorResult['ERRORS'] = $this->getErrors();
+		$this->arResult['CLOUD_ERROR'] = $cloudErrorResult;
+
+		$this->includeComponentTemplate('cloud-error');
+	}
+
+	/**
+	 * Generate URL for redirection and setting slider type for show in UI.
+	 *
+	 * @param Disk\Document\Models\DocumentSession $documentSession
+	 * @return string url for redirection
+	 * @throws ArgumentException
+	 * @throws NotImplementedException
+	 */
+	protected function processExceededLimit(Disk\Document\Models\DocumentSession $documentSession): string
+	{
+		$this->getSession()->set(self::SESSION_SHOW_IMMEDIATELY_KEY, true);
+		$documentSession->transformToView();
+
+		Application::getInstance()->addBackgroundJob(function () use ($documentSession) {
+			$file = $documentSession->getFile();
+
+			$analyticsEvent = (new AnalyticsEvent(
+				event: 'oo_limit_edit',
+				tool: 'docs',
+				category: 'docs',
+			))
+				->setSubSection('old_element')
+				->setP4("fileId_{$file->getId()}")
+			;
+
+			$cElement = $this->arParams['ANALYTICS']['c_element'] ?? null;
+
+			if (is_string($cElement))
+			{
+				$analyticsEvent->setElement($cElement);
+			}
+
+			$docType = Disk\Analytics\Enum\DocumentTypeEnum::getByExtension($file->getExtension());
+
+			if ($docType instanceof Disk\Analytics\Enum\DocumentTypeEnum)
+			{
+				$analyticsEvent->setP3($docType->value);
+			}
+
+			$analyticsEvent->send();
+		});
+
+		return $this->getLinkToView($documentSession, true);
+	}
+
+	protected function processCloudError(Result $result, Disk\Document\Models\DocumentSession $documentSession): void
+	{
+		$cloudErrorResult = [];
+
+		$errorCollection = $result->getErrorCollection();
+		/** @see \Bitrix\DocumentProxy\Controller\SignDocumentConfiguration::ERROR_CODE_EXCEEDED_LIMIT */
+		if ($errorCollection->getErrorByCode('exceeded_limit') && !Disk\Internal\Service\OnlyOffice\Promo\PromoBlocker::shouldBlockPromoForUser())
+		{
+			LocalRedirect($this->processExceededLimit($documentSession));
+		}
+		/** @see \Bitrix\DocumentProxy\Engine\Filter\DemoRestriction::ERROR_DEMO_RESTRICTION */
+		if ($errorCollection->getErrorByCode('demo_restriction'))
+		{
+			$cloudErrorResult['DEMO'] = [
+				'END' => true,
+			];
+		}
+		$cloudErrorResult['ERRORS'] = $errorCollection->toArray();
+
+		$this->arResult['CLOUD_ERROR'] = $cloudErrorResult;
+
+		$this->includeComponentTemplate('cloud-error');
+	}
+
+	private function getServerByEditorConfig(array $editorConfigData): string
+	{
+		if (!empty($editorConfigData['_server']))
+		{
+			return $editorConfigData['_server'];
+		}
+
+		return rtrim(ServiceLocator::getInstance()->get('disk.onlyofficeConfiguration')->getServer(), '/');
+	}
+
+	protected function isEditAllowed(Disk\Document\Models\DocumentSession $documentSession): bool
+	{
+		$allowEdit = false;
+
+		if (
+			!$documentSession->isVersion()
+			&& OnlyOffice\OnlyOfficeHandler::isEditable($documentSession->getObject()->getExtension())
+		)
+		{
+			if ($this->unifiedLinkMode)
+			{
+				$unifiedLinkAccessService = ServiceLocator::getInstance()->get(UnifiedLinkAccessService::class);
+
+				$attachedObject = $documentSession->getContext()?->getAttachedObject();
+				$accessLevel = $unifiedLinkAccessService->check($documentSession->getObject(), $attachedObject);
+
+				return $accessLevel->canEdit();
+			}
+
+			$allowEdit = $documentSession->canTransformUserToEdit(CurrentUser::get());
+			if ($allowEdit && $this->arResult['EXTERNAL_LINK_MODE'])
+			{
+				$externalLink = $documentSession->getContext()->getExternalLink();
+				if ($externalLink && !$externalLink->allowEdit())
+				{
+					$allowEdit = false;
+				}
+			}
+		}
+
+		return $allowEdit;
+	}
+
+	/**
+	 * Get instance of session.
+	 *
+	 * @return SessionInterface session
+	 */
+	protected function getSession(): SessionInterface
+	{
+		return Application::getInstance()->getSession();
+	}
+
+	private function isSignPlaceholdersEnabled(): bool
+	{
+		$request = Application::getInstance()->getContext()->getRequest();
+		if ($request->get('signPlaceholders') !== 'Y')
+		{
+			return false;
+		}
+
+		return Loader::includeModule('sign');
+	}
+
+	private function getSessionBoostOptions(Disk\Document\Models\DocumentSession $documentSession): ?array
+	{
+		if ($documentSession->isEdit() && $this->sessionBoostService->isAvailable())
+		{
+			$extension = (string)$documentSession->getObject()?->getExtension();
+			$completedDateTimestamp = (int)CUserOptions::GetOption(self::OPTION_CATEGORY_TO_CONTROL_BUTTON_WIDGET_DISPLAY, $extension, 0, $this->currentUser->getId());
+
+			return [
+				'shouldShowButtonWidgetInstantly' => $completedDateTimestamp === 0,
+				'optionParamsToControlButtonWidgetDisplay' => [
+					'category' => self::OPTION_CATEGORY_TO_CONTROL_BUTTON_WIDGET_DISPLAY,
+					'name' => $extension,
+				],
+			];
+		}
+
+		return null;
+	}
+
+	/**
+	 * @return bool
+	 */
+	protected function shouldDisableSharingButton(): bool
+	{
+		return !$this->currentUser->isIntranetUser() && !$this->currentUser->isCollaber();
+	}
+}

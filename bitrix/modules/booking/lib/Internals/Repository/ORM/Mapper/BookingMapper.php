@@ -1,0 +1,253 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Booking\Internals\Repository\ORM\Mapper;
+
+use Bitrix\Booking\Entity\Booking\Booking;
+use Bitrix\Booking\Entity\Booking\BookingDeletionScenario;
+use Bitrix\Booking\Entity\Booking\BookingPayment;
+use Bitrix\Booking\Entity\Booking\BookingSkuCollection;
+use Bitrix\Booking\Entity\Booking\BookingSource;
+use Bitrix\Booking\Entity\Booking\BookingVisitStatus;
+use Bitrix\Booking\Entity\Client\ClientCollection;
+use Bitrix\Booking\Entity\DatePeriod;
+use Bitrix\Booking\Entity\ExternalData\ExternalDataCollection;
+use Bitrix\Booking\Entity\Resource\ResourceCollection;
+use Bitrix\Booking\Internals\Model\BookingTable;
+use Bitrix\Booking\Internals\Model\EO_BookingResource;
+use Bitrix\Booking\Internals\Model\EO_Resource;
+use Bitrix\Booking\Internals\Model\EO_Booking;
+use Bitrix\Booking\Internals\Service\Rrule;
+use Bitrix\Main\Type\DateTime;
+use DateTimeImmutable;
+use DateTimeZone;
+use Bitrix\Booking\Internals\Repository\ORM\Mapper\Trait\NoteTrait;
+
+class BookingMapper
+{
+	use NoteTrait;
+
+	private ResourceMapper $resourceMapper;
+	private ClientMapper $clientMapper;
+	private BookingSkuMapper $skuMapper;
+	private ExternalDataItemMapper $externalDataItemMapper;
+
+	public function __construct(
+		ResourceMapper $resourceMapper,
+		ClientMapper $clientMapper,
+		BookingSkuMapper $skuMapper,
+		ExternalDataItemMapper $externalDataItemMapper,
+	)
+	{
+		$this->resourceMapper = $resourceMapper;
+		$this->clientMapper = $clientMapper;
+		$this->skuMapper = $skuMapper;
+		$this->externalDataItemMapper = $externalDataItemMapper;
+	}
+
+	public function convertFromOrm(EO_Booking $ormBooking): Booking
+	{
+		$booking = new Booking();
+
+		$booking
+			->setId($ormBooking->getId())
+			->setName($ormBooking->getName())
+			->setDescription($ormBooking->getDescription())
+			->setConfirmed($ormBooking->getIsConfirmed())
+			->setDeleted($ormBooking->getIsDeleted())
+			->setDatePeriod(
+				new DatePeriod(
+					$this->createDateTimeFromTimestamp(
+						$ormBooking->getDateFrom(),
+						$ormBooking->getTimezoneFrom()
+					),
+					$this->createDateTimeFromTimestamp(
+						$ormBooking->getDateTo(),
+						$ormBooking->getTimezoneTo()
+					)
+				)
+			)
+			->setVisitStatus(BookingVisitStatus::from($ormBooking->getVisitStatus()))
+			->setSource(BookingSource::from($ormBooking->getSource()))
+			->setDeletionScenario(BookingDeletionScenario::tryFrom((string)$ormBooking->getDeletionScenario()))
+			->setCreatedBy($ormBooking->getCreatedBy())
+			->setCreatedAt($ormBooking->getCreatedAt()->getTimestamp())
+			->setUpdatedAt($ormBooking->getUpdatedAt()->getTimestamp())
+		;
+
+		if ($ormBooking->getIsRecurring())
+		{
+			$rrule = $ormBooking->getRrule();
+			if ($rrule !== null)
+			{
+				$booking->setRrule($rrule);
+			}
+		}
+
+		$this->setResourceCollection($booking, $ormBooking);
+		$this->setClientCollection($booking, $ormBooking);
+		$this->setSkuCollection($booking, $ormBooking);
+		$this->setExternalDataCollection($booking, $ormBooking);
+		$this->setNote($booking, $ormBooking);
+		$this->setClientNote($booking, $ormBooking);
+		$this->setPayment($booking, $ormBooking);
+
+		return $booking;
+	}
+
+	public function convertToOrm(Booking $booking): EO_Booking
+	{
+		$result = $booking->getId()
+			? EO_Booking::wakeUp($booking->getId())
+			: BookingTable::createObject();
+
+		$dateFrom = $booking->getDatePeriod()?->getDateFrom();
+		$timezoneFrom = $dateFrom?->getTimezone();
+
+		$dateTo = $booking->getDatePeriod()?->getDateTo();
+		$timezoneTo = $dateTo?->getTimezone();
+
+		$result
+			->setName($booking->getName())
+			->setDescription($booking->getDescription())
+			->setVisitStatus($booking->getVisitStatus()->value)
+			->setSource($booking->getSource()->value)
+			->setIsConfirmed($booking->isConfirmed())
+			->setDateFrom($dateFrom?->getTimestamp())
+			->setTimezoneFrom($timezoneFrom?->getName())
+			->setTimezoneFromOffset($timezoneFrom?->getOffset($dateFrom))
+			->setDateTo($dateTo?->getTimestamp())
+			->setTimezoneTo($timezoneTo?->getName())
+			->setTimezoneToOffset($timezoneTo?->getOffset($dateTo))
+			->setCreatedBy($booking->getCreatedBy())
+			->setParentId($booking->getParent()?->getId())
+			->setUpdatedAt(new DateTime())
+		;
+
+		if ($booking->getDeletionScenario() !== null)
+		{
+			$result->setDeletionScenario($booking->getDeletionScenario()->value);
+		}
+
+		$rrule = $booking->getRrule();
+		$isRecurring = (bool)$rrule;
+		$result->setIsRecurring($isRecurring);
+		if ($isRecurring)
+		{
+			$result->setRrule($rrule);
+			$result->setDateMax(
+				(new Rrule($rrule, $booking->getDatePeriod()))->getUntil()->getTimestamp()
+			);
+		}
+		else
+		{
+			$result->setRrule('');
+			$result->setDateMax($booking->getDatePeriod()?->getDateTo()?->getTimestamp());
+		}
+
+		return $result;
+	}
+
+	private function createDateTimeFromTimestamp(int $timestamp, string $timezone): DateTimeImmutable
+	{
+		return (new DateTimeImmutable('@' . $timestamp))
+			->setTimezone(new DateTimeZone($timezone));
+	}
+
+	private function setResourceCollection(Booking $booking, EO_Booking $ormBooking): void
+	{
+		$resources = [];
+
+		$ormBookingResources = $ormBooking->getResources();
+		if (!$ormBookingResources)
+		{
+			return;
+		}
+
+		/**
+		 * Sort resource relationship by b_booking_booking_resource.ID in ascending order
+		 */
+		$ormBookingResources = iterator_to_array($ormBookingResources);
+		usort(
+			$ormBookingResources,
+			static fn($resource1, $resource2) => $resource1->getId() <=> $resource2->getId()
+		);
+
+		$primaryResource = null;
+		/** @var EO_BookingResource $ormBookingResource */
+		foreach ($ormBookingResources as $ormBookingResource)
+		{
+			$resource = $this->resourceMapper->convertFromOrm($ormBookingResource->getResource());
+			if (!$primaryResource && $ormBookingResource->getIsPrimary())
+			{
+				$primaryResource = $resource;
+			}
+			$resources[] = $resource;
+		}
+
+		$resourceCollection = new ResourceCollection(...$resources);
+		if ($primaryResource)
+		{
+			$resourceCollection->setPrimary($primaryResource);
+		}
+
+		$booking->setResourceCollection($resourceCollection);
+	}
+
+	private function setClientCollection(Booking $booking, EO_Booking $ormBooking): void
+	{
+		$clients = [];
+
+		/** @var EO_Resource $resource */
+		$ormClients = $ormBooking->getClients() ?? [];
+		foreach ($ormClients as $ormClient)
+		{
+			$clients[] = $this->clientMapper->convertFromOrm($ormClient);
+		}
+
+		$booking->setClientCollection(new ClientCollection(...$clients));
+	}
+
+	private function setSkuCollection(Booking $booking, EO_Booking $ormBooking): void
+	{
+		$skus = [];
+
+		$ormSkuCollection = $ormBooking->getSkus() ?? [];
+		foreach ($ormSkuCollection as $ormSku)
+		{
+			$skus[] = $this->skuMapper->convertFromOrm($ormSku);
+		}
+
+		$booking->setSkuCollection(new BookingSkuCollection(...$skus));
+	}
+
+	private function setExternalDataCollection(Booking $booking, EO_Booking $ormBooking): void
+	{
+		$externalDataItems = [];
+
+		$externalData = $ormBooking->getExternalData() ?? [];
+		foreach ($externalData as $externalDataItem)
+		{
+			$externalDataItems[] = $this->externalDataItemMapper->convertFromOrm($externalDataItem);
+		}
+
+		$booking->setExternalDataCollection(new ExternalDataCollection(...$externalDataItems));
+	}
+
+	private function setPayment(Booking $booking, EO_Booking $ormBooking): void
+	{
+		$ormPayment = $ormBooking->getPayment();
+		if ($ormPayment === null)
+		{
+			return;
+		}
+
+		$booking->setPayment(
+			(new BookingPayment())
+				->setId($ormPayment->getPaymentId())
+				->setIsPaid($ormPayment->getIsPaid())
+				->setIsPaidManually($ormPayment->getIsPaidManually())
+		);
+	}
+}

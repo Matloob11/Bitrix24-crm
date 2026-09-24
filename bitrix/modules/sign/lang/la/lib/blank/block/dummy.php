@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_CORE_BLOCK_DATE_HINT"] = "Utilice este campo para introducir valores de fecha (por ejemplo, la fecha del contrato, etc.)";
+$MESS["SIGN_CORE_BLOCK_DATE_TITLE"] = "Fecha";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_HINT"] = "Este campo contiene los detalles de su empresa.";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_TITLE"] = "Detalles";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_BLOCK_HINT"] = "Campo que contiene su firma";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_TITLE"] = "Firma";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_ERROR_EMPTY"] = "Se agregó el bloque del sello de la empresa pero no hay ninguna imagen del sello en los detalles de la empresa.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_HINT"] = "El sello de su empresa.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_TITLE"] = "Sello";
+$MESS["SIGN_CORE_BLOCK_NUMBER_HINT"] = "Utilice este campo para indicar el número del documento. Puede introducir el número como un valor estático o utilizar la función de numeración automática.";
+$MESS["SIGN_CORE_BLOCK_NUMBER_TITLE"] = "Número";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_BLOCK_HINT"] = "Este campo se completará con los datos que se encuentren en su CRM. Si su CRM no tiene información relevante y el campo permanece vacío, puede ser proporcionada por cualquiera de las partes firmantes, en cuyo caso esta nueva información se guardará en su CRM.";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_TITLE"] = "Campo del CRM";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_ERROR_EMPTY"] = "El bloque \"campo CRM\" no está configurado.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_HINT"] = "Este campo contiene los detalles del destinatario.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_TITLE"] = "Detalles";
+$MESS["SIGN_CORE_BLOCK_SIGN_BLOCK_HINT"] = "Campo que contiene la firma de otra parte firmante";
+$MESS["SIGN_CORE_BLOCK_SIGN_TITLE"] = "Firma";
+$MESS["SIGN_CORE_BLOCK_STAMP_HINT"] = "Este campo contiene el sello del destinatario.";
+$MESS["SIGN_CORE_BLOCK_STAMP_TITLE"] = "Sello";
+$MESS["SIGN_CORE_BLOCK_TEXT_HINT"] = "Este campo puede recibir cualquier información textual.";
+$MESS["SIGN_CORE_BLOCK_TEXT_TITLE"] = "Texto";

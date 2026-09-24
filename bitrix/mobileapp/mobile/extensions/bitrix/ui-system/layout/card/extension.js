@@ -1,0 +1,165 @@
+/**
+ * @module ui-system/layout/card
+ */
+jn.define('ui-system/layout/card', (require, exports, module) => {
+	const { Component, Indent, Color } = require('tokens');
+	const { PropTypes } = require('utils/validation');
+	const { CardDesign } = require('ui-system/layout/card/src/design-enum');
+	const { CardCorner } = require('ui-system/layout/card/src/corner-enum');
+	const { BadgeStatus, BadgeStatusMode } = require('ui-system/blocks/badges/status');
+	const { IconView, Icon } = require('ui-system/blocks/icon');
+
+	/**
+	 * @function Card
+	 * @param {CardProps} props
+	 * @param {Array} children
+	 */
+	function Card(props = {}, ...children)
+	{
+		PropTypes.validate(Card.propTypes, props, 'Card');
+
+		const {
+			testId,
+			excludePaddingSide = {},
+			style = {},
+			border = false,
+			design = CardDesign.PRIMARY,
+			corner = CardCorner.L,
+			badgeMode = null,
+			badge = null,
+			hideCross = true,
+			selected = false,
+			accent = false,
+			withPressed = false,
+			onClick = null,
+			onClose = null,
+			...restProps
+		} = props;
+
+		const { left, right, top, bottom, horizontal, vertical, all } = excludePaddingSide;
+
+		const paddingLeft = left || all || horizontal ? 0 : Component.cardPaddingLr.toNumber();
+		const paddingRight = right || all || horizontal ? 0 : Component.cardPaddingLr.toNumber();
+		const paddingTop = top || all || vertical ? 0 : Component.cardPaddingT.toNumber();
+		const paddingBottom = bottom || all || vertical ? 0 : Component.cardPaddingB.toNumber();
+		const borderRadius = CardCorner.resolve(corner, CardCorner.L).toNumber();
+
+		const {
+			backgroundColor: designBackgroundColor,
+			accentColor: designAccentColor,
+		} = CardDesign.resolve(design, CardDesign.PRIMARY).getStyle({ withPressed });
+
+		const cardStyle = {
+			borderRadius,
+			backgroundColor: designBackgroundColor,
+		};
+
+		if (border)
+		{
+			cardStyle.borderWidth = 1;
+			cardStyle.borderColor = Color.bgSeparatorPrimary.toHex();
+		}
+
+		if (selected)
+		{
+			cardStyle.borderWidth = 1;
+			cardStyle.borderColor = Color.base3.toHex();
+		}
+
+		if (accent)
+		{
+			cardStyle.borderWidth = 2;
+			cardStyle.borderColor = designAccentColor;
+		}
+
+		const status = BadgeStatusMode.has(badgeMode)
+			? BadgeStatus({ testId, mode: badgeMode })
+			: null;
+
+		const crossIcon = hideCross
+			? null
+			: IconView({
+				testId: testId ? `${testId}_close` : null,
+				icon: Icon.CROSS,
+				color: Color.base1,
+				opacity: 0.3,
+				size: 20,
+			});
+
+		const topRightContent = badge || status || crossIcon;
+		const isCloseClickable = Boolean(onClose) && !hideCross && !status && !badge;
+
+		const topRightView = topRightContent
+			? View(
+				{
+					style: {
+						position: 'absolute',
+						top: Indent.S.toNumber(),
+						right: Indent.S.toNumber(),
+					},
+					onClick: () => {
+						if (isCloseClickable)
+						{
+							onClose();
+						}
+					},
+				},
+				topRightContent,
+			)
+			: null;
+
+		return View(
+			{
+				...restProps,
+				testId,
+				onClick,
+				style: {
+					position: 'relative',
+					paddingLeft,
+					paddingRight,
+					paddingTop,
+					paddingBottom,
+					...cardStyle,
+					...style,
+				},
+			},
+			...children,
+			topRightView,
+		);
+	}
+
+	Card.defaultProps = {
+		badgeMode: null,
+		badge: null,
+		hideCross: true,
+		selected: true,
+		border: false,
+		accent: false,
+		withPressed: false,
+		excludePaddingSide: {},
+		onClose: null,
+		onClick: null,
+	};
+
+	Card.propTypes = {
+		testId: PropTypes.string.isRequired,
+		hideCross: PropTypes.bool,
+		selected: PropTypes.bool,
+		withPressed: PropTypes.bool,
+		border: PropTypes.bool,
+		design: PropTypes.instanceOf(CardDesign),
+		corner: PropTypes.instanceOf(CardCorner),
+		badgeMode: PropTypes.instanceOf(BadgeStatusMode),
+		badge: PropTypes.object,
+		excludePaddingSide: PropTypes.objectOf(PropTypes.bool),
+		onClose: PropTypes.func,
+		onClick: PropTypes.func,
+	};
+
+	module.exports = {
+		Card,
+		CardDesign,
+		CardCorner,
+		BadgeStatusMode,
+	};
+});

@@ -1,0 +1,19 @@
+<?php
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_FINISH_DESCRIPTION"] = "¡Listo! Ahora puede abrir el panel de control.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_INSTALL_STEP"] = "Se está instalando el panel de control que seleccionó. Espere un momento.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_TITLE_BLOCK"] = "Importar panel de control";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_TITLE_PAGE"] = "BI Builder";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_TITLE"] = "Importar panel de control";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_DESCRIPTION_UPLOAD"] = "Importar el archivo de la plantilla de informe de Google Data Studio.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_FINISH_DESCRIPTION"] = "La plantilla se importó correctamente. Haga clic en este enlace para usarla con Google Data Studio:";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_TITLE_BLOCK"] = "Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_TITLE_PAGE"] = "Importar la plantilla de informe de Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_TITLE"] = "Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_DESCRIPTION_UPLOAD"] = "Importe el archivo de la plantilla de informe de Microsoft PowerBI.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_FINISH_DESCRIPTION"] = "La plantilla se importó correctamente. Descargue la plantilla de informe de Microsoft PowerBI:";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_TITLE_BLOCK"] = "Microsoft PowerBI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_TITLE_PAGE"] = "Importar la plantilla de informe de Microsoft PowerBI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_TITLE"] = "Microsoft Power BI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_ACCESS_DENIED"] = "Permisos insuficientes para importar los paneles de control de BI Builder.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_TARIFF_ERROR"] = "BI Builder no está disponible en su plan. Póngase en contacto con su administrador de Bitrix24.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_TOOL_DISABLED"] = "BI Builder está desactivado. Póngase en contacto con su supervisor o con el administrador de Bitrix24.";

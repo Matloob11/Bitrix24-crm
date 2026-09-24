@@ -1,0 +1,10 @@
+<?php
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_MESSAGE_F"] = "a supprimé la tâche \"#TASK_TITLE#\".";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_MESSAGE_F_PUSH"] = "#USER_NAME# a supprimé la tâche \"#TASK_TITLE#\".";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_MESSAGE_M"] = "a supprimé la tâche \"#TASK_TITLE#\".";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_MESSAGE_M_PUSH"] = "#USER_NAME# a supprimé la tâche \"#TASK_TITLE#\".";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_MESSAGE_N"] = "La tâche \"#TASK_TITLE#\" a été supprimée.";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_MESSAGE_PUSH_N"] = "#USER_NAME# a supprimé la tâche \"#TASK_TITLE#\".";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_SUBJECT_F"] = "#AUTHOR# a supprimé la tâche \"#TASK_TITLE#\".";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_SUBJECT_M"] = "#AUTHOR# a supprimé la tâche \"#TASK_TITLE#\".";
+$MESS["TASKS_IM_NOTIFY_TASK_DELETED_SUBJECT_N"] = "#AUTHOR# a supprimé la tâche \"#TASK_TITLE#\".";

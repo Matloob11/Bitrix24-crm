@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "Nie znaleziono pulpitu nawigacyjnego.";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Nowy pulpit nawigacyjny";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Nowy pulpit nawigacyjny (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Wybierz grupę, dla której chcesz utworzyć pulpit nawigacyjny.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "Pulpit nawigacyjny musi zostać dodany do co najmniej jednej grupy.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "Nazwa pulpitu nawigacyjnego jest wymagana.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "Nie można utworzyć pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Pomoc";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "Pulpit nawigacyjny zawiera nieprawidłowe obrazy. Odśwież stronę i spróbuj ponownie.";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "Nieprawidłowy zakres dat.";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "Można edytować wyłącznie niestandardowe pulpity nawigacyjne.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Niewystarczające uprawnienia do utworzenia pulpitu nawigacyjnego.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "Niewystarczające uprawnienia do korzystania z Kreatora BI.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "Kreator BI jest niedostępny.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Niewystarczające uprawnienia do edycji pulpitu nawigacyjnego.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "Nie można zapisać opisu pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "Nie można zapisać galerii pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "Nie można utworzyć parametrów pulpitu nawigacyjnego. Otwórz właściwości pulpitu nawigacyjnego i spróbuj ponownie.";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Nowy pulpit nawigacyjny";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "Nazwa pulpitu nawigacyjnego nie może przekraczać 128 znaków.";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "Nie można zaktualizować pulpitu nawigacyjnego. Spróbuj ponownie.";

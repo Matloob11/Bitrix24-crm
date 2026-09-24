@@ -1,0 +1,27 @@
+<?php
+$MESS["MARKET_RATING_JS_ADD_REVIEW"] = "Agregar <br>reseña";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_CANCEL"] = "Cancelar";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_ERROR"] = "Error al agregar el comentario.";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_FEEDBACK_TEXT"] = "Díganos lo que opina de esta aplicación. Eso nos ayudará a mejorarla.";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_POLICY"] = "Al enviar sus comentarios, acepta la <a href='#POLICY_URL#' target='_blank'>Política de Privacidad</a>";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_POSTING_GUIDELINES"] = "Al enviar su reseña, acepta los <a href='#RULES_URL#' target='_blank'>Lineamientos para la publicación de reseñas de Bitrix24 Market</a>.";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_SEND"] = "Enviar";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_STARS_ERROR"] = "La evaluación es obligatoria.";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_SUCCESS"] = "Su reseña se agregó exitosamente.";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_TEXT_ERROR"] = "El texto de la reseña es obligatorio.";
+$MESS["MARKET_RATING_JS_ADD_REVIEW_TITLE"] = "Evalúe la aplicación <br /><span>#APP_NAME#</span>";
+$MESS["MARKET_RATING_JS_EMPTY_TEXT"] = "No se proporcionó ningún comentario.";
+$MESS["MARKET_RATING_JS_FIVE_STARS"] = "5 estrellas";
+$MESS["MARKET_RATING_JS_FOUR_STARS"] = "4 estrellas";
+$MESS["MARKET_RATING_JS_INSTALL_TEXT"] = "No puede evaluar o hacer una reseña de esta aplicación <br>porque no está instalada <br>en su Bitrix24.";
+$MESS["MARKET_RATING_JS_NO_PUBLISHED"] = "No publicado";
+$MESS["MARKET_RATING_JS_ONE_STAR"] = "1 estrella";
+$MESS["MARKET_RATING_JS_PUBLISHED"] = "Publicado";
+$MESS["MARKET_RATING_JS_RATING_TITLE"] = "Evaluación";
+$MESS["MARKET_RATING_JS_REVIEWS_TITLE"] = "Reseñas";
+$MESS["MARKET_RATING_JS_REVIEWS_TOTAL"] = "Total de reseñas: #NUMBER#";
+$MESS["MARKET_RATING_JS_REVIEW_ANSWER"] = "Respuesta del desarrollador";
+$MESS["MARKET_RATING_JS_REVIEW_MORE"] = "más";
+$MESS["MARKET_RATING_JS_SENT_TO_DEVELOPER"] = "Enviado al desarrollador";
+$MESS["MARKET_RATING_JS_THREE_STARS"] = "3 estrellas";
+$MESS["MARKET_RATING_JS_TWO_STARS"] = "2 estrellas";

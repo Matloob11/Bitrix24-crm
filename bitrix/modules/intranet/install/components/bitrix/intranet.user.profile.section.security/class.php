@@ -1,0 +1,202 @@
+<?php
+
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
+{
+	die;
+}
+
+use Bitrix\Intranet\CurrentUser;
+use Bitrix\Intranet\Internal\Access\Otp\UserPermission;
+use Bitrix\Intranet\Internal\Enum\Otp\PromoteMode;
+use Bitrix\Intranet\Internal\Integration\Main\VerifyPhoneService;
+use Bitrix\Intranet\Internal\Integration\Security\OtpSettings;
+use Bitrix\Intranet\Internal\Integration\Security\PersonalOtp;
+use Bitrix\Intranet\Internal\Service\Otp\MobilePush;
+use Bitrix\Intranet\Internal\Service\Otp\PersonalMobilePush;
+use Bitrix\Intranet\Public\Provider\Otp\DayListProvider;
+use Bitrix\Intranet\Repository\UserRepository;
+use Bitrix\Main\Application;
+use Bitrix\Main\Loader;
+use Bitrix\Main\Web\Uri;
+use Bitrix\Security\Mfa\OtpType;
+
+class IntranetUserProfileSectionSecurity extends CBitrixComponent
+{
+	/**
+	 * @throws \Bitrix\Main\ObjectNotFoundException
+	 */
+	public function onPrepareComponentParams($arParams)
+	{
+		if ((int)$arParams["USER_ID"] <= 0)
+		{
+			ShowError('Invalid parameter USER_ID');
+
+			return;
+		}
+
+		$arParams['USER'] = (new UserRepository())->getUserById((int)$arParams["USER_ID"]);
+
+		if (!$arParams['USER'])
+		{
+			ShowError('User not found');
+
+			return;
+		}
+
+		$arParams['CAN_EDIT'] = (int)CurrentUser::get()->getId() === (int)$arParams["USER_ID"];
+
+		if (Loader::includeModule('security'))
+		{
+			$arParams['PERSONAL_OTP'] = new PersonalOtp($arParams['USER']);
+		}
+
+		return $arParams;
+	}
+
+	protected function listKeysSignedParameters(): array
+	{
+		return ['USER_ID'];
+	}
+
+	/**
+	 * @throws \Bitrix\Main\ObjectNotFoundException
+	 * @throws \Bitrix\Main\ObjectPropertyException
+	 * @throws \Bitrix\Main\LoaderException
+	 * @throws \Bitrix\Main\ArgumentTypeException
+	 * @throws \Bitrix\Main\ArgumentException
+	 * @throws \Bitrix\Main\SystemException
+	 */
+	public function executeComponent(): void
+	{
+		$user = $this->arParams['USER'];
+		$isAdmin = (new \Bitrix\Intranet\User())->isAdmin();
+
+		if (!$user->isCurrent() && !$isAdmin)
+		{
+			return;
+		}
+
+		$this->arResult['IS_CURRENT_USER'] = $user->isCurrent();
+		$this->arResult["CAN_VIEW_RESTORE_PASSWORD"] = false;
+
+		if (Loader::includeModule('security') && isset($this->arParams['PERSONAL_OTP']))
+		{
+			$otpSettings = new OtpSettings();
+			$mobilePush = MobilePush::createByDefault();
+			$personalOtp = $this->arParams['PERSONAL_OTP'];
+			$otpPermission = new UserPermission($user);
+			$this->arResult["OTP"]["IS_ENABLED"] = $otpSettings->isEnabled() ? 'Y' : 'N';
+			$this->arResult["OTP"]["IS_ACTIVE"] = $personalOtp->isActivated() ? 'Y' : 'N';
+			$this->arResult["OTP"]["CAN_VIEW_OTP"] = $otpPermission->canView() ? 'Y' : 'N';
+			$this->arResult["OTP"]["CAN_EDIT_OTP"] = $otpPermission->canEdit() ? 'Y' : 'N';
+			$this->arResult["OTP"]["CAN_DEACTIVATE_OTP"] = $otpPermission->canDeactivate() ? 'Y' : 'N';
+			$this->arResult["OTP"]["2FA_SECTION_SHOW"] = 'Y';
+			$this->arResult["OTP"]["IS_INITIALIZED"] = $personalOtp->isInitialized() ? 'Y' : 'N';
+
+			if (
+				($mobilePush->getPromoteMode()->isGreaterOrEqual(PromoteMode::Low))
+				|| (
+					$mobilePush->getPromoteMode() === PromoteMode::Personal
+					&& $mobilePush->canUsePersonalModeByUserId((int)$user->getId())
+				)
+			)
+			{
+				$personalPushOtp = new PersonalMobilePush($personalOtp);
+				$this->arResult["OTP"]["IS_PHONE_CONFIRMATION_REQUIRED"] = $personalPushOtp->isPhoneConfirmationRequired() ? 'Y' : 'N';
+				$this->arResult["OTP"]["IS_PUSH_OTP_NEW"] = $user->isCurrent() && !$personalPushOtp->isActivated() && !$personalOtp->isPushType() ? 'Y' : 'N';
+				$this->arResult["OTP"]["2FA_SECTION_SHOW"] = $this->arResult["OTP"]["IS_PUSH_OTP_NEW"] !== 'Y' || !$user->isCurrent() || !$personalPushOtp->isActivated() ? 'Y' : 'N';
+			}
+			else
+			{
+				$this->arResult["OTP"]["IS_PUSH_OTP_AVAILABLE"] = 'N';
+			}
+
+			$this->arResult['OTP_PARAMS'] = $this->getOtpParameters();
+		}
+
+		$this->arResult["PASSWORD"]["CAN_VIEW"] = $user->isCurrent() || $isAdmin ? 'Y' : 'N';
+		$this->arResult["USER"]["CAN_LOGOUT"] = $user->isCurrent() ? 'Y' : 'N';
+		$this->arResult['IS_CLOUD'] = Loader::includeModule('bitrix24');
+
+		if (
+			Loader::includeModule('bitrix24')
+			&& Loader::includeModule('socialservices')
+			&& $transport = \CBitrix24NetPortalTransport::init()
+		) {
+			$response = $transport->getProfileContacts($user->getId());
+			$this->arResult['PROFILE'] = $response['result'] ?? null;
+			if (isset($this->arResult['PROFILE']['PASSWORD_CHANGE_DATE']))
+			{
+				$this->arResult['PROFILE']['PASSWORD_CHANGE_DATE_FORMATTED'] = $this->formatTs(
+					$this->arResult['PROFILE']['PASSWORD_CHANGE_DATE'],
+				);
+			}
+			$networkUri = new Uri( rtrim(CSocServBitrix24Net::NETWORK_URL, '/') . '/passport/view/');
+			$this->arResult['PROFILE']['NETWORK_URL'] = $networkUri->getLocator();
+			$networkUri->addParams([
+				'start_change_password' => 'yes',
+			]);
+			$this->arResult['PROFILE']['CHANGE_PASSWORD_URL'] = $networkUri->getLocator();
+			$this->arResult['CAN_VIEW_RESTORE_PASSWORD'] = !$user->isCurrent()
+				&& $user->getInviteStatus() === \Bitrix\Intranet\Enum\InvitationStatus::ACTIVE
+				&& (!empty($this->arResult['PROFILE']['EMAIL']) || !empty($this->arResult['PROFILE']['PHONE']))
+			;
+		}
+
+		$this->IncludeComponentTemplate();
+	}
+
+	private function formatTs(int $ts): string
+	{
+		$culture = Application::getInstance()->getContext()->getCulture();
+		$dateFormat = $culture->getShortDateFormat();
+
+		return \Bitrix\Main\Type\DateTime::createFromTimestamp($ts)->toUserTime()->format($dateFormat);
+	}
+
+	private function getOtpParameters(): array
+	{
+		$verifyPhone = new VerifyPhoneService($this->arParams['USER']);
+		$pushOtpService = MobilePush::createByDefault();
+		$userId = (int)$this->arParams['USER']->getId();
+		$otpPermission = new UserPermission($this->arParams['USER']);
+		$canShowBannerPushOtp = $this->arParams["CAN_EDIT"] && $pushOtpService->getPromoteMode() !== PromoteMode::Disable;
+
+		if (
+			$canShowBannerPushOtp
+			&& !$pushOtpService->isDefault()
+			&& $pushOtpService->getPromoteMode() === PromoteMode::Personal
+		)
+		{
+			$canShowBannerPushOtp = $pushOtpService->canUsePersonalModeByUserId((int)$this->arParams['USER']->getId());
+		}
+
+		$isPersonalPushType = $this->arParams['PERSONAL_OTP']->getType() === OtpType::Push;
+
+		$params = [
+			'provideSmsOtp' => $verifyPhone->canSendSms(),
+			'canShowBannerPushOtp' => $canShowBannerPushOtp,
+			'isOtpActive' => $this->arParams['PERSONAL_OTP']->isActivated(),
+			'canDeactivate' => $otpPermission->canDeactivate(),
+			'isNotPushOtp' => (!$isPersonalPushType && $this->arParams['PERSONAL_OTP']->isInitialized())
+				|| (!$isPersonalPushType && !$pushOtpService->getPromoteMode()->isGreaterOrEqual(PromoteMode::Low))
+				|| ($pushOtpService->isLegacyOtpAllowedByUserId($userId) && !$isPersonalPushType),
+			'days' => $this->createDays(),
+		];
+
+		if ($otpPermission->canEdit())
+		{
+			$params = [
+				...$this->arParams['PERSONAL_OTP']->getOtpConfig(),
+				...$params,
+			];
+		}
+
+		return $params;
+	}
+
+	private function createDays(): array
+	{
+		return (new DayListProvider())->getList();
+	}
+}

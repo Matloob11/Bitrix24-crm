@@ -1,0 +1,3 @@
+<?
+$MESS["CRM_ENTITY_RQ_CONV_INTRO"] = "Non è più necessario inserire i dettagli ogni volta che crei una nuova fattura. Fornisci i tuoi dettagli di contatto una sola volta e usa questi dati da qualsiasi entità CRM. Ti consigliamo di convertire i vecchi dettagli in nuovi per utilizzi successivi. <b>Il campo \"indirizzo\" sarà parimenti copiato ma resterà nascosto.</b> <a id=\"#EXEC_ID#\" href=\"#EXEC_URL#\">Converti ora</a> <a id=\"#SKIP_ID#\" href=\"#SKIP_URL#\">Ignora</a>";
+?>

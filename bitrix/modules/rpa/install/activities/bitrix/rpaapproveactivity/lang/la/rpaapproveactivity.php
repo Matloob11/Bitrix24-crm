@@ -1,0 +1,27 @@
+<?php
+$MESS["RPA_BP_APR_ACT_NO_ACTION"] = "No se especificó ninguna acción.";
+$MESS["RPA_BP_APR_ACT_PROP_EMPTY1"] = "No hay personas responsables seleccionadas para la asignación.";
+$MESS["RPA_BP_APR_ACT_PROP_EMPTY2"] = "El tipo de aprobación no está especificado.";
+$MESS["RPA_BP_APR_ACT_PROP_EMPTY3"] = "Tipo de aprobación incorrecto";
+$MESS["RPA_BP_APR_ACT_PROP_EMPTY4"] = "El nombre de la asignación no fue especificado.";
+$MESS["RPA_BP_APR_ERROR_STAGE_ID"] = "Etapa objetivo incorrecta";
+$MESS["RPA_BP_APR_FIELD_ACTIONS"] = "Botones";
+$MESS["RPA_BP_APR_FIELD_ALTER_RESPONSIBLE"] = "Nombrar al sustituto";
+$MESS["RPA_BP_APR_FIELD_APPROVE_ACTION_NO"] = "Rechazar";
+$MESS["RPA_BP_APR_FIELD_APPROVE_ACTION_YES"] = "Aprobar";
+$MESS["RPA_BP_APR_FIELD_APPROVE_FIXED_COUNT"] = "Personas para aprobar";
+$MESS["RPA_BP_APR_FIELD_APPROVE_TYPE"] = "Tipo de aprobación";
+$MESS["RPA_BP_APR_FIELD_APPROVE_TYPE_ALL"] = "Todos";
+$MESS["RPA_BP_APR_FIELD_APPROVE_TYPE_ANY"] = "Cualquiera de los listados";
+$MESS["RPA_BP_APR_FIELD_APPROVE_TYPE_FIXED"] = "Cualquiera";
+$MESS["RPA_BP_APR_FIELD_APPROVE_TYPE_QUEUE"] = "Todos en cola";
+$MESS["RPA_BP_APR_FIELD_DESCRIPTION"] = "Texto";
+$MESS["RPA_BP_APR_FIELD_EXECUTIVE_RESPONSIBLE"] = "Aprobador final";
+$MESS["RPA_BP_APR_FIELD_FIELDS_TO_SHOW"] = "Mostrar campos";
+$MESS["RPA_BP_APR_FIELD_NAME"] = "Nombre";
+$MESS["RPA_BP_APR_FIELD_RESPONSIBLE_TYPE"] = "Tipo de personas responsables";
+$MESS["RPA_BP_APR_FIELD_RESPONSIBLE_TYPE_HEADS"] = "Supervisores del empleado";
+$MESS["RPA_BP_APR_FIELD_RESPONSIBLE_TYPE_PLAIN"] = "Cola de usuarios";
+$MESS["RPA_BP_APR_FIELD_SKIP_ABSENT"] = "Omitir usuarios ausentes";
+$MESS["RPA_BP_APR_FIELD_USERS"] = "Personas responsables";
+$MESS["RPA_BP_APR_RUNTIME_TERMINATED"] = "Etapa cambiada";

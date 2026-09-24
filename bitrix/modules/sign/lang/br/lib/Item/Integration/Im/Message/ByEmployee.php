@@ -1,0 +1,13 @@
+<?php
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_EXPIRED_TO_EMPLOYEE"] = "[b]O documento expirou.[/b][br][br]O documento \"#DOC_NAME#\" expirou. Você pode reiniciar o processo de assinatura.[br][br][url=#SIGN_URL#]Abrir documento[/url]";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEE"] = "[b]Documento recusado[/b][br][br]#INITIATOR_NAME# recusou o documento #DOC_NAME#. Corrija os problemas e envie o documento novamente.";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEEF"] = "[b][b]Documento recusado[/b][br][br]#INITIATOR_NAME# recusou o documento #DOC_NAME#. Corrija os problemas e envie o documento novamente.";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEEM"] = "[b][b]Documento recusado[/b][br][br]#INITIATOR_NAME# recusou o documento #DOC_NAME#. Corrija os problemas e envie o documento novamente.";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_COMPANY"] = "[b]Documento aprovado[/b][br][br]\"#DOC_NAME#\" de #INITIATOR_NAME# foi aprovado e colocado no cofre da empresa.";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEE"] = "[b]Documento aprovado[/b][br][br]#INITIATOR_NAME# aprovou \"#DOC_NAME#\". Ele está disponível para visualizar e baixar no seu perfil na aba \"Meus documentos\".[br][br][url=#SIGN_URL#]Ver documento[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEEF"] = "[b]Documento aprovado[/b][br][br]#INITIATOR_NAME# aprovou \"#DOC_NAME#\". Ele está disponível para visualizar e baixar no seu perfil na aba \"Meus documentos\".[br][br][url=#SIGN_URL#]Ver documento[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEEM"] = "[b]Documento aprovado[/b][br][br]#INITIATOR_NAME# aprovou \"#DOC_NAME#\". Ele está disponível para visualizar e baixar no seu perfil na aba \"Meus documentos\".[br][br][url=#SIGN_URL#]Ver documento[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_COMPANY"] = "[b]Assinar documento[/b][br][br]#INITIATOR_NAME# enviou o documento #DOC_NAME# para você assinar.[br][br][url=#SIGN_URL#]Assinar agora[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_EMPLOYEE"] = "[b]Assinar documento[/b][br][br]Assine o documento #DOC_NAME# e observe o progresso no seu perfil na aba \"Meus documentos\".[br][br][url=#SIGN_URL#]Assinar agora[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_REVIEWER"] = "[b]Aprovar documento[/b][br][br]#INITIATOR_NAME# enviou o documento #DOC_NAME# para você aprovar.[br][br][url=#SIGN_URL#]Aprovar[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_SIGNED_BY_EMPLOYEE"] = "[b]Documento enviado[/b][br][br]Você assinou e enviou o documento \"#DOC_NAME#\". Você será notificado assim que a empresa terminar de processá-lo.[br][br][url=#SIGN_URL#]Ver documento[/url]";

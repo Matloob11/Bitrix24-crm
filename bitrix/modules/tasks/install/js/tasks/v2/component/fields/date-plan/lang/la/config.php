@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE"] = "El responsable puede editar la programación";
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE_TEMPLATE"] = "El responsable puede cambiar la duración de la tarea y la fecha de inicio";
+$MESS["TASKS_V2_DATE_PLAN_BUTTON_SAVE"] = "Guardar";
+$MESS["TASKS_V2_DATE_PLAN_DAYS"] = "Día(s)";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION"] = "Seleccione las fechas de inicio y finalización planificadas para esta tarea. Como alternativa a la selección de la fecha de vencimiento, puede especificar la duración planificada de la tarea.";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION_TEMPLATE"] = "Especifique cuándo iniciará su tarea y cuánto tiempo debería tomar su finalización.";
+$MESS["TASKS_V2_DATE_PLAN_DURATION"] = "Duración:";
+$MESS["TASKS_V2_DATE_PLAN_END"] = "Fecha de vencimiento:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_END"] = "Fecha de vencimiento:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_START"] = "Fecha de inicio:";
+$MESS["TASKS_V2_DATE_PLAN_HOURS"] = "Hora(s)";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME"] = "Sincronizar con las programaciones de subtareas";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_HINT"] = "La programación de esta tarea variará según las programaciones de sus subtareas.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_STATE"] = "Definida por subtareas";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME"] = "Omitir fines de semana";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT"] = "La programación se ajustará si cae en fin de semana o día festivo.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT_TEMPLATE"] = "La fecha de inicio y la duración se ajustarán si son en fin de semana o día festivo.";
+$MESS["TASKS_V2_DATE_PLAN_MINUTES"] = "Minuto(s)";
+$MESS["TASKS_V2_DATE_PLAN_NO_SUBTASKS_HINT"] = "Esta tarea aún no tiene subtareas. Una vez que las tenga, la programación se ajustará en consecuencia.";
+$MESS["TASKS_V2_DATE_PLAN_START"] = "Fecha de inicio:";
+$MESS["TASKS_V2_DATE_PLAN_START_AFTER"] = "Iniciar tarea en:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE"] = "Programación:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_CHIP"] = "Programación de tareas";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_SHEET"] = "Programación de tareas";

@@ -1,0 +1,663 @@
+import { Builder } from 'crm.integration.analytics';
+
+import { ajax as Ajax, Text, Type } from 'main.core';
+import { sendData } from 'ui.analytics';
+import { BBCodeParser } from 'ui.bbcode.parser';
+import { InfoHelper } from 'ui.info-helper';
+import { UI } from 'ui.notification';
+import { TextEditor } from 'ui.text-editor';
+
+import { AssignmentType } from '../assignment-type';
+import { AdditionalInfoComponent } from './common/additional-info-component';
+import { AiSwitcherComponent } from './common/ai-switcher-component';
+import { TextEditorWrapperComponent } from './common/text-editor-wrapper-component';
+import { Button, ButtonEvents } from './navigation/button';
+import { AssignmentTypeSelector } from './selector/assignment-type-selector';
+import { CallAssessmentSelector } from './selector/call-assessment-selector';
+import { CategorySelector } from './selector/category-selector';
+import { StageSelector } from './selector/stage-selector';
+import { UserSelector } from './selector/user-selector';
+import { InlinePlaceholderSelector } from './selector/inline-placeholder-selector';
+
+export const Segment = {
+	components: {
+		Button,
+		AdditionalInfoComponent,
+		AiSwitcherComponent,
+		AssignmentTypeSelector,
+		TextEditorWrapperComponent,
+		InlinePlaceholderSelector,
+		CallAssessmentSelector,
+		CategorySelector,
+		StageSelector,
+		UserSelector,
+	},
+
+	props: {
+		settings: {
+			type: Object,
+			default: {},
+		},
+		segment: {
+			type: Object,
+			required: true,
+		},
+		categories: {
+			type: Object,
+			required: true,
+		},
+		callAssessments: {
+			type: Object,
+			required: true,
+		},
+		events: {
+			type: Object,
+			default: {},
+		},
+		analytics: {
+			type: Object,
+			default: {},
+		},
+		textEditor: TextEditor,
+	},
+
+	data(): Object
+	{
+		const { segment, textEditor, categories, settings } = this;
+		const id = segment?.id ?? null;
+		const isEnabled = segment?.isEnabled ?? null;
+
+		const firstCategory = categories[0];
+
+		let isAiEnabled = false;
+		if (settings.ai?.isAvailable && settings.baas?.hasPackage)
+		{
+			isAiEnabled = segment.isAiEnabled ?? true;
+		}
+
+		return {
+			id,
+			isEnabled,
+			text: textEditor.getText(),
+			parser: new BBCodeParser(),
+
+			currentCategoryId: segment.entityCategoryId ?? firstCategory.id,
+			currentStageId: segment.entityStageId ?? this.getFirstAvailableCategoryStageId(firstCategory),
+			assignmentTypeId: segment.assignmentTypeId ?? AssignmentType.byUser,
+			assignmentUserIds: new Set(segment.assignmentUserIds ?? []),
+			currentEntityTitlePattern: segment.entityTitlePattern ?? null,
+			currentCallAssessmentId: segment.callAssessmentId ?? null,
+			currentIsAiEnabled: isAiEnabled,
+			minimumDaysAfterLastClosedEntity: segment.minimumDaysAfterLastClosedEntity,
+			placeholderSelectorTypes: [
+				BX.CrmEntityType.enumeration.contact,
+				BX.CrmEntityType.enumeration.company,
+			],
+		};
+	},
+
+	created(): void
+	{
+		this.assignmentType = AssignmentType;
+	},
+
+	mounted(): void
+	{
+		this.$Bitrix.eventEmitter.subscribe(ButtonEvents.click, this.onNavigationButtonClick);
+
+		this.sendViewAnalytics();
+	},
+
+	beforeUnmount(): void
+	{
+		this.$Bitrix.eventEmitter.unsubscribe(ButtonEvents.click, this.onNavigationButtonClick);
+	},
+
+	methods: {
+		onSaveCallback(): void
+		{
+			if (Type.isFunction(this.events?.onSave))
+			{
+				this.events.onSave();
+			}
+		},
+		onNavigationButtonClick({ data }): void
+		{
+			const { id } = data;
+			if (id === 'cancel' || id === 'close')
+			{
+				this.sendCancelAnalytics();
+				this.closeSlider();
+
+				return;
+			}
+
+			this.sendData();
+		},
+		sendData(): void
+		{
+			const data = {
+				entityTypeId: 2, // temporary only deal
+				entityCategoryId: this.currentCategoryId,
+				entityStageId: this.currentStageId,
+				assignmentUserIds: [...this.assignmentUserIds.values()],
+				entityTitlePattern: this.currentEntityTitlePattern,
+				assignmentTypeId: this.assignmentTypeId,
+				callAssessmentId: this.currentCallAssessmentId,
+				isAiEnabled: this.currentIsAiEnabled,
+				minimumDaysAfterLastClosedEntity: Number(this.minimumDaysAfterLastClosedEntity),
+			};
+
+			if (!this.currentIsAiEnabled)
+			{
+				data.prompt = this.textEditor.getText();
+			}
+
+			if (!this.validate(data))
+			{
+				return;
+			}
+
+			const dataParams = {
+				id: this.id,
+				data,
+			};
+
+			top.BX.Event.EventEmitter.emit('crm:repeatSale:segment:beforeSave', dataParams);
+
+			Ajax
+				.runAction('crm.repeatsale.segment.save', { json: dataParams })
+				.then(
+					(response) => {
+						top.BX.Event.EventEmitter.emit('crm:repeatSale.segment:save', {
+							...dataParams,
+							status: response?.status,
+						});
+
+						if (response?.status !== 'success')
+						{
+							UI.Notification.Center.notify({
+								content: Text.encode(response.errors[0].message),
+								autoHideDelay: 6000,
+							});
+
+							return;
+						}
+
+						this.onSaveCallback();
+
+						this.sendEditAnalytics();
+
+						this.closeSlider();
+					},
+					(response) => {
+						const messageCode = 'CRM_REPEAT_SALE_SEGMENT_SAVE_ERROR';
+
+						UI.Notification.Center.notify({
+							content: this.$Bitrix.Loc.getMessage(messageCode),
+							autoHideDelay: 6000,
+						});
+					},
+				)
+				.catch((response) => {
+					UI.Notification.Center.notify({
+						content: Text.encode(response.errors[0].message),
+						autoHideDelay: 6000,
+					});
+
+					throw response;
+				})
+			;
+		},
+		validate(data: Object): boolean
+		{
+			if (!Type.isArrayFilled(data.assignmentUserIds) && data.assignmentTypeId === AssignmentType.byUser)
+			{
+				UI.Notification.Center.notify({
+					content: this.$Bitrix.Loc.getMessage('CRM_REPEAT_SALE_SEGMENT_VALIDATE_ASSIGNMENT_USERS_ERROR'),
+					autoHideDelay: 6000,
+				});
+
+				return false;
+			}
+
+			if (!this.currentIsAiEnabled && !Type.isStringFilled(this.getPlainText()))
+			{
+				UI.Notification.Center.notify({
+					content: this.$Bitrix.Loc.getMessage('CRM_REPEAT_SALE_SEGMENT_VALIDATE_TEXT_ERROR'),
+					autoHideDelay: 6000,
+				});
+
+				return false;
+			}
+
+			if (
+				!Type.isInteger(Number(this.minimumDaysAfterLastClosedEntity))
+				|| this.minimumDaysAfterLastClosedEntity < 0
+			)
+			{
+				UI.Notification.Center.notify({
+					content: this.$Bitrix.Loc.getMessage(
+						'CRM_REPEAT_SALE_SEGMENT_VALIDATE_MIN_DAYS_AFTER_LAST_CLOSED_ENTITY_ERROR',
+						{
+							'#MIN_DAYS#': 0,
+						},
+					),
+					autoHideDelay: 6000,
+				});
+
+				return false;
+			}
+
+			return true;
+		},
+		closeSlider(): void
+		{
+			top.BX.SidePanel.Instance.getSliderByWindow(window).close();
+		},
+		getPlainText(): number
+		{
+			return this.parser.parse(this.textEditor.getText()).toPlainText().trim();
+		},
+		onSelectCategory(category: Object): void
+		{
+			if (this.currentCategoryId === category.id)
+			{
+				return;
+			}
+
+			this.$refs.stageSelector.destroy();
+			this.currentCategoryId = category.id;
+
+			void this.$nextTick(() => {
+				const currentCategory = this.getCategoryById(this.currentCategoryId);
+				this.currentStageId = this.getFirstAvailableCategoryStageId(currentCategory);
+			});
+		},
+		onSelectStage(stage: Object): void
+		{
+			this.currentStageId = stage.id;
+		},
+		getCategoryById(id: number): Object
+		{
+			return this.categories.find((category) => category.id === id);
+		},
+		getFirstAvailableCategoryStageId(category: Object): string
+		{
+			return category.items[0].id;
+		},
+		onSelectAssignmentType(type: Object): void
+		{
+			this.assignmentTypeId = type.id;
+		},
+		onSelectAssignmentUser(user: Object): void
+		{
+			this.assignmentUserIds.add(user.id);
+		},
+		onDeselectAssignmentUser(user: Object): void
+		{
+			this.assignmentUserIds.delete(user.id);
+		},
+		onTitlePatternChange(value: string): void
+		{
+			this.currentEntityTitlePattern = value;
+		},
+		setCurrentCallAssessmentId(id: number): void
+		{
+			this.currentCallAssessmentId = id;
+		},
+		getMessageByCode(code: string): string
+		{
+			return this.$Bitrix.Loc.getMessage(code);
+		},
+		setCurrentIsAiEnabled(value: boolean): void
+		{
+			this.currentIsAiEnabled = value;
+		},
+		sendViewAnalytics(): void
+		{
+			const section = this.analytics.section ?? '';
+			const viewEvent = Builder.RepeatSale.Segment.ViewEvent.createDefault(section);
+			sendData(viewEvent.buildData());
+		},
+		sendCancelAnalytics(): void
+		{
+			const section = this.analytics.section ?? '';
+			const viewEvent = Builder.RepeatSale.Segment.CancelEvent.createDefault(section);
+			sendData(viewEvent.buildData());
+		},
+		sendEditAnalytics(): void
+		{
+			const section = this.analytics.section ?? '';
+			const editEvent = Builder.RepeatSale.Segment.EditEvent.createDefault(section);
+
+			if (
+				!this.currentIsAiEnabled
+				&& this.getPlainPromptText() !== this.getPlainSegmentText()
+			)
+			{
+				editEvent.setIsActivityTextChanged(true);
+			}
+
+			if (this.segment.entityTitlePattern !== this.currentEntityTitlePattern)
+			{
+				editEvent.setIsEntityTitlePatternChanged(true);
+			}
+
+			if (this.segment.isAiEnabled !== this.currentIsAiEnabled)
+			{
+				editEvent.setIsCopilotEnabled(this.currentIsAiEnabled);
+			}
+
+			editEvent.setSegmentCode(this.segment.code);
+
+			sendData(editEvent.buildData());
+		},
+		getPlainPromptText(): string
+		{
+			return this.parseText(this.textEditor.getText());
+		},
+		getPlainSegmentText(): string
+		{
+			return this.parseText(this.segment.prompt);
+		},
+		parseText(text: string): string
+		{
+			return this.parser.parse(text).toPlainText().trim();
+		},
+	},
+
+	computed: {
+		readOnly(): boolean
+		{
+			return this.settings.isReadOnly;
+		},
+		isAiAvailable(): boolean
+		{
+			return this.settings.ai?.isAvailable ?? false;
+		},
+		aiDisabledSliderCode(): ?string
+		{
+			return this.settings.ai?.aiDisabledSliderCode ?? null;
+		},
+		isBaasAvailable(): boolean
+		{
+			return this.settings.baas?.isAvailable ?? false;
+		},
+		isBaasHasPackage(): boolean
+		{
+			return this.settings.baas?.hasPackage ?? false;
+		},
+		packageEmptySliderCode(): ?string
+		{
+			return this.settings.baas?.aiPackagesEmptySliderCode ?? null;
+		},
+		aiCallEnabled(): boolean
+		{
+			return this.settings.isAiCallEnabled;
+		},
+		repeatSaleSegmentSection(): Array
+		{
+			return [
+				'crm-repeat-sale__segment-section',
+			];
+		},
+		title(): string
+		{
+			const code = this.readOnly ? 'CRM_REPEAT_SALE_SEGMENT_TITLE_READ_ONLY' : 'CRM_REPEAT_SALE_SEGMENT_TITLE';
+
+			return this.$Bitrix.Loc.getMessage(code);
+		},
+		currentCategory(): ?Object
+		{
+			return this.categories.find((category) => category.id === this.currentCategoryId) ?? null;
+		},
+		messages(): Object
+		{
+			const minimumDaysAfterLastClosedEntityUnitLabel = this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_MANUAL_MIN_DAYS_AFTER_LAST_CLOSED_ENTITY_UNIT_LABEL');
+
+			return {
+				textAreaTitle: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_MANUAL_TEXTAREA_TITLE'),
+				dealHelp: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_DEAL_HELP'),
+				sectionTitle: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_MANUAL_SECTION_TITLE'),
+				stageTitle: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_MANUAL_STAGE_TITLE'),
+				dealAssignedTitle: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_DEAL_ASSIGNED_TITLE_MSGVER_1'),
+				dealTitlePattern: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_DEAL_NAME_PATTERN_TITLE'),
+				assessmentTitle: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_CALL_ASSESSMENT_TITLE'),
+				assessmentDescription: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_CALL_ASSESSMENT_DESCRIPTION'),
+				minimumDaysAfterLastClosedEntityTitle: this.getMessageByCode('CRM_REPEAT_SALE_SEGMENT_MANUAL_MIN_DAYS_AFTER_LAST_CLOSED_ENTITY_TITLE'),
+				minimumDaysAfterLastClosedEntityUnitLabel: minimumDaysAfterLastClosedEntityUnitLabel.split(/(#INPUT#)/),
+			};
+		},
+		assignmentTypes(): Array
+		{
+			const types = [
+				{ id: AssignmentType.byClient, message: 'CRM_REPEAT_SALE_SEGMENT_DEAL_ASSIGNED_TYPE_BY_CLIENT' },
+				{ id: AssignmentType.byClientLastDeal, message: 'CRM_REPEAT_SALE_SEGMENT_DEAL_ASSIGNED_TYPE_BY_CLIENT_LAST_DEAL' },
+				{ id: AssignmentType.byUser, message: 'CRM_REPEAT_SALE_SEGMENT_DEAL_ASSIGNED_TYPE_BY_USER' },
+			];
+
+			return types.map(({ id, message }) => ({
+				id,
+				title: this.$Bitrix.Loc.getMessage(message),
+				entityId: 'type',
+				tabs: 'types',
+				selected: this.assignmentTypeId === id,
+			}));
+		},
+	},
+
+	watch: {
+		currentIsAiEnabled(value: boolean): void
+		{
+			if (this.isAiAvailable && this.isBaasHasPackage)
+			{
+				this.currentIsAiEnabled = value;
+
+				return;
+			}
+
+			if (value === true)
+			{
+				if (!this.isAiAvailable && this.aiDisabledSliderCode)
+				{
+					InfoHelper.show(this.aiDisabledSliderCode);
+				}
+				else if (!this.isBaasHasPackage && this.packageEmptySliderCode)
+				{
+					InfoHelper.show(this.packageEmptySliderCode);
+				}
+
+				void this.$nextTick(() => {
+					this.currentIsAiEnabled = false;
+				});
+			}
+		},
+	},
+
+	// language=Vue
+	template: `
+		<div class="crm-repeat-sale__segment_container">
+			<div class="crm-repeat-sale__segment-wrapper">
+				<header class="crm-repeat-sale__segment-section-header">
+					<div class="crm-repeat-sale__segment-section-header-title">
+						<span>{{title}}</span>
+					</div>
+				</header>
+				<div class="crm-repeat-sale__segment-section-body">
+					<section class="crm-repeat-sale__segment-section --main --active">
+						<h1 class="crm-repeat-sale__segment-section-title">
+							{{segment.title}}
+						</h1>
+						<div class="crm-repeat-sale__segment-section-description">
+							{{segment.description}}
+						</div>
+						<AdditionalInfoComponent
+							:title="messages.dealHelp"
+						/>
+					</section>
+					
+					
+					<section class="crm-repeat-sale__segment-section --active">
+						<div
+							class="crm-repeat-sale__segment-fields-row"
+							v-if="isBaasAvailable"
+						>
+							<div class="crm-repeat-sale__segment-field">
+								<AiSwitcherComponent
+									ref="aiSwitcher"
+									:checked="currentIsAiEnabled"
+									:read-only="readOnly"
+									@change="setCurrentIsAiEnabled"
+								/>
+							</div>
+						</div>
+						
+						<div
+							v-if="!currentIsAiEnabled"
+							class="crm-repeat-sale__segment-fields-row"
+						>
+							<div class="crm-repeat-sale__segment-field">
+								<div class="crm-repeat-sale__segment-field-title">
+									{{messages.textAreaTitle}}
+								</div>
+								<TextEditorWrapperComponent
+									:textEditor="textEditor"
+								/>
+							</div>
+						</div>
+						
+						<div class="crm-repeat-sale__segment-fields-row">
+							<div class="crm-repeat-sale__segment-field">
+								<div class="crm-repeat-sale__segment-field-title">
+									{{messages.sectionTitle}}
+								</div>
+								<CategorySelector 
+									:current-category-id="currentCategoryId"
+									:categories="categories"
+									:read-only="readOnly"
+									@onSelectItem="onSelectCategory"
+								/>
+							</div>
+							<div class="crm-repeat-sale__segment-field">
+								<div class="crm-repeat-sale__segment-field-title">
+									{{messages.stageTitle}}
+								</div>
+								<StageSelector 
+									ref="stageSelector"
+									:current-stage-id="currentStageId"
+									:category="currentCategory"
+									:read-only="readOnly"
+									@onSelectItem="onSelectStage"
+								/>
+							</div>
+						</div>
+
+						<div class="crm-repeat-sale__segment-fields-row">
+							<div class="crm-repeat-sale__segment-field">
+								<div class="crm-repeat-sale__segment-field-title">
+									{{messages.dealAssignedTitle}}
+								</div>
+								<AssignmentTypeSelector
+									:current-type-id="assignmentTypeId"
+									:types="assignmentTypes"
+									:read-only="readOnly"
+									:half-width="true"
+									:enable-search="false"
+									:show-input-icon="false"
+									:use-item-max-size="false"
+									@onSelectItem="onSelectAssignmentType"
+								/>
+							</div>
+						</div>
+						
+						<div 
+							v-if="assignmentTypeId === assignmentType.byUser"
+							class="crm-repeat-sale__segment-fields-row"
+						>
+							<div class="crm-repeat-sale__segment-field">
+								<UserSelector
+									:user-ids="[...assignmentUserIds.values()]"
+									:read-only="readOnly"
+									@onSelectItem="onSelectAssignmentUser"
+									@onDeselectItem="onDeselectAssignmentUser"
+								/>
+							</div>
+						</div>
+						
+						<div class="crm-repeat-sale__segment-fields-row">
+							<div class="crm-repeat-sale__segment-field">
+								<div class="crm-repeat-sale__segment-field-title">
+									{{messages.dealTitlePattern}}
+								</div>
+								<InlinePlaceholderSelector
+									@titlePatternChanged="onTitlePatternChange"
+									:entity-type-ids="placeholderSelectorTypes"
+									:is-multiple-selector="true"
+									:value="currentEntityTitlePattern"
+									:mode="'input'"
+									:read-only="readOnly"
+								/>
+							</div>
+						</div>
+
+						<div class="crm-repeat-sale__segment-fields-row">
+							<div class="crm-repeat-sale__segment-field">
+								<div class="crm-repeat-sale__segment-field-title">
+									{{messages.minimumDaysAfterLastClosedEntityTitle}}
+								</div>
+								<div class="crm-repeat-sale__segment-fields-input-flex-wrapper">
+									<template v-for="(item, index) in messages.minimumDaysAfterLastClosedEntityUnitLabel" :key="index">
+										<input
+											v-if="item === '#INPUT#'"
+											class="ui-ctl-element ui-ctl-w10"
+											type="text"
+											maxlength="3"
+											v-model="minimumDaysAfterLastClosedEntity"
+											:readonly="readOnly"
+										/>
+										<p
+											v-else-if="item.length > 0"
+											class="crm-repeat-sale__segment-fields-input-unit-label ui-typography-text-md"
+										>
+											{{ item }}
+										</p>
+									</template>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section 
+						:class="repeatSaleSegmentSection"
+						v-if="aiCallEnabled && false"
+					>
+						<h1 class="crm-repeat-sale__segment-section-title --level2">
+							{{messages.assessmentTitle}}
+						</h1>
+						<div class="crm-repeat-sale__segment-section-description">
+							{{messages.assessmentDescription}}
+						</div>
+
+						<div class="crm-repeat-sale__segment-field">
+							<CallAssessmentSelector 
+								:call-assessments="callAssessments"
+								:current-call-assessment-id="currentCallAssessmentId"
+								:read-only="readOnly"
+								@onSelectItem="setCurrentCallAssessmentId"
+							/>
+							{{currentCallAssessmentId}}
+						</div>
+					</section>
+				</div>
+			</div>
+			<div class="crm-repeat-sale__segment_navigation-container">
+				<div class="crm-repeat-sale__segment_navigation-buttons-wrapper">
+					<Button v-if="!readOnly" id="update" />
+					<Button v-if="!readOnly" id="cancel" />
+					<Button v-if="readOnly" id="close" />
+				</div>
+			</div>
+		</div>
+	`,
+};

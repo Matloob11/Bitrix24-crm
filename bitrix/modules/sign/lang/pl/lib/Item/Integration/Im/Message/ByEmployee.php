@@ -1,0 +1,13 @@
+<?php
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_EXPIRED_TO_EMPLOYEE"] = "[b]Dokument stracił ważność.[/b][br][br]Dokument „#DOC_NAME#” stracił ważność. Można ponownie rozpocząć podpisywanie.[br][br][url=#SIGN_URL#]Otwórz dokument[/url]";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEE"] = "[b]Dokument odrzucony[/b][br][br]#INITIATOR_NAME# odrzucił dokument #DOC_NAME#. Napraw problemy i wyślij dokument ponownie.";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEEF"] = "[b][b]Dokument odrzucony[/b][br][br]#INITIATOR_NAME# odrzuciła dokument #DOC_NAME#. Napraw problemy i wyślij dokument ponownie.";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEEM"] = "[b][b]Dokument odrzucony[/b][br][br]#INITIATOR_NAME# odrzucił dokument #DOC_NAME#. Napraw problemy i wyślij dokument ponownie.";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_COMPANY"] = "[b]Dokument zatwierdzony[/b][br][br]„#DOC_NAME#” autorstwa #INITIATOR_NAME# został zatwierdzony i umieszczony w Sejfie firmy.";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEE"] = "[b]Dokument zatwierdzony[/b][br][br]#INITIATOR_NAME# zatwierdził „#DOC_NAME#”. Jest on dostępny do wyświetlania i pobierania w Twoim profilu na karcie „Moje dokumenty”.[br][br][url=#SIGN_URL#]Wyświetl dokument[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEEF"] = "[b]Dokument zatwierdzony[/b][br][br]#INITIATOR_NAME# zatwierdziła „#DOC_NAME#”. Jest on dostępny do wyświetlania i pobierania w Twoim profilu na karcie „Moje dokumenty”.[br][br][url=#SIGN_URL#]Wyświetl dokument[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEEM"] = "[b]Dokument zatwierdzony[/b][br][br]#INITIATOR_NAME# zatwierdził „#DOC_NAME#”. Jest on dostępny do wyświetlania i pobierania w Twoim profilu na karcie „Moje dokumenty”.[br][br][url=#SIGN_URL#]Wyświetl dokument[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_COMPANY"] = "[b]Podpisz dokument[/b][br][br]#INITIATOR_NAME# wysłał Ci dokument #DOC_NAME# do podpisania.[br][br][url=#SIGN_URL#]Podpisz teraz[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_EMPLOYEE"] = "[b]Podpisz dokument[/b][br][br]Podpisz dokument #DOC_NAME# i obserwuj jego postęp w Twoim profilu na karcie „Moje dokumenty”.[br][br][url=#SIGN_URL#]Podpisz teraz[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_REVIEWER"] = "[b]Zatwierdź dokument[/b][br][br]#INITIATOR_NAME# wysłał Ci dokument #DOC_NAME# do zatwierdzenia.[br][br][url=#SIGN_URL#]Zatwierdź[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_SIGNED_BY_EMPLOYEE"] = "[b]Dokument wysłany[/b][br][br]Podpisano i wysłano dokument „#DOC_NAME#”. Gdy tylko firma zakończy przetwarzanie, powiadomimy Cię.[br][br][url=#SIGN_URL#]Wyświetl dokument[/url]";

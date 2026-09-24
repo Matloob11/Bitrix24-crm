@@ -1,0 +1,3 @@
+<?php
+$MESS["MAIL_BANNER_LOST_MESSAGE_BUTTON"] = "Жабу";
+$MESS["MAIL_BANNER_LOST_MESSAGE_TITLE"] = "Бұл хат жойылды";

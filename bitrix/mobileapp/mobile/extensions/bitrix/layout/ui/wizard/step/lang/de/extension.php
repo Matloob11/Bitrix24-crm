@@ -1,0 +1,3 @@
+<?php
+$MESS["WIZARD_STEP_BUTTON_CONTINUE_TEXT"] = "Weiter";
+$MESS["WIZARD_STEP_BUTTON_SKIP_TEXT"] = "Überspringen";

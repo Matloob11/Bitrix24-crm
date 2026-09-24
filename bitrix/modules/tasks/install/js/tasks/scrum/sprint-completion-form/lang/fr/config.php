@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_SCRUM_ERROR_TITLE_POPUP"] = "C’est une erreur.";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_ERROR_TITLE_POPUP"] = "Impossible de terminer le sprint";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_ACTION_MOVE_LABEL"] = "Déplacez toutes les tâches en suspens vers :";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_ACTION_ROW_LABEL"] = "Tâches inachevées";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_BUTTON"] = "Terminer";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DATE_END_LABEL"] = "Terminer :";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DATE_START_LABEL"] = "Démarrer :";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DATE_START_LABEL_MSGVER_1"] = "Début :";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DONE_SP"] = "Terminées";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_EPICS_ROW_LABEL"] = "Épiques de sprint";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_PERIOD_LABEL"] = "Longueur :";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_PLAN_ROW_LABEL"] = "Points d'histoire";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_PLAN_SP"] = "Prévu";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_SELECTOR_BACKLOG"] = "Backlog";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_SELECTOR_SPRINT"] = "Nouveau sprint";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_TIME_ROW_LABEL"] = "Timing du sprint";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_TITLE"] = "Terminer le sprint";
+$MESS["TASKS_SCRUM_SPRINT_SIDE_PANEL_LABEL"] = "Terminer";
+$MESS["TSS_START_STORY_POINTS_HINT"] = "Cette vue montre combien de points d'histoire étaient attendus par le sprint et combien de points l'équipe a effectivement réussi à mettre en œuvre. Le nombre de points d'histoire indique la complexité relative d'une tâche. Ce genre d'estimation est nécessaire pour comprendre le nombre de points d'histoire qu'une équipe peut gérer dans un sprint et planifier le temps en conséquence.";

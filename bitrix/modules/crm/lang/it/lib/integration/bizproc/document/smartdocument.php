@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_BP_DOCUMENT_SMART_DOCUMENT_ENTITY_NAME"] = "Bitrix24 Firma";
+$MESS["CRM_BP_DOCUMENT_SMART_DOCUMENT_ENTITY_NAME_1"] = "Documento con firma elettronica";

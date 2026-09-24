@@ -1,0 +1,264 @@
+import { Type, Loc, Text, Dom } from 'main.core';
+
+import { DialogUtil } from './dialog.js';
+
+import { emojiRegex } from './emoji-regex';
+
+export const TextUtil = {
+
+	convertHtmlEntities(text: string): string
+	{
+		return Dom.create({
+			tag: 'span',
+			html: text
+		}).innerText;
+	},
+
+	convertSnakeToCamelCase(text: string): string
+	{
+		return text.replaceAll(/(_[a-z])/gi, ($1) => {
+			return $1.toUpperCase().replace('_', '');
+		});
+	},
+
+	convertCamelToSnakeCase(text: string): string
+	{
+		return text
+			.replaceAll(/([A-Z])/g, (match) => `_${match.toLowerCase()}`)
+			.replaceAll(/([a-z])(\d+)/g, '$1_$2');
+	},
+
+	escapeRegex(string): string
+	{
+		return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+	},
+
+	getLocalizeForNumber(phrase, number, language = 'en'): string
+	{
+		let pluralFormType = 1;
+
+		number = parseInt(number);
+
+		if (number < 0)
+		{
+			number = number * -1;
+		}
+
+		if (language)
+		{
+			switch (language)
+			{
+				case 'de':
+				case 'en':
+					pluralFormType = ((number !== 1) ? 1 : 0);
+					break;
+
+				case 'ru':
+				case 'ua':
+					pluralFormType = (((number%10 === 1) && (number%100 !== 11)) ? 0 : (((number%10 >= 2) && (number%10 <= 4) && ((number%100 < 10) || (number%100 >= 20))) ? 1 : 2));
+					break;
+			}
+		}
+
+		return Loc.getMessage(phrase + '_PLURAL_' + pluralFormType);
+	},
+
+	getFirstLetters(text): string
+	{
+		const validSymbolsPattern = /[\p{L}\p{N} ]/u;
+
+		const words = text.split(/[\s,]/).filter(word => {
+			const firstLetter = word.charAt(0);
+			return validSymbolsPattern.test(firstLetter);
+		});
+
+		if (words.length === 0)
+		{
+			return '';
+		}
+
+		if (words.length > 1)
+		{
+			return words[0].charAt(0) + words[1].charAt(0);
+		}
+
+		return words[0].charAt(0);
+	},
+
+	insertUnseenWhitespace(text: string, splitIndex: number): string
+	{
+		if (text.length <= splitIndex)
+		{
+			return text;
+		}
+
+		const UNSEEN_SPACE = '\u200B';
+
+		let firstPart = text.slice(0, splitIndex + 1);
+		const secondPart = text.slice(splitIndex + 1);
+		const hasWhitespace = /\s/.test(firstPart);
+		const hasUserCode = /\[user=(\d+)(\s)?(replace)?](.*?)\[\/user]/gi.test(text);
+
+		if (firstPart.length === splitIndex + 1 && !hasWhitespace && !hasUserCode)
+		{
+			firstPart += UNSEEN_SPACE;
+		}
+
+		return firstPart + secondPart;
+	},
+
+	getUuidV4(): string
+	{
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+			var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+
+			return v.toString(16);
+		});
+	},
+
+	isUuidV4(uuid: string): boolean
+	{
+		if (!Type.isString(uuid))
+		{
+			return false;
+		}
+
+		const uuidV4pattern = new RegExp(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i);
+
+		return uuid.search(uuidV4pattern) === 0;
+	},
+
+	checkUrl(url): boolean
+	{
+		const allowList = [
+			"http:",
+			"https:",
+			"ftp:",
+			"file:",
+			"tel:",
+			"callto:",
+			"mailto:",
+			"skype:",
+			"viber:",
+		];
+
+		const checkCorrectStartLink = ['/', ...allowList].find(protocol => {
+			return url.startsWith(protocol);
+		});
+		if (!checkCorrectStartLink)
+		{
+			return false;
+		}
+
+		const element = Dom.create({ tag: 'a', attrs: { href: url }});
+
+		return allowList.indexOf(element.protocol) > -1;
+	},
+
+	isUrlImageLike(url: string): boolean
+	{
+		if (!Type.isStringFilled(url))
+		{
+			return false;
+		}
+
+		return /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i.test(url.trim());
+	},
+
+	isEmojiOnly(messageText: string): boolean
+	{
+		const text = messageText.replaceAll(emojiRegex, '');
+
+		return text.replaceAll(/\s/g, '').length === 0;
+	},
+
+	/**
+	 * @deprecated
+	 * @use Text.encode from main.core
+	 */
+	htmlspecialchars(text): string
+	{
+		return Text.encode(text);
+	},
+
+	/**
+	 * @deprecated
+	 * @use Text.decode from main.core
+	 */
+	htmlspecialcharsback(text): string
+	{
+		return Text.decode(text);
+	},
+
+	getWordsFromString(string: string): string[]
+	{
+		const clearedString = string
+			.replaceAll('(', ' ')
+			.replaceAll(')', ' ')
+			.replaceAll('[', ' ')
+			.replaceAll(']', ' ')
+			.replaceAll('{', ' ')
+			.replaceAll('}', ' ')
+			.replaceAll('<', ' ')
+			.replaceAll('>', ' ')
+			.replaceAll('-', ' ')
+			.replaceAll('#', ' ')
+			.replaceAll('№', ' ')
+			.replaceAll('"', ' ')
+			.replaceAll('\'', ' ')
+			.replaceAll(/\s\s+/g, ' ')
+		;
+
+		return clearedString.split(' ').filter((word) => word !== '');
+	},
+
+	getMentionBbCode(dialogId: number | string, name: string): string
+	{
+		if (Type.isString(dialogId) && DialogUtil.isChatDialogId(dialogId))
+		{
+			const chatId = DialogUtil.getChatIdFromDialogId(dialogId);
+
+			return `[CHAT=${chatId}]${name}[/CHAT]`;
+		}
+
+		return `[USER=${dialogId}]${name}[/USER]`;
+	},
+
+	async copyToClipboard(textToCopy: string): Promise<void>
+	{
+		if (!Type.isString(textToCopy))
+		{
+			return Promise.reject();
+		}
+
+		// navigator.clipboard defined only if window.isSecureContext === true
+		// so or https should be activated, or localhost address
+		if (window.isSecureContext && navigator.clipboard)
+		{
+			// safari not allowed clipboard manipulation as result of ajax request
+			// so timeout is hack for this, to prevent "not have permission"
+			return new Promise((resolve, reject) => {
+				setTimeout(() => (
+					navigator.clipboard
+						.writeText(textToCopy)
+						.then(() => resolve())
+						.catch((e) => reject(e))
+				), 0);
+			});
+		}
+
+		return BX.clipboard?.copy(textToCopy) ? Promise.resolve() : Promise.reject();
+	},
+
+	getHostFromUrl(url: string): string
+	{
+		try
+		{
+			return new URL(url).host;
+		}
+		catch
+		{
+			return url;
+		}
+	},
+};

@@ -1,0 +1,11 @@
+<?php
+$MESS["STAGE_DETAIL_COLOR_PICKER_TITLE"] = "Cor da etapa";
+$MESS["STAGE_DETAIL_DEFAULT_STAGE_DEFAULT_NAME"] = "Nova etapa";
+$MESS["STAGE_DETAIL_DEFAULT_STAGE_NAME"] = "Nome";
+$MESS["STAGE_DETAIL_DELETE"] = "Excluir fase";
+$MESS["STAGE_DETAIL_DELETE_TEXT"] = "Excluir etapa?";
+$MESS["STAGE_DETAIL_FUNNEL"] = "Etapa \"#STAGE_NAME#\"";
+$MESS["STAGE_DETAIL_FUNNEL_EMPTY"] = "Etapa sem título";
+$MESS["STAGE_DETAIL_NAME"] = "Nome da etapa";
+$MESS["STAGE_DETAIL_NAME_ERROR"] = "Digite o nome da etapa";
+$MESS["STAGE_DETAIL_SAVE"] = "Salvar";

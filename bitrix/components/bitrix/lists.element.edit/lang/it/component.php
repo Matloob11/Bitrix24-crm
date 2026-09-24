@@ -1,0 +1,19 @@
+<?php
+$MESS["CC_BLEE_ACCESS_DENIED"] = "Autorizzazione insufficiente per visualizzare e modificare l'elenco.";
+$MESS["CC_BLEE_ACCESS_DENIED_STATUS"] = "Non disponi delle autorizzazioni sufficienti per modificare questo record nel suo stato corrente";
+$MESS["CC_BLEE_DELETE_ERROR"] = "Errore durante l'eliminazione.";
+$MESS["CC_BLEE_ELEMENT_LOCKED"] = "L'elemento è stato temporaneamente bloccato";
+$MESS["CC_BLEE_FIELD_NAME_DEFAULT"] = "Nome";
+$MESS["CC_BLEE_INTERNAL_ERROR_ELEMENT_ADD"] = "Impossibile creare l'elemento. Riprova.";
+$MESS["CC_BLEE_INTERNAL_ERROR_ELEMENT_UPDATE"] = "Impossibile aggiornare l'elemento. Riprova.";
+$MESS["CC_BLEE_IS_CONSTANTS_TUNED"] = "Le costanti del flusso di lavoro devono essere configurate.";
+$MESS["CC_BLEE_IS_CONSTANTS_TUNED_NEW"] = "I parametri del flusso di lavoro devono essere configurati.";
+$MESS["CC_BLEE_LISTS_FOR_SONET_GROUP_DISABLED"] = "Gli elenchi sono disattivati per questo gruppo.";
+$MESS["CC_BLEE_MODULE_NOT_INSTALLED"] = "Il modulo Elenchi comuni non è installato.";
+$MESS["CC_BLEE_SONET_DEL_LOG_TITLE_TEMPLATE"] = "Elemento elenco \"#TITLE#\" eliminato";
+$MESS["CC_BLEE_SONET_LOG_TITLE_TEMPLATE"] = "Elemento elenco \"#TITLE#\" aggiunto o aggiornato";
+$MESS["CC_BLEE_UNKNOWN_ERROR"] = "Errore sconosciuto.";
+$MESS["CC_BLEE_UPPER_LEVEL"] = "Livello superiore";
+$MESS["CC_BLEE_VALIDATE_FIELD_ERROR"] = "Il valore del campo '#NAME#' non è corretto";
+$MESS["CC_BLEE_WRONG_IBLOCK"] = "L'elenco specificato non è corretto.";
+$MESS["CC_BLEE_WRONG_IBLOCK_TYPE"] = "Tipo blocco di informazioni non corretto.";

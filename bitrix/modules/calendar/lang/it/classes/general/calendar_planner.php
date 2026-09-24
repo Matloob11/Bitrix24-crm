@@ -1,0 +1,25 @@
+<?php
+$MESS["EC_PL_ATTENDEES_LAST"] = "Altri partecipanti";
+$MESS["EC_PL_ATTENDEES_SHOW_MORE"] = "Altri partecipanti";
+$MESS["EC_PL_ATTENDEES_TITLE"] = "Partecipanti";
+$MESS["EC_PL_GOTO_NOW"] = "Vai alla data corrente";
+$MESS["EC_PL_LOCKED_TITLE"] = "Non puoi selezionare tempo libero sul tuo piano corrente";
+$MESS["EC_PL_PROPOSE"] = "Tempo libero";
+$MESS["EC_PL_PROPOSE_NO_RESULT"] = "Sfortunatamente, non siamo riusciti a trovare un'ora appropriata per l'evento nel prossimo futuro.";
+$MESS["EC_PL_RESOURCE_TITLE"] = "Risorse";
+$MESS["EC_PL_SETTINGS"] = "Impostazioni";
+$MESS["EC_PL_SETTINGS_SCALE"] = "Scala";
+$MESS["EC_PL_SETTINGS_SCALE_1DAY"] = "1 giorno";
+$MESS["EC_PL_SETTINGS_SCALE_1HOUR"] = "1 ora";
+$MESS["EC_PL_SETTINGS_SCALE_2HOUR"] = "2 ore";
+$MESS["EC_PL_SETTINGS_SCALE_15MIN"] = "15 min";
+$MESS["EC_PL_SETTINGS_SCALE_30MIN"] = "30 min";
+$MESS["EC_PL_SETTINGS_SCALE_ACCURACY"] = "Ora visualizzata";
+$MESS["EC_PL_SETTINGS_SCALE_READONLY_TITLE"] = "Contrassegna l'opzione \"Tutto il giorno\" per modificare la scala";
+$MESS["EC_PL_SETTINGS_SCALE_TIME"] = "Ora visualizzata";
+$MESS["EC_PL_STATUS_H"] = "Organizzatore";
+$MESS["EC_PL_STATUS_N"] = "Rifiutato";
+$MESS["EC_PL_STATUS_Q"] = "Partecipazione non confermata";
+$MESS["EC_PL_STATUS_TZALL"] = "Sono presenti partecipanti che si trovano in fusi orari diversi.";
+$MESS["EC_PL_STATUS_Y"] = "Partecipazione confermata";
+$MESS["EC_PL_UNLOCK_FEATURE"] = "aggiorna ora";

@@ -1,0 +1,3 @@
+<?php
+$MESS["AI_AGREEMENT_STABLEDIFFUSION_LABEL"] = "Eu aceito as Regras";
+$MESS["AI_AGREEMENT_STABLEDIFFUSION_TITLE"] = "Regras do ImageAssistant AI";

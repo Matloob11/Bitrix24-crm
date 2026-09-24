@@ -1,0 +1,5 @@
+<?php
+$MESS["CRM_COMPANY_DEAL_SUM_STAT_PRESET_LOST_SUM"] = "Totale affari persi";
+$MESS["CRM_COMPANY_DEAL_SUM_STAT_PRESET_PROCESS_SUM"] = "Totale affari in corso";
+$MESS["CRM_COMPANY_DEAL_SUM_STAT_PRESET_SUCCESS_SUM"] = "Affari conclusi totali";
+$MESS["CRM_COMPANY_DEAL_SUM_STAT_PRESET_SUM_TOTAL"] = "Totale affari";

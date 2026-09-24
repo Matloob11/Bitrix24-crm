@@ -1,0 +1,3 @@
+<?php
+$MESS["SALESCENTER_FEEDBACK_INTEGRATION_REQUEST_TITLE_MSGVER_2"] = "Richiesta di implementazione";
+$MESS["SALESCENTER_FEEDBACK_TITLE"] = "Feedback";

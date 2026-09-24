@@ -1,0 +1,3 @@
+<?php
+$MESS["TIMEMAN_CONVERTER_SCHEDULE_FLEXTIME_NAME"] = "Flexível";
+$MESS["TIMEMAN_CONVERTER_SCHEDULE_FOR_ALL_USERS_NAME"] = "Para todos os colaboradores";

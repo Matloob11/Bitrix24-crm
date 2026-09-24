@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_DEAL_CATEGORY_PANEL_ADD_CATEGORY"] = "Aggiungi pipeline";
+$MESS["CRM_DEAL_CATEGORY_PANEL_MENU_BUTTON"] = "Altro...";
+?>

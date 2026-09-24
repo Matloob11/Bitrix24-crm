@@ -1,0 +1,26 @@
+<?php
+$MESS["TASKS_V2_GROUP_ABOUT"] = "Apri progetto";
+$MESS["TASKS_V2_GROUP_ABOUT_COLLAB"] = "Apri collab";
+$MESS["TASKS_V2_GROUP_ABOUT_SCRUM"] = "Apri scrum";
+$MESS["TASKS_V2_GROUP_CANT_CHANGE_FLOW"] = "Impossibile modificare il progetto per gli incarichi associati a un flusso. Rimuovi l'incarico dal flusso prima di modificare il progetto.";
+$MESS["TASKS_V2_GROUP_CHANGE"] = "Modifica";
+$MESS["TASKS_V2_GROUP_CHOOSE_EPIC"] = "Seleziona epica";
+$MESS["TASKS_V2_GROUP_CLEAR"] = "Scollega";
+$MESS["TASKS_V2_GROUP_COUNT_MEMBERS_PLURAL_0"] = "#COUNT# membro";
+$MESS["TASKS_V2_GROUP_COUNT_MEMBERS_PLURAL_1"] = "#COUNT# membri";
+$MESS["TASKS_V2_GROUP_COUNT_MEMBERS_PLURAL_2"] = "#COUNT# membri";
+$MESS["TASKS_V2_GROUP_DATE_CREATE"] = "Creato il";
+$MESS["TASKS_V2_GROUP_EPIC_EMPTY"] = "Non selezionato";
+$MESS["TASKS_V2_GROUP_EPIC_HINT"] = "Epica";
+$MESS["TASKS_V2_GROUP_EPIC_TITLE"] = "Epica:";
+$MESS["TASKS_V2_GROUP_HIDDEN"] = "Progetto nascosto";
+$MESS["TASKS_V2_GROUP_OWNER"] = "Proprietario";
+$MESS["TASKS_V2_GROUP_STAGE_HINT"] = "Seleziona fase";
+$MESS["TASKS_V2_GROUP_STAGE_TITLE"] = "Fase:";
+$MESS["TASKS_V2_GROUP_STORY_POINTS_HINT"] = "Punti della storia";
+$MESS["TASKS_V2_GROUP_STORY_POINTS_TITLE"] = "Punti storia:";
+$MESS["TASKS_V2_GROUP_SUBJECT"] = "Oggetto";
+$MESS["TASKS_V2_GROUP_TITLE"] = "Progetto:";
+$MESS["TASKS_V2_GROUP_TITLE_CHIP"] = "Progetto";
+$MESS["TASKS_V2_GROUP_TITLE_COLLAB"] = "Collab";
+$MESS["TASKS_V2_GROUP_TITLE_SCRUM"] = "Scrum";

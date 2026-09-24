@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_V2_STATUS_COMPLETED"] = "Completato";
+$MESS["TASKS_V2_STATUS_COMPLETED_AT"] = "Completato il #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_COMPLETED_AT_MSGVER_1"] = "Completato in data #DATE#, #TIME#";
+$MESS["TASKS_V2_STATUS_COMPLETED_MSGVER_1"] = "Completato";
+$MESS["TASKS_V2_STATUS_COMPLETE_ACTION"] = "Completa";
+$MESS["TASKS_V2_STATUS_CREATED_AT"] = "Creato il #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_DEFERRED"] = "Posticipato";
+$MESS["TASKS_V2_STATUS_DEFERRED_AT"] = "Posticipato il #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_DEFER_ACTION"] = "Posticipa";
+$MESS["TASKS_V2_STATUS_FROM"] = "Dal giorno #DATE#, #TIME#";
+$MESS["TASKS_V2_STATUS_IN_PROGRESS"] = "In corso";
+$MESS["TASKS_V2_STATUS_IN_PROGRESS_FROM"] = "In corso dal #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_NEEDS_CONTROL_HINT"] = "L'incarico completato verrà inviato al rispettivo proprietario per la revisione.";
+$MESS["TASKS_V2_STATUS_PAUSE_ACTION"] = "Metti in pausa";
+$MESS["TASKS_V2_STATUS_PENDING"] = "In sospeso";
+$MESS["TASKS_V2_STATUS_PENDING_FROM"] = "In sospeso dal #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_RENEW_ACTION"] = "Respingi per revisione";
+$MESS["TASKS_V2_STATUS_RESUME_ACTION"] = "Riprendi";
+$MESS["TASKS_V2_STATUS_START_ACTION"] = "Inizia";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED"] = "In fase di revisione";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED_FROM"] = "In revisione dal #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED_FROM_MSGVER_1"] = "Revisione in sospeso dal giorno #DATE#, #TIME#";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED_MSGVER_1"] = "Revisione in sospeso";
+$MESS["TASKS_V2_STATUS_TITLE"] = "Stato:";

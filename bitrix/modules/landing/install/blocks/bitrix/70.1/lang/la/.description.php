@@ -1,0 +1,7 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_70_1_NAME"] = "Iconos con texto, botón e imagen de fondo";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_BUTTON"] = "Botón del icono";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_CARD"] = "Icono";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_CARD_TITLE"] = "Título del icono";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_TEXT"] = "Texto del icono";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_TITLE"] = "Título";

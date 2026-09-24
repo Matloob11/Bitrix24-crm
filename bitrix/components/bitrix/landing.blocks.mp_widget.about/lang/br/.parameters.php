@@ -1,0 +1,12 @@
+<?php
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_BOSS_ID"] = "Usuário";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_COLOR_BORDER"] = "Cor da borda";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_COLOR_ICON"] = "Cor do ícone";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_COLOR_TEXT"] = "Cor do texto";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_SHOW_DEPARTMENTS"] = "Mostrar bloco de contagem de departamentos";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_SHOW_EMPLOYEES"] = "Mostrar bloco de contagem de colaboradores";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_SHOW_SUPERVISORS"] = "Mostrar bloco de contagem de supervisores";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_TEXT"] = "Texto";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_TEXT_DEFAULT_VALUE"] = "Com mais de 25 anos de experiência em TI, ajudamos empresas no mundo todo.";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_TITLE"] = "Título";
+$MESS["LANDING_WIDGET_ABOUT_PARAMS_TITLE_DEFAULT_VALUE"] = "Empresa 24";

@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_DUP_ENTITY_COUNT_PLURAL_0"] = "pasujący";
+$MESS["CRM_DUP_ENTITY_COUNT_PLURAL_1"] = "pasujące";
+$MESS["CRM_DUP_ENTITY_COUNT_PLURAL_2"] = "pasujące";

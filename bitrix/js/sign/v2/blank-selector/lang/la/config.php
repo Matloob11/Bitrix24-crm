@@ -1,0 +1,24 @@
+<?php
+$MESS["SIGN_BLANK_SELECTOR_CLEAR_ALL"] = "Eliminar todo";
+$MESS["SIGN_BLANK_SELECTOR_CREATED_MYSELF"] = "Usted";
+$MESS["SIGN_BLANK_SELECTOR_CREATE_NEW_PIC"] = "Imagen";
+$MESS["SIGN_BLANK_SELECTOR_DRAG_AREA"] = "Suelte sus archivos aquí";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_MIXED"] = "Documentos o imágenes con [highlight]campos editables[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_PLACEHOLDERS"] = "Documentos o formularios con [highlight]campos simbólicos editables[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_FIELD_ADD_BUTTON_LABEL"] = "Seleccionar una plantilla de documento";
+$MESS["SIGN_BLANK_SELECTOR_LOAD_MORE"] = "Mostrar más";
+$MESS["SIGN_BLANK_SELECTOR_MIXED"] = "Documentos o imágenes con campos editables.";
+$MESS["SIGN_BLANK_SELECTOR_NEW_BADGE"] = "Nuevo";
+$MESS["SIGN_BLANK_SELECTOR_NEW_DOC"] = "Microsoft Word";
+$MESS["SIGN_BLANK_SELECTOR_NEW_PDF"] = "Documento PDF";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX"] = "Documento con campos simbólicos";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX_MSGVER_1"] = "Documentos o formularios con campos simbólicos editables.";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK_MSGVER_1"] = "Campos simbólicos";
+$MESS["SIGN_BLANK_SELECTOR_RECENT_TEMPLATES_TITLE"] = "Plantillas recientes";
+$MESS["SIGN_BLANK_SELECTOR_SLIDER_SELECT_BLANK_BUTTON_LABEL"] = "Seleccionar";
+$MESS["SIGN_BLANK_SELECTOR_UPLOADER_ERROR_INCOMPLETE"] = "No se pudo cargar el archivo. Intente de nuevo.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_HINT"] = "Puede enviar para firma un documento en formato PDF, DOC, DOCX, RTF u ODT a la vez, o hasta %imageCountLimit% imágenes JPG / PNG.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_GROUP_HINT"] = "El tamaño de cada archivo de imagen no debe superar los 10 MB.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_HINT"] = "El tamaño del archivo de imagen no debe superar los 10 MB.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_LIMIT_HINT"] = "La plantilla solo puede tener un documento. Para reemplazar o eliminar el documento cargado, utilice el menú del documento en el área superior.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_PLACEHOLDERS_HINT"] = "Solo se admiten archivos DOCX con campos simbólicos editables.";

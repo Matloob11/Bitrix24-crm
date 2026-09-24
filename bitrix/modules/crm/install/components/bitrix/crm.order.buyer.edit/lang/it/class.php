@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_CATALOG"] = "Il modulo Catalogo commerciale non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_SALE"] = "Il modulo e-Store non è installato.";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_ACTIVE"] = "Attivo";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_CONFIRM_PASSWORD"] = "Conferma nuova password";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_CONFIRM_PASSWORD_NEW"] = "Conferma password";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_DATE_REGISTER"] = "Registrato il";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_EMAIL"] = "E-mail";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_LAST_LOGIN"] = "Ultimo accesso";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_LAST_NAME"] = "Cognome";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_LOGIN"] = "ID di accesso";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_NAME"] = "Nome";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_PASSWORD"] = "Nuova password";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_PASSWORD_NEW"] = "Password";
+$MESS["CRM_ORDER_BUYER_EDIT_COLUMN_SECOND_NAME"] = "Secondo nome";
+$MESS["CRM_ORDER_BUYER_EDIT_CREATE_TITLE"] = "Crea cliente";
+$MESS["CRM_ORDER_BUYER_EDIT_EDIT_TITLE"] = "Modifica cliente";
+$MESS["CRM_ORDER_BUYER_EDIT_LOAD_USER_ERROR"] = "Cliente non esistente o accesso negato.";
+$MESS["CRM_ORDER_BUYER_EDIT_SAVE_ERROR"] = "Si è verificato un errore durante il salvataggio del cliente.";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";

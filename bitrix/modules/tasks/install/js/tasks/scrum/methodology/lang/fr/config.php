@@ -1,0 +1,19 @@
+<?php
+$MESS["TSF_DOD_CREATE_BUTTON"] = "Créer";
+$MESS["TSF_DOD_HINT"] = "Listes de contrôle indiquant les critères permettant de définir l'état d'avancement";
+$MESS["TSF_DOD_HINT_NEW"] = "Une liste de contrôle contenant la liste des activités nécessaires pour déclarer un projet ou une histoire d'utilisateur terminée.";
+$MESS["TSF_DOD_OPEN_BUTTON"] = "Ouvrir";
+$MESS["TSF_DOD_TITLE"] = "DDF";
+$MESS["TSF_DOD_TITLE_NEW"] = "DdF";
+$MESS["TSF_EPIC_CREATE_BUTTON"] = "Créer";
+$MESS["TSF_EPIC_HINT"] = "Objectifs importants et planifications globales à affecter aux tâches du backlog";
+$MESS["TSF_EPIC_OPEN_BUTTON"] = "Ouvrir";
+$MESS["TSF_EPIC_TITLE"] = "Épiques";
+$MESS["TSF_MIGRATION_LABEL"] = "Migrer";
+$MESS["TSF_MIGRATION_TITLE"] = "Migrer les données depuis d'autres systèmes";
+$MESS["TSF_TEAM_SPEED_BUTTON"] = "Vélocité d'équipe";
+$MESS["TSF_TEAM_SPEED_DIAGRAM"] = "Graphique d'avancement de tâche";
+$MESS["TSF_TEAM_SPEED_LABEL"] = "Prochainement";
+$MESS["TSF_TUTORIAL_TEXT"] = "Tutoriel gratuit";
+$MESS["TSF_TUTORIAL_TITLE"] = "Comment utiliser SCRUM";
+$MESS["TSM_ERROR_POPUP_TITLE"] = "C’est une erreur.";

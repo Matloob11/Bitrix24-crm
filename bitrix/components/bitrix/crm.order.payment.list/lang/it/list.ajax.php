@@ -1,0 +1,3 @@
+<?
+$MESS["CRM_ORDER_PAYMENT_LIST_ROW_COUNT"] = "Totale: #ROW_COUNT#";
+?>

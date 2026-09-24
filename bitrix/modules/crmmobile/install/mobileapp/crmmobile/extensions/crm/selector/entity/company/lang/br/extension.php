@@ -1,0 +1,7 @@
+<?php
+$MESS["SELECTOR_COMPONENT_CREATE_COMPANY"] = "Criar empresa";
+$MESS["SELECTOR_COMPONENT_CREATE_TITLE_COMPANY"] = "Nova empresa";
+$MESS["SELECTOR_COMPONENT_SEARCH_PLACEHOLDER_COMPANY"] = "Nome da empresa, telefone ou e-mail";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_CREATE_COMPANY"] = "Comece a digitar para criar empresa";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_SEARCH_COMPANY2"] = "Comece a digitar para encontrar empresas";
+$MESS["SELECTOR_COMPONENT_TITLE_COMPANY"] = "Empresa";

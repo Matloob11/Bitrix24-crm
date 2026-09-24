@@ -1,0 +1,23 @@
+<?php
+$MESS["authprov_sg_a"] = "Топ иесі";
+$MESS["authprov_sg_a_v2"] = "Жоба иесі";
+$MESS["authprov_sg_current"] = "Ағымдағы";
+$MESS["authprov_sg_current_v2"] = "Поточний";
+$MESS["authprov_sg_e"] = "Топ модераторы";
+$MESS["authprov_sg_e_v2"] = "Жоба модераторлары";
+$MESS["authprov_sg_k"] = "Топтың барлық мүшесі";
+$MESS["authprov_sg_k_v2"] = "Жобаның барлық қатысушылары";
+$MESS["authprov_sg_name"] = "Әлеуметтік желі топтары";
+$MESS["authprov_sg_name_out"] = "Әлеуметтік желі тобы";
+$MESS["authprov_sg_name_out_v2"] = "Жоба";
+$MESS["authprov_sg_name_v2"] = "Жобалар";
+$MESS["authprov_sg_panel_last"] = "Соңғы";
+$MESS["authprov_sg_panel_last_v2"] = "Соңғы";
+$MESS["authprov_sg_panel_my_group"] = "Менің топтарым";
+$MESS["authprov_sg_panel_my_group_v2"] = "Менің жобаларым";
+$MESS["authprov_sg_panel_search"] = "Іздеу";
+$MESS["authprov_sg_panel_search_text"] = "Топтың атауын енгізіңіз.";
+$MESS["authprov_sg_panel_search_text_v2"] = "Жобаның атын енгізіңіз.";
+$MESS["authprov_sg_panel_search_v2"] = "Іздеу";
+$MESS["authprov_sg_socnet_group"] = "Әлеуметтік желі тобы";
+$MESS["authprov_sg_socnet_group_v2"] = "Жоба";

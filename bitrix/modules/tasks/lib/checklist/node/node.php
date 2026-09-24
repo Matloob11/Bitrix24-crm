@@ -1,0 +1,79 @@
+<?php
+
+namespace Bitrix\Tasks\CheckList\Node;
+
+use Bitrix\Main\Engine\Response\Converter;
+use Bitrix\Tasks\Access\Role\RoleDictionary;
+use Bitrix\Tasks\Internals\Attribute\Min;
+use Bitrix\Tasks\Internals\Attribute\Required;
+use Bitrix\Tasks\Internals\Dto\AbstractBaseDto;
+
+/**
+ * @method self setId(int $id)
+ * @method self setNodeId(string $nodeId)
+ * @method self setTitle(string $title)
+ * @method self setMembers(array $members)
+ * @method self setAttachments(array $attachments)
+ * @method self setIsComplete(bool $isComplete)
+ * @method self setIsImportant(bool $isImportant)
+ * @method self setParentId(int $parentId)
+ * @method self setParentNodeId(string $parentNodeId)
+ * @method self setSortIndex(int $sortIndex)
+ */
+class Node extends AbstractBaseDto
+{
+	public ?int $id;
+
+	#[Required]
+	public string $nodeId;
+
+	#[Required]
+	public string $title;
+
+	public array $members = [];
+
+	public array $attachments = [];
+	public bool $isComplete = false;
+	public bool $isImportant = false;
+
+	#[Min(0)]
+	public int $parentId = 0;
+	public string $parentNodeId = '0';
+	public int $sortIndex = 0;
+	public ?int $copiedId = null;
+
+	protected static function modifyKeyFromArray(string $key): string
+	{
+		return (new Converter(Converter::OUTPUT_JSON_FORMAT))->process($key);
+	}
+
+	protected static function modifyKeyToArray(string $key): string
+	{
+		return (new Converter(Converter::TO_SNAKE | Converter::TO_UPPER))->process($key);
+
+	}
+
+	public function getAuditors(): array
+	{
+		return $this->getByRole(RoleDictionary::ROLE_AUDITOR);
+	}
+
+	public function getAccomplices(): array
+	{
+		return $this->getByRole(RoleDictionary::ROLE_ACCOMPLICE);
+	}
+
+	protected function getByRole(string $role): array
+	{
+		$members = array_filter(
+			$this->members,
+			static fn (array $member): bool => $member['TYPE'] === $role
+		);
+
+		$ids = array_column($members, 'ID');
+
+		$filteredIds = array_filter($ids, static fn ($id): bool => !empty($id) && $id !== 0);
+
+		return array_unique($filteredIds);
+	}
+}

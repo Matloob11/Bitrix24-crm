@@ -1,0 +1,21 @@
+<?php
+$MESS["TASKS_V2_CHANGE_DESCRIPTION"] = "Opis";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_ATTACH_TITLE"] = "Załącz";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_CREATING"] = "Tworzenie listy kontrolnej...";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT"] = "CoPilot utworzy listę kontrolną na podstawie tego opisu.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT_MSGVER_1"] = "#COPILOT_NAME# utworzy listę kontrolną na podstawie tego opisu.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_TITLE"] = "Lista kontrolna";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_COPILOT_TITLE"] = "CoPilot";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_MENTION_TITLE"] = "Wspomnij";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_COLLAPSE"] = "Zwiń";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_EXPAND"] = "Rozwiń";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_SAVE"] = "Zapisz";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_BUTTON_OK"] = "Zapisz moją wersję";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_F"] = "Użytkownik #NAME# zmienił opis w trakcie Twojej edycji. Jeśli zapiszesz swoją wersję, jego zmiany zostaną utracone. Czy na pewno chcesz zapisać swoją wersję?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_M"] = "Użytkownik #NAME# zmienił opis w trakcie Twojej edycji. Jeśli zapiszesz swoją wersję, jego zmiany zostaną utracone. Czy na pewno chcesz zapisać swoją wersję?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_TITLE"] = "Zmieniono opis";
+$MESS["TASKS_V2_DESCRIPTION_EDITOR_PLACEHOLDER"] = "Wprowadź @, aby o kimś wspomnieć, lub naciśnij spację, aby uruchomić CoPilota";
+$MESS["TASKS_V2_DESCRIPTION_FILES_COUNT"] = "Pliki: #COUNT#";
+$MESS["TASKS_V2_DESCRIPTION_INLINE_EDITOR_PLACEHOLDER"] = "Opis";
+$MESS["TASKS_V2_DESCRIPTION_PREVIEW_BUTTON_MORE"] = "więcej";
+$MESS["TASKS_V2_DESCRIPTION_TITLE"] = "Opis zadania";

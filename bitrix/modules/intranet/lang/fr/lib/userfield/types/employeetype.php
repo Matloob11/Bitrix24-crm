@@ -1,0 +1,3 @@
+<?php
+$MESS["INTRANET_FIELD_EMPLOYEE_CHANGE"] = "Changer";
+$MESS["INTRANET_PROPERTY_TITLE_MSGVER_1"] = "Lier à l'employé(e)";

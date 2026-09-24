@@ -1,0 +1,24 @@
+<?php
+$MESS["BPAR_PD_TASK_BUTTON_CANCEL_MESSAGE_MSGVER_1"] = "Tekst przycisku „Odrzuć” w ramach zadania";
+$MESS["BPRIA_PD_CANCEL_TYPE"] = "Może zostać odrzucone przez";
+$MESS["BPRIA_PD_CANCEL_TYPE_ALL"] = "Wszystkich pracowników";
+$MESS["BPRIA_PD_CANCEL_TYPE_ANY"] = "Każdego pracownika";
+$MESS["BPRIA_PD_SAVE_VARIABLES"] = "W przypadku wystąpienia błędu zapisz wartości";
+$MESS["BPRIOA_ACT_APPROVE_TRACK"] = "Użytkownik #PERSON# dostarczył dodatkowe informacje #COMMENT#";
+$MESS["BPRIOA_ACT_BUTTON1"] = "Zapisz";
+$MESS["BPRIOA_ACT_BUTTON2"] = "Odrzuć";
+$MESS["BPRIOA_ACT_CANCEL_TRACK"] = "Użytkownik #PERSON# anulował dodatkowe informacje #COMMENT#";
+$MESS["BPRIOA_ACT_COMMENT"] = "Komentarz";
+$MESS["BPRIOA_ACT_COMMENT_ERROR"] = "Pole \"#COMMENT_LABEL#\" jest wymagane.";
+$MESS["BPRIOA_ACT_INFO"] = "Oczekuje na dodatkowe informacje";
+$MESS["BPRIOA_ACT_PROP_EMPTY1"] = "Atrybut \"Użytkownicy\" nie został określony.";
+$MESS["BPRIOA_ACT_PROP_EMPTY2"] = "Przynajmniej jedno pole jest wymagane.";
+$MESS["BPRIOA_ACT_PROP_EMPTY4"] = "Brakuje atrybutu \"Nazwa\".";
+$MESS["BPRIOA_ACT_TRACK1"] = "Dodatkowe informacje zostaną dostarczone przez #VAL#";
+$MESS["BPRIOA_ARGUMENT_NULL"] = "Brakuje wymaganej wartości '#PARAM#'.";
+$MESS["BPRIOA_LOG_COMMENTS"] = "Komentarz";
+$MESS["BPSFA_COMMENT_REQUIRED_YA_1"] = "Podczas zatwierdzania";
+$MESS["BPSFA_COMMENT_REQUIRED_YR_1"] = "Podczas odrzucania";
+$MESS["BPSFA_PD_CANCEL"] = "Anuluj";
+$MESS["BPSFA_PD_NO"] = "Nie";
+$MESS["BPSFA_PD_YES"] = "Tak";

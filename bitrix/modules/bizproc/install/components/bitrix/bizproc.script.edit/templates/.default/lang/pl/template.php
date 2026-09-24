@@ -1,0 +1,22 @@
+<?php
+$MESS["BIZPROC_SCRIPT_EDIT_BTN_CHANGE"] = "Edytuj";
+$MESS["BIZPROC_SCRIPT_EDIT_CONSTANT_DESCRIPTION"] = "Aby upewnić się, że działanie jest prawidłowe, parametry te należy skonfigurować przed uruchomieniem któregokolwiek ze skryptów.";
+$MESS["BIZPROC_SCRIPT_EDIT_CONSTANT_LABEL"] = "Ustawienia administratora";
+$MESS["BIZPROC_SCRIPT_EDIT_DELAY_AFTER_HELP"] = "Opóźnienie przed uruchomieniem reguły automatyzacji po uruchomieniu skryptu";
+$MESS["BIZPROC_SCRIPT_EDIT_DELAY_NOW_HELP"] = "Reguła automatyzacji zostanie uruchomiona zaraz po uruchomieniu skryptu";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_CONFIGS"] = "Skonfiguruj skrypt";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_GENERAL"] = "Opis";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_ROBOTS"] = "Reguły automatyzacji";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_TITLE"] = "Inteligentne skrypty";
+$MESS["BIZPROC_SCRIPT_EDIT_PARAMETER_DESCRIPTION"] = "Parametry te mogą być konfigurowane przez użytkownika przy każdym uruchomieniu skryptu.";
+$MESS["BIZPROC_SCRIPT_EDIT_PARAMETER_LABEL"] = "Ustawienia użytkownika";
+$MESS["BIZPROC_SCRIPT_EDIT_ROBOT_HELP"] = "Korzystaj z reguł automatyzacji, aby usprawnić proces zarządzania klientami i pomóc pracownikom podążać zatwierdzoną ścieżką przetwarzania leadów. Reguły automatyzacji będą wykonywać działania w sposób nienadzorowany: wysyłać wiadomości e-mail, wykonywać połączenia itp.";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_DESCRIPTION"] = "Opis";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_DESCRIPTION_TEXT"] = "Tekst opisu";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_NAME"] = "Nazwa skryptu";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_NAME_DEFAULT"] = "Nowy skrypt";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_CONFIGS_EMPTY"] = "Nie wymaga dodatkowej konfiguracji";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_GENERAL"] = "Opis skryptu";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_ROBOTS"] = "Skonfiguruj reguły automatyzacji";
+$MESS["BIZPROC_SCRIPT_EDIT_VALIDATION_EMPTY_CONFIGS"] = "Należy podać ustawienia administratora";
+$MESS["BIZPROC_SCRIPT_EDIT_VALIDATION_EMPTY_NAME"] = "Nie określono nazwy skryptu";

@@ -1,0 +1,6 @@
+<?php
+$MESS["RPA_TIMELINE_TITLE_COMMENT"] = "Komentarz";
+$MESS["RPA_TIMELINE_TITLE_FIELDS_CHANGE"] = "Zmieniono pola";
+$MESS["RPA_TIMELINE_TITLE_ITEM_CREATE"] = "Dodano element";
+$MESS["RPA_TIMELINE_TITLE_STAGE_CHANGE"] = "Zmieniono etap";
+$MESS["RPA_TIMELINE_TITLE_TASK_COMPLETE"] = "Zakończono zadanie";

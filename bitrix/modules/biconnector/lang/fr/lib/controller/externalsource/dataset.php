@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_EXTERNAL_SOURCE_DATASET_ACCESS_ERROR"] = "Autorisation insuffisante pour utiliser cet ensemble de données. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_EXTERNAL_SOURCE_DATASET_ACCESS_ERROR_MSGVER_1"] = "Autorisation insuffisante pour utiliser ce tableau. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ADD_ERROR"] = "Erreur lors de la création de l'ensemble de données";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ADD_ERROR_MSGVER_1"] = "Erreur lors de la création du tableau";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ALREADY_EXIST_ERROR"] = "Un ensemble de données avec le même nom existe déjà.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ALREADY_EXIST_ERROR_MSGVER_1"] = "Un tableau avec le même nom existe déjà.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_DELETE_ERROR"] = "Erreur lors de la suppression de l'ensemble de données";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_DELETE_ERROR_MSGVER_1"] = "Erreur lors de la suppression du tableau.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_MAX_ROWS"] = "Impossible d'importer un fichier de plus de 300 000 lignes.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_NOT_FOUND_ERROR"] = "L'ensemble de données est introuvable.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_NOT_FOUND_ERROR_MSGVER_1"] = "Le tableau est introuvable.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UNKNOWN_DATASET_TYPE"] = "Type d'ensemble de données inconnu";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UNKNOWN_DATASET_TYPE_MSGVER_1"] = "Type de tableau inconnu";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UPDATE_ERROR"] = "Erreur lors de la mise à jour de l'ensemble de données";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UPDATE_ERROR_MSGVER_1"] = "Erreur lors de la mise à jour du tableau.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DIFFERENT_COUNT_FIELDS_ERROR"] = "Le nombre de colonnes dans le fichier ne correspond pas à celui de l'ensemble de données. Essayez de modifier les paramètres ou sélectionnez un autre fichier.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DIFFERENT_COUNT_FIELDS_ERROR_MSGVER_1"] = "Le nombre de colonnes dans le fichier ne correspond pas à celui du tableau. Essayez de modifier les paramètres ou sélectionnez un autre fichier.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_DATA_ERROR"] = "Impossible de lire le fichier";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_DATA_ERROR_1C"] = "Le tableau est vide.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_FIELDS"] = "Champs non configurés";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_SETTINGS"] = "Format de données non fourni";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_IMPORT_ERROR"] = "Essayez de modifier les données du fichier ou sélectionnez un autre fichier.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_SYNC_FIELDS_ERROR"] = "Impossible de synchroniser les colonnes de la source.";

@@ -1,0 +1,20 @@
+<?php
+$MESS["CTRLR_MEM_COUNTERS_ERR1"] = "Есептеуіштерді сақтау кезінде қате:";
+$MESS["CTRLR_MEM_ERR1"] = "Берілген сервер табылмады:";
+$MESS["CTRLR_MEM_ERR2"] = "Пәрменді орындау қатесі: клиенттен белгісіз жауап немесе қол жеткізуге тыйым салынған.";
+$MESS["CTRLR_MEM_ERR3"] = "Пәрменді орындау қатесі:";
+$MESS["CTRLR_MEM_ERR4"] = "Көрсетілген топ табылмады:";
+$MESS["CTRLR_MEM_ERR6"] = "Берілген клиент табылмады:";
+$MESS["CTRLR_MEM_ERR7"] = "Берілген клиент контроллерден ажыратылған, онымен операциялар мүмкін емес.";
+$MESS["CTRLR_MEM_ERR_MEMBER_ID"] = "Бірегей идентификатор өрісі саннан басталмауы керек. Басқа мәнді енгізіңіз.";
+$MESS["CTRLR_MEM_ERR_MEMBER_NAME"] = "Өріс атауы бос болмауы керек.";
+$MESS["CTRLR_MEM_ERR_MEMBER_UID"] = "Енгізілген бірегей идентификатор мәні қазірдің өзінде бар. Басқа мәнді енгізіңіз.";
+$MESS["CTRLR_MEM_ERR_MEMBER_URL"] = "URL өрісі бос болмауы керек.";
+$MESS["CTRLR_MEM_LOG_DESC_COMMAND"] = "Пәрменді қайта бағыттау арқылы орындау";
+$MESS["CTRLR_MEM_LOG_DESC_GROUP"] = "Топ:";
+$MESS["CTRLR_MEM_LOG_DESC_JOIN_BY_TICKET"] = "Клиентті жергілікті әкімші құқықтарын пайдалана отырып қосу";
+$MESS["CTRLR_MEM_LOG_DESC_JOIN_BY_TICKET2"] = "Клиентті уақытша тикет арқылы қосу";
+$MESS["CTRLR_MEM_LOG_DISCON"] = "Клиентті контроллерден ажырату";
+$MESS["CTRLR_MEM_LOG_DISCON_ERR"] = "Ажырату кезінде қате орын алды.";
+$MESS["CTRLR_MEM_LOG_SITE_CLO"] = "Клиенттің сайты жабық";
+$MESS["CTRLR_MEM_LOG_SITE_OPE"] = "Клиенттің сайты ашық";

@@ -1,0 +1,14 @@
+<?
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_SALE"] = "Il modulo e-Store non è installato.";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_COLUMN_ACTIVE"] = "Attivo";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_COLUMN_ANONYMOUS"] = "Anonimo";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_COLUMN_C_SORT"] = "Ordina";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_COLUMN_DESCRIPTION"] = "Descrizione";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_COLUMN_ID"] = "ID";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_COLUMN_NAME"] = "Nome";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_CREATE_TITLE"] = "Crea gruppo clienti";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_SAVE_ERROR"] = "Si è verificato un errore durante il salvataggio del cliente.";
+$MESS["CRM_ORDER_BUYER_GROUP_EDIT_TITLE"] = "Modifica gruppo clienti";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";
+?>

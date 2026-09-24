@@ -1,0 +1,4 @@
+<?php
+$MESS["INTR_ISBN_TPL_FILTER_ALL"] = "Dla całej firmy";
+$MESS["INTR_ISBN_TPL_FILTER_MINE"] = "Dla mojego biura";
+$MESS["INTR_ISBN_TPL_USER_PROPERTY_PERSONAL_COUNTRY_MSGVER_1"] = "Kraj/region";

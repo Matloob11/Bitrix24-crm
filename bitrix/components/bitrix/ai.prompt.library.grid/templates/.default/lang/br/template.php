@@ -1,0 +1,22 @@
+<?php
+$MESS["PROMPT_LIBRARY_GRID_ACTION_OPEN_EDIT_MASTER_ERROR"] = "Não foi possível abrir o editor de prompt. Tente novamente.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_ACTIVATE"] = "O prompt #NAME# está ativo.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_DEACTIVATE"] = "O prompt #NAME# não está ativo.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_FAVOURITE_ADD"] = "Prompt #NAME# adicionado aos Favoritos.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_FAVOURITE_REMOVE"] = "Prompt #NAME# removido dos Favoritos.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_HIDE"] = "O prompt #NAME# não está visível no menu do CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_HIDE_MSGVER_1"] = "O prompt #NAME# não está visível no menu do #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_ACTION_DEFAULT"] = "Ação concluída com sucesso.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_ACTIVATE"] = "Os prompts estão ativos.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_DEACTIVATE"] = "Os prompts não estão ativos.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_HIDE"] = "Os prompts não estão visíveis no menu do CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_HIDE_MSGVER_1"] = "Os prompts não estão visíveis no menu do #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_SHOW"] = "Os prompts estão visíveis no menu do CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_SHOW_MSGVER_1"] = "Os prompts estão visíveis no menu do #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_PROMPT_MASTER_OPEN_ERROR"] = "Não foi possível abrir o editor de prompt. Tente novamente.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_PROMPT_SAVE_SUCCESS"] = "O prompt #NAME# foi salvo.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW"] = "O prompt #NAME# está visível no menu do CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW_MSGVER_1"] = "O prompt #NAME# está visível no menu do #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW_PROMPT_USERS_ERROR"] = "Não foi possível carregar a lista de usuários. Tente novamente.";
+$MESS["PROMPT_LIBRARY_GRID_TOUR_DESCRIPTION"] = "Salve seus prompts favoritos no Bitrix24 e compartilhe com outros usuários.";
+$MESS["PROMPT_LIBRARY_GRID_TOUR_TITLE"] = "Adicione seu primeiro prompt";

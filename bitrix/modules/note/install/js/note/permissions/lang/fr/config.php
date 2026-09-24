@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_PERMISSIONS_POPUP_ADD"] = "Ajouter";
+$MESS["NOTE_PERMISSIONS_POPUP_ALL_EMPLOYEES"] = "Tous les utilisateurs";
+$MESS["NOTE_PERMISSIONS_POPUP_CANCEL"] = "Annuler";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_BUTTON"] = "Créer";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_ERROR"] = "Impossible de créer l'espace.";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_SUCCESS"] = "L'espace a été créé.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_EDIT_DOCUMENT"] = "Permission de modifier le texte de l'article, d'ajouter des blocs et des fichiers à l'article.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MANAGE"] = "Permission de modifier les articles (modifier le texte, ajouter des blocs et téléverser des fichiers).";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MODERATE"] = "Permission de supprimer l'espace, et de définir les droits d'accès à l'espace et aux articles. Accès complet à tous les paramètres de l'espace.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW"] = "Permission de consulter les articles de l'espace et de télécharger les fichiers joints.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW_DOCUMENT"] = "Permission de consulter l'article et de télécharger les fichiers joints.";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_EDIT"] = "Modifier";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MANAGE"] = "Modérer";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MODERATE"] = "Gérer";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_VIEW"] = "Afficher";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR"] = "Impossible d'obtenir les autorisations d'accès à l'espace.";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR_DOCUMENT"] = "Impossible d'obtenir les autorisations de l'article.";
+$MESS["NOTE_PERMISSIONS_POPUP_NAME_PLACEHOLDER"] = "Nom de l'espace";
+$MESS["NOTE_PERMISSIONS_POPUP_ROLLBACK_FAILED"] = "Erreur lors de la création de l'espace. Veuillez actualiser la page.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE"] = "Enregistrer";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR"] = "Impossible d'enregistrer les modifications.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR_DOCUMENT"] = "Impossible d'enregistrer les autorisations de l'article.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS"] = "Les modifications ont été enregistrées.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS_DOCUMENT"] = "Les autorisations de l'article ont été enregistrées.";
+$MESS["NOTE_PERMISSIONS_POPUP_TITLE_EDIT_DOCUMENT"] = "Autorisations d'accès à l'article";

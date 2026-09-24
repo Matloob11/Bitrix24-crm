@@ -1,0 +1,12 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_POPUP_CAPTION_NO"] = "Cancelar";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_POPUP_CAPTION_YES"] = "Sim";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_POPUP_DESCRIPTION_MSGVER_1"] = "Tem certeza de que deseja excluir este conjunto de dados? Isso afetará os gráficos e diagramas que utilizam dados deste conjunto de dados.";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_POPUP_DESCRIPTION_MSGVER_2"] = "Tem certeza que deseja excluir esta tabela? Esta ação não pode ser desfeita.";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_POPUP_TITLE_MSGVER_1"] = "Excluir conjunto de dados";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_POPUP_TITLE_MSGVER_2"] = "Excluir tabela";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_WARNING_GO_BUTTON"] = "Abrir tabela";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_WARNING_TEXT"] = "Você deve excluir todos os conjuntos de dados associados antes de excluir a tabela.";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_DELETE_WARNING_TITLE"] = "Não é possível excluir a tabela";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_ERROR_SUPERSET"] = "Não é possível criar conjunto de dados. Tente novamente.";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_DATASET_GRID_ERROR_SUPERSET_MSGVER_1"] = "Não é possível criar tabela. Tente novamente.";

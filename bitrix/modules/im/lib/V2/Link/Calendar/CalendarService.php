@@ -1,0 +1,344 @@
+<?php
+
+namespace Bitrix\Im\V2\Link\Calendar;
+
+use Bitrix\Im\Model\LinkCalendarIndexTable;
+use Bitrix\Im\V2\Chat;
+use Bitrix\Im\V2\Common\ContextCustomer;
+use Bitrix\Im\V2\Entity\Calendar\CalendarError;
+use Bitrix\Im\V2\Link\Push;
+use Bitrix\Im\V2\Message;
+use Bitrix\Im\V2\Message\Params;
+use Bitrix\Im\V2\Message\Send\SendingConfig;
+use Bitrix\Im\V2\Message\Send\SendResult;
+use Bitrix\Im\V2\RelationCollection;
+use Bitrix\Im\V2\Result;
+use Bitrix\Main\Loader;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Web\Uri;
+use Bitrix\Tasks\Slider\Path\TaskPathMaker;
+use Bitrix\Im\V2\Integration\Tasks\Provider\TaskProvider;
+
+class CalendarService
+{
+	use ContextCustomer;
+
+	protected const ADD_CALENDAR_EVENT = 'calendarAdd';
+	protected const UPDATE_CALENDAR_EVENT = 'calendarUpdate';
+	protected const DELETE_CALENDAR_EVENT = 'calendarDelete';
+
+	public function registerCalendar(Chat $chat, ?int $messageId, \Bitrix\Im\V2\Entity\Calendar\CalendarItem $calendar): Result
+	{
+		$result = new Result();
+
+		$userId = $this->getContext()->getUserId();
+
+		$calendarLink = new CalendarItem();
+		$calendarLink->setEntity($calendar)->setChatId($chat->getId())->setAuthorId($userId);
+
+		if (isset($messageId))
+		{
+			$calendarLink->setMessageId($messageId);
+		}
+
+		if ($chat->needToSendCalendarCreationMessage())
+		{
+			$sendMessageResult = $this->sendMessageAboutCalendar($calendarLink, $chat);
+
+			if (!$sendMessageResult->isSuccess())
+			{
+				$result->addErrors($sendMessageResult->getErrors());
+			}
+
+			$systemMessageId = $sendMessageResult->getMessageId();
+
+			$calendarLink->setMessageId($messageId ?: $systemMessageId);
+		}
+
+		$saveResult = $calendarLink->save();
+
+		if (!$saveResult->isSuccess())
+		{
+			return $result->addErrors($saveResult->getErrors());
+		}
+
+		Push::getInstance()
+			->setContext($this->context)
+			->sendFull($calendarLink, self::ADD_CALENDAR_EVENT, ['RECIPIENT' => $calendar->getMembersIds()])
+		;
+
+		return $result;
+	}
+
+	public function unregisterCalendar(CalendarItem $calendar): Result
+	{
+		$calendar->delete();
+		Push::getInstance()
+			->setContext($this->context)
+			->sendIdOnly($calendar, self::DELETE_CALENDAR_EVENT, ['CHAT_ID' => $calendar->getChatId()])
+		;
+
+		return new Result();
+	}
+
+	public function updateCalendar(CalendarItem $calendarLink): Result
+	{
+		$result = new Result();
+
+		LinkCalendarIndexTable::delete($calendarLink->getPrimaryId());
+		$saveResult = $calendarLink->save();
+
+		if (!$saveResult->isSuccess())
+		{
+			return $result->addErrors($saveResult->getErrors());
+		}
+
+		Push::getInstance()
+			->setContext($this->context)
+			->sendFull($calendarLink, self::UPDATE_CALENDAR_EVENT, ['RECIPIENT' => $calendarLink->getEntity()->getMembersIds()])
+		;
+
+		return new Result();
+	}
+
+	public function updateCalendarLink(CalendarItem $calendarLink): Result
+	{
+		$result = new Result();
+
+		$saveResult = $calendarLink->save();
+
+		if (!$saveResult->isSuccess())
+		{
+			return $result->addErrors($saveResult->getErrors());
+		}
+
+		Push::getInstance()
+			->setContext($this->context)
+			->sendFull($calendarLink, self::UPDATE_CALENDAR_EVENT, ['RECIPIENT' => $calendarLink->getEntity()->getMembersIds()])
+		;
+
+		return new Result();
+	}
+
+	public function updateCalendarLinks(CalendarCollection $calendarCollection): Result
+	{
+		$result = new Result();
+
+		if ($calendarCollection->count() === 0)
+		{
+			return $result;
+		}
+
+		$saveResult = $calendarCollection->save();
+
+		if (!$saveResult->isSuccess())
+		{
+			return $result->addErrors($saveResult->getErrors());
+		}
+
+		$calendarCollection->fillEntities();
+
+		foreach ($calendarCollection as $calendarItem)
+		{
+			$pushRecipient = ['RECIPIENT' => $calendarItem->getEntity()->getMembersIds()];
+			Push::getInstance()
+				->setContext($this->context)
+				->sendFull($calendarItem, self::UPDATE_CALENDAR_EVENT, $pushRecipient)
+			;
+		}
+
+		return new Result();
+	}
+
+	public function prepareDataForCreateSlider(Chat $chat, ?Message $message = null): Result
+	{
+		$currentUserId = $this->getContext()->getUserId();
+		$result = new Result();
+
+		if (!Loader::includeModule('calendar'))
+		{
+			return $result->addError(new CalendarError(CalendarError::CALENDAR_NOT_INSTALLED));
+		}
+
+		$chat->setContext($this->context);
+
+		$randomPostfix = mt_rand() & 1000; // get random number from 0 to 1000
+		$data['params']['sliderId'] = "im:chat{$chat->getChatId()}{$randomPostfix}";
+		$data['params']['createChatId'] = $chat->getId();
+
+		if ($chat->getEntityType() === Chat\ExtendedType::Sonet->value)
+		{
+			$data['params']['type'] = 'group';
+			$data['params']['ownerId'] = $chat->getEntityId();
+		}
+		else
+		{
+			$userIds = $this->getParticipants($chat);
+			$users = array_values(array_map(static fn($item) => ['id' => (int)$item, 'entityId' => 'user'], $userIds));
+			$data['params']['participantsEntityList'] = $users;
+			$data['params']['type'] = 'user';
+
+			if ($chat->getEntityType() === 'TASKS_TASK' && $chat->getEntityId() !== null)
+			{
+				$this->prepareParamsForTask($chat, $currentUserId, $data['params']);
+			}
+		}
+
+		if (isset($message))
+		{
+			$message->setContext($this->context);
+			$data['params']['entryDescription'] = \CIMShare::PrepareText([
+				'CHAT_ID' => $chat->getChatId(),
+				'MESSAGE_ID' => $message->getMessageId(),
+				'MESSAGE_TYPE' => $chat->getType(),
+				'MESSAGE' => $message->getMessage(),
+				'AUTHOR_ID' => $message->getAuthorId(),
+				'FILES' => $this->getFilesForPrepareText($message)
+			]);
+		}
+
+		return $result->setResult($data);
+	}
+
+	protected function getParticipants(Chat $chat): array
+	{
+		$participants = RelationCollection::find(
+			[
+				'ACTIVE' => true,
+				'ONLY_INTERNAL_TYPE' => true,
+				'CHAT_ID' => $chat->getId(),
+				'IS_HIDDEN' => false,
+				'ONLY_INTRANET' => true,
+			],
+			limit: 50,
+			select: ['ID', 'USER_ID', 'CHAT_ID']
+		)->getUserIds();
+		$currentUserId = $this->getContext()->getUserId();
+		$participants[$currentUserId] = $currentUserId;
+
+		return $participants;
+	}
+
+	protected function sendMessageAboutCalendar(CalendarItem $calendarLink, Chat $chat): SendResult
+	{
+		$authorId = $this->getContext()->getUserId();
+		$messageText = $this->getCalendarMessageText($calendarLink);
+
+		$message =
+			(new Message())
+				->setAuthorId($authorId)
+				->setChatId($chat->getId())
+				->setMessage($messageText)
+				->markAsSystem(true)
+				->addParam(Params::STYLE_CLASS, 'bx-messenger-content-item-system')
+		;
+
+		$sendingConfig =
+			(new SendingConfig())
+				->disableGenerateUrlPreview()
+				->enableSkipConnectorSend()
+				->enableSkipCommandExecution()
+				->enableKeepConnectorSilence()
+				->enableSkipUrlIndex()
+		;
+
+		$result = $chat->sendMessage($message, $sendingConfig);
+
+		if (!$result->isSuccess())
+		{
+			$result->addError(new CalendarError(CalendarError::ADD_CALENDAR_MESSAGE_FAILED));
+		}
+
+		return $result;
+	}
+
+	protected function getFilesForPrepareText(Message $message): array
+	{
+		$files = $message->getFiles();
+		$filesForPrepare = [];
+
+		foreach ($files as $file)
+		{
+			$filesForPrepare[] = ['name' => $file->getDiskFile()->getName()];
+		}
+
+		return $filesForPrepare;
+	}
+
+	protected function getCalendarMessageText(CalendarItem $calendar): string
+	{
+		$genderModifier = ($this->getContext()->getUser()->getGender() === 'F') ? '_F' : '';
+
+		if ($calendar->getMessageId() !== null)
+		{
+			$text = (new Message($calendar->getMessageId()))->getQuotedMessage() . "\n";
+			$text .= Loc::getMessage(
+				'IM_CHAT_CALENDAR_REGISTER_FROM_MESSAGE_NOTIFICATION' . $genderModifier . '_MSGVER_1',
+				[
+					'#LINK#' => $calendar->getEntity()->getUrl(),
+					'#USER_ID#' => $this->getContext()->getUserId(),
+					'#MESSAGE_ID#' => $calendar->getMessageId(),
+					'#DIALOG_ID#' => Chat::getInstance($calendar->getChatId())->getDialogContextId(),
+				]
+			);
+
+			return $text;
+		}
+		return Loc::getMessage(
+			'IM_CHAT_CALENDAR_REGISTER_FROM_CHAT_NOTIFICATION' . $genderModifier . '_MSGVER_1',
+			[
+				'#LINK#' => $calendar->getEntity()->getUrl(),
+				'#USER_ID#' => $this->getContext()->getUserId(),
+				'#EVENT_TITLE#' => $calendar->getEntity()->getTitle(),
+			]
+		);
+	}
+
+	protected function prepareParamsForTask(Chat $chat, int $currentUserId, array &$params): void
+	{
+		$task = (new TaskProvider())->getTaskById((int)$chat->getEntityId(), $currentUserId);
+
+		if ($task === null)
+		{
+			return;
+		}
+
+		$allChatUsers = $params['participantsEntityList'];
+
+		$allParticipantIds = array_flip(array_filter([
+			$task->responsible?->getId(),
+			$task->creator?->getId(),
+			...$task->accomplices?->getIdList() ?? [],
+			$currentUserId,
+		]));
+
+		$allParticipants = array_filter(
+			$allChatUsers,
+			static fn ($item) => isset($allParticipantIds[$item['id']])
+		);
+
+		$params['participantsEntityList'] = array_values($allParticipants);
+
+		$linkToTask = new Uri(
+			TaskPathMaker::getPath([
+				'user_id' => $currentUserId,
+				'task_id' => $task->id,
+				'group_id' => $task->group?->id,
+				'action' => 'view',
+			])
+		);
+		$params['entryDescription'] = Loc::getMessage(
+			'IM_CHAT_CALENDAR_SERVICE_FROM_TASK_CHAT_DESCRIPTION',
+			[
+				'#TASK_URL#' => $linkToTask->toAbsolute(),
+			]
+		);
+
+		$params['entryName'] = Loc::getMessage(
+			'IM_CHAT_CALENDAR_SERVICE_FROM_TASK_CHAT_TITLE',
+			[
+				'#TASK_TITLE#' => $task->title,
+			]
+		);
+	}
+}

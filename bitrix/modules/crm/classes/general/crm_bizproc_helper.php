@@ -1,0 +1,551 @@
+<?php
+
+use Bitrix\Bizproc\Starter\Template\Start\CollectRequest;
+use Bitrix\Bizproc\Starter\Template\Start\CollectorService;
+use Bitrix\Bizproc;
+use Bitrix\Crm\Service\Container;
+use Bitrix\Crm\Settings\Mode;
+use Bitrix\Main\Analytics\AnalyticsEvent;
+use Bitrix\Main\Loader;
+
+class CCrmBizProcHelper
+{
+	public static function ResolveDocumentName($ownerTypeID)
+	{
+		$ownerTypeID = intval($ownerTypeID);
+
+		$docName = '';
+		if($ownerTypeID === CCrmOwnerType::Contact)
+		{
+			$docName = 'CCrmDocumentContact';
+		}
+		elseif($ownerTypeID === CCrmOwnerType::Company)
+		{
+			$docName = 'CCrmDocumentCompany';
+		}
+		elseif($ownerTypeID === CCrmOwnerType::Lead)
+		{
+			$docName = 'CCrmDocumentLead';
+		}
+		elseif($ownerTypeID === CCrmOwnerType::Deal)
+		{
+			$docName = 'CCrmDocumentDeal';
+		}
+		elseif($ownerTypeID === CCrmOwnerType::Order)
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\Order::class;
+		}
+		elseif($ownerTypeID === CCrmOwnerType::Invoice)
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\Invoice::class;
+		}
+		elseif($ownerTypeID === CCrmOwnerType::OrderShipment)
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\Shipment::class;
+		}
+		elseif ($ownerTypeID === CCrmOwnerType::Quote)
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\Quote::class;
+		}
+		elseif ($ownerTypeID === CCrmOwnerType::SmartInvoice)
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\SmartInvoice::class;
+		}
+		elseif ($ownerTypeID === CCrmOwnerType::SmartDocument)
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\SmartDocument::class;
+		}
+		elseif ($ownerTypeID === CCrmOwnerType::SmartB2eDocument)
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\SmartB2eDocument::class;
+		}
+		elseif(CCrmOwnerType::isPossibleDynamicTypeId($ownerTypeID))
+		{
+			$docName = \Bitrix\Crm\Integration\BizProc\Document\Dynamic::class;
+		}
+
+		return $docName;
+	}
+	public static function ResolveDocumentType($ownerTypeID)
+	{
+		$docName = static::ResolveDocumentName($ownerTypeID);
+		if ($docName !== '')
+		{
+			return ['crm', $docName, \CCrmOwnerType::ResolveName($ownerTypeID)];
+		}
+
+		return null;
+	}
+	public static function ResolveDocumentId($ownerTypeID, $ownerID)
+	{
+		$ownerTypeID = (int) $ownerTypeID;
+		$ownerID = (int) $ownerID;
+
+		$docName = static::ResolveDocumentName($ownerTypeID);
+
+		if (!$docName)
+		{
+			return null;
+		}
+
+		return ['crm', $docName, \CCrmOwnerType::ResolveName($ownerTypeID).'_'.$ownerID];
+	}
+	public static function AutoStartWorkflows($ownerTypeID, $ownerID, $eventType, &$errors, $parameters = array())
+	{
+		if (!(IsModuleInstalled('bizproc') && CModule::IncludeModule('bizproc') && CBPRuntime::isFeatureEnabled()))
+		{
+			return false;
+		}
+
+		$ownerTypeID = (int)$ownerTypeID;
+		$ownerID = (int)$ownerID;
+		$eventType = (int)$eventType;
+
+		$docName = self::ResolveDocumentName($ownerTypeID);
+		if($docName === '')
+		{
+			return false;
+		}
+
+		$ownerTypeName = CCrmOwnerType::ResolveName($ownerTypeID);
+		if($ownerTypeName === '')
+		{
+			return false;
+		}
+
+		$documentId = array('crm', $docName, $ownerTypeName.'_'.$ownerID);
+
+		if (!$parameters)
+		{
+			CBPDocument::AutoStartWorkflows(
+				array('crm', $docName, $ownerTypeName),
+				$eventType,
+				$documentId,
+				array(),
+				$errors
+			);
+		}
+		else
+		{
+			if (is_string($parameters))
+			{
+				$parameters = CBPDocument::unsignParameters($parameters);
+			}
+
+			$templates = CBPWorkflowTemplateLoader::SearchTemplatesByDocumentType(array('crm', $docName, $ownerTypeName), $eventType);
+			foreach ($templates as $template)
+			{
+				$workflowParameters = isset($parameters[$template["ID"]]) && is_array($parameters[$template["ID"]])
+					? $parameters[$template["ID"]] : array();
+
+				\CBPDocument::StartWorkflow(
+					$template["ID"],
+					$documentId,
+					$workflowParameters,
+					$errors
+				);
+			}
+		}
+
+		return true;
+	}
+	public static function HasAutoWorkflows($ownerTypeID, $eventType, ?int $categoryId = null)
+	{
+		return static::hasCollectedStartTemplates($ownerTypeID, $eventType, $categoryId);
+	}
+	public static function HasParameterizedAutoWorkflows($ownerTypeID, $eventType, ?int $categoryId = null)
+	{
+		return static::hasCollectedStartTemplates($ownerTypeID, $eventType, $categoryId, true);
+	}
+
+	private static function hasCollectedStartTemplates(
+		int $ownerTypeID,
+		int $eventType,
+		?int $categoryId = null,
+		bool $onlyParameterized = false
+	): bool
+	{
+		if (!(
+			IsModuleInstalled('bizproc')
+			&& Loader::includeModule('bizproc')
+			&& CBPRuntime::isFeatureEnabled()
+		))
+		{
+			return false;
+		}
+
+		$complexDocumentType = static::ResolveDocumentType($ownerTypeID);
+		if ($complexDocumentType === null)
+		{
+			return false;
+		}
+
+		if (class_exists(CollectorService::class))
+		{
+			return (new CollectorService())->hasTemplates(
+				new CollectRequest(
+					complexDocumentType: $complexDocumentType,
+					eventType: $eventType,
+					categoryId: $categoryId,
+					onlyParameterized: $onlyParameterized,
+					useAutoExecuteBitmask: true,
+					requireActive: $onlyParameterized,
+					excludeSystem: false,
+				),
+			);
+		}
+
+		return static::hasLegacyStartTemplates($complexDocumentType, $eventType, $onlyParameterized);
+	}
+
+	private static function hasLegacyStartTemplates(
+		array $complexDocumentType,
+		int $eventType,
+		bool $onlyParameterized = false
+	): bool
+	{
+		if (!$onlyParameterized)
+		{
+			$templates = \CBPWorkflowTemplateLoader::searchTemplatesByDocumentType($complexDocumentType, $eventType);
+
+			return !empty($templates);
+		}
+
+		$templateList = \CBPWorkflowTemplateLoader::getList(
+			[],
+			[
+				'DOCUMENT_TYPE' => $complexDocumentType,
+				'AUTO_EXECUTE' => $eventType,
+				'ACTIVE' => 'Y',
+				'!PARAMETERS' => null,
+			],
+			false,
+			false,
+			['ID', 'PARAMETERS'],
+		);
+
+		while ($template = $templateList->fetch())
+		{
+			if (!empty($template['PARAMETERS']))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+	public static function HasRunningWorkflows($ownerTypeID, $ownerID)
+	{
+		if (!(IsModuleInstalled('bizproc') && CModule::IncludeModule('bizproc') && CBPRuntime::isFeatureEnabled()))
+		{
+			return false;
+		}
+
+		$ownerTypeID = (int)$ownerTypeID;
+		$ownerID = (int)$ownerID;
+
+		$ownerTypeName = CCrmOwnerType::ResolveName($ownerTypeID);
+		if($ownerTypeName === '')
+		{
+			return false;
+		}
+
+		$docName = self::ResolveDocumentName($ownerTypeID);
+		if($docName === '')
+		{
+			return false;
+		}
+
+		$docID = "{$ownerTypeName}_{$ownerID}";
+		return (CBPStateService::CountDocumentWorkflows(array('crm', $docName, $docID)) > 0);
+	}
+	public static function GetDocumentNames($ownerTypeID, $ownerID)
+	{
+		if (!(IsModuleInstalled('bizproc') && CModule::IncludeModule('bizproc') && CBPRuntime::isFeatureEnabled()))
+		{
+			return false;
+		}
+
+		$ownerTypeID = intval($ownerTypeID);
+		$ownerID = intval($ownerID);
+
+		$docName = self::ResolveDocumentName($ownerTypeID);
+		if($docName === '')
+		{
+			return array();
+		}
+
+		$ownerTypeName = CCrmOwnerType::ResolveName($ownerTypeID);
+		if($ownerTypeName === '')
+		{
+			return array();
+		}
+
+		/*$arDocumentStates = CBPDocument::GetDocumentStates(
+			array('crm', $docName, $ownerTypeName),
+			array('crm', $docName, $ownerTypeName.'_'.$ownerID)
+		);*/
+
+		$arDocumentStates = CBPStateService::GetDocumentStates(
+			array('crm', $docName, $ownerTypeName.'_'.$ownerID)
+		);
+
+		$result = array();
+		foreach ($arDocumentStates as $arDocumentState)
+		{
+			if($arDocumentState['ID'] !== '' && $arDocumentState['TEMPLATE_NAME'] !== '')
+			{
+				$result[] = $arDocumentState['TEMPLATE_NAME'];
+			}
+		}
+
+		return $result;
+	}
+	public static function GetUserWorkflowTaskCount($workflowIDs, $userID = 0)
+	{
+		if(!is_array($workflowIDs))
+		{
+			return 0;
+		}
+
+		if (!(IsModuleInstalled('bizproc') && CModule::IncludeModule('bizproc') && CBPRuntime::isFeatureEnabled()))
+		{
+			return 0;
+		}
+
+		$userID = intval($userID);
+		if($userID <= 0)
+		{
+			$userID = CCrmSecurityHelper::GetCurrentUserID();
+		}
+
+		$filter = array('USER_ID' => $userID);
+		$workflowQty = count($workflowIDs);
+		if($workflowQty > 1)
+		{
+			$filter['@WORKFLOW_ID'] = $workflowIDs;
+		}
+		elseif($workflowQty === 1)
+		{
+			$filter['WORKFLOW_ID'] = $workflowIDs[0];
+		}
+
+		$result = CBPTaskService::GetList(array(), $filter, array(), false, array());
+		return is_int($result) ? $result : 0;
+	}
+
+	public static function getDocumentResponsibleId(array $documentId)
+	{
+		if (count($documentId) !== 3 || $documentId[0] !== 'crm')
+		{
+			return 0;
+		}
+
+		[$entityTypeId, $entityId] = static::resolveEntityId($documentId);
+
+		return \CCrmOwnerType::loadResponsibleId(
+			$entityTypeId,
+			$entityId,
+			false
+		);
+	}
+
+	public static function resolveEntityId(array $documentId): array
+	{
+		return self::resolveEntityIdByDocumentId((string)$documentId[2]);
+	}
+
+	public static function resolveEntityIdByDocumentId(string $documentId): array
+	{
+		[$entityTypeName, $entityId] = mb_split('_(?=[^_]*$)', $documentId);
+
+		return [\CCrmOwnerType::ResolveID($entityTypeName), (int)$entityId];
+	}
+
+	public static function getActiveDebugEntityIds(int $entityTypeId): array
+	{
+		if (!Loader::includeModule('bizproc'))
+		{
+			return [];
+		}
+
+		$session = Bizproc\Debugger\Session\Manager::getActiveSession();
+		$documentType = \CCrmBizProcHelper::ResolveDocumentType($entityTypeId);
+		if (!$session || !$documentType || !$session->isStartedInDocumentType($documentType))
+		{
+			return [];
+		}
+
+		$documents = $session->getDocuments();
+		$ids = [];
+
+		foreach ($documents as $document)
+		{
+			[$entityTypeId, $entityId] = static::resolveEntityId($document->getParameterDocumentId());
+			$ids[] = $entityId;
+		}
+
+		return $ids;
+	}
+
+	public static function isActiveDebugEntity(int $entityTypeId, int $entityId): bool
+	{
+		$ids = static::getActiveDebugEntityIds($entityTypeId);
+
+		return in_array($entityId, $ids, true);
+	}
+
+	public static function isDynamicEntityWithProducts(int $entityTypeId): bool
+	{
+		if (!CCrmOwnerType::isPossibleDynamicTypeId($entityTypeId))
+		{
+			return false;
+		}
+
+		$factory = Container::getInstance()->getFactory($entityTypeId);
+
+		return $factory && $factory->isLinkWithProductsEnabled();
+	}
+
+	public static function getHowCheckAutomationTourGuideData(int $entityTypeId, int $categoryId, int $userId): ?array
+	{
+		$userOption = \CUserOptions::GetOption('bizproc.automation.guide', 'crm_check_automation', $userId);
+		$entityName = CCrmOwnerType::ResolveName($entityTypeId);
+		$userOptionDocumentType = $userOption['document_type'] ?? null;
+		if (
+			empty($userOption)
+			|| $userOptionDocumentType !== $entityName
+			|| (int)$userOption['category_id'] !== $categoryId
+		)
+		{
+			return null;
+		}
+
+		return $userOption;
+	}
+
+	// temporary method, delete with option
+	public static function needShowBPTab(): bool
+	{
+		$hideTab = (bool)\Bitrix\Main\Config\Option::get('crm', 'need_hide_bp_tab_in_entity_details', 0);
+
+		return !$hideTab;
+	}
+
+	public static function getBpStarterConfig(int $entityTypeId, ?int $entityId = null): array
+	{
+		if (!Loader::includeModule('bizproc') || !CBPRuntime::isFeatureEnabled())
+		{
+			return [];
+		}
+
+		$documentType = self::ResolveDocumentType($entityTypeId);
+		if (!$documentType)
+		{
+			return [];
+		}
+
+		$documentId = $entityId > 0 ? self::ResolveDocumentId($entityTypeId, $entityId) : null;
+
+		$starterConfig = ['signedDocumentType' => CBPDocument::signDocumentType($documentType)];
+		if ($documentId)
+		{
+			$starterConfig['signedDocumentId'] = CBPDocument::signDocumentType($documentId);
+		}
+
+		return $starterConfig;
+	}
+
+	public static function getShowTemplatesJsAction(int $entityTypeId, ?int $entityId = null, ?string $callback = null): string
+	{
+		$starterConfig = \Bitrix\Main\Web\Json::encode(self::getBpStarterConfig($entityTypeId, $entityId));
+
+		if ($callback)
+		{
+			return 'BX.Bizproc.Starter.showTemplates(' . $starterConfig . ', { callback:' . $callback . '})';
+		}
+
+		return 'BX.Bizproc.Starter.showTemplates(' . $starterConfig . ', {})';
+	}
+
+	public static function sendOperationsAnalytics(
+		string $eventName,
+		CBPActivity $activity,
+		string $eventSection,
+		?string $eventTool='crm',
+	): void
+	{
+		$activityClassName = (new ReflectionClass($activity))->getShortName();
+		$eventType = str_replace('CBP', '', $activityClassName);
+		if ($activity->getRootActivity()->getDocumentEventType() === CBPDocumentEventType::Automation)
+		{
+			self::sendRobotOperationsAnalytics($eventTool, $eventName, $eventType, strtolower($eventSection));
+		}
+	}
+
+	private static function sendRobotOperationsAnalytics(string $eventTool, string $eventName, string $eventType, string $section): void
+	{
+		$event = new AnalyticsEvent($eventName, $eventTool, 'robot_operations');
+		$event
+			->setSection($section)
+			->setType($eventType)
+			->setP1(Mode::getCurrent() === Mode::SIMPLE ? 'crmMode_simple' : 'crmMode_classic')
+		;
+		$event->send();
+	}
+
+	public static function getDynamicDocumentTypesWithProducts(): array
+	{
+		$result = [];
+		$crmDynamicTypesMap =
+			Container::getInstance()
+				->getDynamicTypesMap()
+				->load(['isLoadStages' => false, 'isLoadCategories' => false])
+		;
+		foreach ($crmDynamicTypesMap->getTypes() as $dynamicType)
+		{
+			if ($dynamicType->getIsLinkWithProductsEnabled())
+			{
+				$result[] = self::ResolveDocumentType($dynamicType->getEntityTypeId());
+			}
+		}
+
+		return $result;
+	}
+
+	public static function getDocumentNotNodesInstanceIds(array $documentId): array
+	{
+		$rows = Bizproc\WorkflowInstanceTable::getList([
+			'select' => ['ID'],
+			'filter' => [
+				'=MODULE_ID' => $documentId[0],
+				'=ENTITY' => $documentId[1],
+				'=DOCUMENT_ID' => $documentId[2],
+				'!=TEMPLATE.TYPE' => Bizproc\Api\Enum\Template\WorkflowTemplateType::Nodes->value,
+			]
+		])->fetchAll();
+
+		$instanceIds = array_column($rows, 'ID');
+
+		$workflows = \CBPRuntime::getRuntime()->getWorkflows();
+		foreach ($workflows as $id => $workflow)
+		{
+			if (
+				!($workflow->getRootActivity() instanceof \CBPNodeWorkflowActivity)
+				&& \CBPHelper::isEqualDocument($workflow->getDocumentId(), $documentId)
+			)
+			{
+				$instanceIds[] = $id;
+			}
+		}
+
+		return array_unique($instanceIds);
+	}
+}
+
+class CCrmBizProcEventType
+{
+	const Undefined = 0;
+	const Create = 1; //CBPDocumentEventType::Create
+	const Edit = 2; //CBPDocumentEventType::Edit
+}

@@ -1,0 +1,20 @@
+<?php
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_HINT"] = "Sie werden deaktiviert und können sich in dieses Bitrix24 nicht mehr einloggen, wenn Sie Ihre Deaktivierung bestätigen.\n\n[USER=#USER_ID#]#USER_NAME#[/USER] wird zum ersten Administrator ernannt.";
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_TITLE"] = "Bestätigen Sie, dass Ihre Berechtigungen übertragen und Sie deaktiviert werden";
+$MESS["M_INTRANET_FIRE_ADMIN_REQUEST_ERROR"] = "Aktion kann nicht abgeschlossen werden.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONFIRM_BUTTON"] = "Anfrage senden";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONSENT_INSTRUCTION"] = "Möchten Sie eine Anfrage senden, um seine Berechtigungen zu übertragen und ihn zu deaktivieren?";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_DESCRIPTION"] = "Dieser Nutzer kann ohne seine Zustimmung nicht deaktiviert werden.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_ERROR_TOAST"] = "Die Anfrage wegen Deaktivierung konnte nicht gesendet werden. Versuchen Sie es bitte erneut.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_HINT"] = "[USER=#USER_ID#]#USER_NAME#[/USER] ist der Hauptadministrator Ihres Bitrix24. Er hat den vollen Zugriff auf alle Einstellungen und Parameter.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_REJECT_BUTTON"] = "Abbrechen";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TITLE"] = "Hauptadministrator deaktivieren";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TOAST"] = "Anfrage gesendet. Sie werden benachrichtigt, sobald Administrator auf Ihre Anfrage antwortet.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_BUTTON"] = "Bestätigen";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_WORD"] = "Transfer";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONSENT_INSTRUCTION"] = "Geben Sie weiter unten das Wort \"#CONFIRM_WORD#\" ein, um Ihre Entscheidung zu bestätigen:";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_DESCRIPTION"] = "Zur Bestätigung dieser Aktion ist ein zusätzlicher Schritt erforderlich, um eine versehentliche Übertragung von Berechtigungen zu verhindern.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_ERROR_INPUT_TEXT"] = "Geben Sie das Wort \"#CONFIRM_WORD#\" ein";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_HINT"] = "Sie verlieren Ihre Berechtigungen für den Zugriff auf die Bitrix24 Einstellungen und Parameter, wenn Sie die Übertragung bestätigen.\n\n[URL=#LINK#]#INITIATOR_NAME#[/URL] wird zum Hauptadministrator ernannt.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_REJECT_BUTTON"] = "Ablehnen";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_TITLE"] = "Übertragen der Berechtigungen bestätigen";

@@ -1,0 +1,42 @@
+export type HeaderButtonsConfig = {
+	rightButtons: Array<Button | PopupCreateButton>;
+	leftButtons?: Array<Button | PopupCreateButton>;
+}
+
+export type HeaderButtonConfig = {
+	id: string;
+	iconName: string;
+	callback: () => Promise<void>;
+	testId?: string;
+	shouldShow?: () => Promise<boolean>;
+	badgeCode?: string;
+	isDot?: () => boolean;
+}
+
+export type HeaderPopupCreateButtonConfig = {
+	id: string;
+	type: string;
+	title: string;
+	buttons: HeaderPopupButtonConfig[];
+	testId?: string;
+	sections?: HeaderSectionConfig[],
+	badgeCode?: string;
+	getSections?: () => HeaderSectionConfig[];
+	getType?: () => string;
+	isAccent?: () => boolean,
+}
+
+export type HeaderSectionConfig = {
+	id: string;
+}
+
+export type HeaderPopupButtonConfig = {
+	id: string;
+	title?: string;
+	getTitle?: () => string;
+	callback: () => Promise<void>;
+	sectionCode?: string;
+	iconName?: string;
+	shouldShow?: () => Promise<boolean>;
+	checked: boolean;
+}

@@ -1,0 +1,41 @@
+<?php
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+/**
+ * Bitrix vars
+ *
+ * @var array $arParams
+ * @var array $arResult
+ * @var CBitrixComponentTemplate $this
+ * @global CMain $APPLICATION
+ */
+
+?>
+<span class="fields string">
+<?php
+$first = true;
+foreach ($arResult["VALUE"] as $res)
+{
+	if (!$first)
+	{
+		?><span class="fields separator"></span><?php
+	}
+	else
+	{
+		$first = false;
+	}
+
+	if ($arParams['arUserField']['PROPERTY_VALUE_LINK'] <> '')
+	{
+		$res = '<a href="'.htmlspecialcharsbx(str_replace('#VALUE#', urlencode($res), $arParams['arUserField']['PROPERTY_VALUE_LINK'])).'">'.$res.'</a>';
+	}
+
+?><span class="fields string"><?=$res?></span><?php
+
+}
+?>
+</span>
+

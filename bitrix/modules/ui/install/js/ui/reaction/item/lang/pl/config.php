@@ -1,0 +1,8 @@
+<?php
+$MESS["UI_REACTIONS_CHECK_MARK"] = "Znacznik wyboru";
+$MESS["UI_REACTIONS_CROSS_MARK"] = "Krzyżyk";
+$MESS["UI_REACTIONS_EYES"] = "Oczy";
+$MESS["UI_REACTIONS_HANDSHAKE"] = "Uścisk dłoni";
+$MESS["UI_REACTIONS_HUNDRED_POINTS"] = "Sto punktów";
+$MESS["UI_REACTIONS_NONSENSE_2"] = "Nonsens";
+$MESS["UI_REACTIONS_SLEEPING"] = "Zzz";

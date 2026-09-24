@@ -1,0 +1,21 @@
+<?php
+$MESS["SIGN_SERVICE_DEFAULT_ERROR"] = "Nie można wykonać działania. Spróbuj ponownie.";
+$MESS["SIGN_SERVICE_DEFAULT_ERROR_WITH_CODE"] = "Nie można wykonać działania. Spróbuj ponownie później (kod błędu: #CODE#).";
+$MESS["SIGN_SERVICE_ERROR_BLANK_DELETE_FAILED"] = "Nie można usunąć szablonu. Spróbuj ponownie później.";
+$MESS["SIGN_SERVICE_ERROR_DELETE_DOCUMENTS_EXISTS"] = "Nie można usunąć tego szablonu, ponieważ istnieją oparte na nim dokumenty.";
+$MESS["SIGN_SERVICE_ERROR_DOCUMENT_SIGNING_EXPIRED"] = "Upłynął termin podpisania dokumentu.";
+$MESS["SIGN_SERVICE_ERROR_DOCUMENT_TO_MANY_MEMBERS"] = "Wymagane są dwie strony podpisujące.";
+$MESS["SIGN_SERVICE_ERROR_EMPTY_MEMBER_CHANNEL"] = "Podaj numer telefonu lub adres e-mail strony podpisującej.";
+$MESS["SIGN_SERVICE_ERROR_FIELD_FILE_NOT_IMAGE"] = "Do tego pola można dodawać wyłącznie pliki graficzne.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TOO_BIG"] = "Przekroczono maksymalny rozmiar pliku.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TOO_BIG_SIZE_MSG_1"] = "Plik jest za duży. Maksymalny rozmiar nie może przekraczać #SIZE# MB.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TO_MANY_PAGES_COUNT"] = "Maksymalna liczba stron z plikami nie może przekroczyć: #COUNT#.";
+$MESS["SIGN_SERVICE_ERROR_MEMBERS_NOT_READY_FOR_RESEND"] = "Dokument nie jest gotowy do wysłania.";
+$MESS["SIGN_SERVICE_ERROR_MEMBER_INVALID_PHONE"] = "Aby móc korzystać z wiadomości SMS, wprowadź prawidłowy numer telefonu, albo wybierz opcję poczty elektronicznej.";
+$MESS["SIGN_SERVICE_ERROR_MEMBER_PHONE_UNSUPPORTED_COUNTRY_CODE"] = "Ten numer telefonu jest tymczasowo nieobsługiwany. Aby przesłać dokument do podpisu, skorzystaj z adresu e-mail.";
+$MESS["SIGN_SERVICE_ERROR_NO_FILE_TYPE"] = "Ten format pliku nie jest obsługiwany. Można dodawać pliki w formatach: PDF, DOC, DOCX, RTF, ODT, JPG i PNG.";
+$MESS["SIGN_SERVICE_ERROR_PREVIOUS_MEMBER_NOT_DONE"] = "Poczekaj, jedna ze stron nie podpisała jeszcze dokumentu.";
+$MESS["SIGN_SERVICE_ERROR_PROTECTED_PDF"] = "Plik jest chroniony hasłem i nie można go przesłać.";
+$MESS["SIGN_SERVICE_ERROR_REQUIRED_FIELDS_VALIDATION"] = "Jedno lub więcej wymaganych pól jest pustych.";
+$MESS["SIGN_SERVICE_ERROR_SMS_LIMIT_EXCEEDED"] = "Przekroczono maksymalną liczbę nowych wiadomości SMS.";
+$MESS["SIGN_SERVICE_ERROR_TOO_MANY_FILES_COUNT"] = "Do podpisu można przesłać jeden dokument PDF, DOC, DOCX, RTF lub ODT na raz, lub do %imageCountLimit% obrazów JPG/PNG.";

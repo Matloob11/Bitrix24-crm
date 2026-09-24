@@ -1,0 +1,27 @@
+<?php
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_COMPANY"] = "Azienda nascosta";
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_CONTACT"] = "Contatto nascosto";
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_DEAL"] = "Affare nascosto";
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_DYNAMIC"] = "Elemento nascosto";
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_LEAD"] = "Lead nascosto";
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_ORDER"] = "Ordine nascosto";
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_QUOTE_MSGVER_1"] = "Preventivo nascosto";
+$MESS["CRM_ENT_SEL_HLP_HIDDEN_SMART_INVOICE"] = "Fattura nascosta";
+$MESS["CRM_ENT_SEL_HLP_ORDER_SUMMARY"] = "Ordine ##ORDER_NUMBER#";
+$MESS["CRM_ENT_SEL_HLP_PREF_CONTACT_TYPE"] = "Tipo";
+$MESS["CRM_ENT_SEL_HLP_PREF_EMAIL"] = "E-mail";
+$MESS["CRM_ENT_SEL_HLP_PREF_PHONE"] = "Telefono";
+$MESS["CRM_FF_CANCEL"] = "Annulla";
+$MESS["CRM_FF_CHANGE"] = "Modifica";
+$MESS["CRM_FF_CHOISE"] = "Seleziona";
+$MESS["CRM_FF_CLOSE"] = "Chiudi";
+$MESS["CRM_FF_COMPANY"] = "Aziende";
+$MESS["CRM_FF_CONTACT"] = "Contatti";
+$MESS["CRM_FF_DEAL"] = "Affari";
+$MESS["CRM_FF_LAST"] = "Ultimo";
+$MESS["CRM_FF_LEAD"] = "Lead";
+$MESS["CRM_FF_NO_RESULT"] = "Sfortunatamente, la tua richiesta di ricerca non ha restituito alcun risultato.";
+$MESS["CRM_FF_OK"] = "Seleziona";
+$MESS["CRM_FF_QUOTE_MSGVER_1"] = "Preventivi";
+$MESS["CRM_FF_SEARCH"] = "Ricerca";
+$MESS["CRM_FF_WAIT"] = "Cerca...";

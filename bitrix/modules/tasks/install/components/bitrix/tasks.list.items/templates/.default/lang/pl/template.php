@@ -1,0 +1,18 @@
+<?php
+$MESS["TASKS_LIST_CRM_TYPE_C"] = "Kontakt";
+$MESS["TASKS_LIST_CRM_TYPE_CO"] = "Firma";
+$MESS["TASKS_LIST_CRM_TYPE_D"] = "Deal";
+$MESS["TASKS_LIST_CRM_TYPE_L"] = "Lead";
+$MESS["TASKS_LIST_ITEMS_NO"] = "Nie";
+$MESS["TASKS_LIST_ITEMS_PRIORITY_0"] = "Niski";
+$MESS["TASKS_LIST_ITEMS_PRIORITY_1"] = "Normalny";
+$MESS["TASKS_LIST_ITEMS_PRIORITY_2"] = "Wysoki";
+$MESS["TASKS_LIST_ITEMS_STATUS_1"] = "Nowe";
+$MESS["TASKS_LIST_ITEMS_STATUS_2"] = "Zadanie oczekuje na wykonanie";
+$MESS["TASKS_LIST_ITEMS_STATUS_3"] = "W toku";
+$MESS["TASKS_LIST_ITEMS_STATUS_4"] = "Czeka na kontrolę";
+$MESS["TASKS_LIST_ITEMS_STATUS_5"] = "Zakończone";
+$MESS["TASKS_LIST_ITEMS_STATUS_6"] = "Odłożone";
+$MESS["TASKS_LIST_ITEMS_STATUS_7"] = "Odrzucone";
+$MESS["TASKS_LIST_ITEMS_YES"] = "Tak";
+$MESS["TASKS_LIST_NOT_SET"] = "Nowy pracownik";

@@ -1,0 +1,24 @@
+<?php
+$MESS["TASKS_GRID_GROUP_ACTION_CANCELING"] = "Przerywanie działania grupowego...";
+$MESS["TASKS_GRID_GROUP_ACTION_COUNTING_ELEMENTS_PROGRESS"] = "Liczenie pozycji";
+$MESS["TASKS_GRID_GROUP_ACTION_DESCRIPTION"] = "Dla dużego wyboru działanie grupowe może chwilę potrwać. Poczekaj, aż działanie zostanie ukończone lub anuluj je.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME"] = "Działanie grupowe";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDACCOMPLICE"] = "Dodawanie uczestnika do zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDAUDITOR"] = "Dodawanie obserwatorów do zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDTOFAVORITE"] = "Dodawanie zadań do Ulubionych...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADJUSTDEADLINE"] = "Przenoszenie terminów zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_COMPLETE"] = "Zakańczanie wybranych zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_DELETE"] = "Usuwanie wybranych zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_MUTE"] = "Wyciszanie zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_PING"] = "Pingowanie pracowników...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_REMOVEFROMFAVORITE"] = "Usuwanie zadań z Ulubionych...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETCOLLAB"] = "Dodawanie zadań do collaba. Jeśli zamkniesz tę kartę lub okno przeglądarki, działanie grupowe zostanie zatrzymane.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETDEADLINE"] = "Ustawianie terminów zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETFLOW"] = "Dodawanie zadań do przepływu. Jeśli zamkniesz tę kartę lub okno przeglądarki, działanie grupowe zostanie zatrzymane.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETGROUP"] = "Dodawanie zadań do grupy roboczej...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETORIGINATOR"] = "Zmiana twórcy zadania...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETRESPONSIBLE"] = "Zmiana odpowiedzialnego za zadanie...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL"] = "Wyłączanie wymogu sprawdzenia po zakończeniu...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL_YES"] = "Włączanie wymogu sprawdzenia po zakończeniu. Jeśli zamkniesz tę kartę lub okno przeglądarki, działanie grupowe zostanie zatrzymane.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_UNMUTE"] = "Wyłączanie wyciszania zadań...";
+$MESS["TASKS_GRID_GROUP_ACTION_NONE"] = "Nie wybrano działania.";

@@ -1,0 +1,12 @@
+<?php
+$MESS["MAIN_SIDEPANEL_CLOSE"] = "Schließen";
+$MESS["MAIN_SIDEPANEL_COPY_LINK"] = "Link kopieren";
+$MESS["MAIN_SIDEPANEL_MINIMIZE"] = "Minimieren";
+$MESS["MAIN_SIDEPANEL_NEW_WINDOW"] = "In einem neuen Fenster öffnen";
+$MESS["MAIN_SIDEPANEL_PRINT"] = "Drucken";
+$MESS["MAIN_SIDEPANEL_REMOVE_ALL"] = "Alle Elemente löschen";
+$MESS["MAIN_SIDEPANEL_TOOLBAR_COLLAPSE"] = "Minimieren";
+$MESS["MAIN_SIDEPANEL_TOOLBAR_MORE_ARIA"] = "Mehr";
+$MESS["MAIN_SIDEPANEL_TOOLBAR_REMOVED_ARIA"] = "Element wurde gelöscht.";
+$MESS["MAIN_SIDEPANEL_TOOLBAR_REMOVE_ITEM"] = "Löschen";
+$MESS["MAIN_SIDEPANEL_TOOLBAR_TITLE"] = "Schnellzugriffsleiste";

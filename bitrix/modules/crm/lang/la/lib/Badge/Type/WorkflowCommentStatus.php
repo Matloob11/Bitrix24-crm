@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_BADGE_WORKFLOW_COMMENT_STATUS"] = "Comentarios en el flujo de trabajo";
+$MESS["CRM_BADGE_WORKFLOW_COMMENT_STATUS_COMMENTS_ADDED"] = "Agregado";

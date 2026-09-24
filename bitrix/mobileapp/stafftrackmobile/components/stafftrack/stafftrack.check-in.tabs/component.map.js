@@ -1,0 +1,1 @@
+{"version":3,"file":"component.map.js","names":["Tabs","jn","require","tabs"],"sources":["component.js"],"mappings":"AAAA,MACC,MAAMA,KAAEA,GAASC,GAAGC,QAAQ,gCAG5B,IAAIF,EAAKG,KACT,EALD","ignoreList":[]}

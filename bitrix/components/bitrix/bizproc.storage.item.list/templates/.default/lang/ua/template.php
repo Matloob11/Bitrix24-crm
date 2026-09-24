@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_STORAGE_ITEM_CONFIRM_MESSAGE_OK"] = "Так, видалити";
+$MESS["BIZPROC_STORAGE_ITEM_DELETE_MESSAGE"] = "Сховище видалено.";
+$MESS["BIZPROC_STORAGE_ITEM_LIST_CONFIRM_MESSAGE"] = "Видалити це сховище?";

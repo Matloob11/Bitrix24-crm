@@ -1,0 +1,13 @@
+<?php
+$MESS["STAFFTRACK_LOCATION_CUSTOM"] = "Personnalisé";
+$MESS["STAFFTRACK_LOCATION_CUSTOM_FULL"] = "Personnalisé";
+$MESS["STAFFTRACK_LOCATION_DELETED"] = "L'emplacement n'est pas disponible";
+$MESS["STAFFTRACK_LOCATION_DELETED_FULL"] = "L'emplacement n'est pas disponible";
+$MESS["STAFFTRACK_LOCATION_HOME"] = "Télétravail";
+$MESS["STAFFTRACK_LOCATION_HOME_FULL"] = "Télétravail";
+$MESS["STAFFTRACK_LOCATION_OFFICE"] = "Bureau";
+$MESS["STAFFTRACK_LOCATION_OFFICE_FULL"] = "Travail au bureau";
+$MESS["STAFFTRACK_LOCATION_OUTSIDE"] = "Sur le terrain";
+$MESS["STAFFTRACK_LOCATION_OUTSIDE_FULL"] = "Travail sur le terrain";
+$MESS["STAFFTRACK_LOCATION_REMOTELY"] = "À distance";
+$MESS["STAFFTRACK_LOCATION_REMOTELY_FULL"] = "Travail à distance";

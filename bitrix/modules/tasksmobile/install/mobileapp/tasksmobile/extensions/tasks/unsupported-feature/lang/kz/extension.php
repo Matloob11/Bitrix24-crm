@@ -1,0 +1,24 @@
+<?php
+$MESS["TASKS_UNSUPPORTED_FEATURE_OPEN_WEB"] = "Веб-нұсқада баптау";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_BUTTON"] = "Веб-нұсқада баптау";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_FOOTNOTE"] = "Қосымшада аналитика әлі қолжетімсіз";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_DEEP_RESEARCH"] = "Күрделі баптауларсыз есеп үлгілерін пайдаланыңыз";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_METRIC"] = "Команданың қай жерде шектес тыс жұмыс істейтінін қараңыз";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_PROCESS"] = "Бүкіл жобаны тежейтін міндеттерді табыңыз";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_QR_TITLE"] = "Аналитика";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_TITLE"] = "Деректер негізінде шешім қабылдаңыз";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_BUTTON"] = "Веб-нұсқада баптау";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_FOOTNOTE"] = "Баптағаннан кейін қосымшада  қолжетімді";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_CUSTOMER_VISIBILITY"] = "Тапсырыс беруші орындаушыны көреді,\nміндеттер мәртебесі мен мерзімдері";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TEAM_LOAD"] = "Басшы жүктеуді\nкомандалар мен қиындықтарды көреді";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TYPICAL_TASKS"] = "Типтік міндеттерді біріктіріңіз:\nтүзетулер, шоттар, дизайн";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_QR_TITLE"] = "Ағындар";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_TITLE"] = "Ағындар — авторбөлуі бар міндеттер кезегі";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_PROJECT_RESTRICTION_DESCRIPTION"] = "Қолжетімділік құқығы жеткіліксіз немесе\nжоба жойылды";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_PROJECT_RESTRICTION_TITLE"] = "Жоба табылмады";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_FOOTNOTE"] = "Қосымшада скрам әлі қолжетімсіз";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_BACKLOG"] = "Жалпы бэклог және нақты мақсаттары бар спринттер";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_DESKTOP"] = "Мөлдір прогресс";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_PROCESS"] = "Назар тек ағымдағы итерация міндеттерінде";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_QR_TITLE"] = "Скрам";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_TITLE"] = "Скрам бойынша жобаларды басқарыңыз";

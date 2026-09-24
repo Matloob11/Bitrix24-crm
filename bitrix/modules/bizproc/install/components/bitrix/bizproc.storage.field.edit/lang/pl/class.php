@@ -1,0 +1,6 @@
+<?php
+$MESS["BIZPROC_STORAGE_EDIT_FIELD_NOT_FOUND_STORAGE"] = "Nie znaleziono magazynu.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_NOT_INSTALLED"] = "Moduł „Procesów Biznesowych” nie jest zainstalowany.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_STORAGE_NOT_FOUND_ERROR"] = "Nie znaleziono pola.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_TITLE_ADD"] = "Nowe pole";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_TITLE_EDIT"] = "Edytuj pole";

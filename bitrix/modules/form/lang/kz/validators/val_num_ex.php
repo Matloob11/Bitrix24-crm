@@ -1,0 +1,9 @@
+<?php
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_DESCRIPTION"] = "Сан шегінде";
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_ERROR_LESS"] = "#FIELD_NAME#: мәні тым аз";
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_ERROR_MORE"] = "#FIELD_NAME#: мәні тым үлкен";
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_ERROR_NAN"] = "#FIELD_NAME#: енгізілген мән сан болуы керек";
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_ERROR_NOTINT"] = "#FIELD_NAME#: енгізілген мән бүтін сан болуы керек";
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_SETTINGS_NUMBER_FLOAT"] = "Тек қана бүтін емес";
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_SETTINGS_NUMBER_FROM"] = "Санның төменгі шегі";
+$MESS["FORM_VALIDATOR_VAL_NUM_EX_SETTINGS_NUMBER_TO"] = "Санның жоғарғы шегі";

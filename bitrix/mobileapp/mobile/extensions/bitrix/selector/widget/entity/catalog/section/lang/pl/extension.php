@@ -1,0 +1,6 @@
+<?php
+$MESS["SELECTOR_COMPONENT_CREATE_SECTION"] = "Utwórz sekcję";
+$MESS["SELECTOR_COMPONENT_CREATING_SECTION"] = "Tworzenie sekcji...";
+$MESS["SELECTOR_COMPONENT_PICK_SECTION_2"] = "Sekcja";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_CREATE_SECTION"] = "Zacznij pisać, aby utworzyć sekcję";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_SEARCH_SECTION"] = "Zacznij wprowadzanie, aby znaleźć sekcję.";

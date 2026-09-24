@@ -1,0 +1,37 @@
+.bx-im-copilot-widget-header__container {
+	width: 100%;
+	height: var(--im-ai-assistant-widget-header-height, 58px);
+	display: flex;
+	justify-content: center;
+	flex-shrink: 0;
+	align-items: center;
+	padding: 10px 13px 14px 13px;
+	background-color: var(--im-color-palette-white-base, #fff);
+	border-bottom: 1px solid var(--ui-color-base-15);
+	box-sizing: border-box;
+}
+
+.bx-im-copilot-widget-header__title {
+	flex: 1;
+	font: var(--im-font-size-2xl) var(--im-font-family-system);
+	font-weight: var(--im-font-weight-medium);
+	color: var(--im-color-palette-black-base);
+}
+
+.bx-im-copilot-widget-header__actions {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.bx-im-copilot-widget-header__close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.bx-im-copilot-widget-header__close-icon{
+	--ui-icon-set__icon-color: var(--ui-color-base-40);
+}

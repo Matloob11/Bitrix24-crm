@@ -1,0 +1,4 @@
+<?php
+$MESS["IM_MODEL_USERS_CHAT_BOT"] = "Chat bot";
+$MESS["IM_MODEL_USERS_COLLABER"] = "Ospite";
+$MESS["IM_MODEL_USERS_DEFAULT_NAME"] = "Utente";

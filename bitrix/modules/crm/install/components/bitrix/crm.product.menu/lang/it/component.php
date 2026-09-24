@@ -1,0 +1,35 @@
+<?
+$MESS["CRM_ADD_PRODUCT_SECTION"] = "Aggiungi sezione";
+$MESS["CRM_ADD_PRODUCT_SECTION_TITLE"] = "Aggiungi nuova sezione a sezione corrente";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_MOVE_UP"] = "Su";
+$MESS["CRM_MOVE_UP_TITLE"] = "Sfoglia sezione principale";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";
+$MESS["CRM_PRODUCT_ADD"] = "Aggiungi prodotto";
+$MESS["CRM_PRODUCT_ADD_TITLE"] = "Crea un nuovo prodotto";
+$MESS["CRM_PRODUCT_COPY"] = "Copia";
+$MESS["CRM_PRODUCT_COPY_TITLE"] = "Apri pagina di copia del prodotto";
+$MESS["CRM_PRODUCT_DELETE"] = "Elimina prodotto";
+$MESS["CRM_PRODUCT_DELETE_DLG_BTNTITLE"] = "Elimina prodotto";
+$MESS["CRM_PRODUCT_DELETE_DLG_MESSAGE"] = "Eliminare questo prodotto?";
+$MESS["CRM_PRODUCT_DELETE_DLG_TITLE"] = "Elimina prodotto";
+$MESS["CRM_PRODUCT_DELETE_TITLE"] = "Elimina questo prodotto";
+$MESS["CRM_PRODUCT_EDIT"] = "Modifica";
+$MESS["CRM_PRODUCT_EDIT_TITLE"] = "Modifica prodotto";
+$MESS["CRM_PRODUCT_EXPORT_ALL_FIELDS"] = "Esporta tutti i campi del prodotto";
+$MESS["CRM_PRODUCT_EXPORT_CSV"] = "Esporta i prodotti in CSV";
+$MESS["CRM_PRODUCT_EXPORT_CSV_TITLE"] = "Esporta i prodotti in CSV";
+$MESS["CRM_PRODUCT_EXPORT_EXCEL"] = "Esporta i prodotti in Microsoft Excel";
+$MESS["CRM_PRODUCT_EXPORT_EXCEL_TITLE"] = "Esporta i prodotti in Microsoft Excel";
+$MESS["CRM_PRODUCT_EXPORT_INCLUDE_SUBSECTIONS"] = "Esporta sottosezioni";
+$MESS["CRM_PRODUCT_IMPORT"] = "Importazione prodotto";
+$MESS["CRM_PRODUCT_IMPORT_TITLE"] = "Importazione prodotto";
+$MESS["CRM_PRODUCT_LIST"] = "Prodotti";
+$MESS["CRM_PRODUCT_LIST_TITLE"] = "Visualizza prodotti";
+$MESS["CRM_PRODUCT_SECTIONS"] = "Gestione sezioni";
+$MESS["CRM_PRODUCT_SECTIONS_TITLE"] = "Modifica ed elimina sezioni";
+$MESS["CRM_PRODUCT_SHOW"] = "Visualizzazione";
+$MESS["CRM_PRODUCT_SHOW_TITLE"] = "Visualizza prodotto";
+$MESS["CRM_PRODUCT_STEXPORT_SUMMARY"] = "Verrà creato un file di esportazione dei prodotti. L'esportazione di una notevole quantità di prodotti potrebbe richiedere del tempo.";
+$MESS["IBLOCK_MODULE_NOT_INSTALLED"] = "Il modulo Blocchi di informazioni non è installato.";
+?>

@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_TIMELINE_ITEM_VISIT_EMPTY_STATE"] = "No grabado";
+$MESS["CRM_TIMELINE_ITEM_VISIT_TAG_ERROR_RECORD"] = "Error al grabar";
+$MESS["CRM_TIMELINE_ITEM_VISIT_TITLE"] = "Grabación en vivo";

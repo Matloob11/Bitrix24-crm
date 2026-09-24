@@ -1,0 +1,7 @@
+<?php
+$MESS["VOX_JS_COMMON_AGREE"] = "Zgadzam się";
+$MESS["VOX_JS_COMMON_CANCEL"] = "Anuluj";
+$MESS["VOX_JS_COMMON_CLOSE"] = "Anuluj";
+$MESS["VOX_JS_COMMON_ERROR"] = "Błąd";
+$MESS["VOX_JS_COMMON_OK"] = "OK";
+$MESS["VOX_JS_COMMON_TERMS_OF_SERVICE"] = "Regulamin";

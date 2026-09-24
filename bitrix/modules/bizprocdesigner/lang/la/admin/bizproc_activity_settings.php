@@ -1,0 +1,19 @@
+<?php
+$MESS["BIZPROC_AS_ACT_TITLE"] = "Titulo:";
+$MESS["BIZPROC_AS_DESC_1"] = "Configure los parámetros de la actividad.";
+$MESS["BIZPROC_AS_SEL_FIELD_BUTTON"] = "Seleccionar campos";
+$MESS["BIZPROC_AS_TITLE_1"] = "Parámetros de la actividad";
+$MESS["BP_ACT_SETTINGS_ACTIONS_ACTIVATED_BUTTON_NOTIFY_TEXT"] = "Actividad habilitada";
+$MESS["BP_ACT_SETTINGS_ACTIONS_ACTIVATED_BUTTON_TEXT"] = "Habilitar";
+$MESS["BP_ACT_SETTINGS_ACTIONS_DEACTIVATED_BUTTON_NOTIFY_TEXT"] = "Actividad deshabilitada";
+$MESS["BP_ACT_SETTINGS_ACTIONS_DEACTIVATED_BUTTON_TEXT"] = "Deshabilitar";
+$MESS["BP_ACT_SET_BROKEN_LINK_MESSAGE_ERROR"] = "La regla de automatización se refiere a campos, variables o constantes faltantes o no disponibles.";
+$MESS["BP_ACT_SET_BROKEN_LINK_MESSAGE_ERROR_SHOW_LINKS"] = "Ver todo";
+$MESS["BP_ACT_SET_COMMENT"] = "Comentario";
+$MESS["BP_ACT_SET_COMMENT_ROW"] = "Comentario:";
+$MESS["BP_ACT_SET_COMMENT_SHOWHIDE_1"] = "Mostrar/ocultar el comentario de la actividad";
+$MESS["BP_ACT_SET_ID"] = "ID";
+$MESS["BP_ACT_SET_ID_DUP_1"] = "El ID de la actividad #ID# ya está en uso por esta plantilla.";
+$MESS["BP_ACT_SET_ID_EMPTY_1"] = "El ID de la actividad no puede estar vacío.";
+$MESS["BP_ACT_SET_ID_ROW_1"] = "ID de la actividad:";
+$MESS["BP_ACT_SET_ID_SHOWHIDE_1"] = "Mostrar/ocultar el ID de la actividad";

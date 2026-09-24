@@ -1,0 +1,5 @@
+<?
+$MESS["CC_BSC1_DI_ID"] = "ID";
+$MESS["CC_BSC1_ID"] = "ID";
+$MESS["CC_BSC1_ITEM_UNIT_CODE"] = "ID";
+?>

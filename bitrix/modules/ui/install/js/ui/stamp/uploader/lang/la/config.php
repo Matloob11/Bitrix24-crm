@@ -1,0 +1,22 @@
+<?php
+$MESS["UI_STAMP_UPLOADER_CROP_BUTTON_LABEL"] = "Cortar";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_HEADER"] = "Subir la imagen del sello";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_TEXT"] = "O simplemente arrastre el archivo de imagen aquí";
+$MESS["UI_STAMP_UPLOADER_HEADER_CHANGE_CONTACT_BUTTON_LABEL"] = "Cambiar";
+$MESS["UI_STAMP_UPLOADER_HEADER_TITLE"] = "Sello que se utilizará con";
+$MESS["UI_STAMP_UPLOADER_PREPARING_STATUS"] = "Procesando";
+$MESS["UI_STAMP_UPLOADER_PREVIEW_TITLE"] = "Haga clic para subir otra imagen";
+$MESS["UI_STAMP_UPLOADER_SAVE_BUTTON_LABEL"] = "Guardar";
+$MESS["UI_STAMP_UPLOADER_SELECT_PHOTO_BUTTON_LABEL_1"] = "Subir la imagen del sello";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM"] = "Los cambios no han sido guardados. ¿Está seguro que quiere cerrar el slider del panel?";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CANCEL"] = "Cancelar";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CLOSE"] = "Cerrar";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_DESCRIPTION"] = "Suba la imagen del sello y utilícela para firmar documentos. La imagen será procesada mediante IA para que se vea auténtica.";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_TITLE"] = "Sello";
+$MESS["UI_STAMP_UPLOADER_TAKE_PHOTO_BUTTON_LABEL"] = "Tome una foto con su teléfono";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_PERCENT"] = "{{number}}%";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE"] = "{{number}} {{text}}";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_B"] = "bytes";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_KB"] = "KB";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_MB"] = "MB";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_TEXT"] = "Subiendo archivo";

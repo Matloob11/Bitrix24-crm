@@ -1,0 +1,223 @@
+/**
+ * @module im/messenger/controller/dialog-creator/navigation-selector/view
+ */
+jn.define('im/messenger/controller/dialog-creator/navigation-selector/view', (require, exports, module) => {
+	const { Loc } = require('im/messenger/loc');
+	const { Feature } = require('im/messenger/lib/feature');
+	const { Color } = require('tokens');
+	const { Color: MessengerColor } = require('im/messenger/const');
+
+	const { SingleSelector } = require('im/messenger/lib/ui/selector');
+	const { navigationButton } = require('im/messenger/controller/dialog-creator/navigation-button');
+	const { InviteBanner } = require('im/messenger/controller/dialog-creator/src/view/invite-banner');
+	const { MenuVisibility } = require('im/messenger/controller/dialog-creator/menu-visibility');
+	const { MessengerIcon, IconType } = require('im/messenger/assets/icon');
+	const { isProjectsGroupsRestricted, showProjectsGroupsRestrictionIfNeeded } = require('im/messenger/lib/plan-limit');
+
+	// TODO: not in the design system
+	const collabIcon = '<svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.7009 1.30097C18.7424 0.233009 21.2576 0.23301 23.2991 1.30097L36.7009 8.3117C38.7424 9.37967 40 11.3533 40 13.4893V27.5107C40 29.6467 38.7424 31.6203 36.7009 32.6883L23.2991 39.699C21.2576 40.767 18.7424 40.767 16.7009 39.699L3.29914 32.6883C1.25763 31.6203 0 29.6467 0 27.5107V13.4893C0 11.3533 1.25763 9.37967 3.29914 8.3117L16.7009 1.30097Z" fill="#19CC45"/><path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" d="M14.4 12.499C13.8139 13.9749 13.7347 15.6388 14.0669 17.107C14.2912 18.0978 14.8112 20.0237 14.9698 20.607C14.7553 20.6484 14.5294 20.6702 14.2923 20.6702C10.4695 20.6702 9.57129 15.1005 12.2779 13.1324C12.7273 12.8056 13.5912 12.4977 14.2923 12.4977C14.3285 12.4977 14.3644 12.4982 14.4 12.499Z" fill="white"/><path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" d="M12.9743 22.261C12.8794 22.3714 12.7794 22.4859 12.6759 22.6044C11.7349 23.6817 10.4986 25.0972 10.0611 26.8676L8.57271 26.8172C8.72548 23.7322 10.7753 22.5647 12.9743 22.261Z" fill="white"/><path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" d="M25.8516 12.4987C30.7426 12.5962 30.3236 20.6702 25.7618 20.6702C25.5228 20.6702 25.2951 20.6484 25.0791 20.6071C25.131 20.3713 25.2558 19.9616 25.4077 19.4627C25.78 18.2402 26.3152 16.4824 26.341 15.4373C26.3653 14.4537 26.212 13.4398 25.8516 12.4987Z" fill="white"/><path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" d="M29.8106 27.1477C29.4412 25.2458 28.1241 23.7379 27.134 22.6044C27.0195 22.4733 26.9094 22.3473 26.8057 22.2262C29.1106 22.4666 31.336 23.5978 31.4955 26.8173C31.5057 27.0241 31.3367 27.1923 31.1296 27.1923L29.8106 27.1477Z" fill="white"/><g opacity="0.9" filter="url(#filter0_d_2950_95559)"><path d="M28.278 29.0931C28.278 23.8168 23.9343 22.4977 20.0338 22.4977C16.1333 22.4977 11.7897 23.8168 11.7897 29.0931" fill="white"/></g><g opacity="0.9" filter="url(#filter1_d_2950_95559)"><path d="M20.094 20.7771C14.9715 20.7771 13.7679 13.4485 17.3947 10.8589C17.9969 10.4289 19.1545 10.0238 20.0941 10.0238C26.7749 10.0238 26.2439 20.7771 20.094 20.7771Z" fill="white"/></g><defs><filter id="filter0_d_2950_95559" x="7.78967" y="22.4977" width="24.4883" height="14.5953" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="4"/><feGaussianBlur stdDeviation="2"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2950_95559"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2950_95559" result="shape"/></filter><filter id="filter1_d_2950_95559" x="11.3014" y="10.0238" width="17.6062" height="18.7532" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="4"/><feGaussianBlur stdDeviation="2"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2950_95559"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2950_95559" result="shape"/></filter></defs></svg>';
+	const copilotIcon = '<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_31428_27459)"><rect width="40" height="40" rx="20" fill="url(#paint0_linear_31428_27459)"/><g filter="url(#filter0_f_31428_27459)"><path d="M7.21074 28.3997C7.21074 34.6755 9.19195 37.5123 12.4459 40H40V3.68037C40 1.35233 39.338 -1.44293 38.3747 1.3219C35.0903 7.80556 32.4578 8.93615 28.8162 11.5732C25.1746 14.2102 7.21074 15.2482 7.21074 28.3997Z" fill="url(#paint1_linear_31428_27459)"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M20.0014 26.559C23.599 26.559 26.5153 23.624 26.5153 20.0034C26.5153 16.3828 23.599 13.4478 20.0014 13.4478C16.4039 13.4478 13.4875 16.3828 13.4875 20.0034C13.4875 23.624 16.4039 26.559 20.0014 26.559ZM18.9603 15.0948C18.9016 14.9351 18.6771 14.9351 18.6184 15.0948L17.97 16.8584C17.7854 17.3604 17.3921 17.7563 16.8932 17.942L15.1409 18.5946C14.9823 18.6537 14.9823 18.8796 15.1409 18.9386L16.8932 19.5912C17.3921 19.777 17.7854 20.1728 17.97 20.6749L18.6184 22.4384C18.6771 22.5981 18.9016 22.5981 18.9603 22.4384L19.6087 20.6749C19.7933 20.1728 20.1866 19.777 20.6855 19.5912L22.4378 18.9386C22.5965 18.8796 22.5965 18.6537 22.4378 18.5946L20.6855 17.942C20.1866 17.7563 19.7933 17.3604 19.6087 16.8584L18.9603 15.0948ZM22.6829 20.191C22.6489 20.0987 22.5193 20.0987 22.4853 20.191L22.1107 21.2099C22.004 21.5 21.7768 21.7287 21.4885 21.8361L20.476 22.2131C20.3843 22.2473 20.3843 22.3778 20.476 22.4119L21.4885 22.789C21.7768 22.8963 22.004 23.125 22.1107 23.4151L22.4853 24.4341C22.5193 24.5264 22.6489 24.5264 22.6829 24.4341L23.0575 23.4151C23.1642 23.125 23.3914 22.8963 23.6797 22.789L24.6922 22.4119C24.7839 22.3778 24.7839 22.2473 24.6922 22.2131L23.6797 21.8361C23.3914 21.7287 23.1642 21.5 23.0575 21.2099L22.6829 20.191Z" fill="white"/><path d="M29.3742 20.4013C30.0142 20.4292 30.5174 20.9758 30.4208 21.6132C29.6487 26.7063 25.2777 30.6081 20.0013 30.6081C14.1798 30.6081 9.4606 25.8587 9.4606 20C9.4606 14.1413 14.1798 9.39185 20.0013 9.39185C22.7745 9.39185 25.2976 10.4697 27.1796 12.2319C27.6496 12.672 27.5912 13.4162 27.1048 13.8378C26.619 14.259 25.8907 14.1969 25.408 13.7722C23.9629 12.5006 22.0714 11.7302 20.0011 11.7302C15.4622 11.7302 11.7828 15.4332 11.7828 20.0011C11.7828 24.569 15.4622 28.272 20.0011 28.272C24.0267 28.272 27.3763 25.359 28.0823 21.5132C28.199 20.8778 28.7327 20.3733 29.3742 20.4013Z" fill="white"/></g><defs><filter id="filter0_f_31428_27459" x="6.21074" y="-0.828125" width="34.7893" height="41.8281" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="0.5" result="effect1_foregroundBlur_31428_27459"/></filter><linearGradient id="paint0_linear_31428_27459" x1="23.0696" y1="0.316808" x2="16.2101" y2="40.1874" gradientUnits="userSpaceOnUse"><stop stop-color="#E574F3"/><stop offset="1" stop-color="#6D55EB"/></linearGradient><linearGradient id="paint1_linear_31428_27459" x1="39.0527" y1="6.23344" x2="14.7106" y2="36.1723" gradientUnits="userSpaceOnUse"><stop stop-color="#E778E6"/><stop offset="0.945" stop-color="#9B72F9"/></linearGradient><clipPath id="clip0_31428_27459"><rect width="40" height="40" rx="20" fill="white"/></clipPath></defs></svg>';
+
+	class NavigationSelectorView extends LayoutComponent
+	{
+		/**
+		 *
+		 * @param { Object } props
+		 * @param { Array } props.userList
+		 * @param { boolean } [props.hideRecentBlock]
+		 * @param { Function } props.onClose
+		 * @param { Function } props.onItemSelected
+		 * @param { Function } props.onCreateChannel
+		 * @param { Function } props.onCreatePrivateChat
+		 * @param { Function|undefined } props.onCreateCollab
+		 * @param { Function } props.onCreateCopilot
+		 * @param { Function|undefined } props.onCreateFolder
+		 * @param { Function } props.onClickInviteButton
+		 */
+		constructor(props)
+		{
+			super(props);
+
+			/** @type SingleSelector */
+			this.selectorRef = null;
+		}
+
+		render()
+		{
+			const hideRecentBlock = this.props.hideRecentBlock === true;
+
+			return new SingleSelector({
+				recentText: hideRecentBlock ? undefined : Loc.getMessage('IMMOBILE_DIALOG_CREATOR_RECENT_TEXT'),
+				itemList: hideRecentBlock ? [] : this.props.userList,
+				buttons: this.getButtons(),
+				additionalButtons: this.getAdditionalButtons(),
+				onItemSelected: (itemData) => {
+					this.props.onItemSelected(itemData);
+				},
+				ref: (ref) => {
+					this.selectorRef = ref;
+				},
+			});
+		}
+
+		getButtons()
+		{
+			return [
+				this.getNewChatButton(),
+				this.getNewCopilotButton(),
+				this.getNewChannelButton(),
+				this.getNewCollabButton(),
+				this.getNewFolderButton(),
+			];
+		}
+
+		getAdditionalButtons()
+		{
+			return [
+				this.getInviteBanner(),
+			];
+		}
+
+		getNewChannelButton()
+		{
+			if (!MenuVisibility.canCreateChannel())
+			{
+				return null;
+			}
+
+			return navigationButton({
+				testId: 'create_channel',
+				text: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_CHANNEL_NEW_MSGVER_1'),
+				subtitle: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_CHANNEL_SUBTITLE_MSGVER_1'),
+				pngIcon: MessengerIcon.getByType(IconType.channel),
+				onClick: () => {
+					this.props.onCreateChannel();
+				},
+				withSeparator: true,
+			});
+		}
+
+		getNewChatButton()
+		{
+			if (!MenuVisibility.canCreateChat())
+			{
+				return null;
+			}
+
+			return navigationButton({
+				testId: 'create_group_chat',
+				text: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_CHAT_NEW_MSGVER_1'),
+				subtitle: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_CHAT_SUBTITLE_MSGVER_1'),
+				pngIcon: MessengerIcon.getByType(IconType.groupChat),
+				onClick: () => {
+					this.props.onCreatePrivateChat();
+				},
+				withSeparator: true,
+			});
+		}
+
+		getNewCollabButton()
+		{
+			if (!this.props.onCreateCollab || !MenuVisibility.canCreateCollab())
+			{
+				return null;
+			}
+
+			const isRestricted = isProjectsGroupsRestricted();
+
+			return navigationButton({
+				testId: Feature.isNestedChatAvailable ? 'create_collab' : 'create_project',
+				text: Feature.isNestedChatAvailable
+					? Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_PROJECT')
+					: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_COLLAB'),
+				subtitle: Feature.isNestedChatAvailable
+					? Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_PROJECT_SUBTITLE')
+					: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_COLLAB_SUBTITLE_MSGVER_1'),
+				pngIcon: Feature.isNestedChatAvailable ? MessengerIcon.getByType(IconType.project) : null,
+				iconSvg: !Feature.isNestedChatAvailable ? collabIcon : null,
+				isLocked: isRestricted,
+				textStyle: isRestricted ? { color: Color.base4.toHex() } : {},
+				onClick: () => {
+					if (isRestricted)
+					{
+						void showProjectsGroupsRestrictionIfNeeded();
+
+						return;
+					}
+
+					this.props.onCreateCollab();
+				},
+				withSeparator: true,
+			});
+		}
+
+		getNewCopilotButton()
+		{
+			if (!MenuVisibility.canCreateCopilot())
+			{
+				return null;
+			}
+
+			const icon = {};
+			const textStyle = {};
+
+			if (Feature.isBitrixGptV2Available)
+			{
+				icon.pngIcon = MessengerIcon.getByType(IconType.copilot);
+				textStyle.colorGradient = MessengerColor.copilotGradient;
+			}
+			else
+			{
+				icon.iconSvg = copilotIcon;
+			}
+
+			return navigationButton({
+				testId: 'button-create-copilot',
+				text: Loc.getMessageWithCopilotBotName('IMMOBILE_DIALOG_CREATOR_NEW_COPILOT_MSGVER_1'),
+				subtitle: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_COPILOT_SUBTITLE_MSGVER_1'),
+				onClick: () => {
+					this.props.onCreateCopilot();
+				},
+				withSeparator: true,
+				textStyle,
+				...icon,
+			});
+		}
+
+		getNewFolderButton()
+		{
+			if (!MenuVisibility.canCreateFolder())
+			{
+				return null;
+			}
+
+			return navigationButton({
+				testId: 'create_folder',
+				isNew: true,
+				text: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_FOLDER'),
+				subtitle: Loc.getMessage('IMMOBILE_DIALOG_CREATOR_NEW_FOLDER_SUBTITLE'),
+				pngIcon: MessengerIcon.getByType(IconType.folder),
+				iconSize: 50,
+				onClick: () => {
+					this.props.onCreateFolder?.();
+				},
+				withSeparator: false,
+			});
+		}
+
+		getInviteBanner()
+		{
+			if (!MenuVisibility.showInviteBanner())
+			{
+				return null;
+			}
+
+			return InviteBanner({
+				onClick: this.props.onClickInviteButton,
+				accent: !this.props.userList || this.props.userList?.length < 5,
+			});
+		}
+	}
+
+	module.exports = { NavigationSelectorView };
+});

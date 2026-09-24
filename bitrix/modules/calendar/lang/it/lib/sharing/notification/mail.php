@@ -1,0 +1,10 @@
+<?php
+$MESS["EC_CALENDAR_SHARING_MAIL_BITRIX24_FROM"] = "Bitrix24 <no-reply@bitrix24.com>";
+$MESS["EC_CALENDAR_SHARING_MAIL_EVENT_END"] = "Fino al #DATE#";
+$MESS["EC_CALENDAR_SHARING_MAIL_EVENT_FULL_DAY"] = "Tutto il giorno";
+$MESS["EC_CALENDAR_SHARING_MAIL_EVENT_START"] = "Dal #DATE#";
+$MESS["EC_CALENDAR_SHARING_MAIL_SUBJECT_CANCELLED"] = "#NAME# ha annullato la tua riunione";
+$MESS["EC_CALENDAR_SHARING_MAIL_SUBJECT_CANCELLED_F"] = "#NAME# ha annullato la tua riunione";
+$MESS["EC_CALENDAR_SHARING_MAIL_SUBJECT_CANCELLED_M"] = "#NAME# ha annullato la tua riunione";
+$MESS["EC_CALENDAR_SHARING_MAIL_SUBJECT_CREATED"] = "Hai creato una riunione in Bitrix24";
+$MESS["EC_CALENDAR_SHARING_MAIL_SUBJECT_INVITE_LINK"] = "I miei slot orari liberi";

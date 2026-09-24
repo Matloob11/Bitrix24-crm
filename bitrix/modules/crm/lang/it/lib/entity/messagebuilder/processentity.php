@@ -1,0 +1,13 @@
+<?php
+$MESS["CRM_PROCESS_ENTITY_COMPANY_ADD"] = "Azienda aggiunta";
+$MESS["CRM_PROCESS_ENTITY_CONTACT_ADD"] = "Contatto creato";
+$MESS["CRM_PROCESS_ENTITY_DEAL_ADD"] = "Affare aggiunto";
+$MESS["CRM_PROCESS_ENTITY_DEFAULT_ADD"] = "Elemento di tipo \"#ENTITY_TYPE_CAPTION#\" creato";
+$MESS["CRM_PROCESS_ENTITY_DYNAMIC_ADD"] = "Elemento aggiunto a SPA \"#ENTITY_TYPE_CAPTION#\"";
+$MESS["CRM_PROCESS_ENTITY_LEAD_ADD"] = "Lead aggiunto";
+$MESS["CRM_PROCESS_ENTITY_ORDER_ADD"] = "Ordine creato";
+$MESS["CRM_PROCESS_ENTITY_ORDER_PAYMENT_ADD"] = "Pagamento creato";
+$MESS["CRM_PROCESS_ENTITY_ORDER_SHIPMENT_ADD"] = "Spedizione creata";
+$MESS["CRM_PROCESS_ENTITY_QUOTE_ADD_MSGVER_1"] = "Preventivo creato";
+$MESS["CRM_PROCESS_ENTITY_RECURRING_DEAL_ADD"] = "Modello affare creato";
+$MESS["CRM_PROCESS_ENTITY_SMART_INVOICE_ADD"] = "Fattura creata";

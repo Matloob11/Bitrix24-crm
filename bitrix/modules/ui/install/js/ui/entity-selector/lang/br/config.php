@@ -1,0 +1,14 @@
+<?php
+$MESS["UI_SELECTOR_CREATE_ITEM_LABEL"] = "Criar:";
+$MESS["UI_SELECTOR_ITEM_LINK_TITLE"] = "Informações";
+$MESS["UI_SELECTOR_RECENT_TAB_TITLE"] = "Recentes";
+$MESS["UI_SELECTOR_SEARCH_LOADER_TEXT"] = "Procurando resultados adicionais...";
+$MESS["UI_SELECTOR_SEARCH_STUB_SUBTITLE_MSGVER_1"] = "Tente outras palavras-chave ou filtros";
+$MESS["UI_SELECTOR_SEARCH_STUB_TITLE"] = "Nenhum resultado";
+$MESS["UI_SELECTOR_SEARCH_TAB_TITLE"] = "Pesquisar";
+$MESS["UI_SELECTOR_TAB_STUB_TITLE"] = "Nada foi encontrado na categoria \"#TAB_TITLE#\"";
+$MESS["UI_TAG_SELECTOR_ADD_BUTTON_CAPTION"] = "Adicionar";
+$MESS["UI_TAG_SELECTOR_ADD_BUTTON_CAPTION_MORE"] = "Adicionar mais";
+$MESS["UI_TAG_SELECTOR_ADD_BUTTON_CAPTION_SINGLE"] = "Editar";
+$MESS["UI_TAG_SELECTOR_CREATE_BUTTON_CAPTION"] = "Criar";
+$MESS["UI_TAG_SELECTOR_SEARCH_PLACEHOLDER"] = "pesquisa";

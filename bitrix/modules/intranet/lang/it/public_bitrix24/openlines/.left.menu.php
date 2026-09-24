@@ -1,0 +1,4 @@
+<?
+$MESS["SERVICES_MENU_OPENLINES_LINES"] = "Gestisci";
+$MESS["SERVICES_MENU_OPENLINES_STATS"] = "Statistiche";
+?>

@@ -1,0 +1,4 @@
+<?php
+$MESS["SOCIALNETWORK_CHAT_PROJECT_CREATE_F"] = "#SENDER_NAME# utworzyła ten projekt.";
+$MESS["SOCIALNETWORK_CHAT_PROJECT_CREATE_M"] = "#SENDER_NAME# utworzył ten projekt.";
+$MESS["SOCIALNETWORK_CHAT_PROJECT_CREATE_N"] = "#SENDER_NAME# utworzył ten projekt.";

@@ -1,0 +1,164 @@
+/* eslint-disable */
+this.BX = this.BX || {};
+this.BX.Tasks = this.BX.Tasks || {};
+this.BX.Tasks.V2 = this.BX.Tasks.V2 || {};
+this.BX.Tasks.V2.Provider = this.BX.Tasks.V2.Provider || {};
+(function (exports, main_core, tasks_v2_core, tasks_v2_const, tasks_v2_lib_idUtils, tasks_v2_lib_apiClient, tasks_v2_provider_service_taskService) {
+	'use strict';
+
+	function mapModelToDto(reminder) {
+		return {
+			id: reminder.id,
+			taskId: reminder.taskId,
+			userId: reminder.userId,
+			nextRemindTs: mapValue(reminder.nextRemindTs, Math.floor(reminder.nextRemindTs / 1000)),
+			remindBy: reminder.remindBy,
+			remindVia: reminder.remindVia,
+			recipient: reminder.recipient,
+			before: mapValue(reminder.before, Math.floor(reminder.before / 1000))
+		};
+	}
+	function mapDtoToModel(reminderDto) {
+		return {
+			id: reminderDto.id,
+			taskId: reminderDto.taskId,
+			userId: reminderDto.userId,
+			nextRemindTs: mapValue(reminderDto.nextRemindTs, reminderDto.nextRemindTs * 1000),
+			remindBy: reminderDto.remindBy,
+			remindVia: reminderDto.remindVia,
+			recipient: reminderDto.recipient,
+			before: mapValue(reminderDto.before ?? undefined, reminderDto.before * 1000)
+		};
+	}
+	function mapValue(value, mappedValue) {
+		return main_core.Type.isUndefined(value) ? undefined : mappedValue;
+	}
+
+	class RemindersService {
+		#cache = {};
+		async list(taskId) {
+			if (this.#cache[taskId] || !Number.isInteger(taskId)) {
+				return;
+			}
+			this.#cache[taskId] = true;
+			try {
+				const data = await tasks_v2_lib_apiClient.apiClient.post(tasks_v2_const.Endpoint.TaskReminderList, {
+					taskId
+				});
+				await this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/upsertMany`, data.map(it => mapDtoToModel(it)));
+			} catch (error) {
+				console.error('Reminder.list', error);
+			}
+		}
+		async set(taskId, reminders) {
+			void tasks_v2_provider_service_taskService.taskService.updateStoreTask(taskId, {
+				numberOfReminders: reminders.length
+			});
+			void this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/upsertMany`, reminders.map(reminder => ({
+				...reminder,
+				taskId
+			})));
+			try {
+				const task = tasks_v2_provider_service_taskService.TaskMappers.mapModelToDto({
+					id: taskId,
+					reminders
+				});
+				await tasks_v2_lib_apiClient.apiClient.post(tasks_v2_const.Endpoint.TaskReminderSet, {
+					task
+				});
+				await this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/deleteMany`, reminders.map(({
+					id
+				}) => id));
+			} catch (error) {
+				console.error('Reminder.set', error);
+			}
+		}
+		async add(reminder) {
+			const task = tasks_v2_provider_service_taskService.taskService.getStoreTask(reminder.taskId);
+			void tasks_v2_provider_service_taskService.taskService.updateStoreTask(reminder.taskId, {
+				numberOfReminders: task.numberOfReminders + 1
+			});
+			void this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/upsert`, reminder);
+			if (!tasks_v2_lib_idUtils.idUtils.isReal(reminder.taskId)) {
+				return;
+			}
+			try {
+				const data = await tasks_v2_lib_apiClient.apiClient.post(tasks_v2_const.Endpoint.TaskReminderAdd, {
+					reminder: mapModelToDto(reminder)
+				});
+				void this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/update`, {
+					id: reminder.id,
+					fields: mapDtoToModel(data)
+				});
+			} catch (error) {
+				console.error('Reminder.add', error);
+			}
+		}
+		async update(reminder) {
+			const {
+				id,
+				...fields
+			} = reminder;
+			const reminderBefore = this.$store.getters[`${tasks_v2_const.Model.Reminders}/getById`](id);
+			if (JSON.stringify(reminderBefore) === JSON.stringify(reminder)) {
+				return;
+			}
+			void this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/update`, {
+				id,
+				fields
+			});
+			if (!tasks_v2_lib_idUtils.idUtils.isReal(id)) {
+				return;
+			}
+			try {
+				await tasks_v2_lib_apiClient.apiClient.post(tasks_v2_const.Endpoint.TaskReminderUpdate, {
+					reminder: mapModelToDto(reminder)
+				});
+			} catch (error) {
+				console.error('Reminder.add', error);
+			}
+		}
+		async delete(id) {
+			const reminder = this.$store.getters[`${tasks_v2_const.Model.Reminders}/getById`](id);
+			const task = tasks_v2_provider_service_taskService.taskService.getStoreTask(reminder.taskId);
+			void tasks_v2_provider_service_taskService.taskService.updateStoreTask(reminder.taskId, {
+				numberOfReminders: task.numberOfReminders - 1
+			});
+			void this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/delete`, id);
+			if (!tasks_v2_lib_idUtils.idUtils.isReal(reminder.taskId)) {
+				return;
+			}
+			try {
+				await tasks_v2_lib_apiClient.apiClient.post(tasks_v2_const.Endpoint.TaskReminderDelete, {
+					reminder: {
+						id
+					}
+				});
+			} catch (error) {
+				console.error('Reminder.delete', error);
+			}
+		}
+		clearForTask(taskId) {
+			const userId = tasks_v2_core.Core.getParams().currentUser.id;
+			const reminderIds = this.$store.getters[`${tasks_v2_const.Model.Reminders}/getIds`](taskId, userId);
+			if (reminderIds.length > 0) {
+				void this.$store.dispatch(`${tasks_v2_const.Model.Reminders}/deleteMany`, reminderIds);
+			}
+			delete this.#cache[taskId];
+		}
+		get $store() {
+			return tasks_v2_core.Core.getStore();
+		}
+	}
+
+	const remindersService = new RemindersService();
+	const RemindersMappers = {
+		mapModelToDto,
+		mapDtoToModel
+	};
+
+	exports.RemindersMappers = RemindersMappers;
+	exports.remindersService = remindersService;
+
+})(this.BX.Tasks.V2.Provider.Service = this.BX.Tasks.V2.Provider.Service || {}, BX, BX.Tasks.V2, BX.Tasks.V2.Const, BX.Tasks.V2.Lib, BX.Tasks.V2.Lib, BX.Tasks.V2.Provider.Service);
+//# sourceMappingURL=reminders-service.bundle.js.map

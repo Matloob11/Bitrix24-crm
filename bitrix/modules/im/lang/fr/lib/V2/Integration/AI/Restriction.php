@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_RESTRICTION_AUTO_TASK_CREATION_HEADER"] = "CoPilot transcrira la parole dans le message et créera une tâche.";
+$MESS["IM_RESTRICTION_AUTO_TASK_CREATION_HEADER_MSGVER_1"] = "#COPILOT_NAME# transcrira la parole dans le message et créera une tâche.";
+$MESS["IM_RESTRICTION_AUTO_TASK_CREATION_TITLE"] = "Création automatique de tâches à partir de messages audio et de notes vidéo";
+$MESS["IM_RESTRICTION_COPILOT_DESCRIPTION"] = "Utilisez le chat pour communiquer avec l'IA.";
+$MESS["IM_RESTRICTION_COPILOT_GROUP_MSGVER_1"] = "Conversations";
+$MESS["IM_RESTRICTION_COPILOT_GROUP_MSGVER_2"] = "Conversations";
+$MESS["IM_RESTRICTION_COPILOT_HEADER"] = "Discutez de vos idées avec CoPilot ou demandez-lui des idées créatives pour vos projets.";
+$MESS["IM_RESTRICTION_COPILOT_HEADER_MSGVER_1"] = "Discutez de vos idées avec #COPILOT_NAME# ou demandez-lui des idées créatives pour vos projets.";
+$MESS["IM_RESTRICTION_COPILOT_PROVIDER_TITLE"] = "Fournisseur d'IA pour une utilisation dans le chat :";
+$MESS["IM_RESTRICTION_COPILOT_TITLE"] = "Discuter avec CoPilot";
+$MESS["IM_RESTRICTION_COPILOT_TITLE_MSGVER_1"] = "Discuter avec #COPILOT_NAME#";
+$MESS["IM_RESTRICTION_TRANSCRIPTION_EMOTIONS_HEADER"] = "CoPilot identifiera les émotions à partir d'un message source.";
+$MESS["IM_RESTRICTION_TRANSCRIPTION_EMOTIONS_HEADER_MSGVER_1"] = "#COPILOT_NAME# identifiera les émotions à partir d'un message source.";
+$MESS["IM_RESTRICTION_TRANSCRIPTION_EMOTIONS_TITLE"] = "Reconnaissance des émotions pour les messages audio et les notes vidéo";
+$MESS["IM_RESTRICTION_TRANSCRIPTION_HEADER"] = "CoPilot va transcrire la parole et créer un texte.";
+$MESS["IM_RESTRICTION_TRANSCRIPTION_HEADER_MSGVER_1"] = "#COPILOT_NAME# va transcrire la parole et créer un texte.";
+$MESS["IM_RESTRICTION_TRANSCRIPTION_PROVIDER_TITLE"] = "Fournisseur d'IA de reconnaissance vocale :";
+$MESS["IM_RESTRICTION_TRANSCRIPTION_TITLE"] = "Transcription vocale";

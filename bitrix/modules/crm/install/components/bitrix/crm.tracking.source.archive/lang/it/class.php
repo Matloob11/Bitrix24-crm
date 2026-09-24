@@ -1,0 +1,5 @@
+<?
+$MESS["CRM_TRACKING_ARCHIVE_TITLE"] = "Origini archiviate";
+$MESS["CRM_TRACKING_ARCHIVE_UI_COLUMN_DATE_CREATE"] = "Data di aggiunta";
+$MESS["CRM_TRACKING_ARCHIVE_UI_COLUMN_NAME"] = "Nome";
+?>

@@ -1,0 +1,3 @@
+<?php
+$MESS["MAIL_MASSCONNECT_FORM_MAILBOX_SETTINGS_CALENDAR_AUTO_ADD"] = "Күнтізбеге оқиғаны автоматты түрде қосу";
+$MESS["MAIL_MASSCONNECT_FORM_MAILBOX_SETTINGS_INTEGRATION_CALENDAR_TITLE"] = "Күнтізбемен интеграция";

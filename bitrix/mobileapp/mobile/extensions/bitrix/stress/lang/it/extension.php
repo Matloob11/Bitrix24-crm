@@ -1,0 +1,39 @@
+<?php
+$MESS["DESC_LOADING"] = "Caricamento...";
+$MESS["STRESS_GREEN_1"] = "Perfetto equilibrio fra stress e lavoro";
+$MESS["STRESS_GREEN_2"] = "Occupato, produttivo, felice";
+$MESS["STRESS_GREEN_3"] = "Sto bene io. Stai bene tu.";
+$MESS["STRESS_GREEN_4"] = "Vado bene";
+$MESS["STRESS_GREEN_5"] = "Va bene!";
+$MESS["STRESS_HINT_ACCESS"] = "Puoi nascondere il tuo livello di stress agli altri utenti";
+$MESS["STRESS_MENU_ACCESS_ACCEPT"] = "Mostra nel profilo";
+$MESS["STRESS_MENU_ACCESS_DENIED"] = "Non mostrare nel profilo";
+$MESS["STRESS_MENU_SHOW_IN_PROFILE"] = "Mostra nel profilo";
+$MESS["STRESS_RED_1"] = "Amico, devi rilassarti";
+$MESS["STRESS_RED_2"] = "Punto di rottura avanti";
+$MESS["STRESS_RED_3"] = "Veramente troppo stressato!";
+$MESS["STRESS_RED_4"] = "Non toccatemi e nessuno si farà male";
+$MESS["STRESS_RED_5"] = "Hai bisogno di una pausa. Davvero.";
+$MESS["STRESS_SAVING_DONE"] = "Fatto";
+$MESS["STRESS_SAVING_RESULT"] = "Salvataggio...";
+$MESS["STRESS_SHARE_ALERT_GOTIT"] = "Ok!";
+$MESS["STRESS_SHARE_ALERT_TITLE"] = "Questa funzione non è ancora disponibile";
+$MESS["STRESS_SHARE_CANCEL"] = "Annulla";
+$MESS["STRESS_SHARE_COMING_SOON"] = "Presto potrai condividere i tuoi risultati!";
+$MESS["STRESS_SHARE_NEWS"] = "Feed";
+$MESS["STRESS_SHARE_POST_MESSAGE"] = "Ecco il mio livello di stress
+";
+$MESS["STRESS_SHARE_POST_TITLE"] = "Il mio livello di stress!";
+$MESS["STRESS_SHARING_FAILED"] = "Accidenti! Qualcosa è andato storto.
+Impossibile condividere i risultati.";
+$MESS["STRESS_SHARING_RESULT"] = "Condivisione dei risultati...";
+$MESS["STRESS_UNKNOWN_1"] = "Lavori tanto o hai difficoltà a lavorare?";
+$MESS["STRESS_UNKNOWN_2"] = "Non preoccuparti, sii felice";
+$MESS["STRESS_UNKNOWN_3"] = "Vita senza stress - fatto";
+$MESS["STRESS_UNKNOWN_4"] = "Non è un mio problema";
+$MESS["STRESS_UNKNOWN_5"] = "Allergico allo stress";
+$MESS["STRESS_YELLOW_1"] = "Posso farcela. Probabilmente.";
+$MESS["STRESS_YELLOW_2"] = "Prenditi. Una. Pausa.";
+$MESS["STRESS_YELLOW_3"] = "Quando arriva il weekend?";
+$MESS["STRESS_YELLOW_4"] = "Possibili problemi a venire";
+$MESS["STRESS_YELLOW_5"] = "Troppo in ballo?";

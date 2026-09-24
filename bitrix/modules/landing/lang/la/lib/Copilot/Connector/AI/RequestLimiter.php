@@ -1,0 +1,9 @@
+<?php
+$MESS["LANDING_REQUEST_LIMITER_ERROR_BAAS_MSGVER_1"] = "[p]Agotaste los créditos de #COPILOT_NAME#.[/p][p]Si haces un uso intensivo de #COPILOT_NAME#, sugerimos que compres tantos créditos como necesites para trabajar sin interrupciones.[/p]#LINK#Comprar créditos de #COPILOT_NAME##/LINK#";
+$MESS["LANDING_REQUEST_LIMITER_ERROR_BAAS_RATE_LIMIT_MSGVER_1"] = "[p]Se alcanzó el máximo de consultas en #COPILOT_NAME#. Póngase en contacto con el servicio de asistencia para ampliar su límite.[/p]";
+$MESS["LANDING_REQUEST_LIMITER_ERROR_CLOUD_REGISTRATION"] = "[p]El servicio Cloud AI no está conectado. Comuníquese con su administrador de Bitrix24.[/p]";
+$MESS["LANDING_REQUEST_LIMITER_ERROR_DAILY_MSGVER_1"] = "[p]Se agotaron las solicitudes de #COPILOT_NAME#. #COPILOT_NAME# estará disponible para usted a partir de mañana.[/p]#LINK#Más información#/LINK#";
+$MESS["LANDING_REQUEST_LIMITER_ERROR_MARKET_MSGVER_1"] = "[p]Se quedó sin consultas gratuitas. ¡Compre una suscripción al Market y obtenga consultas ilimitadas de #COPILOT_NAME#![/p][p]Esto también incluye acceso ilimitado a una amplia selección de soluciones para su empresa.[/p]#LINK#Más información#/LINK#";
+$MESS["LANDING_REQUEST_LIMITER_ERROR_MONTHLY_MSGVER_1"] = "[p]Se agotaron las solicitudes de #COPILOT_NAME#. #COPILOT_NAME# estará disponible para usted a partir del mes siguiente.[/p]#LINK#Más información#/LINK#";
+$MESS["LANDING_REQUEST_LIMITER_ERROR_PROMO_MSGVER_1"] = "[p]Agotaste las solicitudes de #COPILOT_NAME# disponibles este mes.[/p][p]Puedes comprar créditos de #COPILOT_NAME# para seguir utilizándolo.[/p]#LINK#Comprar créditos de #COPILOT_NAME##/LINK#";
+$MESS["LANDING_REQUEST_LIMITER_ERROR_RATE_MSGVER_1"] = "[p]#COPILOT_NAME# está recibiendo demasiadas solicitudes. Espere un momento. #COPILOT_NAME# estará disponible en breve.[/p]#HELP#Más información#/HELP#";

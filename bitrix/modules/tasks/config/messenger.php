@@ -1,0 +1,68 @@
+<?php
+
+use Bitrix\Tasks\Flow\Kanban\Async\Receiver\AddStages;
+use Bitrix\Tasks\V2\Internal\Service\MigrateRecentTasks\MigrateRecentTasksReceiver;
+use Bitrix\Tasks\V2\Internal\Service\ReadAllMessages\ReadAllMessagesReceiver;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Add\Async\Receiver\AddDavSync;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Add\Async\Receiver\AddLastActivity;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Add\Async\Receiver\AddScenario;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Add\Async\Receiver\AddSearchIndex;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Add\Async\Receiver\AddSendNotification;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Delete\Async\Receiver\RecountSort;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Update\Async\Receiver\UpdateDavSync;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Update\Async\Receiver\UpdateSendNotification;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Update\Async\Receiver\UpdateSearchIndex;
+use Bitrix\Tasks\V2\Internal\Service\Task\Action\Update\Async\Receiver\UpdateTopic;
+use Bitrix\Tasks\V2\Internal\Service\Template\Recent\UpdateTemplateRecentReceiver;
+
+return  [
+	'value' => [
+		'queues' => [
+			/** @see QueueId */
+			'add_task_dav_sync' => [
+				'handler' => AddDavSync::class,
+			],
+			'add_task_search_index' => [
+				'handler' => AddSearchIndex::class,
+			],
+			'add_task_last_activity' => [
+				'handler' => AddLastActivity::class
+			],
+			'add_task_scenario' => [
+				'handler' => AddScenario::class,
+			],
+			'add_task_send_notification' => [
+				'handler' => AddSendNotification::class,
+			],
+			'update_task_dav_sync' => [
+				'handler' => UpdateDavSync::class
+			],
+			'update_task_search_index' => [
+				'handler' => UpdateSearchIndex::class,
+			],
+			// TODO: Remove when UpdateTopic queue is completely empty.
+			'update_task_topic' => [
+				'handler' => UpdateTopic::class
+			],
+			'update_task_send_notification' => [
+				'handler' => UpdateSendNotification::class
+			],
+			'recount_task_sort' => [
+				'handler' => RecountSort::class
+			],
+			'add_flow_stages' => [
+				'handler' => AddStages::class,
+			],
+			'migrate_recent_tasks' => [
+				'handler' => MigrateRecentTasksReceiver::class,
+			],
+			'read_all_messages' => [
+				'handler' => ReadAllMessagesReceiver::class,
+			],
+			'update_template_recent' => [
+				'handler' => UpdateTemplateRecentReceiver::class,
+			],
+		],
+	],
+	'readonly' => true,
+];

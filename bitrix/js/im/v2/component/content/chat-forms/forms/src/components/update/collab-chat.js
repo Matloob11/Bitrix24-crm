@@ -1,0 +1,308 @@
+import { type JsonObject } from 'main.core';
+import { type EventEmitter } from 'main.core.events';
+import { MenuManager } from 'main.popup';
+
+import { Messenger } from 'im.public';
+import {
+	TitleInput,
+	ChatAvatar,
+	ChatMembersSelector,
+	ButtonPanel,
+	CreateChatHeading,
+	SettingsSection,
+	RightsSection,
+	ChatMemberDiffManager,
+	checkParentAccess,
+} from 'im.v2.component.content.chat-forms.elements';
+import { ChatType, EventType, PopupType, SidebarDetailBlock, type UserRole, type SelectorEntityItem } from 'im.v2.const';
+import { Analytics } from 'im.v2.lib.analytics';
+import { showExitUpdateChatConfirm } from 'im.v2.lib.confirm';
+import { type ImModelChat } from 'im.v2.model';
+import { ChatService } from 'im.v2.provider.service.chat';
+
+import { getCollapsedUsersElement, type TagSelectorElement } from '../../helpers/get-collapsed-users-element';
+
+type UserRoleItem = $Keys<typeof UserRole>;
+
+// @vue/component
+export const CollabChatUpdating = {
+	name: 'CollabChatUpdating',
+	components: {
+		TitleInput,
+		ChatAvatar,
+		ButtonPanel,
+		CreateChatHeading,
+		ChatMembersSelector,
+		SettingsSection,
+		RightsSection,
+	},
+	props: {
+		dialogId: {
+			type: String,
+			required: true,
+		},
+	},
+	data(): JsonObject
+	{
+		return {
+			isLoading: true,
+			isUpdating: false,
+			areUsersCollapsed: false,
+			collapsedUsersCount: 0,
+			avatarFile: null,
+			avatarUrl: '',
+			chatTitle: '',
+			chatMembers: [],
+			settings: {
+				description: '',
+			},
+			rights: {
+				ownerId: 0,
+				managerIds: [],
+				manageUsersAdd: '',
+				manageUsersDelete: '',
+				manageUi: '',
+				manageMessages: '',
+			},
+		};
+	},
+	computed: {
+		ChatType: () => ChatType,
+		dialog(): ImModelChat
+		{
+			return this.$store.getters['chats/get'](this.dialogId, true);
+		},
+		chatId(): number
+		{
+			return this.dialog.chatId;
+		},
+		collapsedUsers(): TagSelectorElement[]
+		{
+			if (!this.areUsersCollapsed)
+			{
+				return [];
+			}
+
+			const title = this.loc('IM_UPDATE_GROUP_CHAT_COLLAPSED_ELEMENT', {
+				'#COUNT#': this.collapsedUsersCount,
+			});
+
+			const element = getCollapsedUsersElement({
+				title,
+				onclick: this.onCollapsedUsersClick,
+			});
+
+			return [element];
+		},
+	},
+	async created()
+	{
+		await this.fillForm();
+		this.memberDiffManager = new ChatMemberDiffManager();
+		this.memberDiffManager.setInitialChatMembers(this.chatMembers);
+		this.memberDiffManager.setInitialManagers(this.rights.managerIds);
+
+		this.isLoading = false;
+	},
+	methods: {
+		onMembersChange(currentTags: SelectorEntityItem[])
+		{
+			this.chatMembers = currentTags;
+		},
+		onOwnerChange(ownerId: number)
+		{
+			this.rights.ownerId = ownerId;
+		},
+		onManagersChange(managerIds: number[])
+		{
+			this.rights.managerIds = managerIds;
+		},
+		onRightChange({ name, value }: { name: string, value: UserRoleItem })
+		{
+			this.rights[name] = value;
+		},
+		onDescriptionChange(description: string)
+		{
+			this.settings.description = description;
+		},
+		async fillForm()
+		{
+			this.chatTitle = this.dialog.name;
+			this.avatarUrl = this.dialog.avatar;
+			this.settings.description = this.dialog.description;
+			this.chatMembers = await this.getMemberEntities();
+			this.rights.ownerId = this.dialog.ownerId;
+			this.rights.manageMessages = this.dialog.permissions.manageMessages;
+			this.rights.managerIds = this.dialog.managerList;
+			this.rights.manageUi = this.dialog.permissions.manageUi;
+			this.rights.manageUsersAdd = this.dialog.permissions.manageUsersAdd;
+			this.rights.manageUsersDelete = this.dialog.permissions.manageUsersDelete;
+		},
+		async getMemberEntities(): Promise<[string, number][]>
+		{
+			const {
+				memberEntities,
+				areUsersCollapsed,
+				userCount,
+			} = await this.getChatService().getMemberEntities(this.chatId);
+
+			if (areUsersCollapsed)
+			{
+				this.areUsersCollapsed = true;
+				this.collapsedUsersCount = userCount;
+
+				return memberEntities;
+			}
+
+			return memberEntities;
+		},
+		async onUpdateClick(): Promise<boolean>
+		{
+			Analytics.getInstance().chatEdit.onSubmitForm(this.dialogId);
+			Analytics.getInstance().ignoreNextChatOpen(this.dialogId);
+
+			this.isUpdating = true;
+
+			const addedMemberEntities = this.memberDiffManager.getAddedMemberEntities(this.chatMembers);
+			const addedManagers = this.memberDiffManager.getAddedManagers(this.rights.managerIds);
+			const canAddToParent = await checkParentAccess({
+				parentChatId: this.dialog.parentChatId,
+				memberEntities: addedMemberEntities,
+				managerIds: addedManagers,
+				ownerId: this.rights.ownerId,
+			});
+
+			if (!canAddToParent)
+			{
+				this.isUpdating = false;
+
+				return false;
+			}
+
+			await this.getChatService().updateChat(this.chatId, {
+				title: this.chatTitle,
+				avatar: this.avatarFile,
+				addedMemberEntities,
+				deletedMemberEntities: this.memberDiffManager.getDeletedMemberEntities(this.chatMembers),
+				addedManagers,
+				deletedManagers: this.memberDiffManager.getDeletedManagers(this.rights.managerIds),
+				ownerId: this.rights.ownerId,
+				description: this.settings.description,
+				manageUsersAdd: this.rights.manageUsersAdd,
+				manageUsersDelete: this.rights.manageUsersDelete,
+				manageUi: this.rights.manageUi,
+				manageMessages: this.rights.manageMessages,
+			}).catch(() => {
+				this.isUpdating = false;
+			});
+
+			this.isUpdating = false;
+
+			await Messenger.openChat(this.dialogId);
+
+			return true;
+		},
+		onCancelClick()
+		{
+			Analytics.getInstance().ignoreNextChatOpen(this.dialogId);
+			void Messenger.openChat(this.dialogId);
+		},
+		onAvatarChange(newAvatarFile: File)
+		{
+			this.avatarFile = newAvatarFile;
+			this.avatarUrl = '';
+		},
+		onScroll()
+		{
+			MenuManager.getMenuById(PopupType.createChatManageUsersAddMenu)?.close();
+			MenuManager.getMenuById(PopupType.createChatManageUsersDeleteMenu)?.close();
+			MenuManager.getMenuById(PopupType.createChatManageUiMenu)?.close();
+			MenuManager.getMenuById(PopupType.createChatManageMessagesMenu)?.close();
+		},
+		getChatService(): ChatService
+		{
+			if (!this.chatService)
+			{
+				this.chatService = new ChatService();
+			}
+
+			return this.chatService;
+		},
+		async onCollapsedUsersClick()
+		{
+			const confirmResult = await showExitUpdateChatConfirm(this.dialogId);
+			if (!confirmResult)
+			{
+				return;
+			}
+
+			const isUpdated = await this.onUpdateClick();
+			if (!isUpdated)
+			{
+				return;
+			}
+
+			this.getEmitter().emit(EventType.sidebar.open, {
+				panel: SidebarDetailBlock.members,
+				dialogId: this.dialogId,
+			});
+		},
+		getEmitter(): EventEmitter
+		{
+			return this.$Bitrix.eventEmitter;
+		},
+		loc(phraseCode: string, replacements: {[string]: string} = {}): string
+		{
+			return this.$Bitrix.Loc.getMessage(phraseCode, replacements);
+		},
+	},
+	template: `
+		<div class="bx-im-content-chat-forms__content --chat" @scroll="onScroll">
+			<div v-if="isLoading" class="bx-im-content-chat-forms__skeleton"></div>
+			<template v-else>
+				<div class="bx-im-content-chat-forms__header">
+					<ChatAvatar
+						:avatarFile="avatarFile"
+						:existingAvatarUrl="avatarUrl"
+						:chatTitle="chatTitle"
+						@avatarChange="onAvatarChange"
+					/>
+					<TitleInput v-model="chatTitle" :placeholder="loc('IM_CREATE_CHAT_TITLE_PLACEHOLDER')" />
+				</div>
+				<CreateChatHeading :text="loc('IM_CREATE_CHAT_MEMBERS_TITLE')" />
+				<div class="bx-im-content-chat-forms__members_container">
+					<ChatMembersSelector
+						:customElements="collapsedUsers"
+						:chatMembers="chatMembers"
+						:allowTeamsSelect="dialog.type !== ChatType.videoconf"
+						@membersChange="onMembersChange"
+					/>
+				</div>
+				<SettingsSection
+					:description="settings.description"
+					:withSearchOption="false"
+					:withAutoDeleteOption="false"
+					@descriptionChange="onDescriptionChange"
+				/>
+				<RightsSection
+					:ownerId="rights.ownerId"
+					:managerIds="rights.managerIds"
+					:manageUsersAdd="rights.manageUsersAdd"
+					:manageUsersDelete="rights.manageUsersDelete"
+					:manageUi="rights.manageUi"
+					:manageMessages="rights.manageMessages"
+					:chatType="ChatType.collab"
+					@ownerChange="onOwnerChange"
+					@managersChange="onManagersChange"
+					@rightChange="onRightChange"
+				/>
+			</template>
+		</div>
+		<ButtonPanel
+			:isCreating="isUpdating || isLoading"
+			:createButtonTitle="loc('IM_UPDATE_CONFIRM')"
+			@create="onUpdateClick"
+			@cancel="onCancelClick"
+		/>
+	`,
+};

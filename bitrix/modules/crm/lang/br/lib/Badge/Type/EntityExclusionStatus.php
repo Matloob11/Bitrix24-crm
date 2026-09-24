@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_BADGE_ENTITY_EXCLUSION_STATUS_FIELD_NAME"] = "Adicionar às exceções";
+$MESS["CRM_BADGE_ENTITY_EXCLUSION_STATUS_VALUE"] = "Ação necessária";

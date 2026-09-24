@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_FORM_INTEGRATION_JS_FIELD_MAP"] = "Seleziona i campi CRM in cui salvare i dati inviati";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM"] = "Modulo";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM_CHOOSE"] = "Seleziona un modulo per il quale salvare i dati inviati nel CRM";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM_EMPTY"] = "Nessun modulo disponibile. Crea un modulo nel tuo account %name%.";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_BTN"] = "Connetti";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_DESC"] = "Ricevi i moduli inviati direttamente al tuo CRM.";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_TITLE"] = "Collega modulo da %providerName%!";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGOUT_BTN"] = "Disconnetti";
+$MESS["CRM_FORM_INTEGRATION_JS_NEW_INTEGRATION"] = "La nuova integrazione con %providerName% è ora disponibile!";
+$MESS["CRM_FORM_INTEGRATION_JS_NEW_INTEGRATION_BTN"] = "Apri la nuova versione";
+$MESS["CRM_FORM_INTEGRATION_JS_NOT_SELECTED"] = "Non selezionato";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CHOOSE"] = "Seleziona una pagina per procedere ai moduli";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CONNECT_BTN"] = "Connetti";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CONNECT_INFO"] = "Connetti il gruppo per visualizzare i moduli";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_DISCONNECT_BTN"] = "Disconnetti gruppo";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_EMPTY"] = "Nessuna pagina disponibile. Crea una pagina e un modulo nel tuo account %providerName%.";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_FACEBOOK"] = "Pagina";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_VKONTAKTE"] = "Gruppo";
+$MESS["CRM_FORM_INTEGRATION_JS_PROVIDER_FACEBOOK"] = "Facebook";

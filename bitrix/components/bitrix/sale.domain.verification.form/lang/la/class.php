@@ -1,0 +1,3 @@
+<?php
+$MESS["SALE_DVF_COMPONENT_ACCESS_DENIED"] = "Acceso denegado";
+$MESS["SALE_DVF_COMPONENT_GRID_ACTION_DELETE"] = "Eliminar";

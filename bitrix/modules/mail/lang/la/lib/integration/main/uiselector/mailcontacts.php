@@ -1,0 +1,4 @@
+<?php
+$MESS["MAIN_UI_SELECTOR_TAB_MAILCONTACTS"] = "Contactos";
+$MESS["MAIN_UI_SELECTOR_TAB_MAILCONTACTS2"] = "Contactos por correo electrónico";
+$MESS["MAIN_UI_SELECTOR_TITLE_MAILCONTACTS"] = "Contactos:";

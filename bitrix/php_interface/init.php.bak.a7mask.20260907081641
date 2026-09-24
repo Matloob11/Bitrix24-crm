@@ -1,0 +1,337 @@
+<?php
+// A7_INLINE_CRM_AUDIO_PLAYER
+// Loads inline CRM timeline voice-note player assets on CRM detail pages.
+if (!function_exists('a7_inline_crm_audio_player')) {
+    AddEventHandler('main', 'OnEndBufferContent', 'a7_inline_crm_audio_player');
+
+    function a7_inline_crm_audio_player(&$content)
+    {
+        if (defined('ADMIN_SECTION') && ADMIN_SECTION === true) {
+            return;
+        }
+
+        $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+        if (!preg_match('#^/crm/(lead|deal|contact|company)/details/[0-9]+/#', $uri)) {
+            return;
+        }
+
+        if (strpos($content, 'A7_INLINE_CRM_AUDIO_PLAYER_ASSET') !== false) {
+            return;
+        }
+
+        $asset = '<link id="A7_INLINE_CRM_AUDIO_PLAYER_ASSET_CSS" rel="stylesheet" href="/bitrix/css/a7_inline_crm_audio_player.css?v=20260621a">' . "
+" .
+            '<script id="A7_INLINE_CRM_AUDIO_PLAYER_ASSET" src="/bitrix/js/a7_inline_crm_audio_player.js?v=20260621a" defer></script>' . "
+";
+
+        if (stripos($content, '</body>') !== false) {
+            $content = preg_replace('#</body>#i', $asset . '</body>', $content, 1);
+        } else {
+            $content .= $asset;
+        }
+    }
+}
+
+// A7 3CX Click-to-Call bridge: inject on CRM pages for logged-in users.
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', static function () {
+        global $APPLICATION, $USER;
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        if (strpos($uri, '/crm/') !== 0) {
+            return;
+        }
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+            return;
+        }
+        $scriptPath = '/bitrix/js/a7_3cx_click_to_call.js';
+        $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+        $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+        $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+    });
+}
+
+// A7_OWNER_DATA_CUSTOM_CALL: Owner Data (SPA 1042) custom Call button.
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', static function () {
+        global $APPLICATION, $USER;
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        if (strpos($uri, '/crm/type/1042/') !== 0) {
+            return;
+        }
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+            return;
+        }
+        $scriptPath = '/bitrix/js/a7_owner_data_call.js';
+        $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+        $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+        $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+    });
+}
+
+// A7_RENEWALS_CUSTOM_CALL: Renewals deals (category 9) custom Call button → Voiso.
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', static function () {
+        global $APPLICATION, $USER;
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        if (strpos($uri, '/crm/deal/') !== 0) {
+            return;
+        }
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+            return;
+        }
+        $scriptPath = '/bitrix/js/a7_renewals_call.js';
+        $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+        $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+        $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+    });
+}
+
+
+// A7 Tenancy Contract button on Sign page
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', static function () {
+        global $APPLICATION, $USER;
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        if (strpos($uri, '/sign/') !== 0) {
+            return;
+        }
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+            return;
+        }
+        $scriptPath = '/bitrix/js/a7_tenancy_sign_button.js';
+        $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+        $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+        $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+    });
+}
+
+// A7_TL_PHONE_MASK: Team leads see masked phones (last 4 hidden) on CRM + Owner Data.
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', static function () {
+        global $APPLICATION, $USER;
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        $onOwner = strpos($uri, '/crm/type/1042/') === 0;
+        $onLead = strpos($uri, '/crm/lead/') === 0;
+        if (!$onOwner && !$onLead) {
+            return;
+        }
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        $uid = (int)$USER->GetID();
+        $cfgPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . '/bitrix/php_interface/a7_tl_phone_mask.config.php';
+        $cfg = is_readable($cfgPath) ? include $cfgPath : [];
+        $leaders = (is_array($cfg) && isset($cfg['leaders']) && is_array($cfg['leaders'])) ? $cfg['leaders'] : [];
+        if (!isset($leaders[$uid])) {
+            return;
+        }
+        if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+            return;
+        }
+        $scriptPath = '/bitrix/js/a7_tl_phone_mask.js';
+        $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+        $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+        $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+    });
+}
+
+// A7_SALES_DEALS_CUSTOM_CALL: Sales deals (category 1) Zadarma + Voiso Call buttons.
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', static function () {
+        global $APPLICATION, $USER;
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        if (strpos($uri, '/crm/deal/') !== 0) {
+            return;
+        }
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+            return;
+        }
+        $scriptPath = '/bitrix/js/a7_deals_call.js';
+        $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+        $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+        $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+    });
+}
+
+
+// A7_CALL_INTELLIGENCE: extra columns on Telephony → Call details only.
+if (function_exists('AddEventHandler')) {
+    $a7CiAttachAssets = static function () {
+        global $APPLICATION, $USER;
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        if (!is_object($APPLICATION)) {
+            return;
+        }
+        $doc = (string)($_SERVER['DOCUMENT_ROOT'] ?? '');
+        $css = '/bitrix/css/a7_call_intelligence.css';
+        $js = '/bitrix/js/a7_call_intelligence.js';
+        $cssVer = is_readable($doc . $css) ? (string)@filemtime($doc . $css) : (string)time();
+        $jsVer = is_readable($doc . $js) ? (string)@filemtime($doc . $js) : (string)time();
+        if (method_exists($APPLICATION, 'SetAdditionalCSS')) {
+            $APPLICATION->SetAdditionalCSS($css . '?v=' . $cssVer);
+        }
+        if (method_exists($APPLICATION, 'AddHeadScript')) {
+            $APPLICATION->AddHeadScript($js . '?v=' . $jsVer);
+        }
+    };
+
+    $a7CiAttachCrmAssets = static function () {
+        global $APPLICATION, $USER;
+        if (!is_object($USER) || !$USER->IsAuthorized() || !is_object($APPLICATION)) {
+            return;
+        }
+        $doc = (string)($_SERVER['DOCUMENT_ROOT'] ?? '');
+        $css = '/bitrix/css/a7_call_intelligence.css';
+        $js = '/bitrix/js/a7_call_intelligence_crm.js';
+        $cssVer = is_readable($doc . $css) ? (string)@filemtime($doc . $css) : (string)time();
+        $jsVer = is_readable($doc . $js) ? (string)@filemtime($doc . $js) : (string)time();
+        if (method_exists($APPLICATION, 'SetAdditionalCSS')) {
+            $APPLICATION->SetAdditionalCSS($css . '?v=' . $cssVer);
+        }
+        if (method_exists($APPLICATION, 'AddHeadScript')) {
+            $APPLICATION->AddHeadScript($js . '?v=' . $jsVer);
+        }
+    };
+
+    AddEventHandler('main', 'OnProlog', static function () use ($a7CiAttachAssets, $a7CiAttachCrmAssets) {
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        if (
+            stripos($uri, 'telephony/detail') !== false
+            || stripos($uri, 'voximplant.statistic.detail') !== false
+        ) {
+            $a7CiAttachAssets();
+            return;
+        }
+        if (
+            stripos($uri, '/crm/contact/details/') !== false
+            || stripos($uri, '/crm/lead/details/') !== false
+            || stripos($uri, 'crm.contact.details') !== false
+            || stripos($uri, 'crm.lead.details') !== false
+        ) {
+            $a7CiAttachCrmAssets();
+        }
+    });
+
+    AddEventHandler('main', 'OnEndBufferContent', static function (&$content) {
+        if (!is_string($content) || $content === '') {
+            return;
+        }
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        $isCrm = stripos($uri, '/crm/contact/details/') !== false
+            || stripos($uri, '/crm/lead/details/') !== false
+            || stripos($uri, 'crm.contact.details') !== false
+            || stripos($uri, 'crm.lead.details') !== false;
+        if ($isCrm && strpos($content, 'a7_call_intelligence_crm.js') === false) {
+            $trimCrm = ltrim($content);
+            if ($trimCrm === '' || ($trimCrm[0] !== '{' && $trimCrm[0] !== '[')) {
+                global $USER;
+                if (is_object($USER) && $USER->IsAuthorized()) {
+                    $doc = (string)($_SERVER['DOCUMENT_ROOT'] ?? '');
+                    $css = '/bitrix/css/a7_call_intelligence.css';
+                    $js = '/bitrix/js/a7_call_intelligence_crm.js';
+                    $cssVer = is_readable($doc . $css) ? (string)@filemtime($doc . $css) : (string)time();
+                    $jsVer = is_readable($doc . $js) ? (string)@filemtime($doc . $js) : (string)time();
+                    $crmSnippet = '<link rel="stylesheet" href="' . $css . '?v=' . $cssVer . '">'
+                        . '<script src="' . $js . '?v=' . $jsVer . '"></script>';
+                    if (stripos($content, '</body>') !== false) {
+                        $content = preg_replace('/<\/body>/i', $crmSnippet . '</body>', $content, 1);
+                    } else {
+                        $content .= $crmSnippet;
+                    }
+                }
+            }
+        }
+        if (strpos($content, 'a7_call_intelligence.js') !== false) {
+            return;
+        }
+        $trim = ltrim($content);
+        if ($trim !== '' && ($trim[0] === '{' || $trim[0] === '[')) {
+            return;
+        }
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        $hasGrid = strpos($content, 'voximplant_statistic_detail') !== false
+            || strpos($content, 'tel-stat-grid-container') !== false;
+        if (!$hasGrid && stripos($uri, 'telephony/detail') === false) {
+            return;
+        }
+        global $USER;
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        $doc = (string)($_SERVER['DOCUMENT_ROOT'] ?? '');
+        $css = '/bitrix/css/a7_call_intelligence.css';
+        $js = '/bitrix/js/a7_call_intelligence.js';
+        $cssVer = is_readable($doc . $css) ? (string)@filemtime($doc . $css) : (string)time();
+        $jsVer = is_readable($doc . $js) ? (string)@filemtime($doc . $js) : (string)time();
+        $snippet = '<link rel="stylesheet" href="' . $css . '?v=' . $cssVer . '">'
+            . '<script src="' . $js . '?v=' . $jsVer . '"></script>';
+        if (stripos($content, '</body>') !== false) {
+            $content = preg_replace('/<\/body>/i', $snippet . '</body>', $content, 1);
+        } else {
+            $content .= $snippet;
+        }
+    });
+
+    AddEventHandler('voximplant', 'onCallEnd', static function ($call = null) {
+        $lib = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? ''), '/\\')
+            . '/bitrix/php_interface/include/a7_call_intelligence.php';
+        if (!function_exists('a7_ci_on_call_finished') && is_readable($lib)) {
+            if (!defined('A7_CI_LIB_ONLY')) {
+                define('A7_CI_LIB_ONLY', true);
+            }
+            require_once $lib;
+        }
+        if (function_exists('a7_ci_on_call_finished')) {
+            a7_ci_on_call_finished($call);
+        }
+    });
+}
+
+// A7_LEAD_REMINDER_NOTIFY: lead responsible ping 2 min before, then every 2h till 7pm if no activity.
+if (!defined('A7_LEAD_REMINDER_LIB')) {
+    define('A7_LEAD_REMINDER_LIB', true);
+}
+$a7LeadReminderLib = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? ''), '/\\')
+    . '/bitrix/php_interface/include/a7_lead_reminder_notify.php';
+if (is_readable($a7LeadReminderLib)) {
+    require_once $a7LeadReminderLib;
+    if (function_exists('AddEventHandler') && function_exists('a7_lead_reminder_on_activity_saved')) {
+        AddEventHandler('crm', 'OnAfterCrmActivityAdd', 'a7_lead_reminder_on_activity_saved');
+        AddEventHandler('crm', 'OnAfterCrmActivityUpdate', 'a7_lead_reminder_on_activity_saved');
+    }
+    if (function_exists('a7_lead_reminder_ensure_agent')) {
+        a7_lead_reminder_ensure_agent();
+    }
+    if (function_exists('AddEventHandler')) {
+        AddEventHandler('main', 'OnProlog', static function () {
+            global $APPLICATION, $USER;
+            if (!is_object($USER) || !$USER->IsAuthorized()) {
+                return;
+            }
+            if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+                return;
+            }
+            $scriptPath = '/bitrix/js/a7_lead_reminder.js';
+            $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+            $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+            $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+        });
+    }
+}

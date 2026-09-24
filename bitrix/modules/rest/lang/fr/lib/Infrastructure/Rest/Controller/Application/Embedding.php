@@ -1,0 +1,4 @@
+<?php
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_EMBEDDING_ADDACTION_TITLE"] = "Ajoute une nouvelle zone d'intégration de l'application";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_EMBEDDING_DELETEACTION_TITLE"] = "Supprime une zone d'intégration existante";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_EMBEDDING_LISTACTION_TITLE"] = "Renvoie une liste des zones d'intégration de l'application";

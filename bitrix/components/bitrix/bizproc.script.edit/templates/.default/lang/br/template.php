@@ -1,0 +1,22 @@
+<?php
+$MESS["BIZPROC_SCRIPT_EDIT_BTN_CHANGE"] = "Editar";
+$MESS["BIZPROC_SCRIPT_EDIT_CONSTANT_DESCRIPTION"] = "Esses parâmetros precisam ser configurados antes que qualquer um dos scripts seja iniciado para garantir que seja executado corretamente.";
+$MESS["BIZPROC_SCRIPT_EDIT_CONSTANT_LABEL"] = "Configurações do administrador";
+$MESS["BIZPROC_SCRIPT_EDIT_DELAY_AFTER_HELP"] = "Atraso antes de executar a regra de automação após o início do script";
+$MESS["BIZPROC_SCRIPT_EDIT_DELAY_NOW_HELP"] = "A regra de automação será executada assim que o script for iniciado";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_CONFIGS"] = "Configurar script";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_GENERAL"] = "Descrição";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_ROBOTS"] = "Regras de automação";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_TITLE"] = "Scripts inteligentes";
+$MESS["BIZPROC_SCRIPT_EDIT_PARAMETER_DESCRIPTION"] = "Esses parâmetros podem ser configurados por um usuário toda vez que o script é iniciado.";
+$MESS["BIZPROC_SCRIPT_EDIT_PARAMETER_LABEL"] = "Configurações do usuário";
+$MESS["BIZPROC_SCRIPT_EDIT_ROBOT_HELP"] = "Use regras de automação para simplificar o processo de gerenciamento de clientes e ajudar os colaboradores a seguir um caminho aprovado de processamento de leads. As regras de automação executarão ações de maneira autônoma: enviar e-mails, fazer chamadas etc.";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_DESCRIPTION"] = "Descrição";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_DESCRIPTION_TEXT"] = "Texto de descrição";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_NAME"] = "Nome do script";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_NAME_DEFAULT"] = "Novo script";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_CONFIGS_EMPTY"] = "Nenhuma configuração adicional é necessária";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_GENERAL"] = "Descrição do script";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_ROBOTS"] = "Configurar regras de automação";
+$MESS["BIZPROC_SCRIPT_EDIT_VALIDATION_EMPTY_CONFIGS"] = "As configurações do administrador têm que ser fornecidas";
+$MESS["BIZPROC_SCRIPT_EDIT_VALIDATION_EMPTY_NAME"] = "O nome do script não está especificado";

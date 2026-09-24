@@ -1,0 +1,15 @@
+<?php
+$MESS["M_INTRANET_CREATE_DEPARTMENT_CREATE_BUTTON_TEXT"] = "Crear";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_HEAD_OF_DEPARTMENT_SELECTOR_TITLE"] = "Supervisor";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_NAME_INPUT_ERROR"] = "Introduzca el nombre del departamento";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_NAME_INPUT_TITLE"] = "Nombre del departamento";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_NO_PERMISSIONS_BOX_TITLE"] = "Nuevo departamento";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_NO_PERMISSIONS_BUTTON_TEXT"] = "Cerrar";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_NO_PERMISSIONS_DESCRIPTION"] = "Póngase en contacto con su \nadministrador de Bitrix24.";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_NO_PERMISSIONS_TITLE"] = "Permisos insuficientes para agregar nuevos departamentos.";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_PARENT_DEPARTMENT_SELECTOR_TITLE"] = "Departamento principal";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_SAVE_TOAST_ERROR_MESSAGE"] = "No se puede crear el departamento.";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_SAVE_TOAST_SUCCESS_MESSAGE"] = "Departamento creado.";
+$MESS["M_INTRANET_CREATE_DEPARTMENT_TITLE"] = "Crear departamento";
+$MESS["M_INTRANET_CREATE_SUBDEPARTMENT_NO_PERMISSIONS_DESCRIPTION"] = "Seleccione un departamento \nprincipal diferente.";
+$MESS["M_INTRANET_CREATE_SUBDEPARTMENT_NO_PERMISSIONS_TITLE"] = "El nuevo departamento no puede convertirse en un subdepartamento del departamento seleccionado.";

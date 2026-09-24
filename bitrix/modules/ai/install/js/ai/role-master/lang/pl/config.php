@@ -1,0 +1,26 @@
+<?php
+$MESS["ROLE_MASTER_ABOUT_ROLE_MASTER_LINK"] = "Dowiedz się więcej";
+$MESS["ROLE_MASTER_BACK_TO_EDITOR_BTN"] = "Powrót do edytora";
+$MESS["ROLE_MASTER_CLOSE_BTN"] = "Zamknij";
+$MESS["ROLE_MASTER_EDIT_WARNING_TEXT"] = "Rola zostanie zaktualizowana dla wszystkich użytkowników.";
+$MESS["ROLE_MASTER_FILE_DROPAREA_TEXT"] = "Przeciągnij pliki tutaj";
+$MESS["ROLE_MASTER_LOADER_TEXT"] = "Zapisywanie roli...";
+$MESS["ROLE_MASTER_NEXT_BUTTON"] = "Dalej";
+$MESS["ROLE_MASTER_POPUP_TITLE"] = "Nowa rola";
+$MESS["ROLE_MASTER_POPUP_TITLE_EDIT_MODE"] = "Edytuj rolę";
+$MESS["ROLE_MASTER_PREV_BUTTON"] = "Wstecz";
+$MESS["ROLE_MASTER_REPEAT_REQUEST_BTN"] = "Spróbuj ponownie";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD"] = "Nazwa i ikona";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD_PLACEHOLDER"] = "Maks. 70 znaków";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD"] = "Opis";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD_PLACEHOLDER"] = "Przeanalizuję dane, udoskonalę koncepcję i stworzę podsumowanie projektu";
+$MESS["ROLE_MASTER_ROLE_MAIN_STEP_TITLE"] = "Nazwa i uprawnienia";
+$MESS["ROLE_MASTER_ROLE_TEXT_FIELD_PLACEHOLDER"] = "Wprowadź tekst prompta dla roli. Na przykład dla Architekta prompt może wyglądać tak. Zachowuj się jak doświadczony architekt. Twoim zadaniem jest pomóc mi analizować rzeczywiste dane, takie jak warunki geograficzne i topograficzne.";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE"] = "Dodaj prompt dla tej roli";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE_HINT"] = "Zdefiniuj rolę i opisz zadanie";
+$MESS["ROLE_MASTER_ROLE_USERS_WITH_ACCESS_FIELD"] = "Udostępnij";
+$MESS["ROLE_MASTER_SAVE_BUTTON"] = "Zapisz";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_SHORT_TEXT"] = "Nie można zapisać roli.";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_TEXT"] = "Jeśli problem nadal występuje, wróć do edytora promptów i skopiuj tekst prompta, aby mieć pewność, że nie zostanie utracony.";
+$MESS["ROLE_MASTER_SAVING_DONE"] = "Gotowe";
+$MESS["ROLE_MASTER_USER_SELECTOR_ADD_BTN"] = "Edytuj";

@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_MPWIDGET_BASE_COLOR_BUTTON"] = "Color del botón";
+$MESS["LANDING_MPWIDGET_BASE_COLOR_HEADERS"] = "Color del encabezado";
+$MESS["LANDING_MPWIDGET_BASE_COLOR_TEXT"] = "Color del texto";

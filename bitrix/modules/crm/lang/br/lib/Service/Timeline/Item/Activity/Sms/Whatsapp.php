@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_TIMELINE_TITLE_ACTIVITY_WHATSAPP_TITLE"] = "Mensagem enviada no WhatsApp";
+$MESS["CRM_TIMELINE_TITLE_ACTIVITY_WHATSAPP_TITLE_MSGVER_1"] = "Mensagem do WhatsApp enviada";

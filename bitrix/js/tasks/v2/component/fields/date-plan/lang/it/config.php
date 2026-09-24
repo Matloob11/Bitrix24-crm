@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE"] = "Il responsabile può modificare la pianificazione";
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE_TEMPLATE"] = "Il responsabile può modificare la durata e la data di inizio dell'incarico";
+$MESS["TASKS_V2_DATE_PLAN_BUTTON_SAVE"] = "Salva";
+$MESS["TASKS_V2_DATE_PLAN_DAYS"] = "Giorni";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION"] = "Seleziona le date di inizio e scadenza previste per questo incarico. In alternativa alla selezione della data di scadenza, puoi specificare la durata prevista dell'incarico.";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION_TEMPLATE"] = "Specifica quando inizierà il tuo incarico e il tempo stimato per il suo completamento.";
+$MESS["TASKS_V2_DATE_PLAN_DURATION"] = "Durata:";
+$MESS["TASKS_V2_DATE_PLAN_END"] = "Data di scadenza:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_END"] = "Data di scadenza:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_START"] = "Data di inizio:";
+$MESS["TASKS_V2_DATE_PLAN_HOURS"] = "Ore";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME"] = "Sincronizza con pianificazioni di incarichi secondari";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_HINT"] = "La pianificazione di questo incarico varierà a seconda delle pianificazioni dei rispettivi incarichi secondari.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_STATE"] = "Definita da incarichi secondari";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME"] = "Salta i fine settimana";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT"] = "La pianificazione verrà modificata se cade in un fine settimana o in un giorno festivo.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT_TEMPLATE"] = "La data di inizio e la durata verranno modificate se includono fine settimana o giorni festivi.";
+$MESS["TASKS_V2_DATE_PLAN_MINUTES"] = "Minuti";
+$MESS["TASKS_V2_DATE_PLAN_NO_SUBTASKS_HINT"] = "Questo incarico non ha ancora incarichi secondari. Quando li avrà, la pianificazione verrà modificata di conseguenza.";
+$MESS["TASKS_V2_DATE_PLAN_START"] = "Data di inizio:";
+$MESS["TASKS_V2_DATE_PLAN_START_AFTER"] = "Avvia incarico tra:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE"] = "Pianificazione:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_CHIP"] = "Pianificazione incarichi";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_SHEET"] = "Pianificazione incarichi";

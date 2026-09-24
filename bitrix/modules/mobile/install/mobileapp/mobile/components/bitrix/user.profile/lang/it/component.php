@@ -1,0 +1,30 @@
+<?
+$MESS["ACCOUNT"] = "Account";
+$MESS["EMAIL"] = "E-mail";
+$MESS["ERROR"] = "Errore";
+$MESS["EXTRA"] = "Altro";
+$MESS["FEMALE"] = "femmina";
+$MESS["GROUP_ID"] = "Gruppo";
+$MESS["LAST_NAME"] = "Cognome";
+$MESS["MAIN"] = "Generale";
+$MESS["MALE"] = "maschio";
+$MESS["NAME"] = "Nome";
+$MESS["PASSWORD"] = "Password";
+$MESS["PERSONAL_BIRTHDAY"] = "Data di nascita";
+$MESS["PERSONAL_CITY"] = "Città";
+$MESS["PERSONAL_GENDER"] = "Sesso";
+$MESS["PERSONAL_MOBILE"] = "Cellulare";
+$MESS["PERSONAL_WWW"] = "Sito web";
+$MESS["SAVE_FORM"] = "Fatto";
+$MESS["SECOND_NAME"] = "Secondo nome";
+$MESS["SOMETHING_WENT_WRONG"] = "Questo è un errore. Riprova più tardi.";
+$MESS["TIME_ZONE"] = "Fuso orario";
+$MESS["UF_FACEBOOK"] = "Facebook";
+$MESS["UF_LINKEDIN"] = "LinkedIn";
+$MESS["UF_PHONE_INNER"] = "Numero di interno";
+$MESS["UF_SKYPE"] = "Skype";
+$MESS["UF_TWITTER"] = "Twitter";
+$MESS["UF_XING"] = "Xing";
+$MESS["WORK_PHONE"] = "Telefono ufficio";
+$MESS["WORK_POSITION"] = "Posizione";
+?>

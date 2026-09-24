@@ -1,0 +1,23 @@
+<?php
+$MESS["SONET_GCE_T_IS_EXTRANET_GROUP2_HINT"] = "Użytkownicy zewnętrzni mogą być zapraszani do grupy roboczej";
+$MESS["SONET_GCE_T_IS_EXTRANET_GROUP2_HINT_PROJECT"] = "Użytkownicy zewnętrzni mogą być zapraszani do projektu";
+$MESS["SONET_GCE_T_IS_EXTRANET_GROUP3"] = "Zezwól na dostęp użytkownikom zewnętrznym";
+$MESS["SONET_GCE_T_IS_EXTRANET_TITLE"] = "Użytkownicy zewnętrzni";
+$MESS["SONET_GCE_T_PARAMS_CLOSED2"] = "Zarchiwizowane";
+$MESS["SONET_GCE_T_PARAMS_CLOSED2_HINT"] = "Grupa robocza przeniesiona do archiwum";
+$MESS["SONET_GCE_T_PARAMS_CLOSED2_HINT_PROJECT"] = "Projekt przeniesiony do archiwum";
+$MESS["SONET_GCE_T_PARAMS_CLOSED2_PROJECT"] = "Zarchiwizowane";
+$MESS["SONET_GCE_T_PARAMS_LANDING"] = "Źródło Bitrix24.Sites";
+$MESS["SONET_GCE_T_PARAMS_LANDING_MSGVER_2"] = "Publikowanie na stronach Bitrix24";
+$MESS["SONET_GCE_T_PARAMS_OPEN2"] = "Otwarty";
+$MESS["SONET_GCE_T_PARAMS_OPEN2_HINT"] = "Każdy może zostać członkiem grupy roboczej bez potwierdzenia moderatora";
+$MESS["SONET_GCE_T_PARAMS_OPEN2_HINT_PROJECT"] = "Można zostać członkiem bez potwierdzenia ze strony właściciela lub moderatora";
+$MESS["SONET_GCE_T_PARAMS_OPEN2_PROJECT"] = "Otwarta";
+$MESS["SONET_GCE_T_PARAMS_PROJECT"] = "Projekt";
+$MESS["SONET_GCE_T_PARAMS_VIS2"] = "Widoczne";
+$MESS["SONET_GCE_T_PARAMS_VIS2_HINT"] = "Grupa robocza widoczna dla wszystkich, nie tylko dla członków grupy roboczej";
+$MESS["SONET_GCE_T_PARAMS_VIS2_HINT_PROJECT"] = "Projekt widoczny dla wszystkich, nie tylko dla członków grupy roboczej";
+$MESS["SONET_GCE_T_PARAMS_VIS2_PROJECT"] = "Widoczne";
+$MESS["SONET_GCE_T_TITLE_TYPE"] = "Typ grupy roboczej";
+$MESS["SONET_GCE_T_TITLE_TYPE_PROJECT"] = "Typ projektu";
+$MESS["SONET_GCE_T_TITLE_TYPE_SCRUM"] = "Typ Scruma";

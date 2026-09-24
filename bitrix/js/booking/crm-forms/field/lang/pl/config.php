@@ -1,0 +1,14 @@
+<?php
+$MESS["BOOKING_CRM_FORMS_ALL_RESOURCES_LABEL"] = "Wszystkie dostępne";
+$MESS["BOOKING_CRM_FORMS_CHANGE_DATE_BUTTON_CAPTION"] = "Zmień dzień";
+$MESS["BOOKING_CRM_FORMS_DEFAULT_RESOURCE_FIELD_HINT"] = "Widzisz najwcześniejsze terminy najbardziej dostępnego zasobu. Możesz zmienić zasób, datę i godzinę.";
+$MESS["BOOKING_CRM_FORMS_DEFAULT_RESOURCE_FIELD_LABEL"] = "Wybierz zasób";
+$MESS["BOOKING_CRM_FORMS_DEFAULT_RESOURCE_FIELD_PLACEHOLDER"] = "Nie wybrano";
+$MESS["BOOKING_CRM_FORMS_DEFAULT_SKU_FIELD_LABEL"] = "Wybierz usługę";
+$MESS["BOOKING_CRM_FORMS_DEFAULT_SKU_FIELD_PLACEHOLDER"] = "Nie wybrano";
+$MESS["BOOKING_CRM_FORMS_FIELD_DATE_TIME_TITLE"] = "Wybierz datę i godzinę";
+$MESS["BOOKING_CRM_FORMS_FIELD_TIME_TITLE"] = "Wybierz godzinę dnia #DATE#";
+$MESS["BOOKING_CRM_FORMS_RESOURCE_DESCRIPTION_MORE"] = "... więcej";
+$MESS["BOOKING_CRM_FORMS_RESOURCE_NO_SLOTS_MESSAGE"] = "Wybrany dzień nie ma wolnych terminów.#BR# Spróbuj inny dzień.";
+$MESS["BOOKING_CRM_FORMS_RESOURCE_RESOURCE_NOT_WORKING_MESSAGE"] = "W weekendy nie ma terminów.";
+$MESS["BOOKING_CRM_FORMS_SHOW_MORE_SLOTS"] = "Pokaż więcej";

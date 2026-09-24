@@ -1,0 +1,23 @@
+<?php
+$MESS["PRESET_INFO_CANCEL"] = "Anuluj";
+$MESS["PRESET_INFO_SELECT"] = "Wybierz";
+$MESS["PRESET_INFO_SELECTED"] = "Wybrane";
+$MESS["PRESET_MANUAL_SETTINGS_BANNER_DESCRIPTION"] = "Wybierz i zmień kolejność elementów menu wyświetlanych w menu dolnym. Pozostałe elementy będą dostępne pod ikoną „Więcej”.";
+$MESS["PRESET_MANUAL_SETTINGS_BANNER_TITLE"] = "Utwórz własne menu";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_HIDE"] = "Ukryj";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_SAVE"] = "Gotowe";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_SHOW"] = "Dodaj";
+$MESS["PRESET_MANUAL_SETTINGS_SECTION_MENU_TITLE"] = "Pozycje menu dolnego";
+$MESS["PRESET_MANUAL_SETTINGS_SECTION_MORE_TITLE"] = "Więcej pozycji menu";
+$MESS["PRESET_MANUAL_SETTINGS_TITLE"] = "Menu niestandardowe";
+$MESS["TAB_PRESETS_NEW_APPLY_ERROR"] = "Nie można zastosować zmian";
+$MESS["TAB_PRESETS_NEW_BANNER_DESCRIPTION"] = "Wybierz ustawienia wstępne układu menu dolnego lub wybierz „Menu niestandardowe”, aby stworzyć własny układ.";
+$MESS["TAB_PRESETS_NEW_BANNER_TITLE"] = "Wybierz menu dolne";
+$MESS["TAB_PRESETS_NEW_CONFIRM_ACCEPT"] = "OK";
+$MESS["TAB_PRESETS_NEW_CONFIRM_CLOSE"] = "Anuluj";
+$MESS["TAB_PRESETS_NEW_CONFIRM_DESCRIPTION"] = "Czy chcesz zmienić menu dolne? Możesz wybrać inną opcję w dowolnym momencie.";
+$MESS["TAB_PRESETS_NEW_CONFIRM_TITLE"] = "Menu dolne";
+$MESS["TAB_PRESETS_NEW_EDIT"] = "Edytuj";
+$MESS["TAB_PRESETS_NEW_ERROR"] = "Nie można otworzyć strony ustawień. Jeśli problem będzie się powtarzał, skontaktuj się z administratorem Bitrix24.";
+$MESS["TAB_PRESETS_NEW_SELECT"] = "Wybierz";
+$MESS["TAB_PRESETS_NEW_SELECTED"] = "Wybrane";

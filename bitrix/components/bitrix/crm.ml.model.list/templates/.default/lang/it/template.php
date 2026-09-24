@@ -1,0 +1,22 @@
+<?php
+$MESS["CRM_ML_MODEL_LIST_AVAILABLE_MODELS"] = "Modelli disponibili";
+$MESS["CRM_ML_MODEL_LIST_BUTTON_CANCEL"] = "Annulla";
+$MESS["CRM_ML_MODEL_LIST_BUTTON_DISABLE"] = "Disattiva";
+$MESS["CRM_ML_MODEL_LIST_BUTTON_TRAIN_FREE_OF_CHARGE"] = "Addestra gratis";
+$MESS["CRM_ML_MODEL_LIST_CONFIRMATION"] = "Conferma azione";
+$MESS["CRM_ML_MODEL_LIST_DEAL_SCORING_DISABLE"] = "Disattiva valutazione affari per questa pipeline";
+$MESS["CRM_ML_MODEL_LIST_DISABLE_DEAL_SCORING"] = "Disattivare la valutazione degli affari per questa pipeline?";
+$MESS["CRM_ML_MODEL_LIST_DISABLE_LEAD_SCORING"] = "Disattivare la valutazione dei lead?";
+$MESS["CRM_ML_MODEL_LIST_HELP"] = "Aiuto";
+$MESS["CRM_ML_MODEL_LIST_LEAD_SCORING_DISABLE"] = "Disattiva valutazione lead";
+$MESS["CRM_ML_MODEL_LIST_SCORING_DESCRIPTION_P1"] = "I tuoi addetti alle vendite si affidano principalmente all'intuito per gestire gli affari? Metti in cima alla lista i clienti più promettenti.";
+$MESS["CRM_ML_MODEL_LIST_SCORING_DESCRIPTION_P2"] = "La valutazione IA permette di analizzare gli affari esistenti e di valutare le probabilità di successo. Il sistema aiuterà i tuoi dipendenti a individuare le aree che richiedono maggiore attenzione. In questo modo sarà possibile evitare di perdere tempo con chi non ha intenzione di diventare tuo cliente!";
+$MESS["CRM_ML_MODEL_LIST_SCORING_ENOUGH_DATA"] = "I dati del tuo CRM sono sufficienti per addestrare il modello di valutazione IA.";
+$MESS["CRM_ML_MODEL_LIST_SCORING_ERROR_TOO_SOON_2"] = "Valutazione IA disattivata su richiesta dell'utente. Sarà possibile addestrare il modello IA e attivare la valutazione dopo il #DATE#.";
+$MESS["CRM_ML_MODEL_LIST_SCORING_MODEL_QUALITY"] = "Qualità modello: #QUALITY#%.";
+$MESS["CRM_ML_MODEL_LIST_SCORING_MODEL_READY"] = "Il modello IA è stato addestrato ed è pronto per fare le previsioni.";
+$MESS["CRM_ML_MODEL_LIST_SCORING_MODEL_TRAINING_DATE"] = "Data addestramento: #TRAINING_DATE#.";
+$MESS["CRM_ML_MODEL_LIST_SCORING_NOT_ENOUGH_DATA"] = "I dati del tuo CRM non sono sufficienti per addestrare il modello di valutazione IA. Consulta questo #LINK_START#articolo#LINK_END# per maggiori informazioni sulle dimensioni e i contenuti del set di dati necessario per l'addestramento.";
+$MESS["CRM_ML_MODEL_LIST_SCORING_REENABLE_WARNING"] = "Non sarà possibile riattivare la valutazione fino al #DATE#";
+$MESS["CRM_ML_MODEL_LIST_SCORING_TITLE"] = "Valutazione IA";
+$MESS["CRM_ML_MODEL_LIST_SCORING_TRAINING_IN_PROCESS"] = "L'addestramento del modello di valutazione IA è in corso. Completato: #PROGRESS#%";

@@ -1,0 +1,20 @@
+<?php
+$MESS["CTRLR_UPLOAD_BUTT_CLEAR"] = "Тазарту";
+$MESS["CTRLR_UPLOAD_BUTT_RUN"] = "Жіберу";
+$MESS["CTRLR_UPLOAD_CONFIRM"] = "Файл таңдалған сайттарға жіберіледі. Жалғастыру керек пе?";
+$MESS["CTRLR_UPLOAD_ERROR_NO_PATH_TO"] = "Файлды көшіру үшін жол көрсетілмеген.";
+$MESS["CTRLR_UPLOAD_ERR_FILE"] = "Көрсетілген файл серверде табылмады.";
+$MESS["CTRLR_UPLOAD_ERR_NSELECTED"] = "Файлды жіберу үшін ешқандай клиент таңдалмаған.";
+$MESS["CTRLR_UPLOAD_ERR_PACK"] = "Файлды жіберуге дайындау қатесі.";
+$MESS["CTRLR_UPLOAD_ERR_TOO_MANY_SELECTED"] = "Файл өте көп қосылған сайттарға жіберіледі. Егер сіз өз әрекеттеріңізге сенімді болсаңыз, тиісті құсбелгіні белгілеңіз.";
+$MESS["CTRLR_UPLOAD_FILE_TAB"] = "Файл";
+$MESS["CTRLR_UPLOAD_FILE_TAB_TITLE"] = "Қосылған сайттарға жіберу үшін файлды көрсетіңіз.";
+$MESS["CTRLR_UPLOAD_FILTER_GROUP"] = "Топ";
+$MESS["CTRLR_UPLOAD_FILTER_GROUP_ANY"] = "(кез-келген)";
+$MESS["CTRLR_UPLOAD_FILTER_SITE"] = "Сайт";
+$MESS["CTRLR_UPLOAD_FILTER_SITE_ALL"] = "(барлығы)";
+$MESS["CTRLR_UPLOAD_FORCE_RUN"] = "Файлды сайттар санын тексермей орындау.";
+$MESS["CTRLR_UPLOAD_OPEN_FILE_BUTTON"] = "Ашу...";
+$MESS["CTRLR_UPLOAD_SEND_FILE_FROM"] = "Қайдан:";
+$MESS["CTRLR_UPLOAD_SEND_FILE_TO"] = "Қайда:";
+$MESS["CTRLR_UPLOAD_TITLE"] = "Файлдарды қосылған сайттарға жіберу";

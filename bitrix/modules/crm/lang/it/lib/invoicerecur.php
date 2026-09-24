@@ -1,0 +1,15 @@
+<?php
+$MESS["CRM_INVOICE_RECURRING_ENTITY_ACTIVE_FIELD"] = "Attivo";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_CATEGORY_ID_FIELD"] = "Nuova categoria affari";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_COUNTER_REPEAT_FIELD"] = "Numero di istanze create";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_EMAIL_ID_FIELD"] = "ID e-mail";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_ID_FIELD"] = "ID";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_INVOICE_ID_FIELD"] = "ID fattura ricorrente";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_IS_LIMIT_FIELD"] = "Metodo di restrizione";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_LAST_EXECUTION_FIELD"] = "Data in cui è stata generata l'ultima fattura ricorrente";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_LIMIT_DATE_FIELD"] = "Per data";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_LIMIT_REPEAT_FIELD"] = "Per numero di istanze";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_NEXT_EXECUTION_FIELD"] = "Data in cui generare la successiva fattura ricorrente";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_PARAMS_FIELD"] = "Parametri per calcolare la successiva fattura ricorrente";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_SEND_BILL_FIELD"] = "Invia fattura tramite e-mail";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_START_DATE_FIELD"] = "Data da cui iniziare a creare fatture ricorrenti";

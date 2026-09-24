@@ -1,0 +1,9 @@
+<?php
+$MESS["SCP_SALESCENTER_DELIVERY_APP_SEE_ALL"] = "Pokaż wszystkie";
+$MESS["SCP_SALESCENTER_DELIVERY_APP_TOTAL_APPLICATIONS"] = "Łącznie aplikacji";
+$MESS["SDP_ACCESS_DENIED"] = "Odmowa dostępu.";
+$MESS["SDP_SALESCENTER_DELIVERY_ADD"] = "Dodaj usługę dostawy";
+$MESS["SDP_SALESCENTER_DELIVERY_EDIT"] = "Edytuj";
+$MESS["SDP_SALESCENTER_DELIVERY_LIST"] = "Dostawy";
+$MESS["SDP_SALESCENTER_DELIVERY_RECOMMEND"] = "Poleć";
+$MESS["SDP_SALESCENTER_MODULE_ERROR_MSGVER_1"] = "Moduł \"Centrum sprzedaży\" nie jest zainstalowany.";

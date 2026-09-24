@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_TABLE_FIELD_LOCK_ENTITY_ID"] = "ID de la entidad";
+$MESS["LANDING_TABLE_FIELD_LOCK_ENTITY_TYPE"] = "Tipo de entidad";
+$MESS["LANDING_TABLE_FIELD_LOCK_TYPE"] = "Tipo de bloqueo";

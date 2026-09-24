@@ -1,0 +1,8 @@
+<?php
+$MESS["BIZPROC_SCRIPT_MANAGER_START_BUTTON_SEND_PARAMS"] = "Enviar";
+$MESS["BIZPROC_SCRIPT_MANAGER_START_BUTTON_START"] = "Iniciar";
+$MESS["BIZPROC_SCRIPT_MANAGER_START_FINISHED"] = "Script finalizado";
+$MESS["BIZPROC_SCRIPT_MANAGER_START_NOTHING_SELECTED"] = "Nada selecionado";
+$MESS["BIZPROC_SCRIPT_MANAGER_START_PARAMS_POPUP_TITLE"] = "Parâmetros do script";
+$MESS["BIZPROC_SCRIPT_MANAGER_START_QUEUED"] = "Script iniciado com sucesso";
+$MESS["BIZPROC_SCRIPT_MANAGER_START_TEXT_START"] = "O script será iniciado para todos os itens selecionados. Selecionado: #CNT#.";

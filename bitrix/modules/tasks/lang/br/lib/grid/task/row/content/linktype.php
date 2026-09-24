@@ -1,0 +1,5 @@
+<?php
+$MESS["TASKS_GRID_ROW_GANTT_FINISH_FINISH"] = "Fim para Fim (FF)";
+$MESS["TASKS_GRID_ROW_GANTT_FINISH_START"] = "Fim para Início (FI)";
+$MESS["TASKS_GRID_ROW_GANTT_START_FINISH"] = "Início para Fim (IF)";
+$MESS["TASKS_GRID_ROW_GANTT_START_START"] = "Início para Início (II)";

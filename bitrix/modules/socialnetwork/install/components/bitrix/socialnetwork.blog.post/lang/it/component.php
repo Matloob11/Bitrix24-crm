@@ -1,0 +1,31 @@
+<?
+$MESS["BB_BLOG_TITLE"] = "Conversazioni";
+$MESS["BLOG_BLOG_BLOG_MES_DELED"] = "Il messaggio è stato eliminato correttamente";
+$MESS["BLOG_BLOG_BLOG_MES_DEL_ERROR"] = "Errore durante l'eliminazione del messaggio";
+$MESS["BLOG_BLOG_BLOG_MES_DEL_NO_RIGHTS"] = "Non disponi di autorizzazioni sufficienti per eliminare questo messaggio";
+$MESS["BLOG_BLOG_BLOG_MES_HIDE_ERROR"] = "Errore nel nascondere il post";
+$MESS["BLOG_BLOG_BLOG_MES_HIDE_NO_RIGHTS"] = "Non disponi dell'autorizzazione per nascondere questo post";
+$MESS["BLOG_BLOG_SESSID_WRONG"] = "La tua sessione è scaduta. Riprova.";
+$MESS["BLOG_MODULE_NOT_INSTALL"] = "Il modulo Blog non è installato.";
+$MESS["BLOG_SONET_MODULE_NOT_AVAIBLE"] = "I blog non sono disponibili per questo utente.";
+$MESS["B_B_MES_FR_ONLY"] = "Non disponi di autorizzazioni sufficienti per visualizzare questo messaggio.";
+$MESS["B_B_MES_NAME_TEMPLATE_DEFAULT"] = "#NOBR##NAME# #LAST_NAME##/NOBR#";
+$MESS["B_B_MES_NO_BLOG"] = "Il blog non è stato trovato";
+$MESS["B_B_MES_NO_MES"] = "Il messaggio non è stato trovato";
+$MESS["B_B_MES_NO_POST"] = "Il post non è stato trovato.";
+$MESS["B_B_MES_NO_RIGHTS"] = "Autorizzazioni insufficienti per visualizzare il messaggio";
+$MESS["B_B_MES_REQUEST_ADDED"] = "La tua richiesta è stata presa in considerazione dall'autore del blog";
+$MESS["B_B_MES_REQUEST_ALREADY"] = "La tua richiesta è già in sospeso con l'autore del blog";
+$MESS["B_B_MES_REQUEST_AUTH"] = "Autorizza prima di inviare la domanda";
+$MESS["B_B_MES_REQUEST_ERROR"] = "Errore durante l'aggiunta della richiesta";
+$MESS["B_B_MES_U_AUTH"] = "Autorizza a inviare una richiesta per visualizzare i post.";
+$MESS["B_B_MES_U_CAN"] = "Puoi inviare la domanda";
+$MESS["B_B_MES_U_CAN1"] = "all'autore del blog";
+$MESS["B_B_MES_U_CAN2"] = "per leggere i suoi messaggi.";
+$MESS["B_B_SHARE"] = "Condiviso con: ";
+$MESS["B_B_SHARE_1"] = "Condiviso con: ";
+$MESS["B_B_SHARE_ALL"] = "Tutti i dipendenti";
+$MESS["B_B_SHARE_ALL_BUS"] = "Tutti gli utenti";
+$MESS["MICROBLOG_SONET_MODULE_NOT_AVAIBLE"] = "I microblog non sono disponibili per questo utente.";
+$MESS["SBP_SHARE_PREMODERATION"] = "Non puoi aggiungere destinatari poiché il gruppo selezionato è pre-moderato.";
+?>

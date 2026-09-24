@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_AUTOMATION_QR_DEFAULT_ACTION_LABEL"] = "Conferma";
+$MESS["CRM_AUTOMATION_QR_LOGO"] = "Con tecnologia";
+$MESS["CRM_AUTOMATION_QR_SUCCESS"] = "Riuscito";

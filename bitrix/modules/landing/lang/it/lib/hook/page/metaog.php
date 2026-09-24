@@ -1,0 +1,8 @@
+<?
+$MESS["LANDING_HOOK_METAOG_DESCRIPTION"] = "Descrizione";
+$MESS["LANDING_HOOK_METAOG_DESCRIPTION_PLACEHOLDER"] = "Inserisci descrizione pagina";
+$MESS["LANDING_HOOK_METAOG_NAME"] = "Formattazione RTF per social media";
+$MESS["LANDING_HOOK_METAOG_PICTURE"] = "Immagine";
+$MESS["LANDING_HOOK_METAOG_TITLE"] = "Titolo";
+$MESS["LANDING_HOOK_METAOG_TITLE_PLACEHOLDER"] = "Inserisci titolo pagina";
+?>

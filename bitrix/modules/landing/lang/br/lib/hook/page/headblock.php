@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_HOOK_HEADBLOCK_CODE"] = "Bloco HEAD";
+$MESS["LANDING_HOOK_HEADBLOCK_NAME2"] = "HTML personalizado";

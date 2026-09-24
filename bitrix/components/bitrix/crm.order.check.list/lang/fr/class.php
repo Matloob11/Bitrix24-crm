@@ -1,0 +1,17 @@
+<?php
+$MESS["CRM_COLUMN_ORDER_CHECK_DATE_CREATE"] = "Date de création";
+$MESS["CRM_COLUMN_ORDER_CHECK_ID"] = "ID";
+$MESS["CRM_COLUMN_ORDER_CHECK_LINK"] = "Lien du reçu";
+$MESS["CRM_COLUMN_ORDER_CHECK_ORDER_ID"] = "ID de la commande";
+$MESS["CRM_COLUMN_ORDER_CHECK_PAYMENT_DESCR"] = "Paiement";
+$MESS["CRM_COLUMN_ORDER_CHECK_PAYMENT_ID"] = "ID de paiement";
+$MESS["CRM_COLUMN_ORDER_CHECK_SHIPMENT_DESCR"] = "Livraison";
+$MESS["CRM_COLUMN_ORDER_CHECK_SHIPMENT_ID"] = "ID de la livraison";
+$MESS["CRM_COLUMN_ORDER_CHECK_STATUS"] = "Statut du reçu";
+$MESS["CRM_COLUMN_ORDER_CHECK_SUM"] = "Montant du reçu";
+$MESS["CRM_COLUMN_ORDER_CHECK_TITLE"] = "Document de paiement";
+$MESS["CRM_COLUMN_ORDER_CHECK_TYPE"] = "Type de reçu";
+$MESS["CRM_ERROR_WRONG_ORDER"] = "La commande est introuvable";
+$MESS["CRM_ERROR_WRONG_ORDER_ID"] = "ID de commande non valide";
+$MESS["CRM_ORDER_CHECK_LIST_TITLE"] = "Reçus de paiement pour ##ACCOUNT_NUMBER# du #DATE_BILL# (#PAY_SYSTEM_NAME#)";
+$MESS["CRM_PERMISSION_DENIED"] = "Accès refusé";

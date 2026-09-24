@@ -1,0 +1,9 @@
+<?php
+$MESS["TILE_UPLOADER_DROP_FILES_HERE"] = "Trascina qui i tuoi file";
+$MESS["TILE_UPLOADER_ERROR_STATUS"] = "Errore";
+$MESS["TILE_UPLOADER_FILE_SIZE"] = "Dimensione del file: #filesize#";
+$MESS["TILE_UPLOADER_INSERT_INTO_THE_TEXT"] = "Aggiungi a testo";
+$MESS["TILE_UPLOADER_MENU_DOWNLOAD"] = "Download";
+$MESS["TILE_UPLOADER_MENU_REMOVE"] = "Elimina";
+$MESS["TILE_UPLOADER_MORE_BUTTON_CAPTION"] = "#COUNT# altri";
+$MESS["TILE_UPLOADER_WAITING_STATUS"] = "Attesa";

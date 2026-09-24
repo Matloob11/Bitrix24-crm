@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY"] = "Pessoa responsável";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_DEPARTMENT"] = "Departamento da pessoa responsável";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_DEPARTMENT_FULL"] = "Caminho na estrutura da empresa";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_FULL"] = "O ID e o nome do usuário que foi designado como responsável pelo lead";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_ID"] = "ID da pessoa responsável";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_ID_FULL"] = "O ID do usuário que foi designado como responsável pelo lead";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_NAME"] = "Pessoa responsável";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_NAME_FULL"] = "O nome do usuário que foi designado como responsável por esse lead";
+$MESS["CRM_BIC_LSH_FIELD_DATE_CREATE"] = "Criado em";
+$MESS["CRM_BIC_LSH_FIELD_ID"] = "Chave única";
+$MESS["CRM_BIC_LSH_FIELD_LEAD_ID"] = "ID do Lead";
+$MESS["CRM_BIC_LSH_FIELD_STATUS"] = "Status";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_ID"] = "ID do Status";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_NAME"] = "Nome do status";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_SEMANTIC"] = "Tipo de status";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_SEMANTIC_ID"] = "ID do tipo de status";
+$MESS["CRM_BIC_LSH_FIELD_TYPE_ID"] = "Tipo de registro";
+$MESS["CRM_BIC_LSH_TABLE"] = "Lead: histórico de status";
+$MESS["CRM_BIC_LSH_TABLE_DESCRIPTION_FULL"] = "Contém dados sobre alterações de status de lead de campos padrão.";

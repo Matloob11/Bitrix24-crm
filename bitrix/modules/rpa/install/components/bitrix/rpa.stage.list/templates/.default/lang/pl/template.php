@@ -1,0 +1,14 @@
+<?
+$MESS["RPA_STAGES_COMMON_STAGES_LABEL"] = "Dodatkowe etapy";
+$MESS["RPA_STAGES_FAIL_STAGE_LABEL"] = "Etapy przegranej";
+$MESS["RPA_STAGES_FAIL_STAGE_TITLE"] = "Niepowodzenie";
+$MESS["RPA_STAGES_FINAL_STAGES_TITLE"] = "Etapy końcowe";
+$MESS["RPA_STAGES_FIRST_STAGE_LABEL"] = "Etap początkowy";
+$MESS["RPA_STAGES_NEW_STAGE_NAME"] = "Nowy etap";
+$MESS["RPA_STAGES_STAGE_ADD"] = "Dodaj etap";
+$MESS["RPA_STAGES_STAGE_CHANGE_TITLE"] = "Edytuj nazwę";
+$MESS["RPA_STAGES_STAGE_PANEL_COLOR"] = "Zmień kolor";
+$MESS["RPA_STAGES_STAGE_PANEL_RELOAD"] = "Zresetuj widok";
+$MESS["RPA_STAGES_SUCCESS_STAGE_LABEL"] = "Etap sukcesu";
+$MESS["RPA_STAGES_SUCCESS_STAGE_TITLE"] = "Sukces";
+?>

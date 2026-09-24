@@ -1,0 +1,21 @@
+<?php
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CHATS"] = "Crie tarefas a partir de e-mails ou discuta e-mails no bate-papo.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CRM"] = "Salve e-mails de clientes no CRM.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_MOBILE"] = "Use o e-mail corporativo no campo.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_1"] = "Conectar";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_CONNECT"] = "Conectar caixa de correio";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_REQUEST"] = "Toque aqui para obter ajuda";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_DESCRIPTION"] = "Leia e responda e-mails do seu Bitrix24. Salve e-mails no CRM e mantenha-se conectado.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_1"] = "Conectar caixa de correio ao Bitrix24";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_PROMO"] = "Conectar caixa de correio ao Bitrix24";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_DESCRIPTION"] = "O administrador do Bitrix24 receberá sua solicitação e conectará sua caixa de correio.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_NETWORK_ERROR"] = "Não foi possível enviar sua solicitação. Por favor, tente novamente mais tarde.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_PLACEHOLDER"] = "Comentar";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUBMIT"] = "Enviar";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_CLOSE"] = "Fechar";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_DESC"] = "O administrador receberá sua solicitação e conectará sua caixa de correio.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_TITLE"] = "Sua solicitação foi enviada";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_TITLE"] = "Solicitação de conexão";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_CLOSE"] = "Fechar";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_DESC"] = "Entre em contato diretamente com o administrador do Bitrix24 se achar que sua solicitação foi perdida.";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_TITLE"] = "Sua solicitação foi enviada";

@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_IMPORT_PAGE_TITLE_COMPANY"] = "Importa aziende";
+$MESS["CRM_IMPORT_PAGE_TITLE_CONTACT"] = "Importa contatti (#ORIGIN#)";
+$MESS["CRM_IMPORT_PAGE_TITLE_DEAL"] = "Importa affari";
+$MESS["CRM_IMPORT_PAGE_TITLE_DEFAULT"] = "Importa";
+$MESS["CRM_IMPORT_PAGE_TITLE_DYNAMIC"] = "Importa elementi \"#ENTITY_TYPE_CAPTION#\"";
+$MESS["CRM_IMPORT_PAGE_TITLE_LEAD"] = "Importa lead";
+$MESS["CRM_IMPORT_PAGE_TITLE_QUOTE"] = "Importa preventivi";
+$MESS["CRM_IMPORT_PAGE_TITLE_SMART_INVOICE"] = "Importa fatture";

@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_ELEMENT_BUTTON_SELECT"] = "Seleziona";
+$MESS["CRM_ELEMENT_CANCEL"] = "Annulla";
+$MESS["CRM_ELEMENT_CHANGE"] = "Modifica";
+$MESS["CRM_ELEMENT_CHOISE"] = "Seleziona";
+$MESS["CRM_ELEMENT_CLOSE"] = "Chiudi";
+$MESS["CRM_ELEMENT_COMPANY"] = "Aziende";
+$MESS["CRM_ELEMENT_CONTACT"] = "Contatti";
+$MESS["CRM_ELEMENT_CREATE"] = "Crea";
+$MESS["CRM_ELEMENT_CREATE_COMPANY"] = "Azienda";
+$MESS["CRM_ELEMENT_CREATE_CONTACT"] = "Contatto";
+$MESS["CRM_ELEMENT_CREATE_DEAL"] = "Affare";
+$MESS["CRM_ELEMENT_CREATE_LEAD"] = "Lead";
+$MESS["CRM_ELEMENT_DEAL"] = "Affari";
+$MESS["CRM_ELEMENT_HIDDEN_OR_DELETED"] = "L'elemento è stato nascosto o eliminato";
+$MESS["CRM_ELEMENT_LAST"] = "Ultimo selezionato";
+$MESS["CRM_ELEMENT_LEAD"] = "Lead";
+$MESS["CRM_ELEMENT_NO_RESULT"] = "Sfortunatamente, la tua richiesta di ricerca non ha restituito alcun risultato.";
+$MESS["CRM_ELEMENT_OK"] = "Seleziona";
+$MESS["CRM_ELEMENT_ORDER"] = "Ordini";
+$MESS["CRM_ELEMENT_PERMISSION_DENIED"] = "Accesso negato";
+$MESS["CRM_ELEMENT_QUOTE_MSGVER_1"] = "Preventivi";
+$MESS["CRM_ELEMENT_SEARCH"] = "Ricerca";
+$MESS["CRM_SFE_ENTITY_NOT_SELECTED"] = "Nessun tipo di entità selezionato nei parametri del campo";

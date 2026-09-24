@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_BP_DOCUMENT_INVOICE_FIELD_DATE_UPDATE"] = "Última modificação em";
+$MESS["CRM_BP_DOCUMENT_INVOICE_FIELD_ID"] = "ID";
+?>

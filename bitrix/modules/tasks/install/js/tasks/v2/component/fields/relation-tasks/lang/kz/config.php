@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_COMPLETED"] = "Толық көрсету";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTASKS"] = "Қосымша міндеттермен көрсету";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTEMPLATES"] = "Қосымша қалыптар көрсету";

@@ -1,0 +1,5 @@
+<?php
+$MESS["LANDING_DEMO_STORE_FOOTER_NAME"] = "Pied-de-page";
+$MESS["LANDING_DEMO_STORE_FOOTER_TEXT1"] = "Contacts";
+$MESS["LANDING_DEMO_STORE_FOOTER_TEXT2"] = "Paiement et livraison";
+$MESS["LANDING_DEMO_STORE_FOOTER_TEXT3"] = "Appelez-nous";

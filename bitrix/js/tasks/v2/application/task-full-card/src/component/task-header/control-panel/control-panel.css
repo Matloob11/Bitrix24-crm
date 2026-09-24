@@ -1,0 +1,18 @@
+.tasks-full-card-header__control-panel-opener {
+	flex-shrink: 0;
+	margin: var(--margin-button);
+	padding: var(--padding-button);
+	line-height: 0;
+	cursor: pointer;
+}
+
+.tasks-full-card-header__control-panel-opener-icon {
+	--ui-icon-set__icon-color: var(--color-icon);
+	--ui-icon-set__icon-size: var(--size-icon);
+}
+
+.tasks-full-card-header__control-panel-popup {
+	padding: 0;
+	background-color: transparent;
+	backdrop-filter: blur(3px);
+}

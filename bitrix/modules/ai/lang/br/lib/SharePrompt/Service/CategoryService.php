@@ -1,0 +1,15 @@
+<?php
+$MESS["AI_SERVICE_CATEGORY_CALENDAR"] = "Eventos do calendário";
+$MESS["AI_SERVICE_CATEGORY_CALENDAR_COMMENTS"] = "Comentários do evento do calendário";
+$MESS["AI_SERVICE_CATEGORY_CRM_ACTIVITY"] = "Atividades do CRM";
+$MESS["AI_SERVICE_CATEGORY_CRM_COMMENT_FIELD"] = "Comentários em entidades do CRM";
+$MESS["AI_SERVICE_CATEGORY_CRM_MESSAGE_EDITOR"] = "Mensagens de cliente no CRM";
+$MESS["AI_SERVICE_CATEGORY_CRM_TIMELINE_COMMENT"] = "Comentários nas linhas do tempo do CRM";
+$MESS["AI_SERVICE_CATEGORY_LANDING"] = "Sites";
+$MESS["AI_SERVICE_CATEGORY_LIVEFEED"] = "Feed";
+$MESS["AI_SERVICE_CATEGORY_LIVEFEED_COMMENTS"] = "Comentários do Feed";
+$MESS["AI_SERVICE_CATEGORY_MAIL"] = "E-mail";
+$MESS["AI_SERVICE_CATEGORY_MAIL_CRM"] = "E-mails do CRM";
+$MESS["AI_SERVICE_CATEGORY_PRODUCT_DESCRIPTION"] = "Formulário de detalhes do produto";
+$MESS["AI_SERVICE_CATEGORY_TASKS"] = "Tarefas";
+$MESS["AI_SERVICE_CATEGORY_TASKS_COMMENTS"] = "Comentários da tarefa";

@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_RECURRING_MAIL_DEFAULT_EMAIL_SUBJECT"] = "Facture #ACCOUNT_NUMBER#";
+$MESS["CRM_RECURRING_MAIL_EMPTY_BODY_MESSAGE"] = "[no text]";
+$MESS["CRM_RECURRING_MAIL_INVALID_EMAIL"] = "Adresse e-mail du destinataire invalide.";

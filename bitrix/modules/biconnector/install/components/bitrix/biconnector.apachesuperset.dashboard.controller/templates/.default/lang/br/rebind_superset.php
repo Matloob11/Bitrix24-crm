@@ -1,0 +1,5 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_BUTTON"] = "Prosseguir";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_DESCRIPTION"] = "Seu Bitrix24 foi reinstalado. O Criador de BI precisa ser cadastrado novamente.";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_DESCRIPTION_NO_ACCESS"] = "O administrador do seu Bitrix24 precisará configurar o Criador de BI novamente.";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_TITLE"] = "O Criador de BI precisa ser configurado novamente";

@@ -1,0 +1,19 @@
+<?php
+$MESS["CRM_COMPANY_CREATE_TITLE"] = "Nouvelle entreprise";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_BANK_DETAIL_SUMMARY_TITLE"] = "par coordonnées bancaires";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_EMAIL_SUMMARY_TITLE"] = "par e-mail";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_PHONE_SUMMARY_TITLE"] = "par téléphone";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_REQUISITE_SUMMARY_TITLE"] = "par mentions de la société";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_SHORT_SUMMARY_TITLE"] = "trouvé";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_SUMMARY_TITLE"] = "Coïncidences retrouvées";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_TTL_SUMMARY_TITLE"] = "par dénomination";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_WARNING_ACCEPT_BTN_TITLE"] = "Ignorer et enregistrer";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_WARNING_CANCEL_BTN_TITLE"] = "Annuler";
+$MESS["CRM_COMPANY_EDIT_DUP_CTRL_WARNING_DLG_TITLE"] = "Suspicion de doublons";
+$MESS["CRM_COMPANY_EDIT_TITLE"] = "Entreprise ##ID# &mdash; #TITLE#";
+$MESS["CRM_TAB_1"] = "Entreprise";
+$MESS["CRM_TAB_1_TITLE"] = "Propriétés de l'entreprise";
+$MESS["CRM_TAB_2"] = "Log";
+$MESS["CRM_TAB_2_TITLE"] = "Log d'entreprise";
+$MESS["CRM_TAB_3"] = "Processus d’entreprise";
+$MESS["CRM_TAB_3_TITLE"] = "Processus d'entreprise de l'entreprise";

@@ -1,0 +1,4 @@
+<?php
+$MESS["IMMOBILE_FOLDER_CREATE_ERROR_LIMIT"] = "Bis zu 20 Ordner werden unterstützt.";
+$MESS["IMMOBILE_FOLDER_CREATE_NAV_TITLE"] = "Neuer Ordner";
+$MESS["IMMOBILE_FOLDER_CREATE_SUBMIT_BUTTON"] = "Erstellen";

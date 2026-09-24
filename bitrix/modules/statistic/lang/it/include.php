@@ -1,0 +1,9 @@
+<?
+$MESS["STAT_WEEKDAY_0_S"] = "Dom";
+$MESS["STAT_WEEKDAY_1_S"] = "Lun";
+$MESS["STAT_WEEKDAY_2_S"] = "Mar";
+$MESS["STAT_WEEKDAY_3_S"] = "Mer";
+$MESS["STAT_WEEKDAY_4_S"] = "Gio";
+$MESS["STAT_WEEKDAY_5_S"] = "Ven";
+$MESS["STAT_WEEKDAY_6_S"] = "Sab";
+?>

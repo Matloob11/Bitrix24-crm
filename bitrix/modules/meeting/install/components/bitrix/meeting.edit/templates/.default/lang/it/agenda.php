@@ -1,0 +1,29 @@
+<?
+$MESS["ME_ADD_EX"] = "Aggiungi da riunione";
+$MESS["ME_AGENDA"] = "Agenda";
+$MESS["ME_AGENDA_ADD"] = "Aggiungi argomento";
+$MESS["ME_AGENDA_ADD_DESCRIPTION"] = "Aggiungi descrizione";
+$MESS["ME_AGENDA_ADD_TASK"] = "Crea incarico";
+$MESS["ME_AGENDA_CONFIRM_AGENDA"] = "Eliminare questo argomento dall'agenda?";
+$MESS["ME_AGENDA_CONFIRM_PROTO"] = "Eliminare questo elemento del verbale?";
+$MESS["ME_AGENDA_DEADLINE_DEFAULT"] = "Scadenza";
+$MESS["ME_AGENDA_HIDE_COMMENTS"] = "Nascondi commenti";
+$MESS["ME_AGENDA_NO_RESPONSIBLE"] = "(non specificato)";
+$MESS["ME_AGENDA_REPORT"] = "Rapporto";
+$MESS["ME_AGENDA_TASK"] = "Incarico";
+$MESS["ME_AGENDA_TASK_ADDED"] = "Incarico associato";
+$MESS["ME_AGENDA_TT_ADDSUB"] = "Aggiungi argomento secondario";
+$MESS["ME_AGENDA_TT_CANCEL"] = "Annulla";
+$MESS["ME_AGENDA_TT_CHECK"] = "Contrassegna come completato";
+$MESS["ME_AGENDA_TT_COMMENTS_C"] = "Commenti";
+$MESS["ME_AGENDA_TT_DELETE"] = "Elimina";
+$MESS["ME_AGENDA_TT_DRAG"] = "Scambia argomenti";
+$MESS["ME_AGENDA_TT_EDIT"] = "Modifica";
+$MESS["ME_AGENDA_TT_SAVE"] = "Salva";
+$MESS["ME_AGENDA_TT_SHIFT"] = "Riordina argomenti";
+$MESS["ME_AGENDA_TT_TASKS_C"] = "Incarichi aggiunti";
+$MESS["ME_PROTO"] = "Verbali";
+$MESS["ME_PROTO_ADD"] = "Aggiungi elemento verbale";
+$MESS["ME_PROTO_OUTSIDE"] = "Argomenti fuori agenda";
+$MESS["ME_TASK_ADD"] = "Aggiungi da incarico";
+?>

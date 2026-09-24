@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_BUTTON_BUTTON_CALLBACK_NAME"] = "Devolución de llamada";
+$MESS["CRM_BUTTON_BUTTON_OPENLINE_NAME"] = "Chat";
+$MESS["CRM_BUTTON_BUTTON_WEBFORM_NAME"] = "Formulario";

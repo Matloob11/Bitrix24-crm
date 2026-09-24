@@ -1,0 +1,11 @@
+<?php
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_1_DESCR"] = "Condividi un link a un documento sul tuo Bitrix24. Scegli quando desideri che il link scada e imposta una password per assicurarti che le tue informazioni siano sicure. Link condivisi e molte altre funzionalità sono disponibili nei piani commerciali selezionati.";
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_1_TITLE"] = "Link pubblici a file e cartelle";
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_DESCR"] = "Condividi un link a un documento sul tuo Bitrix24. Scegli quando desideri che il link scada e imposta una password per assicurarti che le tue informazioni siano sicure. Link condivisi e molte altre funzionalità sono disponibili nei piani commerciali selezionati.";
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_TITLE"] = "Link pubblici a file e cartelle";
+$MESS["DISK_B24_FEATURES_DISK_FILE_SHARING_1_DESCR"] = "Se desideri rendere disponibile un file o un'intera cartella ad altri utenti per consentire la visualizzazione, la modifica o il caricamento di file, effettua l'upgrade a un piano commerciale.";
+$MESS["DISK_B24_FEATURES_DISK_FILE_SHARING_1_TITLE"] = "Effettua l'upgrade ai piani commerciali per condividere i file e le cartelle del tuo drive con altri dipendenti";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_1_DESCR"] = "Se desideri rendere disponibile un file o un'intera cartella ad altri utenti per consentire la visualizzazione, la modifica o il caricamento di file, effettua l'upgrade a un piano commerciale.";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_1_TITLE"] = "Effettua l'upgrade ai piani commerciali per condividere i file e le cartelle del tuo drive con altri dipendenti";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_DESCR"] = "Sul tuo piano corrente, puoi condividere file con i colleghi solo nel tuo drive. Se desideri rendere disponibile ad altri utenti un'intera cartella per visualizzare, modificare o caricare file, effettua l'upgrade al piano commerciale. La condivisione di cartelle è disponibile nei piani commerciali selezionati.";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_TITLE"] = "Effettua l'upgrade ai piani commerciali per condividere le cartelle del tuo drive con altri dipendenti";

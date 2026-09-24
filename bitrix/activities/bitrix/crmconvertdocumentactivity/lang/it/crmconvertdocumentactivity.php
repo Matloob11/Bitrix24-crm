@@ -1,0 +1,19 @@
+<?php
+$MESS["CRM_CVTDA_ALREADY_CONVERTED_1"] = "L'elemento è già stato convertito. L'operazione è stata interrotta.";
+$MESS["CRM_CVTDA_COMPANY"] = "Azienda";
+$MESS["CRM_CVTDA_CONTACT"] = "Contatto";
+$MESS["CRM_CVTDA_DEAL"] = "Affare";
+$MESS["CRM_CVTDA_DEAL_CATEGORY_ID"] = "Pipeline affari";
+$MESS["CRM_CVTDA_DEFAULT_CONTACT_NAME"] = "Nessun nome";
+$MESS["CRM_CVTDA_DISABLE_ACTIVITY_COMPLETION"] = "Non chiudere l'attività dopo la conversione";
+$MESS["CRM_CVTDA_EMPTY_PROP"] = "Le entità da creare non sono specificate";
+$MESS["CRM_CVTDA_INCORRECT_DOCUMENT"] = "Impossibile convertire elementi di questo tipo";
+$MESS["CRM_CVTDA_INVOICE"] = "Fattura";
+$MESS["CRM_CVTDA_ITEMS"] = "Crea da origine";
+$MESS["CRM_CVTDA_QUOTE"] = "Preventivo";
+$MESS["CRM_CVTDA_REQUEST_DESCRIPTION_DEAL"] = "Le entità seguenti devono essere create utilizzando l'affare: #ITEMS#";
+$MESS["CRM_CVTDA_REQUEST_DESCRIPTION_LEAD"] = "Le entità seguenti devono essere create utilizzando il lead: #ITEMS#";
+$MESS["CRM_CVTDA_REQUEST_SUBJECT_DEAL"] = "L'affare deve essere convertito";
+$MESS["CRM_CVTDA_REQUEST_SUBJECT_LEAD"] = "Il lead deve essere convertito";
+$MESS["CRM_CVTDA_RESPONSIBLE"] = "Responsabile";
+$MESS["CRM_CVTDA_WIZARD_NOT_FOUND"] = "Impossibile inizializzare la conversione guidata.";

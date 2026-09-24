@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_PERMISSIONS_POPUP_ADD"] = "Hinzufügen";
+$MESS["NOTE_PERMISSIONS_POPUP_ALL_EMPLOYEES"] = "Alle Nutzer";
+$MESS["NOTE_PERMISSIONS_POPUP_CANCEL"] = "Abbrechen";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_BUTTON"] = "Erstellen";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_ERROR"] = "Space konnte nicht erstellt werden.";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_SUCCESS"] = "Space wurde erstellt.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_EDIT_DOCUMENT"] = "Berechtigung, den Artikeltext zu bearbeiten, Blöcke und Dateien zum Artikel hinzuzufügen.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MANAGE"] = "Berechtigung, den Artikel zu bearbeiten (Text, Blöcke und Dateien zum Artikel hinzuzufügen).";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MODERATE"] = "Berechtigung, Space zu löschen sowie Zugriffsrechte für Space und Artikel zu definieren. Voller Zugriff auf alle Space-Einstellungen.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW"] = "Berechtigung, die Artikel des Space anzuzeigen und angehängte Dateien herunterzuladen.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW_DOCUMENT"] = "Berechtigung, einen Artikel anzuzeigen und angehängte Dateien herunterzuladen.";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_EDIT"] = "Bearbeiten";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MANAGE"] = "Moderieren";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MODERATE"] = "Verwalten";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_VIEW"] = "Anzeigen";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR"] = "Die Space-Zugriffsrechte konnten nicht abgerufen werden.";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR_DOCUMENT"] = "Die Zugriffsrechte für Artikel konnten nicht abgerufen werden.";
+$MESS["NOTE_PERMISSIONS_POPUP_NAME_PLACEHOLDER"] = "Space-Name";
+$MESS["NOTE_PERMISSIONS_POPUP_ROLLBACK_FAILED"] = "Fehler beim Erstellen von Space. Bitte aktualisieren Sie die Seite.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE"] = "Speichern";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR"] = "Die Änderungen konnten nicht gespeichert werden.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR_DOCUMENT"] = "Die Zugriffsrechte für Artikel konnten nicht gespeichert werden.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS"] = "Die Änderungen wurden gespeichert.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS_DOCUMENT"] = "Die Zugriffsrechte für Artikel wurden gespeichert.";
+$MESS["NOTE_PERMISSIONS_POPUP_TITLE_EDIT_DOCUMENT"] = "Zugriffsrechte für den Artikel";

@@ -1,0 +1,14 @@
+<?php
+$MESS["MOBILEAPP_CALL_LIST_ACTION_CALL_TELEPHONY"] = "Бастау";
+$MESS["MOBILEAPP_CALL_LIST_ACTION_CALL_TELEPHONY_TITLE"] = "Қоңырауды бастау керек пе?";
+$MESS["MOBILEAPP_CALL_LIST_ACTION_CALL_TITLE"] = "Қоңырау шалу";
+$MESS["MOBILEAPP_CALL_LIST_ACTION_CANCEL"] = "Бас тарту";
+$MESS["MOBILEAPP_CALL_LIST_ACTION_OPEN_CHAT"] = "Чатқа өту";
+$MESS["MOBILEAPP_CALL_LIST_ACTION_WITHOUT_VIDEO"] = "Бейнесіз";
+$MESS["MOBILEAPP_CALL_LIST_ACTION_WITH_VIDEO"] = "Бейнемен";
+$MESS["MOBILEAPP_EMPTY_TAB_INCOMING"] = "Кіріс қоңырауы жоқ";
+$MESS["MOBILEAPP_EMPTY_TAB_MAIN_DESCRIPTION"] = "Командамен уақыт шектеуінсіз хабарласыңыз";
+$MESS["MOBILEAPP_EMPTY_TAB_MAIN_TITLE"] = "Әзірге қоңыраулар болған жоқ";
+$MESS["MOBILEAPP_EMPTY_TAB_MISSED"] = "Қабылданбаған қоңыраулар жоқ";
+$MESS["MOBILEAPP_EMPTY_TAB_OUTGOING"] = "Шығыс қоңырауы жоқ";
+$MESS["MOBILEAPP_LOADING_TEXT"] = "Жүктеу";

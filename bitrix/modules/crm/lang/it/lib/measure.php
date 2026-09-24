@@ -1,0 +1,3 @@
+<?
+$MESS["CRM_MEASURE_FIELD_ID"] = "ID";
+?>

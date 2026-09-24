@@ -1,0 +1,23 @@
+<?php
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION"] = "Animación del deslizador";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_HINT"] = "Seleccione el efecto de animación para la transición entre diapositivas consecutivas. La animación de aparición gradual estará disponible solamente si hay una diapositiva.";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_OFF"] = "Ninguno";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS"] = "Diseño de los botones";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS_0"] = "Sin botones";
+$MESS["LANDING_BLOCK_ATTRS_AUTO"] = "Automático";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY"] = "Reproducción automática";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY_SPEED"] = "Velocidad";
+$MESS["LANDING_BLOCK_ATTRS_DOTS"] = "Mostrar los puntos de navegación";
+$MESS["LANDING_BLOCK_ATTRS_NO"] = "No";
+$MESS["LANDING_BLOCK_ATTRS_OFF"] = "Deshabilitar";
+$MESS["LANDING_BLOCK_ATTRS_ON"] = "Habilitar";
+$MESS["LANDING_BLOCK_ATTRS_PAUSE_HOVER"] = "Pausa al pasar el cursor";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW"] = "Diapositivas en la pantalla";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW_HINT"] = "El número de diapositivas simultáneas que el usuario verá en la pantalla, colocadas una al lado de la otra. Esta opción solo será efectiva cuando visite el sitio en una computadora de escritorio o laptop.";
+$MESS["LANDING_BLOCK_ATTRS_TIME_1"] = "1 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_3"] = "3 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_5"] = "5 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_10"] = "10 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_15"] = "15 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_30"] = "30 s";
+$MESS["LANDING_BLOCK_ATTRS_YES"] = "Sí";

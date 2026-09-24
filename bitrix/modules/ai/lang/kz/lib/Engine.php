@@ -1,0 +1,20 @@
+<?php
+$MESS["AI_ENGINE_ERROR_CURRENT_PROVIDER_IS_EXPIRED"] = "Ағымдағы провайдерге жазылу мерзімі аяқталды";
+$MESS["AI_ENGINE_ERROR_IM_RATE_LIMIT_IS_EXCEEDED"] = "Сұраулар тым жылдам жасалып жатыр. Біраз күте тұрыңыз, CoPilot жақын арада қайтадан қолжетімді болады. [URL=#LINK#]Толығырақ[/URL]";
+$MESS["AI_ENGINE_ERROR_IM_RATE_LIMIT_IS_EXCEEDED_MSGVER_1"] = "Сұраулар тым тез түсіп жатыр. Біраз күте тұрыңыз, #COPILOT_NAME# жақын арада қайтадан қолжетімді болады. [URL=#LINK#] Толығырақ[/URL]";
+$MESS["AI_ENGINE_ERROR_LIMIT_BAAS"] = "Сізде тегін оқу сұраулары таусылды. Сіз кәсіби деңгейге өтіп, [URL=#LINK#]CoPilot үшін Бусттар[/URL] сатып ала аласыз";
+$MESS["AI_ENGINE_ERROR_LIMIT_BAAS_MARKET"] = "Тегін сұраулар аяқталды. Сіз [URL=#LINK#]Маркетплейске жазыла аласыз[/URL] және CoPilot-пен шектеусіз сөйлесе аласыз! Сондай-ақ жазылымда — сіздің бизнесіңіз үшін 4200+ дайын шешімдер мен интеграцияларға шексіз қолжетімділік";
+$MESS["AI_ENGINE_ERROR_LIMIT_BAAS_MARKET_MSGVER_1"] = "Тегін сұраулар аяқталды. Сіз [URL=#LINK#]Маркетплейске жазыламды рәсімдей[/URL] және #COPILOT_NAME# шектеусіз сөйлесе аласыз! Сондай-ақ жазылымда — сіздің бизнесіңіз үшін 4200+ дайын шешімдер мен интеграцияларға шексіз қолжетімділік бар";
+$MESS["AI_ENGINE_ERROR_LIMIT_BAAS_MARKET_MSGVER_2"] = "Тегін сұраулар аяқталды. Сіз [URL=#LINK#]#COPILOT_NAME# + Маркетплейс жазылымын рәсімдей[/URL] және AI-мен шектеусіз сөйлесе аласыз! Сондай-ақ жазылымда — сіздің бизнесіңіз үшін 5000+ дайын шешімдер мен интеграцияларға шексіз қолжетімділік бар";
+$MESS["AI_ENGINE_ERROR_LIMIT_BAAS_MARKET_MSGVER_3"] = "Тегін сұраулар аяқталды. Сіз [URL=#LINK#]#COPILOT_NAME# + Маркетплейс жазылымымен[/URL] AI-мен шектеусіз сөйлесе аласыз! Сонымен қатар, сізге 5890-нан астам бизнес қосымшалары мен интеграциялары қолжетімді болады, сонымен қатар Битрикс24 Вайбкод платформасында — AI көмегімен жеке қосымшалар жасай аласыз";
+$MESS["AI_ENGINE_ERROR_LIMIT_BAAS_MSGVER_1"] = "Сізде тегін оқу сұраулары таусылды. Сіз кәсіби деңгейге өтіп,[URL=#LINK#]#COPILOT_NAME# үшін бусттар[/URL] сатып ала аласыз";
+$MESS["AI_ENGINE_ERROR_LIMIT_IS_EXCEEDED"] = "Пайдалану шегі асып кетті";
+$MESS["AI_ENGINE_ERROR_LIMIT_IS_EXCEEDED_WITH_MORE"] = "Пайдалану лимитінен асып кетті. [URL=#LINK#]Толығырақ[/URL]";
+$MESS["AI_ENGINE_ERROR_MUST_AGREE_WITH_AGREEMENT"] = "Сіз алдымен сервисті пайдалануға келісім беруіңіз керек";
+$MESS["AI_ENGINE_ERROR_OTHER"] = "Сұрауды орындау мүмкін болмады, әрекетті қайталаңыз";
+$MESS["AI_ENGINE_ERROR_PROVIDER"] = "AI моделінің провайдері жағындағы қате. Қайталап көріңіз немесе AI моделін өзгертіңіз";
+$MESS["AI_ENGINE_ERROR_RATE_LIMIT_BAAS_MARKET"] = "CoPilot сұраныстарының лимитіне қол жеткізілді. Шектеуді кеңейту және жұмысты жалғастыру үшін қолдау орталығына жүгініңіз";
+$MESS["AI_ENGINE_ERROR_RATE_LIMIT_BAAS_MARKET_MSGVER_1"] = "#COPILOT_NAME# сұрауларының шегіне жетті. Шектеуді кеңейту және жұмысты жалғастыру үшін қолдау орталығына жүгініңіз";
+$MESS["AI_ENGINE_ERROR_RATE_LIMIT_IS_EXCEEDED"] = "Сұраулар тым жылдам жасалып жатыр. Біраз күте тұрыңыз, CoPilot жақын арада қайтадан қолжетімді болады. [helpdesklink]Толығырақ[/helpdesklink]";
+$MESS["AI_ENGINE_ERROR_RATE_LIMIT_IS_EXCEEDED_MSGVER_1"] = "Сұраулар тым тез келеді. Біраз күте тұрыңыз, #COPILOT_NAME# жақын арада қайтадан қол жетімді болады. [helpdesklink]Толығырақ [/helpdesklink]";
+$MESS["AI_ENGINE_ERROR_SERVICE_IS_NOT_AVAILABLE_BY_TARIFF"] = "Сервис сіздің тарифтік жоспарыңызда қолжетімсіз";

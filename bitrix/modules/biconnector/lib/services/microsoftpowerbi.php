@@ -1,0 +1,205 @@
+<?php
+namespace Bitrix\BIConnector\Services;
+
+use Bitrix\BIConnector\LimitManager;
+use Bitrix\BIConnector\Manager;
+use Bitrix\BIConnector\Service;
+use Bitrix\Main\Error;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Result;
+use Bitrix\Main\Web\Json;
+
+class MicrosoftPowerBI extends Service
+{
+	protected static $serviceId = 'pbi';
+	public static $dateFormats = [
+		'datetime_format' => 'YYYY-MM-DD HH:MI:SS',
+		'datetime_format_php' => 'Y-m-d H:i:s',
+		'date_format' => 'YYYY-MM-DD',
+		'date_format_php' => 'Y-m-d',
+	];
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function validateDashboardUrl(\Bitrix\Main\Event $event)
+	{
+		$url = $event->getParameters()[0];
+		$uri = new \Bitrix\Main\Web\Uri($url);
+		$isUrlOk =
+			$uri->getScheme() === 'https'
+			&& $uri->getHost() === 'app.powerbi.com'
+			&& (
+				$uri->getPath() === '/view'
+				|| $uri->getPath() === '/reportEmbed'
+			)
+		;
+		$result = new \Bitrix\Main\EventResult(\Bitrix\Main\EventResult::SUCCESS, ($isUrlOk ? 1 : 0));
+		return $result;
+	}
+
+	/**
+	 * @param string $tableName
+	 * @param array $parameters
+	 * @param string $requestMethod
+	 * @param string $requestUri
+	 * @param int $limit
+	 * @param LimitManager $limitManager
+	 * @param array|null $queryMetadata Query metadata from Superset/Trino (bx_query_metadata).
+	 * @return Result
+	 */
+	public function printQuery(
+		string $tableName,
+		array $parameters,
+		string $requestMethod,
+		string $requestUri,
+		int $limit,
+		LimitManager $limitManager,
+		?array $queryMetadata = null,
+	): Result
+	{
+		$result = new Result();
+		$connector = $this->getDataSourceConnector($tableName);
+		if (!$connector)
+		{
+			$result->addError(new Error('NO_TABLE'));
+
+			return $result;
+		}
+
+		$manager = Manager::getInstance();
+		$data = $connector->getFormattedData($parameters, static::$dateFormats);
+
+		$databaseConnection = $manager->getDatabaseConnection();
+		$databaseConnection->lock('biconnector_data', -1);
+
+		$getIdFunction = function ($x)
+		{
+			return $x['ID'];
+		};
+
+		$schema = $data['schema'] ?? [];
+
+		$logId = $manager->startQuery(
+			$tableName,
+			implode(', ', array_map($getIdFunction, $schema)),
+			Json::encode($data['where'], JSON_UNESCAPED_UNICODE),
+			Json::encode($parameters, JSON_UNESCAPED_UNICODE),
+			$requestMethod,
+			preg_replace('/(?:^|\\?|&)token=(.+?)(?:$|&)/', 'token=hide-the-key-from-the-log', $requestUri),
+			$queryMetadata
+		);
+
+		$fields = [];
+		foreach ($schema as $fieldInfo)
+		{
+			$fields[] = $fieldInfo['ID'];
+		}
+
+		$size = 0;
+		$countColumns = count($fields);
+		$firstLinePrinted = false;
+
+		$connector->sendAnalytic();
+
+		$licenseLimit = $limitManager->getLimit();
+		$isOverLimit = false;
+		$count = 0;
+
+		$queryResult = $connector->query($parameters, $limit, static::$dateFormats);
+		if ($connector->isFulfilledOutput())
+		{
+			foreach ($queryResult as $item)
+			{
+				echo $item;
+				$size += strlen((string)$item);
+			}
+		}
+		else
+		{
+			foreach ($queryResult as $row)
+			{
+				if (!$firstLinePrinted)
+				{
+					$output = "[\n" . Json::encode($fields, JSON_UNESCAPED_UNICODE) . "\n";
+					echo $output;
+					$size += strlen($output);
+					$firstLinePrinted = true;
+				}
+				elseif ($licenseLimit > 0 && $licenseLimit <= $count)
+				{
+					$count++;
+
+					continue;
+				}
+
+				if (is_array($row))
+				{
+					$rowCount = count($row);
+					if ($countColumns < $rowCount)
+					{
+						$row = array_slice($row, 0, $countColumns);
+					}
+					elseif ($countColumns > $rowCount)
+					{
+						$row += array_fill($rowCount, $countColumns - $rowCount, null);
+					}
+
+					$output = ',' . Json::encode($row, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_IGNORE) . "\n";
+					echo $output;
+					$size += strlen($output);
+
+					$count++;
+				}
+			}
+		}
+
+		$queryReturnResult = $queryResult->getReturn();
+		if ($queryReturnResult instanceof Result && !$queryReturnResult->isSuccess())
+		{
+			$result->addErrors($queryReturnResult->getErrors());
+		}
+		elseif (!$connector->isFulfilledOutput())
+		{
+			if (!$firstLinePrinted)
+			{
+				$output = "[\n" . Json::encode($fields, JSON_UNESCAPED_UNICODE) . "\n";
+				echo $output;
+				$size += strlen($output);
+			}
+
+			if ($licenseLimit > 0 && $licenseLimit < $count)
+			{
+				$overLimit = $count - $licenseLimit;
+				$errorRow = [
+					'error' => 'OVER_LIMIT',
+					'errorMessage' => Loc::getMessagePlural(
+						'BICONNECTOR_TABLE_OVER_LIMIT_ERROR_MSGVER_1',
+						$overLimit,
+						[
+							'#LIMIT#' => $this->formatLimitValue($licenseLimit),
+							'#OVERLIMIT_COUNT#' => $this->formatLimitValue($overLimit),
+						],
+						$this->getLanguage(),
+					),
+				];
+
+				$output = ',' . Json::encode($errorRow, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_IGNORE) . "\n";
+				echo $output;
+
+				$isOverLimit = true;
+			}
+
+			$output = ']';
+			echo $output;
+			$size += strlen($output);
+		}
+
+		$limitManager->fixLimit($count);
+		$manager->endQuery($logId, $count, $size, $isOverLimit);
+
+		$databaseConnection->unlock('biconnector_data');
+
+		return $result;
+	}
+}

@@ -1,0 +1,7 @@
+<?
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TEMPLATE_INSTALL_PROGRESS"] = "Attendi mentre il modello è in corso di installazione";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TEMPLATE_REINSTALL"] = "Reinstalla";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TEMPLATE_REINSTALL_COMPLETE"] = "Il modello #NAME# è stato installato";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TEMPLATE_REINSTALL_CONFIRM"] = "Sostituire il modello installato?";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TEMPLATE_REINSTALL_ERROR"] = "Impossibile installare il modello #NAME#";
+?>

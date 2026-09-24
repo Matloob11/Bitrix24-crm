@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_READ_DATA_ACTIVITY_DESCRIPTION"] = "Legge i dati dalla memoria.";
+$MESS["BIZPROC_READ_DATA_ACTIVITY_NAME"] = "Leggi i dati";
+$MESS["BIZPROC_READ_DATA_STORAGE_CATEGORY"] = "Memoria";

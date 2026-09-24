@@ -1,0 +1,25 @@
+<?
+$MESS["CRM_ADD_PRESET_DIALOG_ACTIVE_TITLE"] = "Attivo";
+$MESS["CRM_ADD_PRESET_DIALOG_BTN_ADD_TEXT"] = "Aggiungi";
+$MESS["CRM_ADD_PRESET_DIALOG_BTN_CANCEL_TEXT"] = "Annulla";
+$MESS["CRM_ADD_PRESET_DIALOG_BTN_EDIT_TEXT"] = "Applica";
+$MESS["CRM_ADD_PRESET_DIALOG_CREATE_NEW_TITLE"] = "Crea nuovo";
+$MESS["CRM_ADD_PRESET_DIALOG_CREATE_SELECTED_TITLE"] = "Seleziona da elenco";
+$MESS["CRM_ADD_PRESET_DIALOG_ERR_EMPTY_NAME"] = "Inserisci il nome del modello";
+$MESS["CRM_ADD_PRESET_DIALOG_ERR_LONG_NAME"] = "Il nome del modello è troppo lungo.";
+$MESS["CRM_ADD_PRESET_DIALOG_FIXED_PRESET_TITLE"] = "Seleziona campione";
+$MESS["CRM_ADD_PRESET_DIALOG_NAME_TITLE"] = "Nome";
+$MESS["CRM_ADD_PRESET_DIALOG_SORT_TITLE"] = "Ordina";
+$MESS["CRM_ALL"] = "Totale";
+$MESS["CRM_PRESET_LIST_ACTION_MENU_DELETE"] = "Elimina";
+$MESS["CRM_PRESET_LIST_ACTION_MENU_DELETE_CONF"] = "Eliminare questo modello?";
+$MESS["CRM_PRESET_LIST_ACTION_MENU_EDIT"] = "Modifica";
+$MESS["CRM_PRESET_LIST_ACTION_MENU_FIELD_LIST"] = "Campi";
+$MESS["CRM_PRESET_LIST_ACTION_MENU_SET_DEF_FOR_COMPANY"] = "Rendi primario per aziende";
+$MESS["CRM_PRESET_LIST_ACTION_MENU_SET_DEF_FOR_CONTACT"] = "Rendi primario per contatti";
+$MESS["CRM_PRESET_TOOLBAR_ADD"] = "Aggiungi modello";
+$MESS["CRM_PRESET_TOOLBAR_ADD_TITLE"] = "Aggiungi nuovo modello";
+$MESS["CRM_PRESET_TOOLBAR_EDIT"] = "Modifica modello";
+$MESS["CRM_PRESET_TOOLBAR_UFIELDS"] = "Campi personalizzati non utilizzati";
+$MESS["CRM_PRESET_TOOLBAR_UFIELDS_TITLE"] = "Visualizza campi personalizzati non utilizzati";
+?>

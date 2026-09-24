@@ -1,0 +1,22 @@
+<?php
+$MESS["BIZPROC_SCRIPT_EDIT_BTN_CHANGE"] = "Éditer";
+$MESS["BIZPROC_SCRIPT_EDIT_CONSTANT_DESCRIPTION"] = "Ces paramètres doivent être configurés avant le lancement de l'un des scripts pour s'assurer qu'il s'exécute correctement.";
+$MESS["BIZPROC_SCRIPT_EDIT_CONSTANT_LABEL"] = "Paramètres d'administration";
+$MESS["BIZPROC_SCRIPT_EDIT_DELAY_AFTER_HELP"] = "Délai avant l'exécution de la règle d'automatisation après le démarrage du script";
+$MESS["BIZPROC_SCRIPT_EDIT_DELAY_NOW_HELP"] = "La règle d'automatisation s'exécutera dès le démarrage du script";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_CONFIGS"] = "Configurer le script";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_GENERAL"] = "Description";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_ROBOTS"] = "Règles d'automatisation";
+$MESS["BIZPROC_SCRIPT_EDIT_MENU_TITLE"] = "Scripts intelligents";
+$MESS["BIZPROC_SCRIPT_EDIT_PARAMETER_DESCRIPTION"] = "Ces paramètres peuvent être configurés par un utilisateur à chaque fois que le script est lancé.";
+$MESS["BIZPROC_SCRIPT_EDIT_PARAMETER_LABEL"] = "Paramètres d'utilisateur";
+$MESS["BIZPROC_SCRIPT_EDIT_ROBOT_HELP"] = "Utilisez les règles d'automatisation pour rationaliser le processus de gestion des clients et aider les employés à suivre un chemin de traitement des prospects approuvé. Les règles d'automatisation exécutent des actions sans surveillance : envoyer des e-mails, passer des appels, etc.";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_DESCRIPTION"] = "Description";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_DESCRIPTION_TEXT"] = "Texte de description";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_NAME"] = "Nom du script";
+$MESS["BIZPROC_SCRIPT_EDIT_SCRIPT_NAME_DEFAULT"] = "Nouveau script";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_CONFIGS_EMPTY"] = "Aucune configuration supplémentaire n'est requise";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_GENERAL"] = "Description du script";
+$MESS["BIZPROC_SCRIPT_EDIT_SECTION_ROBOTS"] = "Configurer les règles d'automatisation";
+$MESS["BIZPROC_SCRIPT_EDIT_VALIDATION_EMPTY_CONFIGS"] = "Les paramètres d'administration doivent être fournis";
+$MESS["BIZPROC_SCRIPT_EDIT_VALIDATION_EMPTY_NAME"] = "Le nom du script n'est pas spécifié";

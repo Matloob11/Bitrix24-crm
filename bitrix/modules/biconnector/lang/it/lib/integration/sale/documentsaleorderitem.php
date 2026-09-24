@@ -1,0 +1,15 @@
+<?php
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_AMOUNT"] = "Quantità";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_COST_CURRENCY"] = "Valuta prezzo di acquisto o costo";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_COST_PRICE"] = "Prezzo di acquisto o costo";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_DATE_INSERT"] = "Data di aggiunta articolo all'ordine";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_DOCUMENT_DATE_CREATE"] = "Data di creazione oggetto dell'inventario";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_DOCUMENT_ID"] = "ID oggetto dell'inventario";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_ID"] = "ID univoco";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_NAME"] = "Nome prodotto";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_PRICE"] = "Prezzo di vendita";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_PRICE_CURRENCY"] = "Valuta prezzo di vendita";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_PRODUCT_ID"] = "ID prodotto";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_STORE_ID"] = "ID magazzino";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_TABLE"] = "Articoli dell'oggetto inventario di vendita";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_TABLE_DESCRIPTION_FULL"] = "Contiene informazioni sugli articoli negli oggetti inventario di vendita.";

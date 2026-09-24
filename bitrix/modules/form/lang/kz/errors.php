@@ -1,0 +1,20 @@
+<?php
+$MESS["FORM_ERROR_ACCESS_DENIED"] = "Қате! Қолжетімділікке тыйым салынған";
+$MESS["FORM_ERROR_ANSWER_NOT_FOUND"] = "Қате! Жауап табылмады";
+$MESS["FORM_ERROR_BAD_EMAIL"] = "Қате! Қате email мекенжайы енгізілді.";
+$MESS["FORM_ERROR_BAD_URL"] = "Қате! Қате URL енгізілді";
+$MESS["FORM_ERROR_CANNOT_DELETE_STATUS"] = "Қате! Кейбір нысан нәтижелері осы мәртебеде болғандықтан, оны жою мүмкін емес.";
+$MESS["FORM_ERROR_FIELD_NOT_FOUND"] = "Қате! Сұрақ/өріс табылмады";
+$MESS["FORM_ERROR_FILE_NOT_FOUND"] = "Қате! Файл табылмады";
+$MESS["FORM_ERROR_FORGOT_ANSWER_TEXT"] = "Қате! \"ANSWER_TEXT\" параметрі анықталмаған";
+$MESS["FORM_ERROR_FORGOT_NAME"] = "Қате! Сіз \"Атауы\" өрісін енгізуді ұмыттыңыз";
+$MESS["FORM_ERROR_FORGOT_QUESTION_ID"] = "Қате! Сұрақтың ID-і анықталмаған";
+$MESS["FORM_ERROR_FORGOT_SID"] = "Қате! Сіз \"Символдық идентификатор\" өрісін енгізуді ұмыттыңыз.";
+$MESS["FORM_ERROR_FORGOT_TITLE"] = "Қате! Сіз \"Тақырыпаты\" өрісін енгізуді ұмыттыңыз";
+$MESS["FORM_ERROR_FORM_ID_NOT_DEFINED"] = "Қате! Веб-нысан ID-і анықталмаған.";
+$MESS["FORM_ERROR_FORM_NOT_FOUND"] = "Қате! Веб-нысан табылмады";
+$MESS["FORM_ERROR_INCORRECT_SID"] = "Қате! Нысан символдық идентификаторы қате (тек латын әріптері, сандар немесе \"_\" символы рұқсат етілген)";
+$MESS["FORM_ERROR_NO_ANSWERS"] = "Қате! Сұраққа бірде-бір жауап көрсетілмеген!";
+$MESS["FORM_ERROR_RESULT_NOT_FOUND"] = "Қате! Нәтиже табылмады";
+$MESS["FORM_ERROR_STATUS_NOT_FOUND"] = "Қате! Мәртебе табылмады.";
+$MESS["FORM_ERROR_WRONG_SID"] = "Қате! Бұл \"Символдық идентификатор\" #TYPE# # #ID# ішінде қазірдің өзінде қолданылады.";

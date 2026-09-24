@@ -1,0 +1,22 @@
+<?php
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_BUTTON"] = "Adicionar check-in no trabalho";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CANCEL_TITLE"] = "Cancelar check-in no trabalho";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CHAT_SELECTOR_TITLE"] = "Selecionar um bate-papo";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_DESCRIPTION_PLACEHOLDER"] = "Adicionar comentário";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_ERROR"] = "Não é possível concluir a ação. Tente novamente mais tarde.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_ACTION"] = "Sim";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_DESCRIPTION"] = "Você precisa finalizar antes de reiniciar. Deseja finalizar agora?";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_TITLE"] = "Finalizar";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILES_BUTTON"] = "Arquivos: #COUNT#";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILES_BUTTON_MSGVER_1"] = "Imagens: #COUNT#";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILE_BUTTON_PLACEHOLDER"] = "Arquivos";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILE_BUTTON_PLACEHOLDER_MSGVER_1"] = "Imagem";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_GEO_PERMISSION_CANCEL_BUTTON"] = "Cancelar";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_MESSENGER_BUTTON_PLACEHOLDER"] = "Bate-papo";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_SUCCESS_TOAST"] = "Check-in no trabalho realizado com sucesso";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TITLE"] = "Novo check-in no trabalho";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_BUTTON_TEXT"] = "Permitir";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_DESCRIPTION"] = "Permitir se você quiser que seus usuários possam fazer check-in no trabalho com localização.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_TITLE"] = "Check-in desativado";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_BUTTON_TEXT"] = "Enviar uma mensagem para seu supervisor";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_DESCRIPTION"] = "Por favor, entre em contato com seu supervisor ou o administrador do Bitrix24.";

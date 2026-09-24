@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_FPS_12MONTH_ENTITY_TITLE_PATTERN"] = "Script de ventes répétées : client perdu";
+$MESS["CRM_FPS_12MONTH_PROMPT"] = "Le client ne fait plus affaire avec votre entreprise pour une raison quelconque. Contactez-le pour suggérer vos produits ou services.";
+$MESS["CRM_FPS_12MONTH_TITLE"] = "Client perdu";
+$MESS["CRM_FPS_AI_APPROVE_ENTITY_TITLE_PATTERN"] = "Vente répétée « Achats pour les fêtes »";
+$MESS["CRM_FPS_AI_APPROVE_PROMPT"] = "Ce client a effectué un achat pour les fêtes il y a un an. Vérifiez si le moment de son prochain achat approche et contactez le client pour lui suggérer vos produits ou services.";
+$MESS["CRM_FPS_AI_APPROVE_TITLE"] = "Achats pour les fêtes (intégré)";
+$MESS["CRM_FPS_AI_SCREENING_ENTITY_TITLE_PATTERN"] = "Vente répétée « Achats pour les fêtes »";
+$MESS["CRM_FPS_AI_SCREENING_PROMPT"] = "Ce client a effectué un achat pour les fêtes il y a un an. Vérifiez si le moment de son prochain achat approche et contactez le client pour lui suggérer vos produits ou services.";
+$MESS["CRM_FPS_AI_SCREENING_TITLE"] = "Achats pour les fêtes";
+$MESS["CRM_FPS_EVERY_HALF_YEAR_ENTITY_TITLE_PATTERN"] = "Script de ventes répétées : client semestriel";
+$MESS["CRM_FPS_EVERY_HALF_YEAR_PROMPT"] = "Ce client effectue un achat deux fois par an et le moment de son prochain achat approche. Contactez le client pour lui suggérer vos produits ou services.";
+$MESS["CRM_FPS_EVERY_HALF_YEAR_TITLE"] = "Client semestriel";
+$MESS["CRM_FPS_EVERY_MONTH_ENTITY_TITLE_PATTERN"] = "Script de ventes répétées : client mensuel";
+$MESS["CRM_FPS_EVERY_MONTH_PROMPT"] = "Ce client régulier effectue un achat une fois par mois et le moment de son prochain achat approche. Contactez le client pour lui suggérer vos produits ou services.";
+$MESS["CRM_FPS_EVERY_MONTH_TITLE"] = "Client mensuel";
+$MESS["CRM_FPS_EVERY_YEAR_ENTITY_TITLE_PATTERN"] = "Script de ventes répétées : client annuel";
+$MESS["CRM_FPS_EVERY_YEAR_PROMPT"] = "Ce client effectue un achat une fois à la même période de l'année. Près d'un an s'est écoulé depuis son dernier achat. Rappeler au client les articles qu'il a achetés l'année dernière.";
+$MESS["CRM_FPS_EVERY_YEAR_TITLE"] = "Client annuel";
+$MESS["CRM_FPS_LESS_12MONTH_ENTITY_TITLE_PATTERN"] = "Script de ventes répétées : client dormant";
+$MESS["CRM_FPS_LESS_12MONTH_PROMPT"] = "Le client était actif, mais il n'a pas fait d'achat depuis un certain temps. Donnez-lui un coup de pouce pour lui rappeler que vous êtes toujours en disponible et proposez une transaction lucrative.";
+$MESS["CRM_FPS_LESS_12MONTH_TITLE"] = "Client dormant";
+$MESS["CRM_FPS_REMAINING_ENTITY_TITLE_PATTERN"] = "Vente répétée \"Tout achat\"";
+$MESS["CRM_FPS_REMAINING_PROMPT"] = "Il s'agit d'un client récurrent. Vérifiez si c'est le bon moment pour lui suggérer d'acheter autre chose.";
+$MESS["CRM_FPS_REMAINING_TITLE"] = "Tout achat";

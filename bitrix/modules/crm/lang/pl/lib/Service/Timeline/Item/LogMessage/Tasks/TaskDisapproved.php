@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_ON_TASK_DISAPPROVED_TITLE"] = "Zadanie zwrócono do sprawdzenia";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_2"] = "W oczekiwaniu";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_3"] = "W toku";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_4"] = "Czeka na kontrolę";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_5"] = "Zakończone";

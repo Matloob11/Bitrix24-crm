@@ -1,0 +1,19 @@
+<?php
+$MESS["ERROR_TASKS_GUID_NON_UNIQUE"] = "La valeur GUID doit être unique";
+$MESS["TASKS_BAD_ASSIGNEE_EX"] = "L'utilisateur spécifié comme responsable n'a pas été trouvé.";
+$MESS["TASKS_BAD_ASSIGNEE_ID"] = "Le responsable n'est pas indiqué.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_COLLAB"] = "La personne responsable de la tâche n'est pas membre de la collab sélectionnée.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_GROUP"] = "La personne responsable de la tâche n'est pas membre du projet sélectionné.";
+$MESS["TASKS_BAD_CREATED_BY"] = "Le créateur n'est pas indiqué.";
+$MESS["TASKS_BAD_DURATION"] = "La durée prévue pour la tâche est trop longue";
+$MESS["TASKS_BAD_GROUP"] = "Aucun projet n'est associé à cette tâche.";
+$MESS["TASKS_BAD_PARENT_ID"] = "La tâche indiquée dans le champ &quot; Sous-tâche&quot; n'est pas trouvée.";
+$MESS["TASKS_BAD_PLAN_DATES"] = "Dans le planning des délais, la date de fin indiquée est antérieure à celle de début.";
+$MESS["TASKS_BAD_TITLE"] = "Le nom de la tâche n'est pas indiqué.";
+$MESS["TASKS_DEADLINE_OUT_OF_PROJECT_RANGE"] = "La date limite de la tâche est en dehors de la plage de dates du projet";
+$MESS["TASKS_DEPENDS_ON_SELF"] = "La tâche ne peut pas dépendre d'elle même.";
+$MESS["TASKS_INCORRECT_STATUS"] = "Statut incorrect";
+$MESS["TASKS_IS_LINKED_END_DATE_PLAN_REMOVE"] = "Impossible de supprimer le temps de réalisation de la tâche parce que la tâche a des dépendances";
+$MESS["TASKS_IS_LINKED_SET_PARENT"] = "Impossible d'assigner une tâche parente parce que la tâche dépend d'une autre";
+$MESS["TASKS_PLAN_DATE_END_OUT_OF_PROJECT_RANGE"] = "La date limite de la tâche prévue est en dehors de la plage de dates du projet";
+$MESS["TASKS_PLAN_DATE_START_OUT_OF_PROJECT_RANGE"] = "La date de début de la tâche prévue est en dehors de la plage de dates du projet";

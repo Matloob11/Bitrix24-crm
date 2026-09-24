@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_COMPLEX_ACTIVITY_SMART_INVOICE_DESCRIPTION"] = "Erstellt oder ändert Rechnungen, legt verantwortliche Person fest, ändert Phase und führt andere rechnungsbezogene Aktionen aus.";
+$MESS["CRM_COMPLEX_ACTIVITY_SMART_INVOICE_DESCRIPTION_NODE_ACTION_CHANGE"] = "Rechnung ändern";
+$MESS["CRM_COMPLEX_ACTIVITY_SMART_INVOICE_DESCRIPTION_NODE_ACTION_DELETE"] = "Rechnung löschen";
+$MESS["CRM_COMPLEX_ACTIVITY_SMART_INVOICE_DESCRIPTION_NODE_ACTION_SET_COMPANY"] = "Verknüpftes Unternehmen ändern";
+$MESS["CRM_COMPLEX_ACTIVITY_SMART_INVOICE_DESCRIPTION_NODE_ACTION_SET_CONTACT"] = "Verknüpften Kontakt ändern";
+$MESS["CRM_COMPLEX_ACTIVITY_SMART_INVOICE_NAME"] = "Rechnung";

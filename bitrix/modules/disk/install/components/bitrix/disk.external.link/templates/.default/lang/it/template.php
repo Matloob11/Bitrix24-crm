@@ -1,0 +1,26 @@
+<?php
+$MESS["DISK_EXT_LINK_B24"] = "Bitrix<span>24</span>";
+$MESS["DISK_EXT_LINK_B24_ADV_1"] = "Incarichi e progetti";
+$MESS["DISK_EXT_LINK_B24_ADV_2"] = "CRM";
+$MESS["DISK_EXT_LINK_B24_ADV_3"] = "IM e chat di gruppo";
+$MESS["DISK_EXT_LINK_B24_ADV_4"] = "Documenti";
+$MESS["DISK_EXT_LINK_B24_ADV_5"] = "Drive di gruppo";
+$MESS["DISK_EXT_LINK_B24_ADV_6"] = "Calendario";
+$MESS["DISK_EXT_LINK_B24_ADV_CREATE_LINK_TEXT"] = "Crea il tuo account Bitrix24 ora";
+$MESS["DISK_EXT_LINK_B24_ADV_TEXT"] = "Suite di collaborazione unificata";
+$MESS["DISK_EXT_LINK_FILE_COPY_LINK"] = "Condividi link";
+$MESS["DISK_EXT_LINK_FILE_DOWNLOAD"] = "Download";
+$MESS["DISK_EXT_LINK_FILE_SIZE"] = "Dimensione";
+$MESS["DISK_EXT_LINK_FILE_UPDATE_TIME"] = "Modificato il";
+$MESS["DISK_EXT_LINK_FOLDER_DOWNLOAD"] = "Scarica come archivio";
+$MESS["DISK_EXT_LINK_FOLDER_PROTECT_BY_PASSWORD"] = "Questa cartella è protetta da password.";
+$MESS["DISK_EXT_LINK_LABEL_BTN"] = "procedi";
+$MESS["DISK_EXT_LINK_LABEL_PASSWORD"] = "Password";
+$MESS["DISK_EXT_LINK_OPEN_FOLDER_GRAPH_MADE_BY_B24"] = "La cartella è condivisa usando Bitrix24";
+$MESS["DISK_EXT_LINK_OPEN_GRAPH_MADE_BY_B24"] = "Condivisione file con tecnologia Bitrix24";
+$MESS["DISK_EXT_LINK_PROTECT_BY_PASSWORD"] = "Questo file è protetto da password.";
+$MESS["DISK_EXT_LINK_PROTECT_BY_PASSWORD_DESCR"] = "Inserisci la password nel campo sottostante.";
+$MESS["DISK_EXT_LINK_PROTECT_BY_WRONG_PASSWORD"] = "La password non è corretta";
+$MESS["DISK_EXT_LINK_TITLE"] = "Scarica file";
+$MESS["DISK_EXT_SESSION_EXPIRED"] = "La pagina è stata ricaricata perché la sessione è scaduta. Si prega di riprovare.";
+$MESS["DISK_LABEL_GRID_TOTAL"] = "Totale";

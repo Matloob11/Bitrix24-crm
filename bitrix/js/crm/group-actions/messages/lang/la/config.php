@@ -1,0 +1,12 @@
+<?php
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_IN_PROGRESS"] = "Espere a que la operación anterior se complete.";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_NUMBER_SELECTOR"] = "Remitente";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_POPUP_COMPLIANCE"] = "Una negociación o prospecto se creará tan pronto como el cliente responda.";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_POPUP_FIRST"] = "Envíe mensajes a sus clientes.";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_POPUP_HOW"] = "Cómo funciona";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_POPUP_MORE"] = "Más información";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_POPUP_SEND"] = "Enviar";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_POPUP_START"] = "Empiece a comunicarse en WhatsApp";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_POPUP_TITLE"] = "Seleccionar la plantilla del mensaje";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_SENDER_SELECTOR"] = "Servicio";
+$MESS["CRM_GROUP_ACTIONS_WHATSAPP_MESSAGE_SETTINGS"] = "Configuración de la mensajería";

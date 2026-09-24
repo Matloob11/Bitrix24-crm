@@ -1,0 +1,22 @@
+<?php
+$MESS["DEAL_ORDER_SCENARIO"] = "Modalità di gestione ordini";
+$MESS["ORDER_ADD"] = "Nuovo ordine";
+$MESS["ORDER_ADD_TITLE"] = "Nuovo ordine";
+$MESS["ORDER_CANCEL"] = "Annulla ordine";
+$MESS["ORDER_CANCEL_TITLE"] = "Annulla ordine";
+$MESS["ORDER_COPY"] = "Copia";
+$MESS["ORDER_COPY_TITLE"] = "Copia ordine";
+$MESS["ORDER_DELETE"] = "Elimina ordine";
+$MESS["ORDER_DELETE_TITLE"] = "Elimina ordine";
+$MESS["ORDER_DOCUMENT_BUTTON_TEXT"] = "Documento";
+$MESS["ORDER_DOCUMENT_BUTTON_TITLE"] = "Crea un documento sull'ordine";
+$MESS["ORDER_EDIT_ORDER_FORM"] = "Configura il modulo Completa transazione";
+$MESS["ORDER_EDIT_ORDER_FORM_TITLE"] = "Configura il modulo Completa transazione";
+$MESS["ORDER_EXPORT_CSV"] = "Esporta gli ordini in CSV";
+$MESS["ORDER_EXPORT_CSV_TITLE"] = "Esporta gli ordini in CSV";
+$MESS["ORDER_EXPORT_EXCEL"] = "Esporta gli ordini in Microsoft Excel";
+$MESS["ORDER_EXPORT_EXCEL_TITLE"] = "Esporta gli ordini in Microsoft Excel";
+$MESS["ORDER_RESTORE"] = "Ripristina ordine";
+$MESS["ORDER_RESTORE_TITLE"] = "Ripristina ordine";
+$MESS["ORDER_STEXPORT_OPTION_EXPORT_ALL_FIELDS"] = "Esporta tutti i campi dell'ordine";
+$MESS["ORDER_STEXPORT_SUMMARY"] = "Verrà creato un file di esportazione dell'ordine. L'esportazione di una notevole quantità di dati potrebbe richiedere del tempo.";

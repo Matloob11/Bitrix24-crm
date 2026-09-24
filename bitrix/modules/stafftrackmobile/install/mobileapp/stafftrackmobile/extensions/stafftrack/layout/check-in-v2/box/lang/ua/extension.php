@@ -1,0 +1,20 @@
+<?php
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_BUTTON"] = "Додати";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CANCEL_TITLE"] = "Вийти із чекіна?";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CHAT_SELECTOR_TITLE"] = "Виберіть чат";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_DESCRIPTION_PLACEHOLDER"] = "Повідомлення до чекіна";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_ERROR"] = "Не вдалось виконати дію. Спробуйте ще раз трохи згодом.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_ACTION"] = "Завершити попередній день";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_DESCRIPTION"] = "Щоб розпочати новий робочий день, потрібно завершити попередній";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_TITLE"] = "Завершити попередній день?";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILES_BUTTON"] = "Файли: #COUNT#";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILE_BUTTON_PLACEHOLDER"] = "Файли";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_GEO_PERMISSION_CANCEL_BUTTON"] = "Скасувати";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_MESSENGER_BUTTON_PLACEHOLDER"] = "Чат";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_SUCCESS_TOAST"] = "Гарного дня!";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TITLE"] = "Новий чекін";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_BUTTON_TEXT"] = "Увімкнути";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_DESCRIPTION"] = "Увімкніть його для вашого Бітрікс24 — так співробітники зможуть відзначати своє місце розташування.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_TITLE"] = "Чекін вимкнено";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_BUTTON_TEXT"] = "Написати керівнику";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_DESCRIPTION"] = "Зверніться до керівника або адміністратора вашого Бітрікс24.";

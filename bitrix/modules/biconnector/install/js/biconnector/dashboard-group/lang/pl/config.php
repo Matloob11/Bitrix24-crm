@@ -1,0 +1,25 @@
+<?php
+$MESS["BI_GROUP_ADD_DASHBOARD"] = "Dodaj pulpity nawigacyjne";
+$MESS["BI_GROUP_DASHBOARD_SCOPES_EMPTY"] = "Wybierz zakres";
+$MESS["BI_GROUP_EMPTY_SUBTITLE"] = "Aby dodać pulpity nawigacyjne do tej grupy, kliknij „Dodaj pulpity nawigacyjne”.";
+$MESS["BI_GROUP_EMPTY_TITLE"] = "W tej grupie nie ma żadnych pulpitów nawigacyjnych";
+$MESS["BI_GROUP_NAME_NEW"] = "Nowa grupa";
+$MESS["BI_GROUP_SAVE"] = "Zapisz";
+$MESS["BI_GROUP_SAVE_CANCEL_MSGVER_1"] = "Anuluj";
+$MESS["BI_GROUP_SAVE_WARN_DONT_SHOW"] = "Nie pokazuj więcej";
+$MESS["BI_GROUP_SAVE_WARN_NO"] = "Nie";
+$MESS["BI_GROUP_SAVE_WARN_TEXT_MSGVER_1"] = "Czy na pewno chcesz usunąć pulpit nawigacyjny z grupy? Możesz utracić do niego dostęp.";
+$MESS["BI_GROUP_SAVE_WARN_TITLE"] = "Usuń pulpit nawigacyjny z grupy";
+$MESS["BI_GROUP_SAVE_WARN_YES"] = "Tak";
+$MESS["BI_GROUP_SCOPES_DASHBOARD"] = "#FIRST_SCOPES# [hint]i #NUMBER# więcej[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_EMPTY_MSGVER_1"] = "[title]Zakres pulpitu nawigacyjnego:[/title] wybierz";
+$MESS["BI_GROUP_SCOPES_GROUP_MANY_MSGVER_1"] = "[title]Zakres pulpitu nawigacyjnego:[/title] #FIRST_SCOPES# [hint]i #NUMBER# więcej[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_MSGVER_1"] = "[title]Zakres pulpitu nawigacyjnego:[/title] #SCOPE#";
+$MESS["BI_GROUP_SCOPE_HINT_MSGVER_1"] = "Wybrane zakresy zostaną zastosowane do wszystkich pulpitów nawigacyjnych w grupie. [link]Dowiedz się więcej[/link]";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_0"] = "#COUNT# pulpit nawigacyjny";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_1"] = "#COUNT# pulpity nawigacyjne";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_2"] = "#COUNT# pulpitów nawigacyjnych";
+$MESS["BI_GROUP_SYSTEM_NAME_HINT"] = "Nie można zmienić nazwy grupy systemowej.";
+$MESS["BI_GROUP_SYSTEM_SCOPES_HINT"] = "Nie można zmienić zakresu grupy systemowej.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE"] = "Aby usunąć zakres pulpitu nawigacyjnego, <br>usuń pulpit z grupy „#GROUP_NAME#”.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE_MANY"] = "Aby usunąć zakres pulpitu nawigacyjnego, <br>usuń pulpit z następujących grup:";

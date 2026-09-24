@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_DAY"] = "1 giorno";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_WEEK"] = "1 settimana";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_2_WEEKS"] = "2 settimana";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_3_DAYS"] = "3 giorni";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_CUSTOM"] = "Personalizzata";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_EMPTY"] = "Nessuna scadenza";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_HINT"] = "Questo lasso di tempo verrà impostato come scadenza predefinita per tutti i nuovi incarichi creati. Puoi modificarlo in qualsiasi momento.";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_TITLE"] = "Scadenza predefinita";
+$MESS["TASKS_DEADLINE_MENU_ERROR_DESCRIPTION"] = "Ricarica la pagina e riprova.";
+$MESS["TASKS_DEADLINE_MENU_ERROR_TITLE"] = "Errore";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DELIMITER"] = "Notifica per scadenza assente";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DONT_SKIP"] = "Ogni creazione di incarico";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_HINT"] = "Seleziona quando ricevere le notifiche sull'assenza di scadenze negli incarichi creati.";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOREVER"] = "Mai";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_DAY"] = "Non ricordarmelo oggi";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_MONTH"] = "Non ricordarmelo in questo mese";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_WEEK"] = "Non ricordarmelo questa settimana";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_TITLE"] = "Notifica per scadenza assente";

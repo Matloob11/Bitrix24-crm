@@ -1,0 +1,25 @@
+<?php
+$MESS["LANDING_TPL_ACTION_ADD"] = "Жаңа";
+$MESS["LANDING_TPL_ACTION_SELECT"] = "Таңдау";
+$MESS["LANDING_TPL_ACTION_VIEW"] = "Редакциялау";
+$MESS["LANDING_TPL_CREATE_EMPTY"] = "Бос үлгі";
+$MESS["LANDING_TPL_EMPTY_REPO_EXPIRED"] = "Сіздің өніміңіздің лицензиясы аяқталды";
+$MESS["LANDING_TPL_EMPTY_REPO_EXPIRED_LINK"] = "Өтінеміз, #LINK1#лицензияны ұзартыңыз#LINK2#";
+$MESS["LANDING_TPL_EMPTY_REPO_SERVICE"] = "Демо-үлгі сервисі уақытша қолжетімсіз. Кейінірек қайталап көріңіз немесе техникалық қолдауға жүгініңіз.";
+$MESS["LANDING_TPL_FEEDBACK_MESSAGE_2"] = "Сізге қажет үлгі тақырыбымен бөлісіңіз";
+$MESS["LANDING_TPL_FEEDBACK_SEND"] = "Жазу";
+$MESS["LANDING_TPL_FEEDBACK_TITLE"] = "Қажетті үлгіні таппадыңыз ба?";
+$MESS["LANDING_TPL_LABEL_FREE"] = "Тегін";
+$MESS["LANDING_TPL_LABEL_NEW"] = "жаңа";
+$MESS["LANDING_TPL_LABEL_SUBSCRIPTION"] = "Жазылым бойынша";
+$MESS["LANDING_TPL_LIMIT_REACHED_TITLE"] = "Шектеу асып кетті";
+$MESS["LANDING_TPL_LOAD_APP_TEMPLATE_2_MSGVER_1"] = "Битрикс24.Маркетплейс-тен үлгілерді <span>жүктеу</span>";
+$MESS["LANDING_TPL_MARKET_DISABLE_MSGVER_1"] = "Нысандар уақытша қолжетімсіз";
+$MESS["LANDING_TPL_NOT_FOUND_BUTTON"] = "Жазу";
+$MESS["LANDING_TPL_NOT_FOUND_TITLE"] = "Үлгіні таба алмадыңыз ба?";
+$MESS["LANDING_TPL_PAGE_LIMIT_REACHED_TEXT"] = "<p>Сіздің тарифтік жоспарыңызда жасалған парақшалар санына шектеу бар. Жаңа парақшаларды қосу үшін басқа тарифтер жоспарына өтіңіз.</p><p>&laquo;Компания&raquo; жоғарғы тарифінде парақшалар саны шектелмейді.</p>";
+$MESS["LANDING_TPL_TITLE"] = "Сәйкес үлгініты таңдаңыз";
+$MESS["LANDING_TPL_TITLE_GROUP"] = "Білім қорының үлгісін таңдаңыз";
+$MESS["LANDING_TPL_TITLE_KNOWLEDGE"] = "Білім қорының үлгісін таңдаңыз";
+$MESS["LANDING_TPL_TITLE_PAGE"] = "Сайттың үлгісін таңдаңыз";
+$MESS["LANDING_TPL_TITLE_STORE"] = "Дүкен үлгісін таңдаңыз";

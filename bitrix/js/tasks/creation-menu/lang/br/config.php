@@ -1,0 +1,7 @@
+<?php
+$MESS["TASKS_CREATION_MENU_CREATE_TASK"] = "Tarefa";
+$MESS["TASKS_CREATION_MENU_CREATE_TASK_BY_TEMPLATE"] = "Tarefa usando modelo";
+$MESS["TASKS_CREATION_MENU_EMPTY_TEMPLATE_LIST"] = "Não há nenhum modelo de tarefa";
+$MESS["TASKS_CREATION_MENU_ERROR_LOAD_TEMPLATE_LIST"] = "Erro ao carregar lista.";
+$MESS["TASKS_CREATION_MENU_LOAD_TEMPLATE_LIST"] = "Carregando a lista...";
+$MESS["TASKS_CREATION_MENU_TEMPLATE_LIST"] = "Todos os modelos";

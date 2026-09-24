@@ -1,0 +1,20 @@
+<?php
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_HINT"] = "Після підтвердження ви будете звільнені й більше не зможете увійти в Бітрікс24.\n\nПрава головного адміністратора отримає [USER=#USER_ID#]#USER_NAME#[/USER].";
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_TITLE"] = "Підтвердьте передавання прав і звільнення";
+$MESS["M_INTRANET_FIRE_ADMIN_REQUEST_ERROR"] = "Не вдалося виконати дію.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONFIRM_BUTTON"] = "Надіслати запит";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONSENT_INSTRUCTION"] = "Надіслати запит на передавання прав і звільнення?";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_DESCRIPTION"] = "Звільнити такого співробітника можна лише за його згодою.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_ERROR_TOAST"] = "Не вдалося надіслати запит на звільнення, спробуйте ще раз.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_HINT"] = "[USER=#USER_ID#]#USER_NAME#[/USER] — головний адміністратор вашого Бітрікс24 з доступом до всіх налаштувань. \n\nПісля звільнення ви станете головним адміністратором.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_REJECT_BUTTON"] = "Скасувати";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TITLE"] = "Звільнення головного адміністратора";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TOAST"] = "Запит надіслано. Коли адміністратор відповість, ви отримаєте повідомлення.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_BUTTON"] = "Підтвердити";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_WORD"] = "Передати";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONSENT_INSTRUCTION"] = "Напишіть «#CONFIRM_WORD#», якщо ви згодні:";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_DESCRIPTION"] = "Додаткове підтвердження необхідне для захисту від випадкового передавання прав і втрати доступу до налаштувань.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_ERROR_INPUT_TEXT"] = "Введіть слово «#CONFIRM_WORD#»";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_HINT"] = "Після підтвердження ви втратите доступ до налаштувань Бітрікс24.\n\nПрава головного адміністратора отримає [USER=#USER_ID#]#USER_NAME#[/USER].";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_REJECT_BUTTON"] = "Відмовитися";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_TITLE"] = "Підтвердьте передавання прав";

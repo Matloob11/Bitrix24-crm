@@ -1,0 +1,6 @@
+<?php
+$MESS["IM_VIEW_POPUP_CONTENT_GROUP_CHAT"] = "Chat privé";
+$MESS["IM_VIEW_POPUP_CONTENT_NO_ACCESS"] = "Accès interdit.";
+$MESS["IM_VIEW_POPUP_CONTENT_OPEN_CHAT"] = "Ouvrir chat";
+$MESS["IM_VIEW_POPUP_CONTENT_OPEN_HISTORY"] = "Historique";
+$MESS["IM_VIEW_POPUP_USER_OPEN_CHAT"] = "Envoyer un message";

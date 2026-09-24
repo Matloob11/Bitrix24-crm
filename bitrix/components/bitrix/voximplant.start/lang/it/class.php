@@ -1,0 +1,25 @@
+<?php
+$MESS["VOX_START_5_NUMBER_RENT"] = "Pacchetto 5 numeri";
+$MESS["VOX_START_10_NUMBER_RENT"] = "Pacchetto 10 numeri";
+$MESS["VOX_START_ACCESS_CONTROL"] = "Autorizzazioni di accesso";
+$MESS["VOX_START_CALLER_ID"] = "Connetti il tuo numero";
+$MESS["VOX_START_COMMON_SETTINGS"] = "Impostazioni telefonia";
+$MESS["VOX_START_CONFIGURE_BLACK_LIST"] = "Elenco esclusi";
+$MESS["VOX_START_CONFIGURE_GROUPS"] = "Gruppi coda";
+$MESS["VOX_START_CONFIGURE_IVR"] = "Menu vocale";
+$MESS["VOX_START_CONFIGURE_NUMBERS"] = "Configura numeri";
+$MESS["VOX_START_CONFIGURE_TELEPHONY"] = "Configura telefonia";
+$MESS["VOX_START_CONFIGURE_USERS"] = "Utenti telefonia";
+$MESS["VOX_START_CONTRACTOR_DOCUMENTS"] = "Fatture di telefonia";
+$MESS["VOX_START_CRM_CALLBACK"] = "Callback";
+$MESS["VOX_START_CRM_INTEGRATION_FORM_CREATE"] = "Crea";
+$MESS["VOX_START_CRM_INTEGRATION_FORM_HELP"] = "Come funziona?";
+$MESS["VOX_START_CRM_INTEGRATION_FORM_LIST"] = "Elenco dei moduli";
+$MESS["VOX_START_INTEGRATION_REQUIRED"] = "Hai bisogno di un'integrazione?";
+$MESS["VOX_START_NUMBER_RENT"] = "Noleggia un numero";
+$MESS["VOX_START_SEE_ALL"] = "Visualizza tutto";
+$MESS["VOX_START_SIP_PBX_CLOUD"] = "PBX su cloud";
+$MESS["VOX_START_SIP_PBX_OFFICE"] = "Office PBX";
+$MESS["VOX_START_SIP_PHONES"] = "Connetti ​​telefono";
+$MESS["VOX_START_TOTAL_APPLICATIONS"] = "App totali";
+$MESS["VOX_START_UPLOAD_DOCUMENTS"] = "Carica documentazione";

@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_SETTINGS_B2B_LOAD_DOCUMENT"] = "Dokument";
+$MESS["SIGN_SETTINGS_B2B_PREPARING_DOCUMENT"] = "Vorbereiten";
+$MESS["SIGN_SETTINGS_B2B_TITLE_SUB"] = "Drei einfache Schritte, um ein Dokument zum Unterschreiben zu senden";
+$MESS["SIGN_SETTINGS_B2E_COMPANY"] = "Unternehmen";
+$MESS["SIGN_SETTINGS_B2E_EMPLOYEES"] = "Mitarbeiter";
+$MESS["SIGN_SETTINGS_B2E_REGIONAL_SETTINGS"] = "Weitere Einstellungen";
+$MESS["SIGN_SETTINGS_B2E_REGIONAL_SETTINGS_SHORT"] = "Mehr";
+$MESS["SIGN_SETTINGS_B2E_ROUTES"] = "Routen";
+$MESS["SIGN_SETTINGS_B2E_TITLE_SUB"] = "Nur wenige Schritte, um ein Dokument zum Unterschreiben zu senden";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT"] = "Dokument zum Unterschreiben gesendet.";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT_GROUP"] = "Dokumente wurden zum Unterschreiben gesendet.";
+$MESS["SIGN_SETTINGS_CREATE_TEMPLATE"] = "Speichern";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT"] = "Senden";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT_CREATE"] = "Erstellen";
+$MESS["SIGN_SETTINGS_SEND_FOR_SIGN"] = "Zum Unterschreiben senden";
+$MESS["SIGN_SETTINGS_TEMPLATES_LIST"] = "Alle Vorlagen";
+$MESS["SIGN_SETTINGS_TEMPLATE_CHANGED"] = "Vorlage aktualisiert";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED"] = "Vorlage erstellt";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED_INFO"] = "Vorlagen und Routen im Elektronische Unterschrift für HR-Bereich bearbeiten.";
+$MESS["SIGN_SETTINGS_TITLE"] = "Neues Dokument";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE"] = "Vorlage erstellen";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE_EDIT"] = "Vorlage bearbeiten";

@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_SMS_SEND_COMPONENT_NOT_AVAILABLE"] = "Usługa SMS jest niedostępna";
+$MESS["CRM_SMS_SEND_COMPONENT_TITLE"] = "Wyślij SMS";
+$MESS["CRM_SMS_SEND_COMPONENT_TITLE_MSGVER_1"] = "Wyślij wiadomość";

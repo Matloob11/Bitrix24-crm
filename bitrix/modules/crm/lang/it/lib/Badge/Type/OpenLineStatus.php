@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_BADGE_OPEN_LINE_STATUS_FIELD_NAME"] = "Chat con il cliente";
+$MESS["CRM_BADGE__OPEN_LINE_CHAT_NOT_READ"] = "Non letto";
+$MESS["CRM_BADGE__OPEN_LINE_CHAT_PROCESSED_BY_AI_AGENT"] = "Con assistenza IA";

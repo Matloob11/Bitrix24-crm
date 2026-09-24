@@ -1,0 +1,19 @@
+<?php
+$MESS["BP_CRM_AUTOMATED_SOLUTION_FCT_DESCR_DESCR"] = "Wird ausgelöst, nachdem ein Feld der automatisierten Lösung geändert wird.";
+$MESS["BP_CRM_AUTOMATED_SOLUTION_FCT_DESCR_NAME"] = "Feld der automatisierten Lösung wurde geändert";
+$MESS["BP_CRM_COMPANY_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn das Feld Unternehmen aktualisiert wird.";
+$MESS["BP_CRM_COMPANY_FCT_DESCR_NAME"] = "Feld Unternehmen geändert";
+$MESS["BP_CRM_CONTACT_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn das Feld Kontakt aktualisiert wird.";
+$MESS["BP_CRM_CONTACT_FCT_DESCR_NAME"] = "Feld Kontakt geändert";
+$MESS["BP_CRM_DEAL_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn das Feld Auftrag aktualisiert wird.";
+$MESS["BP_CRM_DEAL_FCT_DESCR_NAME"] = "Feld Auftrag geändert";
+$MESS["BP_CRM_DYNAMIC_FCT_DESCR_DESCR"] = "Wird ausgelöst, nachdem ein Feld im Smartprozess geändert wird.";
+$MESS["BP_CRM_DYNAMIC_FCT_DESCR_NAME"] = "Feld im Smartprozess aktualisiert";
+$MESS["BP_CRM_LEAD_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn das Feld Lead aktualisiert wird.";
+$MESS["BP_CRM_LEAD_FCT_DESCR_NAME"] = "Feld Lead geändert";
+$MESS["BP_CRM_ORDER_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn das Feld Bestellung geändert wird.";
+$MESS["BP_CRM_ORDER_FCT_DESCR_NAME"] = "Feld Bestellung aktualisiert";
+$MESS["BP_CRM_QUOTE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein Angebotsfeld geändert wird.";
+$MESS["BP_CRM_QUOTE_FCT_DESCR_NAME"] = "Angebotsstatus aktualisiert";
+$MESS["BP_CRM_SMART_INVOICE_FCT_DESCR_DESCR"] = "Wird ausgelöst, wenn ein Rechnungsfeld geändert wird.";
+$MESS["BP_CRM_SMART_INVOICE_FCT_DESCR_NAME"] = "Rechnungsfeld geändert";

@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE"] = "Résumés de statut";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE_MULTI"] = "Résumés de statut : #COUNT#";

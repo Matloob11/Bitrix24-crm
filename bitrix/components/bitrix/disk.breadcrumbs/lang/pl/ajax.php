@@ -1,0 +1,4 @@
+<?
+$MESS["DISK_BREADCRUMBS_ERROR_COULD_NOT_FIND_FOLDER"] = "Nie można znaleźć folderu.";
+$MESS["DISK_BREADCRUMBS_TRASHCAN_NAME"] = "Kosz";
+?>

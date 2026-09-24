@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY"] = "Responsable";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_DEPARTMENT"] = "Service du responsable";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_DEPARTMENT_FULL"] = "Chemin dans la structure de l'entreprise";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_FULL"] = "L'ID et le nom de l'utilisateur qui a été désigné comme responsable de la transaction";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_ID"] = "ID du responsable";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_ID_FULL"] = "L'ID de l'utilisateur qui a été désigné comme responsable de la transaction";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_NAME"] = "Responsable";
+$MESS["CRM_BIC_DSH_FIELD_DATE_CREATE"] = "Date de création";
+$MESS["CRM_BIC_DSH_FIELD_DEAL_ID"] = "ID de transaction";
+$MESS["CRM_BIC_DSH_FIELD_END_DATE"] = "Date de clôture";
+$MESS["CRM_BIC_DSH_FIELD_ID"] = "Clé unique";
+$MESS["CRM_BIC_DSH_FIELD_STAGE"] = "Étape";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_ID"] = "ID de l’étape";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_NAME"] = "Nom de l'étape";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_SEMANTIC"] = "Type d'étape";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_SEMANTIC_ID"] = "ID du type d'étape";
+$MESS["CRM_BIC_DSH_FIELD_START_DATE"] = "Date de début";
+$MESS["CRM_BIC_DSH_FIELD_TYPE_ID"] = "Type d’enregistrement";
+$MESS["CRM_BIC_DSH_TABLE"] = "Transaction : historique des étapes";
+$MESS["CRM_BIC_DSH_TABLE_DESCRIPTION_FULL"] = "Contient des données sur l'avancement des transactions à partir des champs standard : date, statut de la transaction, nom des responsables, et plus encore.";

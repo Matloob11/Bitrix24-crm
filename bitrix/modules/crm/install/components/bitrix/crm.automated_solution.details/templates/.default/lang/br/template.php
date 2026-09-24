@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_CLOSE_TITLE"] = "Ocultar notificação";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_COMMON_DESCRIPTION"] = "Espaço de trabalho automatizado personalizado para o seu departamento. Todas as soluções automatizadas serão exibidas no menu à esquerda para acesso rápido.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_COMMON_TITLE"] = "Solução automatizada";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_TYPES_DESCRIPTION"] = "SPAs são componentes das suas soluções automatizadas. Use para criar entidades personalizadas como Candidato ou CV e gerenciar suas dependências. Você encontrará SPAs no menu superior.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_TYPES_TITLE"] = "Automações Inteligentes de Processos";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_CREATE_TYPE"] = "Crie uma nova SPA:";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_CRM_TYPES"] = "Migrar SPA do CRM:";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_EXTERNAL_TYPES"] = "Migrar solução automatizada SPA:";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_TITLE"] = "Nome da solução automatizada:";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_PLACEHOLDER_TITLE"] = "Exemplo: Departamento de RH";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_NEED_SAVE_POPUP_MESSAGE"] = "Salve a solução automatizada antes de criar a SPA.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_NEED_SAVE_POPUP_YES_CAPTION"] = "Salvar";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_PERMISSIONS_WILL_BE_RESET_ALERT"] = "Você terá que editar as permissões de acesso desta SPA novamente.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_COMMON"] = "Configurações";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_TITLE_COMMON"] = "Configurações da solução automatizada";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_TITLE_TYPES"] = "Automações Inteligentes de Processos";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_TYPES"] = "Automações Inteligentes de Processos";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAG_SELECTOR_ADD_BUTTON_CAPTION"] = "Selecionar";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TITLE"] = "Solução automatizada";

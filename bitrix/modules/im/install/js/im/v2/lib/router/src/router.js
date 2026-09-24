@@ -1,0 +1,88 @@
+import { Messenger } from 'im.public';
+import { GetParameter, RecentType } from 'im.v2.const';
+
+export const Router = {
+	handleGetParams(): void
+	{
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.has(GetParameter.openNotifications))
+		{
+			void Messenger.openNotifications();
+		}
+		else if (urlParams.has(GetParameter.openHistory))
+		{
+			const dialogId = urlParams.get(GetParameter.openHistory);
+			void Messenger.openLinesHistory(dialogId);
+		}
+		else if (urlParams.has(GetParameter.openLines))
+		{
+			const dialogId = urlParams.get(GetParameter.openLines);
+			void Messenger.openLines(dialogId);
+		}
+		else if (urlParams.has(GetParameter.botContext))
+		{
+			const dialogId = urlParams.get(GetParameter.openChat);
+			const rawContext = urlParams.get(GetParameter.botContext);
+
+			let context = {};
+			try
+			{
+				context = JSON.parse(decodeURIComponent(rawContext));
+			}
+			catch
+			{
+				console.error('Router: incorrect bot context');
+			}
+
+			const cleanUrl = new URL(window.location.href);
+			cleanUrl.searchParams.delete(GetParameter.botContext);
+			window.history.replaceState(null, '', cleanUrl);
+
+			void Messenger.openChatWithBotContext(dialogId, context);
+		}
+		else if (urlParams.has(GetParameter.openChat))
+		{
+			const dialogId = urlParams.get(GetParameter.openChat);
+			void Messenger.openChat(dialogId, extractMessageId(urlParams));
+		}
+		else if (urlParams.has(GetParameter.openSettings))
+		{
+			const settingsSection = urlParams.get(GetParameter.openSettings);
+			void Messenger.openSettings({ onlyPanel: settingsSection?.toLowerCase() });
+		}
+		else if (urlParams.has(GetParameter.openCopilotChat))
+		{
+			const dialogId = urlParams.get(GetParameter.openCopilotChat);
+			void Messenger.openCopilot(dialogId);
+		}
+		else if (urlParams.has(GetParameter.openChannel))
+		{
+			const dialogId = urlParams.get(GetParameter.openChannel);
+			void Messenger.openChannel(dialogId);
+		}
+		else if (urlParams.has(GetParameter.openCollab))
+		{
+			const dialogId = urlParams.get(GetParameter.openCollab) ?? '';
+			const recentType = urlParams.get(GetParameter.recentType) ?? RecentType.collabDefault;
+			void Messenger.openCollab(dialogId, { compactMode: false, recentType });
+		}
+		else if (urlParams.has(GetParameter.openSharedLink))
+		{
+			const code = urlParams.get(GetParameter.openSharedLink);
+			void Messenger.joinChatByCode(code);
+		}
+		else if (urlParams.has(GetParameter.openTaskComments))
+		{
+			const dialogId = urlParams.get(GetParameter.openTaskComments);
+
+			void Messenger.openTaskComments(dialogId ?? '', extractMessageId(urlParams));
+		}
+	},
+};
+
+const extractMessageId = (urlParams: URLSearchParams): number => {
+	let messageId = urlParams.get(GetParameter.openMessage);
+	messageId = messageId ? Number(messageId) : 0;
+
+	return messageId;
+};

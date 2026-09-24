@@ -1,0 +1,152 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Tasks\V2\Infrastructure\Controller\Task\Relation;
+
+use Bitrix\Main\Engine\ActionFilter\Attribute\Rule\CloseSession;
+use Bitrix\Main\Provider\Params\Pager;
+use Bitrix\Main\Provider\Params\SelectInterface;
+use Bitrix\Main\UI\PageNavigation;
+use Bitrix\Main\Validation\Rule\ElementsType;
+use Bitrix\Main\Validation\Rule\Enum\Type;
+use Bitrix\Tasks\V2\Infrastructure\Controller\BaseController;
+use Bitrix\Tasks\V2\Internal\Access\Task\Permission;
+use Bitrix\Tasks\V2\Internal\Entity;
+use Bitrix\Tasks\V2\Public\Command\Task\Relation\AddRelatedTaskCommand;
+use Bitrix\Tasks\V2\Public\Command\Task\Relation\DeleteRelatedTaskCommand;
+use Bitrix\Tasks\V2\Public\Provider\Params\Relation\RelationTaskParams;
+use Bitrix\Tasks\V2\Public\Provider\Params\Relation\RelationTaskByIdsParams;
+use Bitrix\Tasks\V2\Public\Provider\Relation\RelatedTaskProvider;
+use Bitrix\Tasks\Validation\Rule\Count;
+
+class Related extends BaseController
+{
+	/**
+	 * @ajaxAction tasks.V2.Task.Relation.Related.list
+	 */
+	public function listAction(
+		#[Permission\Read]
+		Entity\Task $task,
+		PageNavigation $pageNavigation,
+		RelatedTaskProvider $relatedTaskProvider,
+		?SelectInterface $relationTaskSelect = null,
+		bool $withIds = true,
+		bool $withCompleted = true,
+	): array
+	{
+		$params = new RelationTaskParams(
+			userId: $this->userId,
+			taskId: (int)$task->id,
+			templateId: 0,
+			pager: Pager::buildFromPageNavigation($pageNavigation),
+			select: $relationTaskSelect,
+			checkRootAccess: false,
+			withCompleted: $withCompleted,
+			withSubTasks: false,
+		);
+
+		$response = [
+			'tasks' => $relatedTaskProvider->getTasks($params),
+		];
+
+		if ($withIds)
+		{
+			$idsData = $relatedTaskProvider->getTaskIdsWithStatuses($params);
+
+			$response['ids'] = $idsData['ids'];
+			$response['statuses'] = $idsData['statuses'];
+		}
+
+		return $response;
+	}
+
+	/**
+	 * @ajaxAction tasks.V2.Task.Relation.Related.listByIds
+	 */
+	#[CloseSession]
+	public function listByIdsAction(
+		#[ElementsType(typeEnum: Type::Numeric)]
+		array $taskIds,
+		RelatedTaskProvider $relatedTaskProvider,
+		bool $withCompleted = false,
+	): array
+	{
+		$params = new RelationTaskByIdsParams(
+			taskIds: $taskIds,
+			userId: $this->userId,
+			withCompleted: $withCompleted,
+			withSubTasks: true,
+		);
+
+		return [
+			'tasks' => $relatedTaskProvider->getTasksByIds($params),
+		];
+	}
+
+	/**
+	 * @ajaxAction tasks.V2.Task.Relation.Related.add
+	 */
+	public function addAction(
+		#[Permission\Update]
+		Entity\Task $task,
+		#[Count(min: 1, max: 50)]
+		#[Permission\Read]
+		Entity\TaskCollection $tasks,
+	): ?array
+	{
+		$response = [];
+
+		foreach ($tasks as $relatedTask)
+		{
+			$relatedTaskId = (int)$relatedTask->id;
+
+			$result = (new AddRelatedTaskCommand(
+				taskId: (int)$task->id,
+				relatedTaskId: $relatedTaskId,
+				userId: $this->userId,
+				useConsistency: true,
+			))->run();
+
+			$response[$relatedTaskId] = $result->isSuccess();
+			if (!$result->isSuccess())
+			{
+				$this->addErrors($result->getErrors());
+			}
+		}
+
+		return $response;
+	}
+
+	/**
+	 * @ajaxAction tasks.V2.Task.Relation.Related.delete
+	 */
+	public function deleteAction(
+		#[Permission\Update]
+		Entity\Task $task,
+		#[Count(min: 1, max: 50)]
+		#[Permission\Read]
+		Entity\TaskCollection $tasks,
+	): ?array
+	{
+		$response = [];
+		foreach ($tasks as $relatedTask)
+		{
+			$relatedTaskId = (int)$relatedTask->id;
+			$result = (new DeleteRelatedTaskCommand(
+				taskId: (int)$task->id,
+				relatedTaskId: $relatedTaskId,
+				userId: $this->userId,
+				useConsistency: true,
+			))->run();
+
+			$response[$relatedTaskId] = $result->isSuccess();
+			if (!$result->isSuccess())
+			{
+				$this->addErrors($result->getErrors());
+			}
+		}
+
+		return $response;
+	}
+}

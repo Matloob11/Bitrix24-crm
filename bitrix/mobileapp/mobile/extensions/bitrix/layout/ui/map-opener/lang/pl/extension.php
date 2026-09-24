@@ -1,0 +1,7 @@
+<?php
+$MESS["UI_MAP_OPENER_2GIS_TITLE"] = "2GIS";
+$MESS["UI_MAP_OPENER_APPLE_TITLE"] = "Mapy Apple";
+$MESS["UI_MAP_OPENER_BACKDROP_TITLE"] = "Wyświetl na mapie";
+$MESS["UI_MAP_OPENER_GEO_TITLE"] = "Wybierz aplikację";
+$MESS["UI_MAP_OPENER_GOOGLE_TITLE"] = "Mapy Google";
+$MESS["UI_MAP_OPENER_YANDEX_TITLE"] = "Yandex.Maps";

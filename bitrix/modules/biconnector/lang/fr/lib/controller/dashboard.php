@@ -1,0 +1,27 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_COPY"] = "Autorisation insuffisante pour copier le tableau de bord. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_DELETE"] = "Autorisation insuffisante pour supprimer le tableau de bord. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EDIT"] = "Autorisation insuffisante pour modifier le tableau de bord. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EXPORT"] = "Autorisation insuffisante pour exporter le tableau de bord. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_SHARE"] = "Autorisation insuffisante pour partager le tableau de bord. Veuillez contacter votre responsable ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_TAG_MODIFY"] = "Autorisation insuffisante pour modifier les balises du tableau de bord. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_VIEW"] = "Autorisation insuffisante pour afficher le tableau de bord. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPIED_DASHBOARD_TITLE"] = "#DASHBOARD_TITLE# (copie)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPY_ERROR"] = "Erreur lors de la copie du tableau de bord. Veuillez réessayer.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR"] = "Impossible de supprimer le tableau de bord. Veuillez réessayer.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_COPIED"] = "Veuillez supprimer toutes les copies de ce tableau de bord avant de le supprimer.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_HAS_RELATED_ENTITIES"] = "Impossible de supprimer le tableau de bord installé à partir de Market, car les diagrammes et ensembles de données de ce tableau de bord sont utilisés par d'autres tableaux de bord de votre Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_SYSTEM"] = "Impossible de supprimer le tableau de bord intégré.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DISCUSSION_CHAT_OPEN_ERROR"] = "Impossible d'ouvrir le chat du tableau de bord. Veuillez réessayer.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EMPTY_DASHBOARD_NAME"] = "Nouveau tableau de bord";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ERROR_NOT_FOUND"] = "Le tableau de bord est introuvable.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD"] = "#DATE_FROM# - #DATE_TO#";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_DEFAULT"] = "Par défaut";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_INCLUDE_LAST_FILTER_DATE"] = "#DATE_FROM# - #DATE_TO# (date de fin incluse)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_ERROR"] = "Impossible d'exporter le tableau de bord. Veuillez réessayer.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_EMPTY"] = "Le nom du tableau de bord est requis";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_FOUND"] = "Ce tableau de bord n'existe plus. Actualisez la page";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_READY"] = "Le tableau de bord est toujours en cours d'installation. Attendez la fin de l'installation et réessayez";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_ONLY_CUSTOM_MSGVER_1"] = "Impossible de renommer les tableaux de bord intégrés ou Market. Créez une copie de ce tableau de bord et renommez-le";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_UNHANDLED"] = "Impossible de changer le nom du tableau de bord, réessayez.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_UNAVAILABLE"] = "Impossible de changer le nom du tableau de bord, réessayez plus tard";

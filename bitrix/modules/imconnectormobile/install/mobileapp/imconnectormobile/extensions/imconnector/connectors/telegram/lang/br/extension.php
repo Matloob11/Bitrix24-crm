@@ -1,0 +1,37 @@
+<?php
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_BANNER_DESCRIPTION"] = "Bot de bate-papo [B]#BOT_NAME#[/B] conectado.
+Aagora as mensagens do cliente são encaminhadas deste bate-papo para o seu Bitrix24";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_COPY_LINK"] = "Copiar link";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_COPY_LINK_COMPLETE"] = "Link copiado";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_DISABLE"] = "Desconectar Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_DISABLE_ALERT_BUTTON"] = "Desconectar";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_DISABLE_ALERT_TITLE"] = "Tem certeza de que deseja desconectar o Telegram?";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_GO_TO_WEB_HINT_MSGVER_1"] = "Disponível apenas na versão web";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_GO_TO_WEB_TITLE_MSGVER_1"] = "Abrir versão web";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_ADVANCED_SETTINGS"] = "Configurações estendidas";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_DESCRIPTION"] = "A mensagem será encaminhada automaticamente para o primeiro agente disponível na fila";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_FIELD_TITLE"] = "Fila de agentes";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_SELECTOR_TITLE"] = "Selecionar agentes";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_QUEUE_TITLE"] = "Configurar fila de agentes";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_SAVE"] = "Salvar";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_SHARE_TITLE"] = "Copie e envie o link para o cliente para se comunicar com ele usando o Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_EDIT_TITLE"] = "Canais Abertos: Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_BUTTON_NAME"] = "OK";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_INVALID_TOKEN_DESCRIPTION"] = "Verifique se você copiou o token corretamente";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_INVALID_TOKEN_TITLE"] = "Token inválido";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_UNKNOWN_ERROR_DESCRIPTION"] = "Tente mais tarde";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_ALERT_UNKNOWN_ERROR_TITLE"] = "Ocorreu um erro ";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_BANNER_DESCRIPTION"] = "Os clientes vão se comunicar com você usando o aplicativo de mensagem preferido. O registro da mensagem será salvo nos negócios";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_BANNER_TITLE"] = "Convide seu cliente para o Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_COMPLETE_DESCRIPTION"] = "Agora seus clientes podem enviar mensagens pelo Telegram. O registro da mensagem será salvo nos negócios";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_COMPLETE_TITLE"] = "Bot do Telegram conectado";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_CONTINUE"] = "Continuar";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_GO_TO_TELEGRAM"] = "Abrir Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_LOADER_DESCRIPTION"] = "Conectando o bot do Telegram ao seu Bitrix24. Levará alguns instantes";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_LOADER_TITLE"] = "Conectar Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_1_DESCRIPTION_MSGVER_1"] = "Uma vez concluída esta etapa, você receberá um token de acesso. [URL]Como funciona?[/URL]";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_1_TITLE"] = "Configurar um bot do Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_2_DESCRIPTION"] = "Copie o token no bate-papo de configuração do bot e cole abaixo";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_STEP_2_TITLE"] = "Inserir token";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_TITLE"] = "Conectar Telegram";
+$MESS["IMCONNECTORMOBILE_TELEGRAM_REGISTRY_TOKEN_INPUT_PLACEHOLDER"] = "Insira o token aqui";

@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_CONTACT_DETAIL_ATTR_GR_TYPE_JUNK"] = "Utracone";
+$MESS["CRM_CONTACT_DETAIL_ATTR_GR_TYPE_PIPELINE"] = "W toku + wygrany";
+$MESS["CRM_CONTACT_DETAIL_ATTR_REQUIRED_FULL"] = "Wymagane rozpoczęcie od etapu";
+$MESS["CRM_CONTACT_DETAIL_ATTR_REQUIRED_FULL_1"] = "Wymagany na etapie";
+$MESS["CRM_CONTACT_DETAIL_ATTR_REQUIRED_SHORT"] = "Wymagany";
+$MESS["CRM_CONTACT_DETAIL_HISTORY_STUB"] = "Teraz dodajesz kontakt...";

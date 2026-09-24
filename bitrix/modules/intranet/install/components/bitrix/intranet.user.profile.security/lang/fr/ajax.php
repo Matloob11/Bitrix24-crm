@@ -1,0 +1,12 @@
+<?php
+$MESS["INTRANET_USER_PROFILE_AUTH_TITLE_2"] = "Authentification";
+$MESS["INTRANET_USER_PROFILE_MAILING_TITLE"] = "Abonnements à la lettre d'information Bitrix24";
+$MESS["INTRANET_USER_PROFILE_PASSWORD_TITLE"] = "Modifier le mot de passe";
+$MESS["INTRANET_USER_PROFILE_RECOVERY_CODES_TITLE"] = "Codes de récupération";
+$MESS["INTRANET_USER_PROFILE_SECURITY_OTP_TITLE"] = "Options de sécurité supplémentaires";
+$MESS["INTRANET_USER_PROFILE_SECURITY_OTP_TITLE_MSGVER_1"] = "Sécurité";
+$MESS["INTRANET_USER_PROFILE_SECURITY_PASSWORDS_TITLE"] = "Mots de passe d'application";
+$MESS["INTRANET_USER_PROFILE_SOCNET_EMAIL_TITLE"] = "Adresses de transfert d'e-mail";
+$MESS["INTRANET_USER_PROFILE_SOCSERV_TITLE"] = "Plateformes sociales";
+$MESS["INTRANET_USER_PROFILE_SSO_TITLE"] = "SSO et SCIM";
+$MESS["INTRANET_USER_PROFILE_SYNCHRONIZE_TITLE"] = "Synchroniser";

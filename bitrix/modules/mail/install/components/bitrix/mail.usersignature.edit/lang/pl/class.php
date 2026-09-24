@@ -1,0 +1,4 @@
+<?php
+$MESS["MAIL_USERSIGNATURE_ADD_TITLE"] = "Dodaj podpis";
+$MESS["MAIL_USERSIGNATURE_EDIT_TITLE"] = "Edytuj podpis";
+$MESS["MAIL_USERSIGNATURE_SENDER_SELECT"] = "Połącz do ";

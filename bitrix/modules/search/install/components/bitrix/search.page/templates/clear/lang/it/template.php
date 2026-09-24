@@ -1,0 +1,21 @@
+<?php
+$MESS["CT_BSP_ALL"] = "(tutto)";
+$MESS["CT_BSP_AND"] = "e";
+$MESS["CT_BSP_AND_ALT"] = "L'operatore <i>logico e</i> è implicito e può essere omesso: una query &quot;informazioni contatto&quot; è completamente equivalente a &quot;informazioni e contatto&quot;.";
+$MESS["CT_BSP_BRACKETS_ALT"] = "Le <i>parentesi tonde</i> definiscono la precedenza dell'operatore logico.";
+$MESS["CT_BSP_CORRECT_AND_CONTINUE"] = "Correggi la frase di ricerca e riprova.";
+$MESS["CT_BSP_DESCRIPTION"] = "Descrizione";
+$MESS["CT_BSP_ERROR"] = "Errore nella frase di ricerca:";
+$MESS["CT_BSP_FOUND"] = "Trovato";
+$MESS["CT_BSP_FOUND_COUNT"] = "Trovato";
+$MESS["CT_BSP_GO"] = "Ricerca";
+$MESS["CT_BSP_KEYBOARD_WARNING"] = "Lingua di input della query modificata per \"#query#\".";
+$MESS["CT_BSP_LOGIC"] = "Operatori logici:";
+$MESS["CT_BSP_NOT"] = "non";
+$MESS["CT_BSP_NOTHING_TO_FOUND"] = "Sfortunatamente, la tua ricerca non ha restituito alcun documento.";
+$MESS["CT_BSP_NOT_ALT"] = "L'operatore <i>logico non</i> limita le ricerche alle pagine che non contengono l'operando.";
+$MESS["CT_BSP_OPERATOR"] = "Operatore";
+$MESS["CT_BSP_OR"] = "o";
+$MESS["CT_BSP_OR_ALT"] = "L'operatore <i>logico o</i> consente la ricerca di entità contenenti almeno uno degli operandi.";
+$MESS["CT_BSP_SINTAX"] = "<b>Sintassi della query di ricerca:</b><br /><br />Una query di ricerca comune è composta da una o più parole, ad esempio:<br /><i>informazioni contatto</i><br />Questa query troverà pagine contenenti entrambe le parole della query.<br /><br />Gli operatori logici consentono di creare query più complesse, ad esempio: <br /><i>informazioni contatto o telefono</i><br />Questa query troverà le pagine contenenti le parole &quot;contatto&quot; e &quot;informazioni&quot;, oppure &quot;telefono&quot;.<br /><br /> <i>informazioni contatto non telefono</i><br /> Questa query troverà pagine contenenti le parole &quot;contatto&quot; e &quot;informazioni&quot;, ma non &quot;telefono&quot;.<br /> Puoi utilizzare le parentesi per creare query più complesse.<br />";
+$MESS["CT_BSP_SYNONIM"] = " Sinonimi";

@@ -1,0 +1,9 @@
+<?php
+$MESS["IM_HR_INTEGRATION_CHANNEL_FINISH_ADD"] = "Dział „#DEPARTMENT_NAME#” dołączył do kanału.";
+$MESS["IM_HR_INTEGRATION_CHANNEL_FINISH_ADD_TEAM"] = "Zespół „#DEPARTMENT_NAME#” dołączył do kanału.";
+$MESS["IM_HR_INTEGRATION_CHANNEL_FINISH_DELETE_MSGVER_1"] = "Dział „#DEPARTMENT_NAME#” został usunięty z kanału.";
+$MESS["IM_HR_INTEGRATION_CHANNEL_FINISH_DELETE_TEAM"] = "Zespół „#DEPARTMENT_NAME#” został usunięty z kanału.";
+$MESS["IM_HR_INTEGRATION_CHAT_FINISH_ADD_MSGVER_2"] = "Pracownicy działu „#DEPARTMENT_NAME#” dołączyli do czatu.";
+$MESS["IM_HR_INTEGRATION_CHAT_FINISH_ADD_TEAM"] = "Zespół „#DEPARTMENT_NAME#” dołączył do czatu.";
+$MESS["IM_HR_INTEGRATION_CHAT_FINISH_DELETE_MSGVER_2"] = "Dział „#DEPARTMENT_NAME#” został usunięty z czatu.";
+$MESS["IM_HR_INTEGRATION_CHAT_FINISH_DELETE_TEAM"] = "Zespół „#DEPARTMENT_NAME#” został usunięty z czatu.";

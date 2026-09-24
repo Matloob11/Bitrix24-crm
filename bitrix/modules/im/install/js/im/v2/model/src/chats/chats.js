@@ -1,0 +1,474 @@
+import { Type, type JsonObject } from 'main.core';
+import { BuilderModel, type GetterTree, type ActionTree, type MutationTree } from 'ui.vue3.vuex';
+
+import { Core } from 'im.v2.application.core';
+import { Color, ChatType, UserRole, type RecentTypeItem, ParentChatScope } from 'im.v2.const';
+import { Utils } from 'im.v2.lib.utils';
+import { formatFieldsWithConfig } from 'im.v2.model';
+
+import { type Chat as ImModelChat } from '../type/chat';
+import { chatFieldsConfig } from './format/field-config';
+import { AutoDeleteModel } from './nested-modules/auto-delete/auto-delete';
+import { CollabsModel } from './nested-modules/collabs/collabs';
+import { InputActionsModel } from './nested-modules/input-actions';
+
+type ChatState = {
+	collection: {[dialogId: string]: ImModelChat},
+};
+
+type ClearMarkedPayload = {
+	recentType: RecentTypeItem,
+	parentChatId: number,
+};
+
+/* eslint-disable no-param-reassign */
+export class ChatsModel extends BuilderModel
+{
+	getName(): string
+	{
+		return 'chats';
+	}
+
+	getNestedModules(): { [moduleName: string]: BuilderModel }
+	{
+		return {
+			collabs: CollabsModel,
+			inputActions: InputActionsModel,
+			autoDelete: AutoDeleteModel,
+		};
+	}
+
+	getState(): ChatState
+	{
+		return {
+			collection: {},
+		};
+	}
+
+	getElementState(): ImModelChat
+	{
+		return {
+			dialogId: '0',
+			chatId: 0,
+			type: ChatType.chat,
+			name: '',
+			description: '',
+			avatar: '',
+			color: Color.base,
+			extranet: false,
+			containsCollaber: false,
+			userCounter: 0,
+			guestCount: 0,
+			lastReadId: 0,
+			markedId: 0,
+			lastMessageId: 0,
+			lastMessageViews: {
+				countOfViewers: 0,
+				firstViewer: null,
+				messageId: 0,
+			},
+			savedPositionMessageId: 0,
+			managerList: [],
+			inputActionList: {},
+			isMuted: false,
+			quoteId: 0,
+			ownerId: 0,
+			entityLink: {},
+			dateCreate: null,
+			public: {
+				code: '',
+				link: '',
+			},
+			inited: false,
+			loading: false,
+			hasPrevPage: false,
+			hasNextPage: false,
+			diskFolderId: 0,
+			role: UserRole.member,
+			permissions: {
+				manageUi: UserRole.none,
+				manageSettings: UserRole.none,
+				manageUsersAdd: UserRole.none,
+				manageUsersDelete: UserRole.none,
+				manageMessages: UserRole.member,
+				manageGuestInvites: UserRole.none,
+				manageDelete: UserRole.none,
+			},
+			// Phase 0 (task 718250): superadmin project chat access
+			hasManageCapability: false,
+			tariffRestrictions: {
+				isHistoryLimitExceeded: false,
+			},
+			parentChatId: 0,
+			backgroundId: '',
+			isTextareaEnabled: true,
+		};
+	}
+
+	// eslint-disable-next-line max-lines-per-function
+	getGetters(): GetterTree
+	{
+		return {
+			/** @function chats/get */
+			get: (state: ChatState) => (dialogId: string, getBlank: boolean = false) => {
+				const collectionItem = state.collection[dialogId];
+				if (!collectionItem && getBlank)
+				{
+					return this.getElementState();
+				}
+
+				if (!collectionItem && !getBlank)
+				{
+					return null;
+				}
+
+				return collectionItem;
+			},
+			/** @function chats/getByChatId */
+			getByChatId: (state: ChatState) => (chatId: number | string, getBlank: boolean = false) => {
+				const preparedChatId = Number.parseInt(chatId, 10);
+
+				const chat = Object.values(state.collection).find((item) => {
+					return item.chatId === preparedChatId;
+				});
+
+				if (!chat && getBlank)
+				{
+					return this.getElementState();
+				}
+
+				return chat;
+			},
+			/** @function chats/getQuoteId */
+			getQuoteId: (state: ChatState) => (dialogId: string) => {
+				const collectionItem = state.collection[dialogId];
+				if (!collectionItem)
+				{
+					return 0;
+				}
+
+				return collectionItem.quoteId;
+			},
+			/** @function chats/getLastReadId */
+			getLastReadId: (state: ChatState) => (dialogId: string): number => {
+				const collectionItem = state.collection[dialogId];
+				if (!collectionItem)
+				{
+					return 0;
+				}
+
+				const { lastReadId } = collectionItem;
+				const lastReadIdMessage = Core.getStore().getters['messages/getById'](lastReadId);
+				if (!lastReadIdMessage)
+				{
+					return 0;
+				}
+
+				return lastReadId;
+			},
+			/** @function chats/getInitialMessageId */
+			getInitialMessageId: (state: ChatState) => (dialogId: string): number => {
+				const collectionItem = state.collection[dialogId];
+				if (!collectionItem)
+				{
+					return 0;
+				}
+
+				const { lastReadId, markedId } = collectionItem;
+				if (markedId === 0)
+				{
+					return lastReadId;
+				}
+
+				return Math.min(lastReadId, markedId);
+			},
+			/** @function chats/getBackgroundId */
+			getBackgroundId: (state: ChatState) => (dialogId: string): string => {
+				const collectionItem = state.collection[dialogId];
+				if (!collectionItem)
+				{
+					return '';
+				}
+
+				return collectionItem.backgroundId;
+			},
+			/** @function chats/getCollectionByParentChatId */
+			getCollectionByParentChatId: (state: ChatState) => (parentChatId: number): ImModelChat[] => {
+				if (parentChatId === ParentChatScope.all)
+				{
+					return Object.values(state.collection);
+				}
+
+				return Object.values(state.collection).filter((item) => {
+					return item.parentChatId === parentChatId;
+				});
+			},
+			/** @function chats/getParent */
+			getParent: () => (dialogId: string): ?ImModelChat => {
+				const chat: ImModelChat = Core.getStore().getters['chats/get'](dialogId);
+				if (!chat || chat.parentChatId === 0)
+				{
+					return null;
+				}
+
+				return Core.getStore().getters['chats/getByChatId'](chat.parentChatId);
+			},
+			/** @function chats/isUser */
+			isUser: (state: ChatState) => (dialogId: string): boolean => {
+				const collectionItem = state.collection[dialogId];
+				if (!collectionItem)
+				{
+					return false;
+				}
+
+				return collectionItem.type === ChatType.user;
+			},
+			/** @function chats/isSupport */
+			isSupport: (state: ChatState) => (dialogId: string): boolean => {
+				const collectionItem = state.collection[dialogId];
+				if (!collectionItem)
+				{
+					return false;
+				}
+
+				return collectionItem.type === ChatType.support24Question;
+			},
+			/** @function chats/isSelfChat */
+			isSelfChat: () => (dialogId: string): boolean => {
+				return Core.getUserId().toString() === dialogId;
+			},
+		};
+	}
+
+	// eslint-disable-next-line max-lines-per-function
+	getActions(): ActionTree
+	{
+		return {
+			/** @function chats/set */
+			set: (store, rawPayload: Array | Object) => {
+				let payload = rawPayload;
+				if (!Array.isArray(payload) && Type.isPlainObject(payload))
+				{
+					payload = [payload];
+				}
+
+				payload.map((element) => {
+					return this.formatFields(element);
+				}).forEach((element) => {
+					const existingItem = store.state.collection[element.dialogId];
+					if (existingItem)
+					{
+						store.commit('update', {
+							dialogId: element.dialogId,
+							fields: element,
+						});
+					}
+					else
+					{
+						store.commit('add', {
+							dialogId: element.dialogId,
+							fields: { ...this.getElementState(), ...element },
+						});
+					}
+				});
+			},
+			/** @function chats/add */
+			add: (store, rawPayload: Array | Object) => {
+				let payload = rawPayload;
+				if (!Array.isArray(payload) && Type.isPlainObject(payload))
+				{
+					payload = [payload];
+				}
+
+				payload.map((element) => {
+					return this.formatFields(element);
+				}).forEach((element) => {
+					const existingItem = store.state.collection[element.dialogId];
+					if (!existingItem)
+					{
+						store.commit('add', {
+							dialogId: element.dialogId,
+							fields: { ...this.getElementState(), ...element },
+						});
+					}
+				});
+			},
+			/** @function chats/update */
+			update: (store, payload: {dialogId: string, fields: Object}) => {
+				const existingItem = store.state.collection[payload.dialogId];
+				if (!existingItem)
+				{
+					return;
+				}
+
+				store.commit('update', {
+					dialogId: payload.dialogId,
+					fields: this.formatFields(payload.fields),
+				});
+			},
+			/** @function chats/delete */
+			delete: (store, payload: {dialogId: string}) => {
+				const existingItem = store.state.collection[payload.dialogId];
+				if (!existingItem)
+				{
+					return;
+				}
+
+				store.commit('delete', { dialogId: payload.dialogId });
+			},
+			/** @function chats/clearMarkedChatsByRecentType */
+			clearMarkedChatsByRecentType: (store, payload: ClearMarkedPayload) => {
+				store.commit('clearMarkedChatsByRecentType', payload);
+			},
+			/** @function chats/clearMarkedChats */
+			clearMarkedChats: (store) => {
+				store.commit('clearMarkedChats');
+			},
+			/** @function chats/mute */
+			mute: (store, payload: {dialogId: string}) => {
+				const existingItem: ImModelChat = store.state.collection[payload.dialogId];
+				if (!existingItem)
+				{
+					return;
+				}
+
+				this.store.dispatch('counters/setMuteStatus', { chatId: existingItem.chatId, status: true });
+
+				store.commit('update', {
+					actionName: 'mute',
+					dialogId: payload.dialogId,
+					fields: this.formatFields({ isMuted: true }),
+				});
+			},
+			/** @function chats/unmute */
+			unmute: (store, payload: {dialogId: string}) => {
+				const existingItem = store.state.collection[payload.dialogId];
+				if (!existingItem)
+				{
+					return;
+				}
+
+				this.store.dispatch('counters/setMuteStatus', { chatId: existingItem.chatId, status: false });
+
+				store.commit('update', {
+					actionName: 'unmute',
+					dialogId: payload.dialogId,
+					fields: this.formatFields({ isMuted: false }),
+				});
+			},
+			/** @function chats/setLastMessageViews */
+			setLastMessageViews: (store, payload: {
+				dialogId: string,
+				fields: {userId: number, userName: string, date: string, messageId: number}
+			}) => {
+				const { dialogId, fields: { userId, userName, date, messageId } } = payload;
+				const existingItem: ImModelChat = store.state.collection[dialogId];
+				if (!existingItem)
+				{
+					return;
+				}
+
+				const newLastMessageViews = {
+					countOfViewers: 1,
+					messageId,
+					firstViewer: {
+						userId,
+						userName,
+						date: Utils.date.cast(date),
+					},
+				};
+				store.commit('update', {
+					actionName: 'setLastMessageViews',
+					dialogId,
+					fields: {
+						lastMessageViews: newLastMessageViews,
+					},
+				});
+			},
+			/** @function chats/clearLastMessageViews */
+			clearLastMessageViews: (store, payload: {dialogId: string}) => {
+				const existingItem = store.state.collection[payload.dialogId];
+				if (!existingItem)
+				{
+					return;
+				}
+
+				const { lastMessageViews: defaultLastMessageViews } = this.getElementState();
+				store.commit('update', {
+					actionName: 'clearLastMessageViews',
+					dialogId: payload.dialogId,
+					fields: {
+						lastMessageViews: defaultLastMessageViews,
+					},
+				});
+			},
+			/** @function chats/incrementLastMessageViews */
+			incrementLastMessageViews: (store, payload: {dialogId: string}) => {
+				const existingItem: ImModelChat = store.state.collection[payload.dialogId];
+				if (!existingItem)
+				{
+					return;
+				}
+
+				const newCounter = existingItem.lastMessageViews.countOfViewers + 1;
+				store.commit('update', {
+					actionName: 'incrementLastMessageViews',
+					dialogId: payload.dialogId,
+					fields: {
+						lastMessageViews: { ...existingItem.lastMessageViews, countOfViewers: newCounter },
+					},
+				});
+			},
+		};
+	}
+
+	getMutations(): MutationTree
+	{
+		return {
+			add: (state: ChatState, payload) => {
+				state.collection[payload.dialogId] = payload.fields;
+			},
+			update: (state: ChatState, payload) => {
+				const existingItem = state.collection[payload.dialogId];
+				const updatedItem = { ...existingItem, ...payload.fields };
+				// permissions must be merged deeply: a partial update missing some keys
+				// (e.g. manageGuestInvites/manageSettings) must not overwrite the whole object
+				if (existingItem?.permissions && payload.fields.permissions)
+				{
+					updatedItem.permissions = { ...existingItem.permissions, ...payload.fields.permissions };
+				}
+				state.collection[payload.dialogId] = updatedItem;
+			},
+			delete: (state: ChatState, payload) => {
+				delete state.collection[payload.dialogId];
+			},
+			clearMarkedChatsByRecentType: (state: ChatState, payload: ClearMarkedPayload) => {
+				const { recentType, parentChatId } = payload;
+				const items = this.store.getters['chats/getCollectionByParentChatId'](parentChatId);
+
+				items.forEach((item: ImModelChat) => {
+					const recentSections = Core.getStore().getters['counters/getRecentSectionsByChatId'](item.chatId);
+
+					if (!recentSections.includes(recentType))
+					{
+						return;
+					}
+
+					state.collection[item.dialogId].markedId = 0;
+				});
+			},
+			clearMarkedChats: (state: ChatState) => {
+				Object.values(state.collection).forEach((chat) => {
+					const { dialogId } = chat;
+
+					state.collection[dialogId].markedId = 0;
+				});
+			},
+		};
+	}
+
+	formatFields(rawFields: JsonObject): JsonObject
+	{
+		return formatFieldsWithConfig(rawFields, chatFieldsConfig);
+	}
+}

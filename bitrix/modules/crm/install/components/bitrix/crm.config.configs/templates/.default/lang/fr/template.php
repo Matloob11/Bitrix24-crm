@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_TAB_ACTIVITY_CONFIG"] = "Activité";
+$MESS["CRM_TAB_ACTIVITY_CONFIG_TITLE2"] = "Préférences d'activité";
+$MESS["CRM_TAB_CONFIG"] = "Envoi de lettres";
+$MESS["CRM_TAB_CONFIG_TITLE"] = "Paramètres de l'envoi des lettres";
+$MESS["CRM_TAB_DEAL_CONFIG"] = "Transactions";
+$MESS["CRM_TAB_DEAL_CONFIG_TITLE"] = "Paramètres Deal";
+$MESS["CRM_TAB_DUPLICATE_CONTROL"] = "Contrôle des duplicatas";
+$MESS["CRM_TAB_DUPLICATE_CONTROL_TITLE"] = "Paramètres de contrôle de doublons";
+$MESS["CRM_TAB_FORMAT"] = "Affichage";
+$MESS["CRM_TAB_FORMAT_TITLE"] = "Paramètres de mise en page";
+$MESS["CRM_TAB_GENERAL"] = "Général";
+$MESS["CRM_TAB_GENERAL_TITLE"] = "Paramètres communs";
+$MESS["CRM_TAB_HISTORY"] = "Historique";
+$MESS["CRM_TAB_HISTORY_TITLE"] = "Paramètres des historiques";
+$MESS["CRM_TAB_LIVEFEED2"] = "Actualités";
+$MESS["CRM_TAB_LIVEFEED_TITLE2"] = "Paramètres des Actualités";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG"] = "Corbeille";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG_TITLE"] = "Paramètres de la Corbeille";
+$MESS["CRM_TAB_REST_2"] = "Market";
+$MESS["CRM_TAB_REST_2_MSGVER_1"] = "Market";
+$MESS["CRM_TAB_REST_TITLE"] = "Paramètres d'application";
+$MESS["CRM_TAB_STATUS_CONFIG"] = "Etats et déroulants";
+$MESS["CRM_TAB_STATUS_CONFIG_TITLE"] = "Contrôles de sélection des entités";

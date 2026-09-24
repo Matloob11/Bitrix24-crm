@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_BOARDS_HANDLER_NAME"] = "Lavagne";
+$MESS["DISK_BOARDS_VIEWER_HANDLER_ERROR_METHOD_IS_NOT_SUPPORTED"] = "Questa azione non è supportata.";

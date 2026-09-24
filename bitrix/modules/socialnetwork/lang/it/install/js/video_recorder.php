@@ -1,0 +1,20 @@
+<?php
+$MESS["BLOG_VIDEO_RECORD_AGREE"] = "Consenti";
+$MESS["BLOG_VIDEO_RECORD_ASK_PERMISSIONS"] = "Devi consentire l'accesso alla webcam e al microfono per registrare un video.";
+$MESS["BLOG_VIDEO_RECORD_BUTTON"] = "Registra video";
+$MESS["BLOG_VIDEO_RECORD_CANCEL_BUTTON"] = "Annulla";
+$MESS["BLOG_VIDEO_RECORD_CLOSE"] = "Chiudi";
+$MESS["BLOG_VIDEO_RECORD_DEFAULT_CAMERA_NAME"] = "Videocamera";
+$MESS["BLOG_VIDEO_RECORD_ERROR_CHROME_HTTPS"] = "Sfortunatamente, il tuo browser non supporta il protocollo HTTP.<br /><br />Prova con un altro browser, ad esempio Firefox.";
+$MESS["BLOG_VIDEO_RECORD_IN_PROGRESS_LABEL"] = "Registrazione in corso";
+$MESS["BLOG_VIDEO_RECORD_LOGO"] = "<span class=\"logo\"><span class=\"logo-text\">Bitrix</span><span class=\"logo-color\">24</span></span>";
+$MESS["BLOG_VIDEO_RECORD_PERMISSIONS_ERROR"] = "Impossibile accedere alla webcam e al microfono.";
+$MESS["BLOG_VIDEO_RECORD_PERMISSIONS_ERROR_TITLE"] = "Errore";
+$MESS["BLOG_VIDEO_RECORD_PERMISSIONS_TITLE"] = "Accesso al dispositivo";
+$MESS["BLOG_VIDEO_RECORD_REQUIREMENTS"] = "Sfortunatamente, il tuo browser non supporta la registrazione video. <br />Puoi provare un altro browser come l'ultima versione di FireFox o Chrome.";
+$MESS["BLOG_VIDEO_RECORD_REQUIREMENTS_TITLE"] = "Attenzione";
+$MESS["BLOG_VIDEO_RECORD_RESTART_BUTTON"] = "Registra di nuovo";
+$MESS["BLOG_VIDEO_RECORD_SPOTLIGHT_MESSAGE"] = "<b>Registra video e condividi con il tuo team.</b>";
+$MESS["BLOG_VIDEO_RECORD_STOP_BUTTON"] = "Interrompi";
+$MESS["BLOG_VIDEO_RECORD_TRANFORM_LIMIT_TEXT"] = "Per rendere visibile il video in Bitrix24, interrompi la registrazione entro <span class=\"bx-videomessage-transform-time-tip\">60 secondi</span>. I file video più lunghi saranno sicuramente salvati ma potrebbero non essere riprodotti in tutti i browser.";
+$MESS["BLOG_VIDEO_RECORD_USE_BUTTON"] = "Usa video";

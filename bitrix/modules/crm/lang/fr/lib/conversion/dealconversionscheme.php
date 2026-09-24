@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_DEAL_CONV_INVOICE"] = "Facture";
+$MESS["CRM_DEAL_CONV_QUOTE_MSGVER_1"] = "Devis";

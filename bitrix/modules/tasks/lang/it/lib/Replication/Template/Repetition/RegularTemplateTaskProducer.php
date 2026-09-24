@@ -1,0 +1,5 @@
+<?php
+$MESS["TASKS_REGULAR_TEMPLATE_TASK_PRODUCER_FILE_NOT_FOUND"] = "Impossibile trovare il file.";
+$MESS["TASKS_REGULAR_TEMPLATE_TASK_PRODUCER_TASK_CREATED"] = "Incarico pianificato creato (##TASK_ID#).";
+$MESS["TASKS_REGULAR_TEMPLATE_TASK_PRODUCER_TASK_CREATED_WITH_ERRORS"] = "Scheduled task created, there were errors";
+$MESS["TASKS_REGULAR_TEMPLATE_TASK_PRODUCER_TASK_WAS_NOT_CREATED"] = "Scheduled task was not created";

@@ -1,0 +1,19 @@
+<?php
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_FINISH_DESCRIPTION"] = "Pronto! Agora você pode abrir o painel.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_INSTALL_STEP"] = "Instalando o painel que você selecionou. Um momento, por favor.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_TITLE_BLOCK"] = "Importar painel";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_TITLE_PAGE"] = "Criador de BI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_TITLE"] = "Importar painel";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_DESCRIPTION_UPLOAD"] = "Importar arquivo de modelo de relatório do Google Data Studio.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_FINISH_DESCRIPTION"] = "O modelo foi importado com sucesso. Clique neste link para usá-lo com o Google Data Studio:";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_TITLE_BLOCK"] = "Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_TITLE_PAGE"] = "Importar modelo de relatório do Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_TITLE"] = "Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_DESCRIPTION_UPLOAD"] = "Importar arquivo de modelo de relatório do Microsoft PowerBI.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_FINISH_DESCRIPTION"] = "O modelo foi importado com sucesso. Baixe o modelo de relatório do Microsoft PowerBI:";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_TITLE_BLOCK"] = "Microsoft PowerBI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_TITLE_PAGE"] = "Importar modelo de relatório do Microsoft PowerBI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_TITLE"] = "Microsoft Power BI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_ACCESS_DENIED"] = "Permissão insuficiente para importar painéis do Criador de BI.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_TARIFF_ERROR"] = "O Criador de BI não está disponível no seu plano. Entre em contato com o administrador do seu Bitrix24.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_TOOL_DISABLED"] = "O Criador de BI está desativado. Por favor, contate seu supervisor ou administrador do Bitrix24.";

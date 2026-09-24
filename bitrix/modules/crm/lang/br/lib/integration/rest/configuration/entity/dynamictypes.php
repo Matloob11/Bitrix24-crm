@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_ERROR_CONFIGURATION_CLEAR_EXCEPTION_DYMANIC_ENTITY_TYPE_ID"] = "É necessário um ID de SPA válido.";
+$MESS["CRM_ERROR_CONFIGURATION_CLEAR_EXCEPTION_DYMANIC_INSTANCE"] = "Não foi possível criar uma instância do ID de SPA #DYNAMIC_TYPE_ID#.";
+$MESS["CRM_ERROR_CONFIGURATION_CLEAR_EXCEPTION_DYMANIC_ITEM_DEL"] = "Não foi possível excluir o item ID #ITEM_ID# do ID de SPA #DYNAMIC_TYPE_ID#.";
+$MESS["CRM_ERROR_CONFIGURATION_CLEAR_EXCEPTION_DYMANIC_TYPE_DEL"] = "Não foi possível excluir o ID de SPA #DYNAMIC_TYPE_ID#.";
+$MESS["CRM_ERROR_CONFIGURATION_CLEAR_EXCEPTION_DYMANIC_TYPE_DEL_DENIED"] = "Permissão insuficiente para excluir o ID de SPA #DYNAMIC_TYPE_ID#.";
+$MESS["CRM_ERROR_CONFIGURATION_IMPORT_DYNAMIC_TYPES"] = "Não foi possível criar uma SPA.";
+$MESS["CRM_ERROR_CONFIGURATION_IMPORT_DYNAMIC_TYPES_BY_LIMIT"] = "O número máximo de SPAs foi atingido.";
+$MESS["CRM_ERROR_CONFIGURATION_IMPORT_DYNAMIC_TYPE_INVALID_AS_RELATION"] = "Não foi possível importar a SPA porque uma solução automatizada associada pode nunca ter sido importada.";

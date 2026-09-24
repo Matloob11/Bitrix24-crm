@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_ACTIVITY_PROVIDER_ENTITY_EXCLUSION_NAME"] = "Dodaj do Wyjątków";
+$MESS["CRM_ACTIVITY_PROVIDER_ENTITY_EXCLUSION_SUBJECT"] = "#COPILOT_NAME# sugeruje dodanie kontaktu do Wyjątków";

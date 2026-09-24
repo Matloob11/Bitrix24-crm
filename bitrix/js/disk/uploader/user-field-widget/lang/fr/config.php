@@ -1,0 +1,21 @@
+<?php
+$MESS["DISK_UF_WIDGET_ALLOW_DOCUMENT_EDIT"] = "Autoriser la modification de documents";
+$MESS["DISK_UF_WIDGET_ALLOW_PHOTO_COLLAGE"] = "Autoriser le collage de photos";
+$MESS["DISK_UF_WIDGET_CANCEL_BUTTON_TITLE"] = "Annuler";
+$MESS["DISK_UF_WIDGET_CREATE"] = "Créer";
+$MESS["DISK_UF_WIDGET_CREATE_BOARD"] = "Tableau blanc en ligne";
+$MESS["DISK_UF_WIDGET_CREATE_DOCUMENT"] = "Créer un document";
+$MESS["DISK_UF_WIDGET_CREATE_DOCX"] = "Document";
+$MESS["DISK_UF_WIDGET_CREATE_PPTX"] = "Présentation";
+$MESS["DISK_UF_WIDGET_CREATE_WITH"] = "Créer en utilisant";
+$MESS["DISK_UF_WIDGET_CREATE_XLSX"] = "Feuille de calcul";
+$MESS["DISK_UF_WIDGET_EDIT_SERVICE_LABEL"] = "Utiliser #NAME# pour créer des documents";
+$MESS["DISK_UF_WIDGET_EXTERNAL_DRIVES"] = "Lecteurs externes";
+$MESS["DISK_UF_WIDGET_FILE_SIZE"] = "Taille du fichier : #filesize#";
+$MESS["DISK_UF_WIDGET_INSERT_INTO_THE_TEXT"] = "Ajouter au texte";
+$MESS["DISK_UF_WIDGET_MY_DRIVE"] = "Mon Drive";
+$MESS["DISK_UF_WIDGET_OPEN_FILE_MENU_TITLE"] = "Ouvrir";
+$MESS["DISK_UF_WIDGET_RENAME_FILE_BUTTON_TITLE"] = "Renommer";
+$MESS["DISK_UF_WIDGET_RENAME_FILE_MENU_TITLE"] = "Renommer";
+$MESS["DISK_UF_WIDGET_SAVED_IN_DISK_FOLDER"] = "Enregistré dans le dossier Drive";
+$MESS["DISK_UF_WIDGET_UPLOAD_FILES"] = "Chargement";

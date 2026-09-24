@@ -1,0 +1,23 @@
+<?php
+$MESS["M_CRM_CATEGORY_PERMISSION_ALL_FOR_ALL"] = "Tous les éléments";
+$MESS["M_CRM_CATEGORY_PERMISSION_ALL_FOR_ALL_COMPANY"] = "Toutes les entreprises";
+$MESS["M_CRM_CATEGORY_PERMISSION_ALL_FOR_ALL_CONTACT"] = "Tous les contacts";
+$MESS["M_CRM_CATEGORY_PERMISSION_ALL_FOR_ALL_DEAL"] = "Toutes les transactions";
+$MESS["M_CRM_CATEGORY_PERMISSION_ALL_FOR_ALL_LEAD"] = "Tous les prospects";
+$MESS["M_CRM_CATEGORY_PERMISSION_ALL_FOR_ALL_QUOTE_MSGVER_1"] = "Tous les devis";
+$MESS["M_CRM_CATEGORY_PERMISSION_ALL_FOR_ALL_SMART_INVOICE"] = "Toutes les factures";
+$MESS["M_CRM_CATEGORY_PERMISSION_DEAL_PRIMARY_SECTION"] = "Pour les utilisateurs du CRM";
+$MESS["M_CRM_CATEGORY_PERMISSION_ENTITY_TITLE"] = "Droits d'accès";
+$MESS["M_CRM_CATEGORY_PERMISSION_ITEM_PRIMARY_SECTION"] = "Pour les utilisateurs de Processus intelligent";
+$MESS["M_CRM_CATEGORY_PERMISSION_MENU_ADDITIONAL_ACCESS"] = "Plus";
+$MESS["M_CRM_CATEGORY_PERMISSION_MENU_COPY_FROM_TUNNELS2_MSGVER_1"] = "Copier les autorisations à partir du pipeline";
+$MESS["M_CRM_CATEGORY_PERMISSION_MENU_CUSTOM"] = "Mode expert";
+$MESS["M_CRM_CATEGORY_PERMISSION_NONE_FOR_ALL_MSGVER_1"] = "Refuser l'accès";
+$MESS["M_CRM_CATEGORY_PERMISSION_OWN_FOR_ALL"] = "Éléments personnels uniquement";
+$MESS["M_CRM_CATEGORY_PERMISSION_OWN_FOR_ALL_COMPANY"] = "Entreprises personnelles uniquement";
+$MESS["M_CRM_CATEGORY_PERMISSION_OWN_FOR_ALL_CONTACT"] = "Contacts personnels uniquement";
+$MESS["M_CRM_CATEGORY_PERMISSION_OWN_FOR_ALL_DEAL_MSGVER_1"] = "Uniquement les transactions de l'utilisateur";
+$MESS["M_CRM_CATEGORY_PERMISSION_OWN_FOR_ALL_LEAD"] = "Prospects personnels uniquement";
+$MESS["M_CRM_CATEGORY_PERMISSION_OWN_FOR_ALL_QUOTE_MSGVER_1"] = "Devis personnels uniquement";
+$MESS["M_CRM_CATEGORY_PERMISSION_OWN_FOR_ALL_SMART_INVOICE"] = "Factures personnelles uniquement";
+$MESS["M_CRM_CATEGORY_PERMISSION_TITLE2"] = "Droits d'accès au pipeline";

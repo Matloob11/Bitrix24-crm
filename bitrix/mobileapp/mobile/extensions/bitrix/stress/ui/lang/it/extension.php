@@ -1,0 +1,32 @@
+<?
+$MESS["STRESS_CANCEL_MEASURE_RESULT"] = "Annulla";
+$MESS["STRESS_DO_MEASURE_RIGHT_NOW"] = "Misura il livello di stress ora";
+$MESS["STRESS_HOW_IT_WORKS"] = "Come funziona?";
+$MESS["STRESS_INFLUENT_STRESS_LEVEL"] = "Scopri come lo stress e il carico di lavoro influiscono sulla tua salute.";
+$MESS["STRESS_LEVEL_GREEN"] = "Ottimo";
+$MESS["STRESS_LEVEL_GREEN_21-30"] = "Basso";
+$MESS["STRESS_LEVEL_GREEN_31-44"] = "Leggero";
+$MESS["STRESS_LEVEL_GREEN_45-55"] = "Ottimale";
+$MESS["STRESS_LEVEL_RED"] = "Non buono";
+$MESS["STRESS_LEVEL_RED_0-9"] = "Estenuante";
+$MESS["STRESS_LEVEL_RED_10-20"] = "Affaticato";
+$MESS["STRESS_LEVEL_RED_61-69"] = "Esausto";
+$MESS["STRESS_LEVEL_RED_70-80"] = "Pesante";
+$MESS["STRESS_LEVEL_RED_81-89"] = "Alto";
+$MESS["STRESS_LEVEL_RED_90-98"] = "Sovrastressato";
+$MESS["STRESS_LEVEL_RED_99-100"] = "Estremo";
+$MESS["STRESS_LEVEL_TITLE"] = "Livello di stress";
+$MESS["STRESS_LEVEL_UNKNOWN"] = "Non definito";
+$MESS["STRESS_LEVEL_YELLOW"] = "OK";
+$MESS["STRESS_LEVEL_YELLOW_10-20"] = "Svogliato";
+$MESS["STRESS_LEVEL_YELLOW_56-60"] = "Un po' alto";
+$MESS["STRESS_LEVEL_YELLOW_61-69"] = "Elevato";
+$MESS["STRESS_MAKE_ANOTHER_ONE_MEASURE"] = "Misura di nuovo";
+$MESS["STRESS_MAKE_MEASURE"] = "Misura";
+$MESS["STRESS_SAVE_PRIVATE"] = "Salva privatamente";
+$MESS["STRESS_SHARE"] = "Condividi";
+$MESS["STRESS_SHARE_TO_PROFILE"] = "Mostra nel profilo";
+$MESS["STRESS_WHAT_DOES_IT_MEAN"] = "Cosa significa?";
+$MESS["WELLTORY_PROVIDED"] = "La misurazione dello stress è supportata dall'app Welltory";
+$MESS["WELLTORY_SPOTLIGHT"] = "Misura il tuo livello di stress";
+?>

@@ -1,0 +1,26 @@
+<?php
+$MESS["BPWC_WNCT_2LIST"] = "De processus d'entreprise";
+$MESS["BPWC_WNCT_CANCEL"] = "Annuler";
+$MESS["BPWC_WNCT_COMP_LIST_TPL"] = "Modèle de composant de liste des processus d’entreprise";
+$MESS["BPWC_WNCT_COMP_START_TPL"] = "Modèle de composant de lancement de processus d’entreprise";
+$MESS["BPWC_WNCT_COMP_TPL_DEF"] = "(par défaut)";
+$MESS["BPWC_WNCT_COMP_VIEW_TPL"] = "Modèle de composant du processus d’entreprise";
+$MESS["BPWC_WNCT_DESCR"] = "Description du processus métier";
+$MESS["BPWC_WNCT_EADD"] = "Ajouter un élément d'intitulé";
+$MESS["BPWC_WNCT_FILTERABLEFIELDS"] = "Les champs sont accessibles pour la filtration";
+$MESS["BPWC_WNCT_ICON"] = "Icône de processus d'entreprise";
+$MESS["BPWC_WNCT_NAME"] = "Nom du processus d'entreprise";
+$MESS["BPWC_WNCT_NEW_TMPL"] = "Nouveau Modèle (conséquent)";
+$MESS["BPWC_WNCT_NEW_TMPL_1"] = "Créer un modèle (processus d’entreprise basé sur les statuts)";
+$MESS["BPWC_WNCT_P"] = "Nom unique des éléments du processus d'entreprise";
+$MESS["BPWC_WNCT_PERMS"] = "Un processus d'entreprise est disponible pour";
+$MESS["BPWC_WNCT_PS"] = "Noms multiples pour les éléments de processus d'entreprise";
+$MESS["BPWC_WNCT_SAVE0"] = "Éditer";
+$MESS["BPWC_WNCT_SAVE1"] = "Créer un processus d'entreprise";
+$MESS["BPWC_WNCT_SAVE2"] = "Suivant";
+$MESS["BPWC_WNCT_SORT"] = "Index de tri du processus d'entreprise";
+$MESS["BPWC_WNCT_SUBTITLE1"] = "Nouveau processus d'entreprise";
+$MESS["BPWC_WNCT_SUBTITLE2"] = "Nouvelle configuration du processus d'entreprise";
+$MESS["BPWC_WNCT_SUBTITLE11"] = "Modification du processus d'entreprise";
+$MESS["BPWC_WNCT_TMPL"] = "Modèle de processus d’entreprise";
+$MESS["BPWC_WNCT_VISIBLEFIELDS"] = "Les champs visibles";

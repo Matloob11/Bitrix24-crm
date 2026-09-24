@@ -1,0 +1,28 @@
+<?php
+$MESS["CRM_DOCUMENT_LIST_ACTION_CANCEL_TEXT_2"] = "Annulla elaborazione";
+$MESS["CRM_DOCUMENT_LIST_ACTION_CONDUCT_TEXT_2"] = "Elabora";
+$MESS["CRM_DOCUMENT_LIST_ACTION_DELETE_TEXT"] = "Elimina";
+$MESS["CRM_DOCUMENT_LIST_ACTION_OPEN_TEXT"] = "Apri";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_2"] = "Crea";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_DISABLE_HINT_MSGVER_1"] = "Autorizzazioni insufficienti per creare l'oggetto dell'inventario.";
+$MESS["CRM_DOCUMENT_LIST_CANCEL_GROUP_ACTION"] = "Annulla elaborazione";
+$MESS["CRM_DOCUMENT_LIST_CONDUCT_GROUP_ACTION"] = "Elabora";
+$MESS["CRM_DOCUMENT_LIST_DOC_TYPE_W"] = "Ordine di vendita";
+$MESS["CRM_DOCUMENT_LIST_EMPTY_STORE_TITLE"] = "Senza titolo";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED"] = "Autorizzazioni insufficienti per visualizzare l'area Ordini di vendita.";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_BOX"] = "Non disponi dell'autorizzazione necessaria per accedere a Gestione inventario. Contatta l'amministratore di Bitrix24 per ottenere l'accesso. <a href=\"https://training.bitrix24.com/support/training/course/index.php?COURSE_ID=178&LESSON_ID=25118\" target=\"_blank\">Maggiori informazioni</a>";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_CLOUD"] = "Non disponi dell'autorizzazione necessaria per accedere a Gestione inventario. Contatta l'amministratore di Bitrix24 per ottenere l'accesso. L'amministratore dovrà assegnarti il ruolo di Manager nelle impostazioni del CRM. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Maggiori informazioni</a>";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_COMPANY"] = "Azienda nascosta";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_CONTACT"] = "Contatto nascosto";
+$MESS["CRM_DOCUMENT_LIST_SELECT_GROUP_ACTION"] = "Seleziona azione";
+$MESS["CRM_DOCUMENT_LIST_STATUS_CANCELLED"] = "Annullato";
+$MESS["CRM_DOCUMENT_LIST_STATUS_N"] = "Bozza";
+$MESS["CRM_DOCUMENT_LIST_STATUS_Y"] = "Elaborato";
+$MESS["CRM_DOCUMENT_LIST_STUB_DESCRIPTION_SHIPMENT"] = "Hai venduto un articolo? Aggiungi una voce alla gestione dell'inventario. Il monitoraggio accurato delle scorte aiuterà il tuo team di vendita a elaborare gli ordini più velocemente.";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_LOSSES"] = "Come posso monitorare le perdite?";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_SHIPMENT"] = "Come posso registrare le vendite?";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_DESCRIPTION"] = "Prova a reimpostare il filtro o cambia la frase di ricerca.";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_TITLE"] = "La tua richiesta di ricerca non ha restituito alcun risultato.";
+$MESS["CRM_DOCUMENT_LIST_STUB_TITLE_SHIPMENT"] = "Aggiungi la tua prima vendita";
+$MESS["CRM_DOCUMENT_LIST_TITLE"] = "Ordine di vendita ##DOCUMENT_ID#";
+$MESS["CRM_DOCUMENT_LIST_TITLE_DOCUMENT_DATE"] = "di #DATE#";

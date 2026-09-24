@@ -1,0 +1,390 @@
+/**
+ * @module im/messenger/const/analytics
+ */
+jn.define('im/messenger/const/analytics', (require, exports, module) => {
+	const CopilotChatType = Object.freeze({
+		private: 'chatType_private',
+		multiuser: 'chatType_multiuser',
+	});
+
+	const Event = Object.freeze({
+		openChat: 'open_chat',
+		openExisting: 'open_existing',
+		openComments: 'open_comments',
+		openCreateMenu: 'open_create_menu',
+		createNewChat: 'create_new_chat',
+		clickCreateNew: 'click_create_new',
+		submitCreateNew: 'submit_create_new',
+		clickCreateFolder: 'click_create_folder',
+		addToFolder: 'add_to_folder',
+		openList: 'open_list',
+		openFolder: 'open_folder',
+		audioUse: 'audio_use',
+		record: 'record',
+		play: 'play',
+		pause: 'pause',
+		changeSpeed: 'change_speed',
+		viewTranscription: 'view_transcription',
+		openTab: 'open_tab',
+		openMessenger: 'open_messenger',
+		sendMessage: 'send_message',
+		clickDelete: 'click_delete',
+		cancelDelete: 'cancel_delete',
+		delete: 'delete',
+		view: 'view',
+		click: 'click',
+		clickEdit: 'click_edit',
+		submitEdit: 'submit_edit',
+		clickCallButton: 'click_call_button',
+		saveToDisk: 'save_to_disk',
+		downloadFile: 'download_file',
+		downloadError: 'download_error',
+		clickAddUser: 'click_add_user',
+		openCalendar: 'open_calendar',
+		openTasks: 'open_tasks',
+		openFiles: 'open_files',
+		clickCreate: 'click_create',
+		clickCreateTask: 'click_create_task',
+		clickCreateEvent: 'click_create_event',
+		clickAttach: 'click_attach',
+		galleryLimitException: 'gallery_limit_exception',
+		cancelFileUpload: 'cancel_file_upload',
+		pinMessage: 'pin_message',
+		unpinMessage: 'unpin_message',
+		openPinList: 'open_pinned_list',
+		pinnedMessageLimitException: 'pinned_message_limit_exception',
+		openSearch: 'open_search',
+		startSearch: 'start_search',
+		searchResult: 'search_result',
+		cancelSearch: 'cancel_search',
+		selectSearchResult: 'select_search_result',
+		backToSearch: 'back_to_search',
+		clickRecentSuggest: 'click_recent_suggest',
+		clickCreatePoll: 'click_create_poll',
+		publishPoll: 'publish_poll',
+		finishPoll: 'finish_poll',
+		vote: 'vote',
+		cancelVote: 'cancel_vote',
+		copyPollLink: 'copy_poll_link',
+		setOptions: 'set_options',
+		isMultipleChoice: 'is_multiple_choice',
+		setCancelVote: 'set_cancel_vote',
+		pinChat: 'pin_chat',
+		typeMessage: 'type_message',
+		expandReactionList: 'expand_reaction_list',
+		modeOn: 'mode_on',
+		modeOff: 'mode_off',
+		clickMCPIntegrations: 'click_mcp_integrations',
+		suggestsShow: 'suggests_show',
+		suggestsClick: 'suggests_click',
+		modeChange: 'mode_change',
+		openNotifications: 'open_notifications',
+		openStickerTab: 'open_sticker_tab',
+		clickCreateStickerPack: 'click_create_stickerpack',
+		addStickerPack: 'add_stickerpack',
+		addMentionedUser: 'add_mentioned_user',
+		useTextFormatting: 'use_text_formatting',
+		showUnread: 'show_unread',
+		readAll: 'read_all',
+
+		clickReply: 'click_reply',
+		copyMessage: 'copy_message',
+		copyLink: 'copy_link',
+		select: 'select',
+		clickShare: 'click_share',
+		askCopilot: 'ask_copilot',
+		addFeedback: 'add_feedback',
+
+		copyGuestLink: 'copy_guest_link',
+		viewJoinPopup: 'view_join_popup',
+	});
+
+	/**
+	 * @desc p1 values for the mode_change event (camelCase, aligned with web BitrixGPT 2.0)
+	 */
+	const ChatMode = Object.freeze({
+		mcpOn: 'mcp_on',
+		mcpOff: 'mcp_off',
+		reasoningOn: 'reasoning_on',
+		reasoningOff: 'reasoning_off',
+		webSearchOn: 'webSearch_on',
+		webSearchOff: 'webSearch_off',
+		agentModeOn: 'agentMode_on',
+		agentModeOff: 'agentMode_off',
+		roleChange: 'role_change',
+	});
+
+	const Tool = Object.freeze({
+		ai: 'ai',
+		im: 'im',
+		task: 'task',
+	});
+
+	const Category = Object.freeze({
+		chatOperations: 'chat_operations',
+		messenger: 'messenger',
+		channel: 'channel',
+		collab: 'collab',
+		chat: 'chat',
+		copilot: 'copilot',
+		videoconf: 'videoconf',
+		message: 'message',
+		chatPopup: 'chat_popup',
+		limitBanner: 'limit_banner',
+		audiomessage: 'audiomessage',
+		audioplayer: 'audioplayer',
+		videomessage: 'videomessage',
+		stickers: 'stickers',
+		project: 'project',
+		folders: 'folders',
+	});
+
+	const Type = Object.freeze({
+		Tab: {
+			task: 'tasksTask',
+			copilot: 'copilot',
+			channel: 'channel',
+			collab: 'collab',
+			project: 'project',
+			openlines: 'openlines',
+		},
+		Dialog: {
+			user: 'user',
+			chat: 'chat',
+			open: 'open',
+			lines: 'lines',
+			general: 'general',
+			videoconf: 'videoconf',
+			announcement: 'announcement',
+			call: 'call',
+			support24Notifier: 'support24Notifier',
+			support24Question: 'support24Question',
+			crm: 'crm',
+			sonetGroup: 'sonetGroup',
+			calendar: 'calendar',
+			tasks: 'tasks',
+			thread: 'thread',
+			mail: 'mail',
+			private: 'user', // for analytics type list: private === user
+			copilot: 'copilot',
+			comment: 'comment',
+			channel: 'channel',
+			openChannel: 'openChannel',
+			generalChannel: 'generalChannel',
+			collab: 'collab',
+			tasksTask: 'tasksTask', // task comment chat
+			custom: 'custom', // case for custom dialog type
+			notes: 'notes',
+			aiAssistant: 'aiAssistant',
+		},
+
+		/** @deprecated the region approach bellow is deprecated, use nested objects instead */
+
+		ai: 'ai',
+
+		/* region tabs type */
+		notifications: 'notifications',
+		openlines: 'openlines',
+
+		/* region dialog type */
+		user: 'user',
+		private: 'user', // for analytics type list: private === user
+		chat: 'chat',
+		open: 'open',
+		general: 'general',
+		videoconf: 'videoconf',
+		announcement: 'announcement',
+		call: 'call',
+		support24Notifier: 'support24Notifier',
+		support24Question: 'support24Question',
+		crm: 'crm',
+		sonetGroup: 'sonetGroup',
+		calendar: 'calendar',
+		tasks: 'tasks',
+		thread: 'thread',
+		mail: 'mail',
+		lines: 'lines',
+		copilot: 'copilot',
+		channel: 'channel',
+		openChannel: 'openChannel',
+		generalChannel: 'generalChannel',
+		comment: 'comment',
+		custom: 'custom', // case for custom dialog type
+		limitOfficeChatingHistory: 'limit_office_chating_history',
+		collab: 'collab',
+		notes: 'notes',
+		aiAssistant: 'aiAssistant',
+
+		/* region call type */
+		privateCall: 'private',
+		groupCall: 'group',
+
+		/* region file type */
+		image: 'image',
+		video: 'video',
+		audio: 'audio',
+		file: 'file',
+
+		/* region media type */
+		media: 'media',
+		files: 'files',
+
+		/* region pins type */
+		singlePin: 'single',
+		multiplePins: 'multiple',
+		selectedPin: 'selected',
+		allPins: 'all',
+
+		/* region vote type */
+		votePublic: 'public',
+		voteAnonymous: 'anonymous',
+
+		/* region vote finisher type */
+		voteFinisherUser: 'user',
+		voteFinisherAutoTimer: 'autotimer',
+
+		/* region vote answers type */
+		voteAnswersTwo: 'two',
+		voteAnswersMultiple: 'multiple',
+
+		/* region vote link copy source type */
+		voteLinkCopySourceMessage: 'message_link',
+		voteLinkCopySourceResult: 'poll_results',
+
+		/* region message type */
+		deletedMessage: 'deleted_message',
+
+		think: 'think',
+
+		/* region folder type */
+		empty: 'empty',
+		nonEmpty: 'non_empty',
+		userFolder: 'user_folder',
+	});
+
+	const Section = Object.freeze({
+		copilotTab: 'copilot_tab',
+		chatTab: 'chat_tab',
+		channelTab: 'channel_tab',
+		collabTab: 'collab_tab',
+		taskTab: 'tasksTask_tab',
+		notificationTab: 'notification_tab',
+		sidebar: 'sidebar',
+		activeChat: 'active_chat',
+		popup: 'popup',
+		mention: 'mention',
+		link: 'link',
+		chatHistory: 'chat_history',
+		chatStart: 'chat_start',
+		messageLink: 'message_link',
+		chatWindow: 'chat_window',
+		taskChat: 'task_chat',
+		chatTasks: 'chat_tasks',
+		chatSidebar: 'chat_sidebar',
+		comments: 'comments',
+		editor: 'editor',
+		chatTextarea: 'chat_textarea',
+		messageContextMenu: 'message_context_menu',
+		callMessage: 'call_message',
+		messenger: 'messenger',
+		stickerPackPopup: 'stickerpack_popup',
+		chatList: 'chat_list',
+		search: 'search',
+		updateChatTab: 'updateChat_tab',
+		createChatTab: 'createChat_tab',
+		userFolder: 'user_folder',
+	});
+
+	const SubSection = Object.freeze({
+		window: 'window',
+		contextMenu: 'context_menu',
+		fromContextMenu: 'from_context_menu',
+		chatList: 'chat_list',
+		chat: 'chat',
+		taskCard: 'task_card',
+		createBox: 'create_box',
+		folderList: 'folder_list',
+		folderContextMenu: 'folder_context_menu',
+		settings: 'settings',
+		recentContextMenu: 'recent_context_menu',
+		recentSwipeMenu: 'recent_swipe_menu',
+	});
+
+	const Element = Object.freeze({
+		push: 'push',
+		main: 'main',
+		more: 'more',
+		videocall: 'videocall',
+		audiocall: 'audiocall',
+		startMessage: 'start_message',
+		finishMessage: 'finish_message',
+	});
+
+	const P3 = Object.freeze({
+		isMemberY: 'isMember_Y',
+		isMemberN: 'isMember_N',
+	});
+
+	const P1 = Object.freeze({
+		openChannel: 'chatType_channelOpen',
+		channel: 'chatType_channel',
+		generalChannel: 'chatType_channelGeneral',
+		comment: 'chatType_comments',
+		user: 'chatType_private',
+		open: 'chatType_groupOpen',
+		chat: 'chatType_groupClosed',
+		general: 'chatType_general',
+		tasks: 'chatType_tasks',
+		calendar: 'chatType_calendar',
+		videoconf: 'chatType_videoconf',
+		call: 'chatType_call',
+		crm: 'chatType_crm',
+		mail: 'chatType_mail',
+		sonetGroup: 'chatType_sonetGroup',
+		copilot: 'chatType_copilot',
+		notes: 'chatType_notes',
+	});
+
+	/**
+	 * keys are associated with UserType
+	 * @see UserType
+	 */
+	const P2 = Object.freeze({
+		user: 'user_intranet',
+		extranet: 'user_extranet',
+		collaber: 'user_collaber',
+		guest: 'user_guest',
+	});
+
+	const Status = Object.freeze({
+		notFound: 'not_found',
+		success: 'success',
+		error: 'error',
+	});
+
+	const DownloadErrorStatus = {
+		toDisk: 'download_to_disk_error',
+		toGallery: 'download_to_gallery_error',
+		multipleFiles: 'multiple_files_download_error',
+		toDevice: 'download_to_device_error',
+	};
+
+	const Analytics = Object.freeze({
+		CopilotChatType,
+		ChatMode,
+		Event,
+		Tool,
+		Category,
+		Type,
+		Section,
+		SubSection,
+		Element,
+		P1,
+		P2,
+		P3,
+		Status,
+		DownloadErrorStatus,
+	});
+
+	module.exports = { Analytics };
+});

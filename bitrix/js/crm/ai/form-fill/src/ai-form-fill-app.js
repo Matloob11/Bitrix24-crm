@@ -1,0 +1,246 @@
+import { ActivityProvider, Call } from 'crm.ai.call';
+import { NameService } from 'crm.ai.name-service';
+import { type Slider } from 'crm.ai.slider';
+import { Setting, Settings } from 'crm.integration.ui.settings';
+import { addCustomEvent, Loc, removeAllCustomEvents, Type } from 'main.core';
+import { Button } from 'ui.buttons';
+
+import { AiFormFillApplication } from './app';
+import SliderButtonsAdapter from './services/slider-buttons-adapter';
+import { setCopilotSliderInstance, setSliderButtonsAdapter, sliderButtonsAdapter } from './shared-state';
+
+type CreateOptions = {
+	mergeUuid: string;
+	label: string;
+	activityId: number;
+	activityDirection: string;
+	activityProvider: string;
+	summarizeJobId: number;
+	ownerId: number;
+	ownerTypeId: number;
+	languageTitle?: string;
+}
+
+class ConflictFieldsliderCreator
+{
+	#options: CreateOptions;
+
+	#copilotSliderClass: function;
+
+	#app: AiFormFillApplication;
+
+	#sliderInstance;
+
+	constructor(options: CreateOptions, CopilotSliderWrapper: function)
+	{
+		this.#options = options;
+		this.#copilotSliderClass = CopilotSliderWrapper;
+		setSliderButtonsAdapter(new SliderButtonsAdapter());
+	}
+
+	get #onLoadEventName(): string {
+		return `CopilotSliderWrapper:onLoad_${this.#options.mergeUuid}`;
+	}
+
+	get #onCloseEventName(): string {
+		return `CopilotSliderWrapper:onClose_${this.#options.mergeUuid}`;
+	}
+
+	get #sliderUrl(): string {
+		return `crm:copilot-wrapper-slider-${this.#options.mergeUuid}`;
+	}
+
+	get #containerId(): string {
+		return `crm-ai-merge-fields__container__${this.#options.mergeUuid}`;
+	}
+
+	create() {
+		this.#sliderInstance = this.#createSliderWrapper();
+
+		addCustomEvent('SidePanel.Slider:onLoad', this.#onSliderLoadFn.bind(this), this.#onLoadEventName);
+		addCustomEvent('SidePanel.Slider:onClose', this.#onSliderCloseFn.bind(this), this.#onCloseEventName);
+		addCustomEvent(window, 'BX.Crm.AiFormFill:CloseSlider', this.#onAiFormFillDownFn.bind(this));
+
+		this.#sliderInstance.open();
+	}
+
+	#makeSliderToolbar(): Array
+	{
+		const toolbarButtons = this.#copilotSliderClass.makeDefaultToolbarButtons();
+
+		const transcriptButton = new Button({
+			text: Loc.getMessage('CRM_AI_FORM_FILL_MERGER_TRANSCRIPTION'),
+			size: Settings.get(Setting.UseAirDesign) ? Button.Size.SMALL : Button.Size.MEDIUM,
+			color: Button.Color.LIGHT_BORDER,
+			dependOnTheme: true,
+			useAirDesign: Settings.get(Setting.UseAirDesign),
+			style: Button.AirStyle.OUTLINE,
+			onclick: () => {
+				if (top.BX.Helper)
+				{
+					const transcription = new Call.Transcription({
+						activityId: this.#options.activityId,
+						ownerTypeId: this.#options.ownerTypeId,
+						ownerId: this.#options.ownerId,
+						languageTitle: this.#options.languageTitle,
+					});
+
+					transcription.open();
+				}
+			},
+		});
+
+		const resumeButton = new Button({
+			text: Loc.getMessage('CRM_AI_FORM_FILL_MERGER_RESUME'),
+			size: Settings.get(Setting.UseAirDesign) ? Button.Size.SMALL : Button.Size.MEDIUM,
+			color: Button.Color.LIGHT_BORDER,
+			dependOnTheme: true,
+			useAirDesign: Settings.get(Setting.UseAirDesign),
+			style: Button.AirStyle.OUTLINE,
+			onclick: () => {
+				if (top.BX.Helper)
+				{
+					const resume = new Call.Summary({
+						activityId: this.#options.activityId,
+						ownerTypeId: this.#options.ownerTypeId,
+						ownerId: this.#options.ownerId,
+						languageTitle: this.#options.languageTitle,
+						activityProvider: this.#options.activityProvider,
+						jobId: this.#options.summarizeJobId,
+					});
+
+					resume.open();
+				}
+			},
+		});
+
+		let result = [
+			resumeButton,
+			...toolbarButtons,
+		];
+
+		if (this.#options.activityProvider === ActivityProvider.call)
+		{
+			result = [transcriptButton, ...result];
+		}
+
+		return result;
+	}
+
+	#createSliderWrapper(): Slider
+	{
+		const buttons = sliderButtonsAdapter.getButtons();
+		const toolbarButtons = this.#makeSliderToolbar();
+
+		return new this.#copilotSliderClass({
+			content: () => `<div id="${this.#containerId}"></div>`,
+			sliderTitle: Loc.getMessage('CRM_AI_FORM_FILL_MERGER_TITLE', NameService.copilotNameReplacement()),
+			label: this.#options.label,
+			extensions: ['crm.ai.form-fill', 'crm.entity-editor'],
+			url: this.#sliderUrl,
+			width: this.#calculateSliderWidth(),
+			toolbar: () => toolbarButtons,
+			buttons: () => buttons,
+		});
+	}
+
+	#calculateSliderWidth(): number {
+		const topSlider = BX.SidePanel.Instance.getTopSlider();
+		const width = topSlider.getWidth() || (window.screen.width * 0.86);
+
+		return Math.floor(width * 0.86);
+	}
+
+	#onSliderLoadFn(event) {
+		if (event.getSlider().getUrl() !== this.#sliderUrl)
+		{
+			return;
+		}
+		setCopilotSliderInstance(this.#sliderInstance);
+
+		this.#app = new AiFormFillApplication(
+			this.#containerId,
+			{
+				mergeUuid: this.#options.mergeUuid,
+				activityId: this.#options.activityId,
+				activityDirection: this.#options.activityDirection,
+				activityProvider: this.#options.activityProvider,
+				summarizeJobId: this.#options.summarizeJobId,
+			},
+		);
+		this.#app.start();
+		removeAllCustomEvents('SidePanel.Slider:onLoad', this.#onLoadEventName);
+	}
+
+	#onSliderCloseFn(event) {
+		if (event.getSlider().getUrl() !== this.#sliderUrl)
+		{
+			return;
+		}
+
+		if (!this.#app || this.#app.isAppLoading())
+		{
+			event.denyAction();
+
+			return;
+		}
+
+		if (this.#app.isNeededShowCloseConfirm())
+		{
+			this.#app.showCloseConfirm();
+			event.denyAction();
+
+			return;
+		}
+
+		if (this.#app.isShowAiFeedbackBeforeClose())
+		{
+			this.#app.showAiFeedbackBeforeClose();
+			event.denyAction();
+
+			return;
+		}
+
+		removeAllCustomEvents('SidePanel.Slider:onClose', this.#onCloseEventName);
+		removeAllCustomEvents(window, 'BX.Crm.AiFormFill:CloseSlider');
+		if (this.#app)
+		{
+			this.#app.stop();
+			this.#app = null;
+		}
+		setSliderButtonsAdapter(null);
+		setCopilotSliderInstance(null);
+	}
+
+	#onAiFormFillDownFn(event) {
+		const mergeUuid = event?.data?.mergeUuid;
+		if (mergeUuid === this.#options.mergeUuid)
+		{
+			this.#sliderInstance.close();
+		}
+	}
+}
+
+export const createAiFormFillApplicationInsideSlider = function(options: CreateOptions)
+{
+	const makeApp = (CopilotSliderWrapper: function) => {
+		const creator = new ConflictFieldsliderCreator(options, CopilotSliderWrapper);
+		creator.create();
+	};
+
+	if (Type.isFunction(BX?.Crm?.AI?.Slider))
+	{
+		makeApp(BX.Crm.AI.Slider);
+	}
+	else
+	{
+		top.BX.Runtime.loadExtension('crm.ai.slider')
+			.then((exports) => {
+				const { Slider } = exports;
+				makeApp(Slider);
+			})
+			.catch(() => {
+				throw new Error('Cant load Crm.AI.Slider extension');
+			});
+	}
+};

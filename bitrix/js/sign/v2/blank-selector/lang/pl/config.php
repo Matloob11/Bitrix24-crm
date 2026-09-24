@@ -1,0 +1,24 @@
+<?php
+$MESS["SIGN_BLANK_SELECTOR_CLEAR_ALL"] = "Usuń wszystkie";
+$MESS["SIGN_BLANK_SELECTOR_CREATED_MYSELF"] = "Ty";
+$MESS["SIGN_BLANK_SELECTOR_CREATE_NEW_PIC"] = "Obraz";
+$MESS["SIGN_BLANK_SELECTOR_DRAG_AREA"] = "Przeciągnij pliki tutaj";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_MIXED"] = "Dokumenty lub obrazy z [highlight]edytowalnymi polami[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_PLACEHOLDERS"] = "Dokumenty lub formularze z [highlight]edytowalnymi polami symbolicznymi[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_FIELD_ADD_BUTTON_LABEL"] = "Wybierz szablon dokumentu";
+$MESS["SIGN_BLANK_SELECTOR_LOAD_MORE"] = "Pokaż więcej";
+$MESS["SIGN_BLANK_SELECTOR_MIXED"] = "Dokumenty lub obrazy z edytowalnymi polami.";
+$MESS["SIGN_BLANK_SELECTOR_NEW_BADGE"] = "Nowość";
+$MESS["SIGN_BLANK_SELECTOR_NEW_DOC"] = "Microsoft Word";
+$MESS["SIGN_BLANK_SELECTOR_NEW_PDF"] = "Dokument PDF";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX"] = "Dokument z polami symbolicznymi";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX_MSGVER_1"] = "Dokumenty lub formularze z edytowalnymi polami symbolicznymi.";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK_MSGVER_1"] = "Pola symboliczne";
+$MESS["SIGN_BLANK_SELECTOR_RECENT_TEMPLATES_TITLE"] = "Najnowsze szablony";
+$MESS["SIGN_BLANK_SELECTOR_SLIDER_SELECT_BLANK_BUTTON_LABEL"] = "Wybierz";
+$MESS["SIGN_BLANK_SELECTOR_UPLOADER_ERROR_INCOMPLETE"] = "Nie można przesłać pliku. Spróbuj ponownie.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_HINT"] = "Do podpisu można przesłać jeden dokument PDF, DOC, DOCX, RTF lub ODT na raz, lub do %imageCountLimit% obrazów JPG/PNG.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_GROUP_HINT"] = "Rozmiar każdego z plików obrazów nie może przekraczać 10 MB.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_HINT"] = "Rozmiar pliku obrazu nie może przekraczać 10 MB.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_LIMIT_HINT"] = "Szablon może zawierać wyłącznie jeden dokument. Aby zastąpić lub usunąć przesłany dokument, użyj menu dokumentu w obszarze powyżej.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_PLACEHOLDERS_HINT"] = "Obsługiwane są tylko pliki DOCX z edytowalnymi polami symbolicznymi.";

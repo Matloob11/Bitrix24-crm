@@ -1,0 +1,9 @@
+.tasks-task-time-tracking {
+	display: flex;
+	gap: var(--ui-space-inline-sm);
+}
+
+.tasks-task-time-tracking-icon {
+	margin-right: var(--ui-space-inline-2xs2);
+	--ui-icon-set__icon-color: var(--ui-color-accent-main-primary);
+}

@@ -1,0 +1,18 @@
+<?
+$MESS["CRM_ALL"] = "Totale";
+$MESS["CRM_DEAL_CATEGORY_BUTTON_CANCEL"] = "Annulla";
+$MESS["CRM_DEAL_CATEGORY_BUTTON_SAVE"] = "Salva";
+$MESS["CRM_DEAL_CATEGORY_DELETE"] = "Elimina";
+$MESS["CRM_DEAL_CATEGORY_DELETE_CONFIRM"] = "Eliminare \"#NAME#\"?";
+$MESS["CRM_DEAL_CATEGORY_DELETE_TITLE"] = "Elimina pipeline";
+$MESS["CRM_DEAL_CATEGORY_EDIT"] = "Modifica";
+$MESS["CRM_DEAL_CATEGORY_EDIT_TITLE"] = "Modifica pipeline";
+$MESS["CRM_DEAL_CATEGORY_ERROR_TITLE"] = "Salva errore";
+$MESS["CRM_DEAL_CATEGORY_FIELD_NAME"] = "Nome";
+$MESS["CRM_DEAL_CATEGORY_FIELD_NAME_NOT_ASSIGNED_ERROR"] = "Il valore del campo \"Nome\" è mancante.";
+$MESS["CRM_DEAL_CATEGORY_FIELD_SORT"] = "Ordina";
+$MESS["CRM_DEAL_CATEGORY_STATUS_EDIT"] = "Modifica fasi";
+$MESS["CRM_DEAL_CATEGORY_STATUS_EDIT_TITLE"] = "Modifica fasi pipeline";
+$MESS["CRM_DEAL_CATEGORY_TITLE_CREATE"] = "Crea pipeline";
+$MESS["CRM_DEAL_CATEGORY_TITLE_EDIT"] = "Modifica pipeline";
+?>

@@ -1,0 +1,11 @@
+<?php
+$MESS["MB_TASKS_CONTROLS_TITLE"] = "Categorie incarichi";
+$MESS["MB_TASKS_PANEL_TAB_ALL"] = "Tutto";
+$MESS["MB_TASKS_PANEL_TAB_PROJECTS"] = "Progetti";
+$MESS["MB_TASKS_ROLES_TASK_ADD"] = "Nuovo incarico";
+$MESS["MB_TASKS_ROLES_VIEW_TASK_CATEGORY_EXPIRED"] = "Scaduto";
+$MESS["MB_TASKS_ROLES_VIEW_TASK_CATEGORY_EXPIRED_CANDIDATES"] = "Quasi scaduto";
+$MESS["MB_TASKS_ROLES_VIEW_TASK_CATEGORY_NEW"] = "Non letto";
+$MESS["MB_TASKS_ROLES_VIEW_TASK_CATEGORY_WAIT_CTRL"] = "Revisione in sospeso";
+$MESS["MB_TASKS_ROLES_VIEW_TASK_CATEGORY_WO_DEADLINE"] = "Senza scadenza <br> (assegnato da me)";
+$MESS["MB_TASKS_ROLES_VIEW_TASK_CATEGORY_WO_DEADLINE_FOR_ME"] = "Nessuna scadenza<br> (assegnato a me)";

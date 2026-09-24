@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_ORDER_DEAL_CREATOR_TITLE_DEAL"] = "Pedido da loja on-line ##ORDER_ID#";

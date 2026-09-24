@@ -1,0 +1,25 @@
+<?php
+$MESS["SAPS_CAT_CONTRACTOR_LIST"] = "Ahora la página de Proveedores está disponible en Bitrix24";
+$MESS["SAPS_CAT_EXTRA"] = "Ahora la página de Tipos de recargos está disponible en Bitrix24";
+$MESS["SAPS_CAT_GROUP_ADMIN"] = "Movimos la página de los Tipos de precios a Bitrix24";
+$MESS["SAPS_CAT_MEASURE_LIST"] = "Movimos la página de Unidades de medida a Bitrix24";
+$MESS["SAPS_CAT_ROUND_LIST"] = "Ahora la página de Reglas de redondeo de los precios está disponible en Bitrix24";
+$MESS["SAPS_CAT_STORE_LIST"] = "Movimos la página de Almacenes a Bitrix24";
+$MESS["SAPS_CAT_SUBSCRIPTION_LIST"] = "Ahora la página de Suscripciones está disponible en Bitrix24";
+$MESS["SAPS_CAT_VAT_ADMIN"] = "Movimos la página de las Tasas de impuestos a Bitrix24";
+$MESS["SAPS_SALE_ACCOUNT_ADMIN"] = "Movimos la página de Cuentas de los clientes internos a Bitrix24";
+$MESS["SAPS_SALE_BASKET"] = "Movimos la página de los Carritos de compras abandonados a Bitrix24";
+$MESS["SAPS_SALE_BUYERS"] = "Movimos la página de Clientes a Bitrix24";
+$MESS["SAPS_SALE_DELIVERY_SERVICE_LIST"] = "Ahora la página de Servicios de entrega está disponible en Bitrix24";
+$MESS["SAPS_SALE_DISCOUNT"] = "Movimos la página de Reglas del carrito de compras a Bitrix24";
+$MESS["SAPS_SALE_DISCOUNT_COUPONS"] = "Ahora la página de Cupones está disponible en Bitrix24";
+$MESS["SAPS_SALE_LOCATION_GROUP_LIST"] = "Movimos la página de Grupos de ubicaciones a Bitrix24";
+$MESS["SAPS_SALE_LOCATION_NODE_LIST"] = "Movimos la página de Ubicaciones a Bitrix24";
+$MESS["SAPS_SALE_LOCATION_TYPE_LIST"] = "Movimos la página de Tipos de ubicaciones a Bitrix24";
+$MESS["SAPS_SALE_ORDER"] = "Ahora todos los pedidos se procesan en Bitrix24";
+$MESS["SAPS_SALE_PAY_SYSTEM"] = "Ahora los sistemas de pago están configurados en Bitrix24";
+$MESS["SAPS_SALE_PERSON_TYPE"] = "Movimos la página de los Tipos de pagadores a Bitrix24";
+$MESS["SAPS_SALE_TAX"] = "Movimos la página de Impuestos a Bitrix24";
+$MESS["SAPS_SALE_TAX_EXEMPT"] = "Movimos la página de Exenciones de impuestos a Bitrix24";
+$MESS["SAPS_SALE_TAX_RATE"] = "Ahora la página de Tasas de impuestos está disponible en Bitrix24";
+$MESS["SAPS_SALE_TRANSACT_ADMIN"] = "Ahora la página de Transacciones está disponible en Bitrix24";

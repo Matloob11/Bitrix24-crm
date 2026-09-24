@@ -1,0 +1,21 @@
+<?php
+$MESS["DISK_UF_FILE_EDIT_SERVICE_LABEL"] = "Utwórz nowy dokument z wykorzystaniem #NAME#";
+$MESS["WDUF_ALLOW_COLLAGE"] = "Zezwól na kolaż zdjęć";
+$MESS["WDUF_ALLOW_EDIT"] = "Zezwól na edycję dokumentu";
+$MESS["WDUF_CREATE_DOCX"] = "Dokument";
+$MESS["WDUF_CREATE_PPTX"] = "Prezentacja";
+$MESS["WDUF_CREATE_XLSX"] = "Arkusz kalkulacyjny";
+$MESS["WDUF_DND_AREA_TITLE"] = "Upuść pliki tutaj";
+$MESS["WDUF_FILE_IS_EXISTS"] = "Plik już istnieje.";
+$MESS["WDUF_ITEM_ERROR"] = "Błąd";
+$MESS["WDUF_ITEM_MENU_DELETE"] = "Usuń";
+$MESS["WDUF_ITEM_MENU_EDIT"] = "Edytuj";
+$MESS["WDUF_ITEM_MENU_FILE"] = "Plik";
+$MESS["WDUF_ITEM_MENU_INSERT_INTO_THE_TEXT"] = "Wstaw w tekście";
+$MESS["WDUF_ITEM_MENU_RENAME"] = "Zmień nazwę";
+$MESS["WDUF_ITEM_MENU_RENAME_CANCEL"] = "Anuluj";
+$MESS["WDUF_ITEM_MENU_RENAME_SAVE"] = "Zapisz";
+$MESS["WDUF_ITEM_MENU_RENAME_TITLE"] = "Zmień nazwę";
+$MESS["WDUF_MY_DISK"] = "Mój Dysk";
+$MESS["WDUF_UPLOAD"] = "Załaduj";
+$MESS["WDUF_UPLOAD_DOCUMENT"] = "Załaduj dokumenty";

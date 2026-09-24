@@ -1,0 +1,368 @@
+import {Type} from 'main.core'
+import {DesktopApi} from 'im.v2.lib.desktop-api';
+import {Logger} from './logger'
+import { CallType, CallEvent, CallState, RoomType } from './types';
+import { getPrimary } from './engine-registry';
+import {Hardware} from '../call_hardware';
+import { getLogMessage, getTimeForLog, isConsoleLogsEnabled } from '../log-helpers';
+import { CallCommonRecordState, CallCommonRecordType } from '../call_common_record';
+import { ReconnectHistory as ReconnectHistoryClass } from 'call.lib.reconnect-history';
+
+/**
+ * Abstract call class
+ * Public methods:
+ * - inviteUsers
+ * - cancel
+ * - answer
+ * - decline
+ * - hangup
+ *
+ * Events:
+ * - onJoin
+ * - onLeave
+ * - onUserStateChanged
+ * - onStreamReceived
+ * - onStreamRemoved
+ * - onCallFailure
+ * - onDestroy
+ */
+export class AbstractCall
+{
+	logger: ?Logger
+	localStreams: {[key: string]: ?MediaStream}
+
+	constructor(params)
+	{
+		this.id = params.id;
+		this.uuid = params.uuid;
+		this.instanceId = params.instanceId;
+		this.parentId = params.parentId || null;
+		this.parentUuid = params.parentUuid || null;
+		this.direction = params.direction;
+		this.scheme = params.scheme;
+		this.type = BX.prop.getInteger(params, "type", CallType.Instant); // @see {BX.Call.Type}
+		this.roomType = BX.prop.getInteger(params, 'roomType', RoomType.Small);
+		this.state = BX.prop.getString(params, "state", CallState.Idle);
+		this.isReconnecting = false;
+		this.reconnectHistory = new ReconnectHistoryClass();
+
+		this.ready = false;
+		this.userId = getPrimary().getCurrentUserId();
+		this.userData = Type.isPlainObject(params.userData) ? params.userData : {};
+
+		this.initiatorId = params.initiatorId || '';
+		this.users = Type.isArray(params.users) ? params.users.filter(userId => userId != this.userId) : [];
+
+		this.associatedEntity = Type.isPlainObject(params.associatedEntity) ? params.associatedEntity : {};
+		this.startDate = new Date(BX.prop.getString(params, "startDate", ""));
+
+		// media constraints
+		this.videoEnabled = Hardware.isCameraOn;
+		this.cameraId = params.cameraId || '';
+		this.microphoneId = params.microphoneId || '';
+
+		this.muted = Hardware.isMicrophoneMuted;
+
+		this.wasConnected = false;
+
+		this.logToken = params.logToken || '';
+		this.addLogToken(this.logToken);
+
+		this.localStreams = {
+			main: null,
+			screen: null,
+		};
+
+		this.eventListeners = {};
+
+		if (Type.isPlainObject(params.events))
+		{
+			this.initEventListeners(params.events);
+		}
+
+		this.connectionData = params.connectionData || {};
+
+		this._microphoneLevel = 0;
+
+		this.commonRecordState = {
+			state: CallCommonRecordState.Stopped,
+			type: CallCommonRecordType.None,
+			userId: 0,
+			date: {
+				start: null,
+				pause: [],
+			},
+		};
+	};
+
+	get provider()
+	{
+		throw new Error("must be overwritten")
+	}
+
+	get microphoneLevel()
+	{
+		return this._microphoneLevel
+	}
+
+	set microphoneLevel(level)
+	{
+		if (level != this._microphoneLevel)
+		{
+			this._microphoneLevel = level;
+			this.runCallback(CallEvent.onMicrophoneLevel, {
+				level: level
+			});
+		}
+	}
+
+	addDialogInfo(dialogInfo)
+	{
+		this.associatedEntity = Type.isPlainObject(dialogInfo) ? dialogInfo : {};
+	}
+
+	addLogToken(logToken: string): void
+	{
+		if (this.logger || !logToken)
+		{
+			return;
+		}
+
+		this.logToken = logToken;
+		if (getPrimary().getLogService() && this.logToken)
+		{
+			this.logger = new Logger(getPrimary().getLogService(), this.logToken);
+		}
+	}
+
+	initEventListeners(eventListeners)
+	{
+		for (var eventName in eventListeners)
+		{
+			this.addEventListener(eventName, eventListeners[eventName]);
+		}
+	};
+
+	addEventListener(eventName, listener)
+	{
+		if (!Type.isArray(this.eventListeners[eventName]))
+		{
+			this.eventListeners[eventName] = [];
+		}
+
+		if (Type.isArray(this.eventListeners[eventName]) && this.eventListeners[eventName].includes(listener))
+		{
+			return;
+		}
+
+		if (Type.isFunction(listener))
+		{
+			this.eventListeners[eventName].push(listener);
+		}
+	};
+
+	removeEventListener(eventName, listener)
+	{
+		if (Type.isArray(this.eventListeners[eventName]) && this.eventListeners[eventName].indexOf(listener) >= 0)
+		{
+			var listenerIndex = this.eventListeners[eventName].indexOf(listener);
+			if (listenerIndex >= 0)
+			{
+				this.eventListeners[eventName].splice(listenerIndex, 1);
+			}
+		}
+	};
+
+	runCallback(eventName, eventFields)
+	{
+		//console.log(eventName, eventFields);
+		if (Type.isArray(this.eventListeners[eventName]) && this.eventListeners[eventName].length > 0)
+		{
+			if (eventName === null || typeof (eventFields) !== "object")
+			{
+				eventFields = {};
+			}
+			eventFields.call = this;
+			for (let i = 0; i < this.eventListeners[eventName].length; i++)
+			{
+				try
+				{
+					this.eventListeners[eventName][i].call(this, eventFields);
+				} catch (err)
+				{
+					console.error(eventName + " callback error: ", err);
+					this.log(eventName + " callback error: ", err);
+				}
+			}
+		}
+	};
+
+	getLocalStream(tag)
+	{
+		return this.localStreams[tag];
+	};
+
+	setLocalStream(mediaStream, tag)
+	{
+		tag = tag || "main";
+
+		this.localStreams[tag] = mediaStream;
+	};
+
+	get reconnectionInfo()
+	{
+		return this.reconnectHistory.getHistory();
+	}
+
+	isAnyoneParticipating()
+	{
+		throw new Error("isAnyoneParticipating should be implemented");
+	};
+
+	__onPullEvent(command, params)
+	{
+		throw new Error("__onPullEvent should be implemented");
+	};
+
+	inviteUsers()
+	{
+		throw new Error("inviteUsers is not implemented");
+	};
+
+	cancel()
+	{
+		throw new Error("cancel is not implemented");
+	};
+
+	answer()
+	{
+		throw new Error("answer is not implemented");
+	};
+
+	decline(code, reason)
+	{
+		throw new Error("decline is not implemented");
+	};
+
+	hangup()
+	{
+		throw new Error("hangup is not implemented");
+	};
+
+	log()
+	{
+		let text = getLogMessage.apply(null, arguments);
+
+		if (DesktopApi.isDesktop())
+		{
+			DesktopApi.writeToLogFile(BX.message('USER_ID') + '.video.log', text.substr(3));
+		}
+		if ((getPrimary()?.debugFlag || isConsoleLogsEnabled()) && console)
+		{
+			let a = ['Call log [' + getTimeForLog() + ']: '];
+			console.warn.apply(this, a.concat(Array.prototype.slice.call(arguments)));
+		}
+		if (this.logger)
+		{
+			this.logger.log(text);
+		}
+
+		if (BX.MessengerDebug)
+		{
+			BX.MessengerDebug.addLog(this.id, text);
+		}
+	};
+
+	destroy()
+	{
+		if (this.logger)
+		{
+			this.logger.destroy();
+			this.logger = null;
+		}
+
+		this.state = CallState.Finished;
+		this.runCallback(CallEvent.onDestroy);
+	}
+
+	updateCommonRecordState({ action, type, senderId, date })
+	{
+		const { state, userId } = this.commonRecordState;
+
+		if (action !== CallCommonRecordState.Started && userId !== senderId)
+		{
+			return false;
+		}
+
+		switch (action)
+		{
+			case CallCommonRecordState.Started:
+			{
+				if (![CallCommonRecordState.Stopped, CallCommonRecordState.Destroyed].includes(state))
+				{
+					return false;
+				}
+
+				Object.assign(this.commonRecordState, {
+					state: CallCommonRecordState.Started,
+					type,
+					userId: senderId,
+					date: { start: date, pause: [] },
+				});
+
+				break;
+			}
+
+			case CallCommonRecordState.Paused:
+			{
+				if (state !== CallCommonRecordState.Started)
+				{
+					return false;
+				}
+
+				this.commonRecordState.state = CallCommonRecordState.Paused;
+				this.commonRecordState.date.pause.push({ start: date, finish: null });
+
+				break;
+			}
+
+			case CallCommonRecordState.Resumed:
+			{
+				if (state !== CallCommonRecordState.Paused)
+				{
+					return false;
+				}
+
+				this.commonRecordState.state = CallCommonRecordState.Started;
+
+				const lastPause = [...this.commonRecordState.date.pause].reverse().find((item) => item.finish === null);
+
+				if (lastPause)
+				{
+					lastPause.finish = date;
+				}
+
+				break;
+			}
+
+			case CallCommonRecordState.Stopped:
+			{
+				Object.assign(this.commonRecordState, {
+					state: CallCommonRecordState.Stopped,
+					type: CallCommonRecordType.None,
+					userId: 0,
+					date: { start: null, pause: [] },
+				});
+
+				break;
+			}
+
+			default:
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+}

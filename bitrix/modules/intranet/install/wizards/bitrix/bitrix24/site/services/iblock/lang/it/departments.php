@@ -1,0 +1,20 @@
+<?php
+$MESS["iblock_dep_act"] = "Il reparto è attivo";
+$MESS["iblock_dep_addit"] = "Aggiuntivo";
+$MESS["iblock_dep_changed"] = "Modificato";
+$MESS["iblock_dep_chief"] = "Capo";
+$MESS["iblock_dep_code"] = "Codice simbolico";
+$MESS["iblock_dep_created"] = "Creato";
+$MESS["iblock_dep_dep"] = "Reparto";
+$MESS["iblock_dep_desc"] = "Descrizione";
+$MESS["iblock_dep_det_pict"] = "Immagine dettaglio";
+$MESS["iblock_dep_name"] = "Nome reparto";
+$MESS["iblock_dep_name1"] = "Mia azienda";
+$MESS["iblock_dep_name2"] = "Reparto contabilità";
+$MESS["iblock_dep_name3"] = "Reparto vendite";
+$MESS["iblock_dep_name5"] = "Reparto marketing";
+$MESS["iblock_dep_parent"] = "Reparto di livello superiore";
+$MESS["iblock_dep_pict"] = "Immagine";
+$MESS["iblock_dep_sort"] = "Ordinamento";
+$MESS["iblock_dep_userprop"] = "Proprietà utente";
+$MESS["iblock_dep_userprop_add"] = "Aggiungi una proprietà utente";

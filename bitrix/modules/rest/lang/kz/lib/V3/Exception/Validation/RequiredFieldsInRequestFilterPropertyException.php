@@ -1,0 +1,2 @@
+<?php
+$MESS['REST_V3_EXCEPTION_VALIDATION_REQUIREDFIELDSINREQUESTFILTERPROPERTYEXCEPTION'] = 'Міндетті `#FIELD#` өрісі бойынша сүзгіні көрсету қажет.';

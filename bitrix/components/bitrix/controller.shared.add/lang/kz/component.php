@@ -1,0 +1,24 @@
+<?php
+$MESS["CSA_ERROR_ADD_SITE"] = "Сайтты контроллерде тіркеу кезінде қате.";
+$MESS["CSA_ERROR_ADD_SITE2"] = "Сайтты контроллерде тіркеу кезінде қате: #ERROR#";
+$MESS["CSA_ERROR_APACHE_TEMPLATE_NOT_FOUND"] = "Apache конфигурациясының үлгісі табылмады (#FILE#).";
+$MESS["CSA_ERROR_BAD_MYSQL_PATH"] = "Қате параметр: mysql орындалатын файлға жол.";
+$MESS["CSA_ERROR_CREATE_DIR"] = "Сайт үшін каталог құру қатесі.";
+$MESS["CSA_ERROR_DB_CONNECT"] = "Дерекқорға қосылу қатесі: #ERROR#";
+$MESS["CSA_ERROR_DB_CREATE"] = "Дерекқорды құру қатесі (#DB_NAME#): #ERROR#";
+$MESS["CSA_ERROR_DB_FILEDUMP"] = "Бастапқы ДҚ дампы бар файл жоқ немесе оны оқуға құқықтар жоқ.";
+$MESS["CSA_ERROR_DB_IMPORT"] = "#DB_NAME# дерекқорын импорттау кезінде қате";
+$MESS["CSA_ERROR_DIR_PERMISSIONS"] = "Жалға алынған сайттардың каталогтары үшін құқықтар қате орнатылған.";
+$MESS["CSA_ERROR_DOMAIN_NAME"] = "Домендік атау тек латын әріптерін, сандарды, нүктелерді және дефистерді қамтуы мүмкін.";
+$MESS["CSA_ERROR_FILE_PERMISSIONS"] = "Жалға алынған сайттардың файлдарына құқықтар дұрыс орнатылмаған.";
+$MESS["CSA_ERROR_FILE_WRITE"] = "#FILE# файлын жазу қатесі.";
+$MESS["CSA_ERROR_MEMORY_LIMIT"] = "Жалға алынған сайттар үшін жад шектеуі қате орнатылған.";
+$MESS["CSA_ERROR_NAME_EXISTS"] = "Енгізілген атау қазірдің өзінде қолданыста, басқа атауды таңдаңыз.";
+$MESS["CSA_ERROR_NGINX_TEMPLATE_NOT_FOUND"] = "Nginx конфигурациясының үлгісі табылмады (#FILE#).";
+$MESS["CSA_ERROR_NOT_FOUND_APACHE_VHOST_DIR"] = "Apache виртуалды сайттарының конфигурациялық файлдар каталогы жоқ немесе жазуға қолжетімсіз.";
+$MESS["CSA_ERROR_NOT_FOUND_NGINX_VHOST_DIR"] = "Nginx виртуалды сайттарының конфигурациялық файлдар каталогы жоқ немесе жазуға қолжетімсіз.";
+$MESS["CSA_ERROR_WRITE_APACHE_CONFIG"] = "Apache конфигурациялық файлын жазу қатесі.";
+$MESS["CSA_ERROR_WRITE_NGINX_CONFIG"] = "Nginx конфигурациялық файлын жазу қатесі.";
+$MESS["CSA_LOG_ADD_CLIENT"] = "Клиентті тікелей құру арқылы қосу";
+$MESS["CSA_MODULE_NOT_INSTALLED"] = "Контроллер модулі орнатылмаған";
+$MESS["CSA_TITLE"] = "Сайтты қосу";

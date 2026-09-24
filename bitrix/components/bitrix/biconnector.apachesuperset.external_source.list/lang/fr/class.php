@@ -1,0 +1,5 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_SOURCE_GRID_ERROR_LOAD_MODULES"] = "Tous les modules requis n'ont pas été chargés.";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_SOURCE_GRID_FILTER_PRESET_ACTIVE"] = "Actif";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_SOURCE_GRID_STUB_DESCRIPTION_MSGVER_1"] = "Créez une connexion pour analyser les données provenant de sources externes.";
+$MESS["BICONNECTOR_SUPERSET_EXTERNAL_SOURCE_GRID_STUB_TITLE_MSGVER_1"] = "Il n'y a aucune connexion";

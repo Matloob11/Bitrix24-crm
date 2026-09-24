@@ -1,0 +1,55 @@
+<?php
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_CHAT_TITLE_MSGVER_1'] = 'Удалить чат?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_CHAT_DESCRIPTION'] = 'Чат нельзя будет восстановить. Удалятся все сообщения и файлы';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_CHANNEL_TITLE_MSGVER_1'] = 'Удалить канал?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_CHANNEL_DESCRIPTION'] = 'Канал нельзя будет восстановить. Удалятся все публикации, файлы и комментарии';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_CHANNEL_POST_TITLE'] = 'Удалить публикацию?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_CHANNEL_POST_DESCRIPTION'] = 'Комментарии и реакции тоже удалятся';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_CHANNEL_POSTS_TITLE'] = 'Удалить публикации?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_MESSAGES_TITLE'] = 'Удалить сообщения?';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_COLLAB_TITLE'] = 'Удалить коллабу?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_PROJECT_TITLE'] = 'Удалить проект?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_COLLAB_DESCRIPTION'] = 'Коллаба удалится со всей историей общения. Восстановить коллабу будет нельзя';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_PROJECT_DESCRIPTION'] = 'Проект удалится со всей историей общения. Восстановить проект будет нельзя';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_COLLAB_CONFIRM_YES'] = 'Да, удалить';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_GALLERY_TITLE'] = 'Удалить галерею?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_GALLERY_DESCRIPTION'] = 'Все файлы из этого сообщения удалятся';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_DELETE_GALLERY_CONFIRM_YES'] = 'Да, удалить';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_COLLAB_TITLE'] = 'Выйти из коллабы?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_PROJECT_TITLE'] = 'Выйти из проекта?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_COLLAB_DESCRIPTION'] = 'У вас не будет доступа к чату, задачам, файлам и встречам коллабы';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_PROJECT_DESCRIPTION'] = 'У вас не будет доступа к чату, задачам, файлам и встречам проекта';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_COLLAB_CONFIRM_YES'] = 'Да, выйти';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REMOVE_COLLAB_TITLE'] = 'Исключить участника из коллабы?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REMOVE_PROJECT_TITLE'] = 'Исключить участника из проекта?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REMOVE_COLLAB_DESCRIPTION'] = 'Участнику будет закрыт доступ к чату, задачам, файлам и встречам коллабы';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REMOVE_PROJECT_DESCRIPTION'] = 'Участнику будет закрыт доступ к чату, задачам, файлам и встречам проекта';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REMOVE_COLLAB_CONFIRM_YES'] = 'Да, исключить';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_ADD_PARTICIPANTS_PROJECT_TITLE'] = 'Добавить участников в проект?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_ADD_PARTICIPANTS_PROJECT_DESCRIPTION'] = 'Среди выбранных сотрудников есть те, кто не участвует в проекте. После добавления в чат они получат доступ ко всему проекту';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_ADD_PARTICIPANTS_PROJECT_CONFIRM_YES'] = 'Да, добавить';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_CHAT_CONFIRM_TITLE'] = 'Вы уверены, что хотите выйти из чата?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_CHAT_CONFIRM_YES'] = 'Да, выйти';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_CHANNEL_CONFIRM_TITLE'] = 'Отписаться от канала?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_LEAVE_CHANNEL_CONFIRM_YES'] = 'Да, отписаться';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REGENERATE_SHARING_LINK_TITLE'] = 'Сменить ссылку для приглашения?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REGENERATE_SHARING_LINK_DESCRIPTION_EMPLOYEE'] = 'По старой ссылке больше не получится вступить в чат';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REGENERATE_SHARING_LINK_DESCRIPTION_GUEST'] = 'По старой ссылке больше не получится вступить в чат. Гости, перешедшие по ней ранее, не смогут открыть чат';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_REGENERATE_SHARING_LINK_CONFIRM_YES'] = 'Да, сменить';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_CLEAR_HISTORY_COLLAB_TITLE'] = 'Очистить историю коллабы?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_CLEAR_HISTORY_PROJECT_TITLE'] = 'Очистить историю проекта?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_CLEAR_HISTORY_CHAT_TITLE'] = 'Очистить историю чата?';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_CLEAR_HISTORY_CHAT_FOR_ME_DESCRIPTION'] = 'Все сообщения и файлы исчезнут только у вас. Восстановить невозможно';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_CLEAR_HISTORY_CHAT_FOR_ALL_DESCRIPTION'] = 'Все сообщения и файлы исчезнут у всех. Восстановить невозможно';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_ALERT_CLEAR_HISTORY_CHAT_CONFIRM_YES'] = 'Да, очистить';

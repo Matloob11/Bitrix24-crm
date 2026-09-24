@@ -1,0 +1,23 @@
+<?php
+$MESS["M_INTRANET_PERSONAL_MOBILE_IS_NOT_FILLED"] = "O usuário não forneceu o número de telefone";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_BUTTON_TEXT"] = "Tornar administrador";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_DESCRIPTION"] = "Os administradores têm acesso total às informações pessoais do usuário e do cliente. Eles podem convidar e descartar usuários e funcionários; alterar permissões de usuário e configurações do Bitrix24. Deseja tornar este usuário um administrador?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_TITLE"] = "Atribuir o usuário como administrador?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_BUTTON_TEXT"] = "Enviar notificação";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_DESCRIPTION"] = "Com o Bitrix24, os usuários podem proteger a conta com um segundo fator de autenticação. Envie ao usuário uma notificação sugerindo a ativação da 2FA.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_TITLE"] = "Peça ao usuário para proteger a conta com autenticação de dois fatores (2FA)";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_ALREADY_INSTALLED"] = "Aplicativo de desktop já instalado";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_BUTTON_TEXT"] = "Estimular";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_DESCRIPTION"] = "Basta clicar em um ícone na área de trabalho em vez de abrir o navegador. Além disso, o aplicativo de desktop pode gravar chamadas de vídeo e tocar ao receber uma chamada.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_IS_NOT_INSTALLED"] = "O aplicativo de desktop não está instalado";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_TITLE"] = "Estimule o usuário a instalar o aplicativo de desktop Bitrix24";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_ALREADY_INSTALLED"] = "O aplicativo móvel já está instalado";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_IS_NOT_INSTALLED"] = "O módulo não está instalado";
+$MESS["M_INTRANET_USER_STATUS_ADMIN"] = "Administrador";
+$MESS["M_INTRANET_USER_STATUS_DESKTOP_INSTALLED"] = "Computador";
+$MESS["M_INTRANET_USER_STATUS_EXTRANET"] = "Extranet";
+$MESS["M_INTRANET_USER_STATUS_GUEST"] = "Convidado";
+$MESS["M_INTRANET_USER_STATUS_INVITED"] = "Convite pendente";
+$MESS["M_INTRANET_USER_STATUS_INVITE_IS_SENDED"] = "Convite reenviado";
+$MESS["M_INTRANET_USER_STATUS_MOBILE_APP_INSTALLED"] = "Telefone";
+$MESS["M_INTRANET_USER_STATUS_PENDING"] = "Confirmação de login pendente";

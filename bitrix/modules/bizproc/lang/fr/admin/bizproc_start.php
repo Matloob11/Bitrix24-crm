@@ -1,0 +1,19 @@
+<?php
+$MESS["BPABS_BACK"] = "Précédent";
+$MESS["BPABS_DESCRIPTION"] = "Description du modèle de processus d’entreprise";
+$MESS["BPABS_DO_CANCEL"] = "Annuler";
+$MESS["BPABS_DO_START"] = "Commencer";
+$MESS["BPABS_EMPTY_DOC_ID"] = "Aucun document ID pour lequel le processus d’entreprise doit être créé n'a été spécifié.";
+$MESS["BPABS_EMPTY_DOC_TYPE"] = "Le type de document n'a pas été indiqué.";
+$MESS["BPABS_EMPTY_ENTITY"] = "Aucune entité pour laquelle le processus d’entreprise doit être créé n'a été spécifiée.";
+$MESS["BPABS_ERROR"] = "Erreur";
+$MESS["BPABS_MESSAGE_ERROR"] = "Le processus d’entreprise de type '#TEMPLATE#' n'a pas été lancé.";
+$MESS["BPABS_MESSAGE_SUCCESS"] = "Le workflow de type '#TEMPLATE#' a été lancée avec succès.";
+$MESS["BPABS_NAME"] = "Nom du modèle de processus d’entreprise";
+$MESS["BPABS_NO_PERMS"] = "Accès interdit.";
+$MESS["BPABS_NO_TEMPLATES"] = "Aucun modèle de processus d'entreprise n'a été trouvé pour ce type d'élément.";
+$MESS["BPABS_TAB"] = "Processus d’entreprise";
+$MESS["BPABS_TAB1"] = "Processus d’entreprise";
+$MESS["BPABS_TAB1_TITLE"] = "Sélectionnez le modèle de processus d'entreprise pour démarrer.";
+$MESS["BPABS_TAB_TITLE_MSGVER_1"] = "Paramètres de démarrage du processus d'entreprise";
+$MESS["BPABS_TITLE"] = "Démarrer un processus d'entreprise";

@@ -1,0 +1,5 @@
+<?php
+$MESS["IMCONNECTOR_UPDATER_2112000_ADMIN_NOTIFY"] = "Wydłuż okno wiadomości do klienta do 7 dni!
+Reguły określają, że możesz odpowiedzieć na wiadomość klienta na Facebooku lub Instagramie w ciągu 24 godzin od jego ostatniej wiadomości. Teraz możesz przedłużyć ten czas do 7 dni. Facebook nie zezwala na wysyłanie reklam (w tym rabatów i kuponów) ani automatycznych wiadomości do klientów po wygaśnięciu 24-godzinnego okna. Jeśli nie zastosujesz się do tych wytycznych, Twoje konto zostanie zablokowane. <a href=\"#HREF#\">Szczegóły</a>";
+$MESS["IMCONNECTOR_UPDATER_2112000_CHAT"] = "[B]Wydłuż okno wiadomości do klienta do 7 dni![/B]
+Reguły określają, że możesz odpowiedzieć na wiadomość klienta na Facebooku lub Instagramie w ciągu 24 godzin od jego ostatniej wiadomości. Teraz możesz przedłużyć ten czas do 7 dni. Facebook nie zezwala na wysyłanie reklam (w tym rabatów i kuponów) ani automatycznych wiadomości do klientów po wygaśnięciu 24-godzinnego okna. Jeśli nie zastosujesz się do tych wytycznych, Twoje konto zostanie zablokowane. [URL=#HREF#]Szczegóły.[/URL].";

@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_VIBE_COLLABORATION_SECTION_NAME"] = "Vibe de colaboración, secciones";
+$MESS["LANDING_BLOCK_WIDGET_VIBE_COLLABORATION_SECTION_NAME_NEW"] = "Plantilla: Colaboración, secciones";

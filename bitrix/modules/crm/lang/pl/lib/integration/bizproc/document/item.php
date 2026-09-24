@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_BP_DOCUMENT_ITEM_ENTITY_TYPE_ERROR"] = "Nie znaleziono SPA tego typu";
+$MESS["CRM_BP_DOCUMENT_ITEM_FIELD_CONTACTS"] = "Kontakty";
+$MESS["CRM_BP_DOCUMENT_ITEM_FIELD_IS_MANUAL_OPPORTUNITY"] = "Oblicz kwotę ręcznie";
+$MESS["CRM_BP_DOCUMENT_ITEM_LINK_WIH_PRODUCTS_DISABLED_ERROR"] = "Pozycja nie obejmuje produktów.";
+$MESS["CRM_ENTITY_EXISTENCE_ERROR"] = "ID jednostki #DOCUMENT_ID# nie istnieje";

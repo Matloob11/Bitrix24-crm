@@ -1,0 +1,4 @@
+<?php
+$MESS["MOBILEAPP_CALL_CONFERENCE_CREATE_BUTTON"] = "Créer une vidéoconférence";
+$MESS["MOBILEAPP_CALL_CONFERENCE_CREATE_NAME_PLACEHOLDER"] = "Nom de l'événement";
+$MESS["MOBILEAPP_CALL_CONFERENCE_CREATE_TITLE"] = "Nouvelle vidéoconférence";

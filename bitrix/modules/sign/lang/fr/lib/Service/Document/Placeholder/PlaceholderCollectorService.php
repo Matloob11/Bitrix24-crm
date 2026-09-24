@@ -1,0 +1,3 @@
+<?php
+$MESS["SIGN_PLACEHOLDER_FACTORY_EXTERNAL_DATE_NAME"] = "Date de création";
+$MESS["SIGN_PLACEHOLDER_FACTORY_EXTERNAL_ID_NAME"] = "Réf. du document n°";

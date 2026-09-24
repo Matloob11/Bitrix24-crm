@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_UF_BLOG_POST_CONNECTOR_MEMBERS_ALL"] = "A tutti i dipendenti";
+$MESS["DISK_UF_BLOG_POST_CONNECTOR_TITLE"] = "Post Feed";

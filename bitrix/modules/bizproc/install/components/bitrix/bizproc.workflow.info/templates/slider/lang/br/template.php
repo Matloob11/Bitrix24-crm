@@ -1,0 +1,24 @@
+<?php
+$MESS["BPWFI_SLIDER_ARGUMENT_NULL"] = "O campo '#PARAM#' é obrigatório.";
+$MESS["BPWFI_SLIDER_BANNER_BODY"] = "Deixe seus comentários e discuta o fluxo de trabalho com os participantes.";
+$MESS["BPWFI_SLIDER_BANNER_TITLE"] = "Não há comentários para este fluxo de trabalho";
+$MESS["BPWFI_SLIDER_BUTTON_DELEGATE"] = "Delegar";
+$MESS["BPWFI_SLIDER_CONFIRM_ACCEPT"] = "Sim";
+$MESS["BPWFI_SLIDER_CONFIRM_CANCEL"] = "Não";
+$MESS["BPWFI_SLIDER_CONFIRM_DESCRIPTION"] = "Tem certeza de que deseja cancelar as alterações feitas no fluxo de trabalho? Os valores inseridos nos campos serão perdidos.";
+$MESS["BPWFI_SLIDER_CONFIRM_TITLE"] = "Cancelar as alterações do fluxo de trabalho";
+$MESS["BPWFI_SLIDER_DESCRIPTION"] = "Descrição";
+$MESS["BPWFI_SLIDER_DISCUSSION_COMMENTS_COUNT"] = "Comentários #COMMENTS_COUNT#";
+$MESS["BPWFI_SLIDER_DISCUSSION_TITLE"] = "Discussão do fluxo de trabalho";
+$MESS["BPWFI_SLIDER_DISCUSSION_ZERO_COMMENTS_COUNT"] = "Não há comentários para este fluxo de trabalho.";
+$MESS["BPWFI_SLIDER_DOCUMENT"] = "Elemento do fluxo de trabalho";
+$MESS["BPWFI_SLIDER_FIELDS_TITLE"] = "Parâmetros da atribuição (obrigatório)";
+$MESS["BPWFI_SLIDER_MODIFIED"] = "Última atualização";
+$MESS["BPWFI_SLIDER_NAME"] = "Nome";
+$MESS["BPWFI_SLIDER_NOT_MY_PROCESS"] = "Você está visualizando o fluxo de trabalho de #USER#.";
+$MESS["BPWFI_SLIDER_NOT_MY_TASK"] = "Você está visualizando a atribuição de #USER#";
+$MESS["BPWFI_SLIDER_PROCESS"] = "Fluxo de trabalho";
+$MESS["BPWFI_SLIDER_STATUS"] = "Status";
+$MESS["BPWFI_SLIDER_TASK"] = "Atribuição";
+$MESS["BPWFI_SLIDER_TIMELINE_MSGVER_1"] = "Ata";
+$MESS["BPWFI_SLIDER_TYPE"] = "Tipo de fluxo de trabalho";

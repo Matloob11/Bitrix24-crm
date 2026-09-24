@@ -1,0 +1,19 @@
+<?php
+$MESS["VOTE_ANONYMOUS"] = "Encuesta anónima";
+$MESS["VOTE_BUTTON"] = "Votar";
+$MESS["VOTE_NOTICE_COMPLETED"] = "encuesta finalizada";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_COMPLETE"] = "No se pudo finalizar la encuesta.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_REVOKE"] = "Error al volver a votar.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_SUBMIT"] = "No se puede votar. Intente de nuevo.";
+$MESS["VOTE_NOTICE_REVOKE_IS_NOT_AVAILABLE"] = "opción de volver a votar no disponible";
+$MESS["VOTE_POPUP_BTN_CANCEL"] = "Cancelar";
+$MESS["VOTE_POPUP_BTN_COMPLETE"] = "Finalizar la encuesta";
+$MESS["VOTE_POPUP_TEXT"] = "Los resultados de la encuesta se guardarán. La votación se cerrará permanentemente y no se podrá reanudar. ¿Desea finalizar la encuesta?";
+$MESS["VOTE_POPUP_TITLE"] = "Finalizar la encuesta";
+$MESS["VOTE_PUBLIC"] = "Encuesta pública";
+$MESS["VOTE_RESULT_COUNT_PLURAL_0"] = "#COUNT# voto";
+$MESS["VOTE_RESULT_COUNT_PLURAL_1"] = "#COUNT# votos";
+$MESS["VOTE_RESULT_COUNT_PLURAL_2"] = "#COUNT# votos";
+$MESS["VOTE_REVOKE"] = "Volver a votar";
+$MESS["VOTE_SHOW_RESULTS"] = "Ver el resultado de la encuesta";
+$MESS["VOTE_SUMMARY_COUNT_NO_VOTES"] = "No hay votos";

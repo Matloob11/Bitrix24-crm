@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_SCRUM_ERROR_TITLE_POPUP"] = "To jest błąd.";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_ERROR_TITLE_POPUP"] = "Nie można zakończyć sprintu";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_ACTION_MOVE_LABEL"] = "Przenieś wszystkie zaległe zadania do:";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_ACTION_ROW_LABEL"] = "Zadania niezakończone";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_BUTTON"] = "Zakończone";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DATE_END_LABEL"] = "Koniec:";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DATE_START_LABEL"] = "Początek:";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DATE_START_LABEL_MSGVER_1"] = "Początek:";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_DONE_SP"] = "Zakończone";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_EPICS_ROW_LABEL"] = "Epici sprintu";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_PERIOD_LABEL"] = "Długość:";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_PLAN_ROW_LABEL"] = "Story pointy";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_PLAN_SP"] = "Zaplanowany";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_SELECTOR_BACKLOG"] = "Rejestr";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_SELECTOR_SPRINT"] = "Nowy sprint";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_TIME_ROW_LABEL"] = "Czas sprintu";
+$MESS["TASKS_SCRUM_SPRINT_COMPLETION_FORM_TITLE"] = "Zakończony sprint";
+$MESS["TASKS_SCRUM_SPRINT_SIDE_PANEL_LABEL"] = "Zakończone";
+$MESS["TSS_START_STORY_POINTS_HINT"] = "Widok przedstawia, ile story pointów było założonych w sprincie, a ile zespołowi faktycznie udało się zrealizować. Liczba story pointów wskazuje względną złożoność zadania. Tego rodzaju szacunek jest niezbędny, aby zrozumieć liczbę story pointów, którymi zespół może zarządzać w ramach sprintu, i odpowiednio zaplanować czas.";

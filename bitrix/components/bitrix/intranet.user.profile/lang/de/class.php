@@ -1,0 +1,6 @@
+<?php
+$MESS["INTRANET_USER_PROFILE_NO_USER_ERROR"] = "Nutzer wurde nicht gefunden.";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATED_MSGVER_1"] = "2FA ist für diesen Account deaktiviert.";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATE_STATUS"] = "2FA wird in #REMAINDER# erneut aktiviert.";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATE_STATUS_UNINITIALIZED"] = "Zugriff wird in #REMAINDER# geschlossen.";
+$MESS["INTRANET_USER_PROFILE_OTP_UNINITIALIZED"] = "2FA ist nicht konfiguriert";

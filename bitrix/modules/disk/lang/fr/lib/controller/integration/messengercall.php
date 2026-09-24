@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_INTEGRATION_IM_CALL_CALL_DOCUMENT_CREATED"] = "Document créé";
+$MESS["DISK_INTEGRATION_IM_CALL_CALL_RESUME_CREATED_MSGVER_1"] = "Compte rendu de réunion créé.";

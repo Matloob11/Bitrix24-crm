@@ -1,0 +1,20 @@
+<?php
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_HINT"] = "Você será descartado e não poderá fazer login neste Bitrix24 se confirmar seu descarte.\n\n[USER=#USER_ID#]#USER_NAME#[/USER] passará a ser o administrador principal.";
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_TITLE"] = "Confirmar a transferência de privilégios e o descarte";
+$MESS["M_INTRANET_FIRE_ADMIN_REQUEST_ERROR"] = "Não é possível completar a ação.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONFIRM_BUTTON"] = "Enviar solicitação";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONSENT_INSTRUCTION"] = "Você quer enviar uma solicitação para transferir seus privilégios e permitir o descarte?";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_DESCRIPTION"] = "Este usuário não pode ser descartado sem o consentimento dele.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_ERROR_TOAST"] = "Não foi possível enviar a solicitação de descarte. Tente novamente.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_HINT"] = "[USER=#USER_ID#]#USER_NAME#[/USER] é o administrador principal do seu Bitrix24. Tem acesso completo a todas as configurações e parâmetros.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_REJECT_BUTTON"] = "Cancelar";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TITLE"] = "Descartar administrador principal";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TOAST"] = "Solicitação enviada. Você será notificado quando o administrador responder à sua solicitação.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_BUTTON"] = "Confirmar";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_WORD"] = "Transferência";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONSENT_INSTRUCTION"] = "Digite a palavra \"#CONFIRM_WORD#\" abaixo para confirmar sua decisão:";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_DESCRIPTION"] = "Para confirmar esta ação, é necessário um passo adicional para evitar a transferência acidental de privilégios.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_ERROR_INPUT_TEXT"] = "Digite a palavra \"#CONFIRM_WORD#\"";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_HINT"] = "Você perderá seus privilégios de acesso às configurações e parâmetros do Bitrix24 se confirmar a transferência.\n\n[USER=#USER_ID#]#USER_NAME#[/USER] passará a ser o administrador principal.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_REJECT_BUTTON"] = "Recusar";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_TITLE"] = "Confirmar transferência de privilégios";

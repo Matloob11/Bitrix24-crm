@@ -1,0 +1,26 @@
+<?php
+$MESS["IM_CHANNEL_AVATAR_CHANGE_F"] = "#USER_NAME# mudou o ícone do canal.";
+$MESS["IM_CHANNEL_AVATAR_CHANGE_M"] = "#USER_NAME# mudou o ícone do canal.";
+$MESS["IM_CHANNEL_JOIN_F"] = "#USER_1_NAME# convidou #USER_2_NAME# para o canal.";
+$MESS["IM_CHANNEL_JOIN_M"] = "#USER_1_NAME# convidou #USER_2_NAME# para o canal.";
+$MESS["IM_CHAT_AVATAR_CHANGE_F"] = "#USER_NAME# mudou o ícone de bate-papo.";
+$MESS["IM_CHAT_AVATAR_CHANGE_M"] = "#USER_NAME# mudou o ícone de bate-papo.";
+$MESS["IM_CHAT_CAN_POST_ALL_MSGVER_1"] = "Todos os participantes";
+$MESS["IM_CHAT_CAN_POST_MANAGERS_MSGVER_1"] = "Proprietário e administradores";
+$MESS["IM_CHAT_CAN_POST_NONE"] = "Ninguém";
+$MESS["IM_CHAT_CAN_POST_OWNER_MSGVER_1"] = "Proprietário";
+$MESS["IM_CHAT_JOIN_F"] = "#USER_1_NAME# convidou #USER_2_NAME# para conversar.";
+$MESS["IM_CHAT_JOIN_M"] = "#USER_1_NAME# convidou #USER_2_NAME# para conversar.";
+$MESS["IM_CHAT_KICK_F_MSGVER_1"] = "[USER=#CURRENT_USER_ID#][/USER] removeu [USER=#DELETED_USER_ID#][/USER] do bate-papo.";
+$MESS["IM_CHAT_KICK_M_MSGVER_1"] = "[USER=#CURRENT_USER_ID#][/USER] removeu [USER=#DELETED_USER_ID#][/USER] do bate-papo.";
+$MESS["IM_CHAT_KICK_NOTIFICATION_F"] = "#USER_NAME# removeu você do bate-papo.";
+$MESS["IM_CHAT_KICK_NOTIFICATION_M"] = "#USER_NAME# removeu você do bate-papo.";
+$MESS["IM_CHAT_LEAVE_F_MSGVER_1"] = "[USER=#USER_ID#][/USER] saiu do bate-papo.";
+$MESS["IM_CHAT_LEAVE_M_MSGVER_1"] = "[USER=#USER_ID#][/USER] saiu do bate-papo.";
+$MESS["IM_CHAT_NAME_FORMAT"] = "#COLOR# Bate-papo ##NUMBER#";
+$MESS["IM_CHAT_OVERFLOW_DELETE_MESSAGE"] = "Este bate-papo agora tem mais de #USER_COUNT# membros. As notificações de remoção/saída de usuários do bate-papo foram silenciadas para reduzir mensagens indesejadas.";
+$MESS["IM_CHAT_SELF_JOIN"] = "#USERS_NAME# entrou no bate-papo.";
+$MESS["IM_CHAT_SELF_JOIN_F"] = "#USER_NAME# entrou no bate-papo.";
+$MESS["IM_CHAT_SELF_JOIN_M"] = "#USER_NAME# entrou no bate-papo.";
+$MESS["IM_CHAT_SELF_JOIN_VIA_SHARING_LINK_F"] = "#INVITED_USER_NAME# foi convidada por #LINK_AUTHOR_NAME# e agora se juntou ao bate-papo.";
+$MESS["IM_CHAT_SELF_JOIN_VIA_SHARING_LINK_M"] = "#INVITED_USER_NAME# foi convidado por #LINK_AUTHOR_NAME# e agora se juntou ao bate-papo.";

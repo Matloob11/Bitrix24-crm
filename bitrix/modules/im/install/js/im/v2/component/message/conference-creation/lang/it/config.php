@@ -1,0 +1,6 @@
+<?php
+$MESS["IM_MESSAGE_CONFERENCE_CREATION_BUTTON_COPY_LINK"] = "Copia link";
+$MESS["IM_MESSAGE_CONFERENCE_CREATION_BUTTON_START"] = "Inizia videoconferenza";
+$MESS["IM_MESSAGE_CONFERENCE_CREATION_DESCRIPTION"] = "Gestisci riunioni, chat e condivisione di file";
+$MESS["IM_MESSAGE_CONFERENCE_CREATION_LINK_COPY_SUCCESS"] = "Il link alla videoconferenza è stato copiato negli Appunti.";
+$MESS["IM_MESSAGE_CONFERENCE_CREATION_TITLE"] = "Videoconferenza";

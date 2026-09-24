@@ -1,0 +1,27 @@
+<?php
+$MESS["CRM_ENTITY_PRESET_ACTIVE_FIELD"] = "Activité";
+$MESS["CRM_ENTITY_PRESET_COUNTRY_ID_FIELD"] = "ID du pays";
+$MESS["CRM_ENTITY_PRESET_CREATED_BY_ID_FIELD"] = "Créateur";
+$MESS["CRM_ENTITY_PRESET_DATE_CREATE_FIELD"] = "Date de création";
+$MESS["CRM_ENTITY_PRESET_DATE_MODIFY_FIELD"] = "Date de modification";
+$MESS["CRM_ENTITY_PRESET_ENTITY_TYPE_ID_FIELD"] = "ID du type d'entité";
+$MESS["CRM_ENTITY_PRESET_ERR_DELETE_PRESET_DEF_FOR_COMPANY"] = "Vous ne pouvez pas supprimer ce template car il s'agit d'un template d'entreprise par défaut";
+$MESS["CRM_ENTITY_PRESET_ERR_DELETE_PRESET_DEF_FOR_CONTACT"] = "Vous ne pouvez pas supprimer ce template car il s'agit d'un template de contact par défaut";
+$MESS["CRM_ENTITY_PRESET_ERR_DELETE_PRESET_USED"] = "Le modèle ne peut pas être supprimé, car des mentions y sont créées.";
+$MESS["CRM_ENTITY_PRESET_ERR_INVALID_ENTITY_TYPE"] = "Type d'entité invalide pour utilisation avec le template.";
+$MESS["CRM_ENTITY_PRESET_ERR_PRESET_NOT_FOUND"] = "Le template est introuvable.";
+$MESS["CRM_ENTITY_PRESET_FIELD_NAME_FIELD"] = "Nom";
+$MESS["CRM_ENTITY_PRESET_FIELD_TITLE_FIELD"] = "Nom dans le modèle";
+$MESS["CRM_ENTITY_PRESET_ID_FIELD"] = "ID";
+$MESS["CRM_ENTITY_PRESET_IN_SHORT_LIST_FIELD"] = "Afficher dans le résumé";
+$MESS["CRM_ENTITY_PRESET_MODIFY_BY_ID_FIELD"] = "Modifié(e)s par";
+$MESS["CRM_ENTITY_PRESET_NAME_EMPTY"] = "Modèle sans titre";
+$MESS["CRM_ENTITY_PRESET_NAME_FIELD"] = "Nom";
+$MESS["CRM_ENTITY_PRESET_SORT_FIELD"] = "Trier";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_BOOLEAN"] = "Oui/Non";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_DATETIME"] = "Date";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_DOUBLE"] = "Numéro";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_STRING"] = "Chaîne";
+$MESS["CRM_ENTITY_PRESET_XML_ID_FIELD"] = "ID externe";
+$MESS["CRM_ENTITY_TYPE_REQUISITE"] = "Mentions";
+$MESS["CRM_ENTITY_TYPE_REQUISITE_DESC"] = "Modèles des mentions de contact et de la société";

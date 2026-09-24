@@ -1,0 +1,3 @@
+<?php
+$MESS["MOBILE_STATEFUL_LIST_PULL_NOTIFICATION_ADD"] = "Nouveaux éléments : %COUNT%";
+$MESS["MOBILE_STATEFUL_LIST_PULL_NOTIFICATION_UPDATE"] = "Actualiser la liste...";

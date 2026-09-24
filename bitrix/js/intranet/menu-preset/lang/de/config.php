@@ -1,0 +1,22 @@
+<?php
+$MESS["MENU_PRESET_CRM_DESC1"] = "Automatisierter Vertrieb";
+$MESS["MENU_PRESET_CRM_DESC2"] = "Konversion erhöhen, mit Kunden kommunizieren";
+$MESS["MENU_PRESET_CRM_DESC11"] = "Mehr verkaufen";
+$MESS["MENU_PRESET_CRM_TITLE"] = "CRM";
+$MESS["MENU_PRESET_DESC"] = "Das macht Ihre tägliche Arbeit einfacher: das ausgewählte Werkzeug wird zuerst angezeigt, das Menü wird nur die benötigten Punkte enthalten. Sie können das Menü jederzeit bearbeiten.";
+$MESS["MENU_PRESET_SITES_DESC1"] = "Websites erstellen, die verkaufen";
+$MESS["MENU_PRESET_SITES_DESC2"] = "Erstellen Sie Websites und Landingpages, ohne das CRM zu verlassen";
+$MESS["MENU_PRESET_SITES_TITLE"] = "Websites";
+$MESS["MENU_PRESET_SOCIAL_DESC1"] = "Kommunikation mit Kollegen";
+$MESS["MENU_PRESET_SOCIAL_DESC2"] = "Schnelle Problemlösung";
+$MESS["MENU_PRESET_SOCIAL_DESC11"] = "Kommunikation und Zusammenarbeit";
+$MESS["MENU_PRESET_SOCIAL_TITLE1_1"] = "Teamarbeit";
+$MESS["MENU_PRESET_SYNC_DESC1"] = "Termine und Kommunikation";
+$MESS["MENU_PRESET_SYNC_DESC2"] = "Sie können Konferenzen organisieren, Chats erstellen und Ihre Kalender verwalten.";
+$MESS["MENU_PRESET_SYNC_TITLE"] = "Calls";
+$MESS["MENU_PRESET_TASKS_DESC1"] = "Projekte verwalten";
+$MESS["MENU_PRESET_TASKS_DESC2"] = "Fristen verfolgen und Performance kontrollieren";
+$MESS["MENU_PRESET_TASKS_DESC11"] = "Zusammenarbeiten und im Zeitplan bleiben";
+$MESS["MENU_PRESET_TASKS_TITLE"] = "Aufgaben";
+$MESS["MENU_PRESET_TASKS_TITLE1"] = "Aufgaben und Projekte";
+$MESS["MENU_PRESET_TITLE"] = "Wählen Sie das Werkzeug aus, das Ihr Unternehmen am häufigsten verwendet";

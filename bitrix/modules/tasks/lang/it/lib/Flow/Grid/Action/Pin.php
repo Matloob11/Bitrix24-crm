@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_FLOW_LIST_ACTION_PIN"] = "Aggiungi";
+$MESS["TASKS_FLOW_LIST_ACTION_UNPIN"] = "Rimuovi";

@@ -1,0 +1,60 @@
+<?php
+/**
+ * A7 Lead Guard — config.
+ * Deployed to: /home/bitrix/www/bitrix/php_interface/a7_lead_guard.config.php
+ *
+ * Rules enforced by include/a7_lead_guard.php:
+ *   1. Only portal admins (group 1) + 'delete_allow_user_ids' can delete a Lead.
+ *   2. Only those users can delete timeline comments / activities on a Lead.
+ *   3. Every lead edit writes a timeline note "Edited: Field: old -> new" (not deletable).
+ *   4. Editing a timeline comment writes a note with the previous text.
+ *   5. Sharing a lead (= adding an Observer) notifies the shared user, the
+ *      responsible person and the admins. Observers cannot edit locked fields.
+ */
+return [
+    // Extra users allowed to delete besides portal admins. Normally empty.
+    'delete_allow_user_ids' => [],
+
+    // Who receives the "lead shared" notification as admin.
+    // Empty = every active member of the Administrators group (group 1).
+    'notify_admin_ids' => [],
+
+    // CRM owner type ids protected. 1 = Lead. (Owner Data SPA = 1042, not enabled yet.)
+    'protect_owner_type_ids' => [1],
+
+    // When an AJAX delete request does not say which entity it belongs to,
+    // block it anyway (safer) instead of letting it through.
+    'block_when_owner_unknown' => true,
+
+    // Write "Edited" timeline notes on lead updates.
+    'history_notes' => true,
+
+    // Technical fields never listed in the "Edited" note.
+    'history_ignore_fields' => [
+        'ID', 'DATE_MODIFY', 'MODIFY_BY_ID', 'TIMESTAMP_X', 'SEARCH_CONTENT',
+        'DATE_CREATE', 'CREATED_BY_ID', 'HAS_PHONE', 'HAS_EMAIL', 'HAS_IMOL',
+        'FM', 'OBSERVER_IDS', 'CONTACT_BINDINGS', 'PRODUCT_ROWS', 'FACE_ID',
+        'ORIGIN_ID', 'ORIGINATOR_ID', 'WEBFORM_ID', 'LAST_ACTIVITY_TIME',
+        'LAST_ACTIVITY_BY', 'LAST_COMMUNICATION_TIME', 'MOVED_TIME', 'MOVED_BY_ID',
+        'DATE_CLOSED', 'STATUS_SEMANTIC_ID', 'EXCH_RATE', 'ACCOUNT_CURRENCY_ID',
+        'OPPORTUNITY_ACCOUNT', 'TAX_VALUE_ACCOUNT', 'BIRTHDATE_SORT',
+        'ADDRESS_LOC_ADDR_ID', 'IS_RETURN_CUSTOMER', 'CATEGORY_ID',
+        'UTM_SOURCE', 'UTM_MEDIUM', 'UTM_CAMPAIGN', 'UTM_CONTENT', 'UTM_TERM',
+        'SEARCH_CONTENT', 'OPTIONS', 'EVENT_ID', 'EVENT_DATE', 'EVENT_DESCRIPTION',
+        'STATUS_DESCRIPTION', 'PRODUCT_ID', 'UF_CRM_LEAD_LAST_ACTIVITY',
+    ],
+
+    // Shared users (observers who are not responsible / admin) may change ONLY the stage
+    // (STATUS_ID) plus every field Bitrix marks "required on a stage" for leads
+    // (read live from b_crm_field_attr). Add extra field codes here if needed.
+    'shared_allowed_fields' => [],
+    'shared_full_edit' => true,
+    'shared_locked_fields' => ['ASSIGNED_BY_ID', 'OBSERVER_IDS'],
+
+    // On-screen share popup only for shares made at/after this moment (set at deploy).
+    // Older shares stay in the bell notifications only.
+    'popup_since' => '2026-09-16 05:01:14',
+
+    // Where the guard writes its own log (must be writable by the bitrix user).
+    'log_file' => '/home/bitrix/a7_lead_guard.log',
+];

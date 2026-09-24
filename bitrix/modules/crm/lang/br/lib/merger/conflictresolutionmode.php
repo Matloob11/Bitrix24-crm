@@ -1,0 +1,6 @@
+<?
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_ALWAYS_OVERWRITE"] = "Sempre substituir";
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_ASK_USER"] = "Definido pelo usuário";
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_MANUAL"] = "Mesclar manualmente";
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_NEVER_OVERWRITE"] = "Nunca substituir";
+?>

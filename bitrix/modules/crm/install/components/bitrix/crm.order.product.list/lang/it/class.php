@@ -1,0 +1,26 @@
+<?
+$MESS["CRM_ORDER_PLC_BASE_PRICE"] = "Prezzo base";
+$MESS["CRM_ORDER_PLC_CURRENCY"] = "Valuta";
+$MESS["CRM_ORDER_PLC_CUSTOM_PRICE"] = "Prezzo personalizzato";
+$MESS["CRM_ORDER_PLC_DEDUCTED"] = "Spedito";
+$MESS["CRM_ORDER_PLC_DEFAULT_WEIGHT_UNIT"] = "kg";
+$MESS["CRM_ORDER_PLC_DIMENSIONS"] = "Dimensioni";
+$MESS["CRM_ORDER_PLC_DISCOUNT_PRICE"] = "Sconto";
+$MESS["CRM_ORDER_PLC_FAILED_TO_CREATE_OBJECT"] = "Impossibile creare l'istanza ordine";
+$MESS["CRM_ORDER_PLC_NAME"] = "Nome";
+$MESS["CRM_ORDER_PLC_NOTES"] = "Tipo prezzo";
+$MESS["CRM_ORDER_PLC_PRICE"] = "Prezzo";
+$MESS["CRM_ORDER_PLC_PRODUCT"] = "Prodotto";
+$MESS["CRM_ORDER_PLC_PRODUCT_ID"] = "ID prodotto";
+$MESS["CRM_ORDER_PLC_PRODUCT_PRICE_ID"] = "ID prezzo";
+$MESS["CRM_ORDER_PLC_PROPERTIES"] = "Proprietà";
+$MESS["CRM_ORDER_PLC_QUANTITY"] = "Quantità";
+$MESS["CRM_ORDER_PLC_SORTING"] = "Ordina";
+$MESS["CRM_ORDER_PLC_THE_SUMM"] = "Importo";
+$MESS["CRM_ORDER_PLC_TYPE_PRICE_TYPE_ID"] = "ID tipo prezzo";
+$MESS["CRM_ORDER_PLC_UNKNOWN_DISCOUNT"] = "Sconto sconosciuto";
+$MESS["CRM_ORDER_PLC_VAT"] = "Imposta";
+$MESS["CRM_ORDER_PLC_VAT_INCLUDED"] = "Imposta inclusa";
+$MESS["CRM_ORDER_PLC_VAT_RATE"] = "Aliquota fiscale";
+$MESS["CRM_ORDER_PLC_WEIGHT"] = "Peso";
+?>

@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_ACTIVITY_PROVIDER_BOOKING_NAME"] = "Agendamento on-line";
+$MESS["CRM_ACTIVITY_PROVIDER_BOOKING_TYPE_DEFAULT_NAME"] = "Agendamento on-line";

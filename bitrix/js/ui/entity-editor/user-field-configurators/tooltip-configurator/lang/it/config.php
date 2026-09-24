@@ -1,0 +1,4 @@
+<?php
+$MESS["UI_ENTITY_EDITOR_UF_CONFIGURATORS_TOOLTIP_CHECKBOX_LABEL"] = "Abilita descrizione per campo";
+$MESS["UI_ENTITY_EDITOR_UF_CONFIGURATORS_TOOLTIP_INPUT_LABEL"] = "Testo descrizione";
+$MESS["UI_ENTITY_EDITOR_UF_CONFIGURATORS_TOOLTIP_LENGTH_VALIDATION_ERROR"] = "Il testo della descrizione non deve superare #MAX_LENGTH# caratteri.";

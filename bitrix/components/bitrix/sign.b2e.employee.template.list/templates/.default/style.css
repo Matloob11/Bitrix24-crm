@@ -1,0 +1,94 @@
+.sign-personal-grid-user {
+	text-decoration: none !important;
+	padding: 3.5px 13px 3.5px 4px;
+	border-radius: 14.5px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: start;
+	background: transparent;
+	transition: 250ms linear all;
+}
+
+.sign-personal-grid-user:hover {
+	background: #C0EDFD;
+	transition: .1s;
+	opacity: 1;
+}
+
+.sign-personal-grid-user-name {
+	display: inline-block;
+	width: 100%;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #525C69;
+	text-decoration: none;
+	border-bottom: none;
+	padding-left: 11px;
+}
+
+.sign-template-title {
+	display: flex;
+	align-items: center;
+	color: var(--ui-color-link-primary-base);
+	text-decoration: none !important;
+}
+
+.sign-template-title-text {
+	position: relative;
+}
+
+.sign-template-title-text-no-access {
+	display: inline-block;
+}
+
+.sign-template-title-text::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -3px;
+	height: 1px;
+	background-color: var(--ui-color-link-primary-base);
+	transform: scaleY(0);
+	transition: transform 0.1s ease;
+}
+
+.sign-template-title-text:hover::after {
+	transform: scaleX(1);
+}
+
+.sign-template-title-without-link {
+	display: flex;
+	align-items: center;
+	margin: 0;
+}
+
+.sign-template-folder-icon {
+	width: 24px;
+	height: 24px;
+	background-image: url('image/template-folder.svg');
+	background-size: cover;
+	display: inline-block;
+	margin-right: 13px;
+	vertical-align: middle;
+	flex-shrink: 0;
+}
+
+.sign-template-icon {
+	width: 24px;
+	height: 24px;
+	background-image: url('image/document-template.svg');
+	background-size: cover;
+	display: inline-block;
+	margin-right: 13px;
+	vertical-align: middle;
+	flex-shrink: 0;
+}
+
+.ui-action-panel.ui-action-panel-show {
+	height: 5% !important;
+	min-height: 50px;
+	margin-top: -65px;
+}

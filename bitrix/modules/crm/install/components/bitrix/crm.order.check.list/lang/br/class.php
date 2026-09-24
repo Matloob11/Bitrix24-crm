@@ -1,0 +1,17 @@
+<?php
+$MESS["CRM_COLUMN_ORDER_CHECK_DATE_CREATE"] = "Criado em";
+$MESS["CRM_COLUMN_ORDER_CHECK_ID"] = "ID";
+$MESS["CRM_COLUMN_ORDER_CHECK_LINK"] = "Link do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_ORDER_ID"] = "ID do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_PAYMENT_DESCR"] = "Pagamento";
+$MESS["CRM_COLUMN_ORDER_CHECK_PAYMENT_ID"] = "ID do pagamento";
+$MESS["CRM_COLUMN_ORDER_CHECK_SHIPMENT_DESCR"] = "Entrega";
+$MESS["CRM_COLUMN_ORDER_CHECK_SHIPMENT_ID"] = "ID da entrega";
+$MESS["CRM_COLUMN_ORDER_CHECK_STATUS"] = "Status do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_SUM"] = "Montante do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_TITLE"] = "Documento de pagamento";
+$MESS["CRM_COLUMN_ORDER_CHECK_TYPE"] = "Tipo de recibo";
+$MESS["CRM_ERROR_WRONG_ORDER"] = "O pedido não foi encontrado";
+$MESS["CRM_ERROR_WRONG_ORDER_ID"] = "ID do pedido inválido";
+$MESS["CRM_ORDER_CHECK_LIST_TITLE"] = "Recibos de pagamento de ##ACCOUNT_NUMBER# de #DATE_BILL# (#PAY_SYSTEM_NAME#)";
+$MESS["CRM_PERMISSION_DENIED"] = "Acesso negado";

@@ -1,0 +1,9 @@
+{
+    "defaultTableName": "b_landing",
+    "installDirectoriesMapping": {
+        "install/components": "components",
+        "install/js": "js",
+        "install/blocks": "blocks",
+        "install/templates": "templates"
+    }
+}

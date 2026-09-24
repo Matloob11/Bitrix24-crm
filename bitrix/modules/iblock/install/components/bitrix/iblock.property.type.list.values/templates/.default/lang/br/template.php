@@ -1,0 +1,3 @@
+<?php
+$MESS["IBLOCK_PROPERTY_TYPE_LIST_VALUES_APPEND_ROW"] = "Adicionar linha";
+$MESS["IBLOCK_PROPERTY_TYPE_LIST_VALUES_TITLE"] = "Valores da propriedade: #NAME#";

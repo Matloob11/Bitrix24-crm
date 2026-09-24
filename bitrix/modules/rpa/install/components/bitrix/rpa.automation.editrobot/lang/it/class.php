@@ -1,0 +1,5 @@
+<?
+$MESS["RPA_AUTOMATION_EDITROBOT_SCENARIO"] = "Tipo";
+$MESS["RPA_AUTOMATION_EDITROBOT_TITLE"] = "Aggiungi assegnazione";
+$MESS["RPA_AUTOMATION_EDITROBOT_TITLE_EDIT"] = "Configura assegnazione";
+?>

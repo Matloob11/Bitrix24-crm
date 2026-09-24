@@ -1,0 +1,46 @@
+<?
+$MESS["VOX_IVR_EDIT_CANCEL"] = "Annulla";
+$MESS["VOX_IVR_EDIT_CHANGE"] = "Modifica";
+$MESS["VOX_IVR_EDIT_ENCLOSED_MENU"] = "Menu annidato per pulsante #DIGIT#";
+$MESS["VOX_IVR_EDIT_FOLD"] = "Comprimi";
+$MESS["VOX_IVR_EDIT_MENU_ACTIONS"] = "Pulsanti di azione";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_DIRECTCODE"] = "Inserisci numero di interno del dipendente";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_EXIT"] = "Esci da IVR";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_ITEM"] = "Menu annidato";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_MESSAGE"] = "Riproduci messaggio vocale";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_NEW_ITEM"] = "Nuovo menu";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_PHONE"] = "Inoltra a numero esterno";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_QUEUE"] = "Inoltra a gruppo coda";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_REPEAT"] = "Ripeti la registrazione del menu corrente";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_RETURN"] = "Torna al livello precedente";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_USER"] = "Inoltra a dipendente";
+$MESS["VOX_IVR_EDIT_MENU_ACTION_VOICEMAIL"] = "Lascia messaggio vocale";
+$MESS["VOX_IVR_EDIT_MENU_CHANGE_TTS_SETTINGS"] = "modifica lingua, voce e pronuncia";
+$MESS["VOX_IVR_EDIT_MENU_CHANGE_TTS_SPEED"] = "Velocità";
+$MESS["VOX_IVR_EDIT_MENU_CHANGE_TTS_VOICE"] = "Lingua e voce";
+$MESS["VOX_IVR_EDIT_MENU_CHANGE_TTS_VOLUME"] = "Volume";
+$MESS["VOX_IVR_EDIT_MENU_DESCRIPTION_FILE"] = "Questa registrazione audio sarà ascoltata dai chiamanti ogni volta che ti raggiungono per telefono.";
+$MESS["VOX_IVR_EDIT_MENU_DESCRIPTION_TEXT"] = "Questo testo sarà riprodotto ai chiamanti ogni volta che ti raggiungono per telefono.";
+$MESS["VOX_IVR_EDIT_MENU_LISTEN_TO_RESULT"] = "riproduci risultato";
+$MESS["VOX_IVR_EDIT_MENU_LOAD_FILE"] = "carica file audio";
+$MESS["VOX_IVR_EDIT_MENU_SETUP"] = "Configura menu";
+$MESS["VOX_IVR_EDIT_MENU_SOURCE"] = "Origine menu IVR";
+$MESS["VOX_IVR_EDIT_MENU_SOURCE_FILE"] = "File audio";
+$MESS["VOX_IVR_EDIT_MENU_SOURCE_MESSAGE"] = "Testo";
+$MESS["VOX_IVR_EDIT_MENU_TEXT_TO_PRONOUNCE"] = "Testo vocale";
+$MESS["VOX_IVR_EDIT_MENU_TIMEOUT"] = "Timeout pressione pulsante (sec.)";
+$MESS["VOX_IVR_EDIT_MENU_TIMEOUT_ACTION"] = "Esegui azione se non è stato premuto alcun pulsante";
+$MESS["VOX_IVR_EDIT_MENU_TITLE"] = "Nome";
+$MESS["VOX_IVR_EDIT_RETURN"] = "Torna all'elenco";
+$MESS["VOX_IVR_EDIT_SAVE"] = "Salva";
+$MESS["VOX_IVR_EDIT_SELECT"] = "Seleziona";
+$MESS["VOX_IVR_EDIT_UNFOLD"] = "Espandi";
+$MESS["VOX_IVR_EDIT_VOICEMAIL_RECEIVER"] = "Destinatario messaggio";
+$MESS["VOX_IVR_EXIT_HINT"] = "Esci dal menu vocale. L'ulteriore elaborazione delle chiamate è eseguita utilizzando le preferenze dei numeri comuni.";
+$MESS["VOX_IVR_GROUP_SETTINGS"] = "Impostazioni gruppo coda";
+$MESS["VOX_IVR_HIDE_GROUP_CREATE"] = "Crea nuovo gruppo coda";
+$MESS["VOX_IVR_HIDE_GROUP_SETTINGS"] = "Nascondi impostazioni gruppo coda";
+$MESS["VOX_IVR_LIMIT_REACHED_TEXT"] = "<p>Puoi utilizzare solo un menu vocale a due livelli nel piano corrente.</p> 
+<p>Per utilizzare menu con livello di annidamento illimitato, effettua l'upgrade ai piani commerciali selezionati.</p>";
+$MESS["VOX_IVR_LIMIT_REACHED_TITLE"] = "Menu vocale esteso";
+?>

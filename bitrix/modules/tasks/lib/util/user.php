@@ -1,0 +1,823 @@
+<?php
+
+namespace Bitrix\Tasks\Util;
+
+use Bitrix\Main;
+use Bitrix\Main\Application;
+use Bitrix\Main\Loader;
+use Bitrix\Main\ModuleManager;
+use Bitrix\Main\OperationTable;
+use Bitrix\Main\ORM\Fields\ExpressionField;
+use Bitrix\Main\UserTable;
+use Bitrix\Tasks\Integration\Extranet;
+use Bitrix\Tasks\Integration\IMBot;
+use Bitrix\Tasks\Integration\IMConnector;
+use Bitrix\Tasks\Integration\Intranet;
+use Bitrix\Tasks\Integration\Mail;
+use Bitrix\Tasks\Integration\Replica;
+use Bitrix\Tasks\V2\Internal\DI\Container;
+
+final class User
+{
+	private static array $defaultUserStorage = [];
+	private static array $userTimeOffset = [];
+	private static $accessLevels = array();
+	private static $accessOperations = array();
+
+	private static mixed $userId = null;
+
+	public static function getList($params)
+	{
+		return UserTable::getList($params);
+	}
+
+	/**
+	 * @return \CUser
+	 */
+	public static function get()
+	{
+		return $GLOBALS['USER'];
+	}
+
+	/**
+	 * Returns current user ID
+	 * @return integer
+	 */
+	public static function getId()
+	{
+		global $USER;
+
+		if(is_object($USER) && method_exists($USER, 'getId'))
+		{
+			$userId = intval($USER->getId());
+			if($userId > 0)
+			{
+				return $userId;
+			}
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Checks if the current user is authorized
+	 * @return bool
+	 */
+	public static function isAuthorized()
+	{
+		$id = static::getId();
+		return $id ? $GLOBALS['USER']->isAuthorized() : false;
+	}
+
+	/**
+	 * Check if a given user is active
+	 *
+	 * @param $userId
+	 * @return bool
+	 * @throws \Bitrix\Main\ArgumentException
+	 */
+	public static function isActive($userId)
+	{
+		$userId = intval($userId);
+		if(!$userId)
+		{
+			return false;
+		}
+
+		$user = UserTable::getList(array('filter' => array(
+			'=ID' => $userId,
+		), 'select' => array(
+			'ID', 'ACTIVE',
+		)))->fetch();
+
+		return $user['ACTIVE'] == 'Y';
+	}
+
+	/**
+	 * Get admin user ID
+	 * @return bool|int|null
+	 */
+	public static function getAdminId()
+	{
+		global $USER;
+
+		$id = static::getId();
+		if($id && $USER->isAdmin())
+		{
+			return $id;
+		}
+
+		static $admin;
+
+		if($admin === null)
+		{
+			$user = \CUser::GetList(
+				'id',
+				'asc',
+				array('GROUPS_ID' => array(1), 'ACTIVE' => 'Y'),
+				array('FIELDS' => array('ID'), 'NAV_PARAMS' => array('nTopCount' => 1))
+			)->fetch();
+
+			if (is_array($user) && intval($user['ID']))
+			{
+				$admin = intval($user['ID']);
+			}
+		}
+
+		return $admin === null ? 0 : $admin;
+	}
+
+	/**
+	 * Return user id previously set by setOccurAsId()
+	 */
+	public static function getOccurAsId()
+	{
+		return self::$userId;
+	}
+
+	/**
+	 * Set user id that will figure in all logs and notifications as the user performed an action.
+	 * This allows to create task task under admin id and put to log someone else.
+	 *
+	 * In general, this is a hacky function, so it could be set deprecated in future as architecture changes.
+	 *
+	 * @param int $userId Use 0 or null or false to switch off user replacement
+	 */
+	public static function setOccurAsId($userId = 0)
+	{
+		$userId = intval($userId);
+
+		// todo: use user cache here, when implemented
+		if(!$userId || !\CUser::getById($userId)->fetch())
+		{
+			$userId = null;
+		}
+
+		self::$userId = $userId;
+	}
+
+	/**
+	 * Check if a user with a given id is admin
+	 *
+	 * @param 0 $userId
+	 * @return bool
+	 */
+	public static function isAdmin($userId = 0)
+	{
+		global $USER;
+		static $arCache = array();
+
+		if($userId === 0 || $userId === false)
+		{
+			$userId = null;
+		}
+
+		$isAdmin = false;
+		$loggedInUserId = null;
+
+		if ($userId === null)
+		{
+			if (is_object($USER) && method_exists($USER, 'GetID'))
+			{
+				$loggedInUserId = (int) $USER->GetID();
+				$userId = $loggedInUserId;
+			}
+			else
+			{
+				$loggedInUserId = false;
+			}
+		}
+
+		if ($userId > 0)
+		{
+			if ( ! isset($arCache[$userId]) )
+			{
+				if ($loggedInUserId === null)
+				{
+					if (is_object($USER) && method_exists($USER, 'GetID'))
+					{
+						$loggedInUserId = (int) $USER->GetID();
+					}
+				}
+
+				if ((int)$userId === $loggedInUserId)
+				{
+					$arCache[$userId] = (bool)$USER->isAdmin();
+				}
+				else
+				{
+
+					$ar = \CUser::GetUserGroup($userId);
+					if (in_array(1, $ar, true) || in_array('1', $ar, true))
+						$arCache[$userId] = true;	// user is admin
+					else
+						$arCache[$userId] = false;	// user isn't admin
+				}
+			}
+
+			$isAdmin = $arCache[$userId];
+		}
+
+		return ($isAdmin);
+	}
+
+	/**
+	 * Practically, just an alias for static::isAdmin()
+	 *
+	 * @param int $userId
+	 * @return bool
+	 */
+	public static function isSuper($userId = 0)
+	{
+		return static::isAdmin($userId) || \Bitrix\Tasks\Integration\Bitrix24\User::isAdmin($userId);
+	}
+
+	public static function isBoss($userId, $bossId)
+	{
+		$employees = Intranet\User::getSubordinate($bossId);
+
+		return in_array($userId, $employees);
+	}
+
+	/**
+	 * Checks if $bossId is a boss for $userId recursively through the structure
+	 *
+	 * @param $bossId
+	 * @param $userId
+	 * @return bool
+	 *
+	 */
+	public static function isBossRecursively($bossId, $userId)
+	{
+		$employees = Intranet\User::getSubordinateSubDepartments($bossId);
+
+		return in_array($userId, $employees);
+	}
+
+	/**
+	 * Return data for users we really can see
+	 *
+	 * todo: make static cache here, call this function everywhere (at least, in CTaskNotifications)
+	 *
+	 * @param array $userIds
+	 * @param array $select
+	 * @return array
+	 */
+	public static function getData(array $userIds, array $select = ['*'])
+	{
+		$users = [];
+		$current = static::getId();
+
+		if (empty($userIds))
+		{
+			$userIds = [$current];
+		}
+
+		$parsed = array_unique(array_filter($userIds, 'intval'));
+		if (empty($parsed))
+		{
+			return $users;
+		}
+
+		$departmentUFCode = Intranet\User::getDepartmentUFCode();
+		if (Userfield\User::checkFieldExists($departmentUFCode))
+		{
+			$select[] = $departmentUFCode;
+		}
+		if (Loader::includeModule('crm'))
+		{
+			$select[] = 'UF_USER_CRM_ENTITY';
+		}
+
+		$filter = ['ID' => $parsed];
+		$externalAuthIds = array_diff(
+			static::getArtificialExternalAuthIds(),
+			[
+				Mail\User::getExternalCode(),
+				Replica\User::getExternalCode(),
+				IMBot\User::getExternalCode(),
+			]
+		);
+		if (!empty($externalAuthIds))
+		{
+			$filter['!=EXTERNAL_AUTH_ID'] = $externalAuthIds;
+		}
+
+		$sqlHelper = Application::getConnection()->getSqlHelper();
+		$orderField = new ExpressionField(
+			'ID_SEQUENCE',
+			$sqlHelper->getOrderByIntField('%s', $parsed, false),
+			array_fill(0, count($parsed), 'ID')
+		);
+
+		$query = UserTable::query()
+			->setSelect($select)
+			->setFilter($filter)
+			->registerRuntimeField($orderField)
+			->setOrder($orderField->getName())
+		;
+
+		$res = $query->exec();
+		while ($user = $res->fetch())
+		{
+			$user['IS_EXTRANET_USER'] = Extranet\User::isExtranet($user);
+			$user['IS_EMAIL_USER'] = Mail\User::isEmail($user);
+			$user['IS_CRM_EMAIL_USER'] = ($user['IS_EMAIL_USER'] && !empty($user['UF_USER_CRM_ENTITY']));
+			$user['IS_NETWORK_USER'] = (isset($user['EXTERNAL_AUTH_ID']) && $user['EXTERNAL_AUTH_ID'] === Replica\User::getExternalCode());
+			$user['IS_COLLABER_USER'] = Extranet\User::isCollaber($user['ID']);
+
+			$users[$user['ID']] = $user;
+		}
+
+		return $users;
+	}
+
+	public static function getArtificialExternalAuthIds()
+	{
+		$result = array();
+
+		if(Mail::isInstalled())
+		{
+			$result[] = Mail\User::getExternalCode();
+		}
+		if(Replica::isInstalled())
+		{
+			$result[] = Replica\User::getExternalCode();
+		}
+		if(IMBot::isInstalled())
+		{
+			$result[] = IMBot\User::getExternalCode();
+		}
+		if(IMConnector::isInstalled())
+		{
+			$result[] = IMConnector\User::getExternalCode();
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Extract user data suitable to publicise using json_encode() or CUtil::PhpToJsObject()
+	 * @param array $user
+	 * @return array
+	 */
+	public static function extractPublicData($user)
+	{
+		if(!is_array($user))
+		{
+			return array();
+		}
+
+		$keys = static::getPublicDataKeys();
+		$keys[] = 'IS_EXTRANET_USER';
+		$keys[] = 'IS_CRM_EMAIL_USER';
+		$keys[] = 'IS_EMAIL_USER';
+		$keys[] = 'IS_NETWORK_USER';
+		$keys[] = 'IS_COLLABER_USER';
+		$safe = array();
+
+		foreach($keys as $key)
+		{
+			if(array_key_exists($key, $user))
+			{
+				$safe[$key] = $user[$key];
+			}
+		}
+
+		if(intval($user['ID']))
+		{
+			$safe['ID'] = intval($user['ID']);
+		}
+
+		return $safe;
+	}
+
+	public static function getPublicDataKeys()
+	{
+		return array(
+			'ID',
+			'NAME',
+			'LAST_NAME',
+			'SECOND_NAME',
+			'LOGIN',
+			'WORK_POSITION',
+			'PERSONAL_PHOTO',
+			'PERSONAL_GENDER',
+			//'EMAIL',
+			//\Bitrix\Tasks\Integration\Intranet\User::getDepartmentUFCode()
+		);
+	}
+
+	public static function formatName($data, $siteId = false, $format = null, bool $allowEmpty = false)
+	{
+		if($format === null)
+		{
+			$format = Site::getUserNameFormat($siteId);
+		}
+
+		return \CUser::formatName($format, $data, true, false, !$allowEmpty);
+	}
+
+	public static function getTimeZoneOffsetCurrentUser()
+	{
+		$userId = static::getId();
+		if(!$userId)
+		{
+			return 0; // server time
+		}
+
+		return static::getTimeZoneOffset($userId);
+	}
+
+	public static function getTimeZoneOffset($userId = 0, $utc = false, bool $force = false)
+	{
+		$userId = intval($userId);
+		// DO NOT set $userId = static::getId() when $userId == 0 here, because some times
+		// \CTimeZone::getOffset() returns different result when the first argument is null
+
+		$disabled = !\CTimeZone::enabled();
+
+		if($disabled)
+		{
+			\CTimeZone::enable();
+		}
+
+		$offset = static::getOffset($userId, $force) + ($utc ? \Bitrix\Tasks\Util::getServerTimeZoneOffset() : 0);
+
+		if($disabled)
+		{
+			\CTimeZone::disable();
+		}
+
+		return intval($offset);
+	}
+
+	public static function setOption($name, $value, $userId = 0, bool $common = false)
+	{
+		$userId = (int)$userId;
+		if(!$userId)
+		{
+			$userId = static::getId();
+		}
+
+		return \CUserOptions::setOption('tasks', $name, $value, $common, $userId ? : false);
+	}
+
+	public static function unSetOption($name, $userId = 0)
+	{
+		$userId = intval($userId);
+		if(!$userId)
+		{
+			$userId = static::getId();
+		}
+
+		return \CUserOptions::deleteOption('tasks', $name, false, $userId ? $userId : false);
+	}
+
+	public static function unSetOptionForAll($name)
+	{
+		return \CUserOptions::deleteOptionsByName('tasks', $name);
+	}
+
+	public static function getOption($name, $userId = 0, $default = '')
+	{
+		$userId = intval($userId);
+		if(!$userId)
+		{
+			$userId = static::getId();
+		}
+
+		return \CUserOptions::getOption('tasks', $name, $default, $userId ? $userId : false);
+	}
+
+	/**
+	 * @param int $userId
+	 * @return int
+	 */
+	public static function getTime($userId = 0)
+	{
+		return time() + static::getTimeZoneOffset($userId);
+	}
+
+	/**
+	 * Get access level by name
+	 *
+	 * @param $entityName
+	 * @param $levelName
+	 * @return null
+	 */
+	public static function getAccessLevel($entityName, $levelName)
+	{
+		$entityName = mb_strtolower(trim((string) $entityName));
+		$levelName = mb_strtolower(trim((string) $levelName));
+
+		$levels = static::getAccessLevelsForEntity($entityName);
+		foreach($levels as $level)
+		{
+			if($level['NAME'] == 'tasks_'.$entityName.'_'.$levelName)
+			{
+				return $level;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Get access operations for entity
+	 *
+	 * @param $entityName
+	 * @return array
+	 * @throws \Bitrix\Main\ArgumentException
+	 */
+	public static function getAccessOperationsForEntity($entityName)
+	{
+		$entityName = trim((string) $entityName);
+		if($entityName == '')
+		{
+			return array();
+		}
+
+		if(!array_key_exists($entityName, static::$accessOperations))
+		{
+			// todo: there could be php cache
+
+			$res = OperationTable::getList(array(
+				'filter' => array(
+					'=MODULE_ID' => 'tasks',
+					'=BINDING' => $entityName,
+				),
+			));
+			$operations = array();
+			while($item = $res->fetch())
+			{
+				$operations[$item['ID']] = $item;
+			}
+
+			static::$accessOperations[$entityName] = $operations;
+		}
+
+		return static::$accessOperations[$entityName];
+	}
+
+	/**
+	 * Get info about access tasks for entity
+	 *
+	 * @param $entityName
+	 * @return array
+	 */
+	public static function getAccessLevelsForEntity($entityName)
+	{
+		$entityName = trim((string) $entityName);
+		if($entityName == '')
+		{
+			return array();
+		}
+
+		if(!array_key_exists($entityName, static::$accessLevels))
+		{
+			// todo: there could be php cache
+
+			$res = \CTask::getList(array(), array(
+				'MODULE_ID' => 'tasks',
+				'BINDING' => $entityName,
+			));
+			$levels = array();
+			while($item = $res->fetch())
+			{
+				$levels[$item['ID']] = $item;
+			}
+
+			static::$accessLevels[$entityName] = $levels;
+		}
+
+		return static::$accessLevels[$entityName];
+	}
+
+	public static function invalidate(int ...$userIds): void
+	{
+		foreach ($userIds as $userId)
+		{
+			unset(self::$defaultUserStorage[$userId], self::$userTimeOffset[$userId]);
+		}
+	}
+
+	private static function getOffset(int $userId, bool $force = false)
+	{
+		if (!isset(self::$userTimeOffset[$userId]) || $force)
+		{
+			// Compatibility: CTimeZone return different values for null and 0
+			self::$userTimeOffset[$userId] = \CTimeZone::getOffset($userId ?: null, $force);
+		}
+
+		return self::$userTimeOffset[$userId];
+	}
+
+	/**
+	 * Check if user is extranet user
+	 * @param integer $userID User ID
+	 * @return boolean
+	 */
+	public static function isExternalUser($userID)
+	{
+	    static $users = [];
+
+	    if(!isset($users[$userID]))
+	    {
+            if (!ModuleManager::isModuleInstalled('extranet'))
+            {
+                $users[$userID] = false;
+            }
+            else
+            {
+                $dbResult = \CUser::getList(
+                    'ID',
+                    'ASC',
+                    array('ID_EQUAL_EXACT' => $userID),
+                    array('FIELDS' => array('ID'), 'SELECT' => array('UF_DEPARTMENT'))
+                );
+
+                $user = $dbResult->Fetch();
+                $users[$userID] = !(is_array($user)
+                    && isset($user['UF_DEPARTMENT'])
+                    && isset($user['UF_DEPARTMENT'][0])
+                    && $user['UF_DEPARTMENT'][0] > 0);
+            }
+        }
+
+	    return $users[$userID];
+	}
+
+	public static function getAbsences(Main\Type\DateTime $from, Main\Type\DateTime $to, int ...$userIds): array
+	{
+		$absenceService = Container::getInstance()->getAbsenceService();
+		$usersAbsence = $absenceService->getAbsenceDataPerUser($userIds, $from, $to);
+
+		$result = [];
+		foreach ($usersAbsence as $userId => $absenceCollection)
+		{
+			foreach ($absenceCollection as $absence)
+			{
+				$result[$userId][] = [
+					'from' => $absence->dateTimeFrom,
+					'to' => $absence->dateTimeTo,
+				];
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @param array $userIds
+	 * @return array|false
+	 * @throws Main\LoaderException
+	 */
+	public static function isAbsence(array $userIds)
+	{
+		if (!Loader::includeModule('intranet'))
+		{
+			return false;
+		}
+
+		if (empty($realUserIds = static::parseRealUsers($userIds)))
+		{
+			return [];
+		}
+
+		$dateNow = ConvertTimeStamp(false, 'SHORT');
+		$dateTimeNow = MakeTimeStamp(ConvertTimeStamp(false, 'FULL'));
+
+		$absenceService = Container::getInstance()->getAbsenceService();
+		$dateTimeFrom = Main\Type\DateTime::createFromTimestamp(MakeTimeStamp($dateNow));
+		$dateTimeTo = Main\Type\DateTime::createFromTimestamp(MakeTimeStamp($dateNow));
+
+		$absenceData = $absenceService->getAbsenceData($realUserIds, $dateTimeFrom, $dateTimeTo);
+
+		if ($absenceData->isEmpty())
+		{
+			return [];
+		}
+
+		$list = [];
+		$userIds = [];
+		foreach ($absenceData as $dto)
+		{
+			$userIds[$dto->userId] = true;
+		}
+
+		$userNames = static::getUserName(array_keys($userIds));
+
+		foreach ($absenceData as $dto)
+		{
+			$absenceFrom = $dto->dateTimeFrom->getTimestamp();
+			$absenceTo = $dto->dateTimeTo->getTimestamp();
+
+			$absenceEnd = (\CIntranetUtils::IsDateTime($absenceTo) ? $absenceTo : $absenceTo + 86399);
+
+			if ($absenceEnd > $dateTimeNow)
+			{
+				$absenceFromFormatted = UI::formatDateTime(
+					$absenceFrom,
+					\CSite::GetDateFormat((\CIntranetUtils::IsDateTime($absenceFrom) ? 'FULL' : 'SHORT'))
+				);
+				$absenceToFormatted = UI::formatDateTime(
+					$absenceTo,
+					\CSite::GetDateFormat((\CIntranetUtils::IsDateTime($absenceTo) ? 'FULL' : 'SHORT'))
+				);
+
+				$list[] = GetMessageJS('TASKS_WARNING_RESPONSIBLE_IS_ABSENCE', [
+					'#FORMATTED_USER_NAME#' => htmlspecialcharsbx($userNames[$dto->userId]),
+					'#DATE_FROM#' => $absenceFromFormatted,
+					'#DATE_TO#' => $absenceToFormatted,
+					'#ABSCENCE_REASON#' => htmlspecialcharsbx($dto->name),
+				]);
+			}
+		}
+
+		return $list;
+	}
+
+	/**
+	 * @param array $userIds
+	 * @return array
+	 */
+	private static function parseRealUsers(array $userIds): array
+	{
+		$realUserIds = [];
+
+		foreach ($userIds as $key => $value)
+		{
+			if (preg_match('/^[1-9][0-9]*$/', $value))
+			{
+				$realUserIds[] = (int)$value;
+			}
+		}
+
+		return $realUserIds;
+	}
+
+	public static function getUserName(
+		array $userIds,
+		$siteId = null,
+		$nameTemplate = null,
+		bool $allowEmpty = false,
+		array $select = ['default']
+	): array
+	{
+		$usersData = in_array('default', $select)
+			? self::getDefaultData($userIds)
+			: self::getData($userIds, $select);
+
+		$data = [];
+		foreach ($userIds as $userId)
+		{
+			$data[$userId] = self::formatName($usersData[$userId] ?? null, $nameTemplate, null, $allowEmpty);
+		}
+
+		return $data;
+	}
+
+	private static function getDefaultData(array $userIds): array
+	{
+		$userIds = array_map('intval', $userIds);
+		$unCachedUserIds = self::extractUnCachedUserIds($userIds);
+		if (!empty($unCachedUserIds))
+		{
+			$unCachedUsers = self::getData($unCachedUserIds, self::getDefaultSelect());
+			self::cacheUsers($unCachedUsers);
+		}
+
+		return self::extractCachedUserIds($userIds);
+	}
+
+	private static function extractUnCachedUserIds(array $userIds): array
+	{
+		return array_filter($userIds, fn (int $userId): bool => !isset(self::$defaultUserStorage[$userId]));
+	}
+
+	private static function extractCachedUserIds(array $userIds): array
+	{
+		return array_filter(self::$defaultUserStorage, fn (array $user) : bool => in_array((int)$user['ID'], $userIds));
+	}
+
+	private static function cacheUsers(array $users): void
+	{
+		array_map(function(array $user): void {
+			self::$defaultUserStorage[(int)$user['ID']] = $user;
+		}, $users);
+	}
+
+	private static function getDefaultSelect(): array
+	{
+		return [
+			'ID',
+			'NAME',
+			'LAST_NAME',
+			'SECOND_NAME',
+			'TITLE',
+			'LOGIN',
+			'EMAIL',
+		];
+	}
+}

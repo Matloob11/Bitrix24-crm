@@ -1,0 +1,8 @@
+<?php
+$MESS["CRM_TIMELINE_BLOCK_AI_CREATED"] = "Creato da #COPILOT_NAME#";
+$MESS["CRM_TIMELINE_BLOCK_CREATED_FROM"] = "Creazione di #CREATOR# a partire da #SUBJECT#";
+$MESS["CRM_TIMELINE_CLIENT_TITLE"] = "Cliente";
+$MESS["CRM_TIMELINE_MARKET_PANEL_TEXT"] = "Oltre 1000 componenti aggiuntivi per il tuo CRM";
+$MESS["CRM_TIMELINE_MARKET_PANEL_TEXT_DETAILS"] = "Maggiori informazioni";
+$MESS["CRM_TIMELINE_MENU_FASTEN"] = "Aggiungi";
+$MESS["CRM_TIMELINE_MENU_UNFASTEN"] = "Rimuovi";

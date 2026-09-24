@@ -1,0 +1,51 @@
+<?php
+$MESS['TASKS_FLOW_ADD_BUTTON'] = 'Создать поток';
+
+$MESS['TASKS_FLOW_LIST_NO_TASKS'] = 'Нет задач';
+$MESS['TASKS_FLOW_LIST_NO_YOUR_TASKS'] = 'Нет моих задач';
+$MESS['TASKS_FLOW_LIST_CREATE_TASK'] = 'Создать задачу';
+$MESS['TASKS_FLOW_LIST_CREATE_TASK_IMMUTABLE_DISTRIBUTION_TOOLTIP'] = 'Задачи в этот поток создаются с помощью роботов[br/] и бизнес-процессов';
+
+$MESS['TASKS_FLOW_LIST_COLUMN_MY_TASKS_PLURAL_0'] = '{number} задача';
+$MESS['TASKS_FLOW_LIST_COLUMN_MY_TASKS_PLURAL_1'] = '{number} задачи';
+$MESS['TASKS_FLOW_LIST_COLUMN_MY_TASKS_PLURAL_2'] = '{number} задач';
+
+$MESS['TASKS_FLOW_LIST_CONFIRM_REMOVE_MESSAGE'] = 'Вы уверены, что хотите удалить поток?';
+$MESS['TASKS_FLOW_LIST_CONFIRM_REMOVE_BUTTON'] = 'Да, удалить';
+
+$MESS['TASKS_FLOW_LIST_BI_ANALYTICS_GREAT'] = 'Отлично';
+$MESS['TASKS_FLOW_LIST_BI_ANALYTICS_BADLY'] = 'Плохо';
+$MESS['TASKS_FLOW_LIST_COMING_SOON'] = 'Скоро появится';
+$MESS['TASKS_FLOW_LIST_ABOUT_EFFICIENCY'] = 'Эффективность показывает процент<br> задач, выполненных в срок';
+$MESS['TASKS_FLOW_LIST_BI_ANALYTICS_EMPTY_DASHBOARDS'] = 'Отчёт недоступен';
+$MESS['TASKS_FLOW_LIST_BI_ANALYTICS_BY_REPORT'] = 'По данным отчёта #DASHBOARD_TITLE#';
+$MESS['TASKS_FLOW_LIST_BI_ANALYTICS_NO_AVAILABLE_REPORTS'] = 'Доступных отчётов пока нет';
+$MESS['TASKS_FLOW_LIST_BI_CONSTRUCTOR_NO_ACCESS'] = 'Нет доступа к BI Конструктору';
+
+$MESS['TASKS_FLOW_LIST_COLUMN_DEMO_LABEL'] = 'Не назначен';
+$MESS['TASKS_FLOW_LIST_GUIDE_BTN'] = 'Потоки: как автоматизировать работу с задачами';
+
+$MESS['TASKS_FLOW_LIST_FLOW_OFF'] = 'Поток выключен';
+
+$MESS['TASKS_FLOW_LIST_FLOW_PINNED'] = 'Поток закреплён';
+$MESS['TASKS_FLOW_LIST_FLOW_UNPINNED'] = 'Поток откреплён';
+$MESS['TASKS_FLOW_LIST_FLOW_PIN_CANCEL'] = 'Отмена';
+
+$MESS['TASKS_FLOW_LIST_COPILOT_NOT_ENOUGH_TASKS_POPUP_TITLE'] = 'CoPilot еще собирает данные';
+$MESS['TASKS_FLOW_LIST_COPILOT_NOT_ENOUGH_TASKS_POPUP_TITLE_MSGVER_1'] = '#COPILOT_NAME# ещё собирает данные';
+$MESS['TASKS_FLOW_LIST_COPILOT_NOT_ENOUGH_TASKS_POPUP_DESCRIPTION'] = 'Когда в потоке будет 10 задач, CoPilot напишет рекомендации по эффективности';
+$MESS['TASKS_FLOW_LIST_COPILOT_NOT_ENOUGH_TASKS_POPUP_DESCRIPTION_MSGVER_1'] = 'Когда в потоке будет 10 задач, #COPILOT_NAME# напишет рекомендации по эффективности';
+$MESS['TASKS_FLOW_LIST_COPILOT_NOT_ENOUGH_TASKS_POPUP_SHOW_EXAMPLE'] = 'Пример рекомендации';
+
+$MESS['TASKS_FLOW_LIST_COPILOT_UNEXPECTED_ERROR_POPUP_TITLE'] = 'Что-то пошло не так';
+$MESS['TASKS_FLOW_LIST_COPILOT_UNEXPECTED_ERROR_POPUP_DESCRIPTION'] = 'CoPilot попробует ещё раз подготовить рекомендации, подождите немного';
+$MESS['TASKS_FLOW_LIST_COPILOT_UNEXPECTED_ERROR_POPUP_DESCRIPTION_MSGVER_1'] = '#COPILOT_NAME# попробует ещё раз подготовить рекомендации, подождите немного';
+
+$MESS['TASKS_FLOW_LIST_COPILOT_ADVICE_FETCHING_POPUP_TITLE'] = 'CoPilot анализирует данные';
+$MESS['TASKS_FLOW_LIST_COPILOT_ADVICE_FETCHING_POPUP_TITLE_MSGVER_1'] = '#COPILOT_NAME# анализирует данные';
+$MESS['TASKS_FLOW_LIST_COPILOT_ADVICE_FETCHING_POPUP_DESCRIPTION'] = 'Рекомендации скоро будут готовы, подождите немного';
+
+$MESS['TASKS_FLOW_LIST_COPILOT_RATE_LIMIT_POPUP_TITLE'] = 'Достигнут лимит запросов к BitrixGPT';
+$MESS['TASKS_FLOW_LIST_COPILOT_RATE_LIMIT_POPUP_TITLE_MSGVER_1'] = 'Достигнут лимит запросов к #COPILOT_NAME#';
+$MESS['TASKS_FLOW_LIST_COPILOT_RATE_LIMIT_POPUP_DESCRIPTION'] = 'Обратитесь в поддержку, чтобы расширить лимит и продолжить работу';
+$MESS['TASKS_FLOW_LIST_COPILOT_RATE_LIMIT_POPUP_DESCRIPTION_MSGVER_1'] = 'Обратитесь в поддержку, чтобы расширить лимит и продолжить работу';

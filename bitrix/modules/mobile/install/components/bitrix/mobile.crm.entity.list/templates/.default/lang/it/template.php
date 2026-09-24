@@ -1,0 +1,17 @@
+<?
+$MESS["M_CRM_CLIENT_LIST_ACCEPT_BUTTON_TITLE"] = "Salva";
+$MESS["M_CRM_CLIENT_LIST_ADD_COMPANY"] = "Aggiungi azienda";
+$MESS["M_CRM_CLIENT_LIST_ADD_CONTACT"] = "Aggiungi contatto";
+$MESS["M_CRM_CLIENT_LIST_CANCEL_BUTTON_TITLE"] = "Annulla";
+$MESS["M_CRM_CLIENT_LIST_COMPANY_BUTTON_TITLE"] = "Seleziona azienda";
+$MESS["M_CRM_CLIENT_LIST_CONTACT_BUTTON_TITLE"] = "Seleziona un contatto";
+$MESS["M_CRM_CLIENT_LIST_DOWN_TEXT"] = "Rilascia per aggiornare...";
+$MESS["M_CRM_CLIENT_LIST_ENTITY_TYPE_COMPANY"] = "Aziende";
+$MESS["M_CRM_CLIENT_LIST_ENTITY_TYPE_CONTACT"] = "Contatti";
+$MESS["M_CRM_CLIENT_LIST_LOAD_TEXT"] = "Aggiornamento...";
+$MESS["M_CRM_CLIENT_LIST_NO_COMPANIES"] = "Nessuna azienda";
+$MESS["M_CRM_CLIENT_LIST_NO_CONTACTS"] = "Nessun contatto";
+$MESS["M_CRM_CLIENT_LIST_PULL_TEXT"] = "Trascina verso il basso per aggiornare...";
+$MESS["M_CRM_CLIENT_LIST_SEARCH_BUTTON"] = "Ricerca";
+$MESS["M_CRM_CLIENT_LIST_SEARCH_PLACEHOLDER"] = "Ricerca";
+?>

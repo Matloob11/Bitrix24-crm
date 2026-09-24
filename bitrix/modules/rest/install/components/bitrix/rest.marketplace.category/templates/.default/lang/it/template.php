@@ -1,0 +1,22 @@
+<?php
+$MESS["MARKETPLACE_APP_FREE"] = "Gratis";
+$MESS["MARKETPLACE_APP_PRICE"] = "#PRICE# al mese";
+$MESS["MARKETPLACE_COLLECTION"] = "Selezione";
+$MESS["MARKETPLACE_EMPTY_CATEGORY"] = "Nessuna applicazione è stata trovata.";
+$MESS["MARKETPLACE_INSTALLED"] = "installato";
+$MESS["MARKETPLACE_MORE_APPS"] = "Mostra più app";
+$MESS["MARKETPLACE_PRICE_FREE"] = "Gratis";
+$MESS["MARKETPLACE_PRICE_PAID"] = "A pagamento";
+$MESS["MARKETPLACE_PRICE_SUBSCRIPTION"] = "Abbonamento";
+$MESS["MARKETPLACE_SALE"] = "Offerta";
+$MESS["MARKETPLACE_SHOW_ALL_LINK"] = "visualizza tutto";
+$MESS["MARKETPLACE_SHOW_APP"] = "Apri";
+$MESS["MARKETPLACE_TITLE_BEST"] = "Top";
+$MESS["MARKETPLACE_TITLE_NEW"] = "Nuovo";
+$MESS["MARKETPLACE_TITLE_SALE_OUT"] = "Offerta";
+$MESS["MARKETPLACE_TITLE_SALE_OUT_WITH_NAME"] = "Vendita \"#ACTION_NAME#\"";
+$MESS["MENU_MARKETPLACE_ADD"] = "Aggiungi applicazione";
+$MESS["MENU_MARKETPLACE_ADD_WIDGET"] = "Aggiungi widget";
+$MESS["MENU_MARKETPLACE_TITLE"] = "soluzioni pronte all'uso per la tua azienda";
+$MESS["REST_MARKETPLACE_ERROR_404_DESCRIPTION"] = "Errore interno. Ricarica la pagina e riprova. Se il problema persiste, contatta l'Helpdesk.";
+$MESS["REST_MARKETPLACE_ERROR_404_TITLE"] = "Qualcosa è andato storto...";

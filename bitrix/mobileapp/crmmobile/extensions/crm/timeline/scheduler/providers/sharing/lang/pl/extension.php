@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_B24_AGREEMENT_NOTIFY"] = "Aby wysłać zaproszenie przez Bitrix24, należy zaakceptować Regulamin";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_EMAIL"] = "#CHANNEL# z adresu #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_PHONE"] = "#CHANNEL# z numeru #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CONNECT"] = "Podłącz";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_COPY_LINK"] = "Kopiuj link";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_1"] = "Klient wybierze preferowany termin";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_2"] = "Spotkanie zostanie dodane do Twoich aktywności";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_HOW_IT_WORKS"] = "Edytuj terminy";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_LINK_COPIED"] = "Link skopiowany";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_DESC"] = "Aby udostępniać klientom linki do terminów, podłącz usługę SMS";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_TITLE"] = "Usługa SMS nie jest podłączona";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC"] = "Aby wysłać link do dostępnych terminów, podaj w dealu numer telefonu klienta";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC_V2"] = "Podaj numer telefonu lub adres e-mail klienta, na który ma zostać wysłany link.";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_TITLE"] = "Dodaj kontakty klientów";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_OK"] = "OK";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_RECEIVER"] = "Do";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SENDER"] = "Kanał komunikacji";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SEND_LINK"] = "Udostępnij link";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SETTINGS"] = "Parametry udostępniania linku";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_TITLE_TEXT"] = "Aby umówić spotkanie, wyślij klientowi link";

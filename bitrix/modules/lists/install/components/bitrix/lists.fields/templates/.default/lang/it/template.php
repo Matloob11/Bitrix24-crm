@@ -1,0 +1,20 @@
+<?php
+$MESS["CT_BLF_DELETE_POPUP_ACCEPT_BUTTON"] = "Elimina";
+$MESS["CT_BLF_DELETE_POPUP_CANCEL_BUTTON"] = "Annulla";
+$MESS["CT_BLF_DELETE_POPUP_TITLE"] = "Conferma eliminazione";
+$MESS["CT_BLF_LIST_CODE"] = "Kode";
+$MESS["CT_BLF_LIST_DEFAULT_VALUE"] = "Valore predefinito";
+$MESS["CT_BLF_LIST_IS_REQUIRED"] = "Obbligatorio";
+$MESS["CT_BLF_LIST_MULTIPLE"] = "Multiplo";
+$MESS["CT_BLF_LIST_NAME"] = "Nome";
+$MESS["CT_BLF_LIST_SORT"] = "Ordina";
+$MESS["CT_BLF_LIST_TYPE"] = "Tipo";
+$MESS["CT_BLF_TOOLBAR_ADD"] = "Aggiungi campo";
+$MESS["CT_BLF_TOOLBAR_ADD_TITLE"] = "Aggiungi nuovo campo";
+$MESS["CT_BLF_TOOLBAR_ELEMENTS_TITLE"] = "Visualizza e modifica elementi elenco";
+$MESS["CT_BLF_TOOLBAR_ELEMENT_DELETE_WARNING"] = "Eliminare il campo?";
+$MESS["CT_BLF_TOOLBAR_LIST_EDIT"] = "Impostazioni griglia";
+$MESS["CT_BLF_TOOLBAR_LIST_EDIT_PROCESS"] = "Configura flusso di lavoro";
+$MESS["CT_BLF_TOOLBAR_LIST_TITLE"] = "Torna alle impostazioni dell'elenco";
+$MESS["CT_BLF_TOOLBAR_LIST_TITLE_PROCESS"] = "Torna alla configurazione del flusso di lavoro";
+$MESS["CT_BLF_TOOLBAR_RETURN_LIST_ELEMENT_MSGVER_1"] = "Torna all'elenco";

@@ -1,0 +1,7 @@
+<?php
+$MESS["TASK_PREVIEW_FIELD_ASSIGNEE"] = "Responsable";
+$MESS["TASK_PREVIEW_FIELD_ASSIGNER"] = "Propietario de la tarea";
+$MESS["TASK_PREVIEW_FIELD_DEADLINE"] = "Fecha límite";
+$MESS["TASK_PREVIEW_FIELD_DESCRIPTION"] = "Descripción";
+$MESS["TASK_PREVIEW_FIELD_GROUP"] = "Proyecto";
+$MESS["TASK_PREVIEW_FIELD_STATUS"] = "Estados";

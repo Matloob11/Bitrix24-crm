@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "Le tableau de bord est introuvable.";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Nouveau tableau de bord";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Nouveau tableau de bord (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Sélectionnez un groupe pour créer un tableau de bord.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "Le tableau de bord doit être ajouté à au moins un groupe.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "Le nom du tableau de bord est requis.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "Impossible de créer le tableau de bord. Veuillez réessayer.";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Aide";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "Le tableau de bord contient des images non valides. Veuillez actualiser la page et réessayer.";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "La plage de dates est incorrecte.";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "Seuls les tableaux de bord personnalisés peuvent être modifiés.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Autorisations insuffisantes pour créer un tableau de bord.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "Autorisations insuffisantes pour utiliser BI Builder.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "BI Builder n'est pas disponible.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Autorisations insuffisantes pour modifier le tableau de bord.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "Impossible d'enregistrer la description du tableau de bord. Veuillez réessayer.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "Impossible d'enregistrer la galerie du tableau de bord. Veuillez réessayer.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "Impossible de créer les paramètres du tableau de bord. Ouvrez les propriétés du tableau de bord et réessayez.";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Nouveau tableau de bord";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "Le nom du tableau de bord ne peut pas dépasser 128 caractères.";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "Impossible de mettre à jour le tableau de bord. Veuillez réessayer.";

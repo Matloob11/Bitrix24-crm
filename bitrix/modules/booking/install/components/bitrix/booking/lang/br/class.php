@@ -1,0 +1,8 @@
+<?php
+$MESS["BOOKING_TOP_MENU_ITEM_FORMS"] = "Formulários de agendamento";
+$MESS["BOOKING_TOP_MENU_ITEM_FORMS_ALL_FORMS"] = "Visualizar formulários";
+$MESS["BOOKING_TOP_MENU_ITEM_FORMS_CREATE_FORM"] = "Criar um formulário";
+$MESS["BOOKING_TOP_MENU_ITEM_RECORDS"] = "Agendamentos";
+$MESS["BOOKING_TOP_MENU_ITEM_SERVICES"] = "Serviços";
+$MESS["BOOKING_TOP_MENU_SERVICES_ALL_SERVICES"] = "Todos os serviços";
+$MESS["BOOKING_TOP_MENU_SERVICES_SERVICE_PROVIDERS_SERVICES"] = "Serviços e recursos";

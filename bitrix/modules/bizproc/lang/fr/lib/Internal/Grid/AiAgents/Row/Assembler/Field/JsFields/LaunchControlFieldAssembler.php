@@ -1,0 +1,14 @@
+<?php
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_FAILED_UPLOAD_DESCRIPTION"] = "Supprimez ces fichiers et essayez avec d'autres fichiers dans un format différent.";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_FAILED_UPLOAD_STATUS"] = "Erreur d'importation du fichier";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_NONE_DESCRIPTION"] = "Veuillez contacter l'assistance technique.";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_NONE_STATUS"] = "Erreur inconnue";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_PROCESSING_DESCRIPTION"] = "La base de connaissances traite les nouveaux fichiers.";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_PROCESSING_STATUS"] = "Traitement des fichiers...";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_UPLOADING_DESCRIPTION"] = "Importation des fichiers vers la base de connaissances, veuillez patienter.";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_COLLECTION_UPLOADING_STATUS"] = "Importation des fichiers...";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_FAILED_UPLOAD_STATUS"] = "Erreur de chargement du fichier.";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_NONE_STATUS"] = "Le fichier n'a pas été traité.";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_PROCESSING_STATUS"] = "Traitement du fichier...";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_SUCCESS_STATUS"] = "Le fichier a été importé.";
+$MESS["BIZPROC_INTERNAL_AI_AGENTS_RAG_FILE_UPLOADING_STATUS"] = "Importation du fichier...";

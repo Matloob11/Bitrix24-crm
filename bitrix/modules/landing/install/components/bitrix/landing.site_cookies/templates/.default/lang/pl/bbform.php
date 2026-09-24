@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_TPL_LABEL_DESC"] = "Opis";
+$MESS["LANDING_TPL_NEW_COOKIES"] = "Nowy typ pliku cookie";
+$MESS["LANDING_TPL_TITLE_SHOW_COOKIES"] = "Pokaż blok #BLOCK_NAME#";

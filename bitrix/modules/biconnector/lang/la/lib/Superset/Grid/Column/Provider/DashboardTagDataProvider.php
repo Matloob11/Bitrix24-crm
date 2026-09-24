@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_TAG_GRID_COLUMN_DASHBOARD_COUNT_NAME"] = "Paneles de control con esta etiqueta";
+$MESS["BICONNECTOR_SUPERSET_TAG_GRID_COLUMN_TITLE_NAME"] = "Nombre de la etiqueta";

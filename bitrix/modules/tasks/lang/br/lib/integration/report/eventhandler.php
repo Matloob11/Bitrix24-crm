@@ -1,0 +1,5 @@
+<?
+$MESS["REPORT_TASK_CATEGORY_LABEL"] = "Tarefas";
+$MESS["REPORT_TASK_FIRST_SUB_CATEGORY_LABEL"] = "Primeira subcategoria";
+$MESS["REPORT_TASK_SECOND_SUB_CATEGORY_LABEL"] = "Segunda subcategoria";
+?>

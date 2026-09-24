@@ -1,0 +1,22 @@
+<?php
+$MESS["INTRANET_INVITATION_COLLAB_FOOTER_TITLE"] = "Bitrix24. Il tuo spazio di lavoro ideale.";
+$MESS["INTRANET_INVITATION_COLLAB_INVITE_YOU"] = "ti invita a entrare in una collab";
+$MESS["INTRANET_INVITATION_COLLAB_JOIN_BTN"] = "Entra";
+$MESS["INTRANET_INVITATION_COLLAB_JOIN_US"] = "Entra nella collab \"#COLLAB_NAME#\" dello spazio di lavoro online di Bitrix24 per comunicare e collaborare su vari incarichi.";
+$MESS["INTRANET_INVITATION_COLLAB_JOIN_US_WITHOUT_NAME"] = "Entra nella collab del nostro account Bitrix24. Comunichiamo in chat, effettuiamo chiamate e assegniamo incarichi.";
+$MESS["INTRANET_INVITATION_COLLAB_LINK_COLLAB_NAME"] = "Collaborazione";
+$MESS["INTRANET_INVITATION_COLLAB_LINK_COPILOT_NAME"] = "CoPilot";
+$MESS["INTRANET_INVITATION_COLLAB_LINK_COPILOT_NAME_MSGVER_1"] = "#COPILOT_NAME#";
+$MESS["INTRANET_INVITATION_COLLAB_LINK_CRM_NAME"] = "CRM";
+$MESS["INTRANET_INVITATION_COLLAB_LINK_IM_NAME"] = "Messenger";
+$MESS["INTRANET_INVITATION_COLLAB_LINK_TASKS_NAME"] = "Incarichi e progetti";
+$MESS["INTRANET_INVITATION_COLLAB_LINK_WF_NAME"] = "Automazione";
+$MESS["INTRANET_INVITATION_COLLAB_SECTION_FEATURES"] = "Collaborazione pratica e celere. La nostra app mobile ha tutto il necessario: chat, file, videochiamate e incarichi.";
+$MESS["INTRANET_INVITATION_COLLAB_SECTION_IM"] = "Molto più di una semplice chat. Collab è un luogo in cui si possono creare incarichi da ogni idea o messaggio.";
+$MESS["INTRANET_INVITATION_COLLAB_SECTION_PEOPLE"] = "Comunicazione veloce ed efficace. Resta in contatto con i membri del team e ricevi aggiornamenti sui progetti.";
+$MESS["INTRANET_INVITATION_COLLAB_TITLE"] = "Hai ricevuto l'invito in una collab";
+$MESS["INTRANET_INVITATION_PROJECT_INVITE_YOU"] = "ti invita a entrare nel progetto";
+$MESS["INTRANET_INVITATION_PROJECT_JOIN_US"] = "Unisciti al progetto \"#COLLAB_NAME#\" sul nostro Bitrix24. Comunichiamo in chat, effettuiamo chiamate e assegniamo incarichi.";
+$MESS["INTRANET_INVITATION_PROJECT_JOIN_US_WITHOUT_NAME"] = "Entra nel progetto del nostro Bitrix24. Comunichiamo in chat, effettuiamo chiamate e assegniamo incarichi.";
+$MESS["INTRANET_INVITATION_PROJECT_SECTION_IM"] = "Un progetto è molto più di una chat.";
+$MESS["INTRANET_INVITATION_PROJECT_TITLE"] = "Hai ricevuto l'invito per entrare in un progetto";

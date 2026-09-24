@@ -1,0 +1,20 @@
+<?php
+$MESS["CATALOG_ENTITY_CARD_DICTIONARY_LEGEND"] = "Ideal para cores, padrões de tecido, padrões de banda de rodagem e outras propriedades com representação visual.";
+$MESS["CATALOG_ENTITY_CARD_DICTIONARY_TITLE"] = "Dicionário";
+$MESS["CATALOG_ENTITY_CARD_DIRECTORY_TABLE_NAME"] = "Nome do dicionário";
+$MESS["CATALOG_ENTITY_CARD_EMPTY_SECTION"] = "seção não selecionada";
+$MESS["CATALOG_ENTITY_CARD_FILE_CLOSE_NOTIFICATION"] = "Clique em Salvar para aplicar as alterações.";
+$MESS["CATALOG_ENTITY_CARD_FILE_CLOSE_NOTIFICATION_2"] = "Clique em \"Salvar\" para salvar as alterações feitas.";
+$MESS["CATALOG_ENTITY_CARD_HIDE_SYMBOLIC_CODE"] = "Ocultar código simbólico";
+$MESS["CATALOG_ENTITY_CARD_LIST_LEGEND"] = "Ideal para dimensões, fabricantes, materiais ou outros valores numéricos e de texto.";
+$MESS["CATALOG_ENTITY_CARD_LIST_TITLE"] = "Lista";
+$MESS["CATALOG_ENTITY_CARD_NAME"] = "Nome";
+$MESS["CATALOG_ENTITY_CARD_NEW_FIELD_ITEM_PLACEHOLDER"] = "Novo item";
+$MESS["CATALOG_ENTITY_CARD_SETTING_DISABLED"] = "A opção \"#NAME#\" está desativada";
+$MESS["CATALOG_ENTITY_CARD_SETTING_ENABLED"] = "A opção \"#NAME#\" está ativada";
+$MESS["CATALOG_ENTITY_CARD_SHOW_SYMBOLIC_CODE"] = "Mostrar código simbólico";
+$MESS["CATALOG_ENTITY_CARD_SYMBOLIC_CODE"] = "Código simbólico";
+$MESS["CATALOG_ENTITY_CARD_SYMBOLIC_CODE_HINT"] = "O código simbólico será usado para criar o link do produto";
+$MESS["CATALOG_ENTITY_CARD_WAREHOUSE_DISABLED"] = "Gestão de inventário desativada";
+$MESS["CATALOG_ENTITY_CARD_WAREHOUSE_ENABLED"] = "Gestão de inventário ativada";
+$MESS["CATALOG_ENTITY_EDITOR_IS_PUBLIC_PROPERTY"] = "Mostrar na loja on-line";

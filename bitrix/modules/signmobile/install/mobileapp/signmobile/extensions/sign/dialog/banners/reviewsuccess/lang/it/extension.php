@@ -1,0 +1,4 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REVIEW_SUCCESS_BUTTON_CLOSE"] = "Chiudi";
+$MESS["SIGN_MOBILE_DIALOG_REVIEW_SUCCESS_DESCRIPTION"] = "Il documento [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]#DOCUMENT_TITLE#[/COLOR] è stato approvato e inviato alle altre parti firmatarie.";
+$MESS["SIGN_MOBILE_DIALOG_REVIEW_SUCCESS_TITLE"] = "Documento approvato";

@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_TL_PAYMENT_DETAILS_BACK_TO_PAYMENT_METHOD"] = "Powrót do metod płatności";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_BUTTON_CONFIRM_TITLE"] = "OK";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_BUTTON_HELP_TITLE"] = "Szczegóły";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_MESSAGE"] = "Sprawdź połączenie internetowe i spróbuj ponownie. Jeśli problem będzie się powtarzał, skontaktuj się z administratorem bitrix24.";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_TITLE"] = "Nie można ukończyć działania";
+$MESS["M_CRM_TL_PAYMENT_PAY_FAILURE_CHOOSE_OTHER_PAYMENT_METHOD"] = "Wybierz inną metodę płatności";
+$MESS["M_CRM_TL_PAYMENT_PAY_FAILURE_ERROR_TEXT"] = "Nie można przetworzyć płatności";
+$MESS["M_CRM_TL_PAYMENT_PAY_FAILURE_GET_NEW_QR_GET_NEW_QR"] = "Uzyskaj nowy kod QR";
+$MESS["M_CRM_TL_PAYMENT_PAY_NO_PAY_METHODS"] = "Terminal nie jest obecnie w stanie przyjmować płatności. Włącz przynajmniej jedną metodę płatności w ustawieniach Terminala lub skontaktuj się z przełożonym";
+$MESS["M_CRM_TL_PAYMENT_PAY_PAYMENT_LINK_NOT_CONNECTED"] = "Płatność za pomocą linku jest wyłączona";
+$MESS["M_CRM_TL_PAYMENT_PAY_PAYMENT_SYSTEM_CREATION_ERROR_MESSAGE"] = "Błąd podczas tworzenia systemu płatności";
+$MESS["M_CRM_TL_PAYMENT_PAY_PHONE_CONFIRMATION_TITLE"] = "Potwierdź numer telefonu";
+$MESS["M_CRM_TL_PAYMENT_PAY_PHONE_CONFIRMATION_WARNING_DESCRIPTION"] = "Aby otrzymywać płatności za pomocą linku, potwierdź numer telefonu. Aby potwierdzić, przejdź do webowej wersji Bitrix24 w przeglądarce.";
+$MESS["M_CRM_TL_PAYMENT_PAY_PHONE_CONFIRMATION_WARNING_TITLE"] = "Potwierdź numer telefonu";
+$MESS["M_CRM_TL_PAYMENT_PAY_PLEASE_WAIT"] = "Czekaj";
+$MESS["M_CRM_TL_PAYMENT_PAY_PRODUCTS_CNT"] = "Produkty: #CNT#";
+$MESS["M_CRM_TL_PAYMENT_PAY_SCAN_QR"] = "Poproś klienta o zeskanowanie kodu QR smartfonem";
+$MESS["M_CRM_TL_PAYMENT_PAY_SUCCESS_BACK_TO_LIST"] = "Powrót do płatności";
+$MESS["M_CRM_TL_PAYMENT_PAY_SUCCESS_PAYMENT_PAID"] = "Płatność ##NUMBER# zakończona";
+$MESS["M_CRM_TL_PAYMENT_PAY_VIA_QR_PAYMENT_LINK"] = "Zapłać za pomocą linku";

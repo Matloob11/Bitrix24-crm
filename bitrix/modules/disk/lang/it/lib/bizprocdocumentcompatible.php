@@ -1,0 +1,37 @@
+<?
+$MESS["DISK_ADD"] = "Aggiungi";
+$MESS["DISK_BZ_D_AUTHOR"] = "Creato da";
+$MESS["DISK_BZ_D_FIELD_CODE"] = "Codice mnemonico";
+$MESS["DISK_BZ_D_FIELD_CREATED_BY"] = "Creato da";
+$MESS["DISK_BZ_D_FIELD_CREATE_TIME"] = "Data e ora di creazione file";
+$MESS["DISK_BZ_D_FIELD_DELETED_BY"] = "Eliminato da";
+$MESS["DISK_BZ_D_FIELD_DELETE_TIME"] = "Data e ora di eliminazione file";
+$MESS["DISK_BZ_D_FIELD_FILE"] = "File";
+$MESS["DISK_BZ_D_FIELD_ID"] = "ID file";
+$MESS["DISK_BZ_D_FIELD_NAME"] = "Nome file";
+$MESS["DISK_BZ_D_FIELD_SIZE"] = "Dimensione file";
+$MESS["DISK_BZ_D_FIELD_STORAGE_ID"] = "Memoria";
+$MESS["DISK_BZ_D_FIELD_UPDATED_BY"] = "Modificato da";
+$MESS["DISK_BZ_D_FIELD_UPDATE_TIME"] = "Data e ora di modifica file";
+$MESS["DISK_BZ_D_IDENTIFICATOR"] = "(ID)";
+$MESS["DISK_BZ_D_NAME_LASTNAME"] = "(Nome / Cognome)";
+$MESS["DISK_BZ_D_NAME_NOT_CODE"] = "Nessun codice mnemonico fornito.";
+$MESS["DISK_DOC_TYPE_BOOL"] = "Sì/No";
+$MESS["DISK_DOC_TYPE_DATA"] = "Data";
+$MESS["DISK_DOC_TYPE_DATETIME"] = "Data/Ora";
+$MESS["DISK_DOC_TYPE_DOUBLE"] = "Numero";
+$MESS["DISK_DOC_TYPE_FILE"] = "File";
+$MESS["DISK_DOC_TYPE_INT"] = "Numero intero";
+$MESS["DISK_DOC_TYPE_SELECT"] = "Elenco";
+$MESS["DISK_DOC_TYPE_STRING"] = "Stringa";
+$MESS["DISK_DOC_TYPE_TEXT"] = "Testo multiriga";
+$MESS["DISK_DOC_TYPE_USER"] = "Associa a utente";
+$MESS["DISK_FILED_NOT_SET"] = "non impostato";
+$MESS["DISK_IBD_DOCUMENT_XFORMOPTIONS1"] = "Specifica ogni variante su una nuova riga. Se il valore della variante e il nome della variante non coincidono, anteponi il valore al nome riportandolo tra parentesi quadre. Ad esempio: [v1]Variante 1";
+$MESS["DISK_IBD_DOCUMENT_XFORMOPTIONS2"] = "Clicca su \"Imposta\" al termine.";
+$MESS["DISK_IBD_DOCUMENT_XFORMOPTIONS3"] = "Imposta";
+$MESS["DISK_INVALID1"] = "Il valore del campo non è un numero intero.";
+$MESS["DISK_NO"] = "No";
+$MESS["DISK_UNKNOW"] = "Errore sconosciuto.";
+$MESS["DISK_YES"] = "Sì";
+?>

@@ -1,0 +1,39 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CODE"] = "Codice";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECT"] = "Connetti";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTED"] = "Bitrix24.Network connesso";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTED_MSGVER_1"] = "Network Bitrix24 connesso";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTION"] = "Connessione";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTOR_ERROR_STATUS"] = "Errore durante l'elaborazione del bot. Controlla tutte le impostazioni e verifica nuovamente il bot.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_COPY"] = "Copia";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_1"] = "Nome";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_2"] = "Breve descrizione";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_3"] = "Messaggio di saluto";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4"] = "Avatar";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_DESCRIPTION_1"] = "Un avatar univoco permetterà ai tuoi clienti di trovarti più velocemente.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_DESCRIPTION_2"] = "Carica avatar";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_DESCRIPTION_3"] = "Elimina foto";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_HINT"] = "Sono supportati i file JPG e PNG, massimo 5000 pixel in entrambe le dimensioni.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_5"] = "Ricercabile";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_6"] = "Cerca nel codice";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_6_TIP"] = "Questo codice consente agli utenti di trovare il tuo canale aperto nel messenger, anche se non è disponibile per la ricerca.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_7_MSGVER_1"] = "Consenti più chat simultanee con lo stesso cliente";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_7_TIP"] = "Se abiliti questa opzione, gli agenti possono aprire più chat in simultanea con il clienti. Altrimenti, l'apertura di una nuova chat comporterà la chiusura automatica della chat attiva.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_8_MSGVER_1"] = "Numero massimo di chat simultanee con un cliente ";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_1"] = "Salva i contatti e la cronologia delle comunicazioni nel CRM";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_2"] = "Guida il cliente attraverso il funnel di vendita nel CRM";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_3"] = "Rispondi ai tuoi clienti quando e dove preferiscono";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_4"] = "Le richieste dei clienti sono distribuite tra gli agenti di vendita secondo le regole della coda";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_SUBTITLE"] = "Connetti Bitrix24.Network per ricevere richieste da clienti, partner e colleghi che usano anche Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_SUBTITLE_MSGVER_1"] = "Connetti Network Bitrix24 per ricevere richieste da clienti, partner e colleghi che usano Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_TITLE"] = "Usa Bitrix24.Network per comunicare con i clienti che usano anche Bitrix24";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_TITLE_MSGVER_1"] = "Usa Network Bitrix24 per comunicare con i clienti che usano Bitrix24";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INFO"] = "Informazioni";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_MAX_DIALOGS_INFINITE"] = "Illimitato";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_NAME"] = "Nome";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_REST_HELP"] = "Puoi creare un canale di supporto privato non ricercabile.<br> Fornisci il codice ai tuoi clienti in modo che possano contattarti o connettere il canale tramite l'API REST.<br> I dettagli dell'API REST dei Canali aperti sono disponibili nella #LINK_START#documentazione#LINK_END#";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_SIMPLE_FORM_DESCRIPTION_1"] = "Il canale aperto è già connesso a Bitrix24.Network.
+<br>Puoi modificare le impostazioni, se necessario.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_SIMPLE_FORM_DESCRIPTION_1_MSGVER_1"] = "Il canale aperto è già connesso a Network Bitrix24.
+<br>Puoi modificare le impostazioni, se necessario.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_URL"] = "Link";

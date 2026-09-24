@@ -1,0 +1,20 @@
+<?php
+$MESS["UF_1C"] = "Użytkownik z 1C";
+$MESS["UF_DEPARTMENT"] = "Działy";
+$MESS["UF_DISTRICT"] = "Dzielnica";
+$MESS["UF_EMPLOYMENT_DATE"] = "Data zatrudnienia";
+$MESS["UF_FACEBOOK"] = "Facebook";
+$MESS["UF_INN"] = "Identyfikator podatnika";
+$MESS["UF_INTERESTS"] = "Zainteresowania";
+$MESS["UF_LINKEDIN"] = "LinkedIn";
+$MESS["UF_PHONE_INNER"] = "Numer wewnętrzny";
+$MESS["UF_SKILLS"] = "Umiejętności";
+$MESS["UF_SKYPE"] = "Nazwa użytkownika Skype";
+$MESS["UF_SKYPE_LINK"] = "Link do czatu Skype";
+$MESS["UF_SKYPE_MSGVER_1"] = "Microsoft Teams";
+$MESS["UF_STATE_HISTORY"] = "Historia statusu";
+$MESS["UF_STATE_LAST"] = "Ostatni status";
+$MESS["UF_TWITTER"] = "Twitter";
+$MESS["UF_WEB_SITES"] = "Inne strony internetowe";
+$MESS["UF_XING"] = "Xing";
+$MESS["UF_ZOOM"] = "Zoom";

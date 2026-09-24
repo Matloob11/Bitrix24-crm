@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_BUTTON_COPY_NOTIFICATION_FAIL"] = "Nie skopiowano.";
+$MESS["TASKS_BUTTON_COPY_NOTIFICATION_SUCCESS"] = "Skopiowano wartość.";

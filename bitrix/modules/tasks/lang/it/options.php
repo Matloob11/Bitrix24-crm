@@ -1,0 +1,30 @@
+<?
+$MESS["LEARNING_SITE_PATH_SITE"] = "Modelli di tracciato per sito web &quot;#SITE#&quot;";
+$MESS["MAIN_OPT_APPLY"] = "Apply";
+$MESS["MAIN_OPT_APPLY_TITLE"] = "Salva le modifiche e resta qui";
+$MESS["MAIN_OPT_CANCEL"] = "Annulla";
+$MESS["MAIN_OPT_CANCEL_TITLE"] = "Non salvare le modifiche e torna";
+$MESS["MAIN_OPT_SAVE_TITLE"] = "Salva le modifiche e torna";
+$MESS["TASKS_COMMENTS_ALLOW_EDIT_REMOVE"] = "Users can edit and delete comments";
+$MESS["TASKS_COMMENTS_FORUM"] = "Task comments forum";
+$MESS["TASKS_HTML_SANITIZE_LEVEL"] = "Purificazione HTML nella descrizione dell'incarico";
+$MESS["TASKS_HTML_SANITIZE_LEVEL_HIGH"] = "Alta";
+$MESS["TASKS_HTML_SANITIZE_LEVEL_LOW"] = "Bassa";
+$MESS["TASKS_HTML_SANITIZE_LEVEL_MIDDLE"] = "Media";
+$MESS["TASKS_HTML_SANITIZE_LEVEL_NONE"] = "Non usare la purificazione";
+$MESS["TASKS_LIST_ALLOW_SORT_FILTER_UF"] = "Enable sorting and filtering by custom fields in the task list";
+$MESS["TASKS_OPTION_PATHS"] = "Links";
+$MESS["TASKS_PATHS_TASK_GROUP"] = "Group Tasks Page URL Template";
+$MESS["TASKS_PATHS_TASK_GROUP_ACTION"] = "Workgroup task action link template";
+$MESS["TASKS_PATHS_TASK_GROUP_EDIT"] = "Group Task Properties Template";
+$MESS["TASKS_PATHS_TASK_GROUP_ENTRY"] = "Workgroup task view link template";
+$MESS["TASKS_PATHS_TASK_USER"] = "User Tasks Page URL Template";
+$MESS["TASKS_PATHS_TASK_USER_ACTION"] = "User task page link template";
+$MESS["TASKS_PATHS_TASK_USER_EDIT"] = "User Task Properties Template";
+$MESS["TASKS_PATHS_TASK_USER_ENTRY"] = "Task view link template";
+$MESS["TASKS_PATHS_USER"] = "User Profile Page URL Template";
+$MESS["TASKS_RESTORE_DEFAULTS"] = "Default";
+$MESS["TASKS_SETTINGS"] = "Tasks Module Settings";
+$MESS["TASKS_SETTINGS_TITLE"] = "Tasks Module Global Settings";
+$MESS["TASKS_SUBTAB_TITLE_SITE"] = "Impostazioni per sito web";
+?>

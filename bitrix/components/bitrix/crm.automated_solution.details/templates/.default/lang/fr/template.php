@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_CLOSE_TITLE"] = "Masquer la notification";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_COMMON_DESCRIPTION"] = "Espace de travail automatisé personnalisé pour votre service. Toutes les solutions automatisées s'afficheront dans le menu de gauche pour permettre un accès rapide.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_COMMON_TITLE"] = "Solution automatisée";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_TYPES_DESCRIPTION"] = "Les processus intelligents sont des éléments de base pour vos solutions automatisées. Utilisez-les pour créer des entités personnalisées comme Candidat ou CV et gérer leurs dépendances. Vous trouverez les processus intelligents dans le menu supérieur.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_CARD_TYPES_TITLE"] = "Processus intelligents";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_CREATE_TYPE"] = "Créer un nouveau processus intelligent :";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_CRM_TYPES"] = "Migrer un processus intelligent du CRM :";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_EXTERNAL_TYPES"] = "Migrer un processus intelligent de la solution automatisée :";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_LABEL_TITLE"] = "Nom de la solution automatisée :";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_FIELD_PLACEHOLDER_TITLE"] = "Exemple : Service des RH";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_NEED_SAVE_POPUP_MESSAGE"] = "Enregistrez la solution automatisée avant de créer un processus intelligent.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_NEED_SAVE_POPUP_YES_CAPTION"] = "Enregistrer";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_PERMISSIONS_WILL_BE_RESET_ALERT"] = "Vous devrez modifier à nouveau les droits d'accès de ce processus intelligent.";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_COMMON"] = "Paramètres";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_TITLE_COMMON"] = "Paramètres de la solution automatisée";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_TITLE_TYPES"] = "Processus intelligents";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAB_TYPES"] = "Processus intelligents";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TAG_SELECTOR_ADD_BUTTON_CAPTION"] = "Sélectionner";
+$MESS["CRM_AUTOMATED_SOLUTION_DETAILS_TITLE"] = "Solution automatisée";

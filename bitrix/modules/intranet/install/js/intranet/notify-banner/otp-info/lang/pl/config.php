@@ -1,0 +1,25 @@
+<?php
+$MESS["NOTIFY_BANNER_INFO_ALL_EMPLOYEE_BLOCK"] = "Wszystkie dane w Twoim Bitrix24 są zagrożone, jeśli choć jedna osoba w Twojej firmie nie korzysta z dwustopniowego uwierzytelniania. Twoja firma może napotkać:";
+$MESS["NOTIFY_BANNER_INFO_CONFIRM_WITHOUT_TITLE_MSGVER_1"] = "Włącz [SPAN]nowe uwierzytelnianie dwuskładnikowe[/SPAN], aby potwierdzać logowanie bez wprowadzania kodu.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE"] = "Włącz <span class=\"intranet-otp-motivating-popup__title--accent\">dwustopniowe uwierzytelnianie</span>, aby chronić dane firmy.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE_MSGVER_1"] = "Włącz <span class=\"intranet-otp-motivating-popup__title--accent\">uwierzytelnianie dwuskładnikowe</span>, aby chronić swoje konto.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE"] = "Chroń swoje dane. Włącz <span class=\"intranet-otp-motivating-popup__title--accent\">dwustopniowe uwierzytelnianie</span> dla wszystkich.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE_MSGVER_1"] = "Chroń dane firmowe. Włącz <span class=\"intranet-otp-motivating-popup__title--accent\">uwierzytelnianie dwuskładnikowe</span> dla wszystkich.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK"] = "Dwustopniowe uwierzytelnianie uniemożliwia atakującym dostęp do konta, nawet jeśli hasło wyciekło. Zapewnia to bezpieczeństwo danych osobowych i biznesowych.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK_MSGVER_1"] = "Uwierzytelnianie dwuskładnikowe uniemożliwia atakującym dostęp do konta, nawet jeśli hasło wyciekło. Zapewnia to bezpieczeństwo danych osobowych i biznesowych.";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_ALL_BTN"] = "Włącz dla wszystkich";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_BTN"] = "Włącz";
+$MESS["NOTIFY_BANNER_INFO_EXIST_BLOCK_MSGVER_1"] = "Ochrona Bitrix24 jest teraz jeszcze łatwiejsza. Nie trzeba już wprowadzać kodu. Zamiast tego wystarczy potwierdzić logowanie w aplikacji mobilnej.";
+$MESS["NOTIFY_BANNER_INFO_FIN_OPT"] = "Szkody finansowe i wizerunkowe";
+$MESS["NOTIFY_BANNER_INFO_IS_PROJECT_BLOCK"] = "Dwustopniowe uwierzytelnianie jest częścią inicjatywy <b>Bezpieczeństwo danych osobowych</b>, która wdraża pełen zakres rozwiązań dotyczących ochrony informacji.";
+$MESS["NOTIFY_BANNER_INFO_LATER_BTN"] = "Przypomnij później";
+$MESS["NOTIFY_BANNER_INFO_LEAK_OPT"] = "Wycieki poufnych informacji";
+$MESS["NOTIFY_BANNER_INFO_LEGAL_OPT"] = "Konsekwencje prawne";
+$MESS["NOTIFY_BANNER_INFO_MORE_BTN"] = "Dowiedz się więcej";
+$MESS["NOTIFY_BANNER_INFO_NEW_OTP_BLOCK"] = "Ochrona Bitrix24 jest teraz jeszcze łatwiejsza. Nie trzeba już wprowadzać kodu. Zamiast tego wystarczy potwierdzić logowanie w aplikacji mobilnej.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK"] = "Administrator Bitrix24 zmienił parametry bezpieczeństwa. Od <b>#END_DATE#</b> można logować się na konto tylko po potwierdzeniu w aplikacji mobilnej.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE"] = "Od <b>#END_DATE#</b> można logować się na konto tylko po potwierdzeniu w aplikacji mobilnej.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE_MSGVER_1"] = "Od <b>#END_DATE#</b> można logować się na konto tylko po potwierdzeniu w aplikacji mobilnej.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_MSGVER_1"] = "Administrator Bitrix24 zmienił parametry zabezpieczeń. Od <b>#END_DATE#</b> możesz zalogować się na konto tylko przy użyciu drugiego składnika uwierzytelniania poprzez potwierdzenie logowania w aplikacji mobilnej.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK"] = "Cyberataki na firmy stają się coraz częstsze. Wycieki informacji nieuchronnie prowadzą do strat finansowych i wizerunkowych.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK_MSGVER_1"] = "Cyberataki na firmy stają się coraz częstsze. Wycieki informacji nieuchronnie prowadzą do strat finansowych i wizerunkowych.";

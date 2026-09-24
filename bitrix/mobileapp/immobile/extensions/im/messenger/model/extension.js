@@ -1,0 +1,48 @@
+/**
+ * @module im/messenger/model
+ */
+jn.define('im/messenger/model', (require, exports, module) => {
+	const { applicationModel } = require('im/messenger/model/application');
+	const { recentDefaultElement, recentModel } = require('im/messenger/model/recent');
+	const { counterModel } = require('im/messenger/model/counter');
+	const { messagesModel, messageDefaultElement } = require('im/messenger/model/messages');
+	const { usersModel, userDefaultElement } = require('im/messenger/model/users');
+	const { dialoguesModel, dialogDefaultElement } = require('im/messenger/model/dialogues');
+	const { filesModel, fileDefaultElement } = require('im/messenger/model/files');
+	const { sidebarModel, sidebarDefaultElement } = require('im/messenger/model/sidebar');
+	const { draftModel, draftDefaultElement } = require('im/messenger/model/draft');
+	const { queueModel, queueDefaultElement } = require('im/messenger/model/queue');
+	const { commentModel, commentDefaultElement } = require('im/messenger/model/comment');
+	const { anchorModel, anchorDefaultElement } = require('im/messenger/model/anchor');
+	const { stickerPackModel } = require('im/messenger/model/sticker-pack');
+	const { folderModel, folderDefaultElement } = require('im/messenger/model/folder');
+
+	module.exports = {
+		applicationModel,
+		counterModel,
+		recentModel,
+		messagesModel,
+		usersModel,
+		dialoguesModel,
+		filesModel,
+		sidebarModel,
+		draftModel,
+		queueModel,
+		commentModel,
+		anchorModel,
+		stickerPackModel,
+		folderModel,
+
+		recentDefaultElement,
+		messageDefaultElement,
+		userDefaultElement,
+		dialogDefaultElement,
+		fileDefaultElement,
+		sidebarDefaultElement,
+		draftDefaultElement,
+		queueDefaultElement,
+		commentDefaultElement,
+		anchorDefaultElement,
+		folderDefaultElement,
+	};
+});

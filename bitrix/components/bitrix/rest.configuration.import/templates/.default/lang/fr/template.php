@@ -1,0 +1,20 @@
+<?php
+$MESS["REST_CONFIGURATION_IMPORT_APP_ERROR_TYPE"] = "Cette application ne dispose pas d'un fichier de paramètres";
+$MESS["REST_CONFIGURATION_IMPORT_EASY_DELETE_APP"] = "Vous n'avez pas d'options disponibles pour modifier les paramètres Bitrix24, donc nous avons simplement supprimé l'application";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_MAX_FILE_SIZE"] = "Taille maximale des fichiers d'importation : #SIZE# Mo";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_BTN_COPY"] = "Copier";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_LABEL"] = "Description du problème :";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_PLACEHOLDER"] = "Texte de description du problème";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TITLE"] = "Rapport d'erreur";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_REPORT_BTN"] = "Rapport d'erreur";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_DESCRIPTION_MSGVER_1"] = "Tout est prêt ! Vous pouvez maintenant éditer votre site.";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_ERROR_DESCRIPTION"] = "Les paramètres ont été importés ; cependant, il y avait des problèmes.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_TITLE_BLOCK"] = "Installation de l'application";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_1"] = "Pour supprimer l'application, sélectionnez une des configurations Bitrix24 disponibles ou une nouvelle application dans Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_2"] = "Pour supprimer l'application, sélectionnez une des configurations Bitrix24 disponibles ou une nouvelle application dans Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_SUBMIT_BTN"] = "Appliquer";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_TITLE_BLOCK"] = "Restaurer les paramètres de la solution préinstallée";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_BTN"] = "Importer";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_DESCRIPTION_MSGVER_1"] = "Importez un fichier ZIP exporté à partir d'un autre Bitrix24. #LINK_START#En savoir plus#LINK_END#";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_PROCESS"] = "Téléversement du fichier";
+$MESS["REST_CONFIGURATION_IMPORT_TITLE_BLOCK"] = "Importer de paramètres de la solution préinstallée";

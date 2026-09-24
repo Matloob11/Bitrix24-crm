@@ -1,0 +1,20 @@
+<?php
+$MESS["REST_CONFIGURATION_IMPORT_APP_ERROR_TYPE"] = "Questa applicazione non ha un file di impostazioni";
+$MESS["REST_CONFIGURATION_IMPORT_EASY_DELETE_APP"] = "Non hai preimpostazioni Bitrix24 disponibili, motivo per cui abbiamo semplicemente eliminato l'applicazione.";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_MAX_FILE_SIZE"] = "Dimensione massima del file di importazione: #SIZE# MB";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_BTN_COPY"] = "Copia";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_LABEL"] = "Descrizione del problema:";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_PLACEHOLDER"] = "Testo di descrizione del problema";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TITLE"] = "Rapporto errori";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_REPORT_BTN"] = "Rapporto errori";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_DESCRIPTION_MSGVER_1"] = "Fatto! Ora puoi iniziare a modificare il tuo sito.";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_ERROR_DESCRIPTION"] = "Le impostazioni sono state importate; tuttavia, si sono verificati problemi.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_TITLE_BLOCK"] = "Installazione dell'applicazione";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_1"] = "Per rimuovere l'applicazione, seleziona una delle configurazioni Bitrix24 disponibili o una nuova applicazione in Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_2"] = "Per rimuovere l'applicazione, seleziona una delle configurazioni Bitrix24 disponibili o una nuova applicazione in Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_SUBMIT_BTN"] = "Applica";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_TITLE_BLOCK"] = "Ripristina preimpostazione soluzione";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_BTN"] = "Importa";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_DESCRIPTION_MSGVER_1"] = "Carica un file ZIP esportato da un altro Bitrix24. #LINK_START#Scopri di più#LINK_END#";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_PROCESS"] = "Caricamento file";
+$MESS["REST_CONFIGURATION_IMPORT_TITLE_BLOCK"] = "Importa preimpostazione soluzione";

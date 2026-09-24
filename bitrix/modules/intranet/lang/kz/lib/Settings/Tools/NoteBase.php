@@ -1,0 +1,2 @@
+<?php
+$MESS["INTRANET_SETTINGS_TOOLS_NOTE_BASE_MAIN"] = "Білім қоры 2.0";

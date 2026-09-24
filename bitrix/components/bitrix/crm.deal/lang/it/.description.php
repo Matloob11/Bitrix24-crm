@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_DEAL_COMPLEX_DESCRIPTION"] = "Affari";
+$MESS["CRM_DEAL_COMPLEX_NAME"] = "Affari";
+$MESS["CRM_DEAL_NAME"] = "Affari";

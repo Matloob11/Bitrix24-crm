@@ -1,0 +1,6 @@
+<?
+$MESS["SENDER_UI_TILEVIEW_SECTION_ALL"] = "Tutto";
+$MESS["SENDER_UI_TILEVIEW_SECTION_FREQ"] = "Oggetti popolari";
+$MESS["SENDER_UI_TILEVIEW_SECTION_LAST"] = "Elementi recenti";
+$MESS["SENDER_UI_TILEVIEW_SECTION_SYSTEM"] = "Oggetti predefiniti";
+?>

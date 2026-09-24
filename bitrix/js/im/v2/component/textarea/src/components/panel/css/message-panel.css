@@ -1,0 +1,259 @@
+.bx-im-message-panel__scope {
+	--im-message-panel__color_forward-text: var(--im-color-palette-gray-60, #959ca4);
+}
+
+.bx-im-message-panel__container {
+	width: 100%;
+	height: 47px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 7px;
+	position: relative;
+	max-width: 100%;
+	padding: 11px 10px 0;
+}
+
+.bx-im-message-panel__icon {
+	width: 28px;
+	height: 28px;
+	flex-shrink: 0;
+	background-image: url('./images/edit.svg');
+	margin-right: 13px;
+	position: relative;
+}
+
+.bx-im-message-panel__icon.--quote {
+	background-image: url('./images/quote.svg');
+}
+
+.bx-im-message-panel__icon.--forward {
+	background-image: url('./images/forward.svg');
+}
+
+.bx-im-message-panel__icon::after {
+	position: absolute;
+	content: '';
+	right: -5px;
+	top: -1px;
+	width: 2px;
+	height: 30px;
+	border-radius: 19px;
+	background-color: var(--im-textarea__background-color_edit-separator);
+}
+
+.bx-im-message-panel__content {
+	flex-grow: 1;
+	min-width: 0;
+}
+
+.bx-im-message-panel__title {
+	font: 13px/16px var(--im-font-family-system);
+	font-weight: var(--im-font-weight-semi-bold);
+	color: var(--im-textarea__font-color_edit-title);
+	margin-bottom: 2px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.bx-im-message-panel__text {
+	font: var(--ui-font-size-sm) var(--im-font-family-system);
+	line-height: var(--ui-font-line-height-md);
+	color: var(--im-textarea__font-color_edit-text);
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 90%;
+}
+
+.bx-im-message-panel__bulk-forward-author {
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 100%;
+}
+
+.bx-im-message-panel__text.--compact .bx-im-message-panel__bulk-forward-author {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.bx-im-message-panel__forward-author_name {
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.bx-im-message-panel__forward-author, .bx-im-message-panel__bulk-forward-author {
+	color: var(--im-message-panel__color_forward-text);
+	font-weight: var(--im-font-weight-medium);
+}
+
+.bx-im-message-panel__forward-message-text {
+	color: var(--im-textarea__font-color_primary);
+}
+
+.bx-im-message-panel-file__icon {
+	display: flex;
+	flex-shrink: 0;
+	padding-right: 8px;
+	font: var(--ui-font-size-sm) var(--im-font-family-system);
+	line-height: var(--ui-font-line-height-md);
+	color: var(--im-color-palette-gray-70);
+}
+
+.bx-im-message-panel__image {
+	position: relative;
+	width: 48px;
+	height: 32px;
+	border-radius: 7px;
+	object-fit: cover;
+	overflow: hidden;
+	margin-right: 8px;
+	background-color: var(--im-color-palette-gray-03);
+	background-image: url('./images/video.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	flex-shrink: 0;
+}
+
+.bx-im-message-panel__image_img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	object-fit: cover;
+}
+
+/* Video note: round poster thumbnail (no background — poster fills the circle). Fits the 47px panel row. */
+.bx-im-message-panel__video-note {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 8px;
+	flex-shrink: 0;
+}
+
+.bx-im-message-panel__video-note_img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bx-im-message-panel__sticker {
+	width: 36px;
+	height: 36px;
+	margin-right: 8px;
+	flex-shrink: 0;
+}
+
+.bx-im-message-panel__sticker_img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.bx-im-message-panel__gallery-stack {
+	position: relative;
+	width: 50px;
+	height: 34px;
+	margin-right: 8px;
+	flex-shrink: 0;
+}
+
+/*
+ * Absolutely positioned stack items do not stretch the container, so the width is set per
+ * shown-thumbnail count to hug the actual right edge of the last (rotated) thumbnail and keep
+ * the 8px stack↔text spacing consistent. Widths are the rotated bounding-box right edges:
+ * item1 -> 30, item2 (8deg) -> ~37, item3 (12deg)/badge -> 50 (unchanged base layout).
+ */
+.bx-im-message-panel__gallery-stack.--count-2 {
+	width: 37px;
+}
+
+.bx-im-message-panel__gallery-stack.--count-3 {
+	width: 50px;
+}
+
+.bx-im-message-panel__gallery-stack-item {
+	position: absolute;
+	overflow: hidden;
+	background-color: var(--im-color-palette-gray-03);
+}
+
+.bx-im-message-panel__gallery-stack-item:nth-child(1) {
+	left: 0;
+	top: 2px;
+	width: 30px;
+	height: 30px;
+	border-radius: 7px;
+	z-index: 3;
+}
+
+.bx-im-message-panel__gallery-stack-item:nth-child(2) {
+	left: 6px;
+	top: 1px;
+	width: 29px;
+	height: 29px;
+	border-radius: 6px;
+	transform: rotate(8deg);
+	z-index: 2;
+}
+
+.bx-im-message-panel__gallery-stack-item:nth-child(3) {
+	left: 13px;
+	top: 3px;
+	width: 27px;
+	height: 27px;
+	border-radius: 6px;
+	transform: rotate(12deg);
+	z-index: 1;
+}
+
+.bx-im-message-panel__gallery-stack-img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bx-im-message-panel__gallery-badge {
+	position: absolute;
+	left: 28px;
+	top: 18px;
+	z-index: 4;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	min-height: 14px;
+	padding: 0 4px;
+	border: 1px solid var(--ui-color-palette-white-base, #fff);
+	border-radius: 14px;
+	background-color: var(--ui-color-accent-main-primary);
+	color: var(--ui-color-palette-white-base, #fff);
+	font: var(--im-font-weight-medium) 10px/12px var(--im-font-family-system);
+	white-space: nowrap;
+}
+
+.bx-im-message-panel__close {
+	position: absolute;
+	top: 11px;
+	right: 10px;
+	width: 24px;
+	height: 24px;
+	background-image: url('./images/close.svg');
+	opacity: 0.35;
+	cursor: pointer;
+}
+
+.bx-im-message-panel__close:hover {
+	opacity: 0.7;
+}

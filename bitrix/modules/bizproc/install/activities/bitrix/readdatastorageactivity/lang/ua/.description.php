@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_READ_DATA_ACTIVITY_DESCRIPTION"] = "Читає дані зі сховища.";
+$MESS["BIZPROC_READ_DATA_ACTIVITY_NAME"] = "Читання даних";
+$MESS["BIZPROC_READ_DATA_STORAGE_CATEGORY"] = "Сховище";

@@ -1,0 +1,4 @@
+<?php
+$MESS["SELECTOR_COMPONENT_ADDRESS_BOOK_SEARCH_WITH_CREATION"] = "Znajdź lub dodaj";
+$MESS["SELECTOR_COMPONENT_TITLE_ADDRESS_BOOK"] = "Kontakty z adresami e-mail";
+$MESS["SELECTOR_COMPONENT_TITLE_ADDRESS_BOOK_CREATE"] = "Dodaj nowy kontakt z adresem e-mail";

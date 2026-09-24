@@ -1,0 +1,24 @@
+<?php
+$MESS["CC_BST_ALL_QUERY_PROMPT"] = "Wszystkie wyniki dla: <b>\"#query#\"</b>";
+$MESS["CC_BST_ALL_RESULTS"] = "Wszystkie wyniki";
+$MESS["CC_BST_MODULE_NOT_INSTALLED"] = "Przepraszamy, moduł wyszukiwania jest tymczasowo niedostępny.";
+$MESS["CC_BST_MORE"] = "więcej";
+$MESS["CC_BST_QUERY_PROMPT"] = "wyniki dla: <b>\"#query#\"</b>";
+$MESS["CT_BST_GLOBAL_SEARCH"] = "Wyszukaj";
+$MESS["CT_BST_GLOBAL_SEARCH_CALENDAR"] = "Kalendarz";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM"] = "CRM";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM_ACTIVITY"] = "Moje aktywności";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM_COMPANY"] = "Firmy";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM_CONTACT"] = "Kontakty";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM_DEAL"] = "Deale";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM_INVOICE"] = "Faktury";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM_LEAD"] = "Leady";
+$MESS["CT_BST_GLOBAL_SEARCH_CRM_QUOTE_MSGVER_1"] = "Oferty";
+$MESS["CT_BST_GLOBAL_SEARCH_DISK_MSGVER_1"] = "Dysk";
+$MESS["CT_BST_GLOBAL_SEARCH_MORE"] = "Więcej";
+$MESS["CT_BST_GLOBAL_SEARCH_NEWS"] = "Aktualności";
+$MESS["CT_BST_GLOBAL_SEARCH_NO_RESULT"] = "Nie znaleziono wpisów.";
+$MESS["CT_BST_GLOBAL_SEARCH_PROCESS"] = "Moje workflowy";
+$MESS["CT_BST_GLOBAL_SEARCH_SITE"] = "Strony";
+$MESS["CT_BST_GLOBAL_SEARCH_STREAM"] = "Aktualności";
+$MESS["CT_BST_GLOBAL_SEARCH_TASKS"] = "Zadania";

@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_COMPLETED"] = "Показати завершені";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTASKS"] = "Показати з підзавданнями";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTEMPLATES"] = "Показати з підшаблонами";

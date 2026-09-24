@@ -1,0 +1,22 @@
+<?php
+$MESS["M_RP_PS_CASHBOX_CONNECTED"] = "Podłączone kasy fiskalne online";
+$MESS["M_RP_PS_CASHBOX_NOT_CONNECTED"] = "Niepodłączone kasy fiskalne online";
+$MESS["M_RP_PS_CASHBOX_SETTINGS_QRAUTH_TITLE"] = "Edytuj kasy fiskalne online";
+$MESS["M_RP_PS_NEXT_STEP"] = "Kontynuuj";
+$MESS["M_RP_PS_PAY_SYSTEM_DESC"] = "Otrzymuj płatności online metodą klienta. Popraw lojalność klientów i zwiększ średni zarobek.";
+$MESS["M_RP_PS_PAY_SYSTEM_NOT_WORK"] = "Systemy płatności nie są podłączone";
+$MESS["M_RP_PS_PAY_SYSTEM_SETTINGS_QRAUTH_TITLE"] = "Systemy płatności";
+$MESS["M_RP_PS_PAY_SYSTEM_WORK"] = "Podłączone systemy płatności";
+$MESS["M_RP_PS_PROGRESS_BAR_TITLE"] = "Systemy płatności i kasy fiskalne online";
+$MESS["M_RP_PS_SETTINGS_BANNER_DESCRIPTION"] = "To nie potrwa długo. Wystarczy zalogować się do profilu operatora płatności.";
+$MESS["M_RP_PS_SETTINGS_BANNER_TITLE"] = "Podłącz system płatności";
+$MESS["M_RP_PS_SETTINGS_BUTTON_TITLE"] = "Podłącz";
+$MESS["M_RP_PS_SETTINGS_CHOOSE"] = "Wybierz system płatności";
+$MESS["M_RP_PS_SETTINGS_LINK_TITLE"] = "Konfiguruj";
+$MESS["M_RP_PS_SETTINGS_OTHER"] = "Inny";
+$MESS["M_RP_PS_SETTINGS_RECOMMENDED"] = "Polecany";
+$MESS["M_RP_PS_SETTINGS_TITLE"] = "Systemy płatności";
+$MESS["M_RP_PS_SHOW_MORE"] = "Pokaż #COUNT# więcej";
+$MESS["M_RP_PS_SKIP_STEP"] = "Pomiń ten krok";
+$MESS["M_RP_PS_SKIP_STEP_DESC"] = "Możesz pominąć ten krok w przyszłości, jeśli wymagane systemy płatności są podłączone i skonfigurowane";
+$MESS["M_RP_PS_TITLE"] = "Płatność";

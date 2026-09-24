@@ -1,0 +1,27 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_COPY"] = "Permissão insuficiente para copiar o painel. Entre em contato com seu supervisor ou administrador do Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_DELETE"] = "Permissão insuficiente para excluir o painel. Entre em contato com seu supervisor ou administrador do Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EDIT"] = "Permissão insuficiente para editar o painel. Entre em contato com seu supervisor ou administrador do Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EXPORT"] = "Permissão insuficiente para exportar o painel. Entre em contato com seu supervisor ou administrador do Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_SHARE"] = "Permissão insuficiente para compartilhar o painel. Entre em contato com seu supervisor ou administrador do Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_TAG_MODIFY"] = "Permissão insuficiente para editar os marcadores do painel. Entre em contato com seu supervisor ou administrador do Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_VIEW"] = "Permissão insuficiente para visualizar o painel. Entre em contato com seu supervisor ou administrador do Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPIED_DASHBOARD_TITLE"] = "#DASHBOARD_TITLE# (cópia)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPY_ERROR"] = "Erro ao copiar o painel. Tente novamente.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR"] = "Não é possível excluir o painel. Tente novamente.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_COPIED"] = "Exclua todas as cópias deste painel antes de exclui-lo.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_HAS_RELATED_ENTITIES"] = "Não é possível excluir o painel instalado do Market porque os quadros e conjuntos de dados do painel estão em uso por outros painéis no seu Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_SYSTEM"] = "Não é possível excluir o painel integrado.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DISCUSSION_CHAT_OPEN_ERROR"] = "Não foi possível abrir o bate-papo do painel. Tente novamente.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EMPTY_DASHBOARD_NAME"] = "Novo painel";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ERROR_NOT_FOUND"] = "O painel não foi encontrado.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD"] = "#DATE_FROM# - #DATE_TO#";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_DEFAULT"] = "Padrão";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_INCLUDE_LAST_FILTER_DATE"] = "#DATE_FROM# - #DATE_TO# (data de término inclusa)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_ERROR"] = "Não é possível exportar o painel. Tente novamente.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_EMPTY"] = "O nome do painel é obrigatório";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_FOUND"] = "Este painel não existe mais. Atualize a página";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_READY"] = "O painel ainda está sendo instalado. Aguarde a conclusão da instalação e tente novamente";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_ONLY_CUSTOM_MSGVER_1"] = "Não é possível renomear painéis integrados ou do Market. Crie uma cópia destes painéis para renomear";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_UNHANDLED"] = "Não é possível alterar o nome do painel. Tente novamente.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_UNAVAILABLE"] = "Não é possível alterar o nome do painel. Tente novamente mais tarde";

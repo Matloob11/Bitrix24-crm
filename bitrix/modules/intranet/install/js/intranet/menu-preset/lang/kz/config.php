@@ -1,0 +1,22 @@
+<?php
+$MESS["MENU_PRESET_CRM_DESC1"] = "Сатуды автоматтандыру";
+$MESS["MENU_PRESET_CRM_DESC2"] = "конверсияны арттыру, клиенттермен байланыс";
+$MESS["MENU_PRESET_CRM_DESC11"] = "Көбірек сату";
+$MESS["MENU_PRESET_CRM_TITLE"] = "CRM";
+$MESS["MENU_PRESET_DESC"] = "Бұл күнделікті жұмысты жеңілдетеді: таңдалған құрал алдымен ашылады, мәзірде сізге қажет бөлімдер ғана қалады. Сіз кез-келген уақытта мәзірді өзгерте аласыз.";
+$MESS["MENU_PRESET_SITES_DESC1"] = "Сататын сайттар жасау";
+$MESS["MENU_PRESET_SITES_DESC2"] = "CRM-де сайттар мен лендингтерді өзіңіз жасаңыз";
+$MESS["MENU_PRESET_SITES_TITLE"] = "Сайттар";
+$MESS["MENU_PRESET_SOCIAL_DESC1"] = "Компания ішінде сөйлесу";
+$MESS["MENU_PRESET_SOCIAL_DESC2"] = "кез келген мәселені тез шешу";
+$MESS["MENU_PRESET_SOCIAL_DESC11"] = "Қарым-қатынас жасау және бірге жұмыс істеу";
+$MESS["MENU_PRESET_SOCIAL_TITLE1_1"] = "Бірлескен жұмыс";
+$MESS["MENU_PRESET_SYNC_DESC1"] = "Кездесулер өткізу және сөйлесу";
+$MESS["MENU_PRESET_SYNC_DESC2"] = "қоңырауларды ұйымдастыру, чаттар жүргізу және кестені басқару";
+$MESS["MENU_PRESET_SYNC_TITLE"] = "Синк";
+$MESS["MENU_PRESET_TASKS_DESC1"] = "Жобаларды басқару";
+$MESS["MENU_PRESET_TASKS_DESC2"] = "мерзімдерді қадағалау және орындалуын бақылау";
+$MESS["MENU_PRESET_TASKS_DESC11"] = "Бірге жұмыс жасау және уақытында үлгеру";
+$MESS["MENU_PRESET_TASKS_TITLE"] = "Міндеттер";
+$MESS["MENU_PRESET_TASKS_TITLE1"] = "Міндетттер мен жобалар";
+$MESS["MENU_PRESET_TITLE"] = "Битрикс24-те немен жұмыс істеуді жоспарлап отырғаныңызды таңдаңыз";

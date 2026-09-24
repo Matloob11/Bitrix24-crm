@@ -1,0 +1,10 @@
+<?php
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_CONFIRM_POPUP_CONFIRM_BUTTON"] = "Oui";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_CONFIRM_POPUP_MESSAGE"] = "Cette liste est une aide précieuse pour passer d'un Bitrix24 à un autre et ne jamais manquer de notification. Voulez-vous vraiment supprimer Bitrix24 de la liste ?";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_CONFIRM_POPUP_TITLE"] = "Supprimer Bitrix24 de la liste";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_CURRENT_STATUS"] = "connecté(e)";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_HEADER_BUTTON"] = "Connecter";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_HEADER_TITLE"] = "Bitrix24 connectés";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_MENU_ITEM_CONNECT"] = "Ouvrir";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_MENU_ITEM_DELETE"] = "Supprimer de la liste";
+$MESS["INTRANET_DESKTOP_PORTAL_LIST_MENU_ITEM_DISCONNECT"] = "Déconnecter";

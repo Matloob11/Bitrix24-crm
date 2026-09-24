@@ -1,0 +1,22 @@
+<?php
+$MESS["PROMPT_LIBRARY_GRID_ACTION_OPEN_EDIT_MASTER_ERROR"] = "Impossible d'ouvrir l'éditeur de message. Veuillez réessayer.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_ACTIVATE"] = "L'invite #NAME# est active.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_DEACTIVATE"] = "L'invite #NAME# n'est pas active.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_FAVOURITE_ADD"] = "Invite #NAME# ajoutée aux favoris.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_FAVOURITE_REMOVE"] = "Invite #NAME# supprimée des favoris.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_HIDE"] = "L'invite #NAME# n'est pas visible dans le menu CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_HIDE_MSGVER_1"] = "L'invite #NAME# n'est pas visible dans le menu #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_ACTION_DEFAULT"] = "Action terminée avec succès.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_ACTIVATE"] = "Les invites sont actives.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_DEACTIVATE"] = "Les invites ne sont pas actives.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_HIDE"] = "Les invites ne sont pas visibles dans le menu CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_HIDE_MSGVER_1"] = "Les invites ne sont pas visibles dans le menu #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_SHOW"] = "Les invites sont visibles dans le menu CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_SHOW_MSGVER_1"] = "Les invites sont visibles dans le menu #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_PROMPT_MASTER_OPEN_ERROR"] = "Impossible d'ouvrir l'éditeur de message. Veuillez réessayer.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_PROMPT_SAVE_SUCCESS"] = "L'invite #NAME# a été enregistrée.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW"] = "L'invite #NAME# est visible dans le menu CoPilot.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW_MSGVER_1"] = "L'invite #NAME# est visible dans le menu #COPILOT_NAME#.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW_PROMPT_USERS_ERROR"] = "Impossible de charger la liste des utilisateurs. Veuillez réessayer.";
+$MESS["PROMPT_LIBRARY_GRID_TOUR_DESCRIPTION"] = "Enregistrez vos invites favorites dans Bitrix24 et partagez-les avec d'autres utilisateurs.";
+$MESS["PROMPT_LIBRARY_GRID_TOUR_TITLE"] = "Ajoutez votre première invite";

@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_SIGNERS_DELETE_CONFIRMATION_MESSAGE"] = "Möchten Sie die Gruppe wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.";
+$MESS["SIGN_SIGNERS_DELETE_CONFIRMATION_TITLE"] = "Gruppe löschen";
+$MESS["SIGN_SIGNERS_GRID_COPY_HINT_FAIL"] = "Gruppe konnte nicht kopiert werden. Bitte versuchen Sie es erneut.";
+$MESS["SIGN_SIGNERS_GRID_COPY_HINT_SUCCESS"] = "Gruppe wurde kopiert.";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_CANCEL_BUTTON_TEXT"] = "Abbrechen";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_CREATE_BUTTON_TEXT"] = "Erstellen";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_DESCRIPTION"] = "Erstellen Sie eine Mitarbeitergruppe, um Dokumente schneller zu verarbeiten.";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_HINT_TITLE_NOT_EMPTY"] = "Name kann nicht leer sein.";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_POPUP_INPUT_PLACEHOLDER"] = "Gruppenname";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_POPUP_TITLE"] = "Neue Gruppe";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_SAVE_BUTTON_TEXT"] = "Umbenennen";
+$MESS["SIGN_SIGNERS_GRID_DELETE_HINT_FAIL"] = "Gruppe konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.";
+$MESS["SIGN_SIGNERS_GRID_DELETE_HINT_SUCCESS"] = "Gruppe wurde gelöscht.";
+$MESS["SIGN_SIGNERS_GRID_DELETE_POPUP_NO"] = "Abbrechen";
+$MESS["SIGN_SIGNERS_GRID_DELETE_POPUP_YES"] = "Ja";
+$MESS["SIGN_SIGNERS_GRID_LIST_CREATE_FAIL"] = "Fehler beim Erstellen einer Gruppe.";
+$MESS["SIGN_SIGNERS_GRID_LIST_CREATE_SUCCESS"] = "Gruppe wurde erstellt.";
+$MESS["SIGN_SIGNERS_SIGNERS_GRID_DELETE_HINT_FAIL"] = "Mitarbeiter konnten aus der Gruppe nicht entfernt werden.";
+$MESS["SIGN_SIGNERS_SIGNERS_GRID_DELETE_HINT_SUCCESS"] = "Mitarbeiter wurden aus der Gruppe entfernt.";
+$MESS["SIGN_SIGNERS_SIGNER_DELETE_CONFIRMATION_TITLE"] = "Möchten Sie den Mitarbeiter aus der Gruppe wirklich entfernen?";
+$MESS["SIGN_SIGNERS_SIGNER_GRID_DELETE_HINT_FAIL"] = "Mitarbeiter konnte aus der Gruppe nicht entfernt werden.";
+$MESS["SIGN_SIGNERS_SIGNER_GRID_DELETE_HINT_SUCCESS"] = "Mitarbeiter wurde aus der Gruppe entfernt.";

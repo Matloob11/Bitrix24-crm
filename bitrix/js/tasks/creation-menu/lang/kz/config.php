@@ -1,0 +1,7 @@
+<?php
+$MESS["TASKS_CREATION_MENU_CREATE_TASK"] = "Міндет";
+$MESS["TASKS_CREATION_MENU_CREATE_TASK_BY_TEMPLATE"] = "Үлгі бойынша міндет";
+$MESS["TASKS_CREATION_MENU_EMPTY_TEMPLATE_LIST"] = "Міндет үлгілері жоқ";
+$MESS["TASKS_CREATION_MENU_ERROR_LOAD_TEMPLATE_LIST"] = "Тізімді жүктеу қатесі";
+$MESS["TASKS_CREATION_MENU_LOAD_TEMPLATE_LIST"] = "Тізімді жүктеу...";
+$MESS["TASKS_CREATION_MENU_TEMPLATE_LIST"] = "Барлық үлгілердің тізімі";

@@ -1,0 +1,28 @@
+<?php
+$MESS["CRM_DOCUMENT_LIST_ACTION_CANCEL_TEXT_2"] = "Cancelar el procesamiento";
+$MESS["CRM_DOCUMENT_LIST_ACTION_CONDUCT_TEXT_2"] = "Proceso";
+$MESS["CRM_DOCUMENT_LIST_ACTION_DELETE_TEXT"] = "Eliminar";
+$MESS["CRM_DOCUMENT_LIST_ACTION_OPEN_TEXT"] = "Abrir";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_2"] = "Crear";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_DISABLE_HINT_MSGVER_1"] = "Permisos insuficientes para crear los objetos del inventario.";
+$MESS["CRM_DOCUMENT_LIST_CANCEL_GROUP_ACTION"] = "Cancelar el procesamiento";
+$MESS["CRM_DOCUMENT_LIST_CONDUCT_GROUP_ACTION"] = "Proceso";
+$MESS["CRM_DOCUMENT_LIST_DOC_TYPE_W"] = "Órdenes de venta";
+$MESS["CRM_DOCUMENT_LIST_EMPTY_STORE_TITLE"] = "Sin título";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED"] = "Permisos insuficientes para ver el área de pedidos de ventas.";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_BOX"] = "No tiene permiso para acceder a la Gestión del inventario. Comuníquese con su administrador de Bitrix24 para obtener acceso. <a href=\"https://training.bitrix24.com/support/training/course/index.php?COURSE_ID=178&LESSON_ID=25118\" target=\"_blank\">Más información</a>";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_CLOUD"] = "No tiene permiso para acceder a la Gestión del inventario. Comuníquese con su administrador de Bitrix24 para obtener acceso. El administrador tendrá que asignarle el rol de Gerente en la configuración del CRM. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Más información</a>";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_COMPANY"] = "Compañía oculta";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_CONTACT"] = "Contacto oculto";
+$MESS["CRM_DOCUMENT_LIST_SELECT_GROUP_ACTION"] = "Seleccione la acción";
+$MESS["CRM_DOCUMENT_LIST_STATUS_CANCELLED"] = "Cancelado";
+$MESS["CRM_DOCUMENT_LIST_STATUS_N"] = "Borrador";
+$MESS["CRM_DOCUMENT_LIST_STATUS_Y"] = "Procesado";
+$MESS["CRM_DOCUMENT_LIST_STUB_DESCRIPTION_SHIPMENT"] = "¿Vendió un artículo del producto? Agregue una entrada a la gestión del inventario. El seguimiento preciso de las existencias ayudará a su equipo de ventas a procesar los pedidos más rápidamente.";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_LOSSES"] = "¿Cómo hago un seguimiento de las pérdidas?";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_SHIPMENT"] = "¿Cómo registro ventas?";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_DESCRIPTION"] = "Intente restableciendo el filtro o cambie la frase de búsqueda.";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_TITLE"] = "Su solicitud de búsqueda no arrojó resultados.";
+$MESS["CRM_DOCUMENT_LIST_STUB_TITLE_SHIPMENT"] = "Agregue su primera venta";
+$MESS["CRM_DOCUMENT_LIST_TITLE"] = "Orden de venta ##DOCUMENT_ID#";
+$MESS["CRM_DOCUMENT_LIST_TITLE_DOCUMENT_DATE"] = "del #DATE#";

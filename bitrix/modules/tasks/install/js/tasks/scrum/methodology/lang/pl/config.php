@@ -1,0 +1,19 @@
+<?php
+$MESS["TSF_DOD_CREATE_BUTTON"] = "Utwórz";
+$MESS["TSF_DOD_HINT"] = "Listy kontrolne przedstawiające kryteria określające status zakończenia";
+$MESS["TSF_DOD_HINT_NEW"] = "Lista kontrolna zawierająca aktywności niezbędne do zadeklarowania ukończenia projektu lub historyjki użytkownika.";
+$MESS["TSF_DOD_OPEN_BUTTON"] = "Otwórz";
+$MESS["TSF_DOD_TITLE"] = "DOD";
+$MESS["TSF_DOD_TITLE_NEW"] = "DoD";
+$MESS["TSF_EPIC_CREATE_BUTTON"] = "Utwórz";
+$MESS["TSF_EPIC_HINT"] = "Ważne cele i globalne plany do przypisania do zadań rejestru";
+$MESS["TSF_EPIC_OPEN_BUTTON"] = "Otwórz";
+$MESS["TSF_EPIC_TITLE"] = "Epici";
+$MESS["TSF_MIGRATION_LABEL"] = "Migruj";
+$MESS["TSF_MIGRATION_TITLE"] = "Migruj dane z innych systemów";
+$MESS["TSF_TEAM_SPEED_BUTTON"] = "Szybkość zespołu";
+$MESS["TSF_TEAM_SPEED_DIAGRAM"] = "Wykres spalania zadania";
+$MESS["TSF_TEAM_SPEED_LABEL"] = "Wkrótce";
+$MESS["TSF_TUTORIAL_TEXT"] = "Bezpłatny samouczek";
+$MESS["TSF_TUTORIAL_TITLE"] = "Jak wykorzystać SCRUM?";
+$MESS["TSM_ERROR_POPUP_TITLE"] = "To jest błąd.";

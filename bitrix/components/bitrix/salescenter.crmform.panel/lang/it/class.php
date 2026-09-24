@@ -1,0 +1,5 @@
+<?php
+$MESS["SALESCENTER_CRM_FORM_PANEL_ACCESS_DENIED"] = "Accesso negato";
+$MESS["SALESCENTER_CRM_FORM_PANEL_CREATE_NEW_FORM"] = "Crea un nuovo modulo";
+$MESS["SALESCENTER_CRM_FORM_PANEL_HOW_IT_WORKS"] = "Come funziona?";
+$MESS["SALESCENTER_CRM_FORM_PANEL_MODULE_ERROR"] = "Il modulo obbligatorio #MODULE# non è installato";

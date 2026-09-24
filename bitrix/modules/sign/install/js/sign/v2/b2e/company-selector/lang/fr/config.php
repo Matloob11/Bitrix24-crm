@@ -1,0 +1,26 @@
+<?php
+$MESS["SIGN_B2E_ADD_COMPANY"] = "Ajouter une entreprise";
+$MESS["SIGN_B2E_COMPANIES_CHANGE_INN_1"] = "Spécifier";
+$MESS["SIGN_B2E_COMPANIES_EDIT"] = "Modifier";
+$MESS["SIGN_B2E_COMPANIES_NOT_CHANGED"] = "L'entreprise n'est pas sélectionnée.";
+$MESS["SIGN_B2E_COMPANIES_SELECT_BUTTON"] = "Sélectionner";
+$MESS["SIGN_B2E_COMPANIES_TAB"] = "Entreprises";
+$MESS["SIGN_B2E_COMPANIES_UNSET_PROVIDER_MORE"] = "[helpdesklink]En savoir plus[/helpdesklink]";
+$MESS["SIGN_B2E_COMPANIES_UNSET_PROVIDER_PARAGRAPH_1"] = "Sélectionnez un fournisseur correct à utiliser avec Signature électronique pour les RH.";
+$MESS["SIGN_B2E_COMPANIES_UNSET_PROVIDER_PARAGRAPH_2"] = "Selon votre loi applicable, il peut être nécessaire d'utiliser des signatures électroniques avancées ou qualifiées pour votre type de document spécifique. Il vous incombe de déterminer si la signature électronique pour les RH est conforme à la loi applicable.";
+$MESS["SIGN_B2E_COMPANY_CREATE"] = "Nouvelle entreprise";
+$MESS["SIGN_B2E_COMPANY_EDIT"] = "Modifier l'entreprise";
+$MESS["SIGN_B2E_COMPANY_NOT_CONNECTED_PROVIDER_STATUS"] = "Fournisseur non connecté.";
+$MESS["SIGN_B2E_COMPANY_NOT_SET_PROVIDER_STATUS"] = "Fournisseur non sélectionné.";
+$MESS["SIGN_B2E_COMPANY_SES_COM_INFO"] = "Signature électronique pour les RH vous permet de signer différents documents de RH avec une signature électronique simple (SES). [helpdesklink]En savoir plus[/helpdesklink]<br><br>Lisez [link]les Conditions[/link] pour comprendre les implications de l'utilisation de la signature électronique pour les RH dans votre cas particulier.";
+$MESS["SIGN_B2E_NO_REGISTER_URL"] = "Connexion indisponible.";
+$MESS["SIGN_B2E_PROVIDERS_TAB"] = "Fournisseurs";
+$MESS["SIGN_B2E_PROVIDER_CONNECT"] = "Connecter";
+$MESS["SIGN_B2E_PROVIDER_CONNECT_SELECTOR"] = "Connecter le fournisseur";
+$MESS["SIGN_B2E_PROVIDER_DISCONNECT"] = "Déconnexion";
+$MESS["SIGN_B2E_PROVIDER_SES_COM_NAME"] = "Signature électronique pour les RH";
+$MESS["SIGN_B2E_PROVIDER_SES_NAME"] = "Signature électronique pour les RH";
+$MESS["SIGN_B2E_SELECT_COMPANY"] = "Sélectionner l'entreprise";
+$MESS["SIGN_B2E_SELECT_PROVIDER_WITHOUT_INN"] = "Connecté le #DATE#";
+$MESS["SIGN_B2E_SELECT_PROVIDER_WITHOUT_INN_DATE"] = "Connecté";
+$MESS["SIGN_V2_B2E_COMPANY_SELECTOR_SAVE_AND_EDIT_REQUIRE_CRM_PERMISSION"] = "Vous devez disposer des droits d'accès au CRM pour créer de nouvelles entreprises ou modifier les informations d'une entreprise. Si vous ne disposez pas des droits nécessaires, contactez votre administrateur Bitrix24.";

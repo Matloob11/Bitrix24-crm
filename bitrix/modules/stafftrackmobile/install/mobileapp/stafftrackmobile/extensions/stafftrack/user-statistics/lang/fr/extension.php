@@ -1,0 +1,13 @@
+<?php
+$MESS["M_STAFFTRACK_USER_STATISTICS_CHECKINS_SENT"] = "Mes check-ins au travail envoyés";
+$MESS["M_STAFFTRACK_USER_STATISTICS_CHECKINS_SENT_V2"] = "Check-ins au travail envoyés";
+$MESS["M_STAFFTRACK_USER_STATISTICS_CHOOSE_CHAT"] = "Sélectionner un chat";
+$MESS["M_STAFFTRACK_USER_STATISTICS_CHOOSE_RECEIVER"] = "Sélectionner les destinataires";
+$MESS["M_STAFFTRACK_USER_STATISTICS_COUNT_CHECKINS_IN_MONTHS_NONE"] = "Personne n'a effectué le check-in ce mois-ci";
+$MESS["M_STAFFTRACK_USER_STATISTICS_COUNT_CHECKINS_IN_MONTHS_PLURAL_0"] = "A effectué le check-in #COUNT# fois";
+$MESS["M_STAFFTRACK_USER_STATISTICS_COUNT_CHECKINS_IN_MONTHS_PLURAL_1"] = "A effectué le check-in #COUNT# fois";
+$MESS["M_STAFFTRACK_USER_STATISTICS_COUNT_CHECKINS_IN_MONTHS_PLURAL_2"] = "A effectué le check-in #COUNT# fois";
+$MESS["M_STAFFTRACK_USER_STATISTICS_MY_CHECKINS"] = "Mes check-ins au travail";
+$MESS["M_STAFFTRACK_USER_STATISTICS_NO_CHECKIN"] = "N'a pas effectué le check-in ce jour";
+$MESS["M_STAFFTRACK_USER_STATISTICS_SHARE"] = "Partager";
+$MESS["M_STAFFTRACK_USER_STATISTICS_USER_CHECKINS"] = "Check-ins au travail d'employés";

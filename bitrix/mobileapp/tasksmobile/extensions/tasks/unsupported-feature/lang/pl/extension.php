@@ -1,0 +1,22 @@
+<?php
+$MESS["TASKS_UNSUPPORTED_FEATURE_OPEN_WEB"] = "Otwórz w wersji internetowej";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_BUTTON"] = "Otwórz w wersji internetowej";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_FOOTNOTE"] = "Analityka nie jest jeszcze dostępna w wersji mobilnej.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_DEEP_RESEARCH"] = "Wykorzystuj szablony raportów";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_METRIC"] = "Monitoruj punkty wyczerpania zespołu";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_PROCESS"] = "Wykrywaj wąskie gardła";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_QR_TITLE"] = "Analityka";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_TITLE"] = "Podejmowanie decyzji na podstawie danych";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_BUTTON"] = "Otwórz w wersji webowej";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_FOOTNOTE"] = "Aby dodać przepływy, użyj wersji webowej.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_CUSTOMER_VISIBILITY"] = "Właściciel zadania zna odpowiedzialnego, termin i status";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TEAM_LOAD"] = "Łatwo dostrzegalne obciążenie zespołu i wąskie gardła";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TYPICAL_TASKS"] = "Grupuj podobne zadania w przepływie";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_QR_TITLE"] = "Przepływy";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_TITLE"] = "Automatycznie rozdzielaj i śledź zadania za pomocą przepływów";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_FOOTNOTE"] = "Funkcje Scrum nie są jeszcze dostępne w wersji mobilnej.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_BACKLOG"] = "Ujednolicony rejestr i sprinty";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_DESKTOP"] = "Śledź postępy";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_PROCESS"] = "Skup się na bieżących zadaniach";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_QR_TITLE"] = "Scrum";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_TITLE"] = "Używaj metodologii Scrum do zarządzania projektami";

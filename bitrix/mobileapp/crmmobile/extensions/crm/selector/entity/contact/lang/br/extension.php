@@ -1,0 +1,7 @@
+<?php
+$MESS["SELECTOR_COMPONENT_CREATE_CONTACT"] = "Criar contato";
+$MESS["SELECTOR_COMPONENT_CREATE_TITLE_CONTACT"] = "Novo contato";
+$MESS["SELECTOR_COMPONENT_SEARCH_PLACEHOLDER_CONTACT"] = "Nome do contato, telefone ou e-mail";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_CREATE_CONTACT"] = "Comece a digitar para criar contato";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_SEARCH_CONTACT"] = "Comece a digitar para encontrar contatos";
+$MESS["SELECTOR_COMPONENT_TITLE_CONTACT"] = "Contato";

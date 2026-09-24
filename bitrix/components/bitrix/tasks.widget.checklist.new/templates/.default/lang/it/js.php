@@ -1,0 +1,2 @@
+<?php
+$MESS["TASKS_CHECKLIST_COMPONENT_JS_NEW_CHECKLIST_TITLE_2"] = "Elenco di controllo ##ITEM_NUMBER#";

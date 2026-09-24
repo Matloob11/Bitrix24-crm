@@ -1,0 +1,7 @@
+<?php
+$MESS["M_CRM_E_D_TOOLBAR_BUTTON_OPEN"] = "Abrir";
+$MESS["M_CRM_E_D_TOOLBAR_TITLE_AUDIO_PLAYER_SPEED"] = "Velocidade";
+$MESS["M_CRM_E_D_TOOLBAR_TITLE_EMAIL"] = "E-mail recebido";
+$MESS["M_CRM_E_D_TOOLBAR_TITLE_IM_OPEN_LINE_TITLE"] = "Canal Aberto";
+$MESS["M_CRM_E_D_TOOLBAR_TITLE_OPEN_LINE"] = "Bate-papo do Canal Aberto";
+$MESS["M_CRM_E_D_TOOLBAR_TITLE_TEXT_CALL"] = "Ligar";

@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_ENTITY_RQ_CONV_INTRO"] = "Nie trzeba już wprowadzać szczegółowych danych przy każdym tworzeniu nowej faktury. Wprowadź swoje dane kontaktowe raz, a następnie wykorzystuj je w dowolnym obiekcie CRM. Do dalszego stosowania zalecamy konwersję starych danych na nowe. <b>Pole „adres” również zostanie skopiowane, ale będzie ukryte.</b> <a id=\"#EXEC_ID#\" href=\"#EXEC_URL#\">Konwertuj teraz</a> <a id=\"#SKIP_ID#\" href=\"#SKIP_URL#\">Pomiń</a>";

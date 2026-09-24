@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_ELEMENT_BUTTON_SELECT"] = "Sélectionner";
+$MESS["CRM_ELEMENT_CANCEL"] = "Annuler";
+$MESS["CRM_ELEMENT_CHANGE"] = "Éditer";
+$MESS["CRM_ELEMENT_CHOISE"] = "Sélectionner";
+$MESS["CRM_ELEMENT_CLOSE"] = "Fermer";
+$MESS["CRM_ELEMENT_COMPANY"] = "Entreprises";
+$MESS["CRM_ELEMENT_CONTACT"] = "Contacts";
+$MESS["CRM_ELEMENT_CREATE"] = "Créer";
+$MESS["CRM_ELEMENT_CREATE_COMPANY"] = "Entreprise";
+$MESS["CRM_ELEMENT_CREATE_CONTACT"] = "Contact";
+$MESS["CRM_ELEMENT_CREATE_DEAL"] = "Transaction";
+$MESS["CRM_ELEMENT_CREATE_LEAD"] = "Prospect";
+$MESS["CRM_ELEMENT_DEAL"] = "Transactions";
+$MESS["CRM_ELEMENT_HIDDEN_OR_DELETED"] = "L'élément a été masqué ou supprimé";
+$MESS["CRM_ELEMENT_LAST"] = "Dernière sélection";
+$MESS["CRM_ELEMENT_LEAD"] = "Prospects";
+$MESS["CRM_ELEMENT_NO_RESULT"] = "Malheureusement, il n'y a pas d'éléments retrouvés d'après votre demande de recherche.";
+$MESS["CRM_ELEMENT_OK"] = "Sélectionner";
+$MESS["CRM_ELEMENT_ORDER"] = "Commandes";
+$MESS["CRM_ELEMENT_PERMISSION_DENIED"] = "Accès refusé";
+$MESS["CRM_ELEMENT_QUOTE_MSGVER_1"] = "Devis";
+$MESS["CRM_ELEMENT_SEARCH"] = "Recherche";
+$MESS["CRM_SFE_ENTITY_NOT_SELECTED"] = "Aucun type d'entité sélectionné dans les paramètres du champ";

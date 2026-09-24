@@ -1,0 +1,19 @@
+<?php
+$MESS["BIZPROC_AS_ACT_TITLE"] = "Tytuł:";
+$MESS["BIZPROC_AS_DESC_1"] = "Skonfiguruj parametry aktywności.";
+$MESS["BIZPROC_AS_SEL_FIELD_BUTTON"] = "Wstaw parametr z pola";
+$MESS["BIZPROC_AS_TITLE_1"] = "Parametry aktywności";
+$MESS["BP_ACT_SETTINGS_ACTIONS_ACTIVATED_BUTTON_NOTIFY_TEXT"] = "Aktywność włączona";
+$MESS["BP_ACT_SETTINGS_ACTIONS_ACTIVATED_BUTTON_TEXT"] = "Włącz";
+$MESS["BP_ACT_SETTINGS_ACTIONS_DEACTIVATED_BUTTON_NOTIFY_TEXT"] = "Aktywność wyłączona";
+$MESS["BP_ACT_SETTINGS_ACTIONS_DEACTIVATED_BUTTON_TEXT"] = "Wyłącz";
+$MESS["BP_ACT_SET_BROKEN_LINK_MESSAGE_ERROR"] = "Reguła automatyzacji odnosi się do brakujących lub niedostępnych pól, zmiennych lub stałych.";
+$MESS["BP_ACT_SET_BROKEN_LINK_MESSAGE_ERROR_SHOW_LINKS"] = "Wyświetl wszystkie";
+$MESS["BP_ACT_SET_COMMENT"] = "Komentarz";
+$MESS["BP_ACT_SET_COMMENT_ROW"] = "Komentarz:";
+$MESS["BP_ACT_SET_COMMENT_SHOWHIDE_1"] = "Pokaż/ukryj komentarz do aktywności";
+$MESS["BP_ACT_SET_ID"] = "ID";
+$MESS["BP_ACT_SET_ID_DUP_1"] = "Identyfikator aktywności #ID# jest już wykorzystywany w tym szablonie.";
+$MESS["BP_ACT_SET_ID_EMPTY_1"] = "Identyfikator aktywności nie może być pusty.";
+$MESS["BP_ACT_SET_ID_ROW_1"] = "Identyfikator aktywności:";
+$MESS["BP_ACT_SET_ID_SHOWHIDE_1"] = "Pokaż/ukryj identyfikator aktywności";

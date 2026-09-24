@@ -1,0 +1,118 @@
+<?php
+
+use Bitrix\Main\Web\Json;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
+	die();
+
+/**
+ * @var array $arParams
+ */
+?>
+<div class="bx-interface-toolbar">
+<table cellpadding="0" cellspacing="0" border="0" class="bx-interface-toolbar">
+	<tr class="bx-top">
+		<td class="bx-left"><div class="empty"></div></td>
+		<td><div class="empty"></div></td>
+		<td class="bx-right"><div class="empty"></div></td>
+	</tr>
+	<tr>
+		<td class="bx-left"><div class="empty"></div></td>
+		<td class="bx-content">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr>
+				<td><div class="bx-section-separator bx-first"></div></td>
+					<?php
+$bWasSeparator = true;
+foreach($arParams["BUTTONS"] as $index=>$item):
+
+	$item["LINK"] = htmlspecialcharsbx($item["LINK"] ?? '', ENT_COMPAT, false);
+	$item["TITLE"] = htmlspecialcharsbx($item["TITLE"] ?? '', ENT_COMPAT, false);
+	$item["ICON"] = htmlspecialcharsbx($item["ICON"] ?? '', ENT_COMPAT, false);
+	$item["TEXT"] = htmlspecialcharsbx($item["TEXT"] ?? '', ENT_COMPAT, false);
+
+	if(!empty($item["NEWBAR"])):
+?>
+				</tr>
+			</table>
+		</td>
+		<td class="bx-right"><div class="empty"></div></td>
+	</tr>
+	<tr class="bx-bottom">
+		<td class="bx-left"><div class="empty"></div></td>
+		<td><div class="empty"></div></td>
+		<td class="bx-right"><div class="empty"></div></td>
+	</tr>
+	<tr class="bx-top">
+		<td class="bx-left"><div class="empty"></div></td>
+		<td><div class="empty"></div></td>
+		<td class="bx-right"><div class="empty"></div></td>
+	</tr>
+	<tr>
+		<td class="bx-left"><div class="empty"></div></td>
+		<td class="bx-content">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr>
+				<td><div class="bx-section-separator bx-first"></div></td>
+					<?php
+		$bWasSeparator = true;
+		continue;
+	endif;
+
+	if(!empty($item["SEPARATOR"])):
+?>
+				<td><div class="bx-section-separator"></div></td>
+		<?php
+		$bWasSeparator = true;
+	else:
+		if(!$bWasSeparator):
+?>
+				<td><div class="bx-separator"></div></td>
+		<?php
+		endif;
+		if(!empty($item["MENU"])):
+?>
+			<td>
+				<script>
+				var jsMnu_<?=$arParams["TOOLBAR_ID"].'_'.$index?> = <?= Json::encode($item["MENU"]) ?>;
+				</script>
+				<a href="javascript:void(0);" hidefocus="true"
+					onclick="this.blur(); jsPopup_<?=$arParams["TOOLBAR_ID"]?>.ShowMenu(this, jsMnu_<?=$arParams["TOOLBAR_ID"].'_'.$index?>); return false;"
+					title="<?=$item["TITLE"]?>" class="bx-context-button<?=(!empty($item["ICON"])? ' bx-icon '.$item["ICON"]:'')?>"><?=$item["TEXT"]?><img src="<?=$this->GetFolder()?>/images/arr_down.gif" class="bx-arrow" alt=""></a></td>
+		<?php
+		elseif(!empty($item["HTML"])):
+?>
+				<td><?=$item["HTML"]?></td>
+		<?php
+		else:
+?>
+				<td><a href="<?=$item["LINK"]?>" hidefocus="true" title="<?=$item["TITLE"]?>" <?=($item["LINK_PARAM"] ?? '')?> class="bx-context-button<?=(!empty($item["ICON"])? ' bx-icon '.$item["ICON"]:'')?>"><?=$item["TEXT"]?></a></td>
+		<?php
+		endif;
+		$bWasSeparator = false;
+	endif;
+endforeach;
+?>
+				</tr>
+			</table>
+		</td>
+		<td class="bx-right"><div class="empty"></div></td>
+	</tr>
+	<tr class="bx-bottom">
+		<td class="bx-left"><div class="empty"></div></td>
+		<td><div class="empty"></div></td>
+		<td class="bx-right"><div class="empty"></div></td>
+	</tr>
+
+	<tr class="bx-bottom-all">
+		<td class="bx-left"><div class="empty"></div></td>
+		<td><div class="empty"></div></td>
+		<td class="bx-right"><div class="empty"></div></td>
+	</tr>
+</table>
+
+<script>
+var jsPopup_<?=$arParams["TOOLBAR_ID"]?> = new PopupMenu('Popup<?=$arParams["TOOLBAR_ID"]?>');
+</script>
+
+</div>

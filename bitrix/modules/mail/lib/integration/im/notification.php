@@ -1,0 +1,792 @@
+<?php
+
+namespace Bitrix\Mail\Integration\Im;
+
+use Bitrix\Mail\Helper\AnalyticsHelper;
+use Bitrix\Mail\Internal\Async\Message\MailboxAccessNotificationMessage;
+use Bitrix\Mail\Internal\Async\Message\OrphanedMailboxAutoDisconnectNotificationMessage;
+use Bitrix\Main;
+use Bitrix\Main\Localization\Loc;
+use \Bitrix\Main\Web\Uri;
+use \Bitrix\Mail\Internals\MailboxAccessTable;
+use \Bitrix\Mail\MailboxTable;
+
+Loc::loadMessages(__FILE__);
+
+class Notification
+{
+	const notifierSchemeTypeMail = 'new_message_v2';
+	const notifierSchemeTypeMailTariffRestrictions = 'tariff_restrictions';
+	const notifyPushTagMailMessage = 'MAIL|MESSAGE|%u';
+	const notifyPushTagMailList = 'MAIL|LIST|%u';
+
+	/**
+	 * CPushManager::SendAgent() takes deferred push rows older than 15 seconds and is scheduled
+	 * every 30 seconds, so 15 minutes is a wide margin for delayed agents and sparse cron.
+	 */
+	const deferredPushCancelWindowSeconds = 900;
+
+	//region General methods
+
+	public static function getSchema()
+	{
+		Main\Loader::includeModule('im');
+
+		return [
+			'mail' => [
+				self::notifierSchemeTypeMail => [
+					'NAME' => Loc::getMessage('MAIL_NOTIFY_NEW_MESSAGE'),
+					'SITE' => 'Y',
+					'SYSTEM' => 'Y',
+					'MAIL' => 'N',
+					'PUSH' => 'Y',
+					'DISABLED' => [
+						IM_NOTIFY_FEATURE_MAIL,
+					],
+				],
+				'imposed_tariff_restrictions_on_the_mailbox' => [
+					'NAME' => Loc::getMessage('MAIL_NOTIFY_IMPOSE_TARIFF_RESTRICTIONS_ON_THE_MAILBOX'),
+					'SITE' => 'Y',
+					'SYSTEM' => 'Y',
+					'MAIL' => 'Y',
+					'PUSH' => 'Y',
+					'DISABLED' => [
+						IM_NOTIFY_FEATURE_PUSH,
+						IM_NOTIFY_FEATURE_MAIL,
+						IM_NOTIFY_FEATURE_SITE,
+					],
+				],
+			],
+		];
+	}
+
+	private static function getMailboxUrl(int $mailboxId, bool $absoluteUrl = false): string
+	{
+		$url = htmlspecialcharsbx(sprintf("/mail/list/%u", $mailboxId));
+
+		if ($absoluteUrl)
+		{
+			$uri = new Uri($url);
+
+			return $uri->toAbsolute()->getLocator();
+		}
+
+		$url = AnalyticsHelper::addSourceAnalyticsToMessage($url, AnalyticsHelper::ENTITY_TYPE_NOTIFICATION);
+
+		return $url;
+	}
+
+	private static function getMailboxEditUrl(int $mailboxId, bool $absoluteUrl = false): string
+	{
+		$url = htmlspecialcharsbx(sprintf("/mail/config/edit?id=%u", $mailboxId));
+
+		if ($absoluteUrl)
+		{
+			$uri = new Uri($url);
+
+			return $uri->toAbsolute()->getLocator();
+		}
+
+		return $url;
+	}
+
+	private static function getUserGenderById(int $userId): string
+	{
+		static $cache = [];
+
+		if ($userId <= 0)
+		{
+			return 'M';
+		}
+
+		if (array_key_exists($userId, $cache))
+		{
+			return $cache[$userId];
+		}
+
+		try
+		{
+			$row = \Bitrix\Main\UserTable::getList([
+				'select' => ['PERSONAL_GENDER'],
+				'filter' => ['=ID' => $userId],
+				'limit'  => 1,
+			])->fetch();
+		}
+		catch (\Throwable $e)
+		{
+			$cache[$userId] = null;
+
+			return 'M';
+		}
+
+		$gender = $row['PERSONAL_GENDER'] ?? null;
+		$cache[$userId] = $gender === 'F' ? 'F' : 'M';
+
+		return $cache[$userId];
+	}
+
+	public static function getPhraseKeyWithGenderSuffix(string $phraseKey, int $userId): string
+	{
+		if ($phraseKey === '' || $userId <= 0)
+		{
+			return $phraseKey;
+		}
+
+		$gender = self::getUserGenderById($userId);
+
+		return $gender === 'F' ? $phraseKey . '_F' : $phraseKey . '_M';
+	}
+
+	//endregion
+
+	private static function getNotifyMessageForNewMessageSetInMail($mailboxId, $messageCount, $absoluteUrl = false): \Closure
+	{
+		$url = self::getMailboxUrl($mailboxId, $absoluteUrl);
+
+		return fn (?string $languageId = null) => Loc::getMessage(
+			'MAIL_NOTIFY_NEW_MESSAGE_MULTI_1',
+			[
+				'#COUNT#' => $messageCount,
+				'#VIEW_URL#' => $url,
+			],
+			$languageId,
+		);
+	}
+
+	private static function getPushMessageForNewMessage($message, $messageCount): \Closure
+	{
+		if (empty($message))
+		{
+			return static fn (?string $languageId = null) => Loc::getMessage(
+				'MAIL_PUSH_NOTIFY_NEW_MESSAGE_MULTI',
+				[ '#COUNT#' => $messageCount ],
+				$languageId,
+			);
+		}
+
+		if ($message['SUBJECT'])
+		{
+			return static fn (?string $languageId = null) => Loc::getMessage(
+				'MAIL_PUSH_NOTIFY_NEW_SINGLE_MESSAGE_IN_MAIL_CLIENT',
+				[ '#SUBJECT#' => $message['SUBJECT'] ],
+				$languageId,
+			);
+		}
+
+		return static fn (?string $languageId = null) => Loc::getMessage(
+			'MAIL_PUSH_NOTIFY_NEW_SINGLE_MESSAGE_IN_MAIL_CLIENT_EMPTY_SUBJECT',
+			$languageId,
+		);
+	}
+
+	private static function getPushTagForNewMessage($message, $mailboxId): string
+	{
+		if (empty($message))
+		{
+			return sprintf(self::notifyPushTagMailList, $mailboxId);
+		}
+
+		return self::getPushTagForMessageId((int)$message['ID']);
+	}
+
+	private static function getPushTagForMessageId(int $messageId): string
+	{
+		return sprintf(self::notifyPushTagMailMessage, $messageId);
+	}
+
+	/**
+	 * Notification and its cancellation must produce the same string, or the push is not found.
+	 */
+	private static function getNotifySubTag(string $notifyTag, int $userId): string
+	{
+		return $notifyTag . '|' . $userId;
+	}
+
+	public static function cancelDeferredPushForReadMessages(int $mailboxId, array $messageIds, int $userId): void
+	{
+		if (!Main\Loader::includeModule('im'))
+		{
+			return;
+		}
+
+		foreach ($messageIds as $messageId)
+		{
+			\CIMNotify::DeleteBySubTag(
+				self::getNotifySubTag(self::getPushTagForMessageId((int)$messageId), $userId)
+			);
+		}
+
+		$aggregateTag = self::getPushTagForNewMessage([], $mailboxId);
+		\CIMNotify::DeleteBySubTag(self::getNotifySubTag($aggregateTag, $userId));
+	}
+
+	private static function getNotifyMessageForNewMessageInMail($message, $absoluteUrl = false): \Closure
+	{
+		$url = htmlspecialcharsbx($message['__href']);
+
+		if ($absoluteUrl)
+		{
+			$uri = new Uri($url);
+			$url = $uri->toAbsolute()->getLocator();
+		}
+
+		$url = AnalyticsHelper::addSourceAnalyticsToMessage($url, AnalyticsHelper::ENTITY_TYPE_NOTIFICATION);
+
+		if ($message['SUBJECT'])
+		{
+			return fn (?string $languageId = null) => Loc::getMessage(
+				'MAIL_NOTIFY_NEW_SINGLE_MESSAGE_IN_MAIL_CLIENT_1',
+				[
+					'#SUBJECT#' => $message['SUBJECT'],
+					'#VIEW_URL#' => $url,
+				],
+				$languageId,
+			);
+		}
+
+		return fn (?string $languageId = null) => Loc::getMessage(
+			'MAIL_NOTIFY_NEW_SINGLE_MESSAGE_IN_MAIL_CLIENT_EMPTY_SUBJECT',
+			[
+				'#VIEW_URL#' => $url,
+			],
+			$languageId,
+		);
+	}
+
+	private static function getNotifyMessageForTariffRestrictionsMailbox($mailboxId, $email, $forEmailNotification = false): \Closure
+	{
+		$url = self::getMailboxUrl($mailboxId, $forEmailNotification);
+
+		if ($forEmailNotification)
+		{
+			$emailWithHref = "<a target=\"_blank\" href=\"$url\">$email</a>";
+
+			return fn (?string $languageId = null) => Loc::getMessage(
+				'MAIL_NOTIFY_FULL_MAILBOX_TARIFF_RESTRICTIONS_HAVE_BEEN_IMPOSED',
+				[
+					'#EMAIL#' => $emailWithHref,
+				],
+				$languageId,
+			);
+		}
+
+		return fn (?string $languageId = null) => Loc::getMessage(
+			'MAIL_NOTIFY_MAILBOX_TARIFF_RESTRICTIONS_HAVE_BEEN_IMPOSED',
+			[
+				'#EMAIL#' => $email,
+				'#VIEW_URL#' => $url,
+			],
+			$languageId,
+		);
+	}
+
+	private static function notifyForNewMessagesInMail($userId, $fields): void
+	{
+		$message = $fields['message'];
+
+		$notifyTitleCallback = fn (?string $languageId = null) => Loc::getMessage(
+			'MAIL_NOTIFY_NEW_MESSAGE_TITLE',
+			language: $languageId,
+		);
+
+		$notifyTag = self::getPushTagForNewMessage($message, $fields['mailboxId']);
+
+		\CIMNotify::add([
+			'MESSAGE_TYPE' => IM_MESSAGE_SYSTEM,
+			'NOTIFY_TYPE' => IM_NOTIFY_SYSTEM,
+			'NOTIFY_MODULE' => 'mail',
+			'NOTIFY_EVENT' => self::notifierSchemeTypeMail,
+			// NOTIFY_TAG is deliberately absent: it switches im to the deduplicating path, which would
+			// replace the previous notification and scan other recipients of a shared mailbox.
+			// Cancellation needs only the sub-tag - both the notification and the push queue are found by it.
+			'NOTIFY_SUB_TAG' => self::getNotifySubTag($notifyTag, $userId),
+			'NOTIFY_TITLE' => $notifyTitleCallback,
+			'PUSH_PARAMS' => [
+				'ACTION' => 'mail',
+				'TAG' => $notifyTag,
+				'ADVANCED_PARAMS' => [
+					'id' => 'im_notify',
+					'group' => 'im_notify',
+					'senderName' => Loc::getMessage('MAIL_NOTIFY_NEW_MESSAGE_TITLE'),
+				],
+				['TAG' => 'IM_NOTIFY']
+			],
+			'PUSH_MESSAGE' => self::getPushMessageForNewMessage($message, $fields['count']),
+			'NOTIFY_MESSAGE_OUT' => empty($message)
+				? self::getNotifyMessageForNewMessageSetInMail($fields['mailboxId'], $fields['count'], true)
+				: self::getNotifyMessageForNewMessageInMail($message, true),
+			'NOTIFY_MESSAGE' => empty($message)
+				? self::getNotifyMessageForNewMessageSetInMail($fields['mailboxId'], $fields['count'])
+				: self::getNotifyMessageForNewMessageInMail($message),
+			'TO_USER_ID' => $userId,
+		]);
+	}
+
+	private static function notifyForTariffRestrictions($mailboxId): void
+	{
+		$mailbox = MailboxTable::getList([
+			'select' => [
+				'USER_ID',
+				'EMAIL',
+			],
+			'filter' => [
+				'=ID' => $mailboxId,
+			],
+			'limit' => 1,
+		])->fetch();
+
+		$notifyTitleCallback = fn (?string $languageId = null) => Loc::getMessage(
+			'MAIL_NOTIFY_NEW_MESSAGE_TITLE',
+			language: $languageId,
+		);
+
+		if (isset($mailbox['USER_ID']) && isset($mailbox['EMAIL']))
+		{
+			\CIMNotify::add([
+				'MESSAGE_TYPE' => IM_MESSAGE_SYSTEM,
+				'NOTIFY_TYPE' => IM_NOTIFY_SYSTEM,
+				'NOTIFY_MODULE' => 'mail',
+				'NOTIFY_EVENT' => self::notifierSchemeTypeMailTariffRestrictions,
+				'NOTIFY_TITLE' => $notifyTitleCallback,
+				'NOTIFY_MESSAGE_OUT' => self::getNotifyMessageForTariffRestrictionsMailbox($mailboxId, $mailbox['EMAIL'], true),
+				'NOTIFY_MESSAGE' => self::getNotifyMessageForTariffRestrictionsMailbox($mailboxId, $mailbox['EMAIL']),
+				'TO_USER_ID' => $mailbox['USER_ID'],
+			]);
+		}
+	}
+
+	public static function add($userId, $type, $fields, $mailboxId = null)
+	{
+		if (Main\Loader::includeModule('im'))
+		{
+			if ($type == self::notifierSchemeTypeMail)
+			{
+				$mailboxId = $fields['mailboxId'];
+
+				$userIds = [];
+
+				$mailboxOwnerId = (int)$fields['mailboxOwnerId'] ?? 0;
+
+				if ($mailboxOwnerId)
+				{
+					$userIds = MailboxAccessTable::getUserIdsWithAccessToTheMailbox($mailboxId);
+				}
+				else
+				{
+					$userIds[] = $userId;
+				}
+
+				foreach ($userIds as $id)
+				{
+					self::notifyForNewMessagesInMail($id, $fields);
+				}
+			}
+			else if ($type == 'imposed_tariff_restrictions_on_the_mailbox')
+			{
+				self::notifyForTariffRestrictions($mailboxId);
+			}
+		}
+	}
+
+	public static function sendAddMailboxNotification(int $mailboxId, string $email, int $toUserId, int $fromUserId): void
+	{
+		$url = self::getMailboxUrl($mailboxId);
+		$subjectCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_MASS_CONNECTING_MAILBOX_NOTIFICATION_SUBJECT',
+			$fromUserId,
+		);
+
+		$notifySubjectCallback = fn (?string $languageId = null) => Loc::getMessage(
+			$subjectCode,
+			[
+				'#LINK#' => $url,
+				'#EMAIL#' => $email,
+			],
+			language: $languageId,
+		);
+
+		\CIMNotify::add([
+			'MESSAGE_TYPE' => IM_MESSAGE_SYSTEM,
+			'NOTIFY_TYPE' => IM_NOTIFY_FROM,
+			'NOTIFY_MODULE' => 'mail',
+			'NOTIFY_MESSAGE_OUT' => self::getNotifyMessageForAddMailbox($mailboxId, $email, $fromUserId, forEmailNotification: true),
+			'NOTIFY_MESSAGE' => self::getNotifyMessageForAddMailbox($mailboxId, $email, $fromUserId),
+			'TO_USER_ID' => $toUserId,
+			'FROM_USER_ID' => $fromUserId,
+			"PARAMS" => [
+				'COMPONENT_ID' => 'DefaultEntity',
+				'COMPONENT_PARAMS' => [
+					'SUBJECT' => $notifySubjectCallback,
+				],
+			],
+		]);
+	}
+
+	public static function getNotifyMessageForAddMailbox(int $mailboxId, string $email, int $userId, bool $forEmailNotification = false): \Closure
+	{
+		$url = self::getMailboxUrl($mailboxId, $forEmailNotification);
+		$code = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_MASS_CONNECTING_MAILBOX_NOTIFICATION_NOTIFY_MESSAGE',
+			$userId,
+		);
+
+		if ($forEmailNotification)
+		{
+			$email = htmlspecialcharsbx($email);
+			$email = "<a target=\"_blank\" href=\"$url\">$email</a>";
+		}
+
+		return fn (?string $languageId = null) => Loc::getMessage(
+			$code,
+			[
+				'#EMAIL#' => $email,
+			],
+			$languageId,
+		);
+	}
+
+	public static function sendEditMailboxNotifications(array $mailbox, int $originalOwnerId, int $finalOwnerId): void
+	{
+		global $USER;
+		$editorUserId = (int)$USER->getId();
+
+		$hasOwnerChanged = $finalOwnerId !== $originalOwnerId;
+
+		$mailboxId = (int)$mailbox['ID'];
+		$mailboxUrl = self::getMailboxUrl($mailboxId);
+		$mailboxWithBBCode = "[url={$mailboxUrl}] " . htmlspecialcharsbx($mailbox['EMAIL']) . " [/url]";
+
+		if ($hasOwnerChanged && $editorUserId !== $finalOwnerId)
+		{
+			self::notifyFinalOwnerAboutOwnershipChange($finalOwnerId, $editorUserId, $mailboxWithBBCode);
+		}
+		elseif ($editorUserId !== $finalOwnerId)
+		{
+			self::notifyFinalOwnerAboutSettingsChange($finalOwnerId, $editorUserId, $mailboxWithBBCode);
+		}
+	}
+
+	public static function notifyFinalOwnerAboutOwnershipChange(
+		int $finalOwnerId,
+		int $editorUserId,
+		string $mailboxWithBBCode,
+	): void
+	{
+		$replacements = ['#EMAIL#' => $mailboxWithBBCode];
+
+		$notifyMessageCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_CLIENT_CONFIG_OWNER_CHANGE_TO_NOTIFY_MESSAGE',
+			$editorUserId,
+		);
+
+		$notifyMessage = self::getNotificationMessageCallback(
+			$notifyMessageCode,
+			$replacements,
+		);
+
+		$subjectCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_CLIENT_CONFIG_OWNER_CHANGE_TO_NOTIFY_MESSAGE_SUBJECT',
+			$editorUserId,
+		);
+
+		$subject = self::getNotificationMessageCallback(
+			$subjectCode,
+			$replacements,
+		);
+
+		\CIMNotify::Add([
+			"TO_USER_ID" => $finalOwnerId,
+			"NOTIFY_TYPE" => IM_NOTIFY_FROM,
+			"FROM_USER_ID" => $editorUserId,
+			"NOTIFY_MODULE" => 'mail',
+			"NOTIFY_MESSAGE" => $notifyMessage,
+			"PARAMS" => [
+				'COMPONENT_ID' => 'MailEntity',
+				'COMPONENT_PARAMS' => [
+					'SUBJECT' => $subject,
+				],
+			],
+		]);
+	}
+
+	public static function notifyFinalOwnerAboutSettingsChange(
+		int $finalOwnerId,
+		int $editorUserId,
+		string $mailboxWithBBCode,
+	): void
+	{
+		$replacements = ['#EMAIL#' => $mailboxWithBBCode];
+
+		$notifyMessageCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_CLIENT_CONFIG_HAS_CHANGED_NOTIFY_MESSAGE',
+			$editorUserId,
+		);
+
+		$notifyMessage = self::getNotificationMessageCallback(
+			$notifyMessageCode,
+			$replacements,
+		);
+
+		$subjectCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_CLIENT_CONFIG_HAS_CHANGED_NOTIFY_MESSAGE_PARAMS',
+			$editorUserId,
+		);
+
+		$subject = self::getNotificationMessageCallback(
+			$subjectCode,
+			$replacements,
+		);
+
+		\CIMNotify::Add([
+			"TO_USER_ID" => $finalOwnerId,
+			"NOTIFY_TYPE" => IM_NOTIFY_FROM,
+			"FROM_USER_ID" => $editorUserId,
+			"NOTIFY_MODULE" => 'mail',
+			"NOTIFY_MESSAGE" => $notifyMessage,
+			"PARAMS" => [
+				'COMPONENT_ID' => 'MailEntity',
+				'COMPONENT_PARAMS' => [
+					'SUBJECT' => $subject,
+				],
+			],
+		]);
+	}
+
+
+	public static function sendPasswordlessRequestNotification(
+		int $userId,
+		int $adminId,
+		int $mailboxId,
+	): void
+	{
+		if (!Main\Loader::includeModule('im'))
+		{
+			return;
+		}
+
+		$subjectCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_PASSWORDLESS_REQUEST_NOTIFICATION_SUBJECT',
+			$adminId,
+		);
+
+		$subjectCallback = self::getNotificationMessageCallback(
+			$subjectCode,
+		);
+
+		$notifyMessageCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_PASSWORDLESS_REQUEST_NOTIFICATION_MESSAGE',
+			$adminId,
+		);
+
+		$notifyMessageCallback = self::getNotificationMessageCallback(
+			$notifyMessageCode,
+		);
+
+		$componentParams = [
+			'SUBJECT' => $subjectCallback,
+			'LINKS' => [
+				[
+					'title' => Loc::getMessage('MAIL_PASSWORDLESS_REQUEST_NOTIFICATION_LINK'),
+					'href' => '/mail/',
+					'accent' => true,
+				],
+			],
+		];
+
+		\CIMNotify::Add([
+			'MESSAGE_TYPE' => IM_MESSAGE_SYSTEM,
+			'NOTIFY_TYPE' => IM_NOTIFY_FROM,
+			'NOTIFY_MODULE' => 'mail',
+			'NOTIFY_TAG' => 'MAIL|PASSWORDLESS_REQUEST|' . $mailboxId,
+			'NOTIFY_MESSAGE' => $notifyMessageCallback,
+			'TO_USER_ID' => $userId,
+			'FROM_USER_ID' => $adminId,
+			'PARAMS' => [
+				'COMPONENT_ID' => 'MailEntity',
+				'COMPONENT_PARAMS' => $componentParams,
+			],
+		]);
+	}
+
+	public static function deletePasswordlessRequestNotification(int $mailboxId): void
+	{
+		if (!Main\Loader::includeModule('im'))
+		{
+			return;
+		}
+
+		\CIMNotify::DeleteByTag('MAIL|PASSWORDLESS_REQUEST|' . $mailboxId);
+	}
+
+	public static function getNotificationMessageCallback(string $messageCode, array $replacements = []): callable
+	{
+		return fn (?string $languageId = null) => Loc::getMessage(
+			$messageCode,
+			$replacements,
+			$languageId,
+		);
+	}
+
+	public static function dispatchAccessChangedNotifications(
+		int $mailboxId,
+		string $mailboxEmail,
+		array $previousAccessCodes,
+		array $currentAccessCodes,
+		int $editorUserId,
+		int $mailboxOwnerId = 0,
+	): void
+	{
+		$message = new MailboxAccessNotificationMessage(
+			mailboxId: $mailboxId,
+			mailboxEmail: $mailboxEmail,
+			previousAccessCodes: $previousAccessCodes,
+			currentAccessCodes: $currentAccessCodes,
+			editorUserId: $editorUserId,
+			mailboxOwnerId: $mailboxOwnerId,
+		);
+
+		$message->send('mail_access_notification');
+	}
+
+	public static function notifyUserAboutAccessGranted(
+		int $toUserId,
+		int $fromUserId,
+		int $mailboxId,
+		string $mailboxEmail,
+	): void
+	{
+		$url = self::getMailboxUrl($mailboxId);
+		$safeEmail = htmlspecialcharsbx($mailboxEmail);
+		$emailWithLink = "[url={$url}]{$safeEmail}[/url]";
+
+		$notifyMessageCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_NOTIFY_ACCESS_GRANTED_MESSAGE',
+			$fromUserId,
+		);
+
+		$notifyMessage = self::getNotificationMessageCallback(
+			$notifyMessageCode,
+			[
+				'#EMAIL#' => $safeEmail,
+				'#VIEW_URL#' => $url,
+			],
+		);
+
+		$subjectCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_NOTIFY_ACCESS_GRANTED_SUBJECT',
+			$fromUserId,
+		);
+
+		$subject = self::getNotificationMessageCallback(
+			$subjectCode,
+			['#EMAIL#' => $emailWithLink],
+		);
+
+		\CIMNotify::Add([
+			'TO_USER_ID' => $toUserId,
+			'FROM_USER_ID' => $fromUserId,
+			'NOTIFY_TYPE' => IM_NOTIFY_FROM,
+			'NOTIFY_MODULE' => 'mail',
+			'NOTIFY_TAG' => 'MAIL|ACCESS_GRANTED|' . $mailboxId,
+			'NOTIFY_MESSAGE' => $notifyMessage,
+			'PARAMS' => [
+				'COMPONENT_ID' => 'MailEntity',
+				'COMPONENT_PARAMS' => [
+					'SUBJECT' => $subject,
+				],
+			],
+		]);
+	}
+
+	public static function notifyUserAboutAccessRevoked(
+		int $toUserId,
+		int $fromUserId,
+		int $mailboxId,
+		string $mailboxEmail,
+	): void
+	{
+		$safeEmail = htmlspecialcharsbx($mailboxEmail);
+
+		$notifyMessageCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_NOTIFY_ACCESS_REVOKED_MESSAGE',
+			$fromUserId,
+		);
+
+		$notifyMessage = self::getNotificationMessageCallback(
+			$notifyMessageCode,
+			['#EMAIL#' => $safeEmail],
+		);
+
+		$subjectCode = self::getPhraseKeyWithGenderSuffix(
+			'MAIL_NOTIFY_ACCESS_REVOKED_SUBJECT',
+			$fromUserId,
+		);
+
+		$subject = self::getNotificationMessageCallback(
+			$subjectCode,
+			['#EMAIL#' => $safeEmail],
+		);
+
+		\CIMNotify::Add([
+			'TO_USER_ID' => $toUserId,
+			'FROM_USER_ID' => $fromUserId,
+			'NOTIFY_TYPE' => IM_NOTIFY_FROM,
+			'NOTIFY_MODULE' => 'mail',
+			'NOTIFY_TAG' => 'MAIL|ACCESS_REVOKED|' . $mailboxId,
+			'NOTIFY_MESSAGE' => $notifyMessage,
+			'PARAMS' => [
+				'COMPONENT_ID' => 'MailEntity',
+				'COMPONENT_PARAMS' => [
+					'SUBJECT' => $subject,
+				],
+			],
+		]);
+	}
+
+	public static function dispatchOrphanedMailboxAutoDisconnectNotifications(
+		int $mailboxId,
+		string $mailboxEmail,
+	): void
+	{
+		$message = new OrphanedMailboxAutoDisconnectNotificationMessage(
+			mailboxId: $mailboxId,
+			mailboxEmail: $mailboxEmail,
+		);
+
+		$message->send('mail_orphan_autodisconnect_notification');
+	}
+
+	public static function notifyAdminAboutOrphanedMailboxAutoDisconnect(
+		int $adminUserId,
+		int $mailboxId,
+		string $mailboxEmail,
+	): void
+	{
+		$url = self::getMailboxEditUrl($mailboxId);
+		$safeEmail = htmlspecialcharsbx($mailboxEmail);
+		$emailWithLink = "[url={$url}]{$safeEmail}[/url]";
+
+		$notifyMessage = self::getNotificationMessageCallback(
+			'MAIL_NOTIFY_ORPHAN_MAILBOX_AUTODISCONNECT_7D_MESSAGE',
+			['#EMAIL#' => $safeEmail],
+		);
+		$subject = self::getNotificationMessageCallback(
+			'MAIL_NOTIFY_ORPHAN_MAILBOX_AUTODISCONNECT_7D_MESSAGE',
+			['#EMAIL#' => $emailWithLink],
+		);
+
+		\CIMNotify::Add([
+			'TO_USER_ID' => $adminUserId,
+			'NOTIFY_TYPE' => IM_NOTIFY_SYSTEM,
+			'NOTIFY_MODULE' => 'mail',
+			'NOTIFY_TAG' => 'MAIL|ORPHAN_AUTODISCONNECT_7D|' . $mailboxId,
+			'NOTIFY_MESSAGE' => $notifyMessage,
+			'PARAMS' => [
+				'COMPONENT_ID' => 'MailEntity',
+				'COMPONENT_PARAMS' => [
+					'SUBJECT' => $subject,
+				],
+			],
+		]);
+	}
+}

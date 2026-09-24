@@ -1,0 +1,24 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_CHANGE_ANY_TIME"] = "Puede editarlo o desconectarse en cualquier momento";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_CONNECTED"] = "El chat Apple Business está conectado";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_CONNECT_CONNECTION_STEP"] = "Para completar la conexión, seleccione un canal abierto para conectarse.";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_CONNECT_CONNECTION_TITLE"] = "El chat empresarial ya casi está conectado al canal abierto";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_CONNECT_HELP"] = "<div class=\"imconnector-field-button-subtitle\">Me gustaría: </div><div class=\"imconnector-field-button-name\"><span class=\"imconnector-field-box-text-bold\">Conectarme</span> al chat empresarial</div>";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_CONNECT_STEP_NEW"] = "Antes de conectarse, debe #LINK1_START#crear un chat empresarial#LINK1_END# o #LINK2_START#conectar uno existente#LINK2_END#.";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_CONNECT_TITLE"] = "Conectar el chat empresarial con el canal abierto";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_FINAL_FORM_DESCRIPTION"] = "El chat empresarial se conectó a su canal abierto. Todos los mensajes que se publiquen en su chat empresarial serán redirigidos a su Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INDEX_ADDITIONAL_DESCRIPTION_NEW"] = "Antes de conectarse, debe #LINK1_START#crear un chat empresarial#LINK1_END# o #LINK2_START#conectar uno existente#LINK2_END#. Solo se puede conectar un ID de Apple Business Chat verificado. Conéctelo o configúrelo manualmente.";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INDEX_LIST_ITEM_1"] = "Guarde los contactos y el historial de comunicaciones en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INDEX_LIST_ITEM_2"] = "Guíe al cliente a lo largo del embudo de ventas en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INDEX_LIST_ITEM_3"] = "Responda a sus clientes cuando y donde prefieran";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INDEX_LIST_ITEM_4"] = "Las consultas de los clientes se distribuyen entre los agentes de ventas según las reglas de la cola.";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INDEX_SUBTITLE"] = "Responda a sus clientes en la forma que prefieran. Si un cliente opina que Apple Messages es más conveniente que otros medios de comunicación, reciba sus mensajes en su Bitrix24 y responda de inmediato.";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INDEX_TITLE"] = "Utilice Apple Messages para comunicarse con los usuarios de dispositivos Apple";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INFO"] = "Información";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INFO_NEW_CONNECT"] = "Chat empresarial para conectarse";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INFO_OLD_CONNECT"] = "Información del chat empresarial que está conectado";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_INSTRUCTION_TITLE"] = "<span class=\"imconnector-field-box-text-bold\">Instrucciones para la conexión:</span>";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_I_KNOW_KEY"] = "Tengo un ID empresarial";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_NAME_BUSINESS_ID"] = "ID empresarial";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_NAME_BUSINESS_NAME"] = "Nombre";
+$MESS["IMCONNECTOR_COMPONENT_IMESSAGE_NAME_CHAT_LINK"] = "Enlace al chat en vivo";

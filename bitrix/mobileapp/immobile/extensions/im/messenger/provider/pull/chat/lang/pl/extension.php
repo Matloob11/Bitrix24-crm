@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_PULL_HANDLER_MESSAGE_DELETED"] = "Wiadomość została usunięta.";
+$MESS["IMMOBILE_PULL_HANDLER_NOTIFICATION_TITLE"] = "Powiadomienia";

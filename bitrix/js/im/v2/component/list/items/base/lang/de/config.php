@@ -1,0 +1,6 @@
+<?php
+$MESS["IM_LIST_ITEMS_MESSAGE_DRAFT_MSGVER_3"] = "[highlight]Entwurf:[/highlight] #TEXT#";
+$MESS["IM_LIST_ITEMS_CHAT_TYPE_GROUP_V2"] = "Gruppenchat";
+$MESS["IM_LIST_ITEMS_CHAT_TYPE_OPEN_CHANNEL"] = "Öffentlicher Kanal";
+$MESS["IM_LIST_ITEMS_CHAT_TYPE_PRIVATE_CHANNEL"] = "Privater Kanal";
+$MESS["IM_LIST_ITEMS_CHAT_TYPE_TASK_COMMENTS"] = "Aufgabenchat";

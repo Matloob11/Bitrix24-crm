@@ -1,0 +1,11 @@
+<?php
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_CHECKIN"] = "Чекин";
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_CHECKINS"] = "#CHECKINS_COUNT# чекин";
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_LAST"] = "Соңғы чекин уақыты #TIME#";
+$MESS["M_STAFFTRACK_CHECK_IN_DATE_PICKER_BUTTON"] = "Көрсету";
+$MESS["M_STAFFTRACK_CHECK_IN_DATE_PICKER_TITLE"] = "Чекин күні";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_EMPTY_STATE_DESCRIPTION"] = "Іздеу параметрлерін өзгертуге тырысыңыз";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_EMPTY_STATE_TITLE"] = "Чекиндер табылған жоқ";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_PRESET_DEPARTMENT"] = "Бөлімнің чекиндері";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_PRESET_EMPLOYEES"] = "Қызметкерлер мен бөлімдер";
+$MESS["M_STAFFTRACK_CHECK_IN_TOAST_ERROR"] = "Әрекетті орындау мүмкін болмады. Сәл кейінірек қайталап көріңіз";

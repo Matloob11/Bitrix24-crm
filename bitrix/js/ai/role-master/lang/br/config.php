@@ -1,0 +1,26 @@
+<?php
+$MESS["ROLE_MASTER_ABOUT_ROLE_MASTER_LINK"] = "Saiba mais";
+$MESS["ROLE_MASTER_BACK_TO_EDITOR_BTN"] = "Voltar ao editor";
+$MESS["ROLE_MASTER_CLOSE_BTN"] = "Fechar";
+$MESS["ROLE_MASTER_EDIT_WARNING_TEXT"] = "Isso atualizará a função para todos que a usam.";
+$MESS["ROLE_MASTER_FILE_DROPAREA_TEXT"] = "Arraste seus arquivos aqui";
+$MESS["ROLE_MASTER_LOADER_TEXT"] = "Salvando a função...";
+$MESS["ROLE_MASTER_NEXT_BUTTON"] = "Próximo";
+$MESS["ROLE_MASTER_POPUP_TITLE"] = "Nova função";
+$MESS["ROLE_MASTER_POPUP_TITLE_EDIT_MODE"] = "Editar função";
+$MESS["ROLE_MASTER_PREV_BUTTON"] = "Voltar";
+$MESS["ROLE_MASTER_REPEAT_REQUEST_BTN"] = "Tentar novamente";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD"] = "Nome e ícone";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD_PLACEHOLDER"] = "Máx. 70 caracteres";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD"] = "Descrição";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD_PLACEHOLDER"] = "Vou analisar os dados, aprimorar o conceito e criar um resumo do projeto";
+$MESS["ROLE_MASTER_ROLE_MAIN_STEP_TITLE"] = "Nome e permissões";
+$MESS["ROLE_MASTER_ROLE_TEXT_FIELD_PLACEHOLDER"] = "Insira o texto do prompt para essa função. Por exemplo, para Arquiteto, o prompt poderia ser assim. Atue como um arquiteto experiente. Seu trabalho é me ajudar a analisar dados do mundo real, como condições geográficas e topográficas.";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE"] = "Adicione um prompt a essa função";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE_HINT"] = "Defina a função e descreva a tarefa";
+$MESS["ROLE_MASTER_ROLE_USERS_WITH_ACCESS_FIELD"] = "Disponibilizar para";
+$MESS["ROLE_MASTER_SAVE_BUTTON"] = "Salvar";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_SHORT_TEXT"] = "Não foi possível salvar a função.";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_TEXT"] = "Se o problema persistir, volte ao editor de prompt e copie o texto do prompt para garantir que não se perca.";
+$MESS["ROLE_MASTER_SAVING_DONE"] = "Concluído";
+$MESS["ROLE_MASTER_USER_SELECTOR_ADD_BTN"] = "Editar";

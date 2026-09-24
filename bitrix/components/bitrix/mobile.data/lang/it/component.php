@@ -1,0 +1,19 @@
+<?php
+$MESS["MD_COMPONENT_CALLTRACKER"] = "Tracker di chiamate";
+$MESS["MD_COMPONENT_IM_OPENLINES"] = "Canali aperti";
+$MESS["MD_COMPONENT_IM_RECENT"] = "Chat";
+$MESS["MD_COMPONENT_MORE"] = "Menu";
+$MESS["MD_COMPONENT_NOTIFY"] = "Notifiche";
+$MESS["MD_COMPONENT_TASKS_LIST"] = "Incarichi";
+$MESS["MD_DISK_TABLE_FOLDERS_FILES"] = "Cartelle: #FOLDERS#  File: #FILES#";
+$MESS["MD_EMPLOYEES_ALL"] = "Tutti i dipendenti";
+$MESS["MD_EMPLOYEES_TITLE"] = "Dipendenti";
+$MESS["MD_EXTRANET"] = "Extranet";
+$MESS["MD_GENERATE_BY_MOBILE"] = "Generato da applicazione";
+$MESS["MD_GROUPS_TITLE"] = "Gruppi di lavoro";
+$MESS["MD_MOBILE_APPLICATION"] = "Applicazione mobile";
+$MESS["TASKS_ROLE_ACCOMPLICE"] = "In assistenza";
+$MESS["TASKS_ROLE_AUDITOR"] = "Following";
+$MESS["TASKS_ROLE_ORIGINATOR"] = "Impostati da me";
+$MESS["TASKS_ROLE_RESPONSIBLE"] = "In corso";
+$MESS["TASKS_ROLE_VIEW_ALL"] = "Tutti gli incarichi";

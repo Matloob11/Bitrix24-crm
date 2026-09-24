@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Copier le lien";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Lien valide jusqu'au :";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "Le jour et l'heure doivent être dans le futur.";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Sélectionner la date";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "La date est requise.";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Tant que le tableau de bord n'est pas partagé, les invités ne peuvent pas le consulter même s'ils disposent d'un lien et d'un mot de passe.";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Toute personne disposant d'un lien et d'un mot de passe peut consulter ce tableau de bord.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "Impossible de copier le lien.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "Impossible de partager le tableau de bord.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "Impossible d'annuler le partage du tableau de bord.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "Impossible de mettre à jour le lien.";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "Les filtres de structure de l'entreprise, de processus d'entreprise et de flux ne sont pas disponibles lors de la consultation d'un tableau de bord partagé.";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Générer un mot de passe";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "Le lien a été copié.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "Le mot de passe a été créé.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Mot de passe :";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Créer un mot de passe";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "Le mot de passe est requis.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "Le mot de passe ne doit pas dépasser 32 caractères.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "Le mot de passe doit contenir au moins 8 caractères.";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Partager le tableau de bord";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "Le jour et l'heure doivent être dans le futur.";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "Partager le tableau de bord \"#NAME#\"";

@@ -1,0 +1,5 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_BUTTON_CLOSE"] = "Firma più tardi";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_BUTTON_START_SIGNING"] = "Firma ora";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_DESCRIPTION_MSGVER_1"] = "Dopo la firma del documento [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]\"#DOCUMENT_TITLE#\"[/COLOR], questo sarà disponibile nella scheda [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]I miei documenti[/COLOR].";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_TITLE"] = "Firma documento";

@@ -1,0 +1,28 @@
+<?php
+$MESS["CRM_DOCUMENT_LIST_ACTION_CANCEL_TEXT_2"] = "Cancelar processamento";
+$MESS["CRM_DOCUMENT_LIST_ACTION_CONDUCT_TEXT_2"] = "Processar";
+$MESS["CRM_DOCUMENT_LIST_ACTION_DELETE_TEXT"] = "Excluir";
+$MESS["CRM_DOCUMENT_LIST_ACTION_OPEN_TEXT"] = "Abrir";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_2"] = "Criar";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_DISABLE_HINT_MSGVER_1"] = "Permissões insuficientes para criar objeto de inventário.";
+$MESS["CRM_DOCUMENT_LIST_CANCEL_GROUP_ACTION"] = "Cancelar processamento";
+$MESS["CRM_DOCUMENT_LIST_CONDUCT_GROUP_ACTION"] = "Processar";
+$MESS["CRM_DOCUMENT_LIST_DOC_TYPE_W"] = "Pedido de venda";
+$MESS["CRM_DOCUMENT_LIST_EMPTY_STORE_TITLE"] = "Sem título";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED"] = "Permissões insuficientes para visualizar a área de Pedidos de venda.";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_BOX"] = "Você não tem permissão para acessar o Gerenciamento de Inventário. Entre em contato com o administrador do Bitrix24 para obter acesso. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Saiba mais</a>";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_CLOUD"] = "Você não tem permissão para acessar o Gerenciamento de Inventário. Entre em contato com o administrador do Bitrix24 para obter acesso. O administrador terá que atribuir a função de Gerenciador a você nas configurações do CRM. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Saiba mais</a>";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_COMPANY"] = "Empresa oculta";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_CONTACT"] = "Contato oculto";
+$MESS["CRM_DOCUMENT_LIST_SELECT_GROUP_ACTION"] = "Selecionar ação";
+$MESS["CRM_DOCUMENT_LIST_STATUS_CANCELLED"] = "Cancelados";
+$MESS["CRM_DOCUMENT_LIST_STATUS_N"] = "Rascunho";
+$MESS["CRM_DOCUMENT_LIST_STATUS_Y"] = "Processados";
+$MESS["CRM_DOCUMENT_LIST_STUB_DESCRIPTION_SHIPMENT"] = "Vendeu um item do produto? Adicione um inserção no gerenciamento de estoque. O correto monitoramento do estoque ajudará sua equipe de vendas a processar os pedidos mais rápido.";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_LOSSES"] = "Como faço para monitorar perdas?";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_SHIPMENT"] = "Como faço para registrar vendas?";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_DESCRIPTION"] = "Tente redefinir o filtro ou alterar a frase de pesquisa.";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_TITLE"] = "Sua solicitação de pesquisa não deu resultados.";
+$MESS["CRM_DOCUMENT_LIST_STUB_TITLE_SHIPMENT"] = "Adicionar sua primeira venda";
+$MESS["CRM_DOCUMENT_LIST_TITLE"] = "Pedido de venda ##DOCUMENT_ID#";
+$MESS["CRM_DOCUMENT_LIST_TITLE_DOCUMENT_DATE"] = "de #DATE#";

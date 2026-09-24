@@ -1,0 +1,7 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_71_6_NAME"] = "Bloc avec une grande image, un titre et un sous-titre";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_BADGE"] = "Onglet de tuile";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_CONTAINER"] = "Conteneur";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_IMG"] = "Image";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_TEXT"] = "Texte";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_TITLE"] = "Titre";

@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_TIMELINE_ENCOURAGE_BUY_PRODUCTS_EDIT_PRODUCTS"] = "Modifier";
+$MESS["CRM_TIMELINE_ENCOURAGE_BUY_PRODUCTS_PRODUCTS_ADDED_TO_DEAL"] = "Articles ajoutés à la transaction";
+$MESS["CRM_TIMELINE_ENCOURAGE_BUY_PRODUCTS_VIEWED_PRODUCTS"] = "Articles consultés";
+$MESS["CRM_TIMELINE_NOTIFICATION_BITRIX24"] = "Bitrix24";
+$MESS["CRM_TIMELINE_NOTIFICATION_NO_MESSAGE_TEXT_2"] = "Message basé sur un modèle";
+$MESS["CRM_TIMELINE_PRODUCT_COMPILATION_ORDER_EXISTS_NOTICE"] = "La transaction a déjà une commande. Une nouvelle transaction sera créée si le client choisit de commander des produits de la sélection.";
+$MESS["CRM_TIMELINE_USER_NOTE_CANCEL"] = "Annuler";
+$MESS["CRM_TIMELINE_USER_NOTE_PLACEHOLDER"] = "Saisissez un texte de note";
+$MESS["CRM_TIMELINE_USER_NOTE_SAVE"] = "Enregistrer";
+$MESS["TIMELINE_DELIVERY_CREATE_DELIVERY_REQUEST"] = "Demander une livraison";
+$MESS["TIMELINE_DELIVERY_CREATING_REQUEST"] = "Envoi d'une demande au service de livraison";
+$MESS["TIMELINE_DELIVERY_SEARCHING_PERFORMER"] = "Recherche de prestataire";
+$MESS["TIMELINE_DELIVERY_TAXI_ADDRESS_FROM"] = "From";
+$MESS["TIMELINE_DELIVERY_TAXI_ADDRESS_TO"] = "Dans";
+$MESS["TIMELINE_DELIVERY_TAXI_CLIENT_DELIVERY_PRICE"] = "Prix facturé au client";
+$MESS["TIMELINE_DELIVERY_TAXI_DELIVERY_CANCEL_REQUEST"] = "Annuler la commande";
+$MESS["TIMELINE_DELIVERY_TAXI_EXPECTED_DELIVERY_PRICE"] = "Prix de livraison calculé";
+$MESS["TIMELINE_DELIVERY_TAXI_EXPECTED_PRICE_NOT_RECEIVED"] = "non reçu";
+$MESS["TIMELINE_DELIVERY_TAXI_SEND_REQUEST"] = "Appeler un taxi";
+$MESS["TIMELINE_DELIVERY_TAXI_SERVICE"] = "Service de livraison";

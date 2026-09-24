@@ -1,0 +1,12 @@
+<?php
+$MESS["TASKS_SCRUM_TEAM_SPEED_ACCESS_DENIED"] = "Vous n'avez pas le droit de consulter ce contenu.";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_LAST"] = "Récente";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_LAST_FIELD_LABEL"] = "N derniers éléments";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_LAST_LABEL"] = "Sprints";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_PERIOD"] = "Plage de dates";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_PERIOD_LAST_3"] = "3 derniers sprints";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_PERIOD_LAST_10"] = "10 derniers sprints";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_PERIOD_LAST_15"] = "15 derniers sprints";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_PERIOD_LAST_30"] = "30 derniers jours";
+$MESS["TASKS_SCRUM_TEAM_SPEED_FILTER_PRESET_LAST"] = "Sprints récents";
+$MESS["TASKS_SCRUM_TEAM_SPEED_TITLE"] = "Graphique de la vitesse de l'équipe";

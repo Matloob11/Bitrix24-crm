@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_ITEM_LIST_AUTOMATED_SOLUTION_STUB_DESCRIPTION"] = "Crie um item para começar.";
+$MESS["CRM_ITEM_LIST_AUTOMATED_SOLUTION_STUB_TITLE"] = "É aqui que você encontrará sua SPA.";
+$MESS["CRM_ITEM_LIST_LINK_CHILDREN_ELEMENT"] = "Selecionar item existente";
+$MESS["CRM_ITEM_LIST_LINK_CHILDREN_INVOICE"] = "Selecionar fatura";
+$MESS["CRM_ITEM_LIST_NEW_CHILDREN_ELEMENT"] = "Novo item";
+$MESS["CRM_ITEM_LIST_NEW_CHILDREN_INVOICE"] = "Criar fatura";

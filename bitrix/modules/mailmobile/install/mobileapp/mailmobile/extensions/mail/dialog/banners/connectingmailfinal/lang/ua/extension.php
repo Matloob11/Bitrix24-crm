@@ -1,0 +1,8 @@
+<?php
+$MESS["MAIL_CONNECTING_FINAL_FOLDERS_SETTINGS_DIALOG_TITLE"] = "Налаштування папок";
+$MESS["MAIL_CONNECTING_FINAL_MAIL_BANNER_BUTTON_1"] = "Перейти до пошти";
+$MESS["MAIL_CONNECTING_FINAL_MAIL_BANNER_BUTTON_2"] = "Налаштувати папки";
+$MESS["MAIL_CONNECTING_FINAL_MAIL_BANNER_DESCRIPTION"] = "Тепер ви можете працювати з листами у вашому Бітрікс24.";
+$MESS["MAIL_CONNECTING_FINAL_MAIL_BANNER_SYNCHRONIZE_DESCRIPTION"] = "Це може зайняти кілька секунд.";
+$MESS["MAIL_CONNECTING_FINAL_MAIL_BANNER_SYNCHRONIZE_TITLE"] = "Синхронізуємо листи";
+$MESS["MAIL_CONNECTING_FINAL_MAIL_BANNER_TITLE"] = "Поштова скринька під'єднана";

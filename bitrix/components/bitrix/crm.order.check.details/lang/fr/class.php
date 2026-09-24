@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_COLUMN_ORDER_CHECK_DATE_CREATE"] = "Date de création";
+$MESS["CRM_COLUMN_ORDER_CHECK_ENTITY"] = "ID d'entité (#ENTITY_NAME#)";
+$MESS["CRM_COLUMN_ORDER_CHECK_ID"] = "ID";
+$MESS["CRM_COLUMN_ORDER_CHECK_LINK"] = "Lien du reçu";
+$MESS["CRM_COLUMN_ORDER_CHECK_ORDER_ID"] = "ID de la commande";
+$MESS["CRM_COLUMN_ORDER_CHECK_PAYMENT_DESCR"] = "Paiement";
+$MESS["CRM_COLUMN_ORDER_CHECK_SHIPMENT_DESCR"] = "Livraison";
+$MESS["CRM_COLUMN_ORDER_CHECK_STATUS"] = "Statut du reçu";
+$MESS["CRM_COLUMN_ORDER_CHECK_SUM"] = "Montant du reçu";
+$MESS["CRM_COLUMN_ORDER_CHECK_TYPE"] = "Type de reçu";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Le module CRM n'est pas installé.";
+$MESS["CRM_ORDER_CHECK_ADD_TITLE"] = "Ajouter un nouveau reçu";
+$MESS["CRM_ORDER_CHECK_LINK"] = "Lien du reçu";
+$MESS["CRM_ORDER_CHECK_TITLE"] = "Reçu ##ID# de #DATE_CREATE#";
+$MESS["CRM_ORDER_COPY_PAGE_TITLE"] = "Copie du reçu";
+$MESS["CRM_ORDER_NOT_FOUND"] = "La commande est introuvable.";
+$MESS["CRM_ORDER_PAYMENT"] = "Paiement ##PAYMENT_NUMBER#: #PAYSYSTEM_NAME#";
+$MESS["CRM_ORDER_PAYMENT_TITLE"] = "Paiement ##ACCOUNT_NUMBER# de #DATE_BILL#";
+$MESS["CRM_ORDER_SECTION_ADDITIONAL"] = "Détails de paiement";
+$MESS["CRM_ORDER_SECTION_MAIN"] = "Détails du reçu";
+$MESS["CRM_ORDER_SHIPMENT"] = "Livraison ##SHIPMENT_NUMBER#: #DELIVERY_SYSTEM_NAME#";
+$MESS["CRM_ORDER_SHIPMENT_TITLE"] = "Livraison ##ACCOUNT_NUMBER# de #DATE_INSERT#";
+$MESS["CRM_PERMISSION_DENIED"] = "Accès refusé";
+$MESS["CRM_SALE_MODULE_NOT_INSTALLED"] = "Le module Boutique en ligne n'est pas installé.";

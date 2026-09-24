@@ -1,0 +1,21 @@
+<?php
+$MESS["TASKS_V2_CHANGE_DESCRIPTION"] = "Descrizione";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_ATTACH_TITLE"] = "Allega";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_CREATING"] = "Creazione dell'elenco di controllo...";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT"] = "CoPilot creerà un elenco di controllo da questa descrizione.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT_MSGVER_1"] = "#COPILOT_NAME# creerà un elenco di controllo da questa descrizione.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_TITLE"] = "Elenco di controllo";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_COPILOT_TITLE"] = "CoPilot";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_MENTION_TITLE"] = "Menziona";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_COLLAPSE"] = "Comprimi";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_EXPAND"] = "Espandi";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_SAVE"] = "Salva";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_BUTTON_OK"] = "Salva la mia versione";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_F"] = "#NAME# ha modificato la descrizione mentre la stavi modificando. Le sue modifiche andranno perse se salvi la tua versione. Salvarla comunque?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_M"] = "#NAME# ha modificato la descrizione mentre la stavi modificando. Le sue modifiche andranno perse se salvi la tua versione. Salvarla comunque?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_TITLE"] = "Descrizione modificata";
+$MESS["TASKS_V2_DESCRIPTION_EDITOR_PLACEHOLDER"] = "Digita @ per menzionare qualcuno o premi la barra spaziatrice per avviare CoPilot";
+$MESS["TASKS_V2_DESCRIPTION_FILES_COUNT"] = "File: #COUNT#";
+$MESS["TASKS_V2_DESCRIPTION_INLINE_EDITOR_PLACEHOLDER"] = "Descrizione";
+$MESS["TASKS_V2_DESCRIPTION_PREVIEW_BUTTON_MORE"] = "altro";
+$MESS["TASKS_V2_DESCRIPTION_TITLE"] = "Descrizione incarico";

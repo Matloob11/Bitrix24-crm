@@ -1,0 +1,3 @@
+<?php
+$MESS["SELECTOR_COMPONENT_TASK_TEMPLATE_START_TYPING"] = "Үлгілер жоқ";
+$MESS["SELECTOR_COMPONENT_TASK_TEMPLATE_TITLE"] = "Міндет үлгісін таңдаңыз";

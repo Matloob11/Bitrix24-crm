@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Kosz";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Obejmuje to artykuły (#COUNT#), których oryginalnie zawierająca przestrzeń została usunięta. Wybierz nową przestrzeń nadrzędną dla tych artykułów.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Wszystkie #COUNT# artykułów zostanie przywróconych z kosza.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Przywróć artykuły";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Zacznij wprowadzać nazwę przestrzeni";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "Oryginał zawierający przestrzeń artykułu „#DOCUMENT#” już nie istnieje. Wybierz nową przestrzeń nadrzędną dla tego artykułu.";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Przywróć artykuł";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Anuluj";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Wszystkie artykuły w koszu zostaną trwale usunięte. Tego działania nie można cofnąć. Czy na pewno chcesz kontynuować?";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "Czy chcesz przywrócić wszystkie artykuły z kosza?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Opróżnij kosz";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Tak";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Opróżnij kosz";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "Kosz jest pusty.";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "Kosz został opróżniony. Usunięte artykuły: #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "Nie można zakończyć działania.";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "Artykuł przepadł bezpowrotnie.";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Działania";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Przywróć";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Przywróć wszystkie";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Przywrócone artykuły: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Przywrócone artykuły: #COUNT#. Ominięto #SKIPPED# artykułów ponieważ potrzebują nowej przestrzeni.";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "Artykuł został przywrócony.";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Artykuły są przechowywane w koszu przez 30 dni. Po 30-dniowym okresie przechowywania zostają trwale usunięte.";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Kosz";

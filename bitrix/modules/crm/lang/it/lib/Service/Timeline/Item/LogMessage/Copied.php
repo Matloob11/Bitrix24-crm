@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_TIMELINE_LOG_COPIED_CAPTION_DEAL"] = "Copia affare:";
+$MESS["CRM_TIMELINE_LOG_COPIED_TITLE"] = "Elemento copiato";
+$MESS["CRM_TIMELINE_LOG_COPIED_TITLE_DEAL"] = "Affare copiato";

@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_PERMISSIONS_POPUP_ADD"] = "Adicionar";
+$MESS["NOTE_PERMISSIONS_POPUP_ALL_EMPLOYEES"] = "Todos os usuários";
+$MESS["NOTE_PERMISSIONS_POPUP_CANCEL"] = "Cancelar";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_BUTTON"] = "Criar";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_ERROR"] = "Não foi possível criar o espaço.";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_SUCCESS"] = "O espaço foi criado.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_EDIT_DOCUMENT"] = "Permissão para editar o texto do artigo, adicionar blocos e arquivos ao artigo.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MANAGE"] = "Permissão para editar artigos (editar texto, adicionar blocos e carregar arquivos).";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MODERATE"] = "Permissão para excluir espaço, e definir permissões de acesso a espaço e artigos. Acesso total a todas as configurações do espaço.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW"] = "Permissão para visualizar os artigos do espaço e baixar arquivos anexos.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW_DOCUMENT"] = "Permissão para visualizar o artigo e baixar arquivos anexos.";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_EDIT"] = "Editar";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MANAGE"] = "Moderar";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MODERATE"] = "Gerenciar";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_VIEW"] = "Visualizar";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR"] = "Não foi possível obter as permissões do espaço.";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR_DOCUMENT"] = "Não foi possível obter as permissões do artigo.";
+$MESS["NOTE_PERMISSIONS_POPUP_NAME_PLACEHOLDER"] = "Nome do espaço";
+$MESS["NOTE_PERMISSIONS_POPUP_ROLLBACK_FAILED"] = "Erro ao criar o espaço. Por favor, atualize a página.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE"] = "Salvar";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR"] = "Não foi possível salvar as alterações.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR_DOCUMENT"] = "Não foi possível salvar as permissões do artigo.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS"] = "As alterações foram salvas.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS_DOCUMENT"] = "As permissões do artigo foram salvas.";
+$MESS["NOTE_PERMISSIONS_POPUP_TITLE_EDIT_DOCUMENT"] = "Permissões de acesso a artigo";

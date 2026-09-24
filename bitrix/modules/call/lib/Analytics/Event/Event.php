@@ -1,0 +1,235 @@
+<?php
+
+namespace Bitrix\Call\Analytics\Event;
+
+use Bitrix\Call\Call;
+use Bitrix\Call\Settings;
+use Bitrix\Main\Analytics\AnalyticsEvent;
+use Bitrix\Main\Engine\Response\Converter;
+
+/**
+ * @internal
+ */
+abstract class Event
+{
+	protected Call $call;
+	protected AnalyticsEvent $event;
+	protected ?string $type = null;
+	protected ?string $section = null;
+	protected ?string $subSection = null;
+	protected ?string $element = null;
+	protected ?string $status = null;
+	protected ?string $p1 = null;
+	protected ?string $p2 = null;
+	protected ?string $p3 = null;
+	protected ?string $p4 = null;
+	protected ?string $p5 = null;
+
+	public function __construct(string $eventName, Call $call)
+	{
+		$this->call = $call;
+		$this->event = new AnalyticsEvent($eventName, $this->getTool(), $this->getCategory($eventName));
+		$this->setDefaultParams();
+	}
+
+	public function getEvent(): AnalyticsEvent
+	{
+		return $this->event;
+	}
+
+	private const PRESET_TOOL_MAP = ['sync' => 'sync'];
+
+	/**
+	 * Returns analytics tool identifier based on current intranet preset.
+	 * @return string
+	 */
+	public static function getAnalyticsTool(): string
+	{
+		return self::PRESET_TOOL_MAP[Settings::getActivePresetCode()] ?? 'im';
+	}
+
+	protected function getTool(): string
+	{
+		return self::getAnalyticsTool();
+	}
+
+	abstract protected function getCategory(string $eventName): string;
+
+	protected function setDefaultParams(): self
+	{
+		return $this;
+	}
+
+	protected function convertUnderscore(string $string): string
+	{
+		return (new Converter(Converter::TO_CAMEL | Converter::LC_FIRST))->process($string);
+	}
+
+	public function send(): void
+	{
+		if ($this->type !== null)
+		{
+			$this->event->setType($this->type);
+		}
+		if ($this->section !== null)
+		{
+			$this->event->setSection($this->section);
+		}
+		if ($this->subSection !== null)
+		{
+			$this->event->setSubSection($this->subSection);
+		}
+		if ($this->element !== null)
+		{
+			$this->event->setElement($this->element);
+		}
+		if ($this->status !== null)
+		{
+			$this->event->setStatus($this->status);
+		}
+		if ($this->p1 !== null)
+		{
+			$this->event->setP1($this->p1);
+		}
+		if ($this->p2 !== null)
+		{
+			$this->event->setP2($this->p2);
+		}
+		if ($this->p3 !== null)
+		{
+			$this->event->setP3($this->p3);
+		}
+		if ($this->p4 !== null)
+		{
+			$this->event->setP4($this->p4);
+		}
+		if ($this->p5 !== null)
+		{
+			$this->event->setP5($this->p5);
+		}
+
+		$this->event->send();
+	}
+
+	public function setCall(Call $call): self
+	{
+		$this->call = $call;
+		return $this;
+	}
+
+	public function setEvent(AnalyticsEvent $event): self
+	{
+		$this->event = $event;
+		return $this;
+	}
+
+	/**
+	 * st[type]
+	 * @param string|null $type
+	 * @return $this
+	 */
+	public function setType(?string $type): self
+	{
+		$this->type = $type;
+		return $this;
+	}
+
+	/**
+	 * st[c_section]
+	 * @param string|null $section
+	 * @return $this
+	 */
+	public function setSection(?string $section): self
+	{
+		$this->section = $section;
+		return $this;
+	}
+
+	/**
+	 * st[c_sub_section]
+	 * @param string|null $subSection
+	 * @return $this
+	 */
+	public function setSubSection(?string $subSection): self
+	{
+		$this->subSection = $subSection;
+		return $this;
+	}
+
+	/**
+	 * st[c_element]
+	 * @param string|null $element
+	 * @return $this
+	 */
+	public function setElement(?string $element): self
+	{
+		$this->element = $element;
+		return $this;
+	}
+
+	/**
+	 * status
+	 * @param string|null $status
+	 * @return $this
+	 */
+	public function setStatus(?string $status): self
+	{
+		$this->status = $status;
+		return $this;
+	}
+
+	/**
+	 * st[p1]
+	 * @param string|null $p1
+	 * @return $this
+	 */
+	public function setP1(?string $p1): self
+	{
+		$this->p1 = $p1;
+		return $this;
+	}
+
+	/**
+	 * st[p2]
+	 * @param string|null $p2
+	 * @return $this
+	 */
+	public function setP2(?string $p2): self
+	{
+		$this->p2 = $p2;
+		return $this;
+	}
+
+	/**
+	 * st[p3]
+	 * @param string|null $p3
+	 * @return $this
+	 */
+	public function setP3(?string $p3): self
+	{
+		$this->p3 = $p3;
+		return $this;
+	}
+
+	/**
+	 * st[p4]
+	 * @param string|null $p4
+	 * @return $this
+	 */
+	public function setP4(?string $p4): self
+	{
+		$this->p4 = $p4;
+		return $this;
+	}
+
+	/**
+	 * st[p5]
+	 * @param string|null $p5
+	 * @return $this
+	 */
+	public function setP5(?string $p5): self
+	{
+		$this->p5 = $p5;
+		return $this;
+	}
+}

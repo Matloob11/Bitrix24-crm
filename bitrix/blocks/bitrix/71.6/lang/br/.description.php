@@ -1,0 +1,7 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_71_6_NAME"] = "Bloco com uma imagem grande, um título e um subtítulo";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_BADGE"] = "Aba de bloco";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_CONTAINER"] = "Contêiner";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_IMG"] = "Imagem";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_TEXT"] = "Texto";
+$MESS["LANDING_BLOCK_WIDGET_71_6_NODE_TITLE"] = "Título";

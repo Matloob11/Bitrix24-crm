@@ -1,0 +1,79 @@
+import { mapActions } from 'ui.vue3.pinia';
+
+import {
+	useNodeSettingsStore,
+	CONSTRUCTION_TYPES,
+	CONSTRUCTION_LABELS,
+	type ConstructionLabels,
+	// eslint-disable-next-line no-unused-vars
+	type Construction,
+} from '../../../../entities/node-settings';
+import { useLoc } from '../../../../shared/composables';
+
+import './style.css';
+
+// @vue/component
+export const SelectBooleanType = {
+	name: 'SelectBooleanType',
+	props:
+	{
+		/** @type Construction */
+		construction:
+		{
+			type: Object,
+			required: true,
+		},
+	},
+	setup(): { getMessage: () => string; }
+	{
+		const { getMessage } = useLoc();
+
+		return { getMessage };
+	},
+	computed:
+	{
+		selectedType:
+		{
+			get(): string
+			{
+				return this.construction.type;
+			},
+			set(value: string): void
+			{
+				this.selectBooleanType(value);
+			},
+		},
+		booleanTypes(): Array<$Values<typeof CONSTRUCTION_TYPES>>
+		{
+			return [
+				CONSTRUCTION_TYPES.CONDITION.AND_CONDITION,
+				CONSTRUCTION_TYPES.CONDITION.OR_CONDITION,
+			];
+		},
+		constructionLabels(): ConstructionLabels
+		{
+			return CONSTRUCTION_LABELS;
+		},
+	},
+	methods:
+	{
+		...mapActions(useNodeSettingsStore, ['selectBooleanType']),
+		onClick(booleanType: string): void
+		{
+			this.selectedType = booleanType;
+			this.selectBooleanType(this.construction, booleanType);
+		},
+	},
+	template: `
+		<div class="editor-chart-node-settings-boolean-type-switcher">
+			<span
+				v-for="booleanType in booleanTypes"
+				class="editor-chart-node-settings-boolean-type-switcher_tab"
+				:class="{ '--selected': selectedType === booleanType }"
+				@click="onClick(booleanType)"
+			>
+				{{ getMessage(constructionLabels[booleanType]) }}
+			</span>
+		</div>
+	`,
+};

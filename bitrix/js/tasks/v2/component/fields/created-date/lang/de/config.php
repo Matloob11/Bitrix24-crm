@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_CREATED_DATE_COPY_TASK_ID_NOTIF"] = "Aufgaben-ID wurde kopiert.";
+$MESS["TASKS_V2_CREATED_DATE_TASK_ID"] = "ID";
+$MESS["TASKS_V2_CREATED_DATE_TITLE"] = "Erstellt am:";

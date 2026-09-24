@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_DESCRIPTION"] = "Modifie l'étape à laquelle une nouvelle entité est créée dans le formulaire de l'élément.";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_NAME"] = "Document créé";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_NAME_1"] = "Suivre une nouvelle entité";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_TEMPLATE_ALL_LABEL"] = "[n'importe quel]";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_TEMPLATE_LABEL"] = "Modèle";

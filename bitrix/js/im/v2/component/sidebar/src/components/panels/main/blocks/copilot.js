@@ -1,0 +1,89 @@
+import { ChatTitle } from 'im.v2.component.elements.chat-title';
+import { ChatAvatar, AvatarSize } from 'im.v2.component.elements.avatar';
+import { CopilotManager } from 'im.v2.lib.copilot';
+import { Feature, FeatureManager } from 'im.v2.lib.feature';
+import { type ImModelChat } from 'im.v2.model';
+
+import { CopilotRole } from '../../../elements/copilot-role/copilot-role';
+import { AIModel } from '../../../elements/ai-model/ai-model';
+import { MuteChat } from '../../../elements/mute-chat/mute-chat';
+import { ChatMembersAvatars } from '../../../elements/chat-members-avatars/chat-members-avatars';
+import { SharedLink } from '../../../elements/shared-link/shared-link';
+import { isSharedLinkCopyAllowed } from '../../../../helpers/shared-link';
+import { SettingsSeparator } from '../components/settings-separator';
+
+import '../css/copilot-preview.css';
+
+// @vue/component
+export const CopilotPreview = {
+	name: 'CopilotPreview',
+	components: {
+		ChatAvatar,
+		ChatTitle,
+		MuteChat,
+		ChatMembersAvatars,
+		CopilotRole,
+		AIModel,
+		SharedLink,
+		SettingsSeparator,
+	},
+	props: {
+		dialogId: {
+			type: String,
+			required: true,
+		},
+	},
+	computed:
+	{
+		AvatarSize: () => AvatarSize,
+		dialog(): ImModelChat
+		{
+			return this.$store.getters['chats/get'](this.dialogId, true);
+		},
+		chatId(): number
+		{
+			return this.dialog.chatId;
+		},
+		showMembers(): boolean
+		{
+			return (new CopilotManager()).isGroupCopilotChat(this.dialogId);
+		},
+		isAIModelChangeAllowed(): boolean
+		{
+			return FeatureManager.isFeatureAvailable(Feature.isAIModelChangeAllowed);
+		},
+		isBitrixGptV2Available(): boolean
+		{
+			return FeatureManager.isFeatureAvailable(Feature.isBitrixGptV2Available);
+		},
+		isSharedLinkCopyAllowed(): boolean
+		{
+			return isSharedLinkCopyAllowed(this.dialogId);
+		},
+	},
+	template: `
+		<div class="bx-im-sidebar-copilot-preview__scope">
+			<div class="bx-im-sidebar-copilot-preview-group-chat__avatar-container">
+				<ChatAvatar
+					:avatarDialogId="dialogId"
+					:contextDialogId="dialogId"
+					:size="AvatarSize.XXXL"
+					:withSpecialTypes="false"
+				/>
+				<ChatTitle :dialogId="dialogId" :twoLine="true" class="bx-im-sidebar-copilot-preview-group-chat__title" />
+			</div>
+			<div class="bx-im-sidebar-copilot-preview-group-chat__chat-members">
+				<ChatMembersAvatars :showMembers="showMembers" :dialogId="dialogId" />
+			</div>
+			<div class="bx-im-sidebar-copilot-preview-group-chat__settings">
+				<template v-if="isSharedLinkCopyAllowed">
+					<SharedLink :dialogId="dialogId" />
+					<SettingsSeparator />
+				</template>
+				<CopilotRole :dialogId="dialogId" />
+				<AIModel v-if="isAIModelChangeAllowed && !isBitrixGptV2Available" :dialogId="dialogId" />
+				<MuteChat :dialogId="dialogId" />
+			</div>
+		</div>
+	`,
+};

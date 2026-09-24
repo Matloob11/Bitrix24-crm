@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_UI_COMPONENT_LIST_ITEM_DRAG_TITLE"] = "Faites glisser pour changer l'ordre";
+$MESS["LANDING_UI_COMPONENT_LIST_ITEM_EDIT_TITLE"] = "Éditer";
+$MESS["LANDING_UI_COMPONENT_LIST_ITEM_REMOVE_TITLE"] = "Supprimer";

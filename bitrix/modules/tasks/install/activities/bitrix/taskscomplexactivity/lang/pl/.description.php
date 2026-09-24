@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_COMPLEX_ACTIVITY_DESCRIPTION"] = "Węzeł obsługi zadania.";
+$MESS["TASKS_COMPLEX_ACTIVITY_NAME"] = "Zadanie";

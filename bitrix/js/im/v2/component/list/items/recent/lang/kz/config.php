@@ -1,0 +1,20 @@
+<?php
+$MESS["IM_LIST_RECENT_BIRTHDAY"] = "Бүгін туған күнін тойлап жатыр!";
+$MESS["IM_LIST_RECENT_BIRTHDAY_DATE"] = "бүгін";
+$MESS["IM_LIST_RECENT_CHAT_SELF"] = "бұл сіз";
+$MESS["IM_LIST_RECENT_CHAT_SELF_SUBTITLE"] = "Сізге ғана көрінеді";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_GROUP_V2"] = "Топтық чат";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_OPEN_CHANNEL"] = "Ашық арна";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_PRIVATE_CHANNEL"] = "Жабық арна";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_TASK_COMMENTS"] = "Міндет чаты";
+$MESS["IM_LIST_RECENT_CONNECT_ERROR"] = "Біз сіздің Битрикс24-ке қосыла алмадық, интернет байланысын тексеріп, қайталап көріңіз.";
+$MESS["IM_LIST_RECENT_DELETED_MESSAGE"] = "Бұл хабарлама жойылды";
+$MESS["IM_LIST_RECENT_EMPTY"] = "Чаттар жоқ";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_INVITE_USERS"] = "Әріптестерді шақыру";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_SUBTITLE_MSGVER_1"] = "Бірде-бір чат жоқ. Әріптестеріңізді қарым-қатынасты бастауға шақырыңыз";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_TITLE_MSGVER_1"] = "Мұнда сіздің барлық чаттарыңыз болады";
+$MESS["IM_LIST_RECENT_INVITATION_NOT_ACCEPTED_MSGVER_1"] = "Шақыру әлі қабылданған жоқ";
+$MESS["IM_LIST_RECENT_NEW_USER_POPUP_TEXT"] = "Мен сізбен бірге командадамын!";
+$MESS["IM_LIST_RECENT_VACATION"] = "#VACATION_END_DATE# дейін демалыста";
+$MESS["IM_LIST_UNREAD_RECENT_EMPTY_STATE_SUBTITLE"] = "Барлық оқылмаған хабарламалар осы жерде көрсетіледі";
+$MESS["IM_LIST_UNREAD_RECENT_EMPTY_STATE_TITLE_MSGVER_1"] = "Оқылмаған хабарламалар жоқ";

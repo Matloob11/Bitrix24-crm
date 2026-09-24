@@ -1,0 +1,20 @@
+<?php
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_HINT"] = "Расталғаннан кейін сіз жұмыстан шығарыласыз және енді Битрикс24-ке кіре алмайсыз.\n\nБас әкімшінің құқықтарын [USER=#USER_ID#]#USER_NAME#[/USER] алады";
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_TITLE"] = "Құқықтарды беруді және жұмыстан шығаруды растаңыз";
+$MESS["M_INTRANET_FIRE_ADMIN_REQUEST_ERROR"] = "Әрекетті орындау мүмкін болмады";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONFIRM_BUTTON"] = "Сұрау жіберу";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONSENT_INSTRUCTION"] = "Құқықтарды беру және жұмыстан шығару туралы сұрау жіберу керек пе?";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_DESCRIPTION"] = "Мұндай қызметкерді оның келісімімен ғана жұмыстан шығаруға болады.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_ERROR_TOAST"] = "Жұмыстан шығару туралы сұрау жіберілмеді, қайталап көріңіз";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_HINT"] = "[USER=#USER_ID#]#USER_NAME#[/USER] — Битрикс24-тің  барлық баптауларына қол жетімді бас әкімшісі. \n\nОл жұмыстан шығарылғаннан кейін сіз бас әкімші боласыз.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_REJECT_BUTTON"] = "Болдырмау";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TITLE"] = "Бас әкімшіні жұмыстан шығару";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TOAST"] = "Сұрау жіберілді. Әкімші жауап бергенде, сізге хабарлама келеді";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_BUTTON"] = "Растау";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_WORD"] = "Беру";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONSENT_INSTRUCTION"] = "Келіссеңіз, «#CONFIRM_WORD#» деп жазыңыз";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_DESCRIPTION"] = "Құқықтарды кездейсоқ беруден және баптауларға қол жеткізуді жоғалтудан қорғау үшін қосымша растау қажет.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_ERROR_INPUT_TEXT"] = "«#CONFIRM_WORD#» сөзін енгізіңіз";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_HINT"] = "Расталғаннан кейін сіз Битрикс24 баптауларына қол жеткізе алмайсыз.\n\nБас әкімші құқықтарын [USER=#USER_ID#]#USER_NAME#[/USER] алады";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_REJECT_BUTTON"] = "Бас тарту";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_TITLE"] = "Құқықтардың берілуін растаңыз";

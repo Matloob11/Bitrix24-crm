@@ -1,0 +1,8 @@
+<?php
+$MESS["CALENDAR_RELATIONS_TITLE"] = "Fonte do evento";
+$MESS["CALENDAR_RELATION_CHAT_BUTTON_HINT"] = "Abrir bate-papo";
+$MESS["CALENDAR_RELATION_ENTITY_LINK_BOOKING"] = "Agendamento on-line";
+$MESS["CALENDAR_RELATION_ENTITY_LINK_DEAL"] = "Visualizar negócio";
+$MESS["CALENDAR_RELATION_OPEN_ENTITY_HINT_DEAL"] = "Visualizar negócio";
+$MESS["CALENDAR_RELATION_OWNER_PROFILE_HINT"] = "Visualizar perfil";
+$MESS["CALENDAR_RELATION_OWNER_ROLE_DEAL"] = "Pessoa responsável";

@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_VIBE_COLLABORATION_STEPS_NAME"] = "Vibe de colaboração, etapas";
+$MESS["LANDING_BLOCK_WIDGET_VIBE_COLLABORATION_STEPS_NAME_NEW"] = "Modelo: colaboração, etapas";

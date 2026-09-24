@@ -1,0 +1,10 @@
+<?php
+$MESS["FIELDS_CRM_ELEMENT_EMPTY"] = "Aggiungi elementi CRM";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN"] = "Elemento nascosto";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN_COMPANY"] = "Azienda nascosta";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN_CONTACT"] = "Contatto nascosto";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN_DEAL"] = "Affare nascosto";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN_LEAD"] = "Lead nascosto";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN_ORDER"] = "Ordine nascosto";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN_QUOTE"] = "Preventivo nascosto";
+$MESS["FIELDS_CRM_ELEMENT_HIDDEN_SMART_INVOICE"] = "Fattura nascosta";

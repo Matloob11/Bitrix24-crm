@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CAPTION_DEFAULT"] = "Importar archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_COMPANY_CAPTION_NO_ORIGIN"] = "Importar compañías";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_COMPANY_DESCRIPTION_NO_ORIGIN"] = "Importar compañías desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_CAPTION_CUSTOM"] = "Importar datos CSV personalizados";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_CAPTION_GMAIL"] = "Importar contactos de <b>Gmail</b> desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_CAPTION_OUTLOOK"] = "Importar contactos de <b>Outlook</b> desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_CAPTION_VCARD"] = "Importar <b>vCard</b>";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_CAPTION_YAHOO"] = "Importar contactos de <b>Yahoo! Email</b> desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_DESCRIPTION_CUSTOM"] = "Importar contactos desde un archivo CSV personalizado";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_DESCRIPTION_GMAIL"] = "Importar contactos de Gmail desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_DESCRIPTION_OUTLOOK"] = "Importar contactos de Microsoft Outlook desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_DESCRIPTION_VCARD"] = "Importar contactos desde un archivo vCard";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_CONTACT_DESCRIPTION_YAHOO"] = "Importar contactos de Yahoo! Email desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_DEAL_CAPTION_NO_ORIGIN"] = "Importar negociaciones";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_DEAL_DESCRIPTION_NO_ORIGIN"] = "Importar negociaciones desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_DESCRIPTION_DEFAULT"] = "Importar archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_DYNAMIC_CAPTION_NO_ORIGIN"] = "Importar archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_DYNAMIC_DESCRIPTION_NO_ORIGIN"] = "Importar elementos de \"#ENTITY_TYPE_CAPTION#\" desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_LEAD_CAPTION_NO_ORIGIN"] = "Importar prospectos";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_LEAD_DESCRIPTION_NO_ORIGIN"] = "Importar prospectos desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_QUOTE_CAPTION_NO_ORIGIN"] = "Importar cotizaciones";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_QUOTE_DESCRIPTION_NO_ORIGIN"] = "Importar cotizaciones desde un archivo CSV";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_SMART_INVOICE_CAPTION_NO_ORIGIN"] = "Importar facturas";
+$MESS["CRM_IMPORT_SETTINGS_ITEM_SMART_INVOICE_DESCRIPTION_NO_ORIGIN"] = "Importar facturas desde un archivo CSV";

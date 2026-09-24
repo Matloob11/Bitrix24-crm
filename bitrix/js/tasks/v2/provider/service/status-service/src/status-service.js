@@ -1,0 +1,215 @@
+import { Event, Loc } from 'main.core';
+import { MessageBox, MessageBoxButtons } from 'ui.dialogs.messagebox';
+
+import { Core } from 'tasks.v2.core';
+import { EventName, Model, TaskStatus, Endpoint } from 'tasks.v2.const';
+import { analytics } from 'tasks.v2.lib.analytics';
+import { ScrumManager } from 'tasks.v2.lib.scrum-manager';
+import { apiClient } from 'tasks.v2.lib.api-client';
+import { idUtils } from 'tasks.v2.lib.id-utils';
+import { deadlineService } from 'tasks.v2.provider.service.deadline-service';
+import { taskService } from 'tasks.v2.provider.service.task-service';
+import { resultService } from 'tasks.v2.provider.service.result-service';
+import type { TaskModel } from 'tasks.v2.model.tasks';
+
+export const statusService = new class
+{
+	async start(id: number): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskStatusStart, TaskStatus.InProgress);
+	}
+
+	async take(id: number, analyticsParams: Object = {}): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskStatusTake, TaskStatus.InProgress);
+
+		const task = taskService.getStoreTask(id);
+
+		if (task.allowsTimeTracking)
+		{
+			analytics.sendAutoTimeTracking(analyticsParams, {
+				taskId: id,
+			});
+		}
+	}
+
+	async startTimer(id: number, analyticsParams: Object = {}): Promise<void>
+	{
+		const taskWithActiveTimer: ?TaskModel = Core.getStore().getters[`${Model.Interface}/taskWithActiveTimer`];
+		if (taskWithActiveTimer)
+		{
+			return new Promise((resolve) => {
+				MessageBox.show({
+					useAirDesign: true,
+					message: Loc.getMessage('TASKS_V2_STATUS_TIMER_WARNING', {
+						'#TITLE#': taskWithActiveTimer.title,
+					}),
+					buttons: MessageBoxButtons.OK_CANCEL,
+					okCaption: Loc.getMessage('TASKS_V2_STATUS_TIMER_WARNING_OK'),
+					onOk: async (dialog) => {
+						dialog.close();
+						await this.#doStartTimer(id, analyticsParams);
+						resolve();
+					},
+					popupOptions: {
+						closeByEsc: false,
+						autoHide: false,
+						events: {
+							onClose: () => {
+								resolve();
+							},
+						},
+					},
+				});
+			});
+		}
+
+		return this.#doStartTimer(id, analyticsParams);
+	}
+
+	async #doStartTimer(id: number, analyticsParams: Object): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskTrackingTimerStart, TaskStatus.InProgress);
+
+		analytics.sendAutoTimeTracking(analyticsParams, {
+			taskId: id,
+		});
+	}
+
+	async disapprove(id: number): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskStatusDisapprove, TaskStatus.Pending);
+	}
+
+	async defer(id: number): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskStatusDefer, TaskStatus.Deferred);
+	}
+
+	async approve(id: number): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskStatusApprove, TaskStatus.Completed);
+	}
+
+	async pause(id: number): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskStatusPause, TaskStatus.Pending);
+	}
+
+	async pauseTimer(id: number): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskTrackingTimerStop, TaskStatus.Pending);
+	}
+
+	async complete(
+		id: number,
+		analyticsParams: Object = {},
+		handleRequireResult: boolean = true,
+	): Promise<?Error>
+	{
+		const task = taskService.getStoreTask(id);
+		if (!task)
+		{
+			return null;
+		}
+
+		const currentUserId = Core.getStore().getters[`${Model.Interface}/currentUserId`];
+		if (
+			handleRequireResult
+			&& task.requireResult
+			&& !Core.getParams().rights.user.admin
+			&& currentUserId !== task.creatorId
+			&& !resultService.hasOpenedResults(id)
+		)
+		{
+			Event.EventEmitter.emit(EventName.RequiredResultsMissing, { taskId: id });
+
+			return null;
+		}
+
+		const group = Core.getStore().getters[`${Model.Groups}/getById`](task.groupId);
+
+		const scrumManager = new ScrumManager({
+			taskId: task.id,
+			parentId: task.parentId,
+			groupId: task.groupId,
+		});
+
+		let canComplete = true;
+		if (scrumManager.isScrum(group?.type))
+		{
+			canComplete = await scrumManager.handleDodDisplay();
+		}
+
+		if (!canComplete)
+		{
+			return null;
+		}
+
+		const status = task.needsControl ? TaskStatus.SupposedlyCompleted : TaskStatus.Completed;
+
+		const error = await this.#updateStatus(id, Endpoint.TaskStatusComplete, status, true);
+
+		if (error)
+		{
+			return error;
+		}
+
+		if (scrumManager.isScrum(group?.type))
+		{
+			void scrumManager?.handleParentState();
+		}
+
+		analytics.sendTaskComplete(analyticsParams, {
+			taskId: task.id,
+		});
+
+		void resultService.closeResults(id);
+
+		if (task.maxDeadlineChanges)
+		{
+			await deadlineService.updateDeadlineChangeCount(id);
+		}
+
+		return null;
+	}
+
+	async renew(id: number): Promise<void>
+	{
+		await this.#updateStatus(id, Endpoint.TaskStatusRenew, TaskStatus.Pending);
+	}
+
+	async #updateStatus(id: number, action: string, status: string, silent: boolean = false): Promise<{ error: ?Error }>
+	{
+		const taskBeforeUpdate = taskService.getStoreTask(id);
+
+		if (!idUtils.isReal(id))
+		{
+			taskService.updateStoreTask(id, { status });
+
+			return null;
+		}
+
+		try
+		{
+			const data = await apiClient.post(action, { task: { id } });
+
+			taskService.updateStoreTask(id, { status });
+
+			taskService.extractTask(data);
+
+			return null;
+		}
+		catch (error)
+		{
+			taskService.updateStoreTask(id, taskBeforeUpdate);
+
+			if (!silent)
+			{
+				console.error(`StatusService: ${action} error`, error);
+			}
+
+			return new Error(error.errors?.[0]?.message);
+		}
+	}
+}();

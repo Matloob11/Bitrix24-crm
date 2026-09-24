@@ -1,0 +1,24 @@
+<?php
+$MESS["CATALOG_STORE_DOCUMENT_BARCODE_EXIST_ERROR"] = "O código de barras \"#BARCODE#\" já está atribuído a um produto diferente no catálogo.";
+$MESS["CATALOG_STORE_DOCUMENT_CANCEL_CONDUCT_BUTTON"] = "Cancelar processamento";
+$MESS["CATALOG_STORE_DOCUMENT_CONDUCT_BUTTON"] = "Processar";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_CANCEL_ERROR"] = "Erro ao cancelar o processamento";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_CARD_NO_WRITE_RIGHTS_ERROR"] = "Permissões insuficientes para salvar objeto de inventário.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_CONDUCT_ERROR"] = "Erro de processamento";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOCUMENT_NOT_FOUND_ERROR"] = "O objeto de inventário não foi encontrado.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOCUMENT_TYPE_NOT_SPECIFIED_ERROR"] = "O tipo de objeto de inventário é obrigatório.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_A"] = "Recibo de estoque";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_D"] = "Baixa";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_ERROR"] = "O tipo de objeto de inventário está incorreto.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_M"] = "Transferência de estoque";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_INCORRECT_VALUE"] = "O valor de \"#FIELD_NAME#\" está incorreto";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_NO_INVENTORY_MANAGEMENT_ENABLED_ERROR"] = "O gerenciamento do inventário não está disponível no seu plano.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_NO_VIEW_RIGHTS_ERROR"] = "Permissões insuficientes para visualizar o objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_NO_WRITE_RIGHTS_ERROR"] = "Permissões insuficientes para salvar o objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_SAVE_ERROR"] = "Erro ao salvar objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_ELEMENT_STORE_ACCESS_DENIED"] = "Você não tem permissão para acessar este depósito para salvar entidades para \"#PRODUCT_NAME#\".";
+$MESS["CATALOG_STORE_DOCUMENT_ERR_ACCESS_DENIED"] = "Permissão insuficiente para visualizar a área de Gerenciamento de inventário.";
+$MESS["CATALOG_STORE_DOCUMENT_ERR_ACCESS_DENIED_BOX"] = "Você não tem permissão para acessar o Gerenciamento de Inventário. Entre em contato com o administrador do Bitrix24 para obter acesso. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Saiba mais</a>";
+$MESS["CATALOG_STORE_DOCUMENT_ERR_ACCESS_DENIED_CLOUD"] = "Você não tem permissão para acessar o Gerenciamento de Inventário. Entre em contato com o administrador do Bitrix24 para obter acesso. O administrador terá que atribuir a função de Gerenciador a você nas configurações do CRM. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Saiba mais</a>";
+$MESS["CATALOG_STORE_DOCUMENT_NO_PRODUCT"] = "Você tem que selecionar ou criar um produto para salvar o objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_SAVE_AND_CONDUCT_BUTTON"] = "Salvar e processar";

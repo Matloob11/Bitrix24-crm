@@ -1,0 +1,114 @@
+import { hint } from 'ui.vue3.directives.hint';
+
+import { SidebarDetailBlock, EventType } from 'im.v2.const';
+import { CounterManager } from 'im.v2.lib.counter';
+
+import './chat-links.css';
+
+import type { JsonObject } from 'main.core';
+import type { EventEmitter } from 'main.core.events';
+import type { ImModelChat } from 'im.v2.model';
+
+// @vue/component
+export const ChatLinks = {
+	name: 'ChatLinks',
+	directives: { hint },
+	props:
+	{
+		dialogId: {
+			type: String,
+			required: true,
+		},
+	},
+	data(): JsonObject
+	{
+		return {
+			expanded: false,
+		};
+	},
+	computed:
+	{
+		dialog(): ImModelChat
+		{
+			return this.$store.getters['chats/get'](this.dialogId, true);
+		},
+		urlCounter(): string
+		{
+			const counter = this.$store.getters['sidebar/links/getCounter'](this.chatId);
+
+			return this.getCounterString(counter);
+		},
+		isLinksAvailable(): boolean
+		{
+			return this.$store.state.sidebar.isLinksMigrated;
+		},
+		hintDirectiveContent(): Object
+		{
+			return {
+				text: this.$Bitrix.Loc.getMessage('IM_SIDEBAR_LINKS_NOT_AVAILABLE'),
+				popupOptions: {
+					angle: true,
+					targetContainer: document.body,
+					offsetLeft: 141,
+					offsetTop: -10,
+					bindOptions: {
+						position: 'top',
+					},
+				},
+			};
+		},
+		chatId(): number
+		{
+			return this.dialog.chatId;
+		},
+	},
+	methods:
+	{
+		getCounterString(counter: number): string
+		{
+			return CounterManager.formatCounter(counter);
+		},
+		onLinkClick()
+		{
+			if (!this.isLinksAvailable)
+			{
+				return;
+			}
+
+			this.getEmitter().emit(EventType.sidebar.open, {
+				panel: SidebarDetailBlock.link,
+				dialogId: this.dialogId,
+			});
+		},
+		getEmitter(): EventEmitter
+		{
+			return this.$Bitrix.eventEmitter;
+		},
+		loc(phraseCode: string): string
+		{
+			return this.$Bitrix.Loc.getMessage(phraseCode);
+		},
+	},
+	template: `
+		<div 
+			class="bx-im-sidebar-chat-links__container" 
+			:class="[isLinksAvailable ? '' : '--links-not-active']"
+			@click="onLinkClick"
+		>
+			<div 
+				v-if="!isLinksAvailable" 
+				class="bx-im-sidebar-chat-links__hint-not-active" 
+				v-hint="hintDirectiveContent"
+			></div>
+			<div class="bx-im-sidebar-chat-links__title-container">
+				<div class="bx-im-sidebar-chat-links__icon"></div>
+				<div class="bx-im-sidebar-chat-links__title-text">
+					{{ loc('IM_SIDEBAR_LINK_DETAIL_TITLE') }}
+				</div>
+			</div>
+			<div class="bx-im-sidebar-chat-links__counter-container">
+				<span class="bx-im-sidebar-chat-links__counter">{{urlCounter}}</span>
+			</div>
+		</div>
+	`,
+};

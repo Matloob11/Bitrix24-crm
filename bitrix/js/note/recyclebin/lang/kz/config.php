@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Себет";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Кейбір құжаттардың бастапқы кеңістігі (#COUNT#) жойылды. Олар үшін басқа орынды таңдаңыз";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Себеттен барлық құжаттар қалпына келтіріледі: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Құжаттарды қалпына келтіру";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Кеңістіктің атын енгізіңіз";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "«#DOCUMENT#» құжаты үшін бастапқы кеңістік жойылды. Құжатты қалпына келтіру үшін басқа орынды таңдаңыз";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Құжатты қалпына келтіру";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Болдырмау";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Себеттегі барлық құжаттар біржола жойылады. Бұл әрекетті жою мүмкін емес. Жалғастыру керек пе?";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "Барлық құжаттарды себеттен қалпына келтіресіз бе?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Себетті тазалау";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Иә, жою";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Себеттен құжаттарды жою керек пе?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "Себетте құжаттар жоқ";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "Себет тазартылды. Жойылған құжаттар: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "Әрекетті орындау мүмкін болмады";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "Құжат біржола жойылды";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Әрекеттер";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Иә, қалпына келтіру";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Барлығын қалпына келтіру";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Қалпына келтірілген құжаттар: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Қалпына келтірілген құжаттар:#COUNT#, өткізіп жіберілгені #SKIPPED# — кеңістікті таңдауды талап етеді";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "Құжат қалпына келтірілді";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Себеттегі құжаттар 30 күн сақталады, содан кейін автоматты түрде жойылады";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Себет";

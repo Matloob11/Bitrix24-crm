@@ -1,0 +1,10 @@
+.tasks-full-card-header {
+	--margin-button: 0 0 0 4px;
+	--padding-button: 2px 2px 2px 2px;
+	--size-icon: 26px;
+	--color-icon: var(--ui-color-base-4);
+	--padding-bottom: 12px;
+	display: flex;
+	align-items: flex-start;
+	padding: 19px calc(22px - var(--scrollbar-width)) var(--padding-bottom) 22px;
+}

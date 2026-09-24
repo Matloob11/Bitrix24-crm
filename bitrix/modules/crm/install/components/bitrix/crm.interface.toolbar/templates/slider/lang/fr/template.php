@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL"] = "Ajoutez un client et son numéro de téléphone pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_COMPANY"] = "Ajoutez un client et son numéro de téléphone à l'entreprise pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_CONTACT"] = "Ajoutez un numéro de téléphone au contact pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_DEAL"] = "Ajoutez un client et son numéro de téléphone à la transaction pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_INVOICE"] = "Ajoutez un client et son numéro de téléphone à la facture pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_LEAD"] = "Ajoutez un client et son numéro de téléphone au prospect pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_QUOTE"] = "Ajoutez un client et son numéro de téléphone au devis pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_SMART_INVOICE"] = "Ajoutez un client et son numéro de téléphone à la facture pour passer un appel";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND"] = "Ajoutez un client et son adresse e-mail pour envoyer un message";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_COMPANY"] = "Ajoutez un client et son adresse e-mail à l'entreprise pour envoyer un e-mail";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_CONTACT"] = "Ajoutez une adresse e-mail au contact pour envoyer un e-mail";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_DEAL"] = "Ajoutez un client et son adresse e-mail à la transaction pour envoyer un e-mail";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_INVOICE"] = "Ajoutez un client et son adresse e-mail à la facture pour envoyer un e-mail";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_LEAD"] = "Ajoutez un client et son adresse e-mail au prospect pour envoyer un e-mail";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_QUOTE"] = "Ajoutez un client et son adresse e-mail au devis pour envoyer un e-mail";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_SMART_INVOICE"] = "Ajoutez un client et son adresse e-mail à la facture pour envoyer un e-mail";
+$MESS["CRM_TOOLBAR_BIZPROC_STARTER_LABEL"] = "Exécuter le processus d'entreprise";
+$MESS["CRM_TOOLBAR_INSTALL_CALENDAR_FOR_CALL"] = "Installez le module Calendrier pour passer des appels.";
+$MESS["CRM_TOOLBAR_TELEPHONY_NOT_SUPPORTED"] = "Les appels téléphoniques ne sont pas pris en charge dans ce contexte.";

@@ -1,0 +1,24 @@
+<?php
+$MESS["BPWFI_SLIDER_ARGUMENT_NULL"] = "Pole „#PARAM#” jest wymagane.";
+$MESS["BPWFI_SLIDER_BANNER_BODY"] = "Zostawiaj uwagi i omawiaj workflowy z uczestnikami.";
+$MESS["BPWFI_SLIDER_BANNER_TITLE"] = "Nie ma komentarzy do tego workflowu";
+$MESS["BPWFI_SLIDER_BUTTON_DELEGATE"] = "Przekaż";
+$MESS["BPWFI_SLIDER_CONFIRM_ACCEPT"] = "Tak";
+$MESS["BPWFI_SLIDER_CONFIRM_CANCEL"] = "Nie";
+$MESS["BPWFI_SLIDER_CONFIRM_DESCRIPTION"] = "Czy na pewno chcesz anulować zmiany wprowadzone w tym workflow? Wartości wprowadzone w polach zostaną utracone.";
+$MESS["BPWFI_SLIDER_CONFIRM_TITLE"] = "Anuluj zmiany workflowu";
+$MESS["BPWFI_SLIDER_DESCRIPTION"] = "Opis";
+$MESS["BPWFI_SLIDER_DISCUSSION_COMMENTS_COUNT"] = "Komentarze: #COMMENTS_COUNT#";
+$MESS["BPWFI_SLIDER_DISCUSSION_TITLE"] = "Dyskusja dotycząca workflowu";
+$MESS["BPWFI_SLIDER_DISCUSSION_ZERO_COMMENTS_COUNT"] = "Nie ma komentarzy do tego workflowu.";
+$MESS["BPWFI_SLIDER_DOCUMENT"] = "Element workflowu";
+$MESS["BPWFI_SLIDER_FIELDS_TITLE"] = "Parametry zadania (wymagane)";
+$MESS["BPWFI_SLIDER_MODIFIED"] = "Ostatnia aktualizacja";
+$MESS["BPWFI_SLIDER_NAME"] = "Nazwa";
+$MESS["BPWFI_SLIDER_NOT_MY_PROCESS"] = "Wyświetlasz workflow użytkownika #USER#.";
+$MESS["BPWFI_SLIDER_NOT_MY_TASK"] = "Wyświetlasz zadanie użytkownika #USER#";
+$MESS["BPWFI_SLIDER_PROCESS"] = "Workflow";
+$MESS["BPWFI_SLIDER_STATUS"] = "Status";
+$MESS["BPWFI_SLIDER_TASK"] = "Zadanie";
+$MESS["BPWFI_SLIDER_TIMELINE_MSGVER_1"] = "Protokół";
+$MESS["BPWFI_SLIDER_TYPE"] = "Typ workflowu";

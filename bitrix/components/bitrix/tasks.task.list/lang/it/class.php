@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_GRID_STUB_DESCRIPTION"] = "Questa visualizzazione mostrerà gli incarichi di cui tu e/o i tuoi dipendenti siete responsabili.";
+$MESS["TASKS_GRID_STUB_DESCRIPTION_COLLAB"] = "Non hai incarichi al momento.";
+$MESS["TASKS_GRID_STUB_NO_DATA_DESCRIPTION"] = "Prova a reimpostare il filtro o cambia la frase di ricerca.";
+$MESS["TASKS_GRID_STUB_NO_DATA_TITLE"] = "La tua richiesta di ricerca non ha restituito alcun risultato";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_COLLAB"] = "Questa schermata mostrerà gli incarichi della collab";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_COLLAB_SUBTITLE"] = "Crea incarichi su questa schermata o direttamente dai messaggi della chat, poi aggiungi partecipanti. [helpdesklink]Scopri di più[/helpdesklink]";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_PROJECT"] = "Non sono presenti incarichi di progetto";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_TASK"] = "Crea un incarico";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_TASK_SUBTITLE"] = "Questa visualizzazione mostrerà gli incarichi di cui tu e/o i tuoi dipendenti siete responsabili. Crea il tuo primo incarico per vederlo in questa pagina.";
+$MESS["TASKS_GRID_STUB_PROJECT_PROJECT_CREATED"] = "Il progetto è stato creato";
+$MESS["TASKS_GRID_STUB_TITLE"] = "Crea un incarico";
+$MESS["TASKS_GROUP_ACTION_COMPLETE_SCRUM_TASK"] = "Purtroppo non è stato possibile completare gli incarichi selezionati perché appartengono a un team scrum.";
+$MESS["TASKS_GROUP_ACTION_DAYS_NUM_INVALID_TEXT"] = "Questo campo può contenere solo numeri.";
+$MESS["TASKS_GROUP_ACTION_DAYS_NUM_INVALID_TITLE"] = "Elemento non valido";
+$MESS["TASKS_GROUP_ACTION_ERROR_MESSAGE"] = "\"#MESSAGE#\" in questi incarichi: #TASK_IDS#";
+$MESS["TASKS_GROUP_ACTION_ERROR_TITLE"] = "There were errors while bulk updating tasks";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_COME_BACK_LATER"] = "Torna più tardi";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_TEXT"] = "Stiamo aggiornando i tag per renderli più completi. Puoi continuare a utilizzare altre aree di Bitrix24. Non ci vorrà molto.";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_TITLE"] = "Aspetta, i tag saranno disponibili a breve";
+$MESS["TASKS_TL_ACCESS_TO_COLLAB_DENIED"] = "Non disponi dell'autorizzazione per visualizzare gli incarichi nella collab.";
+$MESS["TASKS_TL_ACCESS_TO_COLLAB_DENIED_V2"] = "Autorizzazioni insufficienti per visualizzare gli incarichi in questo progetto.";
+$MESS["TASKS_TL_ACCESS_TO_GROUP_DENIED"] = "Non puoi visualizzare l'elenco degli incarichi per questo gruppo.";
+$MESS["TASKS_TL_FORUM_MODULE_NOT_INSTALLED"] = "Il modulo \"Forum\" non è installato.";
+$MESS["TASKS_TL_SOCIALNETWORK_MODULE_NOT_INSTALLED"] = "Il modulo \"Social Network\" non è installato.";

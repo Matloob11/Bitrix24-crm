@@ -1,0 +1,13 @@
+<?php
+$MESS["MAIL_MESSAGE_ACTIONS_CRM_BTN"] = "Guardar en el CRM";
+$MESS["MAIL_MESSAGE_ACTIONS_CRM_EXCLUDE_BTN"] = "Excluir del CRM";
+$MESS["MAIL_MESSAGE_ACTIONS_EVENT_BTN"] = "Crear evento";
+$MESS["MAIL_MESSAGE_ACTIONS_FEED_POST_BTN"] = "Discutir en el Feed";
+$MESS["MAIL_MESSAGE_ACTIONS_IM_BTN"] = "Discutir en el chat";
+$MESS["MAIL_MESSAGE_ACTIONS_MORE_MENU"] = "Más acciones";
+$MESS["MAIL_MESSAGE_ACTIONS_NOTIFY_ADDED_TO_CRM"] = "Correo electrónico guardado en el CRM";
+$MESS["MAIL_MESSAGE_ACTIONS_NOTIFY_EXCLUDED_FROM_CRM"] = "Correo electrónico excluido del CRM";
+$MESS["MAIL_MESSAGE_ACTIONS_POST_TITLE"] = "Correo electrónico: #SUBJECT#";
+$MESS["MAIL_MESSAGE_ACTIONS_SUBJECT_PLACEHOLDER"] = "(sin asunto)";
+$MESS["MAIL_MESSAGE_ACTIONS_TASK_BTN"] = "Crear tarea";
+$MESS["MAIL_MESSAGE_ACTIONS_TASK_TITLE"] = "Correo electrónico: #SUBJECT#";

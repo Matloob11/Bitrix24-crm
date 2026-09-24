@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_TIMELINE_MENU_BADGE_NEW"] = "Нове";
+$MESS["CRM_TIMELINE_MENU_BADGE_RECOMMENDED"] = "Рекомендується";

@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_DEAL_CLIENT"] = "Cliente";
+$MESS["CRM_DEAL_CLIENT_EMAIL"] = "E-mail";
+$MESS["CRM_DEAL_CLIENT_PHONE"] = "Telefono";
+$MESS["CRM_DEAL_COMMENT"] = "Commento";
+$MESS["CRM_DEAL_CONV_DIALOG_CANCEL_BTN"] = "Annulla";
+$MESS["CRM_DEAL_CREATOR"] = "Creato da";
+$MESS["CRM_DEAL_DURATION"] = "Data";
+$MESS["CRM_DEAL_RESPONSIBLE"] = "Responsabile";
+$MESS["CRM_TAB_1"] = "Affare";
+$MESS["CRM_TAB_2"] = "Contatti";
+$MESS["CRM_TAB_4"] = "Lead";
+$MESS["CRM_TAB_6"] = "Attività";
+$MESS["CRM_TAB_8"] = "Fattura";
+$MESS["CRM_TAB_8_TITLE_V2"] = "Fatture affare";
+$MESS["CRM_TAB_8_V2"] = "Fatture";
+$MESS["CRM_TAB_9"] = "Preventivi";
+$MESS["CRM_TAB_AUTOMATION"] = "Automazione";
+$MESS["CRM_TAB_PRODUCT_ROWS"] = "Prodotti";
+$MESS["CRM_TAB_TREE"] = "Dipendenze";

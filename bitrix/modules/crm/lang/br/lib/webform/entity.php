@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_COMPANY_TEMPLATE"] = "empresa";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_CONTACT_TEMPLATE"] = "indivíduo";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_TEMPLATE"] = "Preencher formulário de CRM \"#FORM_NAME#\"";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT"] = "Cliente";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_DESC"] = "contato ou empresa";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC"] = "contato ou empresa, fatura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC1"] = "contato ou empresa; pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL"] = "Negócio";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_DESC"] = "Negócio, contato ou empresa";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC"] = "Negócio, contato ou empresa, fatura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC1"] = "negócio; contato ou empresa; pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC"] = "Automação Inteligente de Processos";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_DESC"] = "Automação Inteligente de Processos, contato ou empresa";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_INVOICE_DESC"] = "Automação Inteligente de Processos, contato ou empresa, pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE"] = "Fatura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE_DESC"] = "fatura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED"] = "Lead";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_DESC"] = "Lead";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC"] = "Lead, contato ou empresa, fatura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC1"] = "lead; contato ou empresa; pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_DESC_MSGVER_1"] = "orçamento, contato ou empresa";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC1_MSGVER_1"] = "orçamento; contato ou empresa; pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC_MSGVER_1"] = "orçamento, contato ou empresa, fatura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_MSGVER_1"] = "Orçamento";

@@ -1,0 +1,19 @@
+<?php
+$MESS["UI_DATE_PICKER_BACK_TO_DAYS"] = "Күнді таңдауға оралу";
+$MESS["UI_DATE_PICKER_DIALOG_LABEL"] = "Күнтізбе";
+$MESS["UI_DATE_PICKER_HOURS"] = "Cағаттар";
+$MESS["UI_DATE_PICKER_MINUTES"] = "Минуттар";
+$MESS["UI_DATE_PICKER_MONTH_VIEW_LABEL"] = "Айды таңдау";
+$MESS["UI_DATE_PICKER_NEXT_DECADE"] = "Келесі 12 жыл";
+$MESS["UI_DATE_PICKER_NEXT_MONTH"] = "Келесі ай";
+$MESS["UI_DATE_PICKER_NEXT_YEAR"] = "Келесі жыл";
+$MESS["UI_DATE_PICKER_PRESETS_LABEL"] = "Күнді жылдам таңдау";
+$MESS["UI_DATE_PICKER_PREV_DECADE"] = "Алдыңғы 12 жыл";
+$MESS["UI_DATE_PICKER_PREV_MONTH"] = "Алдыңғы ай";
+$MESS["UI_DATE_PICKER_PREV_YEAR"] = "Өткен жыл";
+$MESS["UI_DATE_PICKER_RANGE_TIME"] = "Уақыт диапазоны";
+$MESS["UI_DATE_PICKER_RANGE_TIME_END"] = "Аяқталу уақыты";
+$MESS["UI_DATE_PICKER_RANGE_TIME_START"] = "Басталу уақыты";
+$MESS["UI_DATE_PICKER_TIME_LABEL"] = "Уақытты таңдау";
+$MESS["UI_DATE_PICKER_TIME_VIEW_LABEL"] = "Уақытты таңдау";
+$MESS["UI_DATE_PICKER_YEAR_VIEW_LABEL"] = "Жылды таңдау";

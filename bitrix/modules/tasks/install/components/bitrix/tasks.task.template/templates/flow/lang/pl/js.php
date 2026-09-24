@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_TASK_TEMPLATE_COMPONENT_TEMPLATE_POPUP_MENU_CHECKLIST_SECTION"] = "Lista kontrolna";
+$MESS["TASKS_TASK_TEMPLATE_COMPONENT_TEMPLATE_POPUP_MENU_SHOW_COMPLETED"] = "Pokaż zakończone pozycje listy kontrolnej";
+$MESS["TASKS_TASK_TEMPLATE_COMPONENT_TEMPLATE_POPUP_MENU_SHOW_ONLY_MINE"] = "Pokaż pozycje listy kontrolnej dotyczące wyłącznie mnie";
+$MESS["TASKS_TASK_TEMPLATE_COMPONENT_TEMPLATE_TO_CHECKLIST_ADD_NEW_CHECKLIST"] = "utwórz nowy";
+$MESS["TASKS_TASK_TEMPLATE_COMPONENT_TEMPLATE_TO_CHECKLIST_HINT"] = "Wybierz tekst w opisie szablonu, który chcesz dodać do listy kontrolnej";

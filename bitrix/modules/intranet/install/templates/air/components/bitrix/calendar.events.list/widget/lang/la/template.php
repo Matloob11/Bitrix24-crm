@@ -1,0 +1,3 @@
+<?php
+$MESS["WIDGET_CALENDAR_DETAILS"] = "Más";
+$MESS["WIDGET_CALENDAR_TITLE"] = "Próximos eventos";

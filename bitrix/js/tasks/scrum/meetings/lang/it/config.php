@@ -1,0 +1,27 @@
+<?php
+$MESS["TSM_CHATS_CREATE_BUTTON"] = "Crea";
+$MESS["TSM_CHATS_EMPTY_TEXT"] = "crea riunioni di squadra; le chat della riunione verranno create automaticamente";
+$MESS["TSM_CHATS_EMPTY_TITLE"] = "Non ci sono chat per questo progetto";
+$MESS["TSM_CHATS_HEADER_TITLE"] = "Chat";
+$MESS["TSM_MEETINGS_CREATE_BUTTON"] = "Crea";
+$MESS["TSM_MEETINGS_CREATE_ONE_CLICK"] = "Crea ora";
+$MESS["TSM_MEETINGS_EMPTY_TEXT"] = "crea riunioni di squadra regolari";
+$MESS["TSM_MEETINGS_EMPTY_TITLE"] = "Non ci sono riunioni per questo progetto";
+$MESS["TSM_MEETINGS_ERROR_POPUP_TITLE"] = "Questo è un errore.";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATES_INFO"] = "Crea riunioni regolari per il tuo team con un solo clic. Le chat della riunione verranno create per ogni riunione per consentire ai partecipanti di comunicare.";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_BLANK"] = "MODELLI DI RIUNIONE SCRUM";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_HINT_DAILY"] = "<b>Scrum giornaliero</b> è un evento di 15 minuti che permette ai membri del team Scrum di ispezionare i progressi nei confronti dell'obiettivo Sprint e adattare il backlog Sprint in base alla necessità, adeguando il lavoro pianificato imminente.";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_HINT_PLANNING"] = "La riunione <b>Pianificazione Sprint</b> è un evento del framework Scrum in cui il team determina gli elementi del backlog di prodotti sui quali lavorerà durante quello sprint. Pianificazione sprint può richiedere diverse ore.";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_HINT_RETROSPECTIVE"] = "<b>Retrospettiva sprint</b> è una riunione ricorrente tenuta alla fine di uno sprint per discutere ciò che ha funzionato durante il precedente ciclo di sprint e cosa può essere migliorato per lo sprint successivo.";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_HINT_REVIEW"] = "<b>Revisione Sprint</b> è un evento in cui il team scrum presenta i risultati del proprio lavoro e discute i progressi nei confronti dell'obiettivo del prodotto.";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_NAME_DAILY"] = "SCRUM giornaliero";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_NAME_PLANNING"] = "Pianifica sprint";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_NAME_RETROSPECTIVE"] = "Retrospettiva dello sprint";
+$MESS["TSM_MEETINGS_EVENT_TEMPLATE_NAME_REVIEW"] = "Rivedi sprint";
+$MESS["TSM_MEETINGS_HEADER_TITLE"] = "Riunioni del team";
+$MESS["TSM_MEETINGS_SCHEDULED_BUTTON"] = "Riunioni pianificate";
+$MESS["TSM_MEETINGS_SCHEDULED_BUTTON_HIDE"] = "Nascondi";
+$MESS["TSM_PLANNING_EVENTS_TITLE"] = "Riunioni pianificate";
+$MESS["TSM_REPETITION_TITLE"] = "evento ricorrente";
+$MESS["TSM_TODAY_EVENT_TITLE"] = "Per oggi";
+$MESS["TSM_VIDEO_CALL_BUTTON"] = "Videochiamata HD";

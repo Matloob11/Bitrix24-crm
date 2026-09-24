@@ -1,0 +1,19 @@
+<?php
+$MESS["BP_CRM_AUTOMATED_SOLUTION_FCT_DESCR_DESCR"] = "Сандық жұмыс орнында өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_AUTOMATED_SOLUTION_FCT_DESCR_NAME"] = "Сандық жұмыс орны өрісі өзгертілді";
+$MESS["BP_CRM_COMPANY_FCT_DESCR_DESCR"] = "Компаниядағы өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_COMPANY_FCT_DESCR_NAME"] = "Компанияның өрісі өзгертілді";
+$MESS["BP_CRM_CONTACT_FCT_DESCR_DESCR"] = "Байланыстағы өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_CONTACT_FCT_DESCR_NAME"] = "Мәртебесі бар процесс";
+$MESS["BP_CRM_DEAL_FCT_DESCR_DESCR"] = "Мәміледегі өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_DEAL_FCT_DESCR_NAME"] = "Мәміле өрісі өзгертілді";
+$MESS["BP_CRM_DYNAMIC_FCT_DESCR_DESCR"] = "Ақылды процесте өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_DYNAMIC_FCT_DESCR_NAME"] = "Ақылды процесс өрісі өзгертілді";
+$MESS["BP_CRM_LEAD_FCT_DESCR_DESCR"] = "Лидтегі өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_LEAD_FCT_DESCR_NAME"] = "Лид өрісі өзгертілді";
+$MESS["BP_CRM_ORDER_FCT_DESCR_DESCR"] = "Тапсырыстағы өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_ORDER_FCT_DESCR_NAME"] = "Тапсырыс өрісі өзгертілді";
+$MESS["BP_CRM_QUOTE_FCT_DESCR_DESCR"] = "Сөйлемдегі өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_QUOTE_FCT_DESCR_NAME"] = "Ұсыныс өрісі өзгертілді";
+$MESS["BP_CRM_SMART_INVOICE_FCT_DESCR_DESCR"] = "Шоттағы өріс өзгерген кезде триггер іске қосылады";
+$MESS["BP_CRM_SMART_INVOICE_FCT_DESCR_NAME"] = "Шот өрісі өзгертілді";

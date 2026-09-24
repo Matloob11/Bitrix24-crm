@@ -1,0 +1,6 @@
+<?
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_ALWAYS_OVERWRITE"] = "Sobrescribir siempre";
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_ASK_USER"] = "Usuario definido";
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_MANUAL"] = "Fusionar manualmente";
+$MESS["CRM_MERGE_CONFLICT_RESOLVE_NEVER_OVERWRITE"] = "No sobrescribir nunca";
+?>

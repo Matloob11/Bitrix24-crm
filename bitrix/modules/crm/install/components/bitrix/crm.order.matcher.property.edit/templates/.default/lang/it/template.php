@@ -1,0 +1,10 @@
+<?
+$MESS["CRM_ORDER_PROPERTY_EDIT_BUTTON_APPLY"] = "Applica";
+$MESS["CRM_ORDER_PROPERTY_EDIT_BUTTON_CANCEL"] = "Annulla";
+$MESS["CRM_ORDER_PROPERTY_EDIT_BUTTON_SAVE"] = "Salva";
+$MESS["MATCH_TITLE"] = "Connessione CRM";
+$MESS["PROPERTY_TITLE"] = "Proprietà";
+$MESS["SALE_VARIANTS_DEL"] = "Elimina";
+$MESS["TYPE_TITLE"] = "Tipo di dati";
+$MESS["VARIANT_TITLE"] = "Elementi";
+?>

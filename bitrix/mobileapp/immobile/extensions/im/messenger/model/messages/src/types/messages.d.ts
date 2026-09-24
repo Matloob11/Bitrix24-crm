@@ -1,0 +1,262 @@
+import {MessengerModel, PayloadData} from '../../../base';
+import {DialogType} from '../../../dialogues/src/types';
+import {ReactionsModelState, MessageId} from '../reactions/types';
+import {KeyboardButtonConfig} from './keyboard';
+import {AttachConfig} from './attach';
+import {VoteModelState} from '../vote/types';
+import {StickerPackId, StickerPackType} from "../../../sticker-pack/src/types";
+import {BlockConfig} from "./block";
+
+declare type MessagesModelCollection = {
+	collection: Record<number | string, MessagesModelState>,
+	// @ts-ignore
+	chatCollection: Record<number, Set<number>>,
+	temporaryMessages: Record<string, MessagesModelState>,
+	// @ts-ignore
+	uploadingMessageCollection: Set<string>,
+}
+
+export type MessagesMessengerModel = MessengerModel<MessagesModelCollection>;
+
+export type MessagesModelState = {
+	id: number | string,
+	templateId: string,
+	previousId: number,
+	nextId: number,
+	chatId: number,
+	authorId: number,
+	date: Date,
+	text: string,
+	loadText: string,
+	params?: MessageParams,
+	files: Array<number | string>,
+	unread: boolean,
+	viewed: boolean,
+	viewedByOthers: boolean,
+	sending: boolean,
+	error: boolean,
+	errorReason: number,
+	retry: boolean,
+	isPlaying: boolean,
+	playingTime: number,
+	forward?: {
+		id: string,
+		userId: number,
+		chatTitle: string | null,
+		chatType: DialogType,
+	},
+	attach: Array<AttachConfig>,
+	keyboard: Array<KeyboardButtonConfig>,
+	richLinkId: number,
+	vote?: VoteModelState,
+	reactionsViewed: boolean,
+	lastReactionId: string,
+	stickerParams?: {
+		id: number,
+		packId: StickerPackId,
+		packType: StickerPackType,
+	},
+	visualState?: {
+		aiTaskStatus?: string | null,
+		type?: string | null,
+	},
+	block: BlockConfig | null,
+}
+
+declare type MessageParams = {
+	ATTACH?: Array<Object>,
+	FILE_ID?: Array<Object>,
+	TS: string,
+	REACTION: Object, // Don't use. See property reactions
+	URL_ONLY?: 'Y' | 'N',
+	URL_ID?: Array<string>,
+	componentId: string,
+	COMPONENT_PARAMS?: Object,
+	CHAT_MESSAGE?: number,
+	STICKER_PARAMS: {
+		id: number,
+		packId: StickerPackId,
+		packType: StickerPackType,
+	},
+	replyId: number,
+	AI_TASK_TRIGGER_MESSAGE_ID: number,
+}
+
+export type MessagesModelActions =
+	'messagesModel/forceUpdateByChatId'
+	| 'messagesModel/store'
+	| 'messagesModel/storeToLocalDatabase'
+	| 'messagesModel/setFromLocalDatabase'
+	| 'messagesModel/setFromPush'
+	| 'messagesModel/setFromSync'
+	| 'messagesModel/add'
+	| 'messagesModel/addToChatCollection'
+	| 'messagesModel/setPinned'
+	| 'messagesModel/updateWithId'
+	| 'messagesModel/update'
+	| 'messagesModel/updateList'
+	| 'messagesModel/updateListFromSync'
+	| 'messagesModel/updateReactionState'
+	| 'messagesModel/updateVisualState'
+	| 'messagesModel/updateParams'
+	| 'messagesModel/delete'
+	| 'messagesModel/readMessages'
+	| 'messagesModel/setViewedByOthers'
+	| 'messagesModel/updateLoadTextProgress'
+	| 'messagesModel/setChatCollection'
+	| 'messagesModel/deleteByIdList'
+	| 'messagesModel/setTemporaryMessages'
+	| 'messagesModel/deleteTemporaryMessage'
+	| 'messagesModel/deleteTemporaryMessages'
+	| 'messagesModel/deleteByChatId'
+	| 'messagesModel/deleteAttach'
+	| 'messagesModel/clearChatCollection'
+	| 'messagesModel/disableKeyboardByMessageId'
+	| 'messagesModel/setPlayingState'
+	| 'messagesModel/interruptTaskAnimationMessages'
+
+export type MessagesModelMutation =
+	'messagesModel/setChatCollection'
+	| 'messagesModel/store'
+	| 'messagesModel/setFromPush'
+	| 'messagesModel/setPinned'
+	| 'messagesModel/updateWithId'
+	| 'messagesModel/update'
+	| 'messagesModel/delete'
+	| 'messagesModel/deleteByChatId'
+	| 'messagesModel/clearCollection'
+	| 'messagesModel/setTemporaryMessages'
+	| 'messagesModel/deleteTemporaryMessage'
+	| 'messagesModel/deleteTemporaryMessages'
+
+/* region mutation types */
+
+export type MessagesSetChatCollectionActions =
+	'forceUpdateByChatId'
+	| 'setChatCollection'
+	| 'add'
+	| 'addToChatCollection'
+	;
+export interface MessagesSetChatCollectionData extends PayloadData
+{
+	messageList: Array<MessagesModelState>;
+}
+
+
+export type MessagesStoreActions =
+	'forceUpdateByChatId'
+	| 'setChatCollection'
+	| 'store'
+	| 'add'
+	;
+export interface MessagesStoreData extends PayloadData
+{
+	messageList: Array<MessagesModelState>;
+}
+
+
+export type MessagesSetTemporaryMessagesActions = 'setTemporaryMessages';
+export interface MessagesSetTemporaryMessagesData extends PayloadData
+{
+	messageList: Array<MessagesModelState>;
+}
+
+
+export type MessagesSetPinnedActions = 'setPinned';
+export interface MessagesSetPinnedData extends PayloadData
+{
+	chatId: number;
+	pinnedMessageIds: Array<number>;
+}
+
+
+export type MessagesUpdateWithIdActions = 'updateWithId';
+export interface MessagesUpdateWithIdData extends PayloadData
+{
+	id: number;
+	fields: Partial<MessagesModelState>;
+}
+
+
+export type MessagesUpdateActions =
+	'update'
+	| 'updateList'
+	| 'readMessages'
+	| 'setViewedByOthers'
+	| 'updateLoadTextProgress'
+	| 'updateReactionState'
+	| 'updateVisualState'
+	| 'setPlayingState'
+	| 'deleteAttach'
+	;
+export type MessageUpdateData =
+	{
+		id: number;
+		fields: Partial<MessagesModelState>;
+	}
+
+export interface MessagesUpdateData extends PayloadData
+{
+	id?: number;
+	fields?: Partial<MessagesModelState>;
+	messageList?: Array<MessageUpdateData>;
+}
+
+
+export type MessagesDeleteActions =
+	'deleteByIdList'
+	| 'delete'
+	;
+export interface MessagesDeleteData extends PayloadData
+{
+	messageIdList: Array<MessageId>;
+}
+
+
+export type MessagesDeleteByChatIdActions = 'deleteByChatId';
+export interface MessagesDeleteByChatIdData extends PayloadData
+{
+	chatId: number;
+}
+
+
+export type MessagesDeleteTemporaryMessageActions = 'deleteTemporaryMessage';
+export interface MessagesDeleteTemporaryMessageData extends PayloadData
+{
+	id: number
+}
+
+
+export type MessagesDeleteTemporaryMessagesActions = 'deleteTemporaryMessages';
+export interface MessagesDeleteTemporaryMessagesData extends PayloadData
+{
+	ids: Array<number>;
+}
+
+
+export type MessagesClearCollectionActions = 'setChatCollection'
+export interface MessagesClearCollectionData extends PayloadData
+{
+	chatId: number;
+}
+
+export type MessagesAddToUploadingCollectionActions = 'add'
+export interface MessagesAddToUploadingCollectionData extends PayloadData
+{
+	id: string;
+}
+
+export type MessagesDeleteFromUploadingCollectionActions = 'delete' | 'updateWithId' | 'update'
+export interface MessagesDeleteFromUploadingCollectionData extends PayloadData
+{
+	id: string;
+}
+
+export type MessagesSetFromPushActions = 'setFromPush';
+export interface MessagesSetFromPushData extends PayloadData
+{
+	messageList: Array<MessagesModelState>,
+}
+
+
+/* endregion mutation types */

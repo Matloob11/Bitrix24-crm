@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_IMPORT_PAGE_TITLE_COMPANY"] = "Importuj firmy";
+$MESS["CRM_IMPORT_PAGE_TITLE_CONTACT"] = "Importuj kontakty (#ORIGIN#)";
+$MESS["CRM_IMPORT_PAGE_TITLE_DEAL"] = "Importuj deale";
+$MESS["CRM_IMPORT_PAGE_TITLE_DEFAULT"] = "Importuj";
+$MESS["CRM_IMPORT_PAGE_TITLE_DYNAMIC"] = "Importuj elementy „#ENTITY_TYPE_CAPTION#”";
+$MESS["CRM_IMPORT_PAGE_TITLE_LEAD"] = "Importuj leady";
+$MESS["CRM_IMPORT_PAGE_TITLE_QUOTE"] = "Importuj oferty";
+$MESS["CRM_IMPORT_PAGE_TITLE_SMART_INVOICE"] = "Importuj faktury";

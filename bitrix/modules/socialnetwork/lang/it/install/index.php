@@ -1,0 +1,6 @@
+<?php
+$MESS["SONET_INSTALL_NAME"] = "Social Network";
+$MESS["SONET_INSTALL_UF_BLOG_POST_VOTE"] = "Sondaggi sui social network";
+$MESS["SONET_UF_SG_DEPT_EDIT_FORM_LABEL"] = "Reparti";
+$MESS["SONET_UF_SG_DEPT_LIST_COLUMN_LABEL"] = "Reparti";
+$MESS["SONET_UF_SG_DEPT_LIST_FILTER_LABEL"] = "Reparti";

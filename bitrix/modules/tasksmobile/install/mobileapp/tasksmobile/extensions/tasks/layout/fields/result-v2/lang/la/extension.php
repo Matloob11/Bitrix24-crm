@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_PLACEHOLDER"] = "Utilice @ para mencionar a una persona, grupo de trabajo o departamento";
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_TITLE"] = "Resumen de estado";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_ADD_RESULT"] = "Agregar otro resumen de estado";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE"] = "Resúmenes de estado";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE_MULTI"] = "Resúmenes de estado: #COUNT#";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_0"] = "Mostrar #COUNT# resumen más";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_1"] = "Mostrar #COUNT# resúmenes más";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_2"] = "Mostrar #COUNT# resúmenes más";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_TITLE"] = "Resumen de estado";
+$MESS["TASKS_FIELDS_RESULT_V2_EMPTY_ERROR"] = "Introducir el resumen de estado de la tarea";
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_WIDGET_TITLE"] = "Resúmenes de estado";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_REMOVE"] = "Eliminar el resumen de estado";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_UPDATE"] = "Editar el resumen de estado";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_DESCRIPTION"] = "¿Desea desmarcar el comentario como resumen del estado de la tarea? El comentario permanecerá en la tarea.";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_TITLE"] = "Eliminar resultado";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_YES"] = "Sí";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ACTION_COMPLETE"] = "Tarea completa";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ANOTHER_RESULTS"] = "Otros resúmenes de estado";

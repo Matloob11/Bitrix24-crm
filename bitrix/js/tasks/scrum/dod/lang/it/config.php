@@ -1,0 +1,27 @@
+<?php
+$MESS["TASKS_SCRUM_BUTTON_TEXT_REMOVE"] = "Elimina";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE"] = "Sei sicuro di voler eliminare il tipo?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_NEW"] = "Eliminare l'elenco di controllo <b>#name#<b>?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_TITLE"] = "Elimina elenco di controllo";
+$MESS["TASKS_SCRUM_CREATE_TYPE"] = "Crea tipo";
+$MESS["TASKS_SCRUM_CREATE_TYPE_PROMPT"] = "Crea nuovo tipo di incarico";
+$MESS["TASKS_SCRUM_DOD_BTN_CREATE_TYPE"] = "Aggiungi";
+$MESS["TASKS_SCRUM_DOD_BTN_EDIT_TYPE"] = "Rinomina";
+$MESS["TASKS_SCRUM_DOD_BTN_REMOVE_TYPE"] = "Elimina";
+$MESS["TASKS_SCRUM_DOD_BTN_SAVE"] = "Salva";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_COMPLETE_BUTTON_TEXT"] = "Chiudi l'incarico";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_SAVE_BUTTON_TEXT"] = "Salva";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_TEXT_COMPLETE"] = "Vuoi chiudere l'incarico come completato o salvare la Definizione di fatto?";
+$MESS["TASKS_SCRUM_DOD_INFO_TEXT"] = "Tutti gli elementi in Definizione di fatto devono essere completati per completare l'incarico";
+$MESS["TASKS_SCRUM_DOD_LABEL_EMPTY"] = "La Definizione di fatto deve essere <span>configurata</span> ";
+$MESS["TASKS_SCRUM_DOD_LABEL_TYPES"] = "Tipo di incarico";
+$MESS["TASKS_SCRUM_DOD_LABEL_USER_SELECTOR"] = "Chiedi un DoD:";
+$MESS["TASKS_SCRUM_DOD_OPTIONS_REQUIRED_LABEL"] = "Questi elementi sono necessari per il completamento";
+$MESS["TASKS_SCRUM_DOD_POPUP_EMPTY_NAME"] = "Inserisci nome";
+$MESS["TASKS_SCRUM_DOD_POPUP_INPUT_PLACEHOLDER"] = "Nome";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_CREATE"] = "Crea elenco di controllo";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_EDIT"] = "Rinomina elenco di controllo";
+$MESS["TASKS_SCRUM_DOD_SAVE_SETTINGS_NOTIFY"] = "Le impostazioni sono state salvate.";
+$MESS["TASKS_SCRUM_DOD_TITLE"] = "Definizione di fatto";
+$MESS["TASKS_SCRUM_DOD_TOOLBAR_SETTINGS"] = "Configura";
+$MESS["TSD_ERROR_POPUP_TITLE"] = "Questo è un errore.";

@@ -1,0 +1,5 @@
+<?php
+$MESS["CRM_TIMELINE_MENU_CANCEL"] = "Annulla";
+$MESS["CRM_TIMELINE_MENU_DELETE"] = "Elimina";
+$MESS["CRM_TIMELINE_MENU_EDIT"] = "Modifica";
+$MESS["CRM_TIMELINE_MENU_VIEW"] = "Visualizzazione";

@@ -1,0 +1,21 @@
+<?php
+$MESS["IBEL_BIZPROC_ACTIVE_WORKFLOWS"] = "Aktywne workflowy";
+$MESS["IBEL_BIZPROC_ACTIVE_WORKFLOWS_EMPTY"] = "Obecnie nie ma żadnych aktywnych workflowów";
+$MESS["IBEL_BIZPROC_APPLY"] = "Uruchom polecenia";
+$MESS["IBEL_BIZPROC_CANCEL"] = "Anuluj";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS"] = "Ukończone workflowy";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_EMPTY"] = "Nie ma żadnych workflowów";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_SHOW"] = "Pokaż";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_SHOW_MORE"] = "Pokaż więcej";
+$MESS["IBEL_BIZPROC_DATE_MSGVER_1"] = "Data bieżącego statusu:";
+$MESS["IBEL_BIZPROC_DEL"] = "usuń";
+$MESS["IBEL_BIZPROC_LOG"] = "dziennik";
+$MESS["IBEL_BIZPROC_LOG_TITLE"] = "Dziennik workflowu";
+$MESS["IBEL_BIZPROC_NEW"] = "Nowy proces biznesowy";
+$MESS["IBEL_BIZPROC_RUN_CMD"] = "Uruchom działanie";
+$MESS["IBEL_BIZPROC_RUN_CMD_NO"] = "Nie";
+$MESS["IBEL_BIZPROC_SAVE"] = "Zapisz";
+$MESS["IBEL_BIZPROC_START"] = "Przeprowadź nowy proces biznesowy";
+$MESS["IBEL_BIZPROC_STATE_MSGVER_1"] = "Bieżący status:";
+$MESS["IBEL_BIZPROC_STOP"] = "zatrzymaj";
+$MESS["IBEL_BIZPROC_TASKS_MSGVER_1"] = "Zadania w ramach workflowu:";

@@ -1,0 +1,24 @@
+<?php
+$MESS["IM_CALL_MASK_BEAR_1"] = "Przyjacielski miś";
+$MESS["IM_CALL_MASK_BEAR_2"] = "Misio";
+$MESS["IM_CALL_MASK_BEAR_3"] = "Miś mądrala";
+$MESS["IM_CALL_MASK_BEAR_4"] = "Przebiegły miś";
+$MESS["IM_CALL_MASK_FOX_1"] = "Psotny lisek";
+$MESS["IM_CALL_MASK_FOX_2"] = "Lis spryciarz";
+$MESS["IM_CALL_MASK_FOX_3"] = "Muzyczny lis";
+$MESS["IM_CALL_MASK_FOX_4"] = "Lisi DJ";
+$MESS["IM_CALL_MASK_OWL_1"] = "Wszechwiedząca sowa";
+$MESS["IM_CALL_MASK_OWL_2"] = "Ciekawska sowa";
+$MESS["IM_CALL_MASK_OWL_3"] = "Mądra sowa";
+$MESS["IM_CALL_MASK_PANTHER_1"] = "Dzika pantera";
+$MESS["IM_CALL_MASK_PANTHER_2"] = "Urocza pantera";
+$MESS["IM_CALL_MASK_PANTHER_3"] = "Mądra pantera";
+$MESS["IM_CALL_MASK_PANTHER_4"] = "Stylowa pantera";
+$MESS["IM_CALL_MASK_POLEBEAR_1"] = "Niedźwiedź polarny";
+$MESS["IM_CALL_MASK_POLEBEAR_2"] = "Stylowy niedźwiedź";
+$MESS["IM_CALL_MASK_POLEBEAR_3"] = "Mądry miś";
+$MESS["IM_CALL_MASK_POLEBEAR_4"] = "Elegancki niedźwiedź";
+$MESS["IM_CALL_MASK_SANTA_1"] = "Czerwony Święty Mikołaj w okularach";
+$MESS["IM_CALL_MASK_SANTA_2"] = "Czerwony Święty Mikołaj";
+$MESS["IM_CALL_MASK_SANTA_3"] = "Niebieski Święty Mikołaj w okularach";
+$MESS["IM_CALL_MASK_SANTA_4"] = "Niebieski Święty Mikołaj";

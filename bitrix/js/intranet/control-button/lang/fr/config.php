@@ -1,0 +1,8 @@
+<?php
+$MESS["INTRANET_JS_CONTROL_BUTTON_CHAT"] = "Ouvrir le chat";
+$MESS["INTRANET_JS_CONTROL_BUTTON_MEETING"] = "Créer un événement";
+$MESS["INTRANET_JS_CONTROL_BUTTON_NAME"] = "Appel vidéo HD";
+$MESS["INTRANET_JS_CONTROL_BUTTON_NAME_MSG_1"] = "Appel vidéo";
+$MESS["INTRANET_JS_CONTROL_BUTTON_POST"] = "Publier sur les Actualités";
+$MESS["INTRANET_JS_CONTROL_BUTTON_TASK"] = "Créer une tâche";
+$MESS["INTRANET_JS_CONTROL_BUTTON_VIDEOCALL"] = "Démarrer un appel vidéo";

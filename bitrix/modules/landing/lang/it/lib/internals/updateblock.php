@@ -1,0 +1,6 @@
+<?
+$MESS["LANDING_TABLE_FIELD_CREATED_BY_ID"] = "Creato da ID utente";
+$MESS["LANDING_TABLE_FIELD_DATE_CREATE"] = "Creato il";
+$MESS["LANDING_TABLE_FIELD_DATE_MODIFY"] = "Modificato il";
+$MESS["LANDING_TABLE_FIELD_MODIFIED_BY_ID"] = "Modificato da ID utente";
+?>

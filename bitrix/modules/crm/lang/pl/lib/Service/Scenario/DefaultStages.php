@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_SCENARIO_DEFAULT_STAGES_CLIENT"] = "Zatwierdzenie";
+$MESS["CRM_SCENARIO_DEFAULT_STAGES_FAIL"] = "Niepowodzenie";
+$MESS["CRM_SCENARIO_DEFAULT_STAGES_NEW"] = "Start";
+$MESS["CRM_SCENARIO_DEFAULT_STAGES_PREPARATION"] = "Przygotuj";
+$MESS["CRM_SCENARIO_DEFAULT_STAGES_SUCCESS"] = "Powodzenie";
+$MESS["CRM_SCENARIO_ERROR_NO_DATA"] = "Brak danych do stworzenia domyślnych etapów";

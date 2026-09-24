@@ -1,0 +1,12 @@
+<?php
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_AVERAGE_EXECUTION_TIME_DESCRIPTION"] = "Configure o fluxo de trabalho para poupar tempo de todos os envolvidos e concluir cada etapa mais rápido";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_AVERAGE_EXECUTION_TIME_LINK_TITLE"] = "Técnicas de otimização do fluxo de trabalho";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_AVERAGE_EXECUTION_TIME_NO_DATA"] = "nenhum dado";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_AVERAGE_EXECUTION_TIME_NO_DATA_DESCRIPTION"] = "Dados insuficientes para calcular o tempo médio";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_AVERAGE_EXECUTION_TIME_TITLE"] = "Tempo médio de execução:";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_EMPTY_STATE_DESCRIPTION"] = "Nenhuma descrição";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_ERROR_CONSTANTS_NOT_TUNED"] = "Não é possível iniciar o fluxo de trabalho porque as constantes não estão configuradas. Entre em contato com o administrador do seu Bitrix24";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_NEXT_STEP_BUTTON_FINISH_TEXT"] = "Iniciar";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_NEXT_STEP_BUTTON_TEXT"] = "Continuar";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_SUCCESS_MESSAGE"] = "Fluxo de trabalho iniciado";
+$MESS["M_BP_WORKFLOW_STARTER_DESCRIPTION_STEP_TITLE"] = "Instruções";

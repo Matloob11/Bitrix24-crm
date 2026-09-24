@@ -1,0 +1,7 @@
+<?php
+$MESS["MOBILE_USERS_FILTER_DEFAULT_DEPARTMENT_TITLE"] = "Tutti i reparti e gli utenti";
+$MESS["MOBILE_USERS_MORE_MENU_COMPANY_STRUCTURE"] = "Struttura aziendale";
+$MESS["MOBILE_USERS_MORE_MENU_COMPANY_STRUCTURE_HINT_TEXT"] = "Crea una struttura aziendale sul web dal tuo browser";
+$MESS["MOBILE_USERS_MORE_MENU_SORTING_TYPE_ALPHABET"] = "Dalla A alla Z";
+$MESS["MOBILE_USERS_MORE_MENU_SORTING_TYPE_DATE"] = "Per data di invito";
+$MESS["MOBILE_USERS_MORE_MENU_SORTING_TYPE_STRUCTURE"] = "Per struttura";

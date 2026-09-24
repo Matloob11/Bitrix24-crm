@@ -1,0 +1,18 @@
+<?php
+$MESS["TASKS_PRESET_ACTIVE_REGULAR"] = "Récurrent";
+$MESS["TASKS_PRESET_NEW_USER"] = "Pour les nouveaux utilisateurs";
+$MESS["TASKS_TEMPLATES_LIST_BATCH_DELETE_ERROR_MESSAGE"] = "Permissions insuffisantes pour supprimer des modèles : #TEMPLATE_IDS#";
+$MESS["TASKS_TEMPLATES_LIST_CLOSE"] = "Fermer";
+$MESS["TASKS_TEMPLATES_LIST_TITLE_ERROR"] = "Erreur";
+$MESS["TASKS_TEMPLATES_NO"] = "Non";
+$MESS["TASKS_TEMPLATES_YES"] = "Oui";
+$MESS["TASKS_TEMPLATE_ASSIGNEE"] = "Responsable";
+$MESS["TASKS_TEMPLATE_CREATED_BY"] = "Créé par";
+$MESS["TASKS_TEMPLATE_DEADLINE_AFTER"] = "Date limite";
+$MESS["TASKS_TEMPLATE_FOR_NEW_USER"] = "Pour les nouveaux utilisateurs";
+$MESS["TASKS_TEMPLATE_GROUP_ID"] = "Groupe";
+$MESS["TASKS_TEMPLATE_ID"] = "ID";
+$MESS["TASKS_TEMPLATE_PRIORITY"] = "PrioritéPriorité";
+$MESS["TASKS_TEMPLATE_REGULAR"] = "Récurrent";
+$MESS["TASKS_TEMPLATE_TAGS"] = "Balises";
+$MESS["TASKS_TEMPLATE_TITLE"] = "Prénom";

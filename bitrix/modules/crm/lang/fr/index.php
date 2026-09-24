@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_INSTALL_DESCRIPTION"] = "Le module permet de créer le CRM.";
+$MESS["CRM_INSTALL_NAME"] = "CRM";
+$MESS["CRM_INSTALL_TITLE"] = "Installation du module CRM";
+$MESS["CRM_SALE_MODULE_NOT_INSTALL"] = "Veuillez installer le module Boutique en ligne avant d'installer le CRM.";
+$MESS["CRM_UNINSTALL_TITLE"] = "Suppression du module CRM";

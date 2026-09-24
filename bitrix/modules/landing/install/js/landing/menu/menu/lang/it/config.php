@@ -1,0 +1,5 @@
+<?
+$MESS["LANDING_MENU_APPLY_BUTTON_LABEL"] = "Applica";
+$MESS["LANDING_MENU_CLOSE_BUTTON_LABEL"] = "Nascondi campo";
+$MESS["LANDING_MENU_CREATE_NEW_PAGE"] = "Nuova pagina";
+?>

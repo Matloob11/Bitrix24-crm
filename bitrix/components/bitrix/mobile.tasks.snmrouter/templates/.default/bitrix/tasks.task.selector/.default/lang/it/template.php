@@ -1,0 +1,21 @@
+<?php
+$MESS["TASKS_ALL_TASKS"] = "Tutto";
+$MESS["TASKS_EMPTY_LIST"] = "L'elenco incarichi è vuoto";
+$MESS["TASKS_EMPTY_LIST1"] = "Crea incarico";
+$MESS["TASKS_EMPTY_LIST2"] = "Nessun incarico trovato";
+$MESS["TASKS_PRIORITY_2"] = "Priorità alta";
+$MESS["TASKS_STATUS_METASTATE_EXPIRED"] = "Scaduto";
+$MESS["TASKS_STATUS_STATE_COMPLETED"] = "Completato";
+$MESS["TASKS_STATUS_STATE_DECLINED"] = "Rifiutato";
+$MESS["TASKS_STATUS_STATE_DEFERRED"] = "Posticipato";
+$MESS["TASKS_STATUS_STATE_IN_PROGRESS"] = "In corso";
+$MESS["TASKS_STATUS_STATE_NEW"] = "Nuovo";
+$MESS["TASKS_STATUS_STATE_PENDING"] = "In sospeso";
+$MESS["TASKS_STATUS_STATE_SUPPOSEDLY_COMPLETED"] = "Revisione in sospeso";
+$MESS["TASKS_STATUS_STATE_UNKNOWN"] = "Sconosciuto";
+$MESS["TASK_COLUMN_CREATED_BY"] = "creato da";
+$MESS["TASK_COLUMN_DEADLINE"] = "scadenza";
+$MESS["TASK_COLUMN_PRIORITY"] = "priorità";
+$MESS["TASK_COLUMN_RESPONSIBLE_ID_MSGVER_1"] = "responsabile";
+$MESS["TASK_COLUMN_STATUS"] = "stato";
+$MESS["TASK_EXPIRED"] = "Scaduto";

@@ -1,0 +1,24 @@
+<?php
+$MESS["IM_CALL_MASK_BEAR_1"] = "Ours amical";
+$MESS["IM_CALL_MASK_BEAR_2"] = "Ours cool";
+$MESS["IM_CALL_MASK_BEAR_3"] = "Ours nerdy";
+$MESS["IM_CALL_MASK_BEAR_4"] = "Ours malin";
+$MESS["IM_CALL_MASK_FOX_1"] = "Renard espiègle";
+$MESS["IM_CALL_MASK_FOX_2"] = "Renard nerdy";
+$MESS["IM_CALL_MASK_FOX_3"] = "Renard musical";
+$MESS["IM_CALL_MASK_FOX_4"] = "DJ Renard";
+$MESS["IM_CALL_MASK_OWL_1"] = "Hibou savant";
+$MESS["IM_CALL_MASK_OWL_2"] = "Hibou curieux";
+$MESS["IM_CALL_MASK_OWL_3"] = "Hibou sage";
+$MESS["IM_CALL_MASK_PANTHER_1"] = "Panthère sauvage";
+$MESS["IM_CALL_MASK_PANTHER_2"] = "Panthère mignonne";
+$MESS["IM_CALL_MASK_PANTHER_3"] = "Panthère sage";
+$MESS["IM_CALL_MASK_PANTHER_4"] = "Panthère stylée";
+$MESS["IM_CALL_MASK_POLEBEAR_1"] = "Ours polaire";
+$MESS["IM_CALL_MASK_POLEBEAR_2"] = "Ours élégant";
+$MESS["IM_CALL_MASK_POLEBEAR_3"] = "Ours sage";
+$MESS["IM_CALL_MASK_POLEBEAR_4"] = "Ourse chic";
+$MESS["IM_CALL_MASK_SANTA_1"] = "Père Noël avec lunettes";
+$MESS["IM_CALL_MASK_SANTA_2"] = "Père Noël";
+$MESS["IM_CALL_MASK_SANTA_3"] = "Père Noël bleu avec lunettes";
+$MESS["IM_CALL_MASK_SANTA_4"] = "Père Noël bleu";

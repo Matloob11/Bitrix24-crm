@@ -1,0 +1,10 @@
+<?php
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_BUILD"] = "Tworzenie raportu";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_CLOSE"] = "Zamknij";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_ERROR_TITLE"] = "To jest błąd.";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_SETTINGS_HINT"] = "Aby uzyskać prawidłowy raport, musisz skonfigurować ustawienia reklam";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_STATUS_ENABLED"] = "Włącz";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_STATUS_PAUSE"] = "Pauza";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_TITLE_0"] = "Skuteczność kampanii";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_TITLE_1"] = "Skuteczność grupy reklam";
+$MESS["CRM_REPORT_TRACKING_AD_REPORT_TITLE_100"] = "Skuteczność słów kluczowych";

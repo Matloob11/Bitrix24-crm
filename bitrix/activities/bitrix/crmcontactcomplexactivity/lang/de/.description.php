@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_COMPLEX_ACTIVITY_CONTACT_DESCRIPTION"] = "Erstellt und ändert Kontakte, fügt Beobachter hinzu und führt andere kontaktbezogene Aktionen aus.";
+$MESS["CRM_COMPLEX_ACTIVITY_CONTACT_DESCRIPTION_NODE_ACTION_CHANGE"] = "Kontakt ändern";
+$MESS["CRM_COMPLEX_ACTIVITY_CONTACT_DESCRIPTION_NODE_ACTION_DELETE"] = "Kontakt löschen";
+$MESS["CRM_COMPLEX_ACTIVITY_CONTACT_DESCRIPTION_NODE_ACTION_SET_COMPANY"] = "Verknüpftes Unternehmen ändern";
+$MESS["CRM_COMPLEX_ACTIVITY_CONTACT_NAME"] = "Kontakt";

@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_PERMISSIONS_POPUP_ADD"] = "Қосу";
+$MESS["NOTE_PERMISSIONS_POPUP_ALL_EMPLOYEES"] = "Барлық қызметкерлер";
+$MESS["NOTE_PERMISSIONS_POPUP_CANCEL"] = "Болдырмау";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_BUTTON"] = "Жасау";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_ERROR"] = "Кеңістік құру мүмкін болмады, сәл кейінірек қайталап көріңіз";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_SUCCESS"] = "Кеңістік құрылды";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_EDIT_DOCUMENT"] = "Құжатты өңдеу: мәтінді өңдеу, блоктарды қосу және файлдарды тіркеу";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MANAGE"] = "Құжаттарды жасау, жылжыту, мұрағаттау және жою, сондай-ақ кеңістіктің атын өзгерту";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MODERATE"] = "Кеңістікті жою және оған және оның құжаттарына кіру құқығын реттеу. Кеңістіктің барлық баптауларына толық қолжетімділік";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW"] = "Кеңістік құжаттарын қарау және тіркелген файлдарды жүктеу";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW_DOCUMENT"] = "Құжатты қарау және тіркелген файлдарды жүктеу";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_EDIT"] = "Өңдеу";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MANAGE"] = "Модерация";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MODERATE"] = "Әкімшілік";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_VIEW"] = "Көру";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR"] = "Кеңістік баптауларын жүктеу мүмкін болмады, сәл кейінірек қайталап көріңіз";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR_DOCUMENT"] = "Құжат құқығын жүктеу мүмкін болмады, сәл кейінірек қайталап көріңіз";
+$MESS["NOTE_PERMISSIONS_POPUP_NAME_PLACEHOLDER"] = "Кеңістіктің атауы";
+$MESS["NOTE_PERMISSIONS_POPUP_ROLLBACK_FAILED"] = "Кеңістік құру мүмкін болмады, бетті жаңартып көріңіз";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE"] = "Сақтау";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR"] = "Кеңістік баптауларын сақтау мүмкін болмады, сәл кейінірек қайталап көріңіз";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR_DOCUMENT"] = "Құжат құқығын сақтау мүмкін болмады, сәл кейінірек қайталап көріңіз";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS"] = "Кеңістік баптаулары сақталды";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS_DOCUMENT"] = "Құжатқа құқықтар сақталды";
+$MESS["NOTE_PERMISSIONS_POPUP_TITLE_EDIT_DOCUMENT"] = "Құжатқа қолжетімділік құқықтары";

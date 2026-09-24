@@ -1,0 +1,25 @@
+<?php
+$MESS["BIZPROC_MODULE_NOT_INSTALLED"] = "Il modulo Processi aziendali non è installato.";
+$MESS["CRM_FIELD_ADDRESS"] = "Indirizzo";
+$MESS["CRM_FIELD_ADDRESS_LEGAL"] = "Indirizzo legale";
+$MESS["CRM_FIELD_ASSIGNED_BY_ID"] = "Responsabile";
+$MESS["CRM_FIELD_COMMENTS"] = "Commento";
+$MESS["CRM_FIELD_COMPANY_CONTACTS"] = "Contatti";
+$MESS["CRM_FIELD_COMPANY_QUOTE_MSGVER_1"] = "Stime dell'azienda";
+$MESS["CRM_FIELD_CREATED_BY_ID"] = "Creato da";
+$MESS["CRM_FIELD_CURRENCY_ID"] = "Valuta";
+$MESS["CRM_FIELD_EMAIL"] = "E-mail";
+$MESS["CRM_FIELD_ENTITY_TREE"] = "Dipendenze";
+$MESS["CRM_FIELD_FIND"] = "Ricerca";
+$MESS["CRM_FIELD_LOGO"] = "Logo";
+$MESS["CRM_FIELD_MODIFY_BY_ID"] = "Modificato da";
+$MESS["CRM_FIELD_PHONE"] = "Telefono";
+$MESS["CRM_FIELD_TITLE"] = "Nome Azienda";
+$MESS["CRM_FIELD_UTM"] = "Parametri UTM";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";
+$MESS["CRM_SECTION_ACTIVITIES"] = "Attività";
+$MESS["CRM_SECTION_ADDITIONAL"] = "Altro";
+$MESS["CRM_SECTION_CONTACTS"] = "Contatti";
+$MESS["CRM_SECTION_DEALS"] = "Affari";
+$MESS["CRM_SECTION_LEADS"] = "Lead";

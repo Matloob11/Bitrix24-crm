@@ -1,0 +1,10 @@
+<?php
+$MESS["M_CRM_STAGE_DETAIL_DEFAULT_STAGE_DEFAULT_NAME"] = "Nova etapa";
+$MESS["M_CRM_STAGE_DETAIL_DEFAULT_STAGE_NAME"] = "Nome";
+$MESS["M_CRM_STAGE_DETAIL_DELETE"] = "Excluir etapa";
+$MESS["M_CRM_STAGE_DETAIL_DELETE_OK"] = "Excluir";
+$MESS["M_CRM_STAGE_DETAIL_DELETE_TEXT"] = "Você tem certeza que deseja excluir a etapa?";
+$MESS["M_CRM_STAGE_DETAIL_FUNNEL"] = "Etapa \"#STAGE_NAME#\"";
+$MESS["M_CRM_STAGE_DETAIL_FUNNEL_EMPTY"] = "Etapa sem título";
+$MESS["M_CRM_STAGE_DETAIL_NAME"] = "Nome da etapa";
+$MESS["M_CRM_STAGE_DETAIL_SAVE"] = "Salvar";

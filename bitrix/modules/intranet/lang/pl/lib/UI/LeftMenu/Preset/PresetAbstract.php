@@ -1,0 +1,6 @@
+<?php
+$MESS["MENU_APPLICATIONS"] = "Aplikacje";
+$MESS["MENU_PRESET_CRM_TITLE"] = "CRM";
+$MESS["MENU_PRESET_SITES_TITLE"] = "Strony";
+$MESS["MENU_PRESET_TASKS_TITLE"] = "Zadania";
+$MESS["MENU_TEAMWORK"] = "Współpraca";

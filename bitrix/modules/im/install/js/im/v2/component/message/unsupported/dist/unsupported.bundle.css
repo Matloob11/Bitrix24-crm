@@ -1,0 +1,27 @@
+.bx-im-message-unsupported__scope {
+	--im-message-unsupported__color_text: var(--im-color-palette-gray-60);
+}
+
+.bx-im-message-unsupported__container {
+	padding: var(--im-message-base__padding_body);
+}
+
+.bx-im-message-unsupported__content {
+	display: flex;
+	align-items: center;
+	margin-left: -5px;
+}
+
+.bx-im-message-unsupported__icon {
+	width: 17px;
+	height: 17px;
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12' fill='none' viewBox='0 0 14 12'%3E%3Cpath fill='%23a8adb4' fill-rule='evenodd' d='m13.026 9.778-5.16-8.593a1.007 1.007 0 0 0-1.733 0L.973 9.778a1.012 1.012 0 0 0 .872 1.531h10.318a1.01 1.01 0 0 0 .863-1.53M6.26 4.18c0-.38.304-.685.685-.685h.093c.38 0 .685.305.685.685v2.563c0 .38-.305.685-.685.685h-.093a.68.68 0 0 1-.685-.685zm1.598 4.974a.866.866 0 0 1-.863.862.866.866 0 0 1-.862-.862c0-.474.389-.863.862-.863.474 0 .863.389.863.863' clip-rule='evenodd'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-right: 3px;
+}
+
+.bx-im-message-unsupported__text {
+	font: var(--im-font-size-lg) var(--im-font-family-system);
+	color: var(--im-message-unsupported__color_text);
+}

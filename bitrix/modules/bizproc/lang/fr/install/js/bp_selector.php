@@ -1,0 +1,17 @@
+<?php
+$MESS["BIZPROC_JS_BP_SELECTOR_ACTIVITIES"] = "Résultats supplémentaires";
+$MESS["BIZPROC_JS_BP_SELECTOR_CONSTANTS"] = "Constantes";
+$MESS["BIZPROC_JS_BP_SELECTOR_DATE"] = "Date actuelle";
+$MESS["BIZPROC_JS_BP_SELECTOR_DOCUMENT"] = "Document";
+$MESS["BIZPROC_JS_BP_SELECTOR_EMPTY_LIST"] = "Aucune entrée trouvée.";
+$MESS["BIZPROC_JS_BP_SELECTOR_EOL"] = "Caractères de fin de ligne";
+$MESS["BIZPROC_JS_BP_SELECTOR_FUNCTIONS"] = "Fonctions";
+$MESS["BIZPROC_JS_BP_SELECTOR_HOST_URL"] = "URL du site";
+$MESS["BIZPROC_JS_BP_SELECTOR_NOW"] = "Heure du serveur";
+$MESS["BIZPROC_JS_BP_SELECTOR_NOW_LOCAL"] = "Heure locale";
+$MESS["BIZPROC_JS_BP_SELECTOR_PARAMETERS"] = "Paramètres";
+$MESS["BIZPROC_JS_BP_SELECTOR_SYSTEM"] = "Système";
+$MESS["BIZPROC_JS_BP_SELECTOR_TARGET_USER"] = "Processus d'entreprise démarré par";
+$MESS["BIZPROC_JS_BP_SELECTOR_USER_ID"] = "Utilisateur actuel";
+$MESS["BIZPROC_JS_BP_SELECTOR_VARIABLES"] = "Variables";
+$MESS["BIZPROC_JS_BP_SELECTOR_WORKFLOW_ID"] = "ID du processus d'entreprise";

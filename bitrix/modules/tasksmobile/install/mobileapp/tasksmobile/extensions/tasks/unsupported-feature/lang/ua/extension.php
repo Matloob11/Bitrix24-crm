@@ -1,0 +1,22 @@
+<?php
+$MESS["TASKS_UNSUPPORTED_FEATURE_OPEN_WEB"] = "Налаштувати у вебверсії";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_BUTTON"] = "Перейти у вебверсію";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_FOOTNOTE"] = "У застосунку аналітика поки недоступна";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_DEEP_RESEARCH"] = "Користуйтеся шаблонами\nзвітів без складних налаштувань";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_METRIC"] = "Дивіться, де команда\nпрацює на межі";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_PROCESS"] = "Знаходьте завдання, які\nгальмують увесь проєкт";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_QR_TITLE"] = "Аналітика";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_TITLE"] = "Ухвалюйте рішення\nна основі даних";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_BUTTON"] = "Налаштувати у вебверсії";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_FOOTNOTE"] = "Після налаштування доступно в застосунку.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_CUSTOMER_VISIBILITY"] = "Замовник бачить виконавця,\nстатус завдання та терміни";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TEAM_LOAD"] = "Керівник бачить завантаження команди та вузькі місця";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TYPICAL_TASKS"] = "Об'єднайте типові завдання:\nдовідки, рахунки, дизайн";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_QR_TITLE"] = "Потоки";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_TITLE"] = "Потоки — черга завдань з авторозподілом";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_FOOTNOTE"] = "У застосунку скрам поки недоступний";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_BACKLOG"] = "Спільний беклог і спринти\nз чіткими цілями";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_DESKTOP"] = "Прозорий прогрес";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_PROCESS"] = "Фокус лише на завданнях\nпоточної ітерації";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_QR_TITLE"] = "Скрам";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_TITLE"] = "Керуйте проєктами\nза скрамом";

@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_MAIL_ACCESS_SELECTOR"] = "Бөлісу";
+$MESS["CRM_MAIL_ENTITY_TYPE"] = "Мән";
+$MESS["CRM_MAIL_ENTITY_TYPE2"] = "Байланыстыру";
+$MESS["CRM_MAIL_ENTITY_TYPE_UNI"] = "Жоқ";
+$MESS["CRM_MAIL_TEMPLATE_ADD_UNKNOWN_ERROR"] = "Пошта үлгісін жасау кезінде қате орын алды.";
+$MESS["CRM_MAIL_TEMPLATE_BODY"] = "Үлгі";
+$MESS["CRM_MAIL_TEMPLATE_CANCEL_BTN"] = "Болдырмау";
+$MESS["CRM_MAIL_TEMPLATE_DELETE_BTN"] = "Үлгіні жою";
+$MESS["CRM_MAIL_TEMPLATE_DELETE_DLG_MESSAGE"] = "Сіз бұл пошта үлгісін жойғыңыз келетініне сенімдісіз бе?";
+$MESS["CRM_MAIL_TEMPLATE_DELETE_UNKNOWN_ERROR"] = "Пошта үлгісін жою кезінде қате орын алды.";
+$MESS["CRM_MAIL_TEMPLATE_EMAIL_FROM"] = "Кімнен";
+$MESS["CRM_MAIL_TEMPLATE_IS_ACTIVE"] = "Белсенді";
+$MESS["CRM_MAIL_TEMPLATE_NOT_FOUND"] = "Пошта үлгісі табылмады!";
+$MESS["CRM_MAIL_TEMPLATE_SAVE_BTN"] = "Сақтау";
+$MESS["CRM_MAIL_TEMPLATE_SCOPE_MSGVER_1"] = "Қолжетімді";
+$MESS["CRM_MAIL_TEMPLATE_SENDER_MENU"] = "Жіберуші";
+$MESS["CRM_MAIL_TEMPLATE_SORT"] = "Сұрыптау индексі";
+$MESS["CRM_MAIL_TEMPLATE_SUBJECT"] = "Тақырып";
+$MESS["CRM_MAIL_TEMPLATE_SUBJECT_HINT"] = "Хабарлама тақырыбын енгізіңіз";
+$MESS["CRM_MAIL_TEMPLATE_TITLE"] = "Атауы";
+$MESS["CRM_MAIL_TEMPLATE_TITLE_HINT"] = "Атауын енгізіңіз";
+$MESS["CRM_MAIL_TEMPLATE_UPDATE_UNKNOWN_ERROR"] = "Пошта үлгісін жаңарту кезінде қате орын алды.";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Crm модулі орнатылмаған.";
+$MESS["CRM_PERMISSION_DENIED"] = "Қолжетімділікке тыйым салынған";

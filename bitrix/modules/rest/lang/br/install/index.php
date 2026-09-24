@@ -1,0 +1,2 @@
+<?php
+$MESS["REST_MODULE_NAME"] = "API REST";

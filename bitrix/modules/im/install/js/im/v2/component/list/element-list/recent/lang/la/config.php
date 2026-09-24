@@ -1,0 +1,25 @@
+<?php
+$MESS["IM_LIST_RECENT_ACTIVE_CALL_ANOTHER_DEVICE"] = "La llamada está en otro dispositivo";
+$MESS["IM_LIST_RECENT_ACTIVE_CALL_HANGUP"] = "Colgar";
+$MESS["IM_LIST_RECENT_ACTIVE_CALL_JOIN"] = "Unirse";
+$MESS["IM_LIST_RECENT_ACTIVE_CALL_JOIN_AUDIO"] = "Solo audio";
+$MESS["IM_LIST_RECENT_ACTIVE_CALL_JOIN_VIDEO"] = "Con video";
+$MESS["IM_LIST_RECENT_ACTIVE_CALL_RETURN"] = "Volver a la llamada";
+$MESS["IM_LIST_RECENT_BIRTHDAY"] = "¡Hoy es su cumpleaños!";
+$MESS["IM_LIST_RECENT_BIRTHDAY_DATE"] = "hoy";
+$MESS["IM_LIST_RECENT_CHAT_SELF"] = "eres tu";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_GROUP"] = "Chat privado";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_GROUP_V2"] = "Chat grupal";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_OPEN"] = "Chat público";
+$MESS["IM_LIST_RECENT_CONNECT_ERROR"] = "No se puede conectar a su Bitrix24. Revise su conexión a Internet e intente de nuevo.";
+$MESS["IM_LIST_RECENT_CREATE_CHAT_DEFAULT_TITLE"] = "Chat grupal";
+$MESS["IM_LIST_RECENT_CREATE_CHAT_SUBTITLE"] = "Crear chat";
+$MESS["IM_LIST_RECENT_CREATE_CONFERENCE_DEFAULT_TITLE"] = "Videoconferencia";
+$MESS["IM_LIST_RECENT_EMPTY"] = "No hay chats.";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_INVITE_USERS"] = "Invitar colegas";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_SUBTITLE"] = "Los empleados que agregue a su Bitrix24 aparecerán en la lista de chats.";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_TITLE"] = "Aún no hay chats";
+$MESS["IM_LIST_RECENT_INVITATION_NOT_ACCEPTED"] = "La invitación no fue aceptada";
+$MESS["IM_LIST_RECENT_MESSAGE_DRAFT_2"] = "Borrador: #TEXT#";
+$MESS["IM_LIST_RECENT_NEW_USER_POPUP_TEXT"] = "¡Ahora estoy en el equipo!";
+$MESS["IM_LIST_RECENT_VACATION"] = "De vacaciones hasta el #VACATION_END_DATE#";

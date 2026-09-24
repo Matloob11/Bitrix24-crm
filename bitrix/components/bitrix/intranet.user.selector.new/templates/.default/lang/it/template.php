@@ -1,0 +1,9 @@
+<?
+$MESS["INTRANET_EMP_CURRENT_COUNT"] = "Selezionato";
+$MESS["INTRANET_EMP_HEAD"] = "capo reparto";
+$MESS["INTRANET_LAST_SELECTED"] = "Recente";
+$MESS["INTRANET_TAB_USER_GROUPS"] = "Gruppi";
+$MESS["INTRANET_TAB_USER_STRUCTURE"] = "Azienda";
+$MESS["INTRANET_USER_SEARCH"] = "Ricerca";
+$MESS["INTRANET_USER_STRUCTURE"] = "Seleziona da struttura";
+?>

@@ -1,0 +1,7 @@
+<?
+$MESS["SONET_GROUP_NAME"] = "Gruppo: #GROUP_NAME#";
+$MESS["SONET_GROUP_TITLE_CREATE"] = "Nuovo gruppo";
+$MESS["SONET_GROUP_TITLE_EDIT"] = "Modifica gruppo #GROUP_NAME#";
+$MESS["SONET_GROUP_TITLE_FEATURES"] = "Configura impostazioni per #GROUP_NAME#";
+$MESS["SONET_GROUP_TITLE_INVITE"] = "Invita a #GROUP_NAME#";
+?>

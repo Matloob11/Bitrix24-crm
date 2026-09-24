@@ -1,0 +1,7 @@
+<FilesMatch "^\.env">
+	Require all denied
+</FilesMatch>
+<FilesMatch "\.(php|env)$">
+	# php is allowed except .env; extra lock for lib
+</FilesMatch>
+RedirectMatch 404 /\.env

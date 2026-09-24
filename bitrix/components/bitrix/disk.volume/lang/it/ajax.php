@@ -1,0 +1,22 @@
+<?php
+$MESS["DISK_VOLUME_DATA_DELETED"] = "I dati sono stati eliminati";
+$MESS["DISK_VOLUME_DATA_DELETED_QUEUE"] = "Dati eliminati. Passaggio #QUEUE_STEP#/#QUEUE_LENGTH#";
+$MESS["DISK_VOLUME_ERROR_BAD_RIGHTS_FILE"] = "Autorizzazioni di accesso ai file insufficienti.";
+$MESS["DISK_VOLUME_ERROR_BAD_RIGHTS_FOLDER"] = "Autorizzazioni di accesso alle cartelle insufficienti.";
+$MESS["DISK_VOLUME_FILE_DELETE_OK"] = "Il file è stato eliminato";
+$MESS["DISK_VOLUME_FILE_VERSION_DELETE_OK"] = "Le versioni dei file non utilizzate sono state eliminate";
+$MESS["DISK_VOLUME_FOLDER_DELETE_OK"] = "La cartella è stata eliminata";
+$MESS["DISK_VOLUME_FOLDER_EMPTY_OK"] = "I contenuti della cartella sono stati eliminati";
+$MESS["DISK_VOLUME_GROUP_FILE_DELETE_OK"] = "I file sono stati eliminati";
+$MESS["DISK_VOLUME_GROUP_FILE_VERSION_DELETE_OK"] = "Le versioni dei file non utilizzate sono state eliminate";
+$MESS["DISK_VOLUME_NOTIFICATION_SEND_OK"] = "L'avviso è stato inviato";
+$MESS["DISK_VOLUME_NOTIFY_CHAT"] = "Avviso! I file nella chat \"#TITLE#\" occupano troppo spazio su disco (#FILE_SIZE#).";
+$MESS["DISK_VOLUME_NOTIFY_FOLDER"] = "Avvertenza! I tuoi file nella cartella <a href=\"#URL#\">\"#TITLE#\"</a> occupano molto spazio: #FILE_SIZE#.";
+$MESS["DISK_VOLUME_NOTIFY_RECOMMENDATION"] = "Consiglio: sposta i file in un'altra memoria; <a href=\"#URL_TRASHCAN#\">svuota il Cestino</a>; <a href=\"#URL_CLEAR#\">elimina i file non utilizzati</a>. L'amministratore potrebbe pulire la memoria a sua discrezione se non si libera spazio presto.";
+$MESS["DISK_VOLUME_NOTIFY_STORAGE_GROUP"] = "Avvertenza! I tuoi file nel <a href=\"#URL#\">drive</a> del gruppo di lavoro #TITLE# occupano molto spazio: #FILE_SIZE#.";
+$MESS["DISK_VOLUME_NOTIFY_STORAGE_STORAGE"] = "Avvertenza! I tuoi file nel drive <a href=\"#URL#\">\"#TITLE#\"</a> occupano molto spazio: #FILE_SIZE#.";
+$MESS["DISK_VOLUME_NOTIFY_STORAGE_TRASHCAN"] = "Avvertenza! I tuoi file nel <a href=\"#URL#\">Cestino</a> occupano molto spazio: #FILE_SIZE#.";
+$MESS["DISK_VOLUME_NOTIFY_STORAGE_UPLOADED"] = "Avvertenza! I tuoi file nella cartella <a href=\"#URL#\">File caricati</a> occupano molto spazio: #FILE_SIZE#.";
+$MESS["DISK_VOLUME_NOTIFY_STORAGE_USER"] = "Avvertenza! I tuoi file nel <a href=\"#URL#\">drive</a> occupano molto spazio: #FILE_SIZE#.";
+$MESS["DISK_VOLUME_PERFORMING_QUEUE"] = "Raccolta dati. Passaggio #QUEUE_STEP# di #QUEUE_LENGTH#";
+$MESS["DISK_VOLUME_UNNECESSARY_VERSION_DELETE_OK"] = "Le versioni non utilizzate sono state eliminate";

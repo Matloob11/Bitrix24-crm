@@ -1,0 +1,74 @@
+<?php
+$MESS["BIZPOC_AUTOMATION_NO_ROBOT_OR_TRIGGER_SELECTED"] = "Aucune règle d'automatisation ni aucun déclencheur n'a été sélectionné.";
+$MESS["BIZPOC_AUTOMATION_NO_ROBOT_SELECTED"] = "Aucune règle d'automatisation sélectionnée";
+$MESS["BIZPROC_AUTOMATION_CLOSE_CAPTION"] = "Fermer";
+$MESS["BIZPROC_AUTOMATION_CMP_ACTIONPANEL_ACTIVATE"] = "ACTIVER";
+$MESS["BIZPROC_AUTOMATION_CMP_ACTIONPANEL_CHOOSE_ALL"] = "tout sélectionner dans l'étape";
+$MESS["BIZPROC_AUTOMATION_CMP_ACTIONPANEL_COPY_1"] = "COPIER";
+$MESS["BIZPROC_AUTOMATION_CMP_ACTIONPANEL_DEACTIVATE"] = "DÉSACTIVER";
+$MESS["BIZPROC_AUTOMATION_CMP_ACTIONPANEL_DELETE_1"] = "SUPPRIMER";
+$MESS["BIZPROC_AUTOMATION_CMP_ACTIONPANEL_MOVE_1"] = "DÉPLACER";
+$MESS["BIZPROC_AUTOMATION_CMP_ADD"] = "ajouter";
+$MESS["BIZPROC_AUTOMATION_CMP_CANCEL"] = "Annuler";
+$MESS["BIZPROC_AUTOMATION_CMP_CHOOSE"] = "sélectionner";
+$MESS["BIZPROC_AUTOMATION_CMP_CONSTANTS_LIST"] = "Constantes";
+$MESS["BIZPROC_AUTOMATION_CMP_CREATE"] = "Créer";
+$MESS["BIZPROC_AUTOMATION_CMP_DEACTIVATE_TRIGGER_ALERT_BUTTON_TEXT"] = "OK";
+$MESS["BIZPROC_AUTOMATION_CMP_DEACTIVATE_TRIGGER_ALERT_MESSAGE"] = "L'action que vous avez sélectionnée a été appliquée uniquement aux règles d'automatisation. Les déclencheurs ne peuvent pas être activés ou désactivés.";
+$MESS["BIZPROC_AUTOMATION_CMP_DEBUGGER"] = "Mode test";
+$MESS["BIZPROC_AUTOMATION_CMP_DEBUGGER_SESSION_LIST_MENU"] = "Journaux de test";
+$MESS["BIZPROC_AUTOMATION_CMP_DELAY_AFTER_HELP"] = "Un intervalle de délai avant la règle est appliqué après qu'une entité CRM ait changé de statut";
+$MESS["BIZPROC_AUTOMATION_CMP_DELAY_BEFORE_HELP"] = "La règle sera appliquée à la période de temps spécifiée avant la date spécifiée dans l'entité CRM.
+Par exemple, elle peut envoyer un rappel de paiement un jour avant la date d'échéance";
+$MESS["BIZPROC_AUTOMATION_CMP_DELAY_IN_HELP"] = "La règle d'automatisation sera déclenchée à une heure spécifiée";
+$MESS["BIZPROC_AUTOMATION_CMP_DELAY_NOW_HELP"] = "La règle d'automatisation sera déclenchée immédiatement après que l'entité soit déplacée dans le statut sélectionné";
+$MESS["BIZPROC_AUTOMATION_CMP_DISK_ATTACHED_FILES"] = "Pièces jointes";
+$MESS["BIZPROC_AUTOMATION_CMP_DISK_ATTACH_FILE"] = "Joindre des fichiers";
+$MESS["BIZPROC_AUTOMATION_CMP_DISK_SELECT_FILE"] = "Rechercher dans Bitrix24";
+$MESS["BIZPROC_AUTOMATION_CMP_DISK_SELECT_FILE_LEGEND"] = "Ouvrir l'onglet Bitrix24.Drive";
+$MESS["BIZPROC_AUTOMATION_CMP_DISK_SELECT_FILE_LEGEND_MSGVER_1"] = "Ouvrir la fenêtre Drive";
+$MESS["BIZPROC_AUTOMATION_CMP_DISK_UPLOAD_FILE"] = "Télécharger le fichier";
+$MESS["BIZPROC_AUTOMATION_CMP_DISK_UPLOAD_FILE_LEGEND"] = "Faites glisser pour ajouter";
+$MESS["BIZPROC_AUTOMATION_CMP_EXTERNAL_EDIT_STAGE_TEXT"] = "Les règles d'automatisation de cette étape ne peuvent être modifiées que dans le Créateur de processus d'entreprise.";
+$MESS["BIZPROC_AUTOMATION_CMP_GLOB_CONSTANTS_LIST"] = "Constantes globales";
+$MESS["BIZPROC_AUTOMATION_CMP_GLOB_CONST_MENU"] = "Constantes";
+$MESS["BIZPROC_AUTOMATION_CMP_GLOB_VARIABLES_LIST"] = "Variables globales";
+$MESS["BIZPROC_AUTOMATION_CMP_GLOB_VARIABLES_LIST_1"] = "Variables";
+$MESS["BIZPROC_AUTOMATION_CMP_GLOB_VAR_MENU"] = "Variables";
+$MESS["BIZPROC_AUTOMATION_CMP_NEED_SAVE"] = "Les modifications n'ont pas été enregistrées.";
+$MESS["BIZPROC_AUTOMATION_CMP_ON_CLOSE_SLIDER_MESSAGE"] = "Voulez-vous vraiment quitter ? Les modifications que vous avez apportées seront perdues.";
+$MESS["BIZPROC_AUTOMATION_CMP_ON_CLOSE_SLIDER_OK_TITLE"] = "Quitter sans sauvegarde";
+$MESS["BIZPROC_AUTOMATION_CMP_PARAMETERS_LIST"] = "Paramètres";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOTS_AND_TRIGGERS_COPIED"] = "Règles d'automatisation et déclencheurs copiés : #ACCEPTED_COUNT# sur #TOTAL_COUNT#.";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOTS_AND_TRIGGERS_DELETED"] = "Règles d'automatisation et déclencheurs supprimés : #ACCEPTED_COUNT# sur #TOTAL_COUNT#.";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOTS_AND_TRIGGERS_MOVED"] = "Règles d'automatisation et déclencheurs déplacés : #ACCEPTED_COUNT# sur #TOTAL_COUNT#.";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOTS_COPIED"] = "Règles d'automatisation copiées : #ACCEPTED_COUNT# sur #TOTAL_COUNT#";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOTS_DELETED"] = "Règles d'automatisation supprimées : #ACCEPTED_COUNT# sur #TOTAL_COUNT#";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOTS_MOVED"] = "Règles d'automatisation déplacées : #ACCEPTED_COUNT# sur #TOTAL_COUNT#";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOT_HELP"] = "Utilisez les règles d'automatisation afin de faciliter le processus de gestion des clients et d'aider les employés à adhérer à l'algorithme de traitement des clients potentiels.
+Les règles d'automatisation effectueront des actions de manière automatisée : envoi d'e-mails, réalisation d'appels, etc.
+Une règle d'automatisation est liée à un statut spécifique.
+Dès qu'une entrée CRM obtient un nouveau statut, une règle d'automatisation spécifique à ce statut est activée.
+Les règles d'automatisation peuvent préciser le temps d'activation et l'action : tâche, notification, e-mail, appel ou toute autre action de votre choix.";
+$MESS["BIZPROC_AUTOMATION_CMP_ROBOT_LIST"] = "Règles d'automatisation";
+$MESS["BIZPROC_AUTOMATION_CMP_SAVE"] = "Enregistrer";
+$MESS["BIZPROC_AUTOMATION_CMP_SEARCH_PLACEHOLDER"] = "recherche";
+$MESS["BIZPROC_AUTOMATION_CMP_SUBTITLE"] = "Règles d'automatisation et déclencheurs";
+$MESS["BIZPROC_AUTOMATION_CMP_TRIGGERS_COPIED"] = "Déclencheurs copiés : #ACCEPTED_COUNT# sur #TOTAL_COUNT#.";
+$MESS["BIZPROC_AUTOMATION_CMP_TRIGGERS_DELETED"] = "Déclencheurs supprimés : #ACCEPTED_COUNT# sur #TOTAL_COUNT#.";
+$MESS["BIZPROC_AUTOMATION_CMP_TRIGGERS_MOVED"] = "Déclencheurs déplacés : #ACCEPTED_COUNT# sur #TOTAL_COUNT#.";
+$MESS["BIZPROC_AUTOMATION_CMP_TRIGGER_EXECUTE_BY"] = "Modifier l'étape au nom de ";
+$MESS["BIZPROC_AUTOMATION_CMP_TRIGGER_HELP_3"] = "Une activité côté client qui déclenchera le traitement du statut. Lorsqu'un déclencheur se déclenche, l'élément sera amené à un statut requis, qui à son tour activera les règles d'automatisation assignées.";
+$MESS["BIZPROC_AUTOMATION_CMP_TRIGGER_LIST"] = "Déclencheurs";
+$MESS["BIZPROC_AUTOMATION_NEW_ENTITIES_BUTTON_AHA_MOMENT_DESCRIPTION"] = "Automatisez de nouveaux processus d'entreprise et élevez votre entreprise à un niveau supérieur grâce à de nouvelles règles d'automatisation et déclencheurs.";
+$MESS["BIZPROC_AUTOMATION_NEW_ENTITIES_BUTTON_TEXT"] = "Nouveau";
+$MESS["BIZPROC_AUTOMATION_NOT_SELECTED"] = "[non défini]";
+$MESS["BIZPROC_AUTOMATION_RIGHTS_ERROR_1"] = "Autorisations insuffisantes pour ajouter ou modifier des règles d'automatisation. Veuillez contacter votre superviseur ou l'administrateur du compte Bitrix24.";
+$MESS["BIZPROC_AUTOMATION_ROBOTS_LIMIT_ALERT_TITLE"] = "Attention !";
+$MESS["BIZPROC_AUTOMATION_ROBOTS_LIMIT_MAIN_ALERT"] = "Vous pouvez utiliser jusqu'à <strong>#LIMIT#</strong> règles et déclencheurs d'automatisation avec votre offre actuelle.";
+$MESS["BIZPROC_AUTOMATION_ROBOTS_LIMIT_SAVE_ALERT"] = "Vous pouvez utiliser jusqu'à <strong>#LIMIT#</strong> règles et déclencheurs d'automatisation avec votre offre actuelle.<br><br> Vous en utilisez actuellement <b>#SUM#</b>.<br><br>Veuillez supprimer une ou plusieurs règles et/ou déclencheurs et essayer d'enregistrer à nouveau les modifications.";
+$MESS["BIZPROC_AUTOMATION_ROBOT_SELECTOR_NEW_ROBOT_ADDED"] = "Nouvelle règle d'automatisation ajoutée : « #ROBOT_NAME# »";
+$MESS["BIZPROC_AUTOMATION_ROBOT_SELECTOR_NEW_ROBOT_ADDED_ON_STAGE"] = "Ajout d'une nouvelle règle d'automatisation « #ROBOT_NAME# » à l'étape « #STAGE_NAME# ».";
+$MESS["BIZPROC_AUTOMATION_ROBOT_SELECTOR_NEW_TRIGGER_ADDED"] = "Ajout d'un nouveau déclencheur : « #TRIGGER_NAME# »";
+$MESS["BIZPROC_AUTOMATION_ROBOT_SELECTOR_NEW_TRIGGER_ADDED_ON_STAGE"] = "Ajout d'un nouveau déclencheur « #TRIGGER_NAME# » à l'étape « #STAGE_NAME# ».";
+$MESS["BIZPROC_AUTOMATION_TOUR_GUIDE_BEGINNING_SUBTITLE_SELLING_DOCUMENT_TYPE"] = "Automatisez les processus d'entreprise de votre entreprise. Laissez Bitrix24 vous aider dans les tâches de routine et vous rappeler les choses à faire. Améliorez la productivité pour un coût nul.";

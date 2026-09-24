@@ -1,0 +1,68 @@
+.landing-ui-field-color-preset {
+	--tile-size: 37px;
+	--gap: 4px;
+
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(6, minmax(0, var(--tile-size)));
+	gap: var(--gap);
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.landing-ui-field-color-preset:last-child {
+	margin-bottom: 0;
+}
+
+.landing-ui-field-color-preset-item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1 / 1;
+	width: 100%;
+	border: 1px solid #edeef0;
+	border-radius: var(--ui-border-radius-xs);
+	cursor: pointer;
+	transition: box-shadow .2s ease;
+	box-sizing: border-box;
+}
+
+/*gradient with transparent border not work*/
+.landing-ui-field-color-gradient-preset-container .landing-ui-field-color-preset-item {
+	border: none;
+}
+
+.landing-ui-field-color-preset-item:hover:not('.landing-ui-field-color-preset-preview-mode') {
+	box-shadow: 0 0 3px rgba(0, 0, 0, .4);
+}
+
+.landing-ui-field-color-preset-item.active:before {
+	content: '';
+	position: absolute;
+	right: -2px;
+	top: -5px;
+	width: 14px;
+	height: 14px;
+	border-radius: var(--ui-border-radius-circle);
+	background-image: url(../images/landing-badge-success.svg);
+	cursor: pointer;
+}
+
+.landing-ui-field-color-preset.landing-ui-field-color-preset-preview-mode {
+	margin: 2px;
+}
+
+.landing-ui-field-color-preset.landing-ui-field-color-preset-preview-mode.active {
+	outline: 1px solid rgba(255, 255, 255, .75);
+	box-shadow: 0 0 10px red;
+}
+
+.landing-ui-field-color-presets-left {
+	display: flex;
+	align-items: center;
+}
+
+.landing-ui-field-color-presets-left .landing-ui-field-color-presets-title {
+	margin-right: 5px;
+}

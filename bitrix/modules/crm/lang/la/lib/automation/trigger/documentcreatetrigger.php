@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_DESCRIPTION"] = "Cambia la etapa cuando se crea una nueva entidad en el formulario del elemento.";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_NAME"] = "Documento creado";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_NAME_1"] = "Seguimiento de una nueva entidad";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_TEMPLATE_ALL_LABEL"] = "[cualquiera]";
+$MESS["CRM_AUTOMATION_TRIGGER_DOCUMENT_CREATE_TEMPLATE_LABEL"] = "Plantilla";

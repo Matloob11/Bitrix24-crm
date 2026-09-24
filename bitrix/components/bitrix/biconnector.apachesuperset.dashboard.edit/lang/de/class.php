@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "Dashboard wurde nicht gefunden.";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Neues Dashboard";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Neues Dashboard (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Wählen Sie eine Gruppe aus, um dafür ein Dashboard zu erstellen.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "Das Dashboard muss mindestens zu einer Gruppe hinzugefügt werden.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "Dashboard-Name ist erforderlich.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "Dashboard kann nicht erstellt werden. Versuchen Sie es erneut.";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Hilfe";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "Das Dashboard beinhaltet ungültige Bilder. Bitte aktualisieren Sie die Seite und versuchen Sie es erneut.";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "Der Zeitraum ist nicht korrekt.";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "Nur benutzerdefinierte Dashboards können bearbeitet werden.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Sie haben nicht genügend Rechte, um Dashboard zu erstellen.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "Sie haben nicht genügend Rechte, um BI-Builder zu nutzen.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "BI-Builder ist nicht verfügbar.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Sie haben nicht genügend Rechte, um das Dashboard zu bearbeiten.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "Die Dashboard-Beschreibung konnte nicht gespeichert werden. Versuchen Sie es bitte erneut.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "Die Dashboard-Galerie konnte nicht gespeichert werden. Versuchen Sie es bitte erneut.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "Dashboard-Parameter können nicht erstellt werden. Öffnen Sie Dashboard-Eigenschaften und versuchen Sie es erneut.";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Neues Dashboard";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "Der Dashboard-Name darf 128 Zeichen nicht überschreiten.";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "Das Dashboard konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.";

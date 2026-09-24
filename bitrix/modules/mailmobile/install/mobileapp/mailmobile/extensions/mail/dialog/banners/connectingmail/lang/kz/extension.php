@@ -1,0 +1,21 @@
+<?php
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CHATS"] = "Хаттардан міндеттер жасаңыз немесе оларды тікелей чатта әріптестеріңізбен талқылаңыз";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CRM"] = "Клиенттердің немесе серіктестердің хаттарын CRM-де сақтаңыз";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_MOBILE"] = "Кеңседе болмасаңыз да, корпоративтік поштамен жұмыс жасаңыз";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_1"] = "Қосу";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_CONNECT"] = "Поштаны қосу";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_REQUEST"] = "Қосылуға көмек";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_DESCRIPTION"] = "Сіз хаттарды оқып, оларға жауап бере аласыз, оларды CRM-де сақтай аласыз және байланыста бола аласыз";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_1"] = "Поштаны Битрикс24-ке қосыңыз";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_PROMO"] = "Поштаны Битрикс24-ке қосыңыз";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_DESCRIPTION"] = "Битрикс24 әкімшісі мәлімдеме алады және пошта жәшігін орнатады. Пікір оған барлық мәліметтерді ескеруге көмектеседі";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_NETWORK_ERROR"] = "Қосылуға сұрау жіберу мүмкін болмады, сәл кейінірек қайталап көріңіз";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_PLACEHOLDER"] = "Әкімші үшін пікір";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUBMIT"] = "Жіберу";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_CLOSE"] = "Жабу";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_DESC"] = "Әкімші хабарлама алады және пошта жәшігін орнатады";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_TITLE"] = "Сұрау жіберілді";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_TITLE"] = "Қосылу туралы сұрау";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_CLOSE"] = "Жабу";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_DESC"] = "Егер қосылу кешіктірілсе, Битрикс24 әкімшісіне хабарласыңыз";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_TITLE"] = "Сұрау жіберілді";

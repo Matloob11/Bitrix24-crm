@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_BLANK_FILE_DATA_NEW_FILE_BOARD"] = "Nuova lavagna";
+$MESS["DISK_BLANK_FILE_DATA_TYPE_BOARD"] = "Lavagna";

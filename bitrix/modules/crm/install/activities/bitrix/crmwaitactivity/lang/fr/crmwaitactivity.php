@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_0"] = "jour";
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_1"] = "jours";
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_2"] = "jours";
+$MESS["CRM_WAIT_ACTIVITY_DESCRIPTION_TYPE_AFTER"] = "Attendre #DURATION# ou une saisie du client";
+$MESS["CRM_WAIT_ACTIVITY_DESCRIPTION_TYPE_BEFORE"] = "Attendre #DURATION# jusqu'à \"#TARGET_DATE#\" ou une saisie du client";
+$MESS["CRM_WAIT_ACTIVITY_ERROR_WAIT_DURATION"] = "L'interruption n'est pas spécifiée";
+$MESS["CRM_WAIT_ACTIVITY_ERROR_WAIT_TARGET"] = "La date butoir de l'attente n'est pas spécifiée";
+$MESS["CRM_WAIT_ACTIVITY_ERROR_WAIT_TYPE"] = "Le type d'attente n'est pas précisé";
+$MESS["CRM_WAIT_ACTIVITY_EXECUTE_ERROR_WAIT_BEFORE"] = "La date de fin de l'attente doit être ultérieure à la date actuelle. La date saisie est passée ou trop lointaine dans l'avenir.";
+$MESS["CRM_WAIT_ACTIVITY_EXECUTE_ERROR_WAIT_TARGET_1"] = "Le champ de l'élément cible est introuvable";
+$MESS["CRM_WAIT_ACTIVITY_EXECUTE_ERROR_WAIT_TARGET_TIME_1"] = "Impossible d'obtenir la valeur de la date à partir du champ de l'élément";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_AFTER"] = "Attendre un nombre spécifié de jours";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_BEFORE"] = "Attendre un nombre spécifié de jours jusqu'au jour sélectionné";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_DESCRIPTION"] = "Commentaire ou instructions";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_DURATION"] = "Intervalle d'interruption, jours";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_TARGET"] = "Jusqu'à la date spécifiée";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_TYPE"] = "Type d'attente";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_0"] = "semaine";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_1"] = "semaines";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_2"] = "semaines";

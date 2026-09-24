@@ -1,0 +1,19 @@
+<?php
+$MESS["AI_SETTINGS_DEFAULT_GROUP_DEFAULT"] = "Diversos";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_DEFAULT_DESCRIPTION"] = "Otras preferencias de CoPilot.";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_DEFAULT_DESCRIPTION_MSGVER_1"] = "Otras preferencias de #COPILOT_NAME#.";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_IMAGE"] = "Imágenes";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_IMAGE_DESCRIPTION"] = "Seleccione las herramientas en las que los usuarios pueden utilizar CoPilot para crear imágenes.";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_IMAGE_DESCRIPTION_MSGVER_1"] = "Seleccione las herramientas en las que los usuarios pueden utilizar #COPILOT_NAME# para crear imágenes.";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_TEXT"] = "Texto";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_TEXT_DESCRIPTION"] = "Seleccione las herramientas en las que los usuarios pueden utilizar CoPilot para crear contenidos de texto.";
+$MESS["AI_SETTINGS_DEFAULT_GROUP_TEXT_DESCRIPTION_MSGVER_1"] = "Seleccione las herramientas en las que los usuarios pueden utilizar #COPILOT_NAME# para crear contenidos de texto.";
+$MESS["AI_SETTINGS_HELPDESK_LINK"] = "Conocer más";
+$MESS["AI_SETTINGS_INTERNAL_AUDIO_TITLE"] = "Proveedor de transcripción de llamadas:";
+$MESS["AI_SETTINGS_INTERNAL_GROUP_COPILOT"] = "Proveedor de CoPilot";
+$MESS["AI_SETTINGS_INTERNAL_GROUP_COPILOT_DESCRIPTION"] = "Los textos e imágenes generados pueden variar según el proveedor seleccionado.";
+$MESS["AI_SETTINGS_INTERNAL_GROUP_COPILOT_DESCRIPTION_MSGVER_1"] = "Los textos e imágenes generados pueden variar según el proveedor seleccionado.";
+$MESS["AI_SETTINGS_INTERNAL_GROUP_COPILOT_MSGVER_1"] = "Proveedor de #COPILOT_NAME#";
+$MESS["AI_SETTINGS_INTERNAL_IMAGE_TITLE"] = "Generador de imágenes:";
+$MESS["AI_SETTINGS_INTERNAL_ON_SAVE_TITLE"] = "Aplicar la selección a todos los usuarios";
+$MESS["AI_SETTINGS_INTERNAL_TEXT_TITLE"] = "Generador de texto:";

@@ -1,0 +1,57 @@
+/* root container */
+.crm-copilot-wrapper{
+	--crm-copilot-slider-bg: url('/bitrix/js/crm/ai/slider/images/copilot-slider-bg.png') fixed 100% 0 no-repeat;
+	--ui-btn-custom-background: var(--crm-copilot-slider-bg);
+
+	background: var(--crm-copilot-slider-bg);
+	background-size: cover;
+
+	--copilot-icon-width: 32px;
+	--copilot-icon-height: 32px;
+	--copilot-icon-to-left: calc(-1 * (var(--copilot-icon-width)));
+	--copilot-icon-title-distance: 5px;
+}
+
+/* header */
+.crm-copilot-wrapper .ui-sidepanel-layout-header{
+	justify-content: center;
+}
+
+.crm-copilot-wrapper .ui-sidepanel-layout-title{
+	color: white;
+	position: relative;
+	overflow: visible;
+	margin-left: var(--copilot-icon-width);
+	padding: 21px 0 24px 5px;
+	font-size: var(--ui-font-size-5xl);
+	font-weight: var(--ui-font-weight-light);
+	font-style: normal;
+	letter-spacing: -0.267px;
+
+	display: flex;
+	align-items: center;
+}
+
+/* copilot icon */
+.crm-copilot-wrapper .ui-sidepanel-layout-title::before{
+	position: absolute;
+	top: calc(50% - 0.5 * var(--copilot-icon-height));
+	left: var(--copilot-icon-to-left);
+	width: var(--copilot-icon-width);
+	height: var(--copilot-icon-height);
+	content: url('../images/copilot-icon.svg');
+}
+
+.side-panel:has(.crm-copilot-wrapper) .side-panel-loader{
+	background: transparent !important;
+}
+
+.crm-copilot-wrapper .ui-sidepanel-layout-toolbar .ui-btn ~ .ui-btn {
+	margin-left: var(--ui-btn-margin-left, 12px);
+}
+
+@media (max-width: 1360px) {
+	.crm-copilot-wrapper .ui-sidepanel-layout-title {
+		margin: 0 15px 0 var(--copilot-icon-width) !important;
+	}
+}

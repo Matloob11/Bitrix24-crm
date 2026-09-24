@@ -1,0 +1,25 @@
+<?php
+$MESS["BPAR_PD_ACCESS_CONTROL"] = "Afficher la description de l'affectation uniquement aux personnes responsables";
+$MESS["BPAR_PD_APPROVE_TYPE"] = "Doivent prendre connaissance";
+$MESS["BPAR_PD_APPROVE_TYPE_ALL"] = "A tous les employés";
+$MESS["BPAR_PD_APPROVE_TYPE_ANY"] = "Tout employé";
+$MESS["BPAR_PD_COMMENT_LABEL_MESSAGE_1"] = "Nom du champ \"Notes\"";
+$MESS["BPAR_PD_COMMENT_REQUIRED_1"] = "Notes requises";
+$MESS["BPAR_PD_DELEGATION_TYPE"] = "Déléguer à";
+$MESS["BPAR_PD_DESCR"] = "Description de l'affectation";
+$MESS["BPAR_PD_NAME"] = "Nom de l'affectation";
+$MESS["BPAR_PD_NO"] = "Non";
+$MESS["BPAR_PD_REVIEWERS"] = "Réviseurs";
+$MESS["BPAR_PD_SET_STATUS_MESSAGE"] = "Entrer le texte du statut";
+$MESS["BPAR_PD_SHOW_COMMENT_1"] = "Afficher le champ \"Notes\"";
+$MESS["BPAR_PD_STATUS_MESSAGE"] = "Texte du statut";
+$MESS["BPAR_PD_STATUS_MESSAGE_HINT1"] = "Vous pouvez utiliser les modificateurs #PERCENT# - pourcentage, #REVIEWED# - personnes qui ont pris la connaissance, #TOTAL# - total de personnes qui ont pris la connaissance, #REVIEWERS# - qui a pris la connaissance";
+$MESS["BPAR_PD_TASK_BUTTON_MESSAGE"] = "Texte du bouton dans l'affectation";
+$MESS["BPAR_PD_TIMEOUT_DURATION"] = "Limite dans le temps";
+$MESS["BPAR_PD_TIMEOUT_DURATION_HINT"] = "Le processus d'examen des éléments sera automatiquement interrompu à l'expiration de la période. Une valeur vide ou nulle indique qu'aucune période d'approbation ne doit être appliquée.";
+$MESS["BPAR_PD_TIMEOUT_LIMIT"] = "Temps de lecture minimum";
+$MESS["BPAR_PD_TIME_D"] = "jours";
+$MESS["BPAR_PD_TIME_H"] = "heures";
+$MESS["BPAR_PD_TIME_M"] = "minutes";
+$MESS["BPAR_PD_TIME_S"] = "secondes";
+$MESS["BPAR_PD_YES"] = "Oui";

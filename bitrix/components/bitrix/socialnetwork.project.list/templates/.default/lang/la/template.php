@@ -1,0 +1,4 @@
+<?php
+$MESS["SOCIALNETWORK_PROJECT_LIST_ACTION_ADD_TO_ARCHIVE"] = "El proyecto se movió al archivo.";
+$MESS["SOCIALNETWORK_PROJECT_LIST_ACTION_REMOVE_FROM_ARCHIVE"] = "El proyecto se restauró del archivo.";
+$MESS["SOCIALNETWORK_PROJECT_LIST_TITLE"] = "Proyectos";

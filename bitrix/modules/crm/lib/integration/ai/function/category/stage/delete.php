@@ -1,0 +1,95 @@
+<?php
+
+namespace Bitrix\Crm\Integration\AI\Function\Category\Stage;
+
+use Bitrix\Crm\Integration\AI\Contract\AIFunction;
+use Bitrix\Crm\Integration\AI\Function\Category\Dto\Stage\DeleteParameters;
+use Bitrix\Crm\Integration\Analytics\Builder\FunnelAnalytics\Stage\DeleteEvent;
+use Bitrix\Crm\Integration\Analytics\Dictionary;
+use Bitrix\Crm\Integration\PullManager;
+use Bitrix\Crm\Kanban\Entity;
+use Bitrix\Crm\Result;
+use Bitrix\Crm\Service\Container;
+use Bitrix\Crm\Service\Factory;
+use Bitrix\Crm\Service\UserPermissions;
+use Bitrix\Main\Localization\Loc;
+
+final class Delete implements AIFunction
+{
+	private readonly UserPermissions $permissions;
+
+	public function __construct(
+		private readonly int $currentUserId,
+	)
+	{
+		$this->permissions = Container::getInstance()->getUserPermissions($this->currentUserId);
+	}
+
+	public function isAvailable(): bool
+	{
+		return true;
+	}
+
+	public function invoke(...$args): \Bitrix\Main\Result
+	{
+		$parameters = new DeleteParameters($args);
+		if ($parameters->hasValidationErrors())
+		{
+			return Result::fail($parameters->getValidationErrors());
+		}
+
+		if (!$this->permissions->isAdminForEntity($parameters->entityTypeId))
+		{
+			return Result::failAccessDenied();
+		}
+
+		/** @var Factory $factory */
+		$factory = Container::getInstance()->getFactory($parameters->entityTypeId);
+
+		$stageToDelete = null;
+		$stageCollection = $factory->getStages($parameters->categoryId);
+		foreach ($stageCollection->getAll() as $stage)
+		{
+			if ($stage->getStatusId() === $parameters->stageId)
+			{
+				$stageToDelete = $stage;
+
+				break;
+			}
+		}
+
+		if ($stageToDelete === null)
+		{
+			return Result::fail(Loc::getMessage('CRM_INTEGRATION_AI_FUNCTION_CATEGORY_STAGE_DELETE_STAGE_NOT_FOUND_ERROR'), 'STAGE_NOT_FOUND');
+		}
+
+		$result = $stageToDelete->delete();
+
+		if ($result->isSuccess())
+		{
+			$entityTypeName = Container::getInstance()->getFactory($parameters->entityTypeId)?->getEntityName();
+			if ($entityTypeName !== null)
+			{
+				$item = Entity::getInstance($entityTypeName)?->createPullStageByObj($stageToDelete);
+				if ($item !== null)
+				{
+					PullManager::getInstance()->sendStageDeletedEvent(
+						$item,
+						[
+							'TYPE' => $entityTypeName,
+							'CATEGORY_ID' => $parameters->categoryId,
+						],
+					);
+				}
+			}
+		}
+
+		(new DeleteEvent(section: Dictionary::SECTION_AI))
+			->setStatus($result->isSuccess() ? Dictionary::STATUS_SUCCESS : Dictionary::STATUS_ERROR)
+			->buildEvent()
+			->send()
+		;
+
+		return $result;
+	}
+}

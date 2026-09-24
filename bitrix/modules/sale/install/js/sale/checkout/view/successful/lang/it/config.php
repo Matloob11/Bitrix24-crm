@@ -1,0 +1,10 @@
+<?php
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_CALL_MANAGER"] = "Il nostro manager ti chiamerà";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_ELEMENT_BUTTON_SHIPPING_BUY"] = "Grazie per avere acquistato con noi!";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_ELEMENT_BUTTON_SHIPPING_TO_ORDER"] = "Torna all'ordine";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_ELEMENT_BUTTON_SHIPPING_TO_SHOP"] = "Continua a fare acquisti";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_STATUS_ORDER_CREATED"] = "Il tuo ordine è stato effettuato! Ti contatteremo se dovessimo richiedere maggiori informazioni";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_STATUS_ORDER_PAYED"] = "L'ordine è stato creato e pagato";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_STATUS_ORDER_PAYED_1"] = "Pagati #AMOUNT#";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_STATUS_ORDER_SUCCESSFUL_CREATED"] = "L'ordine è stato creato e pagato";
+$MESS["CHECKOUT_VIEW_SUCCESSFUL_STATUS_ORDER_TITLE"] = "Ordine ##ORDER_NUMBER#";

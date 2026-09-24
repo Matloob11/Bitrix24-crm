@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_EVENT_EMPTY"] = "Nessun record";
+$MESS["CRM_EVENT_ENTITY_COMPANY"] = "Azienda";
+$MESS["CRM_EVENT_ENTITY_CONTACT"] = "Contatto";
+$MESS["CRM_EVENT_ENTITY_DEAL"] = "Affare";
+$MESS["CRM_EVENT_ENTITY_LEAD"] = "Lead";
+$MESS["CRM_EVENT_ENTITY_QUOTE"] = "Preventivo";

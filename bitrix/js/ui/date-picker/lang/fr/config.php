@@ -1,0 +1,19 @@
+<?php
+$MESS["UI_DATE_PICKER_BACK_TO_DAYS"] = "Retour au sélecteur de date";
+$MESS["UI_DATE_PICKER_DIALOG_LABEL"] = "Calendrier";
+$MESS["UI_DATE_PICKER_HOURS"] = "Heures";
+$MESS["UI_DATE_PICKER_MINUTES"] = "Minutes";
+$MESS["UI_DATE_PICKER_MONTH_VIEW_LABEL"] = "Sélectionner le mois";
+$MESS["UI_DATE_PICKER_NEXT_DECADE"] = "12 années suivantes";
+$MESS["UI_DATE_PICKER_NEXT_MONTH"] = "Mois suivant";
+$MESS["UI_DATE_PICKER_NEXT_YEAR"] = "Année suivante";
+$MESS["UI_DATE_PICKER_PRESETS_LABEL"] = "Sélecteur de date";
+$MESS["UI_DATE_PICKER_PREV_DECADE"] = "12 années précédentes";
+$MESS["UI_DATE_PICKER_PREV_MONTH"] = "Mois précédent";
+$MESS["UI_DATE_PICKER_PREV_YEAR"] = "Année précédente";
+$MESS["UI_DATE_PICKER_RANGE_TIME"] = "Plage horaire";
+$MESS["UI_DATE_PICKER_RANGE_TIME_END"] = "Heure de fin";
+$MESS["UI_DATE_PICKER_RANGE_TIME_START"] = "Heure de début";
+$MESS["UI_DATE_PICKER_TIME_LABEL"] = "Sélectionner une heure";
+$MESS["UI_DATE_PICKER_TIME_VIEW_LABEL"] = "Sélectionner une heure";
+$MESS["UI_DATE_PICKER_YEAR_VIEW_LABEL"] = "Sélectionner l'année";

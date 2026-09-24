@@ -1,0 +1,20 @@
+<?php
+$MESS["BIZPROC_USER_PARAMS_SAVE_ERROR"] = "La taille des actions dans le panel 'Mes actions' est trop importante. Les modifications du panel ne seront pas sauvegardées.";
+$MESS["BIZPROC_WFEDIT_CATEGORY_CONSTR_1"] = "Contrôle du flux";
+$MESS["BIZPROC_WFEDIT_CATEGORY_DOC_1"] = "Traitement de l'élément";
+$MESS["BIZPROC_WFEDIT_CATEGORY_INTER"] = "Notifications";
+$MESS["BIZPROC_WFEDIT_CATEGORY_MAIN"] = "Essentiel";
+$MESS["BIZPROC_WFEDIT_CATEGORY_OTHER"] = "Autre";
+$MESS["BIZPROC_WFEDIT_CATEGORY_REST_1"] = "Activités d'application";
+$MESS["BIZPROC_WFEDIT_CATEGORY_TASKS_1"] = "Affectations";
+$MESS["BIZPROC_WFEDIT_CONSTANTS_SAVE_ERROR_MSGVER_1"] = "Impossible d'enregistrer le modèle, car la constante du modèle est trop longue.";
+$MESS["BIZPROC_WFEDIT_DEFAULT_TITLE"] = "Modèle de processus d’entreprise";
+$MESS["BIZPROC_WFEDIT_ERROR_COMPLEX_TYPE"] = "Ce modèle n'est pas associé à ce type d'élément.";
+$MESS["BIZPROC_WFEDIT_ERROR_TYPE_MSGVER_1"] = "Le type de l'élément de processus d'entreprise est requis.";
+$MESS["BIZPROC_WFEDIT_IMPORT_ERROR"] = "Erreur dans l'importation de modèle de processus d’entreprise.";
+$MESS["BIZPROC_WFEDIT_PARAMETERS_SAVE_ERROR_MSGVER_1"] = "Impossible d'enregistrer le modèle, car le paramètre du modèle est trop long.";
+$MESS["BIZPROC_WFEDIT_SAVE_ERROR"] = "Une erreur est survenue lors de l'enregistrement d'un objet :";
+$MESS["BIZPROC_WFEDIT_SAVE_ERROR_CAUSE_FILTER"] = "Erreur lors de l'enregistrement du modèle : les données ont déclenché le filtre de sécurité.";
+$MESS["BIZPROC_WFEDIT_TITLE_ADD"] = "Nouveau modèle de processus d'affaires";
+$MESS["BIZPROC_WFEDIT_TITLE_EDIT"] = "Édition du modèle du processus d'entreprise";
+$MESS["BIZPROC_WFEDIT_VARIABLES_SAVE_ERROR_MSGVER_1"] = "Impossible d'enregistrer le modèle, car la variable du modèle est trop longue.";

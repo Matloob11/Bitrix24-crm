@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_CONFIG_PERMS_LRP_DLG_BTN_CLOSE"] = "Chiudi";
+$MESS["CRM_CONFIG_PERMS_LRP_DLG_BTN_START"] = "Esegui";
+$MESS["CRM_CONFIG_PERMS_LRP_DLG_BTN_STOP"] = "Interrompi";
+$MESS["CRM_CONFIG_PERMS_LRP_DLG_REQUEST_ERR"] = "Errore durante l'elaborazione della richiesta.";
+$MESS["CRM_CONFIG_PERMS_LRP_DLG_WAIT"] = "Attendi...";
+$MESS["CRM_CONFIG_PERMS_REBUILD_COMPANY_ATTRS"] = "<a id=\"#ID#\" href=\"#URL#\">Aggiorna</a> gli attributi di accesso per le aziende esistenti prima di utilizzare le autorizzazioni di accesso estese.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_COMPANY_ATTR_DLG_SUMMARY"] = "Gli attributi di accesso alle aziende saranno ora ricreati. Questa operazione potrebbe richiedere un po' di tempo.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_COMPANY_ATTR_DLG_TITLE"] = "Aggiorna attributi di accesso alle aziende";
+$MESS["CRM_CONFIG_PERMS_REBUILD_CONTACT_ATTRS"] = "Le autorizzazioni di accesso ai contatti aggiornate richiedono <a id=\"#ID#\" href=\"#URL#\">l'aggiornamento</a> degli attributi di accesso per i contatti creati in precedenza.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_CONTACT_ATTR_DLG_SUMMARY"] = "Gli attributi di accesso verranno ora ricompilati per tutti i contatti. Questa procedura potrebbe richiedere un po' di tempo.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_CONTACT_ATTR_DLG_TITLE"] = "Aggiorna attributi di accesso ai contatti";
+$MESS["CRM_CONFIG_PERMS_REBUILD_DEAL_ATTRS"] = "Le autorizzazioni di accesso agli affari aggiornate richiedono <a id=\"#ID#\" href=\"#URL#\">l'aggiornamento</a> degli attributi di accesso per gli affari creati in precedenza.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_DEAL_ATTR_DLG_SUMMARY"] = "Gli attributi di accesso verranno ora ricompilati per tutti gli affari. Questa procedura potrebbe richiedere un po' di tempo.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_DEAL_ATTR_DLG_TITLE"] = "Aggiorna attributi di accesso agli affari";
+$MESS["CRM_CONFIG_PERMS_REBUILD_INVOICE_ATTRS"] = "Le autorizzazioni di accesso alle fatture aggiornate richiedono <a id=\"#ID#\" href=\"#URL#\">l'aggiornamento</a> degli attributi di accesso per le fatture create in precedenza.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_INVOICE_ATTR_DLG_SUMMARY"] = "Gli attributi di accesso verranno ora ricompilati per tutte le fatture. Questa procedura potrebbe richiedere un po' di tempo.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_INVOICE_ATTR_DLG_TITLE"] = "Aggiorna attributi di accesso alle fatture";
+$MESS["CRM_CONFIG_PERMS_REBUILD_LEAD_ATTRS"] = "Le autorizzazioni di accesso ai lead aggiornate richiedono <a id=\"#ID#\" href=\"#URL#\">l'aggiornamento</a> degli attributi di accesso per i lead creati in precedenza.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_LEAD_ATTR_DLG_SUMMARY"] = "Gli attributi di accesso verranno ora ricompilati per tutti i lead. Questa procedura potrebbe richiedere un po' di tempo.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_LEAD_ATTR_DLG_TITLE"] = "Aggiorna attributi di accesso ai lead";
+$MESS["CRM_CONFIG_PERMS_REBUILD_QUOTE_ATTRS_MSGVER_1"] = "Le autorizzazioni di accesso ai preventivi aggiornate richiedono <a id=\"#ID#\" href=\"#URL#\">l'aggiornamento</a> degli attributi di accesso per i preventivi creati in precedenza.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_QUOTE_ATTR_DLG_SUMMARY_MSGVER_1"] = "Gli attributi di accesso verranno ora ricompilati per tutti i preventivi. Questa procedura potrebbe richiedere un po' di tempo.";
+$MESS["CRM_CONFIG_PERMS_REBUILD_QUOTE_ATTR_DLG_TITLE_MSGVER_1"] = "Aggiorna attributi di accesso ai preventivi";

@@ -1,0 +1,11 @@
+<?php
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_ITEM_1"] = "Қозғалыс маршруттарын автоматты түрде жинайды";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_ITEM_2"] = "Тек жұмыс уақытында жазылады";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_ITEM_3"] = "Қосымша ашық болған кезде жұмыс жасайды";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_TITLE"] = "Сіздің бөліміңізде авточекиндер қосылған";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_BUTTON"] = "Геопозицияға кіруге рұқсат беру";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_BUTTON_UNDERSTOOD"] = "Жарайды, жалғастыру";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_ITEM_1"] = "Жұмыс күнін тез бастауға көмектеседі";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_ITEM_2"] = "Жұмыстың қайдан басталатынын көрсетеді";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_ITEM_3"] = "Қазіргі геопозицияны қолданады";
+$MESS["STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_TITLE"] = "Сіздің бөліміңізде күннің басында чекин қосылған";

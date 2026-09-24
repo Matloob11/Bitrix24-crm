@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_TIMELINE_ACTIVITY_AI_TRANSCRIPT_SUMMARY_OPEN_BTN"] = "Visualizar";
+$MESS["CRM_TIMELINE_ACTIVITY_AI_TRANSCRIPT_SUMMARY_RESULT"] = "O resumo da chamada telefônica está pronto";

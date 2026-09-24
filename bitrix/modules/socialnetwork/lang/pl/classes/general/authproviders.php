@@ -1,0 +1,26 @@
+<?php
+$MESS["authprov_project_v2_sg_a"] = "Właściciel projektu";
+$MESS["authprov_project_v2_sg_e"] = "Moderatorzy projektu";
+$MESS["authprov_project_v2_sg_k"] = "Członkowie projektu";
+$MESS["authprov_sg_a"] = "Właściciel grupy";
+$MESS["authprov_sg_a_v2"] = "Właściciel projektu";
+$MESS["authprov_sg_current"] = "Obecna grupa";
+$MESS["authprov_sg_current_v2"] = "Bieżący projekt";
+$MESS["authprov_sg_e"] = "Moderatorzy grupy";
+$MESS["authprov_sg_e_v2"] = "Moderatorzy projektu";
+$MESS["authprov_sg_k"] = "Wszyscy członkowie grupy";
+$MESS["authprov_sg_k_v2"] = "Członkowie projektu";
+$MESS["authprov_sg_name"] = "Grupy Sieci Społecznościowej";
+$MESS["authprov_sg_name_out"] = "Grupa sieci społecznościowej";
+$MESS["authprov_sg_name_out_v2"] = "Projekt";
+$MESS["authprov_sg_name_v2"] = "Projekty";
+$MESS["authprov_sg_panel_last"] = "Ostatnie";
+$MESS["authprov_sg_panel_last_v2"] = "Ostatnie";
+$MESS["authprov_sg_panel_my_group"] = "Moje Grupy";
+$MESS["authprov_sg_panel_my_group_v2"] = "Moje projekty";
+$MESS["authprov_sg_panel_search"] = "Szukaj";
+$MESS["authprov_sg_panel_search_text"] = "Wpisz nazwę grupy.";
+$MESS["authprov_sg_panel_search_text_v2"] = "Wprowadź nazwę projektu.";
+$MESS["authprov_sg_panel_search_v2"] = "Wyszukaj";
+$MESS["authprov_sg_socnet_group"] = "Grupy Sieci Społecznościowej";
+$MESS["authprov_sg_socnet_group_v2"] = "Projekt";

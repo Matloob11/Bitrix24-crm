@@ -1,0 +1,25 @@
+<?php
+$MESS["IM_CREATE_CHANNEL_CONFIRM"] = "Utwórz kanał";
+$MESS["IM_CREATE_CHANNEL_DESCRIPTION_PLACEHOLDER_V3"] = "Wprowadź opis kanału";
+$MESS["IM_CREATE_CHANNEL_DESCRIPTION_TITLE"] = "Opis kanału";
+$MESS["IM_CREATE_CHANNEL_MEMBERS_HINT"] = "Dodaj użytkowników lub działy do kanału. Jeśli dodasz dział, jego nowi pracownicy będą go subskrybować automatycznie.";
+$MESS["IM_CREATE_CHANNEL_MEMBERS_TITLE"] = "Subskrybenci #SUBTITLE_START#(dodaj osobę lub dział)#SUBTITLE_END#";
+$MESS["IM_CREATE_CHANNEL_TITLE_PLACEHOLDER_V2"] = "Nazwa kanału";
+$MESS["IM_CREATE_CHANNEL_USER_SELECTOR_ADD_MEMBERS"] = "Dodaj subskrybentów";
+$MESS["IM_CREATE_CHAT_CONFIRM"] = "Utwórz czat";
+$MESS["IM_CREATE_CHAT_MEMBERS_TITLE"] = "Uczestnicy #SUBTITLE_START#(dodaj osobę lub dział)#SUBTITLE_END#";
+$MESS["IM_CREATE_CHAT_TITLE_PLACEHOLDER"] = "Wprowadź nazwę czatu";
+$MESS["IM_CREATE_COLLAB_BANNER_TEXT_1"] = "Stwórz collab i osiągaj spektakularne rezultaty. Wszystko, czego potrzeba: czat, połączenia, pliki, zadania i kalendarz. Historia całej komunikacji jest przechowywana w firmowym Birix24.";
+$MESS["IM_CREATE_COLLAB_BANNER_TEXT_2"] = "Od razu po utworzeniu collaba można zapraszać innych użytkowników i gości. [learn-more]Dowiedz się więcej[/learn-more]";
+$MESS["IM_CREATE_COLLAB_BANNER_TITLE"] = "[learn-more]Collab[/learn-more] to przestrzeń robocza do współpracy z gośćmi zewnętrznymi i klientami.";
+$MESS["IM_CREATE_COLLAB_CHAT_BANNER_TEXT_MSGVER_1"] = "Czat projektu jest widoczny i dostępny wyłącznie dla użytkowników, którzy zostali do niego dodani.#BR#Dodanie użytkownika do czatu projektu doda go również do projektu.";
+$MESS["IM_CREATE_COLLAB_CHAT_BANNER_TITLE"] = "Czaty projektów";
+$MESS["IM_CREATE_COLLAB_CONFIRM"] = "Utwórz collaba";
+$MESS["IM_CREATE_COLLAB_DESCRIPTION_PLACEHOLDER"] = "Przekaż innym użytkownikom, czego dotyczy collab.";
+$MESS["IM_CREATE_COLLAB_DESCRIPTION_TITLE"] = "Opis collaba";
+$MESS["IM_CREATE_COLLAB_TITLE_PLACEHOLDER"] = "Nazwa collaba";
+$MESS["IM_CREATE_CONFERENCE_CONFIRM"] = "Utwórz konferencję";
+$MESS["IM_CREATE_CONFERENCE_TITLE_PLACEHOLDER"] = "Wprowadź nazwę wideokonferencji";
+$MESS["IM_UPDATE_CHANNEL_COLLAPSED_ELEMENT"] = "Subskrybenci (#COUNT#)";
+$MESS["IM_UPDATE_CONFIRM"] = "Zapisz zmiany";
+$MESS["IM_UPDATE_GROUP_CHAT_COLLAPSED_ELEMENT"] = "Uczestnicy czatu (#COUNT#)";

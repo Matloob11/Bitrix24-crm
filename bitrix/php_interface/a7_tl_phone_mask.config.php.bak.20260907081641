@@ -1,0 +1,37 @@
+<?php
+/**
+ * Team Lead phone-mask config (Bitrix CRM + Owner Data).
+ * Password: env A7_TL_PHONE_MASK_PASSWORD, else default admin123.
+ */
+return [
+    'password' => getenv('A7_TL_PHONE_MASK_PASSWORD') !== false
+        && getenv('A7_TL_PHONE_MASK_PASSWORD') !== ''
+            ? (string) getenv('A7_TL_PHONE_MASK_PASSWORD')
+            : 'admin123',
+    'reveal_seconds' => 30,
+    // Bitrix company structure (iblock 3), under Sales Department (60):
+    // 69 Hassan Team (TL) head=2560
+    // 70 Hussnain Team (TL) head=2551
+    // 71 Jaweria Team (TL) head=2297
+    // CRM role 54 "Team Leader" assigned to these 3 users.
+    'leaders' => [
+        2560 => [ // Hassan T.L
+            'name' => 'Hassan',
+            'email' => 'hassan.a7group@gmail.com',
+            'department_id' => 69,
+            'agents' => [2380, 2344, 2434, 2291, 2378, 2376, 2379, 2303],
+        ],
+        2551 => [ // Rana Muhammad Hussnain Ali
+            'name' => 'Hussnain',
+            'email' => 'Ranahussnain.a7group@gmail.com',
+            'department_id' => 70,
+            'agents' => [2381, 2369, 2371, 2535, 2368, 2367, 2351, 2350],
+        ],
+        2297 => [ // Javeria bibi
+            'name' => 'Jaweria',
+            'email' => 'javeriabibi.a7group@gmail.com',
+            'department_id' => 71,
+            'agents' => [2299, 2302, 2392, 2298, 2390],
+        ],
+    ],
+];

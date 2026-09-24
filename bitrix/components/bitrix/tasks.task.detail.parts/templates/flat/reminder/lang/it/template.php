@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_ADD"] = "Aggiungi promemoria";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_ADD_ALT"] = "Aggiungi";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_ADD_REMARK"] = "tramite messaggistica istantanea o e-mail";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_DAYS"] = "giorni";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_DELETE"] = "Elimina";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_HOURS"] = "ore";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_NO_DEADLINE"] = "Per impostare un promemoria di scadenza, specifica la scadenza.";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_RECEPIENT_TYPE_O"] = "al creatore";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_RECEPIENT_TYPE_O_EX"] = "Il messaggio sarà inviato al creatore corrente";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_RECEPIENT_TYPE_S"] = "a sé";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_RECEPIENT_TYPE_S_EX"] = "Il messaggio sarà inviato all'utente corrente";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_REMIND_BY"] = "ricorda con";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TO_ASSIGNEE_MSGVER_1"] = "Responsabile";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TO_CREATOR_MSGVER_1"] = "Autore";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TO_SELF_MSGVER_1"] = "Me";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TRANSPORT_E"] = "tramite e-mail";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TRANSPORT_E_EX"] = "Invia messaggio e-mail";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TRANSPORT_J"] = "tramite messaggistica immediata";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TRANSPORT_J_EX"] = "Invia messaggio immediato";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TYPE_A"] = "data";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TYPE_A_EX"] = "Il messaggio sarà inviato in una data specifica";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TYPE_D"] = "scadenza";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_TYPE_D_EX"] = "Il messaggio sarà inviato nell'orario specificato prima della scadenza";
+$MESS["TASKS_TTDP_TEMPLATE_REMINDER_UPDATE"] = "Aggiorna";

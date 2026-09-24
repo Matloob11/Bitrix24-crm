@@ -1,0 +1,5 @@
+<?php
+$MESS["SOCNET_ENTITY_SELECTOR_ALL_EMPLOYEES"] = "Todos los empleados";
+$MESS["SOCNET_ENTITY_SELECTOR_ALL_USERS"] = "Todos los usuarios";
+$MESS["SOCNET_ENTITY_SELECTOR_OTHER_EMPLOYEES"] = "Otros empleados";
+$MESS["SOCNET_ENTITY_SELECTOR_OTHER_USERS"] = "Otros usuarios";

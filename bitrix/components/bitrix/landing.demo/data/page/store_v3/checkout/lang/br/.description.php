@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_DEMO_STORE_CHECKOUT_NAME"] = "Finalizar compra";
+$MESS["LANDING_DEMO_STORE_CHECKOUT_TEXT_1"] = "Voltar";

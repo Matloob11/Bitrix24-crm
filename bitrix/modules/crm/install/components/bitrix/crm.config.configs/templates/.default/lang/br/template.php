@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_TAB_ACTIVITY_CONFIG"] = "Atividade";
+$MESS["CRM_TAB_ACTIVITY_CONFIG_TITLE2"] = "Preferências de atividade";
+$MESS["CRM_TAB_CONFIG"] = "Envio de e-mail";
+$MESS["CRM_TAB_CONFIG_TITLE"] = "Configurar Parâmetros de Envio de e-mail";
+$MESS["CRM_TAB_DEAL_CONFIG"] = "Negócios";
+$MESS["CRM_TAB_DEAL_CONFIG_TITLE"] = "Parâmetros de Negócio";
+$MESS["CRM_TAB_DUPLICATE_CONTROL"] = "Controle de Duplicados";
+$MESS["CRM_TAB_DUPLICATE_CONTROL_TITLE"] = "Parâmetros de Controle de Duplicados";
+$MESS["CRM_TAB_FORMAT"] = "Formato";
+$MESS["CRM_TAB_FORMAT_TITLE"] = "Parâmetros de Formato";
+$MESS["CRM_TAB_GENERAL"] = "Geral";
+$MESS["CRM_TAB_GENERAL_TITLE"] = "Parâmetros Comuns";
+$MESS["CRM_TAB_HISTORY"] = "Histórico";
+$MESS["CRM_TAB_HISTORY_TITLE"] = "Configurações do Histórico";
+$MESS["CRM_TAB_LIVEFEED2"] = "Feed";
+$MESS["CRM_TAB_LIVEFEED_TITLE2"] = "Configurações do Feed";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG"] = "Lixeira";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG_TITLE"] = "Configurações da Lixeira";
+$MESS["CRM_TAB_REST_2"] = "Market";
+$MESS["CRM_TAB_REST_2_MSGVER_1"] = "Market";
+$MESS["CRM_TAB_REST_TITLE"] = "Configurações de Aplicativo";
+$MESS["CRM_TAB_STATUS_CONFIG"] = "Status e Menus Suspensos";
+$MESS["CRM_TAB_STATUS_CONFIG_TITLE"] = "Controles de seleção de entidade";

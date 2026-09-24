@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_COLUMN_ORDER_CHECK_DATE_CREATE"] = "Criado em";
+$MESS["CRM_COLUMN_ORDER_CHECK_ENTITY"] = "ID da entidade (#ENTITY_NAME#)";
+$MESS["CRM_COLUMN_ORDER_CHECK_ID"] = "ID";
+$MESS["CRM_COLUMN_ORDER_CHECK_LINK"] = "Link do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_ORDER_ID"] = "ID do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_PAYMENT_DESCR"] = "Pagamento";
+$MESS["CRM_COLUMN_ORDER_CHECK_SHIPMENT_DESCR"] = "Entrega";
+$MESS["CRM_COLUMN_ORDER_CHECK_STATUS"] = "Status do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_SUM"] = "Montante do recibo";
+$MESS["CRM_COLUMN_ORDER_CHECK_TYPE"] = "Tipo de recibo";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "O módulo CRM não está instalado.";
+$MESS["CRM_ORDER_CHECK_ADD_TITLE"] = "Adicionar Novo Recibo";
+$MESS["CRM_ORDER_CHECK_LINK"] = "Link do recibo";
+$MESS["CRM_ORDER_CHECK_TITLE"] = "Recibo ##ID# de #DATE_CREATE#";
+$MESS["CRM_ORDER_COPY_PAGE_TITLE"] = "Copiar recibo";
+$MESS["CRM_ORDER_NOT_FOUND"] = "O pedido não foi encontrado.";
+$MESS["CRM_ORDER_PAYMENT"] = "Pagamento ##PAYMENT_NUMBER#: #PAYSYSTEM_NAME#";
+$MESS["CRM_ORDER_PAYMENT_TITLE"] = "Pagamento ##ACCOUNT_NUMBER# de #DATE_BILL#";
+$MESS["CRM_ORDER_SECTION_ADDITIONAL"] = "Detalhes do pagamento";
+$MESS["CRM_ORDER_SECTION_MAIN"] = "Detalhes do recibo";
+$MESS["CRM_ORDER_SHIPMENT"] = "Entrega ##SHIPMENT_NUMBER#: #DELIVERY_SYSTEM_NAME#";
+$MESS["CRM_ORDER_SHIPMENT_TITLE"] = "Entrega ##ACCOUNT_NUMBER# de #DATE_INSERT#";
+$MESS["CRM_PERMISSION_DENIED"] = "Acesso negado";
+$MESS["CRM_SALE_MODULE_NOT_INSTALLED"] = "O módulo e-Store não está instalado.";

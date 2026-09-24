@@ -1,0 +1,7 @@
+<?php
+$MESS["BIZPROC_STORAGE_LIST_ACTION_PANEL_DELETE"] = "Löschen";
+$MESS["BIZPROC_STORAGE_LIST_ACTION_PANEL_PLACEHOLDER"] = "Aktion auswählen";
+$MESS["BIZPROC_STORAGE_LIST_DELETE_CONFIRM"] = "Möchten Sie die ausgewählten Speicher löschen?";
+$MESS["BIZPROC_STORAGE_LIST_DELETE_CONFIRM_OK"] = "Ja";
+$MESS["BIZPROC_STORAGE_LIST_MODULE_NOT_INSTALLED"] = "Das Modul \"Geschäftsprozesse\" ist nicht installiert.";
+$MESS["BIZPROC_STORAGE_LIST_TITLE"] = "Speicher";

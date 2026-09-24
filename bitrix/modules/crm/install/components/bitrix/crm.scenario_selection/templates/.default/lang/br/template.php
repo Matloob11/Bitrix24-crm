@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_SCENARIO_SELECTION_ACTIVE_ORDERS"] = "Pedidos ativos: #ORDER_COUNT#";
+$MESS["CRM_SCENARIO_SELECTION_CONVERT_ACTIVE_ORDERS"] = "Converta pedidos ativos em negócios ao alterar o modo";
+$MESS["CRM_SCENARIO_SELECTION_DEALS"] = "Negócios";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION"] = "A melhor escolha para vendas pessoais";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_1"] = "Qualquer pedido (a partir de chamadas, bate-papos, formulários de CRM, pedidos da loja virtual etc.) será adicionado aos negócios do CRM";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_2"] = "A comunicação com o cliente, o status do pagamento, as etapas de entrega serão vistos na linha do tempo do negócio.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_3"] = "Os representantes de vendas se comunicam com cada cliente pessoalmente";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_ONLY_WARNING"] = "O processamento de pedidos não estará disponível se você optar por lidar apenas com negócios.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS"] = "Negócios e pedidos";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION"] = "Ideal para processamento automatizado de pedidos";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_1"] = "Os pedidos da loja virtual são salvos apenas em pedidos de CRM, não adicionados a negócios";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_2"] = "Os negócios são criados como entidades separadas (por exemplo, para fornecer serviços adicionais)";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_3"] = "Alguns dos representantes de vendas cuidam dos negócios, enquanto outros representantes de vendas processam os pedidos da loja virtual";
+$MESS["CRM_SCENARIO_SELECTION_SAVE_ERROR"] = "Erro ao alterar o modo";
+$MESS["CRM_SCENARIO_SELECTION_SELECT"] = "Selecionar";
+$MESS["CRM_SCENARIO_SELECTION_SELECTED"] = "Selecionado";
+$MESS["CRM_SCENARIO_SELECTION_TITLE"] = "Modo de tratamento de pedidos";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_CANCEL_BUTTON"] = "Mudar para o modo Negócios";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_OK_BUTTON"] = "Permanecer no modo Negócios e pedidos";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_1"] = "Os pedidos da sua loja on-line se tornarão negócios em que você pode aceitar pagamentos, criar envios e reservar estoque nos depósitos. Não haverá área independente de \"Pedidos\".";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_2"] = "Observe que você não será capaz de voltar para o modo de Negócios e pedidos porque ele não é mais suportado.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_1"] = "Leia mais";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_2"] = "sobre estes dois modos antes de você optar.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TITLE"] = "Você está prestes a mudar para o modo Negócios";

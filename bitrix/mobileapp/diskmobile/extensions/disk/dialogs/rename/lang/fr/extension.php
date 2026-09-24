@@ -1,0 +1,4 @@
+<?php
+$MESS["M_DISK_RENAME_FILE_PLACEHOLDER"] = "Nom du fichier";
+$MESS["M_DISK_RENAME_FOLDER_PLACEHOLDER"] = "Nom du dossier";
+$MESS["M_DISK_RENAME_SAVE_BUTTON"] = "Renommer";

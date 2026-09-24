@@ -1,0 +1,5 @@
+<?php
+$MESS["IMCONNECTOR_UPDATER_2112000_ADMIN_NOTIFY"] = "¡Amplíe la ventana de mensajes del cliente a 7 días!
+Las reglas especifican que puede responder al mensaje de un cliente en Facebook o Instagram en el transcurso de las 24 horas posteriores a su último mensaje. Ahora puede ampliar este tiempo a 7 días. Facebook no permite enviar anuncios (incluidos descuentos y cupones) ni mensajes automáticos a los clientes una vez que expira la ventana de 24 horas. Su cuenta se bloqueará si no sigue estos lineamientos. <a href=\"#HREF#\">Detalles</a>";
+$MESS["IMCONNECTOR_UPDATER_2112000_CHAT"] = "[B]¡Amplíe la ventana de mensajes del cliente a 7 días![/B]
+Las reglas especifican que puede responder al mensaje de un cliente en Facebook o Instagram en el transcurso de las 24 horas posteriores a su último mensaje. Ahora puede ampliar este tiempo a 7 días. Facebook no permite enviar anuncios (incluidos descuentos y cupones) ni mensajes automáticos a los clientes una vez que expira la ventana de 24 horas. Su cuenta se bloqueará si no sigue estos lineamientos. [URL=#HREF#]Detalles[/URL].";

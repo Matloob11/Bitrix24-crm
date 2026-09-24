@@ -1,0 +1,8 @@
+<?
+$MESS["DOCGEN_ROLE_ACTION"] = "Azione";
+$MESS["DOCGEN_ROLE_CANCEL"] = "Annulla";
+$MESS["DOCGEN_ROLE_ENTITY"] = "Entità";
+$MESS["DOCGEN_ROLE_LABEL"] = "Ruolo";
+$MESS["DOCGEN_ROLE_PERMISSION"] = "Autorizzazione";
+$MESS["DOCGEN_ROLE_SAVE"] = "Salva";
+?>

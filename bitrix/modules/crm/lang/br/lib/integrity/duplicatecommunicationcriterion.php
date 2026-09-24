@@ -1,0 +1,8 @@
+<?
+$MESS["CRM_DUP_CRITERION_COMM_EMAIL_ENTITY_TOTAL"] = "#QTY# para e-mail \"#DESCR#\"";
+$MESS["CRM_DUP_CRITERION_COMM_EMAIL_ENTITY_TOTAL_EXCEEDED"] = "Mais de #QTY# para e-mails \"#DESCR#\"";
+$MESS["CRM_DUP_CRITERION_COMM_EMAIL_SUMMARY"] = "E-mail correspondente: \"#DESCR#\"";
+$MESS["CRM_DUP_CRITERION_COMM_PHONE_ENTITY_TOTAL"] = "#QTY# para telefone \"#DESCR#\"";
+$MESS["CRM_DUP_CRITERION_COMM_PHONE_ENTITY_TOTAL_EXCEEDED"] = "Mais de #QTY# para telefone \"#DESCR#\"";
+$MESS["CRM_DUP_CRITERION_COMM_PHONE_SUMMARY"] = "Telefone correspondente: \"#DESCR#\"";
+?>

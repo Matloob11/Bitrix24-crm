@@ -1,0 +1,4 @@
+<?php
+$MESS["IM_MESSAGE_COPILOT_CREATION_HEADER_DESC"] = "Hazme una pregunta o elige alguna de las opciones preestablecidas.";
+$MESS["IM_MESSAGE_COPILOT_CREATION_HEADER_TITLE"] = "¡Hola! Soy #COPILOT_ROLE_NAME#";
+$MESS["IM_MESSAGE_COPILOT_CREATION_HEADER_TITLE_AFTER_CHANGE"] = "Ahora soy #COPILOT_ROLE_NAME#";

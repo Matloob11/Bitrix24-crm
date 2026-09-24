@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_ABSENCE_POPUP_SINGLE_DATE_TEXT"] = "#USER_NAME# estará ausente em #DATE#.";
+$MESS["TASKS_V2_ABSENCE_POPUP_TEXT"] = "#USER_NAME# estará ausente de #DATE_FROM# a #DATE_TO#";
+$MESS["TASKS_V2_ABSENCE_POPUP_VIEWED_BUTTON_LABEL"] = "Não mostrar novamente";

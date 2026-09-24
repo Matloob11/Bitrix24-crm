@@ -1,0 +1,5 @@
+<?
+$MESS["TARIFF_RESTRICTION_TEXT"] = "La raccolta automatica dei rapporti di lavoro di tutti i dipendenti è uno dei mezzi più utili per migliorare l'efficienza. Tu imposti la pianificazione (ad esempio, ogni venerdì o alla fine di ogni mese) e il portale aprirà una finestra in cui un dipendente dovrà digitare un rapporto dei propri risultati giornalieri/settimanali/mensili e dei piani quadro per il prossimo futuro. Il supervisore del dipendente potrà quindi accettare il rapporto con una valutazione positiva o negativa per fornire un feedback utile a ciascun subordinato. <a href=\"javascript:void(0)\" onclick='top.BX.Helper.show(\"redirect=detail&code=5391955\");'>Dettagli</a>";
+$MESS["TARIFF_RESTRICTION_TEXT2"] = "I rapporti di lavoro sono disponibili solo nei <a href=\"/settings/license_all.php\" target=\"_blank\">piani commerciali selezionati</a>.";
+$MESS["TITLE"] = "Rapporti di lavoro";
+?>

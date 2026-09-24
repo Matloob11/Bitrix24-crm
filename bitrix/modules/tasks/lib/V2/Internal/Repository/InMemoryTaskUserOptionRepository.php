@@ -1,0 +1,105 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Tasks\V2\Internal\Repository;
+
+use Bitrix\Tasks\V2\Internal\Entity;
+
+class InMemoryTaskUserOptionRepository implements TaskUserOptionRepositoryInterface
+{
+	/**
+	 * @var array<int, array<int, Entity\Task\UserOptionCollection>>
+	 */
+	private array $cache = [];
+
+	public function __construct(
+		private readonly TaskUserOptionRepository $userOptionRepository,
+	)
+	{
+
+	}
+
+	public function get(int $taskId, ?int $userId = null): Entity\Task\UserOptionCollection
+	{
+		$userId ??= 0;
+		if (!isset($this->cache[$userId][$taskId]))
+		{
+			$this->cache[$userId][$taskId] = $this->userOptionRepository->get($taskId, $userId);
+		}
+
+		return $this->cache[$userId][$taskId];
+	}
+
+	public function isSet(int $code, int $taskId, int $userId): bool
+	{
+		if (!isset($this->cache[$userId][$taskId]))
+		{
+			$options = $this->userOptionRepository->get($taskId, $userId);
+			$this->cache[$userId][$taskId] = $options;
+		}
+
+		return $this->cache[$userId][$taskId]->findOne(['code' => $code]) !== null;
+	}
+
+	public function add(Entity\Task\UserOption $userOption): void
+	{
+		$this->userOptionRepository->add($userOption);
+
+		if (isset($this->cache[$userOption->userId][$userOption->taskId]))
+		{
+			unset($this->cache[$userOption->userId][$userOption->taskId]);
+		}
+	}
+
+	public function addBatch(Entity\Task\UserOptionCollection $userOptions): void
+	{
+		$this->userOptionRepository->addBatch($userOptions);
+
+		foreach ($userOptions as $userOption)
+		{
+			if (isset($this->cache[$userOption->userId][$userOption->taskId]))
+			{
+				unset($this->cache[$userOption->userId][$userOption->taskId]);
+			}
+		}
+	}
+
+	public function delete(array $codes = [], int $taskId = 0, int $userId = 0): void
+	{
+		$this->userOptionRepository->delete($codes, $taskId, $userId);
+
+		if ($taskId > 0)
+		{
+			unset($this->cache[$userId][$taskId]);
+		}
+		elseif ($userId > 0)
+		{
+			unset($this->cache[$userId]);
+		}
+	}
+
+	public function deleteBatch(int $taskId, array $userIds, array $codes = []): void
+	{
+		$this->userOptionRepository->deleteBatch($taskId, $userIds, $codes);
+
+		foreach ($userIds as $userId)
+		{
+			if (isset($this->cache[$userId][$taskId]))
+			{
+				unset($this->cache[$userId][$taskId]);
+			}
+		}
+	}
+
+	public function invalidate(int $taskId): void
+	{
+		foreach ($this->cache as $userId => &$data)
+		{
+			if (isset($data[$taskId]))
+			{
+				unset($data[$taskId]);
+			}
+		}
+	}
+}

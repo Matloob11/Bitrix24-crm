@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_WEBFORM_RESULT_ENTITY_ACTIVITY_RESPONSIBLE_IM_NOTIFY"] = "L'attività \"#title#\" è stata assegnata a te";
+$MESS["CRM_WEBFORM_RESULT_ENTITY_ACTIVITY_SUBJECT"] = "Completa modulo CRM n.";
+$MESS["CRM_WEBFORM_RESULT_ENTITY_DC_MERGE"] = "Unisci";
+$MESS["CRM_WEBFORM_RESULT_ENTITY_DC_NONE"] = "Consenti duplicati";
+$MESS["CRM_WEBFORM_RESULT_ENTITY_DC_REPLACE"] = "Sostituisci";
+$MESS["CRM_WEBFORM_RESULT_ENTITY_NOTIFY_MESSAGE_LINK"] = "L'articolo del CRM è stato creato: #ENTITY_LINK#";
+$MESS["CRM_WEBFORM_RESULT_ENTITY_NOTIFY_SUBJECT"] = "Modulo CRM \"%title%\" inviato";
+$MESS["CRM_WEBFORM_RESULT_ENTITY_NOTIFY_SUBJECT_CALL"] = "Callback richiesto da \"%phone%\"";

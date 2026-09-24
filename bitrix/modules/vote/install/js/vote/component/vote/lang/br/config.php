@@ -1,0 +1,19 @@
+<?php
+$MESS["VOTE_ANONYMOUS"] = "Enquete anônima";
+$MESS["VOTE_BUTTON"] = "Votar";
+$MESS["VOTE_NOTICE_COMPLETED"] = "enquete encerrada";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_COMPLETE"] = "Não foi possível encerrar a enquete.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_REVOKE"] = "Revotação falhou.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_SUBMIT"] = "Não é possível votar. Tente novamente.";
+$MESS["VOTE_NOTICE_REVOKE_IS_NOT_AVAILABLE"] = "revotação indisponível";
+$MESS["VOTE_POPUP_BTN_CANCEL"] = "Cancelar";
+$MESS["VOTE_POPUP_BTN_COMPLETE"] = "Encerrar enquete";
+$MESS["VOTE_POPUP_TEXT"] = "Os resultados da enquete serão salvos; a votação será encerrada permanentemente e não poderá ser retomada. Você deseja encerrar a enquete?";
+$MESS["VOTE_POPUP_TITLE"] = "Encerrar enquete";
+$MESS["VOTE_PUBLIC"] = "Enquete pública";
+$MESS["VOTE_RESULT_COUNT_PLURAL_0"] = "#COUNT# voto";
+$MESS["VOTE_RESULT_COUNT_PLURAL_1"] = "#COUNT# votos";
+$MESS["VOTE_RESULT_COUNT_PLURAL_2"] = "#COUNT# votos";
+$MESS["VOTE_REVOKE"] = "Revotar";
+$MESS["VOTE_SHOW_RESULTS"] = "Ver resultado da enquete";
+$MESS["VOTE_SUMMARY_COUNT_NO_VOTES"] = "Sem votos";

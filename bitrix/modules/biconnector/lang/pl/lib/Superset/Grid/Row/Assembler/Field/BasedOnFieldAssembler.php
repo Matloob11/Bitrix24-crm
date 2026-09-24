@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_DASHBOARD_GRID_SOURCE_TYPE_MARKET"] = "Pobrano z Marketu";
+$MESS["BICONNECTOR_DASHBOARD_GRID_SOURCE_TYPE_SYSTEM"] = "Wbudowany pulpit nawigacyjny";

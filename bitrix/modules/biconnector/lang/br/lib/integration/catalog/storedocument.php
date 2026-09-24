@@ -1,0 +1,19 @@
+<?php
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_CURRENCY"] = "Moeda do objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_CREATE"] = "Criado em";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_MODIFY"] = "Modificado em";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE"] = "Tipo de objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE_CODE"] = "Código do tipo de objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_ID"] = "ID único do objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE"] = "ID e nome da pessoa responsável";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_ID"] = "ID da pessoa responsável";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_NAME"] = "Nome da pessoa responsável";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS"] = "Status do objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE"] = "Objeto de inventário processado";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE_FULL"] = "Objeto de inventário processado, Y/N";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TITLE"] = "Nome do objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TOTAL"] = "Total do objeto de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED"] = "Objeto de inventário cancelado";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED_FULL"] = "Objeto de inventário cancelado, Y/N";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE"] = "Objetos de inventário";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE_DESCRIPTION_FULL"] = "Contém informações sobre objetos de inventário (recebimento de estoque, transferência, ajuste etc.)";

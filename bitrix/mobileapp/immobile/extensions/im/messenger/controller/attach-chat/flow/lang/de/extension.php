@@ -1,0 +1,22 @@
+<?php
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_ATTACH_BUTTON_CONFIRM"] = "Ja";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_ATTACH_DESCRIPTION"] = "Allen Chat-Teilnehmern wird der Zugriff auf das Projekt gewährt. Der Chat wird nur innerhalb des Projektes verfügbar sein. Möchten Sie den Chat ins Projekt verschieben?";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_ATTACH_TITLE"] = "Chat ins Projekt verschieben";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_BUTTON_CANCEL"] = "Abbrechen";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_DETACH_BUTTON_CONFIRM"] = "Ja";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_DETACH_DESCRIPTION"] = "Der Chat wird nicht mehr ein Teil des Projektes sein. Er wird in der Liste der Chats verfügbar sein. Möchten Sie den Chat aus dem Projekt entfernen?";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_DETACH_TITLE"] = "Chat aus dem Projekt entfernen";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_CHATS_SEARCH_EMPTY_DESCRIPTION"] = "Versuchen Sie es mit einer anderen Suche.";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_CHATS_SEARCH_EMPTY_TITLE"] = "Keine Ergebnisse";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_CHATS_TITLE"] = "Wählen Sie einen Chat aus";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_LOADING"] = "Wird geladen…";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_PROJECTS_SEARCH_EMPTY_DESCRIPTION"] = "Versuchen Sie es mit einer anderen Suche.";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_PROJECTS_SEARCH_EMPTY_TITLE"] = "Keine Ergebnisse";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_PROJECTS_TITLE"] = "Wählen Sie ein Projekt aus";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ATTACH_SUCCESS"] = "Der Chat \"#CHAT#\" wurde ins Projekt \"#PROJECT#\" verschoben.";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_DETACH_SUCCESS"] = "Der Chat \"#CHAT#\" wurde aus dem Projekt \"#PROJECT#\" entfernt.";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_ACCESS_DENIED"] = "Sie haben nicht genügend Rechte, um diesen Chat ins Projekt zu verschieben";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_ALREADY_HAS_PARENT"] = "Dieser Chat ist bereits ein Teil des Projektes";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_GENERIC"] = "Die Aktion kann nicht ausgeführt werden. Bitte versuchen Sie es erneut.";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_NO_PARENT"] = "Dieser Chat ist nicht ein Teil des Projektes";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_WRONG_PARENT"] = "Dieses Projekt ist nicht mehr verfügbar";

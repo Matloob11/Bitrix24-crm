@@ -1,0 +1,652 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Booking\Entity\Booking;
+
+use Bitrix\Booking\Entity\Client\Client;
+use Bitrix\Booking\Entity\Client\ClientCollection;
+use Bitrix\Booking\Entity\EntityWithClientRelationInterface;
+use Bitrix\Booking\Entity\DatePeriod;
+use Bitrix\Booking\Entity\DatePeriodCollection;
+use Bitrix\Booking\Entity\EntityInterface;
+use Bitrix\Booking\Entity\EntityWithExternalDataRelationInterface;
+use Bitrix\Booking\Entity\EventInterface;
+use Bitrix\Booking\Entity\EventTrait;
+use Bitrix\Booking\Entity\ExternalData\ExternalDataCollection;
+use Bitrix\Booking\Internals\Service\Notifications\Entity\BookingMessageCollection;
+use Bitrix\Booking\Entity\Resource\Resource;
+use Bitrix\Booking\Entity\Resource\ResourceCollection;
+use Bitrix\Booking\Internals\Service\Notifications\NotificationType;
+use Bitrix\Booking\Internals\Service\Rrule;
+use Bitrix\Booking\Internals\Service\Time;
+use DateTimeImmutable;
+use DateTimeZone;
+
+class Booking implements
+	EntityInterface,
+	EventInterface,
+	EntityWithClientRelationInterface,
+	EntityWithExternalDataRelationInterface
+{
+	use EventTrait;
+
+	private int|null $id = null;
+	private string|null $name = null;
+	private string|null $description = null;
+	private bool|null $isConfirmed = null;
+	private bool|null $isDeleted = null;
+	private int $counter = 0;
+	private array $counters = [];
+	/** @var NotificationType[] */
+	private array $notificationTypes = [];
+
+	private DatePeriod|null $datePeriod = null;
+
+	private ResourceCollection $resourceCollection;
+	private ClientCollection $clientCollection;
+	private BookingSkuCollection $skuCollection;
+	private ExternalDataCollection $externalDataCollection;
+	private BookingMessageCollection $messageCollection;
+
+	private string|null $rrule = null;
+	private Booking|null $parent = null;
+
+	private BookingVisitStatus|null $visitStatus = null;
+	private BookingSource|null $source = null;
+	private BookingDeletionScenario|null $deletionScenario = null;
+
+	private int|null $createdBy = null;
+	private int|null $createdAt = null;
+	private int|null $updatedAt = null;
+	private int|null $deletedAt = null;
+	private string|null $note = null;
+	private string|null $clientNote = null;
+	private BookingPayment|null $payment = null;
+
+	public function __construct()
+	{
+		$this->resourceCollection = new ResourceCollection();
+		$this->clientCollection = new ClientCollection();
+		$this->skuCollection = new BookingSkuCollection();
+		$this->externalDataCollection = new ExternalDataCollection();
+		$this->messageCollection = new BookingMessageCollection();
+	}
+
+	public function getId(): int|null
+	{
+		return $this->id;
+	}
+
+	public function setId(int|null $id): self
+	{
+		$this->id = $id;
+
+		return $this;
+	}
+
+	public function getName(): string|null
+	{
+		return $this->name;
+	}
+
+	public function setName(string|null $name): self
+	{
+		$this->name = $name;
+
+		return $this;
+	}
+
+	public function getDescription(): string|null
+	{
+		return $this->description;
+	}
+
+	public function setDescription(string|null $description): self
+	{
+		$this->description = $description;
+
+		return $this;
+	}
+
+	public function isConfirmed(): bool|null
+	{
+		return $this->isConfirmed;
+	}
+
+	public function setConfirmed(bool $confirmed): self
+	{
+		$this->isConfirmed = $confirmed;
+
+		return $this;
+	}
+
+	public function isDeleted(): bool|null
+	{
+		return $this->isDeleted;
+	}
+
+	public function setDeleted(bool $deleted): self
+	{
+		$this->isDeleted = $deleted;
+		return $this;
+	}
+
+	public function getPrimaryClient(): Client|null
+	{
+		return $this->getClientCollection()->getPrimaryClient();
+	}
+
+	public function getPrimaryClientUrl(): string
+	{
+		return $this->getPrimaryClient()?->getUrl() ?? '';
+	}
+
+	public function setClientCollection(ClientCollection $clientCollection): self
+	{
+		$this->clientCollection = $clientCollection;
+
+		return $this;
+	}
+
+	public function getClientCollection(): ClientCollection
+	{
+		return $this->clientCollection;
+	}
+
+	public function setSkuCollection(BookingSkuCollection $skuCollection): self
+	{
+		$this->skuCollection = $skuCollection;
+
+		return $this;
+	}
+
+	public function getSkuCollection(): BookingSkuCollection
+	{
+		return $this->skuCollection;
+	}
+
+	public function getDatePeriod(): DatePeriod|null
+	{
+		return $this->datePeriod;
+	}
+
+	public function setDatePeriod(DatePeriod|null $datePeriod): self
+	{
+		$this->datePeriod = $datePeriod;
+
+		return $this;
+	}
+
+	public function setDatePeriodFromArray(array $datePeriod): self
+	{
+		$this->setDatePeriod(
+			new DatePeriod(
+				(new DateTimeImmutable('@' . (int)$datePeriod['from']['timestamp']))
+					->setTimezone(new DateTimeZone((string)$datePeriod['from']['timezone'])),
+				(new DateTimeImmutable('@' . (int)$datePeriod['to']['timestamp']))
+					->setTimezone(new DateTimeZone((string)$datePeriod['to']['timezone']))
+			)
+		);
+
+		return $this;
+	}
+
+	public function getRrule(): string|null
+	{
+		return $this->rrule;
+	}
+
+	public function setRrule(string|null $rrule): self
+	{
+		$this->rrule = $rrule;
+
+		return $this;
+	}
+
+	public function getParent(): self|null
+	{
+		return $this->parent;
+	}
+
+	public function setParent(self|null $parent): self
+	{
+		$this->parent = $parent;
+
+		return $this;
+	}
+
+	public function getNote(): string|null
+	{
+		return $this->note;
+	}
+
+	public function setNote(string|null $note): self
+	{
+		$this->note = $note;
+
+		return $this;
+	}
+
+	public function getClientNote(): string|null
+	{
+		return $this->clientNote;
+	}
+
+	public function setClientNote(string|null $note): self
+	{
+		$this->clientNote = $note;
+
+		return $this;
+	}
+
+	public function getPrimaryResource(): Resource|null
+	{
+		return $this->resourceCollection->getPrimary();
+	}
+
+	public function getResourceCollection(): ResourceCollection
+	{
+		return $this->resourceCollection;
+	}
+
+	public function setResourceCollection(ResourceCollection $resourceCollection): self
+	{
+		$this->resourceCollection = $resourceCollection;
+
+		return $this;
+	}
+
+	public function getExternalDataCollection(): ExternalDataCollection
+	{
+		return $this->externalDataCollection;
+	}
+
+	public function setExternalDataCollection(ExternalDataCollection $externalDataCollection): self
+	{
+		$this->externalDataCollection = $externalDataCollection;
+
+		return $this;
+	}
+
+	public function setMessageCollection(BookingMessageCollection $messageCollection): self
+	{
+		$this->messageCollection = $messageCollection;
+
+		return $this;
+	}
+
+	public function getMaxDate(): DateTimeImmutable|null
+	{
+		if ($this->isEventRecurring())
+		{
+			return $this->getEventRrule()->getUntil();
+		}
+
+		return $this->getEventDatePeriod()?->getDateTo();
+	}
+
+	public function getCreatedBy(): int|null
+	{
+		return $this->createdBy;
+	}
+
+	public function setCreatedBy(int|null $createdBy): self
+	{
+		$this->createdBy = $createdBy;
+
+		return $this;
+	}
+
+	public function getCreatedAt(): int|null
+	{
+		return $this->createdAt;
+	}
+
+	public function setCreatedAt(int|null $createdAt): self
+	{
+		$this->createdAt = $createdAt;
+
+		return $this;
+	}
+
+	public function getUpdatedAt(): int|null
+	{
+		return $this->updatedAt;
+	}
+
+	public function setUpdatedAt(int|null $updatedAt): self
+	{
+		$this->updatedAt = $updatedAt;
+
+		return $this;
+	}
+
+	public function getDeletedAt(): int|null
+	{
+		return $this->deletedAt;
+	}
+
+	public function setDeletedAt(int|null $deletedAt): self
+	{
+		$this->deletedAt = $deletedAt;
+
+		return $this;
+	}
+
+	public function getCounter(): int
+	{
+		return $this->counter;
+	}
+
+	public function setCounter(int $value): self
+	{
+		$this->counter = $value;
+
+		return $this;
+	}
+
+	public function getCounters(): array
+	{
+		return $this->counters;
+	}
+
+	public function setCounters(array $counters): self
+	{
+		$this->counters = $counters;
+
+		return $this;
+	}
+
+	public function getVisitStatus(): BookingVisitStatus
+	{
+		return $this->visitStatus ?? BookingVisitStatus::Unknown;
+	}
+
+	public function isVisitStatusKnown(): bool
+	{
+		return $this->getVisitStatus() !== BookingVisitStatus::Unknown;
+	}
+
+	public function setVisitStatus(BookingVisitStatus $visitStatus): self
+	{
+		$this->visitStatus = $visitStatus;
+
+		return $this;
+	}
+
+	public function getSource(): BookingSource
+	{
+		return $this->source ?? BookingSource::Internal;
+	}
+
+	public function setSource(BookingSource $source): self
+	{
+		$this->source = $source;
+
+		return $this;
+	}
+
+	public function getDeletionScenario(): BookingDeletionScenario|null
+	{
+		return $this->deletionScenario;
+	}
+
+	public function setDeletionScenario(BookingDeletionScenario|null $deletionScenario): self
+	{
+		$this->deletionScenario = $deletionScenario;
+
+		return $this;
+	}
+
+	public function getPayment(): BookingPayment|null
+	{
+		return $this->payment;
+	}
+
+	public function setPayment(BookingPayment $payment): self
+	{
+		$this->payment = $payment;
+
+		return $this;
+	}
+
+	public function isDelayed(): bool
+	{
+		$now = time();
+
+		if (
+			$this->getDatePeriod()->getDateFrom()->getTimestamp() < ($now - Time::CONSIDER_BOOKING__DELAYED_AFTER_SECONDS)
+			&& $this->getDatePeriod()->getDateTo()->getTimestamp() > $now
+			&& $this->visitStatus->value !== BookingVisitStatus::Visited->value
+		)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public function toArray(): array
+	{
+		return [
+			'id' => $this->id,
+			'name' => $this->name,
+			'description' => $this->description,
+			'isConfirmed' => $this->isConfirmed,
+			'isDeleted' => $this->isDeleted,
+			'datePeriod' =>
+				$this->datePeriod
+					? [
+					'from' => [
+						'timestamp' => $this->datePeriod->getDateFrom()->getTimestamp(),
+						'timezone' => $this->datePeriod->getDateFrom()->getTimezone()->getName(),
+					],
+					'to' => [
+						'timestamp' => $this->datePeriod->getDateTo()->getTimestamp(),
+						'timezone' => $this->datePeriod->getDateTo()->getTimezone()->getName(),
+					],
+				]
+					: null
+			,
+			'resources' => $this->resourceCollection->toArray(),
+			'clients' => $this->clientCollection->toArray(),
+			'skus' => $this->skuCollection->toArray(),
+			'externalData' => $this->externalDataCollection->toArray(),
+			'messages' => $this->messageCollection->toArray(),
+			'primaryClient' => $this->getPrimaryClient(),
+			'rrule' => $this->rrule,
+			'parent' => $this->parent?->toArray(),
+			'createdBy' => $this->createdBy,
+			'createdAt' => $this->createdAt,
+			'updatedAt' => $this->updatedAt,
+			'deletedAt' => $this->deletedAt,
+			'counter' => $this->counter,
+			'counters' => $this->counters,
+			'note' => $this->note,
+			'clientNote' => $this->clientNote,
+			'visitStatus' => $this->getVisitStatus()->value,
+			'source' => $this->getSource()->value,
+			'deletionScenario' => $this->getDeletionScenario()?->value,
+			'payment' => $this->payment?->toArray(),
+		];
+	}
+
+	public static function mapFromArray(array $props): self
+	{
+		$result = new Booking();
+
+		if (isset($props['id']))
+		{
+			$result->setId((int)$props['id']);
+		}
+
+		if (isset($props['name']))
+		{
+			$result->setName((string)$props['name']);
+		}
+
+		if (isset($props['description']))
+		{
+			$result->setDescription((string)$props['description']);
+		}
+
+		if (isset($props['isConfirmed']))
+		{
+			$result->setConfirmed((bool)$props['isConfirmed']);
+		}
+
+		if (isset($props['isDeleted']))
+		{
+			$result->setDeleted((bool)$props['isDeleted']);
+		}
+
+		if (
+			isset($props['datePeriod']['from']['timestamp'])
+			&& !empty($props['datePeriod']['from']['timezone'])
+			&& isset($props['datePeriod']['to']['timestamp'])
+			&& !empty($props['datePeriod']['to']['timezone'])
+		)
+		{
+			$result->setDatePeriodFromArray($props['datePeriod']);
+		}
+
+		if (isset($props['resources']))
+		{
+			$result->setResourceCollection(
+				ResourceCollection::mapFromArray((array)$props['resources'])
+			);
+		}
+
+		if (isset($props['clients']))
+		{
+			$result->setClientCollection(
+				ClientCollection::mapFromArray((array)$props['clients'])
+			);
+		}
+
+		if (isset($props['skus']))
+		{
+			$result->setSkuCollection(
+				BookingSkuCollection::mapFromArray((array)$props['skus'])
+			);
+		}
+
+		if (isset($props['externalData']))
+		{
+			$result->setExternalDataCollection(
+				ExternalDataCollection::mapFromArray((array)$props['externalData'])
+			);
+		}
+
+		if (isset($props['messages']))
+		{
+			$result->setMessageCollection(
+				BookingMessageCollection::mapFromArray((array)$props['messages'])
+			);
+		}
+
+		if (isset($props['rrule']))
+		{
+			$result->setRrule((string)$props['rrule']);
+		}
+
+		if (isset($props['parent']))
+		{
+			$result->setParent(self::mapFromArray($props['parent']));
+		}
+
+		if (isset($props['createdBy']))
+		{
+			$result->setCreatedBy($props['createdBy']);
+		}
+
+		if (isset($props['createdAt']))
+		{
+			$result->setCreatedAt($props['createdAt']);
+		}
+
+		if (isset($props['updatedAt']))
+		{
+			$result->setUpdatedAt($props['updatedAt']);
+		}
+
+		if (isset($props['deletedAt']))
+		{
+			$result->setDeletedAt($props['deletedAt']);
+		}
+
+		if (isset($props['note']))
+		{
+			$result->setNote((string)$props['note']);
+		}
+
+		if (isset($props['clientNote']))
+		{
+			$result->setClientNote((string)$props['clientNote']);
+		}
+
+		if (isset($props['visitStatus']))
+		{
+			$result->setVisitStatus(
+				BookingVisitStatus::tryFrom(
+					(string)$props['visitStatus']
+				)
+			);
+		}
+
+		if (isset($props['source']))
+		{
+			$result->setSource(
+				BookingSource::tryFrom(
+					(string)$props['source']
+				)
+			);
+		}
+
+		if (isset($props['deletionScenario']))
+		{
+			$result->setDeletionScenario(
+				BookingDeletionScenario::tryFrom(
+					(string)$props['deletionScenario']
+				)
+			);
+		}
+
+		return $result;
+	}
+
+	public function isEventRecurring(): bool
+	{
+		return $this->getRrule() !== null;
+	}
+
+	public function getEventDatePeriod(): DatePeriod
+	{
+		return $this->getDatePeriod();
+	}
+
+	public function getEventRrule(): Rrule|null
+	{
+		if ($this->getRrule() === null)
+		{
+			return null;
+		}
+
+		return new Rrule(
+			$this->getRrule(),
+			$this->getDatePeriod()
+		);
+	}
+
+	public function getEventDatePeriodCollection(): DatePeriodCollection
+	{
+		$rrule = $this->getEventRrule();
+		if ($rrule)
+		{
+			return $rrule->getDatePeriodCollection();
+		}
+
+		return new DatePeriodCollection($this->getDatePeriod());
+	}
+}

@@ -1,0 +1,24 @@
+<?php
+$MESS["TASKS_GRID_GROUP_ACTION_CANCELING"] = "Abortando ação de grupo...";
+$MESS["TASKS_GRID_GROUP_ACTION_COUNTING_ELEMENTS_PROGRESS"] = "Contando itens";
+$MESS["TASKS_GRID_GROUP_ACTION_DESCRIPTION"] = "A ação em grupo pode levar algum tempo para uma seleção grande. Aguarde até que a ação seja concluída ou cancele-a.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME"] = "Ação em grupo";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDACCOMPLICE"] = "Adicionando participante a tarefas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDAUDITOR"] = "Adicionando observador a tarefas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDTOFAVORITE"] = "Adicionando tarefas aos Favoritos...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADJUSTDEADLINE"] = "Movendo prazos das tarefas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_COMPLETE"] = "Concluindo as tarefas selecionadas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_DELETE"] = "Excluindo as tarefas selecionadas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_MUTE"] = "Silencioando as tarefas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_PING"] = "Enviando pings aos colaboradores...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_REMOVEFROMFAVORITE"] = "Removendo tarefas dos Favoritos...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETCOLLAB"] = "Adicionando tarefas à collab. A ação do grupo será interrompida se você fechar esta aba ou janela do navegador.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETDEADLINE"] = "Definindo prazos das tarefas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETFLOW"] = "Adicionando tarefas ao fluxo. A ação do grupo será interrompida se você fechar esta aba ou janela do navegador.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETGROUP"] = "Adicionando tarefas ao grupo de trabalho...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETORIGINATOR"] = "Alterando o criador da tarefa...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETRESPONSIBLE"] = "Alterando o responsável pela tarefa...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL"] = "Desativando o requisito de revisão após a conclusão...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL_YES"] = "Ativando exigência de revisão após conclusão. A ação do grupo será interrompida se você fechar esta aba ou janela do navegador.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_UNMUTE"] = "Ativando som das tarefas...";
+$MESS["TASKS_GRID_GROUP_ACTION_NONE"] = "Nenhuma ação selecionada.";

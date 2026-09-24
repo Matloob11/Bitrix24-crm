@@ -1,0 +1,25 @@
+<?php
+$MESS["AI_JS_PICKER_GENERAL_AGREE_WITH_TERMS"] = "Zgadzam się";
+$MESS["AI_JS_PICKER_GENERAL_HELP_LINK"] = "Jak pisać skuteczne opisy";
+$MESS["AI_JS_PICKER_HISTORY_LOADING"] = "Ładowanie historii...";
+$MESS["AI_JS_PICKER_IMAGE_ACTION_COPY"] = "Kopiuj";
+$MESS["AI_JS_PICKER_IMAGE_ACTION_COPY_NOTIFY"] = "Obraz skopiowany";
+$MESS["AI_JS_PICKER_IMAGE_ACTION_USE"] = "Wstaw";
+$MESS["AI_JS_PICKER_IMAGE_EMPTY_STATE"] = "Twoje obrazy wyświetlą się tutaj";
+$MESS["AI_JS_PICKER_IMAGE_HEADER"] = "Opisz obraz";
+$MESS["AI_JS_PICKER_IMAGE_HINT_TEXT"] = "AI ImageAssistant wkrótce zrozumie Twój język. Do tego czasu używaj języka angielskiego.";
+$MESS["AI_JS_PICKER_IMAGE_HINT_TITLE"] = "Opis obrazu musi być po angielsku";
+$MESS["AI_JS_PICKER_IMAGE_MAX_CAPACITY"] = "Zachowywanie następującej liczby zapytań: #capacity#";
+$MESS["AI_JS_PICKER_IMAGE_PLACEHOLDER"] = "Przykład: duży bukiet czerwonych róż w kształcie serca na białym tle";
+$MESS["AI_JS_PICKER_IMAGE_SUBMIT"] = "Wygeneruj obraz";
+$MESS["AI_JS_PICKER_INIT_ERROR"] = "Błąd AI. Spróbuj odświeżyć stronę.";
+$MESS["AI_JS_PICKER_TEXT_ACTION_COPY"] = "Kopiuj";
+$MESS["AI_JS_PICKER_TEXT_ACTION_COPY_NOTIFY"] = "Skopiowano tekst";
+$MESS["AI_JS_PICKER_TEXT_ACTION_USE"] = "Wstaw";
+$MESS["AI_JS_PICKER_TEXT_GENERATE_FAILED"] = "Coś poszło nie tak. Spróbuj ponownie.";
+$MESS["AI_JS_PICKER_TEXT_HEADER"] = "O czym chcesz napisać?";
+$MESS["AI_JS_PICKER_TEXT_LOADER"] = "Tekst";
+$MESS["AI_JS_PICKER_TEXT_MAX_CAPACITY"] = "Zachowywanie następującej liczby zapytań: #capacity#";
+$MESS["AI_JS_PICKER_TEXT_PLACEHOLDER"] = "Przykład: napisz artykuł o zniżkach na bukiety róż";
+$MESS["AI_JS_PICKER_TEXT_PREVIOUS_ITEMS_LABEL"] = "Poprzednie wersje";
+$MESS["AI_JS_PICKER_TEXT_SUBMIT"] = "Wygeneruj tekst";

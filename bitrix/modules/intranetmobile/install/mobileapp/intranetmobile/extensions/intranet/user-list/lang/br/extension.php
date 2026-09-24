@@ -1,0 +1,7 @@
+<?php
+$MESS["MOBILE_USERS_FILTER_DEFAULT_DEPARTMENT_TITLE"] = "Todos os departamentos e usuários";
+$MESS["MOBILE_USERS_MORE_MENU_COMPANY_STRUCTURE"] = "Estrutura da empresa";
+$MESS["MOBILE_USERS_MORE_MENU_COMPANY_STRUCTURE_HINT_TEXT"] = "Crie a estrutura da empresa na web no seu navegador";
+$MESS["MOBILE_USERS_MORE_MENU_SORTING_TYPE_ALPHABET"] = "A a Z";
+$MESS["MOBILE_USERS_MORE_MENU_SORTING_TYPE_DATE"] = "Por data do convite";
+$MESS["MOBILE_USERS_MORE_MENU_SORTING_TYPE_STRUCTURE"] = "Pela estrutura";

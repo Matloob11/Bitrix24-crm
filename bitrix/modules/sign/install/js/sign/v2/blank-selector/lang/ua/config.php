@@ -1,0 +1,24 @@
+<?php
+$MESS["SIGN_BLANK_SELECTOR_CLEAR_ALL"] = "Видалити всі";
+$MESS["SIGN_BLANK_SELECTOR_CREATED_MYSELF"] = "Створено вами";
+$MESS["SIGN_BLANK_SELECTOR_CREATE_NEW_PIC"] = "Зображення";
+$MESS["SIGN_BLANK_SELECTOR_DRAG_AREA"] = "Перетягніть файли сюди";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_MIXED"] = "Документи або зображення, які можна заповнювати даними за допомогою [highlight]блоків полів[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_PLACEHOLDERS"] = "Документи або форми, які можна заповнювати даними за допомогою [highlight]символьних кодів[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_FIELD_ADD_BUTTON_LABEL"] = "Вибрати шаблон документа";
+$MESS["SIGN_BLANK_SELECTOR_LOAD_MORE"] = "Показати ще";
+$MESS["SIGN_BLANK_SELECTOR_MIXED"] = "Документи або зображення, які можна заповнювати даними за допомогою блоків полів.";
+$MESS["SIGN_BLANK_SELECTOR_NEW_BADGE"] = "Нове";
+$MESS["SIGN_BLANK_SELECTOR_NEW_DOC"] = "Microsoft Word";
+$MESS["SIGN_BLANK_SELECTOR_NEW_PDF"] = "Документ PDF";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX"] = "Документи або форми, які можна заповнювати даними за допомогою символьних кодів";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX_MSGVER_1"] = "Документи або форми, які можна заповнювати даними за допомогою символьних кодів.";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK_MSGVER_1"] = "Список полів із кодами";
+$MESS["SIGN_BLANK_SELECTOR_RECENT_TEMPLATES_TITLE"] = "Останні використані шаблони";
+$MESS["SIGN_BLANK_SELECTOR_SLIDER_SELECT_BLANK_BUTTON_LABEL"] = "Вибрати";
+$MESS["SIGN_BLANK_SELECTOR_UPLOADER_ERROR_INCOMPLETE"] = "Не вдалося завантажити файл, спробуйте ще раз.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_HINT"] = "На підпис можна надіслати зображення (максимум %imageCountLimit%) або 1 файл у форматах PDF, DOC, DOCX, RTF чи ODT.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_GROUP_HINT"] = "Розмір кожного завантаженого зображення не повинен перевищувати 10 МБ.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_HINT"] = "Розмір зображення не повинен перевищувати 10 МБ.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_LIMIT_HINT"] = "У шаблон можна завантажити лише один документ. Замінити або видалити вже доданий файл можна за допомогою дій у блоці завантаженого документа.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_PLACEHOLDERS_HINT"] = "Ви можете завантажити документ із символьним кодом лише у форматі docx.";

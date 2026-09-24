@@ -1,0 +1,38 @@
+<?
+$MESS["CATEGORY_NAME"] = "Categoria";
+$MESS["FILE_NAME"] = "File";
+$MESS["IBLOCK_MODULE_NOT_INSTALLED"] = "Il modulo Blocchi di informazioni non è installato.";
+$MESS["IBLOCK_NOT_ASSIGNED"] = "Nessun blocco di informazioni selezionato.";
+$MESS["SOCNET_MODULE_NOT_INSTALLED"] = "Il modulo Social Network non è installato.";
+$MESS["WIKI_ACCESS_DENIED"] = "Accesso negato.";
+$MESS["WIKI_BUTTON_DELETE"] = "Elimina";
+$MESS["WIKI_CHOISE_CATEGORY"] = "Seleziona categoria";
+$MESS["WIKI_DEFAULT_DETAIL_TEXT"] = "%NEWLINE%%HEAD%%NEWLINE%%NEWLINE%Non è presente testo in questa pagina.";
+$MESS["WIKI_DELETE_CONFIRM"] = "Eliminare?";
+$MESS["WIKI_DELETE_ERROR"] = "Errore durante l'eliminazione della pagina";
+$MESS["WIKI_DELETE_PAGE"] = "Eliminare completamente la pagina e il log delle modifiche?";
+$MESS["WIKI_DEL_SONET_LOG_TITLE_TEMPLATE"] = "Articolo del wiki \"#TITLE#\" eliminato";
+$MESS["WIKI_DIALOG_RENAME_BUT_RENAME"] = "Rinomina";
+$MESS["WIKI_DIALOG_RENAME_ERROR"] = "Impossibile rinominare.";
+$MESS["WIKI_DIALOG_RENAME_PAGE_NAME"] = "Nuovo nome";
+$MESS["WIKI_DIALOG_RENAME_TITLE"] = "Rinomina";
+$MESS["WIKI_ERROR_NAME_BAD_SYMBOL"] = "Il nome contiene simboli non validi (/)";
+$MESS["WIKI_ERROR_NAME_EMPTY"] = "Il titolo della pagina è mancante.";
+$MESS["WIKI_ERROR_RENAME"] = "Una pagina con questo nome esiste già.";
+$MESS["WIKI_ERROR_TEXT_EMPTY"] = "Il testo della pagina è vuoto.";
+$MESS["WIKI_IMAGE_INSERT"] = "Inserisci immagine";
+$MESS["WIKI_IMAGE_UPLOAD_ERROR"] = "È possibile caricare solo le immagini (JPG, JPEG, JPE, PNG, GIF, BMP).";
+$MESS["WIKI_MODIFY_COMMENT"] = "Commento sull'aggiornamento";
+$MESS["WIKI_MODIFY_COMMENT_ABSENT"] = "Nessuno";
+$MESS["WIKI_MODULE_NOT_INSTALLED"] = "Il modulo Wiki non è installato.";
+$MESS["WIKI_PAGE_NOT_FIND"] = "Non è presente testo o la pagina non esiste. Puoi <a href=\"%LINK%\">creare una nuova pagina con questo titolo adesso</a>.";
+$MESS["WIKI_PAGE_RENAMED"] = "la pagina %OLD_NAME% è stata rinominata in %NEW_NAME%.";
+$MESS["WIKI_REDIRECT"] = "Reindirizza";
+$MESS["WIKI_SESS_TIMEOUT"] = "La tua sessione è scaduta. Salva nuovamente la pagina.";
+$MESS["WIKI_SOCNET_INITIALIZING_FAILED"] = "Impossibile inizializzare il social network.";
+$MESS["WIKI_SONET_IM_ADD"] = "Una nuova pagina Wiki \"#title#\" aggiunta a #group_name#.";
+$MESS["WIKI_SONET_IM_DELETE"] = "Pagina Wiki \"#title#\" rimossa in #group_name#.";
+$MESS["WIKI_SONET_IM_EDIT"] = "Pagina Wiki \"#title#\" aggiornata in #group_name#.";
+$MESS["WIKI_SONET_IM_RENAME"] = "Pagina Wiki \"#title_old#\" rinominata su \"#title_new#\" in #group_name#.";
+$MESS["WIKI_SONET_LOG_TITLE_TEMPLATE"] = "Articolo \"#TITLE#\" aggiunto o aggiornato";
+?>

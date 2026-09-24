@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_SCENARIO_SELECTION_ACTIVE_ORDERS"] = "Ordini attivi: #ORDER_COUNT#";
+$MESS["CRM_SCENARIO_SELECTION_CONVERT_ACTIVE_ORDERS"] = "Converti gli ordini attivi in affari quando cambi modalità";
+$MESS["CRM_SCENARIO_SELECTION_DEALS"] = "Affari";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION"] = "La scelta migliore per le vendite personali";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_1"] = "Qualsiasi richiesta (da chiamate, chat, moduli CRM, ordini dell'online store e così via) sarà aggiunta agli affari CRM";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_2"] = "Le comunicazioni con il cliente, lo stato del pagamento e le fasi della consegna verranno visualizzati nella timeline dell'affare";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_3"] = "I rappresentanti commerciali comunicano personalmente con ciascun cliente";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_ONLY_WARNING"] = "L'elaborazione degli ordini non sarà disponibile se scegli di gestire solo gli affari.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS"] = "Affari e ordini";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION"] = "Ideale per l'elaborazione automatica degli ordini";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_1"] = "Gli ordini dell'online store sono salvati solo negli ordini CRM, non aggiunti agli affari";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_2"] = "Gli affari sono creati come entità separate (ad es. per fornire servizi aggiuntivi)";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_3"] = "Alcuni rappresentanti commerciali gestiscono gli affari, mentre altri rappresentanti elaborano gli ordini dell'online store";
+$MESS["CRM_SCENARIO_SELECTION_SAVE_ERROR"] = "Errore durante la modifica della modalità";
+$MESS["CRM_SCENARIO_SELECTION_SELECT"] = "Seleziona";
+$MESS["CRM_SCENARIO_SELECTION_SELECTED"] = "Selezionato";
+$MESS["CRM_SCENARIO_SELECTION_TITLE"] = "Modalità di gestione ordini";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_CANCEL_BUTTON"] = "Passa alla modalità Affari";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_OK_BUTTON"] = "Rimani in modalità Affari e ordini";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_1"] = "Gli ordini dell'online store diventeranno affari che permettono di accettare pagamenti, creare spedizioni e prenotare rimanenze a magazzino. Non ci sarà alcuna area \"Ordini\" autonoma.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_2"] = "Tieni presente che non sarai in grado di tornare alla modalità Affari e ordini perché non è più supportata.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_1"] = "Ottieni maggiori informazioni";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_2"] = "su queste due modalità prima di sceglierne una.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TITLE"] = "Stai per passare alla modalità Affari";

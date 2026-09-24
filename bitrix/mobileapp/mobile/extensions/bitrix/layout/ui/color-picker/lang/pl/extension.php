@@ -1,0 +1,5 @@
+<?php
+$MESS["COLOR_PICKER_POPUP_BUTTON"] = "Wybierz";
+$MESS["COLOR_PICKER_POPUP_INPUT_TITLE"] = "Wybrany kolor";
+$MESS["COLOR_PICKER_POPUP_TITLE"] = "Wybierz kolor";
+$MESS["COLOR_PICKER_TITLE"] = "Kolor";

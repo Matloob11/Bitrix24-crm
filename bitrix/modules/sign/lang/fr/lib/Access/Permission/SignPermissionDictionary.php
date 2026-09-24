@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_ACCESS_RIGHTS"] = "Modifier les droits d'accès";
+$MESS["SIGN_B2E_MEMBER_DYNAMIC_FIELDS_DELETE"] = "Supprimer les champs personnalisés d'informations relatives aux employés";
+$MESS["SIGN_B2E_MY_SAFE"] = "Afficher la zone \"Coffre-fort de l'entreprise\"";
+$MESS["SIGN_B2E_MY_SAFE_DOCUMENTS"] = "Accéder aux documents dans le coffre-fort de l'entreprise";
+$MESS["SIGN_B2E_MY_SAFE_FIRED"] = "Afficher les employés licenciés dans le filtre \"Coffre de l'entreprise\"";
+$MESS["SIGN_B2E_PROFILE_FIELDS_ADD"] = "Ajouter des informations personnelles au profil de l'employé(e)";
+$MESS["SIGN_B2E_PROFILE_FIELDS_DELETE_MSG_VER_1"] = "Supprimer les champs d'informations personnelles";
+$MESS["SIGN_B2E_PROFILE_FIELDS_EDIT"] = "Modifier les informations personnelles dans le profil de l'employé(e)";
+$MESS["SIGN_B2E_PROFILE_FIELDS_READ"] = "Afficher les informations personnelles dans le profil de l'employé(e)";
+$MESS["SIGN_B2E_SIGNERS_LIST_ADD"] = "Créer des groupes d'employés";
+$MESS["SIGN_B2E_SIGNERS_LIST_DELETE"] = "Supprimer les groupes d'employés";
+$MESS["SIGN_B2E_SIGNERS_LIST_EDIT"] = "Modifier les groupes d'employés";
+$MESS["SIGN_B2E_SIGNERS_LIST_READ"] = "Voir les groupes d'employés";
+$MESS["SIGN_B2E_SIGNERS_LIST_REFUSED"] = "Accéder au groupe de personnes ayant refusé la signature électronique pour les RH";
+$MESS["SIGN_B2E_TEMPLATES_1"] = "Accéder aux documents récents";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_CREATE"] = "Créer des modèles et des ensembles";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_DELETE"] = "Supprimer les modèles et les ensembles";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_EDIT"] = "Modifier les modèles et les ensembles";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_READ"] = "Voir les modèles et les ensembles";
+$MESS["SIGN_B2E_TEMPLATE_CREATE"] = "Créer un modèle";
+$MESS["SIGN_B2E_TEMPLATE_DELETE"] = "Supprimer le modèle";
+$MESS["SIGN_B2E_TEMPLATE_EDIT"] = "Modifier le modèle";
+$MESS["SIGN_B2E_TEMPLATE_READ"] = "Voir le modèle";
+$MESS["SIGN_MY_SAFE"] = "Accéder à la zone \"Mon coffre\"";
+$MESS["SIGN_MY_SAFE_DOCUMENTS"] = "Accéder aux documents dans mon coffre";
+$MESS["SIGN_TEMPLATES"] = "Accès au modèle de document";

@@ -1,0 +1,4 @@
+<?php
+$MESS["M_CRM_KANBAN_ENTITY_REPEATED_APPROACH_DEAL"] = "сonsulta repetida";
+$MESS["M_CRM_KANBAN_ENTITY_REPEATED_DEAL"] = "negociación repetida";
+$MESS["M_CRM_KANBAN_ENTITY_REPEATED_LEAD"] = "prospecto repetido";

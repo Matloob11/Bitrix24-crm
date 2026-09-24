@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_MAIL_ACCESS_SELECTOR"] = "Condividi";
+$MESS["CRM_MAIL_ENTITY_TYPE"] = "Entità";
+$MESS["CRM_MAIL_ENTITY_TYPE2"] = "Associazione";
+$MESS["CRM_MAIL_ENTITY_TYPE_UNI"] = "No";
+$MESS["CRM_MAIL_TEMPLATE_ADD_UNKNOWN_ERROR"] = "Errore durante la creazione del modello e-mail.";
+$MESS["CRM_MAIL_TEMPLATE_BODY"] = "Modello";
+$MESS["CRM_MAIL_TEMPLATE_CANCEL_BTN"] = "Annulla";
+$MESS["CRM_MAIL_TEMPLATE_DELETE_BTN"] = "Elimina modello";
+$MESS["CRM_MAIL_TEMPLATE_DELETE_DLG_MESSAGE"] = "Eliminare questo modello e-mail?";
+$MESS["CRM_MAIL_TEMPLATE_DELETE_UNKNOWN_ERROR"] = "Errore durante l'eliminazione del modello e-mail.";
+$MESS["CRM_MAIL_TEMPLATE_EMAIL_FROM"] = "Da";
+$MESS["CRM_MAIL_TEMPLATE_IS_ACTIVE"] = "Attivo";
+$MESS["CRM_MAIL_TEMPLATE_NOT_FOUND"] = "Il modello e-mail non è stato trovato.";
+$MESS["CRM_MAIL_TEMPLATE_SAVE_BTN"] = "Salva";
+$MESS["CRM_MAIL_TEMPLATE_SCOPE_MSGVER_1"] = "Accesso";
+$MESS["CRM_MAIL_TEMPLATE_SENDER_MENU"] = "Mittente";
+$MESS["CRM_MAIL_TEMPLATE_SORT"] = "Indice di ordinamento";
+$MESS["CRM_MAIL_TEMPLATE_SUBJECT"] = "Oggetto";
+$MESS["CRM_MAIL_TEMPLATE_SUBJECT_HINT"] = "Inserisci oggetto del messaggio";
+$MESS["CRM_MAIL_TEMPLATE_TITLE"] = "Nome";
+$MESS["CRM_MAIL_TEMPLATE_TITLE_HINT"] = "Inserisci nome";
+$MESS["CRM_MAIL_TEMPLATE_UPDATE_UNKNOWN_ERROR"] = "Errore durante l'aggiornamento del modello e-mail.";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";

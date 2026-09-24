@@ -1,0 +1,3 @@
+<?php
+$MESS["SETTINGS_V2_CONTROLLER_RELOADED_SETTING_CHANGE_DESCRIPTION"] = "L'app verrà riavviata per applicare le modifiche.";
+$MESS["SETTINGS_V2_CONTROLLER_RELOADED_SETTING_CHANGE_TITLE"] = "Attenzione";

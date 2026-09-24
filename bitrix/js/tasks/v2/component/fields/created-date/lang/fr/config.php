@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_CREATED_DATE_COPY_TASK_ID_NOTIF"] = "L'ID de la tâche a été copié.";
+$MESS["TASKS_V2_CREATED_DATE_TASK_ID"] = "ID : #TASK_ID#";
+$MESS["TASKS_V2_CREATED_DATE_TITLE"] = "Créé :";

@@ -1,0 +1,20 @@
+<?php
+$MESS["MCRM_ERROR_ACCESS_DENIED_TEXT"] = "Contactez votre administrateur Bitrix24 ou la personne en charge du CRM";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE"] = "Autorisation insuffisante pour voir l'élément";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_COMPANY"] = "Autorisation insuffisante pour voir la société";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_CONTACT"] = "Autorisation insuffisante pour voir le contact";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_DEAL"] = "Autorisation insuffisante pour voir l'offre";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_LEAD"] = "Autorisation insuffisante pour voir le prospect";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_QUOTE_MSGVER_1"] = "Autorisation insuffisante pour voir le devis";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_SMART_INVOICE"] = "Autorisation insuffisante pour voir la facture";
+$MESS["MCRM_ERROR_ALERT_CONFIRM"] = "OK";
+$MESS["MCRM_ERROR_INTERNAL_ERROR_TEXT"] = "Veuillez réessayer plus tard.\nSi le problème persiste, contactez votre administrateur Bitrix24 ou la personne en charge du CRM.";
+$MESS["MCRM_ERROR_INTERNAL_ERROR_TITLE"] = "Une erreur interne est survenue";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE"] = "L'élément est introuvable";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_COMPANY"] = "Société introuvable";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_CONTACT"] = "Le contact est introuvable";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_DEAL"] = "Transaction introuvable";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_LEAD"] = "Prospect introuvable";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_QUOTE_MSGVER_1"] = "Le devis n'a pas été trouvé";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_SMART_INVOICE"] = "La facture n'a pas été trouvée";
+$MESS["MCRM_ERROR_PUBLIC_ERROR_TITLE"] = "Erreur";

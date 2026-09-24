@@ -1,0 +1,4 @@
+<?
+$MESS["LANDING_BLOCK_35_6_HEADER--PRESET_LINK"] = "Link contatto";
+$MESS["LANDING_BLOCK_35_6_HEADER--PRESET_TEXT"] = "Testo di contatto";
+?>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * Team Lead phone-mask config (Bitrix CRM + Owner Data + Telephony).
+ * Unlock password for heads (eye icon). Agents never load this mask.
+ * Excel-final teams (2026-09-07).
+ */
+return [
+    'password' => 'admin222007',
+    'reveal_seconds' => 30,
+    'leaders' => [
+        2560 => [
+            'name' => 'Hassan',
+            'email' => 'hassan.a7group@gmail.com',
+            'department_id' => 69,
+            'agents' => [2344, 2429, 2379, 2380, 2376, 2434, 2291],
+        ],
+        2551 => [
+            'name' => 'Hussnain',
+            'email' => 'Ranahussnain.a7group@gmail.com',
+            'department_id' => 70,
+            'agents' => [2369, 2381, 2371, 2535, 2368, 2367, 2350],
+        ],
+        2297 => [
+            'name' => 'Jaweria',
+            'email' => 'javeriabibi.a7group@gmail.com',
+            'department_id' => 71,
+            'agents' => [2302, 2298, 2299, 2390, 2392],
+        ],
+    ],
+];

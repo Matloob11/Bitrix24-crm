@@ -1,0 +1,12 @@
+<?
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_1_DESCR"] = "Partagez un lien vers un document de votre Bitrix24. Choisissez quand vous voulez que le lien expire et définissez un mot de passe pour vous assurer que les informations soient en sécurité. Les liens partagés et de nombreuses autres fonctionnalités sont réservés à certaines offres commerciales.";
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_1_TITLE"] = "Liens publiques des fichiers et dossiers";
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_DESCR"] = "Partagez un lien vers un document de votre Bitrix24. Choisissez quand vous voulez que le lien expire et définissez un mot de passe pour vous assurer que les informations soient en sécurité. Les liens partagés et de nombreuses autres fonctionnalités sont réservés à certaines offres commerciales.";
+$MESS["DISK_B24_FEATURES_DISK_EXTERNAL_LINK_TITLE"] = "Liens publiques des fichiers et dossiers";
+$MESS["DISK_B24_FEATURES_DISK_FILE_SHARING_1_DESCR"] = "Si vous voulez permettre d'autres utilisateurs d'afficher, modifier et télécharger un fichier ou un dossier entier, veuillez passer sur une offre commerciale.";
+$MESS["DISK_B24_FEATURES_DISK_FILE_SHARING_1_TITLE"] = "Passez sur une offre commerciale pour partager des fichiers et des dossiers de votre Lecteur avec d'autres employés";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_1_DESCR"] = "Si vous voulez permettre d'autres utilisateurs d'afficher, modifier et télécharger un fichier ou un dossier entier, veuillez passer sur une offre commerciale.";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_1_TITLE"] = "Passez sur une offre commerciale pour partager des fichiers et des dossiers de votre Lecteur avec d'autres employés";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_DESCR"] = "Votre offre actuelle ne vous permet de partager les fichiers sur le Lecteur qu'avec vos collègues. Si vous voulez rendre le dossier entier accessible à d'autres utilisateurs et leur permettre d'afficher, éditer et télécharger des fichiers, vous pouvez passer à une offre commerciale. Le partage de dossier est disponible pour les offres commerciales sélectionnées.";
+$MESS["DISK_B24_FEATURES_DISK_FOLDER_SHARING_TITLE"] = "Passez sur une offre commerciale pour partager des dossiers de votre Lecteur avec d'autres employés";
+?>

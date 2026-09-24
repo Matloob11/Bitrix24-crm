@@ -1,0 +1,26 @@
+<?php
+$MESS["STAT_ADD_TO_STOPLIST_TITLE"] = "IP мекенжайын тоқтату тізіміне қосу.";
+$MESS["STAT_CITY"] = "Қала";
+$MESS["STAT_CLOSE"] = "Жабу";
+$MESS["STAT_COOKIES"] = "Cookies:";
+$MESS["STAT_COUNTRY"] = "Мемлекет";
+$MESS["STAT_EDIT_USER"] = "Пайдаланушы профайлы";
+$MESS["STAT_IP"] = "IP-мекенжай:";
+$MESS["STAT_METHOD"] = "Сұрау әдісі:";
+$MESS["STAT_NEW_GUEST"] = "(алғаш рет)";
+$MESS["STAT_NOT_AUTH"] = "(авторланбаған)";
+$MESS["STAT_NOT_FOUND"] = "Табылмады";
+$MESS["STAT_NOT_REGISTERED"] = "тіркелмеген";
+$MESS["STAT_OLD_GUEST"] = "(оралды)";
+$MESS["STAT_PAGE"] = "Қайда келді:";
+$MESS["STAT_REFERER"] = "Қайдан келді:";
+$MESS["STAT_REGION"] = "Аймақ";
+$MESS["STAT_SESSION_ID"] = "Сессия:";
+$MESS["STAT_SITE"] = "Сайт";
+$MESS["STAT_STOP"] = "тоқтатым-парағы";
+$MESS["STAT_STOPED"] = "тоқта";
+$MESS["STAT_TIME"] = "Күні:";
+$MESS["STAT_TITLE"] = "Егжей-тегжейлі хит";
+$MESS["STAT_USER"] = "Келуші:";
+$MESS["STAT_USER_AGENT"] = "UserAgent:";
+$MESS["STAT_VIEW_SESSION_LIST"] = "Осы келушінің сессиялары";

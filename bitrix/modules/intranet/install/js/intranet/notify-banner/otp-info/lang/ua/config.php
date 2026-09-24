@@ -1,0 +1,25 @@
+<?php
+$MESS["NOTIFY_BANNER_INFO_ALL_EMPLOYEE_BLOCK"] = "Якщо хоча б один співробітник не використовує для входу другий фактор, це ставить під загрозу всі дані у вашому Бітрікс24. Які можуть бути наслідки:";
+$MESS["NOTIFY_BANNER_INFO_CONFIRM_WITHOUT_TITLE_MSGVER_1"] = "Увімкніть [SPAN]нову двофакторну автентифікацію[/SPAN] і підтверджуйте вхід без коду.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE"] = "Увімкніть <span class=\"intranet-otp-motivating-popup__title--accent\">двофакторну автентифікацію</span>, щоб захистити дані компанії від витоку.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE_MSGVER_1"] = "Увімкніть <span class=\"intranet-otp-motivating-popup__title--accent\">двофакторну автентифікацію</span>, щоб захистити свій акаунт.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE"] = "Захистіть персональні дані від витоку. Увімкніть <span class=\"intranet-otp-motivating-popup__title--accent\">двофакторну автентифікацію</span> для всіх співробітників.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE_MSGVER_1"] = "Захистіть дані компанії від витоку. Увімкніть <span class=\"intranet-otp-motivating-popup__title--accent\">двофакторну автентифікацію</span> для всіх співробітників.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK"] = "З двофакторною автентифікацією шахраї не зможуть увійти у ваш обліковий запис, навіть якщо дізнаються пароль. Так ви збережете особисті та корпоративні дані в безпеці.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK_MSGVER_1"] = "З двофакторною автентифікацією шахраї не зможуть увійти у ваш Бітрікс24, навіть якщо дізнаються пароль. Так ви збережете особисті та корпоративні дані в безпеці.";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_ALL_BTN"] = "Увімкнути для всіх";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_BTN"] = "Увімкнути";
+$MESS["NOTIFY_BANNER_INFO_EXIST_BLOCK_MSGVER_1"] = "Захистити ваш Бітрікс24 від шахраїв стало набагато простіше. Більше не потрібно вводити коди — підтверджуйте вхід одним дотиком у мобільному застосунку.";
+$MESS["NOTIFY_BANNER_INFO_FIN_OPT"] = "Фінансові та репутаційні ризики";
+$MESS["NOTIFY_BANNER_INFO_IS_PROJECT_BLOCK"] = "Двофакторна аутентифікація — частина проєкту <b>«Безпека персональних даних»</b>, який включає повний комплекс рішень для надійного захисту інформації.";
+$MESS["NOTIFY_BANNER_INFO_LATER_BTN"] = "Нагадати пізніше";
+$MESS["NOTIFY_BANNER_INFO_LEAK_OPT"] = "Витік конфіденційної інформації";
+$MESS["NOTIFY_BANNER_INFO_LEGAL_OPT"] = "Юридична відповідальність";
+$MESS["NOTIFY_BANNER_INFO_MORE_BTN"] = "Докладніше";
+$MESS["NOTIFY_BANNER_INFO_NEW_OTP_BLOCK"] = "Тепер захистити ваш Бітрікс24 від шахраїв ще простіше. Більше не потрібно вводити код. Підтверджуйте вхід через мобільний застосунок Бітрікс24 — це швидко та зручно.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK"] = "Адміністратор вашого Бітрікс24 оновив налаштування безпеки. З <b>#END_DATE#</b> вхід в акаунт можливий лише з підтвердженням через мобільний застосунок.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE"] = "З <b>#END_DATE#</b> вхід в акаунт можливий лише з підтвердженням через мобільний застосунок.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE_MSGVER_1"] = "З <b>#END_DATE#</b> вхід в акаунт можливий лише з підтвердженням через мобільний застосунок.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_MSGVER_1"] = "Адміністратор вашого Бітрікс24 оновив налаштування безпеки. З <b>#END_DATE#</b> вхід в акаунт можливий лише з підтвердженням у мобільному застосунку.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK"] = "Щодня відбувається все більше автоматичних кібератак на компанії. Витік інформації загрожує фінансовими та репутаційними ризиками.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK_MSGVER_1"] = "Щодня відбувається все більше кібератак на компанії через корпоративні акаунти. Витік інформації загрожує фінансовими та репутаційними ризиками.";

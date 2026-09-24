@@ -1,0 +1,20 @@
+<?php
+$MESS["MCRM_ERROR_ACCESS_DENIED_TEXT"] = "Póngase en contacto con su administrador de Bitrix24 o con la persona que está a cargo del CRM";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE"] = "Permisos insuficientes para ver el elemento";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_COMPANY"] = "Permisos insuficientes para ver la compañía";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_CONTACT"] = "Permisos insuficientes para ver el contacto";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_DEAL"] = "Permisos insuficientes para ver la negociación";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_LEAD"] = "Permisos insuficientes para ver el prospecto";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_QUOTE_MSGVER_1"] = "Permisos insuficientes para ver la cotización";
+$MESS["MCRM_ERROR_ACCESS_DENIED_TITLE_SMART_INVOICE"] = "Permisos insuficientes para ver la factura";
+$MESS["MCRM_ERROR_ALERT_CONFIRM"] = "OK";
+$MESS["MCRM_ERROR_INTERNAL_ERROR_TEXT"] = "Intente de nuevo más tarde.\nSi el problema persiste, póngase en contacto con su administrador de Bitrix24 o con la persona que está a cargo del CRM.";
+$MESS["MCRM_ERROR_INTERNAL_ERROR_TITLE"] = "Se produjo un error interno";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE"] = "No se encontró el elemento";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_COMPANY"] = "La compañía no fue encontrada";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_CONTACT"] = "El contacto no fue encontrado";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_DEAL"] = "La negociación no fue encontrada";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_LEAD"] = "El prospecto no fue encontrado";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_QUOTE_MSGVER_1"] = "La cotización no fue encontrada";
+$MESS["MCRM_ERROR_NOT_FOUND_TITLE_SMART_INVOICE"] = "La factura no fue encontrada";
+$MESS["MCRM_ERROR_PUBLIC_ERROR_TITLE"] = "Error";

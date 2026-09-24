@@ -1,0 +1,6 @@
+<?
+$MESS["CRM_SUBSCRIBE_ADD_BUTTON"] = "Invia";
+$MESS["CRM_SUBSCRIBE_SUBJECT"] = "Titolo";
+$MESS["CRM_SUBSCRIBE_TITLE"] = "Oggetto";
+$MESS["CRM_SUBSCRIBE_TO_HIDE"] = "Nascondi";
+?>

@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_CALL_TRACKER_DIRECTION_INCOMING"] = "Chamada recebida";
+$MESS["CRM_CALL_TRACKER_DIRECTION_OUTGOING"] = "Chamada realizada";

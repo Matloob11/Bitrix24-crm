@@ -1,0 +1,25 @@
+<?php
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_BTN_CLOSE"] = "Przerwij teraz";
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_BTN_CONTINUE"] = "Kontynuuj import";
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_DESCRIPTION"] = "Jeśli zdecydujesz się przerwać teraz i ponownie uruchomić później, import rozpocznie się od nowa.";
+$MESS["REST_CONFIGURATION_IMPORT_HOLD_CLOSE_POPUP_TITLE"] = "Czy na pewno chcesz przerwać import?";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_ACCEPT_CLEAR"] = "Chcę zastąpić bieżące ustawienia Bitrix24 ustawieniami z wybranego szablonu wstępnego CRM.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_ACCEPT_CLEAR_ROLLBACK"] = "Chcę zastąpić bieżące ustawienia Bitrix24 ustawieniami z wybranego szablonu wstępnego CRM.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_DESCRIPTION"] = "Klikając \"Kontynuuj\", zgadzasz się, że część istniejących ustawień Bitrix24 może zostać zmieniona zgodnie z ustawieniami szablonów wstępnych CRM i nie będzie podlegać przywróceniu.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_DESCRIPTION_ROLLBACK"] = "Klikając \"Kontynuuj\", zgadzasz się, że odinstalowanie aplikacji spowoduje zresetowanie istniejących ustawień Bitrix24 i usunięcie niektórych danych CRM i nie będzie można je odzyskać.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_BTN_CANCEL"] = "Anuluj";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_BTN_CONTINUE"] = "Kontynuuj";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_CHECKBOX_LABEL"] = "Zgadzam się. Usuń istniejące dane.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_CONFIRM_POPUP_TEXT"] = "Jeśli kontynuujesz instalację, niektóre istniejące dane zostaną usunięte. Czy chcesz kontynuować i usunąć dane?";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_DESCRIPTION"] = "Klikając \"Kontynuuj\", zgadzasz się, że część istniejących ustawień Bitrix24 może zostać zmieniona zgodnie z ustawieniami szablonów wstępnych CRM i nie będzie podlegać przywróceniu.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_DESCRIPTION_ROLLBACK"] = "Klikając \"Kontynuuj\", zgadzasz się, że po przywróceniu część ustawień Bitrix24 powróci do stanu podstawowego, a część danych CRM zostanie usunięta. Nie można cofnąć tego procesu.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_FATAL_ERROR"] = "Błąd wewnętrzny. Odśwież stronę i spróbuj ponownie. Jeśli problem będzie się powtarzał, skontaktuj się z działem pomocy technicznej.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_FINISH_TEXT"] = "Import szablonów wstępnych został pomyślnie zakończony";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_LATER_BTN"] = "Zaimportuję później";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_LATER_POPUP_CLOSE_BTN"] = "OK";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_PROGRESSBAR_TITLE"] = "Ustawienia się importują";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_START_BTN"] = "Kontynuuj";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_STEP_MSGVER_1"] = "Wybrany szablon jest instalowany";
+$MESS["REST_CONFIGURATION_IMPORT_PRE_INSTALL_APP_DESCRIPTION"] = "Kliknij „Kontynuuj”, aby zainstalować ustawienie wstępne rozwiązania „#APP_NAME#”.";
+$MESS["REST_CONFIGURATION_IMPORT_PRE_INSTALL_LATER_APP_POPUP_DESCRIPTION"] = "Możesz zainstalować ustawienie wstępne rozwiązania „#APP_NAME#” w dowolnym momencie. Wystarczy znaleźć je na liście rozwiązań. Dowiedz się więcej na #HELP_DESK_LINK#.";
+$MESS["REST_CONFIGURATION_IMPORT_PRE_INSTALL_LATER_APP_POPUP_HELP_DESK_LINK_LABEL"] = "tutaj";

@@ -1,0 +1,6 @@
+<?php
+$MESS["INTRANET_USER_PROFILE_NO_USER_ERROR"] = "L'utente non è stato trovato.";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATED_MSGVER_1"] = "2FA disabilitata";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATE_STATUS"] = "L'autenticazione a due fattori verrà riattivata tra #REMAINDER#.";
+$MESS["INTRANET_USER_PROFILE_OTP_DEACTIVATE_STATUS_UNINITIALIZED"] = "L'accesso verrà negato tra #REMAINDER#.";
+$MESS["INTRANET_USER_PROFILE_OTP_UNINITIALIZED"] = "2FA non configurata";

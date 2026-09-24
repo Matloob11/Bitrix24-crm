@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_MESSAGE_REACTION"] = "ha reagito al tuo [CONTEXT=#DIALOG_ID#/#MESSAGE_ID#]messaggio[/CONTEXT] \"#QOUTED_MESSAGE#\" nella chat \"[CHAT=#CHAT_ID#]#CHAT_TITLE#[/CHAT]\"\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_COMMENT"] = "ha reagito al tuo commento \"#QOUTED_MESSAGE#\" al #CONTEXT_START#post#CONTEXT_END# sul canale \"[CHAT=#CHAT_ID#]#CHAT_TITLE#[/CHAT]\":\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_COMMENT_V2"] = "ha reagito al tuo #CONTEXT_START#commento#CONTEXT_END# \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_F"] = "ha reagito al tuo [CONTEXT=#DIALOG_ID#/#MESSAGE_ID#]messaggio[/CONTEXT] \"#QOUTED_MESSAGE#\" nella chat \"[CHAT=#CHAT_ID#]#CHAT_TITLE#[/CHAT]\"\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_F_COMMENT"] = "ha reagito al tuo commento \"#QOUTED_MESSAGE#\" al #CONTEXT_START#post#CONTEXT_END# sul canale \"[CHAT=#CHAT_ID#]#CHAT_TITLE#[/CHAT]\":\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_F_COMMENT_V2"] = "ha reagito al tuo #CONTEXT_START#commento#CONTEXT_END# \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_F_PRIVATE"] = "ha reagito al tuo [CONTEXT=#DIALOG_ID#/#MESSAGE_ID#]messaggio[/CONTEXT] \"#QOUTED_MESSAGE#\" nella tua chat\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_F_PRIVATE_V2"] = "ha reagito al tuo #CONTEXT_START#messaggio#CONTEXT_END# \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_F_V2"] = "ha reagito al tuo #CONTEXT_START#messaggio#CONTEXT_END# nella chat \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_M"] = "ha reagito al tuo [CONTEXT=#DIALOG_ID#/#MESSAGE_ID#]messaggio[/CONTEXT] \"#QOUTED_MESSAGE#\" nella chat \"[CHAT=#CHAT_ID#]#CHAT_TITLE#[/CHAT]\"\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_M_COMMENT"] = "ha reagito al tuo commento \"#QOUTED_MESSAGE#\" al #CONTEXT_START#post#CONTEXT_END# sul canale \"[CHAT=#CHAT_ID#]#CHAT_TITLE#[/CHAT]\":\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_M_COMMENT_V2"] = "ha reagito al tuo #CONTEXT_START#commento#CONTEXT_END# \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_M_PRIVATE"] = "ha reagito al tuo [CONTEXT=#DIALOG_ID#/#MESSAGE_ID#]messaggio[/CONTEXT] \"#QOUTED_MESSAGE#\" nella tua chat\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_M_PRIVATE_V2"] = "ha reagito al tuo #CONTEXT_START#messaggio#CONTEXT_END# \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_M_V2"] = "ha reagito al tuo #CONTEXT_START#messaggio#CONTEXT_END# nella chat \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_PRIVATE"] = "ha reagito al tuo [CONTEXT=#DIALOG_ID#/#MESSAGE_ID#]messaggio[/CONTEXT] \"#QOUTED_MESSAGE#\" nella tua chat\n \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_PRIVATE_V2"] = "ha reagito al tuo #CONTEXT_START#messaggio#CONTEXT_END# \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";
+$MESS["IM_MESSAGE_REACTION_V2"] = "ha reagito al tuo #CONTEXT_START#messaggio#CONTEXT_END# nella chat \"#QOUTED_MESSAGE#\": \"#REACTION_NAME#\"";

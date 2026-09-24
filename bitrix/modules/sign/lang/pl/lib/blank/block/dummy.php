@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_CORE_BLOCK_DATE_HINT"] = "Użyj tego pola, aby wprowadzić wartości dat (np. datę umowy itp.)";
+$MESS["SIGN_CORE_BLOCK_DATE_TITLE"] = "Data";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_HINT"] = "To pole zawiera dane Twojej firmy.";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_TITLE"] = "Dane";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_BLOCK_HINT"] = "Pole zawierające Twój podpis";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_TITLE"] = "Podpis";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_ERROR_EMPTY"] = "Blok pieczęci firmowej został dodany, ale w danych firmy nie ma obrazu pieczęci.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_HINT"] = "Pieczęć firmowa.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_TITLE"] = "Pieczęć";
+$MESS["SIGN_CORE_BLOCK_NUMBER_HINT"] = "W tym polu należy podać numer dokumentu. Numer można wprowadzić jako wartość statyczną lub użyć funkcji automatycznego numerowania.";
+$MESS["SIGN_CORE_BLOCK_NUMBER_TITLE"] = "Numer";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_BLOCK_HINT"] = "Pole zostanie wypełnione danymi znalezionymi w CRM. Jeśli CRM nie zawiera odpowiednich informacji, a pole pozostaje puste, może je podać dowolna ze stron podpisujących. W takim przypadku w CRM zapisane zostaną nowe informacje.";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_TITLE"] = "Pole CRM";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_ERROR_EMPTY"] = "Blok \"Pole CRM\" nie jest skonfigurowany.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_HINT"] = "Pole zawiera dane odbiorcy.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_TITLE"] = "Dane";
+$MESS["SIGN_CORE_BLOCK_SIGN_BLOCK_HINT"] = "Pole zawierające podpis innej strony podpisującej";
+$MESS["SIGN_CORE_BLOCK_SIGN_TITLE"] = "Podpis";
+$MESS["SIGN_CORE_BLOCK_STAMP_HINT"] = "Pole zawiera pieczęć odbiorcy.";
+$MESS["SIGN_CORE_BLOCK_STAMP_TITLE"] = "Pieczęć";
+$MESS["SIGN_CORE_BLOCK_TEXT_HINT"] = "To pole może zawierać dowolne informacje tekstowe.";
+$MESS["SIGN_CORE_BLOCK_TEXT_TITLE"] = "Tekst";

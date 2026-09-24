@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_RECENT_CONTEXT_MENU_CALL"] = "Videollamada HD";
+$MESS["IM_RECENT_CONTEXT_MENU_HIDE"] = "Ocultar chat";
+$MESS["IM_RECENT_CONTEXT_MENU_HISTORY"] = "Ver el registro de mensajes";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL"] = "Cancelar la invitación";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL_CONFIRM"] = "¿Seguro que desea cancelar la invitación?";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL_DONE"] = "La invitación se canceló.";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_RESEND"] = "Invitar de nuevo";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_RESEND_DONE"] = "La invitación se envió correctamente.";
+$MESS["IM_RECENT_CONTEXT_MENU_LEAVE"] = "Salir del chat";
+$MESS["IM_RECENT_CONTEXT_MENU_LOADING"] = "Cargando el menú...";
+$MESS["IM_RECENT_CONTEXT_MENU_MUTE"] = "Deshabilitar notificaiones";
+$MESS["IM_RECENT_CONTEXT_MENU_PIN"] = "Fijar la conversación";
+$MESS["IM_RECENT_CONTEXT_MENU_PROFILE"] = "Ver perfil";
+$MESS["IM_RECENT_CONTEXT_MENU_READ"] = "Marcar como leído";
+$MESS["IM_RECENT_CONTEXT_MENU_UNMUTE"] = "Activar notificaciones";
+$MESS["IM_RECENT_CONTEXT_MENU_UNPIN"] = "No fijar la conversación";
+$MESS["IM_RECENT_CONTEXT_MENU_UNREAD"] = "Marcar como no leído";
+$MESS["IM_RECENT_CONTEXT_MENU_WRITE"] = "Enviar mensaje";

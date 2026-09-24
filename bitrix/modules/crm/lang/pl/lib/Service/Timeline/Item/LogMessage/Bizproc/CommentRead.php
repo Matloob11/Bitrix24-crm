@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_LOG_MESSAGE_BIZPROC_COMMENT_READ"] = "Nowe komentarze workflowu";
+$MESS["CRM_LOG_MESSAGE_BIZPROC_COMMENT_READ_STATUS"] = "Wyświetlono";

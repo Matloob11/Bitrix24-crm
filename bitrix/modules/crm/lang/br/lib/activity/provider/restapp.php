@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_ACTIVITY_PROVIDER_REST_APP_NAME_MSGVER_1"] = "Atividade do app (versão antiga)";
+$MESS["CRM_ACTIVITY_PROVIDER_REST_APP_OPEN_BUTTON"] = "Abrir App";

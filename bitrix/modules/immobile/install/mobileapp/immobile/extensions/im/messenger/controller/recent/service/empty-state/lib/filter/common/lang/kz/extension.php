@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_RECENT_SERVICE_EMPTY_STATE_FILTER_TEXT"] = "Сүзгіні өзгертіп көріңіз";
+$MESS["IMMOBILE_RECENT_SERVICE_EMPTY_STATE_FILTER_TITLE"] = "Ештеңе табылған жоқ";

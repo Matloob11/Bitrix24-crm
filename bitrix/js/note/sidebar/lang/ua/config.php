@@ -1,0 +1,24 @@
+<?php
+$MESS["NOTE_SIDEBAR_COLLECTIONS_COLLAPSE"] = "Згорнути бази знань";
+$MESS["NOTE_SIDEBAR_COLLECTIONS_EXPAND"] = "Розгорнути бази знань";
+$MESS["NOTE_SIDEBAR_CREATE_COLLECTION_MENU"] = "База знань";
+$MESS["NOTE_SIDEBAR_CREATE_DOCUMENT_MENU"] = "Документ";
+$MESS["NOTE_SIDEBAR_CREATE_MENU"] = "Створити";
+$MESS["NOTE_SIDEBAR_IMPORT_COLLECTION_MENU"] = "Імпортувати базу знань";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_CANCEL"] = "Скасувати";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_FOOTER_CREATE"] = "Створити базу знань:";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_PLACEHOLDER"] = "Знайти базу знань";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_PRIMARY"] = "Створити";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TEXT"] = "Знайдіть базу знань, де з'явиться новий документ.";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TEXT_WITH_CREATE"] = "Знайдіть базу знань або почніть вводити назву, щоб створити нову.";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TITLE"] = "Виберіть базу знань для документа";
+$MESS["NOTE_SIDEBAR_RECYCLE_BIN"] = "Кошик";
+$MESS["NOTE_SIDEBAR_SEARCH_CLEAR"] = "Очистити";
+$MESS["NOTE_SIDEBAR_SEARCH_EMPTY"] = "Нічого не знайдено.";
+$MESS["NOTE_SIDEBAR_SEARCH_ERROR"] = "Не вдалося виконати дію, спробуйте ще раз трохи пізніше";
+$MESS["NOTE_SIDEBAR_SEARCH_PLACEHOLDER"] = "Пошук";
+$MESS["NOTE_SIDEBAR_SEARCH_SHOW_ALL"] = "Показати всі результати";
+$MESS["NOTE_SIDEBAR_THEME_TO_DARK"] = "Увімкнути темну тему";
+$MESS["NOTE_SIDEBAR_THEME_TO_LIGHT"] = "Увімкнути світлу тему";
+$MESS["NOTE_SIDEBAR_TOGGLE_COLLAPSE"] = "Згорнути меню";
+$MESS["NOTE_SIDEBAR_TOGGLE_EXPAND"] = "Розгорнути меню";

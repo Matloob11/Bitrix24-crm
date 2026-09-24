@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_RESERVATION_INVENTORY_MANAGEMENT_ERROR"] = "No se puede cerrar el trato porque algunos de los productos no están disponibles en el almacén o seleccionó un almacén incorrecto. Esto hace que el pedido de cliente no se registre en la Administración de inventarios. Elimine de la negociación los productos que no pueda entregar o seleccione un almacén diferente que tenga suficientes existencias.";

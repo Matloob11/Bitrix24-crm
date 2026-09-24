@@ -1,0 +1,7 @@
+<?php
+$MESS["SONET_SIC_COUNTER_TEMPLATE_COMMUNICATIONS"] = "Komunikacja";
+$MESS["SONET_SIC_COUNTER_TEMPLATE_HINT"] = "Nadchodzi nowy pasek liczników!";
+$MESS["SONET_SIC_COUNTER_TEMPLATE_MY"] = "Moje rzeczy";
+$MESS["SONET_SIC_COUNTER_TEMPLATE_OTHER"] = "Rzeczy kogoś innego";
+$MESS["SONET_SIC_COUNTER_TEMPLATE_OVERDUE"] = "Po terminie";
+$MESS["SONET_SIC_COUNTER_TEMPLATE_READ_ALL"] = "Czytaj wszystko";

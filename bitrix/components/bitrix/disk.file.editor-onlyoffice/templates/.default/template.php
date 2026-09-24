@@ -1,0 +1,321 @@
+<?php
+
+/** @var $this CBitrixComponentTemplate */
+/** @var array $arParams */
+/** @var array $arResult */
+/** @global CMain $APPLICATION */
+/** @global CUser $USER */
+/** @global CDatabase $DB */
+/** @var CBitrixComponentTemplate $this */
+/** @var string $templateName */
+/** @var string $templateFile */
+/** @var string $templateFolder */
+/** @var string $componentPath */
+/** @var BaseComponent $component */
+
+use Bitrix\Disk\Document\GoogleHandler;
+use Bitrix\Disk\Document\LocalDocumentController;
+use Bitrix\Disk\Document\Office365Handler;
+use Bitrix\Disk\Document\OnlyOffice\Editor\ConfigBuilder;
+use Bitrix\Disk\Document\OnlyOffice\OnlyOfficeHandler;
+use Bitrix\Disk\Internals\BaseComponent;
+use Bitrix\Main\Context;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main;
+use Bitrix\Main\Page\Asset;
+use Bitrix\Main\UI\Extension;
+use Bitrix\Main\Web\Json;
+use Bitrix\UI\Buttons\Button;
+use Bitrix\UI\Buttons\Color;
+use Bitrix\UI\Buttons\Icon;
+use Bitrix\UI\Buttons\Size;
+use Bitrix\UI\Buttons\Tag;
+
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+/** @var array $arResult */
+Extension::load([
+	'ui.design-tokens',
+	'ui.fonts.opensans',
+	'disk',
+	'disk.document',
+	'im',
+	'disk.viewer.actions',
+	'disk.users',
+	'disk.sharing-legacy-popup',
+	'disk.onlyoffice-promo-popup',
+	'disk.external-link',
+	'disk.promo-boost',
+	'ui.forms',
+	'ui.alerts',
+	'main.loader',
+	'pull.client',
+	'ui.info-helper',
+	'ui.buttons',
+	'ui.buttons.icons',
+	'ui.icons.b24',
+	'ui.notification',
+	'popup',
+    'ui.dialogs.messagebox',
+	'ui.icon-set.main',
+	'disk.onlyoffice-promo-actions',
+	'disk.url-cleaner',
+]);
+
+$helpUrl = \Bitrix\UI\InfoHelper::getUrl('/widget2/', byLang: true);
+$frameOpenUrl = (new Bitrix\Main\Web\Uri($helpUrl))->addParams(['action' => 'open'])->getUri();
+
+$isSignPlaceholdersEnabled = ($arResult['SIGN_PLACEHOLDERS_ENABLED'] ?? false) === true;
+if ($isSignPlaceholdersEnabled)
+{
+	Extension::load('sign.v2.b2e.placeholders-widget');
+}
+
+Asset::getInstance()->addString('<script src="' . $arResult['SERVER'] . '/web-apps/apps/api/documents/api.js"></script>');
+$containerId = 'editorForm'.$this->randString();
+$headerText = Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_MODE_VIEW');
+if ($arResult['EDITOR']['MODE'] === ConfigBuilder::MODE_EDIT)
+{
+	$headerText = Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_MODE_EDIT');
+}
+
+$editMode = $arResult['EDITOR']['MODE'] === ConfigBuilder::MODE_EDIT;
+if ($arResult['EXTERNAL_LINK_MODE'])
+{
+    $editButton = Bitrix\UI\Buttons\SaveButton::create();
+    $editButton->setRound();
+}
+else
+{
+    $editButton = Bitrix\UI\Buttons\Split\SaveButton::create([
+        'classList' => ['ui-btn-round', 'disk-fe-office-btn-edit'],
+    ]);
+    $badgeNew = Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_BADGE_NEW_EDITOR_BITRIX24');
+    $editButtonItems = [];
+
+	foreach ($arResult['DOCUMENT_HANDLERS'] as $i => $documentHandler)
+	{
+        $editButtonItems[$i] = [
+	        'id' => $documentHandler['code'],
+	        'text' => $documentHandler['name'],
+	        'className' => "disk-fe-office-edit-popup-item disk-fe-office-icon-{$documentHandler['code']}",
+        ];
+
+		if ($documentHandler['code'] === OnlyOfficeHandler::getCode())
+		{
+		    $editButtonItems[$i]['html'] = "<span class=\"disk-fe-office-edit-badge\">{$badgeNew}</span><span>{$documentHandler['name']}</span>";
+            unset($editButtonItems[$i]['text']);
+		}
+	}
+    $editButton->setMenu([
+        'items' => $editButtonItems,
+    ]);
+}
+
+$editButton
+    ->setText(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_BTN_EDIT'))
+    ->setIcon(Icon::EDIT)
+    ->setSize(Size::SMALL)
+;
+
+if (!$arResult['EDITOR']['ALLOW_EDIT'])
+{
+	$editButton = Button::create()
+        ->setRound()
+        ->setDisabled()
+        ->setIcon(Icon::EDIT)
+		->setText(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_BTN_EDIT'))
+		->setTag(Tag::LINK)
+		->setSize(Size::SMALL)
+		->setColor(Color::LIGHT_BORDER)
+        ->addAttribute('title', Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_BTN_EDIT_LACK_PERM'))
+	;
+}
+
+$setupSharingButton = null;
+
+if (!empty($arResult['SHARING_CONTROL_TYPE']))
+{
+	$setupSharingButton = Button::create();
+	$setupSharingButton
+		->setText(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_BTN_SHARING_MSGVER_1'))
+		->addClass('disk-fe-office-header-btn-access-setting')
+		->setSize(Size::SMALL)
+		->setColor(Color::LIGHT_BORDER)
+		->setRound()
+	;
+}
+
+if ($editMode && $setupSharingButton)
+{
+	$setupSharingButton
+		->setColor(Color::PRIMARY)
+	;
+}
+$downloadButton = null;
+
+$shouldDisableSharingButton = $arResult['SHOULD_DISABLE_SHARING_BUTTON'] || $arResult['EXTERNAL_LINK_MODE'];
+
+if ($shouldDisableSharingButton && $setupSharingButton)
+{
+	$setupSharingButton = null;
+}
+
+if ($shouldDisableSharingButton && !empty($arParams['LINK_TO_DOWNLOAD']))
+{
+	$downloadButton = Button::create();
+	$downloadButton
+        ->setTag(Tag::LINK)
+		->setSize(Size::SMALL)
+		->setColor(Color::LIGHT_BORDER)
+		->setRound()
+        ->setText(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_BTN_DOWNLOAD'))
+        ->setLink($arParams['LINK_TO_DOWNLOAD'])
+        ->addAttribute('target', '_blank')
+    ;
+}
+
+$headerLogoClass = '';
+if (Context::getCurrent()->getLanguage() !== 'ru')
+{
+    $headerLogoClass = 'disk-fe-office-header-logo--eng';
+}
+
+$boostButtonContainerId = 'oo-editor-boost-button-container';
+
+$GLOBALS['APPLICATION']->SetTitle($arResult['OBJECT']['NAME']);
+?>
+<style>
+	.ui-popupcomponentsmaker__header {
+		background: radial-gradient(117.4% 131.09% at -2.79% -4.03%, #1D49B9 0%, #53C7F9 100%), linear-gradient(180deg, #4756F4 0%, #669AFB 35.72%, #C4D6FD 73.82%, rgba(248, 248, 248, 0.00) 100%);
+	}
+
+	.ui-popupcomponentmaker .popup-window-angly--arrow {
+		background: rgb(73, 127, 228);
+		background: #467cdf;
+	}
+
+	.ui-popupcomponentsmaker-header-tariff__icon,
+	.ui-popupcomponentsmaker-header-tariff__more,
+	.ui-popupcomponentsmaker-header-tariff__title,
+	.ui-popupcomponentsmaker-header-tariff__subtitle,
+	.ui-popupcomponentsmaker-header-tariff__message-wrapper .ui-popupcomponentsmaker-header-tariff__title,
+	.ui-popupcomponentsmaker-header-tariff__message-wrapper .ui-popupcomponentsmaker-header-tariff__subtitle {
+		color: #fff;
+	}
+
+	.ui-popupcomponentsmaker-header-tariff__icon .ui-icon-set {
+		background-color: #fff;
+	}
+
+	.ui-popupcomponentsmaker-header-tariff__icon {
+		--ui-icon-set__icon-size: 35px;
+		margin-right: 5px;
+	}
+
+	.ui-popupcomponentsmaker-header-tariff__message-wrapper .ui-popupcomponentsmaker-header-tariff__text,
+	.ui-popupcomponentsmaker-header-tariff__message-wrapper .ui-popupcomponentsmaker-header-tariff__subtitle {
+		color: #f2f2f2;
+	}
+
+</style>
+<div data-id="<?= $containerId ?>-wrapper">
+	<div class="disk-fe-office-header">
+		<div class="disk-fe-office-header-left">
+			<a href="<?= $arResult['HEADER_LOGO_LINK'] ?>" class="disk-fe-office-header-logo <?= $headerLogoClass ?>" target="_blank"></a>
+			<div class="disk-fe-office-header-mode">
+				<span class="disk-fe-office-header-mode-text"><?= $headerText ?></span>
+			</div>
+		</div>
+		<div class="disk-fe-office-header-right">
+			<div id="<?= $boostButtonContainerId?>" class="disk-fe-office-header-boost-button"<?php if (!$editMode): ?> style="margin-right: 18px;"<?php endif;?>></div>
+			<?php if (!$editMode): ?>
+				<?= $editButton ? $editButton->render(false) : '' ?>
+			<?php endif ?>
+            <?= $downloadButton ? $downloadButton->render(false) : '' ?>
+			<div class="disk-fe-office-header-control-box">
+				<div class="disk-fe-office-header-online"><?= Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_ONLINE_LABEL') ?></div>
+				<div data-id="<?= $containerId ?>-user-box">
+				</div>
+				<?= $setupSharingButton ? $setupSharingButton->render(false) : '' ?>
+			    <?php if ($arParams['SHOW_BUTTON_OPEN_NEW_WINDOW']): ?>
+                    <a href="<?= $arResult['LINK_OPEN_NEW_WINDOW'] ?>" target="_blank" class="disk-fe-office-header-resize-btn" title="<?= Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_HEADER_NEW_TAB') ?>"></a>
+			    <?php endif ?>
+			</div>
+		</div>
+	</div>
+	<div data-id="<?= $containerId ?>" style="height: calc(100vh - 70px);">
+		<div id="<?= $containerId ?>-editor" data-id="<?= $containerId ?>-editor"></div>
+	</div>
+</div>
+
+<script>
+	<?='BX.message(' . \CUtil::PhpToJSObject(Loc::loadLanguageFile(__FILE__)) . ');'?>
+
+	BX.Disk.UrlCleaner.cleanUrl(window.location, window.history, [
+		/^analytics\[/i,
+		/^immediate/i,
+	]);
+
+	new BX.Disk.Editor.OnlyOffice({
+		targetNode: document.querySelector('[data-id="<?= $containerId ?>"]'),
+		userBoxNode: document.querySelector('[data-id="<?= $containerId ?>-user-box"]'),
+		editorJson: <?= $arResult['EDITOR_JSON'] ?>,
+		editorNode: document.querySelector('[data-id="<?= $containerId ?>-editor"]'),
+		editorWrapperNode: document.querySelector('[data-id="<?= $containerId ?>-wrapper"]'),
+		panelButtonUniqIds: {
+			edit: '<?= ($arResult['EDITOR']['ALLOW_EDIT'] && $editButton) ? $editButton->getUniqId() : '' ?>',
+			setupSharing: '<?= $setupSharingButton ? $setupSharingButton->getUniqId() : '' ?>'
+		},
+        pullConfig: <?= Json::encode($arResult['PULL_CONFIG']) ?>,
+		pullUserConfig: <?= Json::encode($arResult['PULL_USER_CONFIG']) ?>,
+		publicChannel: '<?= $arResult['PUBLIC_CHANNEL'] ?>',
+        linkToEdit: '<?= $arResult['EDITOR']['ALLOW_EDIT'] ? $arResult['LINK_TO_EDIT'] : '' ?>',
+        linkToView: '<?= $arResult['LINK_OPEN_NEW_WINDOW'] ?>',
+        linkToDownload: '<?= $arResult['LINK_TO_DOWNLOAD'] ?>',
+		documentSession: {
+			id: <?= $arResult['DOCUMENT_SESSION']['ID'] ?>,
+			hash: '<?= $arResult['DOCUMENT_SESSION']['HASH'] ?>',
+		},
+		object: {
+			id: <?= $arResult['OBJECT']['ID'] ?>,
+			name: '<?= \CUtil::JSEscape($arResult['OBJECT']['NAME']) ?>',
+			size: <?= (int)$arResult['OBJECT']['SIZE'] ?>,
+			uniqueCode: '<?= \CUtil::JSEscape($arResult['FILE_UNIQUE_CODE']) ?>',
+			docType: '<?= \CUtil::JSEscape($arResult['OBJECT']['DOC_TYPE']) ?>',
+		},
+		attachedObject: {
+			id: <?= $arResult['ATTACHED_OBJECT']['ID'] ?: 'null' ?>,
+		},
+        sharingControlType: '<?= $arResult['SHARING_CONTROL_TYPE'] ?>',
+		currentUser: <?= $arResult['CURRENT_USER'] ?>,
+		unifiedLinkAccessOnly: <?= Json::encode($arResult['UNIFIED_LINK_ACCESS_ONLY']) ?>,
+		downloadSizeValue: '<?= \CUtil::JSEscape($arResult['OBJECT']['SIZE_READABLE']) ?>',
+		sessionBoostButtonContainerId: '<?= $boostButtonContainerId?>',
+		sessionBoostOptions: <?= Json::encode($arResult['SESSION_BOOST_OPTIONS']) ?>,
+		promoShowImmediately: <?= Json::encode($arResult['PROMO_SHOW_IMMEDIATELY'])  ?>,
+		realtimeForceReloadTag: '<?= \CUtil::JSEscape($arResult['REALTIME_FORCE_RELOAD_TAG'] ?? null) ?>',
+		realtimeForceReloadCommand: '<?= \CUtil::JSEscape($arResult['REALTIME_FORCE_RELOAD_COMMAND'] ?? null) ?>',
+		autoForceReloadAfter: <?= Json::encode($arResult['AUTO_FORCE_RELOAD_AFTER'] ?? null) ?>,
+		texts: {
+			forceReloadRegularServer: '<?= CUtil::JSEscape(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_FORCE_RELOAD_REGULAR_SERVER')) ?>',
+			forceReloadBoosterServer: '<?= CUtil::JSEscape(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_FORCE_RELOAD_BOOSTER_SERVER')) ?>',
+			forceReloadUndefinedServer: '<?= CUtil::JSEscape(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_FORCE_RELOAD_UNDEFINED_SERVER')) ?>',
+			forceReloadPopupOkButton: '<?= CUtil::JSEscape(Loc::getMessage('DISK_FILE_EDITOR_ONLYOFFICE_FORCE_RELOAD_POPUP_OK_BUTTON')) ?>',
+		},
+	});
+
+	<?php if ($isSignPlaceholdersEnabled): ?>
+	new BX.Sign.V2.B2e.PlaceholdersWidget().show();
+	<?php endif; ?>
+</script>
+<script>
+	BX.Helper.init({
+		frameOpenUrl: '<?=$frameOpenUrl?>',
+		langId: '<?=LANGUAGE_ID?>',
+		isNewHelpdesk: '<?= \Bitrix\Main\Config\Option::get('intranet', 'isNewHelpdesk', 'N') === 'Y' ? 'Y' : 'N' ?>',
+	});
+</script>

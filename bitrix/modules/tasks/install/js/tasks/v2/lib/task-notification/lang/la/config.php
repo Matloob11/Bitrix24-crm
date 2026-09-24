@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_OPEN"] = "Abrir";
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_UPDATED"] = "La plantilla se actualizó.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_FAIL"] = "No se pudo guardar la plantilla.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_OPEN"] = "Abrir";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_SUCC"] = "La plantilla se creó.";

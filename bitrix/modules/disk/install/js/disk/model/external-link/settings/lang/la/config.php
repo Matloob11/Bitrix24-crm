@@ -1,0 +1,12 @@
+<?php
+$MESS["DISK_JS_EL_SETTINGS_LINK_CAN_EDIT_DOCUMENT"] = "Permitir acceso de edición";
+$MESS["DISK_JS_EL_SETTINGS_LINK_CAN_EDIT_DOCUMENT_BOARD"] = "Permitir acceso de edición";
+$MESS["DISK_JS_EL_SETTINGS_LINK_HINT_PROTECT_BY_LIFETIME"] = "Establecer la fecha y hora de expiración del enlace";
+$MESS["DISK_JS_EL_SETTINGS_LINK_HINT_PROTECT_BY_PASSWORD"] = "Proteger este enlace con contraseña";
+$MESS["DISK_JS_EL_SETTINGS_LINK_LABEL_DAY"] = "días";
+$MESS["DISK_JS_EL_SETTINGS_LINK_LABEL_HOUR"] = "horas";
+$MESS["DISK_JS_EL_SETTINGS_LINK_LABEL_MINUTE"] = "minutos";
+$MESS["DISK_JS_EL_SETTINGS_LINK_PROTECT_BY_PASSWORD"] = "Establecer contraseña";
+$MESS["DISK_JS_EL_SETTINGS_LINK_VALUE_PROTECT_BY_LIFETIME"] = "hasta {{tiempo muerto}}";
+$MESS["DISK_JS_EL_SETTINGS_LINK_VALUE_PROTECT_BY_LIFETIME_2"] = "válido hasta el {{getFormattedDeathTime}}";
+$MESS["DISK_JS_EL_SETTINGS_LINK_VALUE_PROTECT_BY_PASSWORD"] = "********";

@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_ADD_RESULT"] = "Dodaj więcej";
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_WIDGET_TITLE"] = "Podsumowania statusów";

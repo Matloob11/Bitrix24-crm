@@ -1,0 +1,20 @@
+<?php
+$MESS["FORM_CONFIRM_DELETE"] = "Нәтижені жойғыңыз келетініне сенімдісіз бе?";
+$MESS["FORM_DATE_CREATE"] = "Жасалды:";
+$MESS["FORM_DELETE_TITLE"] = "Нәтижені жою";
+$MESS["FORM_EDIT_TITLE"] = "Нәтижені өзгерту";
+$MESS["FORM_FILTER_ANSWER_TEXT"] = "\"ANSWER_TEXT\" параметрінің мазмұны";
+$MESS["FORM_FILTER_ANSWER_VALUE"] = "\"ANSWER_VALUE\" параметрінің мазмұны";
+$MESS["FORM_FORM_NAME"] = "Нысан:";
+$MESS["FORM_GUEST"] = "Келуші:";
+$MESS["FORM_GUEST_ALT"] = "Келушінің профилі";
+$MESS["FORM_ID"] = "ID:";
+$MESS["FORM_NEW_RESULT"] = "Жаңа нәтиже";
+$MESS["FORM_PAGE_TITLE"] = "Нәтиже # #RESULT_ID#";
+$MESS["FORM_RESULT_LIST"] = "# #FORM_ID# нысанының нәтижелері тізімі";
+$MESS["FORM_RESULT_NOT_FOUND"] = "Нәтиже табылмады";
+$MESS["FORM_SESSION"] = "Сессия:";
+$MESS["FORM_SESSION_ALT"] = "Сессия";
+$MESS["FORM_SHOW_RESULT_TEMPLATE"] = "Нәтижелерді көрсету қалыбы:";
+$MESS["FORM_TIMESTAMP"] = "Өзгертілген:";
+$MESS["FORM_USER"] = "Пайдаланушы:";

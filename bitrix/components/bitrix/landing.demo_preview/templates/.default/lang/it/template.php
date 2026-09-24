@@ -1,0 +1,27 @@
+<?php
+$MESS["LANDING_404_ERROR"] = "Il modello non è stato trovato";
+$MESS["LANDING_LOADER_WAIT_MSGVER_1"] = "Attendere, creazione dell'online store in corso...";
+$MESS["LANDING_PREVIEW_MAINPAGE_BUTTON_CANCEL_TEXT"] = "Annulla";
+$MESS["LANDING_PREVIEW_MAINPAGE_BUTTON_OK_TEXT"] = "Sì";
+$MESS["LANDING_PREVIEW_MAINPAGE_MESSAGE"] = "C'è già un modello in uso per la tua pagina principale. Se importi un nuovo modello, quello attuale verrà eliminato definitivamente insieme a tutte le modifiche apportate.<br />Vuoi eliminare il modello attuale e installarne uno nuovo?";
+$MESS["LANDING_PREVIEW_MAINPAGE_TITLE"] = "Installa nuovo modello";
+$MESS["LANDING_TPL_BUTTON_CANCEL"] = "Annulla";
+$MESS["LANDING_TPL_BUTTON_CREATE"] = "Crea";
+$MESS["LANDING_TPL_BUTTON_CREATE_KB"] = "Crea knowledge base";
+$MESS["LANDING_TPL_BUTTON_CREATE_PAGE"] = "Crea pagina";
+$MESS["LANDING_TPL_BUTTON_CREATE_SITE"] = "Crea sito";
+$MESS["LANDING_TPL_BUTTON_CREATE_STORE"] = "Crea online store";
+$MESS["LANDING_TPL_BUTTON_REPLACE_PAGE"] = "Applica modello";
+$MESS["LANDING_TPL_BUTTON_SHOW_IN_MOBILE"] = "Apri su dispositivo mobile";
+$MESS["LANDING_TPL_DEMO_PREVIEW_LOGO_WELCOME_PAGE"] = "Pagina principale";
+$MESS["LANDING_TPL_HEADER_LOGO_BITRIX"] = "Bitrix";
+$MESS["LANDING_TPL_HEADER_LOGO_KB"] = "Knowledge bases";
+$MESS["LANDING_TPL_HEADER_LOGO_MAINPAGE"] = "Vibe";
+$MESS["LANDING_TPL_HEADER_LOGO_SITE"] = "Sites";
+$MESS["LANDING_TPL_HEADER_RIGHT_CREATE_HINT_MSGVER_1"] = "Non disponi di autorizzazioni sufficienti per creare siti. Contatta il tuo amministratore.";
+$MESS["LANDING_TPL_POPUP_REPEAT_BUTTON"] = "Riavvia";
+$MESS["LANDING_TPL_POPUP_REPEAT_TEXT"] = "Qualcosa è andato storto. Clicca su Riavvia per riprovare.";
+$MESS["LANDING_TPL_POPUP_TEXT"] = "Scansiona il codice QR per aprire il sito";
+$MESS["LANDING_TPL_POPUP_TEXT_KB"] = "Scansiona il codice QR per aprire la knowledge base";
+$MESS["LANDING_TPL_POPUP_TEXT_STORE"] = "Scansiona il codice QR per procedere al negozio online";
+$MESS["LANDING_TPL_TITLE"] = "Anteprima modello";

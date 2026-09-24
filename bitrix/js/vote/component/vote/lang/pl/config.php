@@ -1,0 +1,19 @@
+<?php
+$MESS["VOTE_ANONYMOUS"] = "Ankieta anonimowa";
+$MESS["VOTE_BUTTON"] = "Głosuj";
+$MESS["VOTE_NOTICE_COMPLETED"] = "ankieta zakończona";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_COMPLETE"] = "Nie można zakończyć ankiety.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_REVOKE"] = "Ponowne głosowanie nie powiodło się.";
+$MESS["VOTE_NOTICE_ERROR_MESSAGE_SUBMIT"] = "Nie można zagłosować. Spróbuj ponownie.";
+$MESS["VOTE_NOTICE_REVOKE_IS_NOT_AVAILABLE"] = "ponowne głosowanie niedostępne";
+$MESS["VOTE_POPUP_BTN_CANCEL"] = "Anuluj";
+$MESS["VOTE_POPUP_BTN_COMPLETE"] = "Zakończ ankietę";
+$MESS["VOTE_POPUP_TEXT"] = "Wyniki ankiety zostaną zapisane. Głosowanie zostanie zamknięte na stałe i nie będzie można go wznowić. Czy chcesz zakończyć ankietę?";
+$MESS["VOTE_POPUP_TITLE"] = "Zakończ ankietę";
+$MESS["VOTE_PUBLIC"] = "Ankieta publiczna";
+$MESS["VOTE_RESULT_COUNT_PLURAL_0"] = "#COUNT# głos";
+$MESS["VOTE_RESULT_COUNT_PLURAL_1"] = "#COUNT# głosy";
+$MESS["VOTE_RESULT_COUNT_PLURAL_2"] = "#COUNT# głosów";
+$MESS["VOTE_REVOKE"] = "Zagłosuj ponownie";
+$MESS["VOTE_SHOW_RESULTS"] = "Wyświetl wyniki ankiety";
+$MESS["VOTE_SUMMARY_COUNT_NO_VOTES"] = "Brak głosów";

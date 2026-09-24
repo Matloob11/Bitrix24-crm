@@ -1,0 +1,6 @@
+<?php
+$MESS["SESSION_CHECK_ENTITY_DATE_CLOSE_FIELD"] = "Chiuso il";
+$MESS["SESSION_CHECK_ENTITY_DATE_MAIL_FIELD"] = "E-mail inviata il";
+$MESS["SESSION_CHECK_ENTITY_DATE_NO_ANSWER_FIELD"] = "Messaggio contrassegnato come inattivo il";
+$MESS["SESSION_CHECK_ENTITY_DATE_QUEUE_FIELD"] = "Riaccodato il";
+$MESS["SESSION_CHECK_ENTITY_SESSION_ID_FIELD"] = "ID sessione";

@@ -1,0 +1,12 @@
+<?php
+$MESS["MAIL_PASSWORDLESS_CONNECT_CANCEL"] = "Cancelar";
+$MESS["MAIL_PASSWORDLESS_CONNECT_CLOSE"] = "Cerrar";
+$MESS["MAIL_PASSWORDLESS_CONNECT_DECLINE"] = "Rechazar";
+$MESS["MAIL_PASSWORDLESS_CONNECT_DECLINE_SUCCESS"] = "Solicitud para conectar el buzón rechazada.";
+$MESS["MAIL_PASSWORDLESS_CONNECT_DESCRIPTION"] = "Introduzca una contraseña para el buzón #EMAIL# para conectarlo a este Bitrix24.";
+$MESS["MAIL_PASSWORDLESS_CONNECT_ERROR_EMPTY_PASSWORD"] = "Se requiere una contraseña.";
+$MESS["MAIL_PASSWORDLESS_CONNECT_ERROR_GENERIC"] = "No se pudo conectar el buzón. Intente de nuevo más tarde.";
+$MESS["MAIL_PASSWORDLESS_CONNECT_PASSWORD_PLACEHOLDER"] = "Contraseña";
+$MESS["MAIL_PASSWORDLESS_CONNECT_POPUP_TITLE"] = "Conectar buzón";
+$MESS["MAIL_PASSWORDLESS_CONNECT_SUBMIT"] = "Conectar";
+$MESS["MAIL_PASSWORDLESS_CONNECT_SUCCESS_TITLE"] = "Buzón conectado";

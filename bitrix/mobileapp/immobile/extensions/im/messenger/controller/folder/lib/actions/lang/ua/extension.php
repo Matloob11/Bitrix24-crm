@@ -1,0 +1,8 @@
+<?php
+$MESS["IMMOBILE_MESSENGER_FOLDER_DELETE_CONFIRM_CANCEL"] = "Скасувати";
+$MESS["IMMOBILE_MESSENGER_FOLDER_DELETE_CONFIRM_DESCRIPTION"] = "Чати й канали з неї залишаться в загальному списку";
+$MESS["IMMOBILE_MESSENGER_FOLDER_DELETE_CONFIRM_DESTRUCTION"] = "Так, видалити";
+$MESS["IMMOBILE_MESSENGER_FOLDER_DELETE_CONFIRM_TITLE"] = "Видалити папку?";
+$MESS["IMMOBILE_MESSENGER_FOLDER_ERROR_CHATS_LIMIT"] = "У папці може бути не більше ніж 50 чатів і каналів.";
+$MESS["IMMOBILE_MESSENGER_FOLDER_ERROR_GENERIC"] = "Помилка";
+$MESS["IMMOBILE_MESSENGER_FOLDER_ERROR_LIMIT"] = "Можна створити не більше ніж 20 папок.";

@@ -1,0 +1,5 @@
+<?
+$MESS["TARIFF_RESTRICTION_TEXT"] = "La gestione dell'orario di lavoro è uno strumento essenziale per qualsiasi supervisore. Controlla quando ciascun dipendente ha iniziato e terminato la giornata lavorativa, quante ore ha lavorato, su cosa ha lavorato e se qualcuno è arrivato in ritardo o è uscito in anticipo. L'orologio marcatempo digitale Bitrix24 funziona su qualsiasi dispositivo e fornisce un rapporto dettagliato sull'orario di lavoro di ciascun dipendente, in sede o da remoto. <a href=\"javascript:void(0)\" onclick='top.BX.Helper.show(\"redirect=detail&code=1429531\");'>Dettagli</a>";
+$MESS["TARIFF_RESTRICTION_TEXT2"] = "La gestione dell'orario di lavoro è disponibile solo nei <a href=\"/settings/license_all.php\" target=\"_blank\">piani commerciali selezionati</a>.";
+$MESS["TITLE"] = "Riepilogo orario di lavoro";
+?>

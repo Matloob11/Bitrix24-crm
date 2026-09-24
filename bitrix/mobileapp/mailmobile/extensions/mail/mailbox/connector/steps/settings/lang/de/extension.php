@@ -1,0 +1,3 @@
+<?php
+$MESS["MAILBOX_CONNECTOR_SETTINGS_STEP_TITLE"] = "Mailbox-Einstellungen";
+$MESS["MAILBOX_CONNECTOR_SETTINGS_TITLE"] = "Mailbox verbinden";

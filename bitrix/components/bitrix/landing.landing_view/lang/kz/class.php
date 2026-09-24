@@ -1,0 +1,2 @@
+<?php
+$MESS["LANDING_TITLE_OF_EDITOR_ACTION_BITRIX_GPT"] = "#COPILOT_NAME# көмегімен өзгерту";

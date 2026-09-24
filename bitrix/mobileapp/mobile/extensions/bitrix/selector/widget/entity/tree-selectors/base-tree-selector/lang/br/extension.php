@@ -1,0 +1,3 @@
+<?php
+$MESS["BASE_TREE_SELECTOR_EMPTY_ITEM"] = "Nenhum item";
+$MESS["BASE_TREE_SELECTOR_LOADING_ITEM"] = "Pesquisar";

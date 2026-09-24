@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_ORDER_CHECK_LEGEND"] = "dla #SUM_WITH_CURRENCY# dnia #DATE_CREATE#";
+$MESS["CRM_ORDER_CHECK_TITLE"] = "Pokwitowanie ##CHECK_ID#";
+?>

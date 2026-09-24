@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_MESSENGER_CONTROLLER_RECENT_SERVICE_ACTION_INVITE_RESEND_DONE"] = "L'invito è stato inviato correttamente.";
+$MESS["IMMOBILE_MESSENGER_CONTROLLER_RECENT_SERVICE_ACTION_PIN_ERROR_MAX_PINNED"] = "Puoi fissare fino a 45 chat, canali o collab.";

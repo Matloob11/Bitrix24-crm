@@ -1,0 +1,5 @@
+<?php
+$MESS["BPMOBILE_TAB_WORKFLOW_LIST"] = "Processus d'entreprise";
+$MESS["BPMOBILE_TAB_WORKFLOW_LIST_ALERT_CONFIRM"] = "OK";
+$MESS["BPMOBILE_TAB_WORKFLOW_LIST_ALERT_EXTRANET_ACCESS_DENIED_TEXT"] = "Vous ne pouvez pas afficher les processus d'entreprise.";
+$MESS["BPMOBILE_TAB_WORKFLOW_LIST_ALERT_EXTRANET_ACCESS_DENIED_TITLE"] = "Autorisations insuffisantes";

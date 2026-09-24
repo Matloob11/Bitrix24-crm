@@ -1,0 +1,24 @@
+<?php
+$MESS["M_DISK_COLLAB_FILES_EMPTY_DESCRIPTION"] = "Widok pokazuje pliki wysłane na czat, zadania i kalendarz collaba.";
+$MESS["M_DISK_COLLAB_FILES_EMPTY_TITLE"] = "Pliki collaba";
+$MESS["M_DISK_COMMON_ERROR_OK"] = "OK";
+$MESS["M_DISK_COMMON_READ_MORE"] = "Dowiedz się więcej";
+$MESS["M_DISK_EMPTY_FOLDER_TITLE"] = "Tu nie ma plików";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_DESCRIPTION_MSGVER_2"] = "Zmień zapytanie wyszukiwania lub spróbuj wyszukać wszędzie.";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_GLOBAL_DESCRIPTION"] = "Sprawdź dane wejściowe pod kątem błędów. Ponadto możesz nie mieć uprawnień dostępu do pliku.";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_GLOBAL_TITLE"] = "Nie znaleziono pliku";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_SEARCH_EVERYWHERE"] = "Wyszukaj wszędzie";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_TITLE_MSGVER_2"] = "Nie znaleziono pliku w tym folderze";
+$MESS["M_DISK_FILE_GRID_TRASHCAN_TITLE"] = "Kosz";
+$MESS["M_DISK_GROUP_FILES_EMPTY_DESCRIPTION_MSGVER_1"] = "Ten widok wyświetla przesłane przez Ciebie pliki.";
+$MESS["M_DISK_GROUP_FILES_EMPTY_TITLE"] = "Pliki projektu";
+$MESS["M_DISK_MY_FILES_EMPTY_DESCRIPTION"] = "Widok pokazuje pliki używane w Bitrix24.";
+$MESS["M_DISK_MY_FILES_EMPTY_TITLE"] = "Moje pliki";
+$MESS["M_DISK_RECENT_FILES_EMPTY_DESCRIPTION"] = "Ten widok pokazuje ostatnie pliki.";
+$MESS["M_DISK_RECENT_FILES_EMPTY_TITLE"] = "Ostatnie pliki";
+$MESS["M_DISK_SHARED_FILES_EMPTY_DESCRIPTION"] = "Widok pokazuje pliki firmowe, do których masz dostęp.";
+$MESS["M_DISK_SHARED_FILES_EMPTY_TITLE"] = "Pliki firmowe";
+$MESS["M_DISK_STORAGE_LOAD_ERROR_TEXT"] = "Spróbuj ponownie później. Jeśli problem będzie się powtarzał, skontaktuj się z administratorem Bitrix24.";
+$MESS["M_DISK_STORAGE_LOAD_ERROR_TITLE"] = "Przestrzeń na dane tymczasowo niedostępna";
+$MESS["M_DISK_UPLOAD_BUTTON_FOR_COLLABER_AHA_MOMENT"] = "Dodawaj pliki i omawiaj je \nz uczestnikami collaba";
+$MESS["M_DISK_UPLOAD_IS_POSSIBLE_ONLY_TO_COLLAB_DIR"] = "Aby dodać pliki, otwórz folder collaba.";

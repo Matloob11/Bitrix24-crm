@@ -1,0 +1,24 @@
+<?php
+$MESS["SN_COLLAB_ACCESS_RIGHTS"] = "Permisos de acceso";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ALLOW_GUESTS_INVITATION_LABEL"] = "Permitir invitaciones a este collab:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ALLOW_GUESTS_INVITATION_LABEL_HINT_DISABLED"] = "Su administrador de Bitrix24 desactivó las invitaciones a este collab.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ALLOW_GUESTS_INVITATION_LABEL_HINT_ENABLED"] = "Los miembros del collab pueden hacer invitaciones.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_BUTTON_CANCEL"] = "Cancelar";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_BUTTON_SAVE"] = "Guardar";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_CHAT_LABEL"] = "Usuarios autorizados para publicar mensajes:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_CHAT_LABEL_HINT"] = "Los miembros del collab pueden escribir y publicar nuevos mensajes en el collab.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ERROR_REQUIRED_OWNER"] = "Se requiere el propietario del collab.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_INITIATE_LABEL"] = "Los usuarios pueden invitar a nuevos miembros al collab:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_INITIATE_LABEL_HINT"] = "Los miembros del collab pueden invitar a empleados e invitados al collab.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_MANAGEMENT_LABEL_MSGVER_1"] = "Administración y permisos";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_MODERATORS_LABEL"] = "Moderadores:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_MODERATORS_LABEL_HINT"] = "Los moderadores son usuarios con permisos superiores asignados por el propietario del collab.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_OWNER_LABEL"] = "Propietario:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_OWNER_LABEL_HINT"] = "El propietario tiene acceso completo a toda la información que contiene el collab, puede editar cualquier configuración del collab y asignar moderadores.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_SHOW_HISTORY_LABEL"] = "Poner el historial del chat a disposición de los nuevos miembros:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TASKS_LABEL"] = "Tareas del collab";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TCT_LABEL"] = "Usuarios autorizados para crear nuevas tareas:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TDT_LABEL"] = "Usuarios autorizados para eliminar tareas del collab:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TET_LABEL"] = "Usuarios autorizados para editar tareas del collab:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TST_LABEL"] = "Usuarios autorizados para ordenar y mover las tareas del collab:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TVU_LABEL"] = "Usuarios autorizados para ver las tareas del collab:";

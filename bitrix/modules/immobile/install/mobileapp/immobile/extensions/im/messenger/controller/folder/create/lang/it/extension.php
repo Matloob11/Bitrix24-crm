@@ -1,0 +1,4 @@
+<?php
+$MESS["IMMOBILE_FOLDER_CREATE_ERROR_LIMIT"] = "Sono supportate fino a 20 cartelle.";
+$MESS["IMMOBILE_FOLDER_CREATE_NAV_TITLE"] = "Nuova cartella";
+$MESS["IMMOBILE_FOLDER_CREATE_SUBMIT_BUTTON"] = "Crea";

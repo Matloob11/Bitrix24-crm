@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Кошик";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Вихідна база знань для деяких документів (#COUNT#) була видалена. Виберіть для них іншу базу знань.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Буде відновлено всі документи з кошика: #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Відновлення документів";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Введіть назву бази знань";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "Вихідна база знань для документа «#DOCUMENT#» була видалена. Виберіть іншу базу знань, до якої потрібно відновити документ.";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Відновлення документа";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Скасувати";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Усі документи з кошика будуть видалені назавжди";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "Відновити усі документи з кошика?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Очистити кошик";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Так, видалити";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Видалити документи з корзини?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "У кошику немає документів.";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "Кошик очищено. Видалено документів: #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "Не вдалося виконати дію, спробуйте ще раз трохи пізніше.";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "Документ видалено назавжди.";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Дії";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Так, відновити";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Відновити все";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Відновлено документів: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Відновлено документів: #COUNT#, пропущено: #SKIPPED# — для них потрібно вибрати іншу базу знань.";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "Документ відновлено.";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Документи в кошику зберігаються 30 днів, а після цього автоматично видаляються.";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Кошик";

@@ -1,0 +1,4 @@
+<?
+$MESS["GD_IBEL_SELECT_ID"] = "ID";
+$MESS["GD_IBEL_SORT_BY_ID"] = "ID";
+?>

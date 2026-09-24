@@ -1,0 +1,6 @@
+<?php
+$MESS["LANDING_BLOCK_52_1_BTN_AREA"] = "Obszar przycisków";
+$MESS["LANDING_BLOCK_52_TEXT_WITH_BTN_RIGHT-BTN"] = "Przycisk";
+$MESS["LANDING_BLOCK_52_TEXT_WITH_BTN_RIGHT-NAME"] = "Tekst z przyciskiem po prawej stronie";
+$MESS["LANDING_BLOCK_52_TEXT_WITH_BTN_RIGHT-TEXT"] = "Tekst";
+$MESS["LANDING_BLOCK_52_TEXT_WITH_BTN_RIGHT_CONTAINER"] = "Kolekcja elementów";

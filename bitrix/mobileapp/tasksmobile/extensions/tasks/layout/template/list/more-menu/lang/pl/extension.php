@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKSMOBILE_TEMPLATE_LIST_SORT_CREATED_DATE"] = "Według daty utworzenia";
+$MESS["TASKSMOBILE_TEMPLATE_LIST_SORT_RESPONSIBLE"] = "Według odpowiedzialnego";
+$MESS["TASKSMOBILE_TEMPLATE_LIST_SORT_TITLE"] = "Kolejność sortowania";

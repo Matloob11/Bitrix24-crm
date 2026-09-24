@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_PERMISSIONS_POPUP_ADD"] = "Додати";
+$MESS["NOTE_PERMISSIONS_POPUP_ALL_EMPLOYEES"] = "Усі співробітники";
+$MESS["NOTE_PERMISSIONS_POPUP_CANCEL"] = "Скасувати";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_BUTTON"] = "Створити";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_ERROR"] = "Не вдалося створити базу знань, спробуйте ще раз трохи пізніше.";
+$MESS["NOTE_PERMISSIONS_POPUP_CREATE_SUCCESS"] = "База знань створена.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_EDIT_DOCUMENT"] = "Редагування документа: правка тексту, додавання блоків та прикріплення файлів.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MANAGE"] = "Редагування документів у базі знань: правка тексту, додавання блоків та прикріплення файлів.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_MODERATE"] = "Видалення бази знань та налаштування прав доступу до неї та її документів. Повний доступ до всіх налаштувань бази знань.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW"] = "Перегляд документів бази знань та завантаження прикріплених файлів.";
+$MESS["NOTE_PERMISSIONS_POPUP_HINT_VIEW_DOCUMENT"] = "Перегляд документа та завантаження прикріплених файлів.";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_EDIT"] = "Редагування";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MANAGE"] = "Редагування";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_MODERATE"] = "Адміністрування";
+$MESS["NOTE_PERMISSIONS_POPUP_LEVEL_VIEW"] = "Перегляд";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR"] = "Не вдалося завантажити налаштування бази знань, спробуйте ще раз трохи пізніше.";
+$MESS["NOTE_PERMISSIONS_POPUP_LOAD_ERROR_DOCUMENT"] = "Не вдалося завантажити права на документ, спробуйте ще раз трохи пізніше.";
+$MESS["NOTE_PERMISSIONS_POPUP_NAME_PLACEHOLDER"] = "Назва бази знань";
+$MESS["NOTE_PERMISSIONS_POPUP_ROLLBACK_FAILED"] = "Не вдалося створити базу знань, спробуйте оновити сторінку.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE"] = "Зберегти";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR"] = "Не вдалося зберегти налаштування бази знань, спробуйте ще раз трохи пізніше.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_ERROR_DOCUMENT"] = "Не вдалося зберегти права на документ, спробуйте ще раз трохи пізніше.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS"] = "Налаштування бази знань збережено.";
+$MESS["NOTE_PERMISSIONS_POPUP_SAVE_SUCCESS_DOCUMENT"] = "Права на документ збережено.";
+$MESS["NOTE_PERMISSIONS_POPUP_TITLE_EDIT_DOCUMENT"] = "Права доступу до документа";

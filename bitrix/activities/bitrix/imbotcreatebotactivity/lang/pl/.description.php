@@ -1,0 +1,3 @@
+<?php
+$MESS["IMBOT_CREATE_BOT_ACTIVITY_DESCRIPTION_DESCRIPTION"] = "Umożliwia konfigurację czatbotów.";
+$MESS["IMBOT_CREATE_BOT_ACTIVITY_DESCRIPTION_NAME"] = "Ustawienia czatbota";

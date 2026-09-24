@@ -1,0 +1,67 @@
+<?php
+
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+if (!\Bitrix\Main\Loader::includeModule('bizproc'))
+{
+	return [];
+}
+
+return [
+	'settings' => [
+		'entities' => [
+			[
+				'id' => 'bizproc-template',
+				'options' => [
+					'dynamicLoad' => true,
+					'dynamicSearch' => true,
+				],
+			],
+			[
+				'id' => 'bizproc-script-template',
+				'options' => [
+					'dynamicLoad' => true,
+					'dynamicSearch' => true,
+				],
+			],
+			[
+				'id' => 'bizproc-automation-template',
+				'options' => [
+					'dynamicLoad' => true,
+					'dynamicSearch' => true,
+				],
+			],
+			[
+				'id' => 'bizproc-document',
+				'options' => [
+					'dynamicLoad' => true,
+					'dynamicSearch' => false,
+				],
+			],
+			[
+				'id' => 'bizproc-system',
+				'options' => [
+					'dynamicLoad' => true,
+					'dynamicSearch' => false,
+				],
+			],
+			[
+				'id' => 'bizproc-document-type',
+				'options' => [
+					'dynamicLoad' => true,
+					'dynamicSearch' => false,
+				],
+			],
+			[
+				'id' => 'bizproc-storage',
+				'options' => [
+					'dynamicLoad' => true,
+					'dynamicSearch' => false,
+				],
+			],
+		],
+	],
+];

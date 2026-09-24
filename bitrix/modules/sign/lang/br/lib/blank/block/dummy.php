@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_CORE_BLOCK_DATE_HINT"] = "Use este campo para inserir valores de data (por exemplo, data do contrato etc.)";
+$MESS["SIGN_CORE_BLOCK_DATE_TITLE"] = "Data";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_HINT"] = "Este campo contém as informações da sua empresa.";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_TITLE"] = "Informações";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_BLOCK_HINT"] = "Campo contendo sua assinatura";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_TITLE"] = "Assinatura";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_ERROR_EMPTY"] = "O bloco de carimbo da empresa foi adicionado, mas não existe nenhuma imagem do carimbo nas informações da empresa.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_HINT"] = "Carimbo da sua empresa.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_TITLE"] = "Carimbo";
+$MESS["SIGN_CORE_BLOCK_NUMBER_HINT"] = "Use este campo para fornecer o número do documento. Você pode inserir o número como um valor estático ou usar o recurso de numeração automática.";
+$MESS["SIGN_CORE_BLOCK_NUMBER_TITLE"] = "Número";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_BLOCK_HINT"] = "Este campo será preenchido com os dados encontrados no seu CRM. Se o seu CRM não tem informações relevantes e o campo permanecer vazio, ela pode ser fornecida por qualquer uma das partes signatárias. Nesse caso, essas novas informações serão salvas no seu CRM.";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_TITLE"] = "Campo do CRM";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_ERROR_EMPTY"] = "O bloco \"Campo do CRM\" não está configurado.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_HINT"] = "Este campo contém as informações do destinatário.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_TITLE"] = "Informações";
+$MESS["SIGN_CORE_BLOCK_SIGN_BLOCK_HINT"] = "Campo contendo a assinatura da outra parte signatária";
+$MESS["SIGN_CORE_BLOCK_SIGN_TITLE"] = "Assinatura";
+$MESS["SIGN_CORE_BLOCK_STAMP_HINT"] = "Este campo contém o carimbo do destinatário.";
+$MESS["SIGN_CORE_BLOCK_STAMP_TITLE"] = "Carimbo";
+$MESS["SIGN_CORE_BLOCK_TEXT_HINT"] = "O campo pode receber qualquer informãção de texto.";
+$MESS["SIGN_CORE_BLOCK_TEXT_TITLE"] = "Texto";

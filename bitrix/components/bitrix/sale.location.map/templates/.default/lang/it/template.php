@@ -1,0 +1,4 @@
+<?
+$MESS["SALE_LOCATION_MAP_CANCEL"] = "Annulla";
+$MESS["SALE_LOCATION_MAP_CLOSE"] = "Chiudi";
+?>

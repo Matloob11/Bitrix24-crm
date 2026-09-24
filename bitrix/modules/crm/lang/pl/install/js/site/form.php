@@ -1,0 +1,22 @@
+<?php
+$MESS["CRM_SITE_FORM_ABUSE_INFO_HINT"] = "Bitrix24 nie ponosi odpowiedzialności za informacje podane w tym formularzu. Zawsze jednak można zgłosić naruszenie.";
+$MESS["CRM_SITE_FORM_ABUSE_LINK"] = "Zgłoś nadużycie";
+$MESS["CRM_SITE_FORM_BASKET_DISCOUNT"] = "Oszczędzasz";
+$MESS["CRM_SITE_FORM_BASKET_SUM"] = "Bez rabatu";
+$MESS["CRM_SITE_FORM_BASKET_TOTAL"] = "Suma";
+$MESS["CRM_SITE_FORM_CONSENT_ACCEPT"] = "Akceptuję";
+$MESS["CRM_SITE_FORM_CONSENT_READ_ALL"] = "Aby przeczytać cały tekst, przewiń w dół";
+$MESS["CRM_SITE_FORM_CONSENT_REJECT"] = "Nie akceptuję";
+$MESS["CRM_SITE_FORM_DEF_BUTTON"] = "Wyślij wniosek";
+$MESS["CRM_SITE_FORM_DEF_TITLE"] = "Wypełnij formularz";
+$MESS["CRM_SITE_FORM_MORE_FIELDS_YET"] = "Poniżej znajduje się więcej pól";
+$MESS["CRM_SITE_FORM_NAV_BACK"] = "Wstecz";
+$MESS["CRM_SITE_FORM_NAV_NEXT"] = "Dalej";
+$MESS["CRM_SITE_FORM_SIGN"] = "Obsługiwane przez";
+$MESS["CRM_SITE_FORM_SIGN_BY"] = "Bitrix24";
+$MESS["CRM_SITE_FORM_STATE_BUTTON_PAY"] = "Przejdź do płatności";
+$MESS["CRM_SITE_FORM_STATE_BUTTON_RESEND"] = "Wyślij ponownie";
+$MESS["CRM_SITE_FORM_STATE_DISABLED"] = "Ten formularz jest wyłączony";
+$MESS["CRM_SITE_FORM_STATE_ERROR"] = "To jest błąd.";
+$MESS["CRM_SITE_FORM_STATE_SUCCESS"] = "Dziękujemy!";
+$MESS["CRM_SITE_FORM_STATE_SUCCESS_TITLE"] = "Wysłano wniosek!";

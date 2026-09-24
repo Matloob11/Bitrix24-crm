@@ -1,0 +1,8 @@
+<?php
+$MESS["MOBILE_PROJECT_ADAPTER_SERVICE_CREATE_FAILED"] = "Nie można utworzyć projektu.";
+$MESS["MOBILE_PROJECT_ADAPTER_SERVICE_ENABLE_KNOWLEDGE_FAILED"] = "Nie można włączyć bazy wiedzy.";
+$MESS["MOBILE_PROJECT_ADAPTER_SERVICE_NAME_ALREADY_EXISTS"] = "Projekt o takiej nazwie już istnieje.";
+$MESS["MOBILE_PROJECT_ADAPTER_SERVICE_UPDATE_CHAT_SETTINGS_FAILED"] = "Nie można zapisać ustawień czatu.";
+$MESS["MOBILE_PROJECT_ADAPTER_SERVICE_UPDATE_FAILED"] = "Nie można zapisać projektu.";
+$MESS["MOBILE_PROJECT_ADAPTER_SERVICE_UPDATE_KNOWLEDGE_PERMISSIONS_FAILED"] = "Nie można zapisać uprawnień do bazy wiedzy.";
+$MESS["MOBILE_PROJECT_ADAPTER_SERVICE_UPDATE_TASK_PERMISSIONS_FAILED"] = "Nie można zapisać uprawnień do zadań.";

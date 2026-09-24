@@ -1,0 +1,27 @@
+<?php
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_AVERAGE_DURATION_HINT"] = "Techniques d'optimisation du processus d'entreprise";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_AVERAGE_DURATION_TITLE"] = "Temps d'exécution moyen";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_BACK_BUTTON"] = "RETOUR";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_BUTTON_SAVE"] = "ENREGISTRER";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_COLLAPSE_RECOMMENDATION"] = "Réduire";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_DESCRIPTION"] = "Automatisez vos processus d'entreprise, contrôlez chaque étape et gérez l'ensemble à partir de votre appareil mobile.";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_DURATION_DESCRIPTION"] = "Configurez le processus d'entreprise de manière à gagner du temps pour toutes les personnes impliquées et accélérer chaque étape.";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_DURATION_UNDEFINED_DESCRIPTION"] = "Données insuffisantes pour calculer le temps moyen.";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_EMPTY_DURATION"] = "aucune donnée";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_EMPTY_RECOMMENDATION_1"] = "Suggérer à l'administrateur du processus d'entreprise d'y ajouter une description.";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_EXIT_DIALOG_CANCEL"] = "Non";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_EXIT_DIALOG_CONFIRM"] = "Oui, annuler";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_EXIT_DIALOG_DESCRIPTION"] = "Les informations que vous avez saisies dans les champs seront perdues si vous annulez le lancement maintenant. Voulez-vous annuler le lancement ?";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_EXIT_DIALOG_TITLE"] = "Annuler le lancement du processus d'entreprise";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_EXPAND_RECOMMENDATION"] = "Développer";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_FINAL_TEXT_STARTED"] = "Processus d'entreprise démarré";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_NEXT_BUTTON"] = "CONTINUER";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_NOT_TUNING_CONSTANTS"] = "Le processus d'entreprise peut être démarré une fois que l'administrateur a spécifié les constantes.";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_PARAMETERS_TITLE"] = "Paramètres du processus d'entreprise";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_START_BUTTON"] = "EXÉCUTER";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_STEP_CONSTANTS"] = "Constantes";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_STEP_PARAMETERS"] = "Démarrer le processus d'entreprise";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_STEP_RECOMMENDATION"] = "Instructions";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_STEP_START"] = "Statut du processus d'entreprise";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_TITLE"] = "Processus d'entreprise";
+$MESS["BIZPROC_CMP_WORKFLOW_START_TMP_SINGLE_START_ZERO_DURATION"] = "instantanément";

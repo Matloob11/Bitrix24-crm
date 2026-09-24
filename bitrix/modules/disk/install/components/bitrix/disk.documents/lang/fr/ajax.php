@@ -1,0 +1,21 @@
+<?php
+$MESS["DISK_DOCUMENTS_ACT_ACCESS_BY_LINK"] = "Plus d'options de partage";
+$MESS["DISK_DOCUMENTS_ACT_COPIED_INTERNAL_LINK"] = "Lien copié dans le presse-papiers";
+$MESS["DISK_DOCUMENTS_ACT_COPY_INTERNAL_LINK"] = "Copier le lien interne";
+$MESS["DISK_DOCUMENTS_ACT_COPY_LINK"] = "Copier le lien";
+$MESS["DISK_DOCUMENTS_ACT_DELETE"] = "Supprimer";
+$MESS["DISK_DOCUMENTS_ACT_DETAILS"] = "Détails";
+$MESS["DISK_DOCUMENTS_ACT_DOWNLOAD"] = "Télécharger";
+$MESS["DISK_DOCUMENTS_ACT_DUPLICATE"] = "Dupliquer";
+$MESS["DISK_DOCUMENTS_ACT_EDIT"] = "Éditer";
+$MESS["DISK_DOCUMENTS_ACT_GET_EXT_LINK"] = "Recevoir le lien public";
+$MESS["DISK_DOCUMENTS_ACT_LOCK"] = "Blocage";
+$MESS["DISK_DOCUMENTS_ACT_OPEN"] = "Ouvrir";
+$MESS["DISK_DOCUMENTS_ACT_RENAME"] = "Renommer";
+$MESS["DISK_DOCUMENTS_ACT_SHARE_COMPLEX"] = "Partager";
+$MESS["DISK_DOCUMENTS_ACT_SHARING"] = "Accès public";
+$MESS["DISK_DOCUMENTS_ACT_SHARING_2"] = "Partager avec d'autres utilisateurs";
+$MESS["DISK_DOCUMENTS_ACT_SHOW_HISTORY"] = "Historique des modifications";
+$MESS["DISK_DOCUMENTS_ACT_SHOW_SHARING_DETAIL_2"] = "Accès public";
+$MESS["DISK_DOCUMENTS_ACT_UNLOCK"] = "Débloquer";
+$MESS["DISK_DOCUMENTS_DUPLICATE_NEW_NAME"] = "#DOC_NAME# - (copie)";

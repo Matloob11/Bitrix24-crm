@@ -1,0 +1,25 @@
+<?php
+$MESS["BPAR_PD_ACCESS_CONTROL"] = "Mostra descrizione assegnazione solo a responsabili";
+$MESS["BPAR_PD_APPROVE_TYPE"] = "Richiedi lettura da";
+$MESS["BPAR_PD_APPROVE_TYPE_ALL"] = "Tutti i dipendenti";
+$MESS["BPAR_PD_APPROVE_TYPE_ANY"] = "Qualsiasi dipendente";
+$MESS["BPAR_PD_COMMENT_LABEL_MESSAGE_1"] = "Nome del campo \"Note\"";
+$MESS["BPAR_PD_COMMENT_REQUIRED_1"] = "Richiedi note";
+$MESS["BPAR_PD_DELEGATION_TYPE"] = "Delega a";
+$MESS["BPAR_PD_DESCR"] = "Descrizione assegnazione";
+$MESS["BPAR_PD_NAME"] = "Nome assegnazione";
+$MESS["BPAR_PD_NO"] = "No";
+$MESS["BPAR_PD_REVIEWERS"] = "Revisori";
+$MESS["BPAR_PD_SET_STATUS_MESSAGE"] = "Imposta messaggio di stato";
+$MESS["BPAR_PD_SHOW_COMMENT_1"] = "Mostra campo \"Note\"";
+$MESS["BPAR_PD_STATUS_MESSAGE"] = "Testo di stato";
+$MESS["BPAR_PD_STATUS_MESSAGE_HINT1"] = "Sono disponibili le seguenti macro: #PERCENT# - tasso di risposta, #REVIEWED# - numero di persone che hanno risposto, #TOTAL# - totale persone assegnate, #REVIEWERS# - utenti che hanno visualizzato l'elemento";
+$MESS["BPAR_PD_TASK_BUTTON_MESSAGE"] = "Etichetta pulsante assegnazione";
+$MESS["BPAR_PD_TIMEOUT_DURATION"] = "Limite di tempo";
+$MESS["BPAR_PD_TIMEOUT_DURATION_HINT"] = "Il processo di esame degli elementi sarà terminato automaticamente alla scadenza del periodo. Un valore vuoto o zero specifica che nessun periodo di approvazione deve essere applicato.";
+$MESS["BPAR_PD_TIMEOUT_LIMIT"] = "Tempo di lettura minimo";
+$MESS["BPAR_PD_TIME_D"] = "giorni";
+$MESS["BPAR_PD_TIME_H"] = "ore";
+$MESS["BPAR_PD_TIME_M"] = "minuti";
+$MESS["BPAR_PD_TIME_S"] = "secondi";
+$MESS["BPAR_PD_YES"] = "Sì";

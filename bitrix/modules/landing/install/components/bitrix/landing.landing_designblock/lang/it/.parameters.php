@@ -1,0 +1,5 @@
+<?php
+$MESS["LANDING_CMP_PAR_BLOCK_ID"] = "ID blocco";
+$MESS["LANDING_CMP_PAR_LANDING_ID"] = "ID destinazione";
+$MESS["LANDING_CMP_PAR_LANDING_TYPE"] = "Tipo sito";
+$MESS["LANDING_CMP_PAR_SITE_ID"] = "ID sito web";

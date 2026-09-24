@@ -1,0 +1,5 @@
+<?php
+$MESS["BICONNECTOR_CRM_TRACKING_SOURCE_FACEBOOK_DESCRIPTION"] = "Analise o desempenho e a conversão dos anúncios.";
+$MESS["BICONNECTOR_CRM_TRACKING_SOURCE_FACEBOOK_TITLE"] = "Facebook";
+$MESS["BICONNECTOR_CRM_TRACKING_SOURCE_GOOGLE_DESCRIPTION"] = "Analise o desempenho e a conversão dos anúncios.";
+$MESS["BICONNECTOR_CRM_TRACKING_SOURCE_GOOGLE_TITLE"] = "Google Ads";

@@ -1,0 +1,29 @@
+export const ErrorCode = Object.freeze({
+	collabV2: {
+		tariffRestricted: 'COLLAB_TARIFF_RESTRICTED',
+	},
+	collab: {
+		excludeFromStructure: 'EXCLUDE_DENIED_FROM_STRUCTURE',
+		leaveFromStructure: 'LEAVE_DENIED_FROM_STRUCTURE',
+	},
+	chat: {
+		accessDenied: 'ACCESS_DENIED',
+		notFound: 'CHAT_NOT_FOUND',
+	},
+	message: {
+		accessDenied: 'MESSAGE_ACCESS_DENIED',
+		accessDeniedByTariff: 'MESSAGE_ACCESS_DENIED_BY_TARIFF',
+		notFound: 'MESSAGE_NOT_FOUND',
+	},
+	user: {
+		invitedFromStructure: 'USER_INVITED_FROM_STRUCTURE',
+		notFound: 'USER_NOT_FOUND',
+	},
+	file: {
+		maxFileSize: 'MAX_FILE_SIZE_EXCEEDED',
+	},
+	sticker: {
+		maxPacks: 'MAX_PACKS_ERROR',
+		maxStickers: 'MAX_STICKERS_ERROR',
+	},
+});

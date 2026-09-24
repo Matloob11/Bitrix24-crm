@@ -1,0 +1,27 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_COPY"] = "Autorizzazioni insufficienti per copiare la dashboard. Contatta il tuo supervisore o l'amministratore dell'account Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_DELETE"] = "Autorizzazioni insufficienti per eliminare la dashboard. Contatta il tuo supervisore o l'amministratore dell'account Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EDIT"] = "Autorizzazioni insufficienti per modificare la dashboard. Contatta il tuo supervisore o l'amministratore dell'account Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EXPORT"] = "Autorizzazioni insufficienti per esportare la dashboard. Contatta il tuo supervisore o l'amministratore dell'account Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_SHARE"] = "Autorizzazioni insufficienti per condividere la dashboard. Contatta il tuo supervisore o l'amministratore di Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_TAG_MODIFY"] = "Autorizzazioni insufficienti per modificare i tag della dashboard. Contatta il tuo supervisore o l'amministratore dell'account Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_VIEW"] = "Autorizzazioni insufficienti per visualizzare la dashboard. Contatta il tuo supervisore o l'amministratore dell'account Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPIED_DASHBOARD_TITLE"] = "#DASHBOARD_TITLE# (copia)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPY_ERROR"] = "Errore in fase di copia della dashboard. Riprova.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR"] = "Impossibile eliminare la dashboard. Riprova.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_COPIED"] = "Elimina tutte le copie di questa dashboard prima di cancellarla.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_HAS_RELATED_ENTITIES"] = "Impossibile eliminare la dashboard installata da Market perché i rispettivi grafici e i dataset sono in uso da altre dashboard nel tuo Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_SYSTEM"] = "Impossibile eliminare la dashboard integrata.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DISCUSSION_CHAT_OPEN_ERROR"] = "Impossibile aprire la chat della dashboard. Riprova.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EMPTY_DASHBOARD_NAME"] = "Nuova dashboard";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ERROR_NOT_FOUND"] = "Dashboard non trovata.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD"] = "#DATE_FROM# - #DATE_TO#";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_DEFAULT"] = "Predefinito";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_INCLUDE_LAST_FILTER_DATE"] = "#DATE_FROM# - #DATE_TO# (data di fine inclusa)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_ERROR"] = "Impossibile esportare la dashboard. Riprova.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_EMPTY"] = "Il nome della dashboard è obbligatorio";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_FOUND"] = "Questa dashboard non esiste più, aggiorna la pagina";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_READY"] = "La dashboard è ancora in fase di installazione. Attendi il completamento dell'installazione e riprova.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_ONLY_CUSTOM_MSGVER_1"] = "Impossibile rinominare le dashboard integrate o del Market. Crea una copia di questa dashboard e rinominala.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_UNHANDLED"] = "Impossibile modificare il nome della dashboard, riprova.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_UNAVAILABLE"] = "Impossibile modificare il nome della dashboard, riprova più tardi";

@@ -1,0 +1,17 @@
+<?php
+
+$MESS['TASKS_V2_STATUS_TITLE'] = 'Статус';
+$MESS['TASKS_V2_STATUS_PENDING'] = 'Ждёт выполнения';
+$MESS['TASKS_V2_STATUS_IN_PROGRESS'] = 'Выполняется';
+$MESS['TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED_MSGVER_1'] = 'Ждёт контроля';
+$MESS['TASKS_V2_STATUS_COMPLETED'] = 'Выполнена';
+$MESS['TASKS_V2_STATUS_COMPLETED_MSGVER_1'] = 'Завершена';
+$MESS['TASKS_V2_STATUS_DEFERRED'] = 'Отложена';
+$MESS['TASKS_V2_STATUS_FROM'] = 'С #DATE# #TIME#';
+$MESS['TASKS_V2_STATUS_START_ACTION'] = 'Начать выполнение';
+$MESS['TASKS_V2_STATUS_PAUSE_ACTION'] = 'Приостановить';
+$MESS['TASKS_V2_STATUS_COMPLETE_ACTION'] = 'Завершить';
+$MESS['TASKS_V2_STATUS_DEFER_ACTION'] = 'Отложить';
+$MESS['TASKS_V2_STATUS_RENEW_ACTION'] = 'Вернуть в работу';
+$MESS['TASKS_V2_STATUS_RESUME_ACTION'] = 'Возобновить';
+$MESS['TASKS_V2_STATUS_NEEDS_CONTROL_HINT'] = 'Задача с контролем после завершения';

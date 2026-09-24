@@ -1,0 +1,26 @@
+<?php
+$MESS["CRM_SEMA_ACTIVITY_EMAIL_MAX_SIZE_EXCEED"] = "Taille maximale possible de la pièce jointe dépassée (#SIZE#)";
+$MESS["CRM_SEMA_ACTIVITY_LINK_LABEL"] = "Passer au message";
+$MESS["CRM_SEMA_ATTACHMENT_1"] = "Fichiers";
+$MESS["CRM_SEMA_ATTACHMENT_DISK"] = "Drive";
+$MESS["CRM_SEMA_ATTACHMENT_FILE_2"] = "Champs de l'élément";
+$MESS["CRM_SEMA_ATTACHMENT_TYPE_1"] = "Source";
+$MESS["CRM_SEMA_DEFAULT_BODY"] = "[sans texte]";
+$MESS["CRM_SEMA_DEFAULT_SUBJECT"] = "Nouvel e-mail (#DATE#)";
+$MESS["CRM_SEMA_EMAIL_CREATION_CANCELED"] = "Le message par e-mail a été annulé";
+$MESS["CRM_SEMA_EMAIL_FROM"] = "De";
+$MESS["CRM_SEMA_EMAIL_SELECT_RULE"] = "Utiliser l'adresse";
+$MESS["CRM_SEMA_EMAIL_SELECT_RULE_FIRST"] = "Premier ajout";
+$MESS["CRM_SEMA_EMAIL_SELECT_RULE_LAST"] = "Dernier ajout";
+$MESS["CRM_SEMA_EMAIL_SUBJECT"] = "Objet";
+$MESS["CRM_SEMA_EMAIL_TO"] = "À";
+$MESS["CRM_SEMA_EMAIL_TYPE"] = "Type d'adresse du client";
+$MESS["CRM_SEMA_EMAIL_TYPE_EMPTY_OPTION"] = "Sélection auto";
+$MESS["CRM_SEMA_EMPTY_PROP"] = "Le texte du message est requis";
+$MESS["CRM_SEMA_MESSAGE_TEXT"] = "Texte du message";
+$MESS["CRM_SEMA_MESSAGE_TEXT_TYPE"] = "Type de texte";
+$MESS["CRM_SEMA_NO_ADDRESSER"] = "L'adresse e-mail du client n'est pas indiquée";
+$MESS["CRM_SEMA_NO_FROM"] = "L'expéditeur du message est incorrect ou non spécifié";
+$MESS["CRM_SEMA_NO_RESPONSIBLE"] = "Le Responsable est introuvable";
+$MESS["CRM_SEMA_TIMELINE_ERROR"] = "Le message n'a pas été envoyé. #ERROR_TEXT#";
+$MESS["CRM_SEMA_USE_LINK_TRACKER"] = "Activer le suivi des clics";

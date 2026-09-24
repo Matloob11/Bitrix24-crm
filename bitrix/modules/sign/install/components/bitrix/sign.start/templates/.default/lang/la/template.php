@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_COMMON_ACTION_CREATE_36"] = "Firmar";
+$MESS["SIGN_CMP_START_TPL_DOCS_TITLE"] = "Documentos por firmar";
+$MESS["SIGN_CMP_START_TPL_MENU_CONTACTS"] = "Contactos";
+$MESS["SIGN_CMP_START_TPL_MENU_INDEX"] = "Documentos";
+$MESS["SIGN_CMP_START_TPL_MENU_MYSAFE"] = "Mi bóveda";

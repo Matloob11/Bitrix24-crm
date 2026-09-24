@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_DELETE_DATA_ACTIVITY_DESCRIPTION"] = "Exclui dados do armazenamento.";
+$MESS["BIZPROC_DELETE_DATA_ACTIVITY_NAME"] = "Excluir dados";
+$MESS["BIZPROC_DELETE_DATA_STORAGE_CATEGORY"] = "Armazenamento";

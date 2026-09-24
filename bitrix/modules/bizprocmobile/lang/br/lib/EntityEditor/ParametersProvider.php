@@ -1,0 +1,3 @@
+<?php
+$MESS["M_BP_LIB_ENTITY_EDITOR_PARAMETERS_PROVIDER_MAIN_SECTION_TITLE"] = "Parâmetros do fluxo de trabalho";
+$MESS["M_BP_LIB_ENTITY_EDITOR_PARAMETERS_PROVIDER_MAIN_SECTION_TITLE_1"] = "Parâmetros do fluxo de trabalho";

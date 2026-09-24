@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_ACCESS_RIGHTS"] = "Modifica autorizzazioni di accesso";
+$MESS["SIGN_B2E_MEMBER_DYNAMIC_FIELDS_DELETE"] = "Elimina campi delle informazioni personalizzate dei dipendenti";
+$MESS["SIGN_B2E_MY_SAFE"] = "Mostra area \"Cassaforte aziendale\"";
+$MESS["SIGN_B2E_MY_SAFE_DOCUMENTS"] = "Accedi ai documenti in Cassaforte aziendale";
+$MESS["SIGN_B2E_MY_SAFE_FIRED"] = "Mostrare dipendenti rimossi nel filtro della \"Cassaforte aziendale\"";
+$MESS["SIGN_B2E_PROFILE_FIELDS_ADD"] = "Aggiungi dettagli personali al profilo del dipendente";
+$MESS["SIGN_B2E_PROFILE_FIELDS_DELETE_MSG_VER_1"] = "Elimina campi di informazioni personali";
+$MESS["SIGN_B2E_PROFILE_FIELDS_EDIT"] = "Modifica dettagli personali nel profilo del dipendente";
+$MESS["SIGN_B2E_PROFILE_FIELDS_READ"] = "Mostra dettagli personali nel profilo del dipendente";
+$MESS["SIGN_B2E_SIGNERS_LIST_ADD"] = "Crea gruppi di dipendenti";
+$MESS["SIGN_B2E_SIGNERS_LIST_DELETE"] = "Eliminazione dei gruppi di dipendenti";
+$MESS["SIGN_B2E_SIGNERS_LIST_EDIT"] = "Modifica dei gruppi di dipendenti";
+$MESS["SIGN_B2E_SIGNERS_LIST_READ"] = "Visualizzazione dei gruppi di dipendenti";
+$MESS["SIGN_B2E_SIGNERS_LIST_REFUSED"] = "Accesso al gruppo di utenti senza firma elettronica per HR";
+$MESS["SIGN_B2E_TEMPLATES_1"] = "Accedi ai documenti recenti";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_CREATE"] = "Crea modelli e pacchetti";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_DELETE"] = "Elimina modelli e pacchetti";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_EDIT"] = "Modifica modelli e pacchetti";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_READ"] = "Visualizza modelli e pacchetti";
+$MESS["SIGN_B2E_TEMPLATE_CREATE"] = "Crea modello";
+$MESS["SIGN_B2E_TEMPLATE_DELETE"] = "Elimina modello";
+$MESS["SIGN_B2E_TEMPLATE_EDIT"] = "Modifica modello";
+$MESS["SIGN_B2E_TEMPLATE_READ"] = "Visualizza modello";
+$MESS["SIGN_MY_SAFE"] = "Accedi all'area \"La mia cassaforte\"";
+$MESS["SIGN_MY_SAFE_DOCUMENTS"] = "Accedi ai documenti in La mia cassaforte";
+$MESS["SIGN_TEMPLATES"] = "Accesso al modello di documento";

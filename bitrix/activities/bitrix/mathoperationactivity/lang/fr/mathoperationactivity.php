@@ -1,0 +1,20 @@
+<?php
+$MESS["BPMOA_CHOOSE_PARAMETER"] = "Paramètre de sélection";
+$MESS["BPMOA_CHOOSE_VARIABLE"] = "Sélectionner une variable";
+$MESS["BPMOA_CREATE_GCONSTANT"] = "Créer une constante";
+$MESS["BPMOA_CREATE_GCONSTANT_QUESTION"] = "Souhaitez-vous créer une nouvelle constante ?";
+$MESS["BPMOA_CREATE_GVARIABLE"] = "Créer une variable";
+$MESS["BPMOA_CREATE_GVARIABLE_QUESTION"] = "Souhaitez-vous créer une nouvelle variable ?";
+$MESS["BPMOA_DOCUMENT"] = "Valeur du champ";
+$MESS["BPMOA_EMPTY"] = "Non sélectionné";
+$MESS["BPMOA_EMPTY_OPERATION"] = "L'opérateur n'est pas spécifié";
+$MESS["BPMOA_EMPTY_VARIABLE"] = "Aucune des variables n'est affectée à une valeur";
+$MESS["BPMOA_GCONSTANT_NOT_FOUND"] = "Constante introuvable";
+$MESS["BPMOA_GCONSTANT_NO_EXIST"] = "Il n'y a pas de constantes";
+$MESS["BPMOA_GVARIABLE_NOT_FOUND"] = "Variable introuvable";
+$MESS["BPMOA_GVARIABLE_NO_EXIST"] = "Il n'y a pas de variables";
+$MESS["BPMOA_INPUT_NUMBER"] = "Saisissez un nombre";
+$MESS["BPMOA_INVALID_VALUE"] = "L'une des valeurs de l'expression n'est pas un nombre";
+$MESS["BPMOA_LIST_OF_VALUES"] = "Valeurs";
+$MESS["BPMOA_NUMBER"] = "Valeur personnalisée";
+$MESS["BPMOA_TYPE_OF_PARAMETER"] = "Type de paramètre";

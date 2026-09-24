@@ -1,0 +1,46 @@
+.landing-ui-panel-status {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	cursor: default;
+	min-height: 30px;
+	min-width: 38px;
+	padding: 2px 20px;
+	line-height: 1.2;
+	left: 30px;
+	bottom: -27px;
+	border: 1px #fefefe solid;
+	background: #fff;
+	border-radius: 100px;
+	font-weight: 400;
+	z-index: 310;
+	transform: translateZ(0);
+	transition: left 0.3s ease;
+}
+
+.landing-ui-hide-action-panels .landing-ui-panel-status {
+	left: calc(30px + 320px);
+}
+
+.landing-ui-hide-action-panels-form .landing-ui-panel-status {
+	left: calc(30px + 880px);
+}
+
+.landing-ui-panel-status.landing-ui-show {
+	animation: showStatusPanel 200ms ease both;
+}
+
+.landing-animating .landing-ui-panel-status {
+	display: none !important;
+}
+
+@keyframes showStatusPanel {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(0, -150%, 0);
+	}
+}

@@ -1,0 +1,21 @@
+<?php
+$MESS["STAT_ADV_LIST"] = "Жарнамалық науқандар тізімі";
+$MESS["STAT_ALL_DYNAMICS"] = "Жарнамалық науқанның динамикасы";
+$MESS["STAT_ALL_GRAPHICS"] = "Жарнама науқанының кестелері";
+$MESS["STAT_BACK"] = "Қайтаруда";
+$MESS["STAT_DYNAMIC"] = "Жарнамалық науқанның динамикасы # #ID#";
+$MESS["STAT_F_PERIOD"] = "Кезең";
+$MESS["STAT_F_SELECT_EVENTS"] = "Оқиғалар";
+$MESS["STAT_F_SET_PERIOD"] = "Кестелерді құру";
+$MESS["STAT_GRAPH_1"] = "Келушілер кестесі";
+$MESS["STAT_GRAPH_2"] = "Оқиғалар кестесі";
+$MESS["STAT_GUESTS"] = "келушілер";
+$MESS["STAT_HITS"] = "хиттер";
+$MESS["STAT_HOSTS"] = "хосттар";
+$MESS["STAT_INCORRECT_ADV_ID"] = "Жарнамалық науқан табылмады";
+$MESS["STAT_NEW_GUESTS"] = "жаңа келуші";
+$MESS["STAT_NOT_ENOUGH_DATA"] = "Графикті құру үшін деректер жеткіліксіз";
+$MESS["STAT_RECORDS_LIST"] = "Жарнама науқанының кестелері # #ID#";
+$MESS["STAT_SESSIONS"] = "сессиялар";
+$MESS["STAT_SHOW"] = "Кестелерде нені көрсету керек?";
+$MESS["STAT_STRAIGHT"] = "Тік кіру жолында";

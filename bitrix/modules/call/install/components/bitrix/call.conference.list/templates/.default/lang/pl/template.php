@@ -1,0 +1,11 @@
+<?php
+$MESS["CONFERENCE_LIST_BUTTON_CREATE"] = "Utwórz";
+$MESS["CONFERENCE_LIST_CONTEXT_MENU_CHAT"] = "Czat";
+$MESS["CONFERENCE_LIST_CONTEXT_MENU_DELETE"] = "Usuń";
+$MESS["CONFERENCE_LIST_CONTEXT_MENU_EDIT"] = "Edytuj";
+$MESS["CONFERENCE_LIST_EMPTY_BUTTON_CREATE"] = "Utwórz konferencję";
+$MESS["CONFERENCE_LIST_EMPTY_TITLE"] = "Wideokonferencje #HD# do 24 uczestników";
+$MESS["CONFERENCE_LIST_EMPTY_TITLE_HD"] = "HD";
+$MESS["CONFERENCE_LIST_EMPTY_TITLE_NEW"] = "#HD# Wideokonferencja z limitem osób równym: #LIMIT#";
+$MESS["CONFERENCE_LIST_NOTIFICATION_LINK_COPIED"] = "Link wideokonferencji skopiowano do schowka";
+$MESS["CONFERENCE_LIST_TITLE"] = "Wideokonferencje";

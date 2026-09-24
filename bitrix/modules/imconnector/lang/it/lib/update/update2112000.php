@@ -1,0 +1,5 @@
+<?php
+$MESS["IMCONNECTOR_UPDATER_2112000_ADMIN_NOTIFY"] = "Estendi la finestra di messaggistica dei clienti a 7 giorni!
+Le regole specificano che puoi rispondere al messaggio di un cliente su Facebook o Instagram entro 24 ore dal suo ultimo messaggio. Ora puoi estendere questo intervallo a 7 giorni. Facebook non consente l'invio di annunci (inclusi sconti e coupon) o messaggi automatici ai clienti una volta trascorso il periodo di 24 ore. Il tuo account verrà bloccato se non segui queste linee guida. <a href=\"#HREF#\">Dettagli</a>";
+$MESS["IMCONNECTOR_UPDATER_2112000_CHAT"] = "[B]Estendi la finestra di messaggistica dei clienti a 7 giorni![/B]
+Le regole specificano che puoi rispondere al messaggio di un cliente su Facebook o Instagram entro 24 ore dal suo ultimo messaggio. Ora puoi estendere questo intervallo a 7 giorni. Facebook non consente l'invio di annunci (inclusi sconti e coupon) o messaggi automatici ai clienti una volta trascorso il periodo di 24 ore. Il tuo account verrà bloccato se non segui queste linee guida. [URL=#HREF#]Dettagli[/URL].";

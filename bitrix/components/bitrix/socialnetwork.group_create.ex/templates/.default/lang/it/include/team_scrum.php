@@ -1,0 +1,4 @@
+<?php
+$MESS["SONET_GCE_T_CHANGE_SCRUM_MASTER"] = "Assegna master";
+$MESS["SONET_GCE_T_CHANGE_SCRUM_MASTER_MORE"] = "Modifica";
+$MESS["SONET_GCE_T_SCRUM_MASTER"] = "Scrum master";

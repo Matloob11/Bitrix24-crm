@@ -1,0 +1,9 @@
+<?
+$MESS["SALESCENTER_CONTROL_PANEL_ITEM_LABEL_RECOMMENDATION"] = "Recommandé";
+$MESS["SPP_SALESCENTER_JS_POPUP_CLOSE"] = "Fermer";
+$MESS["SPP_SALESCENTER_PAYSYSTEM_OTHER_SUB_TITLE"] = "Autres systèmes de paiement";
+$MESS["SPP_SALESCENTER_PAYSYSTEM_RECOMMENDATION_SUB_TITLE"] = "Systèmes de paiement recommandés";
+$MESS["SPP_SALESCENTER_PAYSYSTEM_SUB_APP_TITLE"] = "Applications partenaires";
+$MESS["SPP_SALESCENTER_PAYSYSTEM_SUB_TITLE"] = "Systèmes de paiement";
+$MESS["SPP_SALESCENTER_TITLE"] = "Sélectionnez un système de paiement";
+?>

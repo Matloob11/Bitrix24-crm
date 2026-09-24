@@ -1,0 +1,1671 @@
+<?php
+
+use Bitrix\Bizproc;
+use Bitrix\Bizproc\FieldType;
+use Bitrix\Bizproc\Internal\Service\Document\DocumentEntityChecker;
+use Bitrix\Bizproc\Public\Entity\Document\DocumentComplexId;
+use Bitrix\Bizproc\Public\Entity\Document\DocumentService\DocumentNameAndUrlDto;
+
+class CBPDocumentService extends CBPRuntimeService
+{
+	const FEATURE_MARK_MODIFIED_FIELDS = 'FEATURE_MARK_MODIFIED_FIELDS';
+	const FEATURE_SET_MODIFIED_BY = 'FEATURE_SET_MODIFIED_BY';
+
+	private $arDocumentsCache = [];
+	private $documentTypesCache = [];
+	private $documentFieldsCache = [];
+	private $typesMapCache = [];
+
+	private $tzFlag;
+
+	public function getEntityName($moduleId, $entity)
+	{
+		if ($this->isCallable($moduleId, $entity, 'getEntityName'))
+		{
+			return $this->call($entity, 'getEntityName', $entity);
+		}
+
+		return null;
+	}
+
+	public function getDocument($parameterDocumentId, $parameterDocumentType = null, array $select = [])
+	{
+		$this->checkCache();
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		$documentType = ($parameterDocumentType && is_array($parameterDocumentType)) ? $parameterDocumentType[2] : null;
+		$defaultValue = \Bitrix\Main\ModuleManager::isModuleInstalled('bitrix24') ? 'Y' : 'N';
+		$selectEnabled = \Bitrix\Main\Config\Option::get('bizproc', 'enable_getdocument_select', $defaultValue) === 'Y';
+
+		$k = $moduleId."@".$entity."@".$documentId.($documentType ? '@'.$documentType : '');
+		if ($selectEnabled && !empty($select))
+		{
+			$k .= '@' . implode('@', $select);
+		}
+
+		if (array_key_exists($k, $this->arDocumentsCache))
+		{
+			return $this->arDocumentsCache[$k];
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetDocument'))
+		{
+			$args = [$documentId, $documentType];
+			if ($selectEnabled)
+			{
+				$args[] = $select;
+			}
+
+			$this->arDocumentsCache[$k] = $this->call($entity, 'GetDocument', ...$args);
+
+			return $this->arDocumentsCache[$k];
+		}
+
+		return null;
+	}
+
+	public function isDocumentExists(array $parameterDocumentId): bool
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'isDocumentExists'))
+		{
+			return (bool)$this->call($entity, 'isDocumentExists', $documentId);
+		}
+
+		//if no API
+		$document = $this->getDocument($parameterDocumentId, select: ['ID']);
+		if ($document instanceof Bizproc\Document\ValueCollection)
+		{
+			return (bool)$document['ID'];
+		}
+
+		return is_array($document) && count($document) > 0;
+	}
+
+	public function getFieldValue($parameterDocumentId, $fieldId, $parameterDocumentType = null, array $usedDocumentFields = [])
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+		$documentType = ($parameterDocumentType && is_array($parameterDocumentType)) ? $parameterDocumentType[2] : null;
+
+		if ($this->isCallable($moduleId, $entity, 'getFieldValue'))
+		{
+			return $this->call($entity, 'getFieldValue', $documentId, $fieldId, $documentType);
+		}
+
+		$document = $this->getDocument($parameterDocumentId, $parameterDocumentType, $usedDocumentFields);
+
+		return $document[$fieldId] ?? null;
+	}
+
+	public function updateDocument($parameterDocumentId, $arFields, $modifiedBy = null)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		$this->clearCache();
+
+		if ($this->isCallable($moduleId, $entity, 'UpdateDocument'))
+		{
+			$modifiedById = $modifiedBy ? CBPHelper::ExtractUsers($modifiedBy, $parameterDocumentId, true) : null;
+
+			return $this->call($entity, 'UpdateDocument', $documentId, $arFields, $modifiedById);
+		}
+
+		return false;
+	}
+
+	public function createDocument($parameterDocumentId, $arFields)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'CreateDocument'))
+		{
+			return $this->call($entity, 'CreateDocument', $documentId, $arFields);
+		}
+
+		return false;
+	}
+
+	public function createTestDocument(array $parameterDocumentType, array $fields, int $createdById)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'createTestDocument'))
+		{
+			return $this->call($entity, 'createTestDocument', $documentType, $fields, $createdById);
+		}
+
+		return null;
+	}
+
+	public function publishDocument($parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		$this->clearCache();
+
+		if ($this->isCallable($moduleId, $entity, 'PublishDocument'))
+		{
+			$newId = $this->call($entity, 'PublishDocument', $documentId);
+			if ($newId)
+			{
+				$newId = [$moduleId, $entity, $newId];
+			}
+
+			return $newId;
+		}
+
+		return false;
+	}
+
+	public function unpublishDocument($parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		$this->clearCache();
+
+		if ($this->isCallable($moduleId, $entity, 'UnpublishDocument'))
+		{
+			return $this->call($entity, 'UnpublishDocument', $documentId);
+		}
+
+		return false;
+	}
+
+	public function lockDocument($parameterDocumentId, $workflowId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		$this->clearCache();
+
+		if ($this->isCallable($moduleId, $entity, 'LockDocument'))
+		{
+			return $this->call($entity, 'LockDocument', $documentId, $workflowId);
+		}
+
+		return false;
+	}
+
+	public function unlockDocument($parameterDocumentId, $workflowId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		$this->clearCache();
+
+		if ($this->isCallable($moduleId, $entity, 'UnlockDocument'))
+		{
+			return $this->call($entity, 'UnlockDocument', $documentId, $workflowId);
+		}
+
+		return false;
+	}
+
+	public function deleteDocument($parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		$this->clearCache();
+
+		if ($this->isCallable($moduleId, $entity, 'DeleteDocument'))
+		{
+			return $this->call($entity, 'DeleteDocument', $documentId);
+		}
+
+		return false;
+	}
+
+	public function isDocumentLocked($parameterDocumentId, $workflowId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'IsDocumentLocked'))
+		{
+			return $this->call($entity, 'IsDocumentLocked', $documentId, $workflowId);
+		}
+
+		return false;
+	}
+
+	public function subscribeOnUnlockDocument($parameterDocumentId, $workflowId,  $eventName)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+		RegisterModuleDependences($moduleId, $entity."_OnUnlockDocument", "bizproc", "CBPDocumentService", "OnUnlockDocument", 100, "", array($workflowId,  $eventName));
+	}
+
+	public function unsubscribeOnUnlockDocument($parameterDocumentId, $workflowId, $eventName)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+		UnRegisterModuleDependences($moduleId, $entity."_OnUnlockDocument", "bizproc", "CBPDocumentService", "OnUnlockDocument", "", array($workflowId,  $eventName));
+	}
+
+	public static function onUnlockDocument($workflowId, $eventName, $documentId = [])
+	{
+		CBPRuntime::SendExternalEvent($workflowId, $eventName, []);
+	}
+
+	public function getBizprocEditorUrl($parameterDocumentType): ?string
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::parseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'getBizprocEditorUrl'))
+		{
+			return $this->call($entity, 'getBizprocEditorUrl', $parameterDocumentType);
+		}
+
+		return null;
+	}
+
+	public function getDocumentType($parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::parseDocumentId($parameterDocumentId);
+
+		$k = $moduleId . '@' . $entity . '@' . $documentId;
+		if (isset($this->documentTypesCache[$k]))
+		{
+			return $this->documentTypesCache[$k];
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetDocumentType'))
+		{
+			$this->documentTypesCache[$k] = [$moduleId, $entity, $this->call($entity, 'GetDocumentType', $documentId)];
+
+			return $this->documentTypesCache[$k];
+		}
+
+		return null;
+	}
+
+	public function normalizeDocumentId($parameterDocumentId, string $docType = null)
+	{
+		$normalized = $parameterDocumentId;
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity,'normalizeDocumentId'))
+		{
+			$normalized = [$moduleId, $entity, $this->call($entity, 'normalizeDocumentId', $documentId, $docType)];
+		}
+
+		return $normalized;
+	}
+
+	public function getDocumentFields($parameterDocumentType, $importExportMode = false)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		$k = $moduleId . '@' . $entity . '@' . $documentType;
+		if (isset($this->documentFieldsCache[$k]))
+		{
+			return $this->documentFieldsCache[$k];
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetDocumentFields'))
+		{
+			$fields = $this->call($entity, 'GetDocumentFields', $documentType, $importExportMode);
+			if (is_array($fields))
+			{
+				foreach ($fields as $key => $prop)
+				{
+					if ($prop['Type'] === 'integer')
+					{
+						$fields[$key]['Type'] = 'int';
+					}
+					if (empty($prop['BaseType']))
+					{
+						$baseTypes = [
+							'int',
+							'double',
+							'date',
+							'datetime',
+							'user',
+							'string',
+							'bool',
+							'file',
+							'text',
+							'select',
+							'time',
+						];
+
+						$fields[$key]['BaseType'] =
+							in_array($prop['Type'], $baseTypes, true)
+								? $prop['Type']
+								: 'string'
+						;
+					}
+				}
+			}
+
+			$this->documentFieldsCache[$k] = $fields;
+
+			return $this->documentFieldsCache[$k];
+		}
+
+		return null;
+	}
+
+	public function getDocumentFieldTypes($parameterDocumentType)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::parseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'GetDocumentFieldTypes'))
+		{
+			return $this->call($entity, 'GetDocumentFieldTypes', $documentType);
+		}
+
+		return CBPHelper::GetDocumentFieldTypes();
+	}
+
+	public function addDocumentField($parameterDocumentType, $arFields)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'AddDocumentField'))
+		{
+			$result = $this->call($entity, 'AddDocumentField', $documentType, $arFields);
+			if ($result)
+			{
+				$k = $moduleId."@".$entity."@".$documentType;
+				unset($this->documentFieldsCache[$k]);
+			}
+
+			return $result;
+		}
+
+		return false;
+	}
+
+	public function updateDocumentField($parameterDocumentType, $arFields)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'UpdateDocumentField'))
+		{
+			return $this->call($entity, 'UpdateDocumentField', $documentType, $arFields);
+		}
+
+		return false;
+	}
+
+	public function getJSFunctionsForFields($parameterDocumentType, $objectName, $arDocumentFields = array(), $arDocumentFieldTypes = array())
+	{
+		if (!is_array($arDocumentFields) || count($arDocumentFields) <= 0)
+			$arDocumentFields = self::GetDocumentFields($parameterDocumentType);
+		if (!is_array($arDocumentFieldTypes) || count($arDocumentFieldTypes) <= 0)
+			$arDocumentFieldTypes = self::GetDocumentFieldTypes($parameterDocumentType);
+
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		$documentFieldsString = "";
+		foreach ($arDocumentFields as $fieldKey => $arFieldValue)
+		{
+			if ($documentFieldsString <> '')
+				$documentFieldsString .= ",";
+
+			$documentFieldsString .= "'".Cutil::JSEscape($fieldKey)."':{";
+
+			$documentFieldsString .= "'Name':'".CUtil::JSEscape($arFieldValue["Name"])."',";
+			$documentFieldsString .= "'Type':'".CUtil::JSEscape($arFieldValue["Type"])."',";
+			$documentFieldsString .= "'Multiple':'".CUtil::JSEscape(!empty($arFieldValue["Multiple"]) ? "Y" : "N")."',";
+			$documentFieldsString .= "'Complex':'".CUtil::JSEscape(!empty($arFieldValue["Complex"]) ? "Y" : "N")."',";
+
+			$documentFieldsString .= "'Options':";
+			if (array_key_exists("Options", $arFieldValue))
+			{
+				if (is_array($arFieldValue["Options"]))
+				{
+					$documentFieldsString .= "{";
+					$flTmp = false;
+					foreach ($arFieldValue["Options"] as $k => $v)
+					{
+						if (!is_scalar($v))
+						{
+							continue;
+						}
+
+						if ($flTmp)
+							$documentFieldsString .= ",";
+						$documentFieldsString .= "'".CUtil::JSEscape($k)."':'".CUtil::JSEscape($v)."'";
+						$flTmp = true;
+					}
+					$documentFieldsString .= "}";
+				}
+				else
+				{
+					$documentFieldsString .= "'".CUtil::JSEscape($arFieldValue["Options"])."'";
+				}
+			}
+			else
+			{
+				$documentFieldsString .= "''";
+			}
+
+			if (isset($arFieldValue["Options"]) && CBPHelper::IsAssociativeArray($arFieldValue["Options"]))
+			{
+				$documentFieldsString .= ", 'OptionsSort':";
+				$documentFieldsString .= CUtil::PhpToJSObject(array_keys($arFieldValue["Options"]));
+			}
+
+			if(isset($arFieldValue["Settings"]) && is_array($arFieldValue["Settings"]))
+			{
+				$documentFieldsString .= ", 'Settings':";
+				$documentFieldsString .= CUtil::PhpToJSObject($arFieldValue["Settings"]);
+			}
+
+			$documentFieldsString .= "}";
+		}
+
+		$fieldTypesString = "";
+		$ind = -1;
+		foreach ($arDocumentFieldTypes as $typeKey => $arTypeValue)
+		{
+			$ind++;
+			if ($fieldTypesString <> '')
+				$fieldTypesString .= ",";
+
+			$fieldTypesString .= "'".CUtil::JSEscape($typeKey)."':{";
+
+			$fieldTypesString .= "'Name':'".CUtil::JSEscape($arTypeValue["Name"])."',";
+			$fieldTypesString .= "'BaseType':'".CUtil::JSEscape($arTypeValue["BaseType"])."',";
+			$fieldTypesString .= "'Complex':'".CUtil::JSEscape(!empty($arTypeValue["Complex"]) ? "Y" : "N")."',";
+			$fieldTypesString .= "'Index':".$ind."";
+
+			$fieldTypesString .= "}";
+		}
+
+		$documentTypeString = CUtil::PhpToJSObject($parameterDocumentType);
+		$bitrixSessId = bitrix_sessid();
+
+$result = <<<EOS
+<script>
+var $objectName = {};
+
+$objectName.arDocumentFields = { $documentFieldsString };
+$objectName.arFieldTypes = { $fieldTypesString };
+
+$objectName.AddField = function(fldCode, fldName, fldType, fldMultiple, fldOptions)
+{
+	this.arDocumentFields[fldCode] = {};
+	this.arDocumentFields[fldCode]["Name"] = fldName;
+	this.arDocumentFields[fldCode]["Type"] = fldType;
+	this.arDocumentFields[fldCode]["Multiple"] = fldMultiple;
+	this.arDocumentFields[fldCode]["Options"] = fldOptions;
+}
+
+$objectName._PrepareResponse = function(v)
+{
+	v = v.replace(/^\s+|\s+$/g, '');
+	while (v.length > 0 && v.charCodeAt(0) == 65279)
+		v = v.substring(1);
+
+	if (v.length <= 0)
+		return undefined;
+
+	eval("v = " + v);
+
+	return v;
+}
+
+$objectName.GetFieldInputControl4Type = function(type, value, name, subtypeFunctionName, func)
+{
+	this.GetFieldInputControlInternal(
+		type,
+		value,
+		name,
+		function(v)
+		{
+			var p = v.indexOf('<!--__defaultOptionsValue:');
+			if (p >= 0)
+			{
+				p = p + '<!--__defaultOptionsValue:'.length;
+				var p1 = v.indexOf('-->', p);
+				type['Options'] = v.substring(p, p1);
+			}
+
+			var newPromt = "";
+
+			p = v.indexOf('<!--__modifyOptionsPromt:');
+			if (p >= 0)
+			{
+				p = p + '<!--__modifyOptionsPromt:'.length;
+				p1 = v.indexOf('-->', p);
+				newPromt = v.substring(p, p1);
+			}
+
+			func(v, newPromt);
+		},
+		false,
+		subtypeFunctionName,
+		'Type'
+	);
+}
+
+$objectName.GetFieldInputControl4Subtype = function(type, value, name, func)
+{
+	$objectName.GetFieldInputControlInternal(type, value, name, func, false, '', '');
+}
+
+$objectName.GetFieldInputControl = function(type, value, name, func, als)
+{
+	$objectName.GetFieldInputControlInternal(type, value, name, func, als, '', '');
+}
+
+$objectName.GetFieldInputControlInternal = function(type, value, name, func, als, subtypeFunctionName, mode)
+{
+	if (typeof name == "undefined" || name.length <= 0)
+		name = "BPVDDefaultValue";
+
+	if (typeof type != "object")
+		type = {'Type' : type, 'Multiple' : 0, 'Required' : 0, 'Options' : null};
+
+	if (typeof name != "object")
+		name = {'Field' : name, 'Form' : null};
+
+	BX.ajax.post(
+		'/bitrix/tools/bizproc_get_field.php',
+		{
+			'DocumentType' : $documentTypeString,
+			'Field' : name,
+			'Value' : value,
+			'Type' : type,
+			'Als' : als ? 1 : 0,
+			'rnd' : Math.random(),
+			'Mode' : mode,
+			'Func' : subtypeFunctionName,
+			'sessid' : '$bitrixSessId'
+		},
+		func
+	);
+}
+
+$objectName.GetFieldValueByTagName = function(tag, name, form)
+{
+	var fieldValues = {};
+
+	var ar;
+	if (form && (form.length > 0))
+	{
+		var obj = document.getElementById(form);
+		if (!obj)
+		{
+			for (var i in document.forms)
+			{
+				if (document.forms[i].name == form)
+				{
+					obj = document.forms[i];
+					break;
+				}
+			}
+		}
+
+		if (!obj)
+			return;
+
+		ar = obj.getElementsByTagName(tag);
+	}
+	else
+	{
+		ar = document.getElementsByTagName(tag);
+	}
+
+	for (var i in ar)
+	{
+		if (ar[i] && ar[i].name && (ar[i].name.length >= name.length) && (ar[i].name.substr(0, name.length) == name))
+		{
+			if (ar[i].type.substr(0, "select".length) == "select")
+			{
+				if (ar[i].multiple)
+				{
+					var newName = ar[i].name.replace(/\[\]/g, "");
+					for (var j = 0; j < ar[i].options.length; j++)
+					{
+						if (ar[i].options[j].selected)
+						{
+							if ((typeof(fieldValues[newName]) != 'object') || !(fieldValues[newName] instanceof Array))
+							{
+								if (fieldValues[newName])
+									fieldValues[newName] = [fieldValues[newName]];
+								else
+									fieldValues[newName] = [];
+							}
+							fieldValues[newName][fieldValues[newName].length] = ar[i].options[j].value;
+						}
+					}
+				}
+				else
+				{
+					if (ar[i].selectedIndex >= 0)
+					{
+						const name = ar[i].name;
+						const value = ar[i].options[ar[i].selectedIndex].value;
+
+						if (name.indexOf("[]", 0) >= 0)
+						{
+							const newName = name.replace(/\[\]/g, "");
+							if ((typeof(fieldValues[newName]) !== 'object') || !(fieldValues[newName] instanceof Array))
+							{
+								if (fieldValues[newName])
+								{
+									fieldValues[newName] = [fieldValues[newName]];
+								}
+								else
+								{
+									fieldValues[newName] = [];
+								}
+							}
+
+							fieldValues[newName][fieldValues[newName].length] = value;
+						}
+						else
+						{
+							fieldValues[name] = value;
+						}
+					}
+				}
+			}
+			else
+			{
+				if (ar[i].name.indexOf("[]", 0) >= 0)
+				{
+					var newName = ar[i].name.replace(/\[\]/g, "");
+
+					if ((typeof(fieldValues[newName]) != 'object') || !(fieldValues[newName] instanceof Array))
+					{
+						if (fieldValues[newName])
+							fieldValues[newName] = [fieldValues[newName]];
+						else
+							fieldValues[newName] = [];
+					}
+
+					fieldValues[newName][fieldValues[newName].length] = ar[i].value;
+				}
+				else
+				{
+					fieldValues[ar[i].name] = ar[i].value;
+				}
+			}
+		}
+	}
+
+	return fieldValues;
+}
+
+$objectName.GetFieldInputValue = function(type, name, func)
+{
+	if (typeof name == "undefined" || name.length <= 0)
+		name = "BPVDDefaultValue";
+
+	if (typeof type != "object")
+		type = {'Type' : type, 'Multiple' : 0, 'Required' : 0, 'Options' : null};
+
+	if (typeof name != "object")
+		name = {'Field' : name, 'Form' : null};
+
+	var s = {
+		'DocumentType' : $documentTypeString,
+		'Field' : name,
+		'Type' : type,
+		'rnd' : Math.random(),
+		'sessid' : '$bitrixSessId'
+	};
+	
+	if (name['Form'])
+	{
+		var objForm = document.getElementById(name['Form']);
+		if (!objForm)
+		{
+			for (var i in document.forms)
+			{
+				if (document.forms[i].name == name['Form'])
+				{
+					objForm = document.forms[i];
+					break;
+				}
+			}
+		}
+
+		if (objForm)
+		{
+			BX.ajax.prepareForm(objForm, s);
+		}
+	}
+
+	if (type != null && type['Type'] != "F")
+	{
+		var ar = this.GetFieldValueByTagName('input', name['Field'], name['Form']);
+		for (var v in ar)
+			s[v] = ar[v];
+		ar = this.GetFieldValueByTagName('select', name['Field'], name['Form']);
+		for (var v in ar)
+			s[v] = ar[v];
+		ar = this.GetFieldValueByTagName('textarea', name['Field'], name['Form']);
+		for (var v in ar)
+			s[v] = ar[v];
+		ar = this.GetFieldValueByTagName('hidden', name['Field'], name['Form']);
+		for (var v in ar)
+			s[v] = ar[v];
+	}
+
+	BX.ajax.post('/bitrix/tools/bizproc_set_field.php', s, function(v){v = $objectName._PrepareResponse(v); func(v);});
+}
+
+$objectName.HtmlSpecialChars = function(string, quote)
+{
+	string = string.toString();
+	string = string.replace(/&/g, '&amp;');
+	string = string.replace(/</g, '&lt;');
+	string = string.replace(/>/g, '&gt;');
+	string = string.replace(/"/g, '&quot;');
+
+	if (quote)
+		string = string.replace(/'/g, '&#039;');
+
+	return string;
+}
+
+$objectName.GetGUITypeEdit = function(type)
+{
+	return "";
+}
+
+$objectName.SetGUITypeEdit = function(type)
+{
+	return "";
+}
+
+function __dump_bx(arr, limitLevel, txt)
+{
+	if (limitLevel == undefined)
+		limitLevel = 3;
+	if (txt == undefined)
+		txt = "";
+	else
+		txt += ":\\n";
+	alert(txt+__dumpInternal_bx(arr, 0, limitLevel));
+}
+function __dumpInternal_bx(arr, level, limitLevel) {
+	var dumped_text = "";
+	if(!level) level = 0;
+	if (level > limitLevel)
+		return "";
+	var level_padding = "";
+	for(var j=0;j<level+1;j++) level_padding += "    ";
+	if(typeof(arr) == 'object') {
+		for(var item in arr) {
+			var value = arr[item];
+			if(typeof(value) == 'object') {
+				dumped_text += level_padding + "'" + item + "' ...\\n";
+				dumped_text += __dumpInternal_bx(value, level+1, limitLevel);
+			} else {
+				dumped_text += level_padding + "'" + item + "' => '" + value + "'\\n";
+			}
+		}
+	} else {
+		dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+	}
+
+	return dumped_text;
+}
+
+</script>
+EOS;
+
+		if ($this->isCallable($moduleId, $entity, 'GetJSFunctionsForFields'))
+		{
+			$result .= $this->call($entity, 'GetJSFunctionsForFields', $documentType, $objectName, $arDocumentFields, $arDocumentFieldTypes);
+		}
+		else
+		{
+			if (!is_array($arDocumentFields) || count($arDocumentFields) <= 0)
+				$arDocumentFields = $this->GetDocumentFields($parameterDocumentType);
+			if (!is_array($arDocumentFieldTypes) || count($arDocumentFieldTypes) <= 0)
+				$arDocumentFieldTypes = $this->GetDocumentFieldTypes($parameterDocumentType);
+
+			$result .= CBPHelper::GetJSFunctionsForFields($objectName, $arDocumentFields, $arDocumentFieldTypes);
+		}
+
+		return $result;
+	}
+
+	public function getFieldInputControlOptions($parameterDocumentType, &$fieldType, $jsFunctionName, &$value)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		$arFieldType = FieldType::normalizeProperty($fieldType);
+		if ((string) $arFieldType["Type"] == "")
+			return "";
+
+		$fieldTypeObject = $this->getFieldTypeObject($parameterDocumentType, $arFieldType);
+		if ($fieldTypeObject)
+		{
+			return $fieldTypeObject->renderControlOptions($jsFunctionName, $value);
+		}
+
+		$fieldType = $arFieldType;
+
+		if ($this->isCallable($moduleId, $entity, 'GetFieldInputControlOptions'))
+		{
+			return $this->call($entity, 'GetFieldInputControlOptions', $documentType, $fieldType, $jsFunctionName, $value);
+		}
+
+		return "";
+	}
+
+	public function getFieldInputControl($parameterDocumentType, $fieldType, $fieldName, $fieldValue, $bAllowSelection = false, $publicMode = false)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		$arFieldType = FieldType::normalizeProperty($fieldType);
+		if ((string) $arFieldType["Type"] == "")
+			return "";
+
+		if (is_array($fieldName))
+		{
+			$arFieldName = array(
+				'Form' => null,
+				'Field' => null,
+			);
+			foreach ($fieldName as $key => $val)
+			{
+				switch(mb_strtoupper($key))
+				{
+					case "FORM":
+					case "0":
+						$arFieldName["Form"] = $val;
+						break;
+					case "FIELD":
+					case "1":
+						$arFieldName["Field"] = $val;
+						break;
+				}
+			}
+		}
+		else
+		{
+			$arFieldName = array("Form" => null, "Field" => $fieldName);
+		}
+		if ((string) $arFieldName["Field"] == "" || preg_match("#[^a-z0-9_\[\]]#i", $arFieldName["Field"]))
+			return "";
+		if ((string) $arFieldName["Form"] != "" && preg_match("#[^a-z0-9_]#i", $arFieldName["Form"]))
+			return "";
+
+		if ($publicMode && !array_key_exists("BP_AddShowParameterInit_".$moduleId."_".$entity."_".$documentType, $GLOBALS))
+		{
+			$GLOBALS["BP_AddShowParameterInit_".$moduleId."_".$entity."_".$documentType] = 1;
+			CBPDocument::AddShowParameterInit($moduleId, "only_users", $documentType, $entity);
+		}
+
+		$fieldTypeObject = $this->getFieldTypeObject($parameterDocumentType, $arFieldType);
+		if ($fieldTypeObject)
+		{
+			$renderMode = $publicMode ? FieldType::RENDER_MODE_PUBLIC : FieldType::RENDER_MODE_DESIGNER;
+			if (defined('ADMIN_SECTION') && ADMIN_SECTION)
+			{
+				$renderMode |= FieldType::RENDER_MODE_ADMIN;
+				$renderMode &= ~FieldType::RENDER_MODE_PUBLIC;
+			}
+
+			if (defined('BX_MOBILE') && BX_MOBILE)
+			{
+				$renderMode |= FieldType::RENDER_MODE_MOBILE;
+			}
+
+			if ($renderMode & FieldType::RENDER_MODE_PUBLIC)
+			{
+				CUtil::InitJSCore(['bp_field_type']);
+			}
+
+			return $fieldTypeObject->renderControl($arFieldName, $fieldValue, $bAllowSelection, $renderMode);
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetFieldInputControl'))
+		{
+			return $this->call($entity, 'GetFieldInputControl', $documentType, $arFieldType, $arFieldName, $fieldValue, $bAllowSelection, $publicMode);
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetGUIFieldEdit'))
+		{
+			return $this->call($entity, 'GetGUIFieldEdit', $documentType, $arFieldName["Form"], $arFieldName["Field"], $fieldValue, $arFieldType, $bAllowSelection);
+		}
+
+		return CBPHelper::GetFieldInputControl($parameterDocumentType, $arFieldType, $arFieldName, $fieldValue, $bAllowSelection);
+	}
+
+	public function getFieldInputValue($parameterDocumentType, $fieldType, $fieldName, $arRequest, &$arErrors)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		$arFieldType = FieldType::normalizeProperty($fieldType);
+		if ((string) $arFieldType["Type"] == "")
+			return "";
+
+		if (is_array($fieldName))
+		{
+			$arFieldName = array("Form" => null, "Field" => null);
+			foreach ($fieldName as $key => $val)
+			{
+				switch(mb_strtoupper($key))
+				{
+					case "FORM":
+					case "0":
+						$arFieldName["Form"] = $val;
+						break;
+					case "FIELD":
+					case "1":
+						$arFieldName["Field"] = $val;
+						break;
+				}
+			}
+		}
+		else
+		{
+			$arFieldName = array("Form" => null, "Field" => $fieldName);
+		}
+		if ((string) $arFieldName["Field"] == "" || preg_match("#[^a-z0-9_\[\]]#i", $arFieldName["Field"]))
+			return "";
+		if ((string) $arFieldName["Form"] != "" && preg_match("#[^a-z0-9_]#i", $arFieldName["Form"]))
+			return "";
+
+		$fieldTypeObject = $this->getFieldTypeObject($parameterDocumentType, $arFieldType);
+		if ($fieldTypeObject)
+		{
+			return $fieldTypeObject->extractValue($arFieldName, $arRequest, $arErrors);
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetFieldInputValue'))
+		{
+			return $this->callArray($entity, 'GetFieldInputValue', [$documentType, $arFieldType, $arFieldName, $arRequest, &$arErrors]);
+		}
+		if ($this->isCallable($moduleId, $entity, 'SetGUIFieldEdit'))
+		{
+			return $this->call($entity, "SetGUIFieldEdit", $documentType, $arFieldName["Field"], $arRequest, $arErrors, $arFieldType);
+		}
+
+		return CBPHelper::GetFieldInputValue($parameterDocumentType, $arFieldType, $arFieldName, $arRequest, $arErrors);
+	}
+
+	public function getFieldInputValuePrintable($parameterDocumentType, $fieldType, $fieldValue)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		$arFieldType = FieldType::normalizeProperty($fieldType);
+		if ((string) $arFieldType["Type"] == "")
+			return "";
+
+		$fieldTypeObject = $this->getFieldTypeObject($parameterDocumentType, $arFieldType);
+		if ($fieldTypeObject)
+		{
+			return $fieldTypeObject->formatValue($fieldValue, 'printable');
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetFieldInputValuePrintable'))
+		{
+			return $this->call($entity, "GetFieldInputValuePrintable", $documentType, $arFieldType, $fieldValue);
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetFieldValuePrintable'))
+		{
+			return $this->call($entity, "GetFieldValuePrintable", null, "", $arFieldType["Type"], $fieldValue, $arFieldType);
+		}
+
+		return CBPHelper::GetFieldInputValuePrintable($parameterDocumentType, $arFieldType, $fieldValue);
+	}
+
+	public function getFieldValuePrintable($parameterDocumentId, $fieldName, $fieldType, $fieldValue, $arFieldType = null)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'GetFieldValuePrintable'))
+		{
+			return $this->call($entity, 'GetFieldValuePrintable', $documentId, $fieldName, $fieldType, $fieldValue, $arFieldType);
+		}
+
+		return CBPHelper::GetFieldValuePrintable($fieldName, $fieldType, $fieldValue, $arFieldType);
+	}
+
+	/**
+	 * @param array $parameterDocumentType
+	 * @return array
+	 */
+	public function getTypesMap(array $parameterDocumentType)
+	{
+		$k = implode('@', $parameterDocumentType);
+
+		if (isset($this->typesMapCache[$k]))
+		{
+			return $this->typesMapCache[$k];
+		}
+
+		$result = FieldType::getBaseTypesMap();
+
+		$documentFieldTypes = $this->GetDocumentFieldTypes($parameterDocumentType);
+		foreach ($documentFieldTypes as $name => $field)
+		{
+			if (isset($field['typeClass']))
+			{
+				$result[mb_strtolower($name)] = $field['typeClass'];
+			}
+		}
+
+		$this->typesMapCache[$k] = $result;
+
+		return $result;
+	}
+
+	public function getTypesConversionMap(array $parameterDocumentType)
+	{
+		$typesMap = $this->getTypesMap($parameterDocumentType);
+		$typesConversionMap = array();
+
+		/** @var \Bitrix\Bizproc\BaseType\Base $typeClass */
+		foreach ($typesMap as $documentTypeName => $typeClass)
+		{
+			if (!isset($typesConversionMap[$documentTypeName]))
+				$typesConversionMap[$documentTypeName] = array();
+
+			$typeMap = $typeClass::getConversionMap();
+			if (!empty($typeMap[0]))
+			{
+				$typesConversionMap[$documentTypeName] = array_merge($typesConversionMap[$documentTypeName], $typeMap[0]);
+			}
+
+			if (!empty($typeMap[1]))
+			{
+				foreach ($typeMap[1] as $from)
+				{
+					if (!isset($typesConversionMap[$from]))
+						$typesConversionMap[$from] = array();
+
+					$typesConversionMap[$from][] = $documentTypeName;
+				}
+			}
+		}
+
+		return $typesConversionMap;
+	}
+
+	/**
+	 * @param array $parameterDocumentType
+	 * @param string $type
+	 * @return null|string
+	 */
+	public function getTypeClass(array $parameterDocumentType, $type)
+	{
+		$typeClass = null;
+		$map = $this->getTypesMap($parameterDocumentType);
+		$type = mb_strtolower($type);
+		if (isset($map[$type]))
+			$typeClass = $map[$type];
+
+		return $typeClass;
+	}
+
+	/**
+	 * @param array $parameterDocumentType
+	 * @param array $property
+	 * @return null|FieldType
+	 */
+	public function getFieldTypeObject(array $parameterDocumentType, array $property)
+	{
+		$type = $property['Type'] ?? null;
+		$typeClass = $this->getTypeClass($parameterDocumentType, $type);
+		if ($typeClass && class_exists($typeClass))
+		{
+			return new FieldType($property, $parameterDocumentType, $typeClass);
+		}
+		return null;
+	}
+
+	/**
+	 * @deprecated
+	 * @param $parameterDocumentType
+	 * @param $formName
+	 * @param $fieldName
+	 * @param $fieldValue
+	 * @param array $arDocumentField
+	 * @param bool $bAllowSelection
+	 * @return mixed|string
+	 * @throws CBPArgumentNullException
+	 */
+	public function getGUIFieldEdit($parameterDocumentType, $formName, $fieldName, $fieldValue, $arDocumentField = array(), $bAllowSelection = false)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if (!is_array($arDocumentField) || count($arDocumentField) <= 0)
+		{
+			$arDocumentFields = $this->GetDocumentFields($parameterDocumentType);
+			$arDocumentField = $arDocumentFields[$fieldName];
+		}
+
+		if (!array_key_exists("BP_AddShowParameterInit_".$moduleId."_".$entity."_".$documentType, $GLOBALS))
+		{
+			$GLOBALS["BP_AddShowParameterInit_".$moduleId."_".$entity."_".$documentType] = 1;
+			CBPDocument::AddShowParameterInit($moduleId, "only_users", $documentType, $entity);
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetGUIFieldEdit'))
+		{
+			return $this->call($entity, 'GetGUIFieldEdit', $documentType, $formName, $fieldName, $fieldValue, $arDocumentField, $bAllowSelection);
+		}
+
+		return CBPHelper::GetGUIFieldEdit($parameterDocumentType, $formName, $fieldName, $fieldValue, $arDocumentField, $bAllowSelection);
+	}
+
+	/**
+	 * @deprecated
+	 * @param $parameterDocumentType
+	 * @param $fieldName
+	 * @param $arRequest
+	 * @param $arErrors
+	 * @param array $arDocumentField
+	 * @return array|mixed|null
+	 * @throws CBPArgumentNullException
+	 */
+	public function setGUIFieldEdit($parameterDocumentType, $fieldName, $arRequest, &$arErrors, $arDocumentField = array())
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if (!is_array($arDocumentField) || count($arDocumentField) <= 0)
+		{
+			$arDocumentFields = $this->GetDocumentFields($parameterDocumentType);
+			$arDocumentField = $arDocumentFields[$fieldName];
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'SetGUIFieldEdit'))
+		{
+			return $this->call($entity, 'SetGUIFieldEdit', $documentType, $fieldName, $arRequest, $arErrors, $arDocumentField);
+		}
+
+		return CBPHelper::SetGUIFieldEdit($parameterDocumentType, $fieldName, $arRequest, $arErrors, $arDocumentField);
+	}
+
+	public function getDocumentAdminPage($parameterDocumentId): string
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'GetDocumentAdminPage'))
+		{
+			return (string)$this->call($entity, 'GetDocumentAdminPage', $documentId);
+		}
+
+		return '';
+	}
+
+	public function getDocumentDetailUrl(array $parameterDocumentId, array $options = [])
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentDetailUrl'))
+		{
+			return $this->call($entity, 'getDocumentDetailUrl', $parameterDocumentId, $options);
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'GetDocumentAdminPage'))
+		{
+			return $this->call($entity, 'GetDocumentAdminPage', $documentId);
+		}
+
+		return '';
+	}
+
+	public function getDocumentName($parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentName'))
+		{
+			return $this->call($entity, 'getDocumentName', $documentId);
+		}
+
+		return '';
+	}
+
+	/**
+	 * @throws CBPArgumentTypeException
+	 * @throws CBPArgumentNullException
+	 */
+	public function getDocumentNameAndUrl(DocumentComplexId $parameterDocumentId): ?DocumentNameAndUrlDto
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::parseDocumentId($parameterDocumentId->toArray());
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentNameAndUrl'))
+		{
+			$result = $this->call($entity, 'getDocumentNameAndUrl', $parameterDocumentId);
+
+			if ($result instanceof DocumentNameAndUrlDto || is_null($result))
+			{
+				return $result;
+			}
+
+			throw new CBPArgumentTypeException('getDocumentNameAndUrl');
+		}
+
+		$name = $this->getDocumentName($parameterDocumentId->toArray());
+		if (!CBPHelper::hasStringRepresentation($name))
+		{
+			return null;
+		}
+
+		$url = $this->getDocumentAdminPage($parameterDocumentId->toArray());
+		if (!CBPHelper::hasStringRepresentation($url))
+		{
+			return null;
+		}
+
+		return new DocumentNameAndUrlDto((string)$name, (string)$url);
+	}
+
+	public function getDocumentCategories($parameterDocumentType)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentCategories'))
+		{
+			return $this->call($entity, 'getDocumentCategories', $documentType);
+		}
+
+		return null;
+	}
+
+	public function getDocumentCategoryId(array $parameterDocumentId): ?int
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity,  'getDocumentCategoryId'))
+		{
+			return $this->call($entity, 'getDocumentCategoryId', $documentId);
+		}
+
+		return null;
+	}
+
+	public function getDocumentTypeName($parameterDocumentType)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentTypeName'))
+		{
+			return $this->call($entity, 'getDocumentTypeName', $documentType);
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'getEntityName'))
+		{
+			return $this->call($entity, 'getEntityName', $entity);
+		}
+
+		return null;
+	}
+
+	public function getDocumentTypeCaption($parameterDocumentType)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentTypeCaption'))
+		{
+			return $this->call($entity, 'getDocumentTypeCaption', $documentType);
+		}
+
+		return $this->getDocumentTypeName($parameterDocumentType);
+	}
+
+	public function getDocumentIcon($parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentIcon'))
+		{
+			return $this->call($entity, 'getDocumentIcon', $documentId);
+		}
+
+		return null;
+	}
+
+	public function getDocumentResponsible(array $parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'getDocumentResponsible'))
+		{
+			return $this->call($entity, 'getDocumentResponsible', $documentId);
+		}
+
+		return null;
+
+	}
+
+	public function getDocumentForHistory($parameterDocumentId, $historyIndex)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'GetDocumentForHistory'))
+		{
+			return $this->call($entity, 'GetDocumentForHistory', $documentId, $historyIndex);
+		}
+
+		return null;
+	}
+
+	public function recoverDocumentFromHistory($parameterDocumentId, $arDocument)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'RecoverDocumentFromHistory'))
+		{
+			return $this->call($entity, 'RecoverDocumentFromHistory', $documentId, $arDocument);
+		}
+
+		return false;
+	}
+
+	public function getUsersFromUserGroup($group, $parameterDocumentId)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'GetUsersFromUserGroup'))
+		{
+			return $this->call($entity, 'GetUsersFromUserGroup', $group, $documentId);
+		}
+
+		return [];
+	}
+
+	public function getAllowableUserGroups($parameterDocumentType, $withExtended = false)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'GetAllowableUserGroups'))
+		{
+			$result = $this->call($entity, "GetAllowableUserGroups", $documentType, $withExtended);
+
+			return array_change_key_case($result, CASE_LOWER);
+		}
+
+		return [];
+	}
+
+	public function getAllowableOperations($parameterDocumentType)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'GetAllowableOperations'))
+		{
+			return $this->call($entity, 'GetAllowableOperations', $documentType);
+		}
+
+		return [];
+	}
+
+	public function setPermissions($parameterDocumentId, $workflowId, $arPermissions, $bRewrite = true)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'SetPermissions'))
+		{
+			return $this->call($entity, 'SetPermissions', $documentId, $workflowId, $arPermissions, $bRewrite);
+		}
+
+		return false;
+	}
+
+	public function isFeatureEnabled($parameterDocumentType, $feature)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'isFeatureEnabled'))
+		{
+			return $this->call($entity, 'isFeatureEnabled', $documentType, $feature);
+		}
+
+		return false;
+	}
+
+	public function isExtendedPermsSupported($parameterDocumentType)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'isExtendedPermsSupported'))
+		{
+			return $this->call($entity, 'isExtendedPermsSupported', $documentType);
+		}
+
+		return false;
+	}
+
+	public function toInternalOperations($parameterDocumentType, $permissions)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity,'toInternalOperations'))
+		{
+			return $this->call($entity, 'toInternalOperations', $documentType, $permissions);
+		}
+
+		return $permissions;
+	}
+
+	public function toExternalOperations($parameterDocumentType, $permissions)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'toExternalOperations'))
+		{
+			return $this->call($entity, 'toExternalOperations', $documentType, $permissions);
+		}
+
+		return $permissions;
+	}
+
+	public function onTaskChange($parameterDocumentId, $taskId, $taskData, $status)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'onTaskChange'))
+		{
+			return $this->call($entity, 'onTaskChange', $documentId, $taskId, $taskData, $status);
+		}
+
+		return false;
+	}
+
+	public function onWorkflowStatusChange($parameterDocumentId, $workflowId, $status, $rootActivity = null)
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if (
+			$rootActivity
+			&& $rootActivity->workflow->isNew()
+			&& $status === CBPWorkflowStatus::Running
+		)
+		{
+			$this->clearCache();
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'onWorkflowStatusChange'))
+		{
+			return $this->call($entity, 'onWorkflowStatusChange', $documentId, $workflowId, $status, $rootActivity);
+		}
+
+		return false;
+	}
+
+	public function onWorkflowCommentAdded($parameterDocumentId, string $workflowId, int $authorId): void
+	{
+		$documentId = CBPHelper::parseDocumentId($parameterDocumentId);
+		[$moduleId, $entity] = $documentId;
+
+
+		if ($this->isCallable($moduleId, $entity, 'onWorkflowCommentAdded'))
+		{
+			$this->call($entity, 'onWorkflowCommentAdded', $documentId, $workflowId, $authorId);
+		}
+	}
+
+	public function onWorkflowCommentDeleted($parameterDocumentId, string $workflowId, int $authorId): void
+	{
+		$documentId = CBPHelper::parseDocumentId($parameterDocumentId);
+		[$moduleId, $entity] = $documentId;
+
+		if ($this->isCallable($moduleId, $entity, 'onWorkflowCommentDeleted'))
+		{
+			$this->call($entity, 'onWorkflowCommentDeleted', $documentId, $workflowId, $authorId);
+		}
+	}
+
+	public function onWorkflowAllCommentViewed($parameterDocumentId, string $workflowId, int $authorId): void
+	{
+		$documentId = CBPHelper::parseDocumentId($parameterDocumentId);
+		[$moduleId, $entity] = $documentId;
+
+		if ($this->isCallable($moduleId, $entity, 'onWorkflowAllCommentViewed'))
+		{
+			$this->call($entity, 'onWorkflowAllCommentViewed', $documentId, $workflowId, $authorId);
+		}
+	}
+
+	public function onDebugSessionDocumentStatusChanged(array $parameterDocumentId, int $userId, string $status): void
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($userId <= 0 || !\Bitrix\Bizproc\Debugger\Session\DocumentStatus::isStatus($status))
+		{
+			return;
+		}
+
+		if ($this->isCallable($moduleId, $entity, 'onDebugSessionDocumentStatusChanged'))
+		{
+			$this->call($entity, 'onDebugSessionDocumentStatusChanged', $documentId, $userId, $status);
+		}
+	}
+
+	public function createAutomationTarget($parameterDocumentType, string|int|null $documentId = null)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'createAutomationTarget'))
+		{
+			/** @var \Bitrix\Bizproc\Automation\Target\BaseTarget $target */
+			$target = $this->call($entity, 'createAutomationTarget', $documentType, $documentId);
+
+			return $target;
+		}
+
+		return null;
+	}
+
+	/**
+	 * @throws \Bitrix\Main\LoaderException
+	 * @throws CBPArgumentNullException
+	 */
+	public function getTriggerByCode(string $code, array $complexDocumentType): ?string
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::parseDocumentId($complexDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'getTriggerByCode'))
+		{
+			return $this->call($entity, 'getTriggerByCode', $code, $complexDocumentType);
+		}
+
+		return null;
+	}
+
+	public function getStarterModuleSettings(array $complexDocumentType): ?Bizproc\Starter\ModuleSettings
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::parseDocumentId($complexDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'getStarterModuleSettings'))
+		{
+			return $this->call($entity, 'getStarterModuleSettings', $complexDocumentType);
+		}
+
+		return null;
+	}
+
+	public function canUserOperateDocument($operation, $userId, $parameterDocumentId, $arParameters = [])
+	{
+		[$moduleId, $entity, $documentId] = CBPHelper::ParseDocumentId($parameterDocumentId);
+
+		if ($this->isCallable($moduleId, $entity, 'CanUserOperateDocument'))
+		{
+			return $this->call($entity, 'CanUserOperateDocument', $operation, $userId, $documentId, $arParameters);
+		}
+
+		return false;
+	}
+
+	public function canUserOperateDocumentType($operation, $userId, $parameterDocumentType, $arParameters = [])
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'CanUserOperateDocumentType'))
+		{
+			return $this->call($entity, 'CanUserOperateDocumentType', $operation, $userId, $documentType, $arParameters);
+		}
+
+		return false;
+	}
+
+	public function getUserGroups(array $parameterDocumentType, array $parameterDocumentId, int $userId)
+	{
+		[$moduleId, $entity, $documentType] = CBPHelper::ParseDocumentId($parameterDocumentType);
+
+		if ($this->isCallable($moduleId, $entity, 'GetUserGroups'))
+		{
+			return $this->call($entity, 'GetUserGroups', $parameterDocumentType, $parameterDocumentId, $userId);
+		}
+
+		return null;
+	}
+
+	private function clearCache()
+	{
+		$this->arDocumentsCache = [];
+	}
+
+	private function checkCache()
+	{
+		$state = \CTimeZone::Enabled();
+		if ($this->tzFlag !== null && $this->tzFlag !== $state)
+		{
+			$this->clearCache();
+		}
+		$this->tzFlag = $state;
+	}
+
+	private function isCallable(string $moduleId, string $entity, string $method): bool
+	{
+		return $this->isEntityClass($moduleId, $entity) && method_exists($entity, $method);
+	}
+
+	private function call(string $entity, string $method, ...$args): mixed
+	{
+		return $this->callArray($entity, $method, $args);
+	}
+
+	private function callArray(string $entity, string $method, array $args): mixed
+	{
+		return call_user_func_array([$entity, $method], $args);
+	}
+
+	private function isEntityClass(string $moduleId, string $entity): bool
+	{
+		return DocumentEntityChecker::isValid($moduleId, $entity);
+	}
+
+	public function getSectionName(array $complexDocumentType): ?string
+	{
+		$normalized = CBPHelper::normalizeComplexDocumentId($complexDocumentType);
+		if (!$normalized)
+		{
+			return null;
+		}
+
+		[$moduleId, $entity, $documentType] = $normalized;
+
+		if ($this->isCallable($moduleId, $entity, 'getSectionName'))
+		{
+			$name = $this->call($entity, 'getSectionName', $complexDocumentType);
+
+			return is_string($name) ? $name : null;
+		}
+
+		return null;
+	}
+}

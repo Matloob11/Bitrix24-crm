@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_TAB_ACTIVITY_CONFIG"] = "Actividad";
+$MESS["CRM_TAB_ACTIVITY_CONFIG_TITLE2"] = "Preferencias de la actividad";
+$MESS["CRM_TAB_CONFIG"] = "Envió de email";
+$MESS["CRM_TAB_CONFIG_TITLE"] = "Configurar el email enviando parámetros";
+$MESS["CRM_TAB_DEAL_CONFIG"] = "Negociaciones";
+$MESS["CRM_TAB_DEAL_CONFIG_TITLE"] = "Parámetros de la negociación";
+$MESS["CRM_TAB_DUPLICATE_CONTROL"] = "Control de duplicados";
+$MESS["CRM_TAB_DUPLICATE_CONTROL_TITLE"] = "Parámetros del control de duplicados";
+$MESS["CRM_TAB_FORMAT"] = "Formato";
+$MESS["CRM_TAB_FORMAT_TITLE"] = "Parámetros de formato";
+$MESS["CRM_TAB_GENERAL"] = "General";
+$MESS["CRM_TAB_GENERAL_TITLE"] = "Parámetros comunes";
+$MESS["CRM_TAB_HISTORY"] = "Historial";
+$MESS["CRM_TAB_HISTORY_TITLE"] = "Configuración del historial";
+$MESS["CRM_TAB_LIVEFEED2"] = "Feed";
+$MESS["CRM_TAB_LIVEFEED_TITLE2"] = "Configuración del Feed";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG"] = "Papelera de reciclaje";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG_TITLE"] = "Configuración de la Papelera de reciclaje";
+$MESS["CRM_TAB_REST_2"] = "Market";
+$MESS["CRM_TAB_REST_2_MSGVER_1"] = "Market";
+$MESS["CRM_TAB_REST_TITLE"] = "Configuraciones de aplicaciones";
+$MESS["CRM_TAB_STATUS_CONFIG"] = "Estados y listas";
+$MESS["CRM_TAB_STATUS_CONFIG_TITLE"] = "Controles de selección de entidades";

@@ -1,0 +1,4 @@
+<?php
+$MESS["BICONNECTOR_TABLE_OVER_LIMIT_ERROR_MSGVER_1_PLURAL_0"] = "Votre abonnement actuel limite la demande à #LIMIT# ligne. Vous avez dépassé la limite maximale de #OVERLIMIT_COUNT# ligne. Veuillez modifier votre demande ou ajuster les valeurs spécifiées dans le filtre";
+$MESS["BICONNECTOR_TABLE_OVER_LIMIT_ERROR_MSGVER_1_PLURAL_1"] = "Votre abonnement actuel limite la demande à #LIMIT# lignes. Vous avez dépassé la limite maximale de #OVERLIMIT_COUNT# lignes. Veuillez modifier votre demande ou ajuster les valeurs spécifiées dans le filtre";
+$MESS["BICONNECTOR_TABLE_OVER_LIMIT_ERROR_MSGVER_1_PLURAL_2"] = "Votre abonnement actuel limite la demande à #LIMIT# lignes. Vous avez dépassé la limite maximale de #OVERLIMIT_COUNT# lignes. Veuillez modifier votre demande ou ajuster les valeurs spécifiées dans le filtre";

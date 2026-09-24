@@ -1,0 +1,20 @@
+<?php
+$MESS["CTRL_LOG_ADMIN_COLUMN_CREATED"] = "Қосылған күні";
+$MESS["CTRL_LOG_ADMIN_COLUMN_NAME"] = "Атауы";
+$MESS["CTRL_LOG_ADMIN_COLUMN_STATUS_ERR"] = "Қате";
+$MESS["CTRL_LOG_ADMIN_COLUMN_STATUS_OK"] = "Сәтті";
+$MESS["CTRL_LOG_ADMIN_COLUMN_USER"] = "Пайдаланушы";
+$MESS["CTRL_LOG_ADMIN_ERR_DELETE"] = "Жазбаны жою қатесі";
+$MESS["CTRL_LOG_ADMIN_FILTER_CLIENT"] = "Клиент";
+$MESS["CTRL_LOG_ADMIN_FILTER_CREATED"] = "Жасау кезеңі";
+$MESS["CTRL_LOG_ADMIN_FILTER_DESC"] = "Сипаттама";
+$MESS["CTRL_LOG_ADMIN_FILTER_ID"] = "ID";
+$MESS["CTRL_LOG_ADMIN_FILTER_IDCLIENT"] = "Клиенттің ID-і";
+$MESS["CTRL_LOG_ADMIN_FILTER_STATUS"] = "Мәртебе";
+$MESS["CTRL_LOG_ADMIN_FILTER_TASK"] = "Міндет";
+$MESS["CTRL_LOG_ADMIN_FILTER_TASKID"] = "Міндеттің ID-і";
+$MESS["CTRL_LOG_ADMIN_MENU_DEL"] = "Жою";
+$MESS["CTRL_LOG_ADMIN_MENU_DEL_CONFIRM"] = "Жазба тізімнен жойылады. Жалғастыру керек пе?";
+$MESS["CTRL_LOG_ADMIN_MENU_DETAIL"] = "Толығырақ";
+$MESS["CTRL_LOG_ADMIN_PAGETITLE"] = "Журнал жазбалары";
+$MESS["CTRL_LOG_ADMIN_TITLE"] = "Сайттар контроллерінің жұмыс журналы";

@@ -1,0 +1,23 @@
+<?php
+$MESS["CRM_COULD_NOT_DELETE_PRODUCT_ROWS_EXIST_EXT"] = "Impossible de supprimer #NAME#, ##ID#, car ce produit est utilisé dans une ou plusieurs transactions, prospects, devis ou factures.";
+$MESS["CRM_PRODUCT_FIELD_ACTIVE"] = "Activité";
+$MESS["CRM_PRODUCT_FIELD_CATALOG_ID"] = "Catalogue";
+$MESS["CRM_PRODUCT_FIELD_CREATED_BY"] = "Créé par";
+$MESS["CRM_PRODUCT_FIELD_CURRENCY_ID"] = "Devise";
+$MESS["CRM_PRODUCT_FIELD_DATE_CREATE"] = "Date de création";
+$MESS["CRM_PRODUCT_FIELD_DESCRIPTION"] = "Description";
+$MESS["CRM_PRODUCT_FIELD_DESCRIPTION_TYPE"] = "Type de description";
+$MESS["CRM_PRODUCT_FIELD_DETAIL_PICTURE"] = "Image détaillée";
+$MESS["CRM_PRODUCT_FIELD_ID"] = "ID";
+$MESS["CRM_PRODUCT_FIELD_MEASURE"] = "Unité de mesure";
+$MESS["CRM_PRODUCT_FIELD_MODIFIED_BY"] = "Modifié par";
+$MESS["CRM_PRODUCT_FIELD_NAME"] = "Nom";
+$MESS["CRM_PRODUCT_FIELD_ORIGIN_ID"] = "ID d'élément dans la source de données";
+$MESS["CRM_PRODUCT_FIELD_PREVIEW_PICTURE"] = "Image de l'annonce";
+$MESS["CRM_PRODUCT_FIELD_PRICE"] = "Prix";
+$MESS["CRM_PRODUCT_FIELD_SECTION_ID"] = "Section";
+$MESS["CRM_PRODUCT_FIELD_SORT"] = "Trier";
+$MESS["CRM_PRODUCT_FIELD_TIMESTAMP_X"] = "Date de modification";
+$MESS["CRM_PRODUCT_FIELD_VAT_ID"] = "Liste des taux de TVA";
+$MESS["CRM_PRODUCT_FIELD_VAT_INCLUDED"] = "TVA comprise";
+$MESS["CRM_PRODUCT_FIELD_XML_ID"] = "ID externe";

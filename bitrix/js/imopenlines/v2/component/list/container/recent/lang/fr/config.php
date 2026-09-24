@@ -1,0 +1,3 @@
+<?php
+$MESS["IMOL_LIST_RECENT_CONTAINER_HEADING"] = "Centre de contact";
+$MESS["IMOL_LIST_RECENT_CONTAINER_SEARCH_PLACEHOLDER"] = "Chercher une conversation";

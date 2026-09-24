@@ -1,0 +1,2239 @@
+<?php
+
+namespace Bitrix\Im;
+
+use Bitrix\Im\Model\BotTable;
+use Bitrix\Im\V2\Chat\Background\Background;
+use Bitrix\Im\V2\Chat\Background\BackgroundId;
+use Bitrix\Im\V2\Chat\PrivateChat;
+use Bitrix\Im\V2\Entity\User\Data\BotData;
+use Bitrix\Im\V2\Entity\User\UserBot;
+use Bitrix\Im\V2\Event\EventPayload;
+use Bitrix\Im\V2\Message;
+use Bitrix\Main;
+use Bitrix\Main\Localization\Loc;
+
+Loc::loadMessages(__FILE__);
+
+class Bot
+{
+	public const BACKGROUND_MARTA = 'martaAI'; /** @see BackgroundId::MartaAI */
+	public const BACKGROUND_COPILOT = 'copilot'; /** @see BackgroundId::Copilot */
+	public const BACKGROUND_COLLAB = 'collab'; /** @see BackgroundId::Collab */
+	public const BACKGROUND_NONE = '';
+
+	const INSTALL_TYPE_SYSTEM = 'system';
+	const INSTALL_TYPE_USER = 'user';
+	const INSTALL_TYPE_SILENT = 'silent';
+
+	const LOGIN_START = 'bot_';
+	const EXTERNAL_AUTH_ID = 'bot';
+
+	const LIST_ALL = 'all';
+	const LIST_OPENLINE = 'openline';
+
+	const TYPE_HUMAN = 'H';
+	const TYPE_BOT = 'B';
+	const TYPE_SUPERVISOR = 'S';
+	const TYPE_NETWORK = 'N';
+	const TYPE_OPENLINE = 'O';
+	const TYPE_PERSONAL = 'P';
+
+	const CACHE_TTL = 31536000;
+	const CACHE_PATH = '/bx/im/bot/old_cache_v1/';
+
+	public const EVENT_MODE_WEBHOOK = 'WEBHOOK';
+	public const EVENT_MODE_FETCH = 'FETCH';
+
+	public const WEBHOOK_CLIENT_ID_PREFIX = 'custom';
+
+	public const PLATFORM_CONTEXT_MOBILE = 'mobile';
+	public const PLATFORM_CONTEXT_WEB = 'web';
+
+	protected static ?string $platformContext = null;
+
+	/**
+	 * @param array $fields
+	 * @return int|bool
+	 */
+	public static function register(array $fields)
+	{
+		$code = isset($fields['CODE'])? $fields['CODE']: '';
+		$type = in_array($fields['TYPE'], [self::TYPE_BOT, self::TYPE_SUPERVISOR, self::TYPE_NETWORK, self::TYPE_OPENLINE, self::TYPE_PERSONAL])
+			? $fields['TYPE']
+			: self::TYPE_BOT;
+		$moduleId = $fields['MODULE_ID'];
+		$installType = in_array($fields['INSTALL_TYPE'], [self::INSTALL_TYPE_SYSTEM, self::INSTALL_TYPE_USER, self::INSTALL_TYPE_SILENT])
+			? $fields['INSTALL_TYPE']
+			: self::INSTALL_TYPE_SILENT;
+		$botFields = $fields['PROPERTIES'];
+		$language = isset($fields['LANG'])? $fields['LANG']: null;
+
+		/* vars for module install */
+		$class = isset($fields['CLASS'])? $fields['CLASS']: '';
+		$methodBotDelete = $class !== '' && isset($fields['METHOD_BOT_DELETE'])? $fields['METHOD_BOT_DELETE']: '';
+		$methodMessageAdd = $class !== '' && isset($fields['METHOD_MESSAGE_ADD'])? $fields['METHOD_MESSAGE_ADD']: '';
+		$methodMessageUpdate = $class !== '' && isset($fields['METHOD_MESSAGE_UPDATE'])? $fields['METHOD_MESSAGE_UPDATE']: '';
+		$methodMessageDelete = $class !== '' && isset($fields['METHOD_MESSAGE_DELETE'])? $fields['METHOD_MESSAGE_DELETE']: '';
+		$methodWelcomeMessage = $class !== '' && isset($fields['METHOD_WELCOME_MESSAGE'])? $fields['METHOD_WELCOME_MESSAGE']: '';
+		$methodContextGet = $class !== '' && isset($fields['METHOD_CONTEXT_GET']) ? $fields['METHOD_CONTEXT_GET'] : '';
+		$methodReactionChange = $class !== '' && isset($fields['METHOD_REACTION_CHANGE']) ? $fields['METHOD_REACTION_CHANGE'] : '';
+		$textPrivateWelcomeMessage = isset($fields['TEXT_PRIVATE_WELCOME_MESSAGE'])? $fields['TEXT_PRIVATE_WELCOME_MESSAGE']: '';
+		$textChatWelcomeMessage = isset($fields['TEXT_CHAT_WELCOME_MESSAGE'])? $fields['TEXT_CHAT_WELCOME_MESSAGE']: '';
+		$openline = isset($fields['OPENLINE']) && $fields['OPENLINE'] == 'Y'? 'Y': 'N';
+		$isHidden = isset($fields['HIDDEN']) && $fields['HIDDEN'] === 'Y' ? 'Y' : 'N';
+		$reactionsEnabled = isset($fields['REACTIONS_ENABLED']) && $fields['REACTIONS_ENABLED'] === 'Y' ? 'Y' : 'N';
+		$backgroundId = Background::normalizeBackgroundId($fields['BACKGROUND_ID'] ?? null);
+		$eventMode = in_array($fields['EVENT_MODE'] ?? '', [self::EVENT_MODE_WEBHOOK, self::EVENT_MODE_FETCH], true)
+			? $fields['EVENT_MODE']
+			: self::EVENT_MODE_WEBHOOK;
+
+		/* rewrite vars for openline type */
+		if ($type == self::TYPE_OPENLINE)
+		{
+			$openline = 'Y';
+			$installType = self::INSTALL_TYPE_SILENT;
+		}
+
+		/* vars for rest install */
+		$appId = isset($fields['APP_ID'])? $fields['APP_ID']: '';
+		$verified = isset($fields['VERIFIED']) && $fields['VERIFIED'] == 'Y'? 'Y': 'N';
+
+		if ($moduleId == 'rest')
+		{
+			if (empty($appId))
+			{
+				return false;
+			}
+		}
+		else
+		{
+			if (empty($class) || empty($methodMessageAdd))
+			{
+				return false;
+			}
+			if (!(!empty($methodWelcomeMessage) || isset($fields['TEXT_PRIVATE_WELCOME_MESSAGE'])))
+			{
+				return false;
+			}
+		}
+
+		if ($moduleId && $code)
+		{
+			$botQuery = Model\BotTable::getList([
+				'filter' => [
+					'=MODULE_ID' => $moduleId,
+					'=CODE' => $code,
+				],
+				'select' => ['BOT_ID'],
+				'limit' => 1,
+			]);
+			if ($bot = $botQuery->fetch())
+			{
+				return $bot['BOT_ID'];
+			}
+		}
+
+		$userCode = $code? $moduleId.'_'.$code: $moduleId;
+
+		$color = null;
+		if (isset($botFields['COLOR']))
+		{
+			$color = $botFields['COLOR'];
+			unset($botFields['COLOR']);
+		}
+
+		$userId = 0;
+		if ($installType == self::INSTALL_TYPE_USER)
+		{
+			if (isset($fields['USER_ID']) && intval($fields['USER_ID']) > 0)
+			{
+				$userId = intval($fields['USER_ID']);
+			}
+			else
+			{
+				global $USER;
+				if (is_object($USER))
+				{
+					$userId = $USER->GetID() > 0? $USER->GetID(): 0;
+				}
+			}
+			if ($userId <= 0)
+			{
+				$installType = self::INSTALL_TYPE_SYSTEM;
+			}
+		}
+
+		if ($moduleId == '')
+		{
+			return false;
+		}
+
+		if (!(isset($botFields['NAME']) || isset($botFields['LAST_NAME'])))
+		{
+			return false;
+		}
+
+		$botFields['LOGIN'] = mb_substr(self::LOGIN_START. mb_substr($userCode, 0, 40). '_'. randString(5), 0, 50);
+		$botFields['PASSWORD'] = md5($botFields['LOGIN'].'|'.rand(1000,9999).'|'.time());
+		$botFields['CONFIRM_PASSWORD'] = $botFields['PASSWORD'];
+		$botFields['EXTERNAL_AUTH_ID'] = self::EXTERNAL_AUTH_ID;
+
+		unset($botFields['GROUP_ID']);
+
+		$botFields['ACTIVE'] = 'Y';
+
+		unset($botFields['UF_DEPARTMENT']);
+
+		$botFields['WORK_POSITION'] = isset($botFields['WORK_POSITION'])? trim($botFields['WORK_POSITION']): '';
+		if (empty($botFields['WORK_POSITION']))
+		{
+			$botFields['WORK_POSITION'] = Loc::getMessage('BOT_DEFAULT_WORK_POSITION');
+		}
+
+		$user = new \CUser;
+		$botId = $user->Add($botFields);
+		if (!$botId)
+		{
+			return false;
+		}
+
+		$result = BotTable::add(Array(
+			'BOT_ID' => $botId,
+			'CODE' => $code? $code: $botId,
+			'MODULE_ID' => $moduleId,
+			'CLASS' => $class,
+			'TYPE' => $type,
+			'LANG' => $language? $language: '',
+			'METHOD_BOT_DELETE' => $methodBotDelete,
+			'METHOD_MESSAGE_ADD' => $methodMessageAdd,
+			'METHOD_MESSAGE_UPDATE' => $methodMessageUpdate,
+			'METHOD_MESSAGE_DELETE' => $methodMessageDelete,
+			'METHOD_WELCOME_MESSAGE' => $methodWelcomeMessage,
+			'METHOD_CONTEXT_GET' => $methodContextGet,
+			'METHOD_REACTION_CHANGE' => $methodReactionChange,
+			'TEXT_PRIVATE_WELCOME_MESSAGE' => $textPrivateWelcomeMessage,
+			'TEXT_CHAT_WELCOME_MESSAGE' => $textChatWelcomeMessage,
+			'APP_ID' => $appId,
+			'VERIFIED' => $verified,
+			'OPENLINE' => $openline,
+			'HIDDEN' => $isHidden,
+			'REACTIONS_ENABLED' => $reactionsEnabled,
+			'BACKGROUND_ID' => $backgroundId,
+			'EVENT_MODE' => $eventMode,
+		));
+
+		$cache = \Bitrix\Main\Data\Cache::createInstance();
+		$cache->cleanDir(self::CACHE_PATH);
+
+		if ($result->isSuccess())
+		{
+			if (\Bitrix\Main\Loader::includeModule('pull'))
+			{
+				if ($color)
+				{
+					\CIMStatus::SetColor($botId, $color);
+				}
+
+				self::sendPullNotify($botId, 'botAdd');
+
+				if ($installType != self::INSTALL_TYPE_SILENT)
+				{
+					$message = '';
+					if ($installType == self::INSTALL_TYPE_USER && \Bitrix\Im\User::getInstance($userId)->isExists())
+					{
+						$userName = '[USER='.$userId.'][/USER]';
+						$userGender = \Bitrix\Im\User::getInstance($userId)->getGender();
+						$message = Loc::getMessage('BOT_MESSAGE_INSTALL_USER'.($userGender == 'F'? '_F':''), Array('#USER_NAME#' => $userName));
+					}
+					if (empty($message))
+					{
+						$message = Loc::getMessage('BOT_MESSAGE_INSTALL_SYSTEM');
+					}
+
+					$attach = new \CIMMessageParamAttach(null, $color);
+					$attach->AddBot(Array(
+						"NAME" => \Bitrix\Im\User::getInstance($botId)->getFullName(),
+						"AVATAR" => \Bitrix\Im\User::getInstance($botId)->getAvatar(),
+						"BOT_ID" => $botId,
+					));
+					$attach->addMessage(\Bitrix\Im\User::getInstance($botId)->getWorkPosition());
+
+					\CIMChat::AddGeneralMessage(Array(
+						'MESSAGE' => $message,
+						'ATTACH' => $attach,
+						'SKIP_USER_CHECK' => 'Y',
+					));
+				}
+			}
+
+			\Bitrix\Main\Application::getInstance()->getTaggedCache()->clearByTag("IM_CONTACT_LIST");
+		}
+		else
+		{
+			$user->Delete($botId);
+			$botId = 0;
+		}
+
+		return $botId;
+	}
+
+	/**
+	 * @param array $bot
+	 * @return bool
+	 */
+	public static function unRegister(array $bot)
+	{
+		$botId = (int)$bot['BOT_ID'];
+		$moduleId = $bot['MODULE_ID'] ?? '';
+		$appId = $bot['APP_ID'] ?? '';
+
+		if ($botId <= 0)
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance($botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($moduleId !== '' && $botData->getModuleId() !== $moduleId)
+		{
+			return false;
+		}
+
+		if ($appId != '' && $botData->getAppId() != $appId)
+		{
+			return false;
+		}
+
+		$deletedBot = $botData->toArray();
+
+		// V2 payload must be built BEFORE deleting bot data,
+		// otherwise webhook handler URLs are gone and the event cannot be delivered.
+		$v2Payload = (new EventPayload())->botDelete($botId);
+
+		try
+		{
+			(new \Bitrix\Im\V2\EventLog\EventLogger())->logBotDelete($botId, 'ONIMBOTV2DELETE', $v2Payload);
+		}
+		catch (\Throwable)
+		{
+		}
+
+		self::fireRestEvents('onImBotDelete', 'onImBotV2Delete', [$deletedBot, $botId, $v2Payload]);
+
+		BotTable::delete($botId);
+		\Bitrix\Im\Model\EventLogTable::deleteBatch(['=USER_ID' => $botId]);
+
+		$cache = \Bitrix\Main\Data\Cache::createInstance();
+		$cache->cleanDir(self::CACHE_PATH);
+
+		if (!empty($deletedBot['APP_ID']))
+		{
+			\Bitrix\Im\RestBot::unbindRestEvents($botId, (string)$deletedBot['APP_ID']);
+		}
+
+		$user = new \CUser;
+		$user->Delete($botId);
+
+		if (
+			\Bitrix\Main\Loader::includeModule($botData->getModuleId())
+			&& $botData->getMethodBotDelete()
+			&& class_exists($botData->getClass())
+			&& method_exists($botData->getClass(), $botData->getMethodBotDelete())
+		)
+		{
+			call_user_func_array(array($botData->getClass(), $botData->getMethodBotDelete()), [$botId]);
+		}
+
+		$orm = \Bitrix\Im\Model\CommandTable::getList(Array(
+			'filter' => Array('=BOT_ID' => $botId)
+		));
+		while ($row = $orm->fetch())
+		{
+			\Bitrix\Im\Command::unRegister(Array('COMMAND_ID' => $row['ID'], 'FORCE' => 'Y'));
+		}
+
+		$orm = \Bitrix\Im\Model\AppTable::getList(Array(
+			'filter' => Array('=BOT_ID' => $botId)
+		));
+		while ($row = $orm->fetch())
+		{
+			\Bitrix\Im\App::unRegister(Array('ID' => $row['ID'], 'FORCE' => 'Y'));
+		}
+
+		self::sendPullNotify($botId, 'botDelete');
+
+		\Bitrix\Main\Application::getInstance()->getTaggedCache()->clearByTag("IM_CONTACT_LIST");
+
+		return true;
+	}
+
+	/**
+	 * @param array $bot
+	 * @param array $updateFields
+	 * @return bool
+	 */
+	public static function update(array $bot, array $updateFields)
+	{
+		$botId = (int)$bot['BOT_ID'];
+		$moduleId = $bot['MODULE_ID'] ?? '';
+		$appId = $bot['APP_ID'] ?? '';
+
+		if ($botId <= 0)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Im\User::getInstance($botId)->isExists() || !\Bitrix\Im\User::getInstance($botId)->isBot())
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance($botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($moduleId !== '' && $botData->getModuleId() !== $moduleId)
+		{
+			return false;
+		}
+
+		if ($appId != '' && $botData->getAppId() != $appId)
+		{
+			return false;
+		}
+
+		if (isset($updateFields['PROPERTIES']))
+		{
+			$update = $updateFields['PROPERTIES'];
+
+			$update['EXTERNAL_AUTH_ID'] = self::EXTERNAL_AUTH_ID;
+
+			if (isset($update['NAME']) && trim($update['NAME']) == '')
+			{
+				unset($update['NAME']);
+			}
+			if (isset($update['WORK_POSITION']) && trim($update['WORK_POSITION']) == '')
+			{
+				$update['WORK_POSITION'] = Loc::getMessage('BOT_DEFAULT_WORK_POSITION');
+			}
+
+			$color = null;
+			if (isset($update['COLOR']))
+			{
+				$color = $update['COLOR'];
+				unset($update['COLOR']);
+			}
+
+			$botAvatar = false;
+			$delBotAvatar = false;
+			$previousBotAvatar = false;
+			if (
+				!empty($update['PERSONAL_PHOTO'])
+				&& is_numeric($update['PERSONAL_PHOTO'])
+				&& (int)$update['PERSONAL_PHOTO'] > 0
+			)
+			{
+				$previousBotAvatar = (int)\Bitrix\Im\User::getInstance($botId)->getAvatarId();
+				$botAvatar = (int)$update['PERSONAL_PHOTO'];
+			}
+			elseif (
+				!empty($update['DELETE_PERSONAL_PHOTO'])
+				&& $update['DELETE_PERSONAL_PHOTO'] == 'Y'
+			)
+			{
+				$previousBotAvatar = (int)\Bitrix\Im\User::getInstance($botId)->getAvatarId();
+				$delBotAvatar = true;
+			}
+
+			// update user properties
+			unset(
+				$update['ACTIVE'],
+				$update['LOGIN'],
+				$update['PASSWORD'],
+				$update['CONFIRM_PASSWORD'],
+				$update['GROUP_ID'],
+				$update['UF_DEPARTMENT'],
+				$update['PERSONAL_PHOTO'],
+				$update['DELETE_PERSONAL_PHOTO']
+			);
+
+			$user = new \CUser;
+			try
+			{
+				$user->Update($botId, $update);
+			}
+			catch (\Throwable $e)
+			{
+				// Suppress errors from OnAfterUserUpdate handlers
+				// (counters, department, etc.) that are irrelevant for bot users.
+			}
+
+			if ($color && \Bitrix\Main\Loader::includeModule('pull'))
+			{
+				\CIMStatus::SetColor($botId, $color);
+			}
+
+			if ($botAvatar > 0 && $botAvatar !== $previousBotAvatar)
+			{
+				$connection = Main\Application::getConnection();
+				$connection->query("UPDATE b_user SET PERSONAL_PHOTO = ".(int)$botAvatar." WHERE ID = ".(int)$botId);
+			}
+			elseif ($delBotAvatar)
+			{
+				$connection = Main\Application::getConnection();
+				$connection->query("UPDATE b_user SET PERSONAL_PHOTO = null WHERE ID = ".(int)$botId);
+			}
+
+			if ($previousBotAvatar > 0 && $previousBotAvatar !== $botAvatar)
+			{
+				\CFile::Delete($previousBotAvatar);
+			}
+		}
+
+		$update = Array();
+		if (isset($updateFields['CLASS']) && !empty($updateFields['CLASS']))
+		{
+			$update['CLASS'] = $updateFields['CLASS'];
+		}
+		if (isset($updateFields['TYPE']) && !empty($updateFields['TYPE']))
+		{
+			$update['TYPE'] = $updateFields['TYPE'];
+		}
+		if (isset($updateFields['CODE']) && !empty($updateFields['CODE']))
+		{
+			$update['CODE'] = $updateFields['CODE'];
+		}
+		if (isset($updateFields['APP_ID']) && !empty($updateFields['APP_ID']))
+		{
+			$update['APP_ID'] = $updateFields['APP_ID'];
+		}
+		if (isset($updateFields['LANG']))
+		{
+			$update['LANG'] = $updateFields['LANG']? $updateFields['LANG']: '';
+		}
+		if (isset($updateFields['METHOD_BOT_DELETE']))
+		{
+			$update['METHOD_BOT_DELETE'] = $updateFields['METHOD_BOT_DELETE'];
+		}
+		if (isset($updateFields['METHOD_MESSAGE_ADD']))
+		{
+			$update['METHOD_MESSAGE_ADD'] = $updateFields['METHOD_MESSAGE_ADD'];
+		}
+		if (isset($updateFields['METHOD_MESSAGE_UPDATE']))
+		{
+			$update['METHOD_MESSAGE_UPDATE'] = $updateFields['METHOD_MESSAGE_UPDATE'];
+		}
+		if (isset($updateFields['METHOD_MESSAGE_DELETE']))
+		{
+			$update['METHOD_MESSAGE_DELETE'] = $updateFields['METHOD_MESSAGE_DELETE'];
+		}
+		if (isset($updateFields['METHOD_WELCOME_MESSAGE']))
+		{
+			$update['METHOD_WELCOME_MESSAGE'] = $updateFields['METHOD_WELCOME_MESSAGE'];
+		}
+		if (isset($updateFields['METHOD_CONTEXT_GET']))
+		{
+			$update['METHOD_CONTEXT_GET'] = $updateFields['METHOD_CONTEXT_GET'];
+		}
+		if (isset($updateFields['METHOD_REACTION_CHANGE']))
+		{
+			$update['METHOD_REACTION_CHANGE'] = $updateFields['METHOD_REACTION_CHANGE'];
+		}
+		if (isset($updateFields['TEXT_PRIVATE_WELCOME_MESSAGE']))
+		{
+			$update['TEXT_PRIVATE_WELCOME_MESSAGE'] = $updateFields['TEXT_PRIVATE_WELCOME_MESSAGE'];
+		}
+		if (isset($updateFields['TEXT_CHAT_WELCOME_MESSAGE']))
+		{
+			$update['TEXT_CHAT_WELCOME_MESSAGE'] = $updateFields['TEXT_CHAT_WELCOME_MESSAGE'];
+		}
+		if (isset($updateFields['VERIFIED']))
+		{
+			$update['VERIFIED'] = $updateFields['VERIFIED'] == 'Y'? 'Y': 'N';
+		}
+		if (isset($updateFields['HIDDEN']))
+		{
+			$update['HIDDEN'] = $updateFields['HIDDEN'] === 'Y' ? 'Y' : 'N';
+		}
+		if (isset($updateFields['OPENLINE']))
+		{
+			$update['OPENLINE'] = $updateFields['OPENLINE'] === 'Y' ? 'Y' : 'N';
+		}
+		if (isset($updateFields['REACTIONS_ENABLED']))
+		{
+			$update['REACTIONS_ENABLED'] = $updateFields['REACTIONS_ENABLED'] === 'Y' ? 'Y' : 'N';
+		}
+		if (isset($updateFields['BACKGROUND_ID']))
+		{
+			$update['BACKGROUND_ID'] = Background::normalizeBackgroundId($updateFields['BACKGROUND_ID']);
+		}
+		$oldEventMode = null;
+		if (
+			isset($updateFields['EVENT_MODE'])
+			&& in_array($updateFields['EVENT_MODE'], [self::EVENT_MODE_WEBHOOK, self::EVENT_MODE_FETCH], true)
+		)
+		{
+			$botArray = $botData->toArray();
+			$oldEventMode = $botArray['EVENT_MODE'] ?? self::EVENT_MODE_WEBHOOK;
+			$update['EVENT_MODE'] = $updateFields['EVENT_MODE'];
+		}
+		if (!empty($update))
+		{
+			BotTable::update($botId, $update);
+
+			$cache = \Bitrix\Main\Data\Cache::createInstance();
+			$cache->cleanDir(self::CACHE_PATH);
+		}
+
+		// Clean orphaned pending events when switching FETCH → WEBHOOK
+		if (
+			$oldEventMode === self::EVENT_MODE_FETCH
+			&& ($update['EVENT_MODE'] ?? null) === self::EVENT_MODE_WEBHOOK
+		)
+		{
+			\Bitrix\Im\Model\EventLogTable::deleteBatch(['=USER_ID' => $botId]);
+		}
+
+		if (
+			$oldEventMode === self::EVENT_MODE_WEBHOOK
+			&& ($update['EVENT_MODE'] ?? null) === self::EVENT_MODE_FETCH
+			&& !empty($bot['APP_ID'])
+		)
+		{
+			\Bitrix\Im\RestBot::unbindRestEvents($botId, (string)$bot['APP_ID']);
+		}
+
+		self::sendPullNotify($botId, 'botUpdate');
+
+		\Bitrix\Main\Application::getInstance()->getTaggedCache()->clearByTag("IM_CONTACT_LIST");
+
+		return true;
+	}
+
+	/**
+	 * @param int $botId Bot Id.
+	 * @param string $messageType Notify type - addBot|updateBot|deleteBot
+	 *
+	 * @return bool
+	 */
+	public static function sendPullNotify($botId, $messageType): bool
+	{
+		if (!\Bitrix\Main\Loader::includeModule('pull'))
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance((int)$botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($messageType === 'botAdd' || $messageType === 'botUpdate')
+		{
+
+			$userData = \CIMContactList::GetUserData([
+				'ID' => $botId,
+				'DEPARTMENT' => 'Y',
+				'USE_CACHE' => 'N',
+				'SHOW_ONLINE' => 'N',
+				'PHONES' => 'N'
+			]);
+
+			return \CPullStack::AddShared([
+				'module_id' => 'im',
+				'command' => $messageType,
+				'params' => [
+					'bot' => $botData->toRestFormat(),
+					'user' => $userData['users'][$botId],
+					'userInGroup' => $userData['userInGroup'],
+				],
+				'extra' => \Bitrix\Im\Common::getPullExtra()
+			]);
+		}
+		elseif ($messageType === 'botDelete')
+		{
+			return \CPullStack::AddShared([
+				'module_id' => 'im',
+				'command' => $messageType,
+				'params' => [
+					'botId' => $botId
+				],
+				'extra' => \Bitrix\Im\Common::getPullExtra()
+			]);
+		}
+
+		return false;
+	}
+
+	/**
+	 * @param int $botId Bot Id.
+	 * @param int|null $userId User Id.
+	 *
+	 * @return bool
+	 */
+	public static function sendPullOpenDialog(int $botId, int $userId = null): bool
+	{
+		if (!\Bitrix\Main\Loader::includeModule('pull'))
+		{
+			return false;
+		}
+
+		$userId = Common::getUserId($userId);
+		if (!$userId)
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance($botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		return \Bitrix\Pull\Event::add($userId, [
+			'module_id' => 'im',
+			'expiry' => 5,
+			'command' => 'applicationOpenChat',
+			'params' => [
+				'dialogId' => $botId
+			],
+			'extra' => \Bitrix\Im\Common::getPullExtra()
+		]);
+	}
+
+	public static function onExternalMention(int $messageId, array $messageFields): bool
+	{
+		$messageFields = self::addAdditionalParams($messageFields);
+		$messageFields['DIALOG_ID'] = self::getDialogId($messageFields);
+		$messageFields = self::removeFieldsToEvent($messageFields);
+		$messageFields['MESSAGE_ORIGINAL'] = $messageFields['MESSAGE'] ?? '';
+		$messageFieldsForEvents = $messageFields;
+		$bots = [];
+
+		foreach ($messageFields['EXTERNAL_MENTIONED_BOTS'] as $botId)
+		{
+			/** @var UserBot $bot */
+			$bot = UserBot::getInstance($botId);
+			if (!$bot->isExist())
+			{
+				continue;
+			}
+
+			$botData = $bot->getBotData()->toArray();
+			if (empty($botData))
+			{
+				continue;
+			}
+
+			$bots[$botId] = $botData;
+
+			if (!$botData['MODULE_ID'] || !\Bitrix\Main\Loader::includeModule($botData['MODULE_ID']))
+			{
+				continue;
+			}
+
+			$messageFields['BOT_ID'] = $botData['BOT_ID'];
+
+			if ($botData["METHOD_EXTERNAL_MENTION"] && class_exists($botData["CLASS"]) && method_exists($botData["CLASS"], $botData["METHOD_EXTERNAL_MENTION"]))
+			{
+				call_user_func_array(array($botData["CLASS"], $botData["METHOD_EXTERNAL_MENTION"]), Array($messageId, $messageFields));
+			}
+			else if (class_exists($botData["CLASS"]) && method_exists($botData["CLASS"], "onExternalMention"))
+			{
+				call_user_func_array(array($botData["CLASS"], "onExternalMention"), Array($messageId, $messageFields));
+			}
+		}
+
+		foreach(\Bitrix\Main\EventManager::getInstance()->findEventHandlers("im", "onImBotExternalMention") as $event)
+		{
+			$eventParams = [$bots, $messageId, $messageFieldsForEvents];
+			\ExecuteModuleEventEx($event, $eventParams);
+		}
+
+		return true;
+	}
+
+	public static function onMessageAdd($messageId, $messageFields, ?Message $message = null)
+	{
+		$botExecModule = self::getBotsForMessage($messageFields, $message ?? new Message($messageId));
+		if (!$botExecModule)
+		{
+			return true;
+		}
+
+		$messageFields = self::addAdditionalParams($messageFields);
+
+		if ($messageFields['MESSAGE_TYPE'] != IM_MESSAGE_PRIVATE)
+		{
+			$messageFields['MESSAGE_ORIGINAL'] = $messageFields['MESSAGE'];
+			if (preg_match("/\[USER=([0-9]+)( REPLACE)?](.*?)\[\/USER]/i", $messageFields['MESSAGE'], $matches))
+			{
+				$messageFields['TO_USER_ID'] = $matches[1];
+			}
+			else
+			{
+				$messageFields['TO_USER_ID'] = 0;
+			}
+			$messageFields['MESSAGE'] = trim(preg_replace('#\[(?P<tag>USER)=\d+\].+?\[/(?P=tag)\],?#', '', $messageFields['MESSAGE']));
+		}
+
+		$messageFields['DIALOG_ID'] = self::getDialogId($messageFields);
+		$messageFields = self::removeFieldsToEvent($messageFields);
+		$messageFieldsForEvents = $messageFields;
+
+		foreach ($botExecModule as $params)
+		{
+			if (!$params['MODULE_ID'] || !\Bitrix\Main\Loader::includeModule($params['MODULE_ID']))
+			{
+				continue;
+			}
+
+			$messageFields['BOT_ID'] = $params['BOT_ID'];
+
+			if ($params["METHOD_MESSAGE_ADD"] && class_exists($params["CLASS"]) && method_exists($params["CLASS"], $params["METHOD_MESSAGE_ADD"]))
+			{
+				BotTable::update($params['BOT_ID'], array(
+					"COUNT_MESSAGE" => new \Bitrix\Main\DB\SqlExpression("?# + 1", "COUNT_MESSAGE")
+				));
+
+				call_user_func_array(array($params["CLASS"], $params["METHOD_MESSAGE_ADD"]), Array($messageId, $messageFields));
+			}
+			else if (class_exists($params["CLASS"]) && method_exists($params["CLASS"], "onMessageAdd"))
+			{
+				call_user_func_array(array($params["CLASS"], "onMessageAdd"), Array($messageId, $messageFields));
+			}
+		}
+
+		$v2Payload = (new EventPayload())->messageAdd($messageId, $messageFieldsForEvents);
+
+		try
+		{
+			(new \Bitrix\Im\V2\EventLog\EventLogger())->logBotMessageEvent(
+				$botExecModule, 'ONIMBOTV2MESSAGEADD', $v2Payload
+			);
+		}
+		catch (\Throwable)
+		{
+		}
+
+		self::fireRestEventsPerItem('onImBotMessageAdd', 'onImBotV2MessageAdd', $botExecModule, [$messageId, $messageFieldsForEvents, $v2Payload]);
+
+		if (
+			$messageFields['CHAT_ENTITY_TYPE'] == 'LINES'
+			&& trim($messageFields['MESSAGE']) === '0'
+			&& \Bitrix\Main\Loader::includeModule('imopenlines')
+		)
+		{
+			$chat = new \Bitrix\Imopenlines\Chat($messageFields['TO_CHAT_ID']);
+			$chat->endBotSession();
+		}
+
+		return true;
+	}
+
+	public static function onMessageUpdate($messageId, $messageFields, ?Message $message = null)
+	{
+		$botExecModule = self::getBotsForMessage($messageFields, $message ?? new Message($messageId));
+		if (!$botExecModule)
+		{
+			return true;
+		}
+
+		$messageFields = self::addAdditionalParams($messageFields);
+
+		if ($messageFields['MESSAGE_TYPE'] != IM_MESSAGE_PRIVATE)
+		{
+			$messageFields['MESSAGE_ORIGINAL'] = $messageFields['MESSAGE'];
+			if (preg_match("/\[USER=([0-9]+)( REPLACE)?](.*?)\[\/USER]/i", $messageFields['MESSAGE'], $matches))
+			{
+				$messageFields['TO_USER_ID'] = $matches[1];
+			}
+			else
+			{
+				$messageFields['TO_USER_ID'] = 0;
+			}
+			$messageFields['MESSAGE'] = trim(preg_replace('#\[(?P<tag>USER)=\d+\].+?\[/(?P=tag)\],?#', '', $messageFields['MESSAGE']));
+		}
+
+		$messageFields['DIALOG_ID'] = self::getDialogId($messageFields);
+		$messageFields = self::removeFieldsToEvent($messageFields);
+		$messageFieldsForEvents = $messageFields;
+
+		foreach ($botExecModule as $params)
+		{
+			if (!$params['MODULE_ID'] || !\Bitrix\Main\Loader::includeModule($params['MODULE_ID']))
+			{
+				continue;
+			}
+
+			$messageFields['BOT_ID'] = $params['BOT_ID'];
+
+			if ($params["METHOD_MESSAGE_UPDATE"] && class_exists($params["CLASS"]) && method_exists($params["CLASS"], $params["METHOD_MESSAGE_UPDATE"]))
+			{
+				call_user_func_array(array($params["CLASS"], $params["METHOD_MESSAGE_UPDATE"]), Array($messageId, $messageFields));
+			}
+			else if (class_exists($params["CLASS"]) && method_exists($params["CLASS"], "onMessageUpdate"))
+			{
+				call_user_func_array(array($params["CLASS"], "onMessageUpdate"), Array($messageId, $messageFields));
+			}
+		}
+
+		$v2Payload = (new EventPayload())->messageUpdate($messageId, $messageFieldsForEvents);
+
+		try
+		{
+			(new \Bitrix\Im\V2\EventLog\EventLogger())->logBotMessageEvent(
+				$botExecModule, 'ONIMBOTV2MESSAGEUPDATE', $v2Payload
+			);
+		}
+		catch (\Throwable)
+		{
+		}
+
+		unset($messageFields['BOT_ID']);
+
+		self::fireRestEventsPerItem('onImBotMessageUpdate', 'onImBotV2MessageUpdate', $botExecModule, [$messageId, $messageFieldsForEvents, $v2Payload]);
+
+		return true;
+	}
+
+	public static function onMessageDelete($messageId, $messageFields, ?Message $message = null)
+	{
+		$botExecModule = self::getBotsForMessage($messageFields, $message ?? new Message($messageId));
+		if (!$botExecModule)
+		{
+			return true;
+		}
+
+		$messageFields['DIALOG_ID'] = self::getDialogId($messageFields);
+		$messageFields = self::removeFieldsToEvent($messageFields);
+
+		foreach ($botExecModule as $params)
+		{
+			if (!$params['MODULE_ID'] || !\Bitrix\Main\Loader::includeModule($params['MODULE_ID']))
+			{
+				continue;
+			}
+
+			$messageFields['BOT_ID'] = $params['BOT_ID'];
+
+			if ($params["METHOD_MESSAGE_DELETE"] && class_exists($params["CLASS"]) && method_exists($params["CLASS"], $params["METHOD_MESSAGE_DELETE"]))
+			{
+				call_user_func_array(array($params["CLASS"], $params["METHOD_MESSAGE_DELETE"]), Array($messageId, $messageFields));
+			}
+			else if (class_exists($params["CLASS"]) && method_exists($params["CLASS"], "onMessageDelete"))
+			{
+				call_user_func_array(array($params["CLASS"], "onMessageDelete"), Array($messageId, $messageFields));
+			}
+		}
+
+		$v2Payload = (new EventPayload())->messageDelete($messageId, $messageFields);
+
+		try
+		{
+			(new \Bitrix\Im\V2\EventLog\EventLogger())->logBotMessageEvent(
+				$botExecModule, 'ONIMBOTV2MESSAGEDELETE', $v2Payload
+			);
+		}
+		catch (\Throwable)
+		{
+		}
+
+		unset($messageFields['BOT_ID']);
+
+		self::fireRestEventsPerItem('onImBotMessageDelete', 'onImBotV2MessageDelete', $botExecModule, [$messageId, $messageFields, $v2Payload]);
+
+		return true;
+	}
+
+	public static function onJoinChat($dialogId, $joinFields)
+	{
+		if (!isset($joinFields['BOT_ID']))
+		{
+			return false;
+		}
+		$bot = BotData::getInstance((int)$joinFields['BOT_ID'])->toArray();
+		if (!$bot)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Main\Loader::includeModule($bot['MODULE_ID']))
+		{
+			return false;
+		}
+
+		if ($joinFields['CHAT_TYPE'] == IM_MESSAGE_PRIVATE)
+		{
+			$updateCounter = array("COUNT_USER" => new \Bitrix\Main\DB\SqlExpression("?# + 1", "COUNT_USER"));
+		}
+		else
+		{
+			$updateCounter = array("COUNT_CHAT" => new \Bitrix\Main\DB\SqlExpression("?# + 1", "COUNT_CHAT"));
+		}
+		BotTable::update($joinFields['BOT_ID'], $updateCounter);
+
+		if ($bot["METHOD_WELCOME_MESSAGE"] && class_exists($bot["CLASS"]) && method_exists($bot["CLASS"], $bot["METHOD_WELCOME_MESSAGE"]))
+		{
+			call_user_func_array(array($bot["CLASS"], $bot["METHOD_WELCOME_MESSAGE"]), Array($dialogId, $joinFields));
+		}
+		else if (
+			$bot["TEXT_PRIVATE_WELCOME_MESSAGE"] <> ''
+			&& $joinFields['CHAT_TYPE'] == IM_MESSAGE_PRIVATE
+			&& $joinFields['FROM_USER_ID'] != $joinFields['BOT_ID']
+		)
+		{
+			if ($bot['TYPE'] == self::TYPE_HUMAN)
+			{
+				self::startWriting(Array('BOT_ID' => $joinFields['BOT_ID']), $dialogId);
+			}
+
+			$userName = \Bitrix\Im\User::getInstance($joinFields['USER_ID'])->getName();
+			self::addMessage(Array('BOT_ID' => $joinFields['BOT_ID']), Array(
+				'DIALOG_ID' => $dialogId,
+				'MESSAGE' => str_replace(Array('#USER_NAME#'), Array($userName), $bot["TEXT_PRIVATE_WELCOME_MESSAGE"]),
+			));
+		}
+		else if (
+			$bot["TEXT_CHAT_WELCOME_MESSAGE"] <> ''
+			&& in_array($joinFields['CHAT_TYPE'], \CIMChat::getGroupTypesExtra())
+			&& $joinFields['FROM_USER_ID'] != $joinFields['BOT_ID']
+		)
+		{
+			if ($bot['TYPE'] == self::TYPE_HUMAN)
+			{
+				self::startWriting(Array('BOT_ID' => $joinFields['BOT_ID']), $dialogId);
+			}
+			$userName = \Bitrix\Im\User::getInstance($joinFields['USER_ID'])->getName();
+			self::addMessage(Array('BOT_ID' => $joinFields['BOT_ID']), Array(
+				'DIALOG_ID' => $dialogId,
+				'MESSAGE' => str_replace(Array('#USER_NAME#'), Array($userName), $bot["TEXT_CHAT_WELCOME_MESSAGE"]),
+			));
+		}
+
+		$v2Payload = (new EventPayload())->welcomeMessage($dialogId, $joinFields);
+
+		try
+		{
+			(new \Bitrix\Im\V2\EventLog\EventLogger())->logJoinChat($bot, 'ONIMBOTV2JOINCHAT', $v2Payload);
+		}
+		catch (\Throwable)
+		{
+		}
+
+		self::fireRestEvents('onImBotJoinChat', 'onImBotV2JoinChat', [$bot, $dialogId, $joinFields, $v2Payload]);
+
+		return true;
+	}
+
+	public static function onLeaveChat($dialogId, $leaveFields)
+	{
+		if (!isset($leaveFields['BOT_ID']))
+		{
+			return false;
+		}
+		$bot = BotData::getInstance((int)$leaveFields['BOT_ID'])->toArray();
+		if (!$bot)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Main\Loader::includeModule($bot['MODULE_ID']))
+		{
+			return false;
+		}
+
+		if ($leaveFields['CHAT_TYPE'] == IM_MESSAGE_PRIVATE)
+		{
+			$updateCounter = array("COUNT_USER" => new \Bitrix\Main\DB\SqlExpression("?# - 1", "COUNT_USER"));
+		}
+		else
+		{
+			$updateCounter = array("COUNT_CHAT" => new \Bitrix\Main\DB\SqlExpression("?# - 1", "COUNT_CHAT"));
+		}
+		BotTable::update($leaveFields['BOT_ID'], $updateCounter);
+
+		foreach(\Bitrix\Main\EventManager::getInstance()->findEventHandlers("im", "onImBotLeaveChat") as $event)
+		{
+			\ExecuteModuleEventEx($event, Array($bot, $dialogId, $leaveFields));
+		}
+
+		return true;
+	}
+
+	public static function onContextGet(\Bitrix\Im\V2\Chat $chat, array $params): bool
+	{
+		$botsForEvent = [];
+		$botList = $chat->getBotInChat();
+
+		$dialogId = self::getDialogIdByChat($chat);
+		if ($dialogId === null)
+		{
+			return false;
+		}
+
+		foreach ($botList as $botId)
+		{
+			$botData = BotData::getInstance($botId)->toArray();
+			if (
+				empty($botData)
+				|| !\Bitrix\Main\Loader::includeModule($botData['MODULE_ID'])
+			)
+			{
+				continue;
+			}
+
+			$botsForEvent[$botId] = $botData;
+
+			if ($botData["METHOD_CONTEXT_GET"] && class_exists($botData["CLASS"]) && method_exists($botData["CLASS"], $botData["METHOD_CONTEXT_GET"]))
+			{
+				call_user_func([$botData["CLASS"], $botData["METHOD_CONTEXT_GET"]], $dialogId, $params);
+			}
+			else if (class_exists($botData["CLASS"]) && method_exists($botData["CLASS"], "onContextGet"))
+			{
+				call_user_func([$botData["CLASS"], "onContextGet"], $dialogId, $params);
+			}
+		}
+
+		$contextParams = $params;
+		$contextParams['CHAT_ID'] = $chat->getId();
+		$v2Payload = (new EventPayload())->contextGet($dialogId, $contextParams);
+
+		try
+		{
+			(new \Bitrix\Im\V2\EventLog\EventLogger())->logContextGet($botsForEvent, 'ONIMBOTV2CONTEXTGET', $v2Payload);
+		}
+		catch (\Throwable)
+		{
+		}
+
+		if (empty($botsForEvent))
+		{
+			return false;
+		}
+
+		self::fireRestEventsPerItem('onImBotContextGet', 'onImBotV2ContextGet', $botsForEvent, [$dialogId, $params, $v2Payload]);
+
+		return true;
+	}
+
+	public static function onReactionChange(Message $message, array $params): bool
+	{
+		$bot = \Bitrix\Im\V2\Entity\User\User::getInstance($message->getAuthorId());
+
+		if (!$bot->isBot())
+		{
+			return false;
+		}
+
+		$dialogId = self::getDialogIdByChat($message->getChat());
+		if ($dialogId === null)
+		{
+			return false;
+		}
+
+		$params['DIALOG_ID'] = $dialogId;
+
+		$botData = BotData::getInstance($bot->getId())->toArray();
+		if (
+			empty($botData)
+			|| !\Bitrix\Main\Loader::includeModule($botData['MODULE_ID'])
+			|| ($botData['REACTIONS_ENABLED'] ?? 'N') === 'N'
+		)
+		{
+			return false;
+		}
+
+		if (
+			$botData["METHOD_REACTION_CHANGE"]
+			&& method_exists($botData["CLASS"], $botData["METHOD_REACTION_CHANGE"])
+		)
+		{
+			call_user_func([$botData["CLASS"], $botData["METHOD_REACTION_CHANGE"]], $message->getId(), $params);
+		}
+		else if (method_exists($botData["CLASS"], "onReactionChange"))
+		{
+			call_user_func([$botData["CLASS"], "onReactionChange"], $message->getId(), $params);
+		}
+
+		$v2Payload = (new EventPayload())->reactionChange($message->getId(), $params);
+
+		try
+		{
+			(new \Bitrix\Im\V2\EventLog\EventLogger())->logReactionChange(
+				(int)$botData['BOT_ID'], 'ONIMBOTV2REACTIONCHANGE', $v2Payload
+			);
+		}
+		catch (\Throwable)
+		{
+		}
+
+		self::fireRestEvents('onImBotReactionChange', 'onImBotV2ReactionChange', [$botData, $message->getId(), $params, $v2Payload]);
+
+		return true;
+	}
+
+	/**
+	 * Fires paired V1 + V2 REST event handlers with the same parameters.
+	 */
+	public static function fireRestEvents(string $v1EventName, string $v2EventName, array $eventParams): void
+	{
+		$em = \Bitrix\Main\EventManager::getInstance();
+
+		foreach ($em->findEventHandlers('im', $v1EventName) as $event)
+		{
+			\ExecuteModuleEventEx($event, $eventParams);
+		}
+		foreach ($em->findEventHandlers('im', $v2EventName) as $event)
+		{
+			\ExecuteModuleEventEx($event, $eventParams);
+		}
+	}
+
+	/**
+	 * Fires V1 once (batch) and V2 once per item for single-object webhook format.
+	 *
+	 * Used for events where $arParams[0] contains a list of bots or commands.
+	 * V1 receives the full list (backward compatible).
+	 * V2 fires separately for each item so the webhook payload contains
+	 * a single `bot` object instead of an array.
+	 *
+	 * @param string $v1EventName V1 event name (batch dispatch)
+	 * @param string $v2EventName V2 event name (per-item dispatch)
+	 * @param array $items List of bots/commands — each item fires a separate V2 event
+	 * @param array $additionalParams Remaining event parameters after the item list
+	 */
+	public static function fireRestEventsPerItem(
+		string $v1EventName,
+		string $v2EventName,
+		array $items,
+		array $additionalParams
+	): void
+	{
+		$em = \Bitrix\Main\EventManager::getInstance();
+
+		// V1: all items in one event (backward compatible)
+		foreach ($em->findEventHandlers('im', $v1EventName) as $event)
+		{
+			\ExecuteModuleEventEx($event, array_merge([$items], $additionalParams));
+		}
+
+		// V2: one event per item → single-object bot format in webhook
+		$v2Handlers = $em->findEventHandlers('im', $v2EventName);
+		if (empty($v2Handlers))
+		{
+			return;
+		}
+
+		foreach ($items as $singleItem)
+		{
+			foreach ($v2Handlers as $event)
+			{
+				\ExecuteModuleEventEx($event, array_merge([[$singleItem]], $additionalParams));
+			}
+		}
+	}
+
+	protected static function addAdditionalParams(array $params): array
+	{
+		$chatId = $params['TO_CHAT_ID'] ?? $params['CHAT_ID'] ?? null;
+		$chat = \Bitrix\Im\V2\Chat::getInstance($chatId);
+
+		if ($chat instanceof PrivateChat)
+		{
+			$params['CHAT_USER_COUNT'] = 2;
+		}
+		else
+		{
+			$params['CHAT_USER_COUNT'] = $chat->getUserCount();
+		}
+
+		$params['MENTIONED_LIST'] = (new Message())
+			->setMessage($params['MESSAGE'] ?? '')
+			->getMentionedUserIds()
+		;
+
+		$params['PLATFORM_CONTEXT'] = self::getPlatformContext();
+
+		return $params;
+	}
+
+	public static function startWriting(
+		array $bot,
+		$dialogId,
+		$userName = '',
+		?string $statusMessageCode = null,
+		?int $duration = null
+	)
+	{
+		$botId = $bot['BOT_ID'];
+		$moduleId = $bot['MODULE_ID'] ?? '';
+		$appId = $bot['APP_ID'] ?? '';
+
+		if (intval($botId) <= 0)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Im\User::getInstance($botId)->isExists() || !\Bitrix\Im\User::getInstance($botId)->isBot())
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance((int)$botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($moduleId !== '' && $botData->getModuleId() !== $moduleId)
+		{
+			return false;
+		}
+
+		if ($appId != '' && $botData->getAppId() != $appId)
+		{
+			return false;
+		}
+		\CIMMessenger::StartWriting($dialogId, $botId, $userName, false, false, $statusMessageCode, $duration);
+
+		return true;
+	}
+
+	public static function setChatBackgroundId(array $bot, $dialogId, string $backgroundId): bool
+	{
+		$botId = (int)$bot['BOT_ID'];
+
+		if (!self::checkBotValid($botId))
+		{
+			return false;
+		}
+
+		$chatId = Dialog::getChatId($dialogId, $botId);
+		$chat = \Bitrix\Im\V2\Chat::getInstance($chatId);
+		if ($chat->getRelationByUserId($botId) === null)
+		{
+			return false;
+		}
+
+		$chat->getBackground()->set($backgroundId);
+
+		return true;
+	}
+
+	public static function enableChatTextField(array $bot, $dialogId): bool
+	{
+		return self::changeChatTextFieldInternal($bot, $dialogId, true);
+	}
+
+	public static function disableChatTextField(array $bot, $dialogId): bool
+	{
+		return self::changeChatTextFieldInternal($bot, $dialogId, false);
+	}
+
+	private static function changeChatTextFieldInternal(array $bot, $dialogId, bool $textFieldEnabled): bool
+	{
+		$botId = (int)$bot['BOT_ID'];
+
+		if (!self::checkBotValid($botId))
+		{
+			return false;
+		}
+
+		$chatId = Dialog::getChatId($dialogId, $botId);
+		$chat = \Bitrix\Im\V2\Chat::getInstance($chatId);
+		if ($chat->getRelationByUserId($botId) === null)
+		{
+			return false;
+		}
+
+		$chat->getTextFieldEnabled()->set($textFieldEnabled);
+
+		return true;
+	}
+
+	private static function checkBotValid(int $botId): bool
+	{
+		if ($botId <= 0)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Im\User::getInstance($botId)->isExists() || !\Bitrix\Im\User::getInstance($botId)->isBot())
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance($botId)->toArray();
+		if (empty($botData))
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * @param array $bot
+	 * <pre>
+	 * [
+	 * 	(int) BOT_ID
+	 * 	(string) MODULE_ID
+	 * 	(string) APP_ID
+	 * ]
+	 * </pre>
+	 * @param array $messageFields
+	 * <pre>
+	 * [
+	 * 	(int) MESSAGE_ID
+	 * 	(int) FROM_USER_ID
+	 * 	(int) TO_USER_ID
+	 * 	(string|int) DIALOG_ID
+	 * 	(array) PARAMS
+	 * 	(array) ATTACH
+	 * 	(array) KEYBOARD
+	 * 	(array) MENU
+	 * 	(string) MESSAGE
+	 * 	(string) URL_PREVIEW - Y|N
+	 * 	(string) SYSTEM - Y|N
+	 * 	(string) SKIP_CONNECTOR - Y|N
+	 * 	(string) EDIT_FLAG - Y|N
+	 * ]
+	 * </pre>
+	 *
+	 * @return bool
+	 */
+	public static function addMessage(array $bot, array $messageFields)
+	{
+		$botId = $bot['BOT_ID'];
+		$moduleId = $bot['MODULE_ID'] ?? '';
+		$appId = $bot['APP_ID'] ?? '';
+
+		if ((int)$botId <= 0)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Im\User::getInstance($botId)->isExists() || !\Bitrix\Im\User::getInstance($botId)->isBot())
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance((int)$botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($moduleId !== '' && $botData->getModuleId() !== $moduleId)
+		{
+			return false;
+		}
+
+		if ($appId != '' && $botData->getAppId() != $appId)
+		{
+			return false;
+		}
+
+		$isPrivateSystem = false;
+		if (($messageFields['FROM_USER_ID'] ?? null) && ($messageFields['TO_USER_ID'] ?? null))
+		{
+			$messageFields['SYSTEM'] = 'Y';
+			$messageFields['DIALOG_ID'] = $messageFields['TO_USER_ID'];
+			$isPrivateSystem = true;
+		}
+		else if (empty($messageFields['DIALOG_ID']))
+		{
+			return false;
+		}
+
+		$messageFields['MENU'] ??= null;
+		$messageFields['ATTACH'] ??= null;
+		$messageFields['KEYBOARD'] ??= null;
+		$messageFields['PARAMS'] ??= [];
+
+		if (Common::isChatId($messageFields['DIALOG_ID']))
+		{
+			$chatId = \Bitrix\Im\Dialog::getChatId($messageFields['DIALOG_ID']);
+			if ($chatId <= 0)
+			{
+				return false;
+			}
+
+			if (\CIMChat::GetGeneralChatId() == $chatId && !\CIMChat::CanSendMessageToGeneralChat($botId))
+			{
+				return false;
+			}
+			else
+			{
+				$ar = Array(
+					"FROM_USER_ID" => $botId,
+					"TO_CHAT_ID" => $chatId,
+					"ATTACH" => $messageFields['ATTACH'],
+					"KEYBOARD" => $messageFields['KEYBOARD'],
+					"MENU" => $messageFields['MENU'],
+					"PARAMS" => $messageFields['PARAMS'],
+				);
+				if (isset($messageFields['MESSAGE']) && (!empty($messageFields['MESSAGE']) || $messageFields['MESSAGE'] === "0"))
+				{
+					$ar['MESSAGE'] = $messageFields['MESSAGE'];
+				}
+				if (isset($messageFields['SYSTEM']) && $messageFields['SYSTEM'] == 'Y')
+				{
+					$ar['SYSTEM'] = 'Y';
+					$ar['MESSAGE'] = \Bitrix\Im\User::getInstance($botId)->getFullName().":[br]".$ar['MESSAGE'];
+				}
+				if (isset($messageFields['URL_PREVIEW']) && $messageFields['URL_PREVIEW'] == 'N')
+				{
+					$ar['URL_PREVIEW'] = 'N';
+				}
+				if (isset($messageFields['SKIP_CONNECTOR']) && $messageFields['SKIP_CONNECTOR'] == 'Y')
+				{
+					$ar['SKIP_CONNECTOR'] = 'Y';
+					$ar['SILENT_CONNECTOR'] = 'Y';
+				}
+				$ar['SKIP_COMMAND'] = 'Y';
+				$id = \CIMChat::AddMessage($ar);
+			}
+		}
+		else
+		{
+			if ($isPrivateSystem)
+			{
+				$fromUserId = intval($messageFields['FROM_USER_ID']);
+				if ($botId > 0)
+				{
+					$messageFields['MESSAGE'] = Loc::getMessage("BOT_MESSAGE_FROM", Array("#BOT_NAME#" => "[USER=".$botId."][/USER][BR]")).$messageFields['MESSAGE'];
+				}
+			}
+			else
+			{
+				$fromUserId = $botId;
+			}
+
+			$userId = intval($messageFields['DIALOG_ID']);
+			$ar = Array(
+				"FROM_USER_ID" => $fromUserId,
+				"TO_USER_ID" => $userId,
+				"ATTACH" => $messageFields['ATTACH'],
+				"KEYBOARD" => $messageFields['KEYBOARD'],
+				"MENU" => $messageFields['MENU'],
+				"PARAMS" => $messageFields['PARAMS'],
+			);
+			if (isset($messageFields['MESSAGE']) && (!empty($messageFields['MESSAGE']) || $messageFields['MESSAGE'] === "0"))
+			{
+				$ar['MESSAGE'] = $messageFields['MESSAGE'];
+			}
+			if (isset($messageFields['SYSTEM']) && $messageFields['SYSTEM'] == 'Y')
+			{
+				$ar['SYSTEM'] = 'Y';
+			}
+			if (isset($messageFields['URL_PREVIEW']) && $messageFields['URL_PREVIEW'] == 'N')
+			{
+				$ar['URL_PREVIEW'] = 'N';
+			}
+			if (isset($messageFields['SKIP_CONNECTOR']) && $messageFields['SKIP_CONNECTOR'] == 'Y')
+			{
+				$ar['SKIP_CONNECTOR'] = 'Y';
+				$ar['SILENT_CONNECTOR'] = 'Y';
+			}
+			$ar['SKIP_COMMAND'] = 'Y';
+			$id = \CIMMessage::Add($ar);
+		}
+
+		return $id;
+	}
+
+	/**
+	 * @param array $bot
+	 * <pre>
+	 * [
+	 * 	(int) BOT_ID
+	 * 	(string) MODULE_ID
+	 * 	(string) APP_ID
+	 * ]
+	 * </pre>
+	 * @param array $messageFields
+	 * <pre>
+	 * [
+	 * 	(int) MESSAGE_ID
+	 * 	(array) ATTACH
+	 * 	(array) KEYBOARD
+	 * 	(array) MENU
+	 * 	(string) MESSAGE
+	 * 	(string) URL_PREVIEW - Y|N
+	 * 	(string) SKIP_CONNECTOR - Y|N
+	 * 	(string) EDIT_FLAG - Y|N
+	 * ]
+	 * </pre>
+	 *
+	 * @return bool
+	 */
+	public static function updateMessage(array $bot, array $messageFields)
+	{
+		$botId = $bot['BOT_ID'];
+		$moduleId = $bot['MODULE_ID'] ?? '';
+		$appId = $bot['APP_ID'] ?? '';
+
+		if ((int)$botId <= 0)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Im\User::getInstance($botId)->isExists() || !\Bitrix\Im\User::getInstance($botId)->isBot())
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance((int)$botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($moduleId !== '' && $botData->getModuleId() !== $moduleId)
+		{
+			return false;
+		}
+
+		if ($appId != '' && $botData->getAppId() != $appId)
+		{
+			return false;
+		}
+
+		$messageId = intval($messageFields['MESSAGE_ID']);
+		if ($messageId <= 0)
+			return false;
+
+		$message = \CIMMessenger::CheckPossibilityUpdateMessage(IM_CHECK_UPDATE, $messageId, $botId);
+		if (!$message)
+			return false;
+
+		if (isset($messageFields['ATTACH']))
+		{
+			if (empty($messageFields['ATTACH']) || $messageFields['ATTACH'] == 'N')
+			{
+				\CIMMessageParam::Set($messageId, Array('ATTACH' => Array()));
+			}
+			else if ($messageFields['ATTACH'] instanceof \CIMMessageParamAttach)
+			{
+				if ($messageFields['ATTACH']->IsAllowSize())
+				{
+					\CIMMessageParam::Set($messageId, Array('ATTACH' => $messageFields['ATTACH']));
+				}
+			}
+		}
+
+		if (isset($messageFields['KEYBOARD']))
+		{
+			if (empty($messageFields['KEYBOARD']) || $messageFields['KEYBOARD'] == 'N')
+			{
+				\CIMMessageParam::Set($messageId, Array('KEYBOARD' => 'N'));
+			}
+			else if ($messageFields['KEYBOARD'] instanceof \Bitrix\Im\Bot\Keyboard)
+			{
+				if ($messageFields['KEYBOARD']->isAllowSize())
+				{
+					\CIMMessageParam::Set($messageId, Array('KEYBOARD' => $messageFields['KEYBOARD']));
+				}
+			}
+		}
+
+		if (isset($messageFields['MENU']))
+		{
+			if (empty($messageFields['MENU']) || $messageFields['MENU'] == 'N')
+			{
+				\CIMMessageParam::Set($messageId, Array('MENU' => 'N'));
+			}
+			else if ($messageFields['MENU'] instanceof \Bitrix\Im\Bot\ContextMenu)
+			{
+				if ($messageFields['MENU']->isAllowSize())
+				{
+					\CIMMessageParam::Set($messageId, Array('MENU' => $messageFields['MENU']));
+				}
+			}
+		}
+
+		if (isset($messageFields['MESSAGE']))
+		{
+			$urlPreview = isset($messageFields['URL_PREVIEW']) && $messageFields['URL_PREVIEW'] == "N"? false: true;
+			$skipConnector = isset($messageFields['SKIP_CONNECTOR']) && $messageFields['SKIP_CONNECTOR'] == "Y"? true: false;
+			$editFlag = isset($messageFields['EDIT_FLAG']) && $messageFields['EDIT_FLAG'] == "Y"? true: false;
+
+			$res = \CIMMessenger::Update($messageId, $messageFields['MESSAGE'], $urlPreview, $editFlag, $botId, $skipConnector);
+			if (!$res)
+			{
+				return false;
+			}
+		}
+		\CIMMessageParam::SendPull($messageId, Array('KEYBOARD', 'ATTACH', 'MENU'));
+
+		return true;
+	}
+
+	public static function deleteMessage(array $bot, $messageId)
+	{
+		$botId = $bot['BOT_ID'];
+		$moduleId = $bot['MODULE_ID'] ?? '';
+		$appId = $bot['APP_ID'] ?? '';
+
+		$messageId = intval($messageId);
+		if ($messageId <= 0)
+		{
+			return false;
+		}
+
+		if ((int)$botId <= 0)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Im\User::getInstance($botId)->isExists() || !\Bitrix\Im\User::getInstance($botId)->isBot())
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance((int)$botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($moduleId !== '' && $botData->getModuleId() !== $moduleId)
+		{
+			return false;
+		}
+
+		if ($appId != '' && $botData->getAppId() != $appId)
+		{
+			return false;
+		}
+
+		return \CIMMessenger::Delete($messageId, $botId);
+	}
+
+	public static function likeMessage(array $bot, $messageId, $action = 'AUTO')
+	{
+		$botId = $bot['BOT_ID'];
+		$moduleId = $bot['MODULE_ID'] ?? '';
+		$appId = $bot['APP_ID'] ?? '';
+
+		$messageId = intval($messageId);
+		if ($messageId <= 0)
+		{
+			return false;
+		}
+
+		if ((int)$botId <= 0)
+		{
+			return false;
+		}
+
+		if (!\Bitrix\Im\User::getInstance($botId)->isExists() || !\Bitrix\Im\User::getInstance($botId)->isBot())
+		{
+			return false;
+		}
+
+		$botData = BotData::getInstance((int)$botId);
+		if (!$botData->exists())
+		{
+			return false;
+		}
+
+		if ($moduleId !== '' && $botData->getModuleId() !== $moduleId)
+		{
+			return false;
+		}
+
+		if ($appId != '' && $botData->getAppId() != $appId)
+		{
+			return false;
+		}
+
+		return \CIMMessenger::Like($messageId, $action, $botId);
+	}
+
+	public static function getDialogId($messageFields)
+	{
+		if ($messageFields['MESSAGE_TYPE'] == IM_MESSAGE_PRIVATE)
+		{
+			$dialogId = $messageFields['FROM_USER_ID'];
+		}
+		else
+		{
+			$dialogId = 'chat'.($messageFields['TO_CHAT_ID'] ?? $messageFields['CHAT_ID']);
+		}
+
+		return $dialogId;
+	}
+
+	public static function getDialogIdByChat(\Bitrix\Im\V2\Chat $chat): ?string
+	{
+		if ($chat instanceof PrivateChat)
+		{
+			return (string)$chat->getContext()->getUserId();
+		}
+
+		return $chat->getDialogId();
+	}
+
+	public static function getCache($botId)
+	{
+		$botData = BotData::getInstance((int)$botId)->toArray();
+		return $botData ?: false;
+	}
+
+	public static function clearCache()
+	{
+		$cache = \Bitrix\Main\Data\Cache::createInstance();
+		$cache->cleanDir(self::CACHE_PATH);
+
+		return true;
+	}
+
+	/**
+	 * @deprecated Use {@see BotData::getInstance()} to retrieve single bot data.
+	 */
+	public static function getListCache($type = self::LIST_ALL)
+	{
+		$cache = \Bitrix\Main\Data\Cache::createInstance();
+		if($cache->initCache(self::CACHE_TTL, 'list_r5', self::CACHE_PATH))
+		{
+			$result = $cache->getVars();
+		}
+		else
+		{
+			$result = Array();
+			$orm = BotTable::getList();
+			while ($row = $orm->fetch())
+			{
+				$row['LANG'] = $row['LANG']? $row['LANG']: null;
+				$result[$row['BOT_ID']] = $row;
+			}
+
+			$cache->startDataCache();
+			$cache->endDataCache($result);
+		}
+
+		if ($type == self::LIST_OPENLINE)
+		{
+			foreach ($result as $botId => $botData)
+			{
+				if ($botData['OPENLINE'] != 'Y' || $botData['CODE'] == 'marta')
+				{
+					unset($result[$botId]);
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	public static function getListForJs()
+	{
+		$result = [];
+		$bots = BotTable::query()
+			->setSelect(['BOT_ID', 'CODE', 'TYPE', 'CLASS', 'OPENLINE', 'BACKGROUND_ID', 'REACTIONS_ENABLED'])
+			->setFilter(['=OPENLINE' => 'Y'])
+			->fetchAll()
+		;
+		foreach ($bots as $bot)
+		{
+			$type = 'bot';
+			$code = $bot['CODE'];
+
+			if ($bot['TYPE'] == self::TYPE_NETWORK)
+			{
+				$type = 'network';
+
+				if (
+					$bot['CLASS'] == \Bitrix\ImBot\Bot\Support24::class
+					|| $bot['CLASS'] == \Bitrix\ImBot\Bot\SaleSupport24::class
+				)
+				{
+					$type = 'support24';
+					$code = 'network_cloud';
+				}
+				else if ($bot['CLASS'] == \Bitrix\ImBot\Bot\Partner24::class)
+				{
+					$type = 'support24';
+					$code = 'network_partner';
+				}
+				else if ($bot['CLASS'] == \Bitrix\ImBot\Bot\SupportBox::class)
+				{
+					$type = 'support24';
+					$code = 'network_box';
+				}
+			}
+			else if ($bot['TYPE'] == self::TYPE_OPENLINE)
+			{
+				$type = 'openline';
+			}
+			else if ($bot['TYPE'] == self::TYPE_SUPERVISOR)
+			{
+				$type = 'supervisor';
+			}
+			else if ($bot['TYPE'] == self::TYPE_PERSONAL)
+			{
+				$type = 'personal';
+			}
+
+			$result[$bot['BOT_ID']] = Array(
+				'id' => $bot['BOT_ID'],
+				'code' => $code,
+				'type' => $type,
+				'openline' => $bot['OPENLINE'] == 'Y',
+				'backgroundId' => BackgroundId::normalize($bot['BACKGROUND_ID'] ?? null),
+				'reactionsEnabled' => $bot['REACTIONS_ENABLED'] ?? false,
+			);
+		}
+
+		return $result;
+	}
+
+	private static function removeFieldsToEvent($messageFields)
+	{
+		unset(
+			$messageFields['BOT_IN_CHAT'],
+			$messageFields['MESSAGE_OUT'],
+			$messageFields['NOTIFY_EVENT'],
+			$messageFields['NOTIFY_MODULE'],
+			$messageFields['URL_PREVIEW'],
+			$messageFields['DATE_CREATE'],
+			$messageFields['EMAIL_TEMPLATE'],
+			$messageFields['RECENT_ADD'],
+			$messageFields['SKIP_USER_CHECK'],
+			$messageFields['DATE_CREATE'],
+			$messageFields['EMAIL_TEMPLATE'],
+			$messageFields['NOTIFY_TYPE'],
+			$messageFields['NOTIFY_TAG'],
+			$messageFields['NOTIFY_TITLE'],
+			$messageFields['NOTIFY_BUTTONS'],
+			$messageFields['NOTIFY_READ'],
+			$messageFields['NOTIFY_READ'],
+			$messageFields['IMPORT_ID'],
+			$messageFields['NOTIFY_SUB_TAG'],
+			$messageFields['CHAT_PARENT_ID'],
+			$messageFields['CHAT_PARENT_MID'],
+			$messageFields['DATE_MODIFY']
+		);
+
+		return $messageFields;
+	}
+
+	public static function getDefaultLanguage()
+	{
+		$cache = \Bitrix\Main\Data\Cache::createInstance();
+		if($cache->initCache(self::CACHE_TTL, 'language_v2', '/bx/im/'))
+		{
+			$languageId = $cache->getVars();
+		}
+		else
+		{
+			/** @todo Use SiteTable::getDefaultLanguageId() */
+			$languageId = '';
+			$siteIterator = \Bitrix\Main\SiteTable::getList(array(
+				'select' => array('LID', 'LANGUAGE_ID'),
+				'filter' => array('=DEF' => 'Y', '=ACTIVE' => 'Y'),
+				'cache' => ['ttl' => 86400],
+			));
+			if ($site = $siteIterator->fetch())
+				$languageId = (string)$site['LANGUAGE_ID'];
+
+			if ($languageId == '')
+			{
+				if (\Bitrix\Main\Loader::includeModule('bitrix24'))
+				{
+					$languageId = \CBitrix24::getLicensePrefix();
+				}
+				else
+				{
+					$languageId = LANGUAGE_ID;
+				}
+			}
+			if ($languageId == '')
+			{
+				$languageId = 'en';
+			}
+
+			$languageId = mb_strtolower($languageId);
+
+			$cache->startDataCache();
+			$cache->endDataCache($languageId);
+		}
+
+		return $languageId;
+	}
+
+	public static function deleteExpiredTokenAgent(): string
+	{
+		$orm = \Bitrix\Im\Model\BotTokenTable::getList(Array(
+			'filter' => array(
+				'<DATE_EXPIRE' => new \Bitrix\Main\Type\DateTime(),
+			),
+			'select' => array('ID'),
+			'limit' => 1
+		));
+		if ($token = $orm->fetch())
+		{
+			$application = \Bitrix\Main\Application::getInstance();
+			$connection = $application->getConnection();
+			$sqlHelper = $connection->getSqlHelper();
+			$connection->query("
+				DELETE FROM b_im_bot_token
+				WHERE DATE_EXPIRE < ".$sqlHelper->getCurrentDateTimeFunction()."
+			");
+		}
+
+		return __METHOD__. '();';
+	}
+
+	/**
+	 * @param $messageFields
+	 * @return array
+	 */
+	private static function getBotsForMessage($messageFields, Message $message): array
+	{
+		if (
+			isset($messageFields['FROM_USER_ID'])
+			&& BotData::getInstance((int)$messageFields['FROM_USER_ID'])->exists()
+		)
+		{
+			return [];
+		}
+		if (
+			$messageFields['MESSAGE_TYPE'] === \IM_MESSAGE_CHAT
+			&& $messageFields['CHAT_ENTITY_TYPE'] === 'SUPPORT24_QUESTION' /** @see \Bitrix\ImBot\Bot\Support24::CHAT_ENTITY_TYPE */
+			&& BotData::getInstance((int)$messageFields['AUTHOR_ID'])->exists()
+		)
+		{
+			return [];
+		}
+
+		$botExecModule = [];
+		if ($messageFields['MESSAGE_TYPE'] === \IM_MESSAGE_PRIVATE)
+		{
+			$botByToUserId = BotData::getInstance((int)$messageFields['TO_USER_ID'])->toArray();
+			if ($botByToUserId)
+			{
+				$botExecModule[$messageFields['TO_USER_ID']] = $botByToUserId;
+			}
+		}
+		else
+		{
+			$botFound = [];
+			if (
+				$messageFields['CHAT_ENTITY_TYPE'] === 'LINES'
+				|| $messageFields['CHAT_ENTITY_TYPE'] === 'SUPPORT24_QUESTION' /** @see \Bitrix\ImBot\Bot\Support24::CHAT_ENTITY_TYPE */
+				|| $messageFields['CHAT_ENTITY_TYPE'] === 'NETWORK_DIALOG' /** @see \Bitrix\ImBot\Bot\NETWORK::CHAT_ENTITY_TYPE */
+			)
+			{
+				$botFound = $messageFields['BOT_IN_CHAT'];
+			}
+			else
+			{
+				$botFound = self::checkBotMentioned($messageFields, $message);
+			}
+
+			foreach ($messageFields['BOT_IN_CHAT'] as $botId)
+			{
+				$botByIdType = BotData::getInstance((int)$botId)->getType();
+				if ($botByIdType === self::TYPE_SUPERVISOR || $botByIdType === self::TYPE_PERSONAL)
+				{
+					$botFound[$botId] = $botId;
+				}
+			}
+
+			if (!empty($botFound))
+			{
+				foreach ($botFound as $botId)
+				{
+					$botById = BotData::getInstance((int)$botId)->toArray();
+					if (!$botById)
+					{
+						continue;
+					}
+					if ($messageFields['CHAT_ENTITY_TYPE'] === 'LINES' && $botById['OPENLINE'] === 'N')
+					{
+						continue;
+					}
+					$botExecModule[$botId] = $botById;
+				}
+			}
+		}
+
+		return $botExecModule;
+	}
+
+	private static function checkBotMentioned(array $messageFields, Message $message): array
+	{
+		$messageText = $messageFields['MESSAGE'] ?? null;
+		$botFound = [];
+
+		if (preg_match_all("/\[USER=([0-9]+)( REPLACE)?](.*?)\[\/USER]/i", $messageText, $matches))
+		{
+			foreach ($matches[1] as $userId)
+			{
+				$botByUserIdExists = BotData::getInstance((int)$userId)->exists();
+				if ($botByUserIdExists && isset($messageFields['BOT_IN_CHAT'][$userId]))
+				{
+					$botFound[$userId] = $userId;
+				}
+			}
+		}
+
+		if ($message->hasReply())
+		{
+			$replyMessage = $message->getReplyMessage();
+			if (
+				$replyMessage !== null
+				&& BotData::getInstance($replyMessage->getAuthorId())->exists()
+				&& isset($messageFields['BOT_IN_CHAT'][$replyMessage->getAuthorId()])
+			)
+			{
+				$botFound[$replyMessage->getAuthorId()] = $replyMessage->getAuthorId();
+			}
+		}
+
+		return $botFound;
+	}
+
+	public static function setPlatformContext(string $context): void
+	{
+		self::$platformContext = self::resolvePlatformContext($context);
+	}
+
+	protected static function resolvePlatformContext(string $context): string
+	{
+		return match ($context)
+		{
+			'Bitrix24.Mobile', self::PLATFORM_CONTEXT_MOBILE => self::PLATFORM_CONTEXT_MOBILE,
+			default => self::PLATFORM_CONTEXT_WEB,
+		};
+	}
+
+	protected static function getPlatformContext(): string
+	{
+		if (self::$platformContext !== null)
+		{
+			return self::$platformContext;
+		}
+
+		$context = Main\Web\UserAgent\Browser::detect()->getName() ?? '';
+		self::$platformContext = self::resolvePlatformContext($context);
+
+		return self::$platformContext;
+	}
+
+	public static function getBotIdsByAppId(string $appId): array
+	{
+		if (empty($appId))
+		{
+			return [];
+		}
+
+		$botQuery = Model\BotTable::getList([
+			'filter' => [
+				'=APP_ID' => $appId,
+			],
+			'select' => ['BOT_ID'],
+		]);
+
+		return array_map('intval', array_column($botQuery->fetchAll() ?: [], 'BOT_ID'));
+	}
+
+	public static function getBotIdByAppId(string $appId): ?int
+	{
+		if (empty($appId))
+		{
+			return null;
+		}
+
+		$botQuery = Model\BotTable::getList([
+			'filter' => [
+				'=APP_ID' => $appId,
+			],
+			'select' => ['BOT_ID'],
+			'limit' => 1,
+		]);
+
+		if ($bot = $botQuery->fetch())
+		{
+			return (int)$bot['BOT_ID'];
+		}
+
+		return null;
+	}
+
+	public static function getNetworkBotIdByAppId(string $appId): ?int
+	{
+		if (empty($appId))
+		{
+			return null;
+		}
+
+		$botQuery = Model\BotTable::getList([
+			'filter' => [
+				'=APP_ID' => $appId,
+				'=TYPE' => self::TYPE_NETWORK
+			],
+			'select' => ['BOT_ID'],
+			'limit' => 1,
+		]);
+
+		if ($bot = $botQuery->fetch())
+		{
+			return (int)$bot['BOT_ID'];
+		}
+
+		return null;
+	}
+
+	public static function getOpenLineBotIdByCode(string $botCode): ?int
+	{
+		if (empty($botCode))
+		{
+			return null;
+		}
+
+		$botQuery = Model\BotTable::getList([
+			'filter' => [
+				'=CODE' => $botCode,
+				'=OPENLINE' => 'Y',
+			],
+			'select' => ['BOT_ID'],
+			'limit' => 1,
+		]);
+
+		if ($bot = $botQuery->fetch())
+		{
+			return (int)$bot['BOT_ID'];
+		}
+
+		return null;
+	}
+
+	/**
+	 * @return numeric-string[]
+	 */
+	public static function getAllOpenLineBotIds(): array
+	{
+		$botQuery = Model\BotTable::getList([
+			'filter' => [
+				'!=CODE' => 'marta',
+				'=OPENLINE' => 'Y',
+			],
+			'select' => ['BOT_ID'],
+		]);
+
+		return array_map('intval', array_column($botQuery->fetchAll() ?: [], 'BOT_ID'));
+	}
+}

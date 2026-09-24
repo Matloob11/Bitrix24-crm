@@ -1,0 +1,5 @@
+<?php
+$MESS["UI_SYSTEM_INPUT_COPIED"] = "Copiato";
+$MESS["UI_SYSTEM_INPUT_COPY_TO_CLIPBOARD_ARIA"] = "Copia negli appunti";
+$MESS["UI_SYSTEM_INPUT_HIDE_PASSWORD_ARIA"] = "Nascondi password";
+$MESS["UI_SYSTEM_INPUT_SHOW_PASSWORD_ARIA"] = "Mostra password";

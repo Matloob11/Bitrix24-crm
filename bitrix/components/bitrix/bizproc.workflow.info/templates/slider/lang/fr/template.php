@@ -1,0 +1,24 @@
+<?php
+$MESS["BPWFI_SLIDER_ARGUMENT_NULL"] = "Le champ '#PARAM#' est requis.";
+$MESS["BPWFI_SLIDER_BANNER_BODY"] = "Laissez vos commentaires et discutez du processus d'entreprise avec les participants.";
+$MESS["BPWFI_SLIDER_BANNER_TITLE"] = "Ce processus d'entreprise ne comprend aucun commentaire";
+$MESS["BPWFI_SLIDER_BUTTON_DELEGATE"] = "Déléguer";
+$MESS["BPWFI_SLIDER_CONFIRM_ACCEPT"] = "Oui";
+$MESS["BPWFI_SLIDER_CONFIRM_CANCEL"] = "Non";
+$MESS["BPWFI_SLIDER_CONFIRM_DESCRIPTION"] = "Voulez-vous vraiment annuler les modifications que vous avez apportées au processus d'entreprise ? Les valeurs saisies dans les champs seront perdues.";
+$MESS["BPWFI_SLIDER_CONFIRM_TITLE"] = "Annuler les modifications du processus d'entreprise";
+$MESS["BPWFI_SLIDER_DESCRIPTION"] = "Description";
+$MESS["BPWFI_SLIDER_DISCUSSION_COMMENTS_COUNT"] = "Commentaires : #COMMENTS_COUNT#";
+$MESS["BPWFI_SLIDER_DISCUSSION_TITLE"] = "Discussion du processus d'entreprise";
+$MESS["BPWFI_SLIDER_DISCUSSION_ZERO_COMMENTS_COUNT"] = "Ce processus d'entreprise ne comprend aucun commentaire.";
+$MESS["BPWFI_SLIDER_DOCUMENT"] = "Élément du processus d'entreprise";
+$MESS["BPWFI_SLIDER_FIELDS_TITLE"] = "Paramètres de l'affectation (obligatoire)";
+$MESS["BPWFI_SLIDER_MODIFIED"] = "Dernière mise à jour";
+$MESS["BPWFI_SLIDER_NAME"] = "Nom";
+$MESS["BPWFI_SLIDER_NOT_MY_PROCESS"] = "Vous consultez le processus d'entreprise de #USER#.";
+$MESS["BPWFI_SLIDER_NOT_MY_TASK"] = "Vous consultez l'affectation de #USER#";
+$MESS["BPWFI_SLIDER_PROCESS"] = "Processus d'entreprise";
+$MESS["BPWFI_SLIDER_STATUS"] = "Statut";
+$MESS["BPWFI_SLIDER_TASK"] = "Affectation";
+$MESS["BPWFI_SLIDER_TIMELINE_MSGVER_1"] = "Journal du processus d'entreprise";
+$MESS["BPWFI_SLIDER_TYPE"] = "Type de processus d'entreprise";

@@ -1,0 +1,8 @@
+<?php
+$MESS["BOOKING_TOP_MENU_ITEM_FORMS"] = "Buchungsformulare";
+$MESS["BOOKING_TOP_MENU_ITEM_FORMS_ALL_FORMS"] = "Formulare anzeigen";
+$MESS["BOOKING_TOP_MENU_ITEM_FORMS_CREATE_FORM"] = "Ein Formular erstellen";
+$MESS["BOOKING_TOP_MENU_ITEM_RECORDS"] = "Buchungen";
+$MESS["BOOKING_TOP_MENU_ITEM_SERVICES"] = "Dienstleistungen";
+$MESS["BOOKING_TOP_MENU_SERVICES_ALL_SERVICES"] = "Alle Dienstleistungen";
+$MESS["BOOKING_TOP_MENU_SERVICES_SERVICE_PROVIDERS_SERVICES"] = "Dienstleistungen und Ressourcen";

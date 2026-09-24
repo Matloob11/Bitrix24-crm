@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_FIELDS_USER_FIELDS_AIR_COMPACT_TITLE"] = "Campos personalizados";
+$MESS["TASKS_FIELDS_USER_FIELDS_AIR_COMPACT_TITLE_MULTI"] = "Campos personalizados: #COUNT#";
+$MESS["TASKS_FIELDS_USER_FIELDS_AIR_TITLE"] = "Campos personalizados";
+$MESS["TASKS_FIELDS_USER_FIELDS_AIR_TITLE_MULTI"] = "Campos personalizados: #COUNT#";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_ADD_VALUE"] = "Adicionar valor";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_DOUBLE_PLACEHOLDER"] = "Inserir número";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_FIELDS"] = "Editar campos";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_OK"] = "Continuar";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SAVE"] = "Salvar";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MAX_LENGTH_PLURAL_0"] = "O valor do campo não deve ser maior que #VALUE# caractere";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MAX_LENGTH_PLURAL_1"] = "O valor do campo não deve ser maior que #VALUE# caracteres";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MAX_LENGTH_PLURAL_2"] = "O valor do campo não deve ser maior que #VALUE# caracteres";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MAX_VALUE"] = "O valor do campo não deve ser maior que #VALUE#";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MIN_LENGTH_PLURAL_0"] = "O valor do campo deve incluir pelo menos #VALUE# caractere";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MIN_LENGTH_PLURAL_1"] = "O valor do campo deve incluir pelo menos #VALUE# caracteres";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MIN_LENGTH_PLURAL_2"] = "O valor do campo deve incluir pelo menos #VALUE# caracteres";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_SETTINGS_INFO_MIN_VALUE"] = "O valor do campo não deve ser menor que #VALUE#";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_STRING_EDITOR_PLACEHOLDER"] = "Digite seu texto aqui";
+$MESS["TASKS_FIELDS_USER_FIELDS_EDIT_STRING_PLACEHOLDER"] = "Inserir texto";

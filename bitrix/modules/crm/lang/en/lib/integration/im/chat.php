@@ -1,0 +1,18 @@
+<?php
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_COMPANY_TITLE"] = "Company";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_EMAIL"] = "Email";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_FULL_NAME"] = "Name";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_PHONE"] = "Phone";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_POST"] = "Position";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE"] = "This chat has been created to discuss SPA item:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_COMPANY"] = "This chat has been created to discuss company:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_CONTACT"] = "This chat has been created to discuss contact:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_DEAL"] = "This chat has been created to discuss deal:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_LEAD"] = "This chat has been created to discuss lead:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_SMART_DOCUMENT"] = "This chat has been created to discuss document:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_SMART_INVOICE"] = "This chat has been created to discuss invoice:";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE"] = "#ENTITY_DESCRIPTION#: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_COMPANY"] = "Company: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_CONTACT"] = "Contact: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_DEAL"] = "Deal: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_LEAD"] = "Lead: #TITLE#";

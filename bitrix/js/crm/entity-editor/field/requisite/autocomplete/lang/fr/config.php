@@ -1,0 +1,6 @@
+<?php
+$MESS["REQUISITE_AUTOCOMPLETE_ADD_REQUISITE"] = "ajouter des mentions";
+$MESS["REQUISITE_AUTOCOMPLETE_ADVICE_NEW_SERVICE"] = "#ADVICE_NEW_SERVICE_LINK# un service d'autocomplétion de détails pour votre pays.";
+$MESS["REQUISITE_AUTOCOMPLETE_ADVICE_NEW_SERVICE_LINK"] = "Suggérer";
+$MESS["REQUISITE_AUTOCOMPLETE_INSTALL"] = "Installer";
+$MESS["REQUISITE_AUTOCOMPLETE_NOT_FOUND"] = "Aucune entrée n'a été trouvée.";

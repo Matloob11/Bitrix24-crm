@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_V2_TEMPLATE_TITLE_PLACEHOLDER"] = "Nome do modelo";
+$MESS["TASKS_V2_TITLE_PLACEHOLDER"] = "Nome da Tarefa";

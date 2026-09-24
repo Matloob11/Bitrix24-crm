@@ -1,0 +1,3 @@
+<?php
+$MESS["GROUP_LANG_ENTITY_CATALOG_GROUP_ID_FIELD"] = "ID do tipo de preço";
+$MESS["GROUP_LANG_ENTITY_ID_FIELD"] = "ID";

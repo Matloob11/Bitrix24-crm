@@ -1,0 +1,22 @@
+<?php
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE"] = "Verantwortliche Person kann Anfangs- und Abschlussdatum ändern";
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE_TEMPLATE"] = "Verantwortliche Person kann Aufgabendauer und Anfangsdatum ändern";
+$MESS["TASKS_V2_DATE_PLAN_BUTTON_SAVE"] = "Speichern";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION"] = "Wählen Sie das Anfangs- und Abschlussdatum für diese Aufgabe aus. Alternativ können Sie die geplante Dauer der Aufgabe angeben.";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION_TEMPLATE"] = "Geben Sie an, wann Ihre Aufgabe angefangen wird und wie lange die Erledigung dauern soll.";
+$MESS["TASKS_V2_DATE_PLAN_DURATION"] = "Dauer:";
+$MESS["TASKS_V2_DATE_PLAN_END"] = "Abschlussdatum:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_END"] = "Abschlussdatum:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_START"] = "Anfangsdatum:";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME"] = "Anfangs- und Abschlussdatum der Teilaufgaben verwenden";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_HINT"] = "Anfangs- und Abschlussdatum dieser Aufgabe werden mit denen der Teilaufgaben synchronisiert.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_STATE"] = "Durch Teilaufgaben bestimmt";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME"] = "Wochenenden überspringen";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT"] = "Das Anfangs- und Abschlussdatum werden angepasst, wenn sie auf ein Wochenende oder einen Feiertag fallen.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT_TEMPLATE"] = "Anfangsdatum und Dauer werden angepasst, wenn sie auf ein Wochenende oder einen Feiertag fallen.";
+$MESS["TASKS_V2_DATE_PLAN_NO_SUBTASKS_HINT"] = "Diese Aufgabe hat noch keine Teilaufgaben. Sobald sie diese hat, werden die Aufgabendaten entsprechend korrigiert.";
+$MESS["TASKS_V2_DATE_PLAN_START"] = "Anfangsdatum:";
+$MESS["TASKS_V2_DATE_PLAN_START_AFTER"] = "Aufgabe ausführen in:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE"] = "Zeitplanung:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_CHIP"] = "Zeitplanung";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_SHEET"] = "Zeitplanung";

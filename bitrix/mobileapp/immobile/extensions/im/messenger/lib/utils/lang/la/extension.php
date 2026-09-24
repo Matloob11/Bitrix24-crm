@@ -1,0 +1,26 @@
+<?php
+$MESS["IMMOBILE_LAST_SEEN_F"] = "Vista por última vez el #DATE# a las #TIME#";
+$MESS["IMMOBILE_LAST_SEEN_M"] = "Visto por última vez el #DATE# a las #TIME#";
+$MESS["IMMOBILE_LAST_SEEN_SHORT_F"] = "Vista por última vez el #LAST_SEEN#";
+$MESS["IMMOBILE_LAST_SEEN_SHORT_M"] = "Visto por última vez el #LAST_SEEN#";
+$MESS["IMMOBILE_STATUS_AWAY"] = "Ausente";
+$MESS["IMMOBILE_STATUS_AWAY_TITLE"] = "Ausente durante #TIME#";
+$MESS["IMMOBILE_STATUS_BOT"] = "Chatbot";
+$MESS["IMMOBILE_STATUS_BREAK"] = "Descanso";
+$MESS["IMMOBILE_STATUS_DND"] = "No molestar";
+$MESS["IMMOBILE_STATUS_GUEST"] = "No disponible";
+$MESS["IMMOBILE_STATUS_LINES-ONLINE"] = "Usuario de canal abierto";
+$MESS["IMMOBILE_STATUS_MOBILE"] = "En línea, móvil";
+$MESS["IMMOBILE_STATUS_NA"] = "No disponible";
+$MESS["IMMOBILE_STATUS_NETWORK_MSGVER_1"] = "Bitrix24 Network";
+$MESS["IMMOBILE_STATUS_OFFLINE"] = "Fuera de línea";
+$MESS["IMMOBILE_STATUS_ONLINE"] = "En línea";
+$MESS["IMMOBILE_STATUS_TEXT_AWAY"] = "Ausente";
+$MESS["IMMOBILE_STATUS_TEXT_BREAK"] = "Descanso";
+$MESS["IMMOBILE_STATUS_TEXT_DND"] = "No molestar";
+$MESS["IMMOBILE_STATUS_TEXT_IDLE"] = "Ausente";
+$MESS["IMMOBILE_STATUS_TEXT_MOBILE-ONLINE"] = "En línea, móvil";
+$MESS["IMMOBILE_STATUS_TEXT_OFFLINE"] = "Fuera de línea";
+$MESS["IMMOBILE_STATUS_TEXT_ONLINE"] = "En línea";
+$MESS["IMMOBILE_STATUS_VACATION"] = "De vacaciones";
+$MESS["IMMOBILE_STATUS_VACATION_TITLE"] = "De vacaciones hasta el #DATE#";

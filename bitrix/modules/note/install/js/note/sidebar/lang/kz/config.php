@@ -1,0 +1,24 @@
+<?php
+$MESS["NOTE_SIDEBAR_COLLECTIONS_COLLAPSE"] = "Кеңістікті орау";
+$MESS["NOTE_SIDEBAR_COLLECTIONS_EXPAND"] = "Кеңістікті ашу";
+$MESS["NOTE_SIDEBAR_CREATE_COLLECTION_MENU"] = "Білім қоры";
+$MESS["NOTE_SIDEBAR_CREATE_DOCUMENT_MENU"] = "Құжат";
+$MESS["NOTE_SIDEBAR_CREATE_MENU"] = "Жасау";
+$MESS["NOTE_SIDEBAR_IMPORT_COLLECTION_MENU"] = "Білім қорын импорттау";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_CANCEL"] = "Болдырмау";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_FOOTER_CREATE"] = "Білім базасын құру:";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_PLACEHOLDER"] = "Білім қорын табыңыз";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_PRIMARY"] = "Жасау";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TEXT"] = "Жаңа құжат пайда болатын білім қорын табыңыз";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TEXT_WITH_CREATE"] = "Білім қорын табыңыз немесе жаңасын жасау үшін атауды теруді бастаңыз";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TITLE"] = "Құжат үшін білім қорын таңдаңыз";
+$MESS["NOTE_SIDEBAR_RECYCLE_BIN"] = "Себет";
+$MESS["NOTE_SIDEBAR_SEARCH_CLEAR"] = "Тазалау";
+$MESS["NOTE_SIDEBAR_SEARCH_EMPTY"] = "Ештеңе табылған жоқ";
+$MESS["NOTE_SIDEBAR_SEARCH_ERROR"] = "Әрекетті орындау мүмкін болмады, сәл кейінірек қайталап көріңіз";
+$MESS["NOTE_SIDEBAR_SEARCH_PLACEHOLDER"] = "Іздеу";
+$MESS["NOTE_SIDEBAR_SEARCH_SHOW_ALL"] = "Барлық нәтижелерді көрсету";
+$MESS["NOTE_SIDEBAR_THEME_TO_DARK"] = "Қараңғы күйді қосу";
+$MESS["NOTE_SIDEBAR_THEME_TO_LIGHT"] = "Ашық күйді қосу";
+$MESS["NOTE_SIDEBAR_TOGGLE_COLLAPSE"] = "Мәзірді орау";
+$MESS["NOTE_SIDEBAR_TOGGLE_EXPAND"] = "Мәзірді ашу";

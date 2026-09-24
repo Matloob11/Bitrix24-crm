@@ -1,0 +1,12 @@
+<?php
+$MESS["SOCIALNETWORK_PROJECT_LIST_CREATE_PROJECT"] = "Utwórz";
+$MESS["SOCIALNETWORK_PROJECT_LIST_CREATE_SCRUM"] = "Utwórz";
+$MESS["SOCIALNETWORK_PROJECT_LIST_STUB_SUBTITLE"] = "Utwórz projekt, aby grupować zadania, członków oraz dyskusje.";
+$MESS["SOCIALNETWORK_PROJECT_LIST_STUB_TITLE"] = "Nie ma tu jeszcze projektów";
+$MESS["SOCIALNETWORK_PROJECT_LIST_TITLE"] = "Projekty";
+$MESS["SOCIALNETWORK_SCRUM_LIST_STUB_DESCRIPTION"] = "Ten widok przedstawia zespoły SCRUM, do których należysz wraz ze współpracownikami.";
+$MESS["SOCIALNETWORK_SCRUM_LIST_STUB_MIGRATION_BUTTON"] = "Migruj";
+$MESS["SOCIALNETWORK_SCRUM_LIST_STUB_MIGRATION_OTHER"] = "i innych systemów";
+$MESS["SOCIALNETWORK_SCRUM_LIST_STUB_MIGRATION_TITLE"] = "Migruj Scrum do Bitrix24 z systemów zewnętrznych";
+$MESS["SOCIALNETWORK_SCRUM_LIST_STUB_TITLE"] = "Utwórz zespół SCRUM";
+$MESS["SOCIALNETWORK_SCRUM_LIST_TITLE"] = "Scrum";

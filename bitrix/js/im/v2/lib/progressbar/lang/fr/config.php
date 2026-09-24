@@ -1,0 +1,10 @@
+<?php
+$MESS["IM_LIB_PROGRESSBAR_FILE_SIZE_EXCEEDED"] = "Le fichier que vous avez sélectionné (\"#FILE_NAME#\") dépasse la limite de #LIMIT# Mo.";
+$MESS["IM_LIB_PROGRESSBAR_FILE_SIZE_MB"] = "MB";
+$MESS["IM_LIB_PROGRESSBAR_FILE_UPLOAD_CANCELED"] = "Annulé";
+$MESS["IM_LIB_PROGRESSBAR_FILE_UPLOAD_CANCEL_TITLE"] = "Annuler téléchargement";
+$MESS["IM_LIB_PROGRESSBAR_FILE_UPLOAD_COMPLETED"] = "Téléchargé";
+$MESS["IM_LIB_PROGRESSBAR_FILE_UPLOAD_ERROR"] = "Erreur de chargement";
+$MESS["IM_LIB_PROGRESSBAR_FILE_UPLOAD_LOADING"] = "Téléchargement en cours...";
+$MESS["IM_LIB_PROGRESSBAR_FILE_UPLOAD_SAVING"] = "Traitement...";
+$MESS["IM_LIB_PROGRESSBAR_FILE_UPLOAD_WAITING"] = "Chargement du fichier...";

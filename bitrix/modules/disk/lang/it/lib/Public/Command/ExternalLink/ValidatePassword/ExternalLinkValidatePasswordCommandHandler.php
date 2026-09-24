@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_EXTERNAL_LINK_VALIDATE_PASSWORD_EXTERNAL_LINK_NOT_FOUND"] = "Il link pubblico non è stato trovato.";
+$MESS["DISK_EXTERNAL_LINK_VALIDATE_PASSWORD_INVALID_PASSWORD"] = "Password non corretta.";

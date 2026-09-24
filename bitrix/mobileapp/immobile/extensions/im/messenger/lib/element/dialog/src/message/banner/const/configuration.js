@@ -1,0 +1,175 @@
+/**
+ * @module im/messenger/lib/element/dialog/message/banner/const/configuration
+ */
+jn.define('im/messenger/lib/element/dialog/message/banner/const/configuration', (require, exports, module) => {
+	const { transparent } = require('utils/color');
+	const { AnalyticsEvent } = require('analytics');
+	const { ButtonSize } = require('ui-system/form/buttons');
+	const { Theme } = require('im/lib/theme');
+
+	const { Loc } = require('im/messenger/loc');
+	const { MessageComponent, Analytics, ButtonDesignType } = require('im/messenger/const');
+	const { openPlanLimitsWidget } = require('im/messenger/lib/plan-limit');
+	const { DialogTextHelper } = require('im/messenger/controller/dialog/lib/helper/text');
+
+	const { ButtonType, ImageNameType, ButtonId } = require('im/messenger/lib/element/dialog/message/banner/const/type');
+	const { SignMetaData } = require('im/messenger/lib/element/dialog/message/banner/banners/sign/configuration');
+	const { AdminMetaData } = require('im/messenger/lib/element/dialog/src/message/banner/banners/admin/configuration');
+
+	/**
+	 * @type {BannerMetaData}
+	 */
+	const metaData = {
+		[MessageComponent.chatCreation]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_MESSENGER_COMMON_CHAT_TITLE_GROUP_MSGVER_1'),
+				imageName: ImageNameType.chat,
+				backgroundColor: Theme.colors.chatOtherMessage1,
+				picBackgroundColor: transparent(Theme.colors.accentMainPrimaryalt, 0.2),
+				buttons: [
+					{
+						id: MessageComponent.chatCreation,
+						text: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHAT_CREATE_BANNER_ADD_USERS'),
+						height: ButtonSize.S.getName(),
+						callback: ({ dialogLocator }) => {
+							try
+							{
+								// TODO this require need to dodge the "Cycle in require graph" error,
+								//  when elements are destructured by their own extension - move the require up
+								const { SidebarManager } = require('im/messenger/controller/dialog/lib/sidebar');
+
+								SidebarManager.getInstance(dialogLocator).open();
+							}
+							catch (error)
+							{
+								console.error('BannerMessageHandler.callback to SidebarManager catch:', error);
+							}
+						},
+						design: ButtonDesignType.outlineAccent2,
+					},
+				],
+			},
+		},
+		[MessageComponent.ownChatCreation]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHAT_NOTES_BANNER_TITLE'),
+				imageName: ImageNameType.notes,
+				backgroundColor: Theme.colors.chatOtherMessage1,
+				picBackgroundColor: transparent(Theme.colors.accentMainPrimaryalt, 0.2),
+				buttons: [],
+			},
+		},
+		[MessageComponent.generalChatCreation]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHAT_GENERAL_CREATE_BANNER_TITLE'),
+				imageName: ImageNameType.generalChat,
+				backgroundColor: Theme.colors.chatOtherMessage1,
+				picBackgroundColor: transparent(Theme.colors.accentMainPrimaryalt, 0.2),
+				buttons: [],
+			},
+		},
+		[MessageComponent.channelCreation]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHANNEL_CREATE_BANNER_TITLE'),
+				imageName: ImageNameType.channel,
+				backgroundColor: Theme.colors.chatOtherMessage1,
+				picBackgroundColor: transparent(Theme.colors.accentMainSuccess, 0.2),
+				buttons: [],
+			},
+		},
+		[MessageComponent.openChannelCreation]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHANNEL_CREATE_BANNER_TITLE'),
+				imageName: ImageNameType.channel,
+				backgroundColor: Theme.colors.chatOtherMessage1,
+				picBackgroundColor: transparent(Theme.colors.accentMainSuccess, 0.2),
+				buttons: [],
+			},
+		},
+		[MessageComponent.generalChannelCreation]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHANNEL_GENERAL_CREATE_BANNER_TITLE'),
+				imageName: ImageNameType.channel,
+				backgroundColor: Theme.colors.chatOtherMessage1,
+				picBackgroundColor: transparent(Theme.colors.accentMainSuccess, 0.2),
+				buttons: [],
+			},
+		},
+		[MessageComponent.conferenceCreation]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHAT_CONFERENCE_CREATE_BANNER_TITLE'),
+				imageName: ImageNameType.videoconf,
+				backgroundColor: Theme.colors.chatOtherMessage1,
+				picBackgroundColor: transparent(Theme.colors.accentMainPrimaryalt, 0.2),
+				buttons: [
+					{
+						id: MessageComponent.conferenceCreation,
+						text: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_CHAT_CONFERENCE_CREATE_BANNER_COPY_LINK'),
+						height: ButtonSize.S.getName(),
+						callback: ({ dialogLocator }) => {
+							const dialogId = dialogLocator.get('dialogId');
+							const dialog = dialogLocator.get('store').getters['dialoguesModel/getById'](dialogId);
+							const link = dialog.public.link;
+
+							DialogTextHelper.copyToClipboard(
+								link,
+								{
+									notificationText: Loc.getMessage('IMMOBILE_MESSENGER_DIALOG_COPY_LINK_TEXT'),
+									parentWidget: dialogLocator.get('view')?.ui,
+								},
+							);
+						},
+						design: ButtonDesignType.outlineAccent2,
+					},
+				],
+			},
+		},
+		[MessageComponent.copilotAddedUsers]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_COPILOT_BANNER_TITLE_ADD_USERS'),
+				description: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_COPILOT_BANNER_DESC_ADD_USERS'),
+				imageName: ImageNameType.copilotNewUser,
+				backgroundColor: Theme.colors.chatOtherCopilot1,
+				picBackgroundColor: transparent(Theme.colors.accentMainCopilot, 0.2),
+				buttons: [],
+			},
+		},
+		[MessageComponent.planLimits]: {
+			banner: {
+				title: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_PLAN_LIMITS_BANNER_TITTLE'),
+				imageName: ImageNameType.planLimits,
+				backgroundColor: Theme.color.chatOverallBannerBg.toHex(),
+				picBackgroundColor: Theme.color.techOpacity.toHex(),
+				buttons: [
+					{
+						id: ButtonId.planLimitsUnlock,
+						text: Loc.getMessage('IMMOBILE_ELEMENT_DIALOG_MESSAGE_PLAN_LIMITS_BANNER_BUTTON_UNLOCK'),
+						design: ButtonDesignType.filled,
+						height: ButtonSize.M.getName(),
+						type: ButtonType.full,
+						callback: () => {
+							const analytics = getAnalytics()
+								.setSection(Analytics.Section.chatWindow);
+
+							return openPlanLimitsWidget(analytics);
+						},
+					},
+				],
+			},
+		},
+		[MessageComponent.sign]: SignMetaData,
+		[MessageComponent.admin]: AdminMetaData,
+	};
+
+	/**
+	 * @return {AnalyticsEvent}
+	 */
+	function getAnalytics()
+	{
+		return new AnalyticsEvent();
+	}
+
+	module.exports = {
+		metaData,
+	};
+});

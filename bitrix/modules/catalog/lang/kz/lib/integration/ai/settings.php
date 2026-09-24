@@ -1,0 +1,2 @@
+<?php
+$MESS["CATALOG_AI_SETTINGS_COPILOT_PRODUCT_CARD_TITLE"] = "Тауар картасы";

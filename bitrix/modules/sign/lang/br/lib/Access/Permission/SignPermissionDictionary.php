@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_ACCESS_RIGHTS"] = "Editar permissões de acesso";
+$MESS["SIGN_B2E_MEMBER_DYNAMIC_FIELDS_DELETE"] = "Excluir campos de informações personalizadas do colaborador";
+$MESS["SIGN_B2E_MY_SAFE"] = "Visualizar área do \"Cofre da empresa\"";
+$MESS["SIGN_B2E_MY_SAFE_DOCUMENTS"] = "Acessar documentos no Cofre da empresa";
+$MESS["SIGN_B2E_MY_SAFE_FIRED"] = "Mostrar colaboradores demitidos no filtro do \"Cofre da empresa\"";
+$MESS["SIGN_B2E_PROFILE_FIELDS_ADD"] = "Adicionar dados pessoais ao perfil do colaborador";
+$MESS["SIGN_B2E_PROFILE_FIELDS_DELETE_MSG_VER_1"] = "Excluir campos de informações pessoais";
+$MESS["SIGN_B2E_PROFILE_FIELDS_EDIT"] = "Editar dados pessoais no perfil do colaborador";
+$MESS["SIGN_B2E_PROFILE_FIELDS_READ"] = "Visualizar dados pessoais no perfil do colaborador";
+$MESS["SIGN_B2E_SIGNERS_LIST_ADD"] = "Criar grupos de colaboradores";
+$MESS["SIGN_B2E_SIGNERS_LIST_DELETE"] = "Excluir grupos de colaboradores";
+$MESS["SIGN_B2E_SIGNERS_LIST_EDIT"] = "Editar grupos de colaboradores";
+$MESS["SIGN_B2E_SIGNERS_LIST_READ"] = "Visualizar grupos de colaboradores";
+$MESS["SIGN_B2E_SIGNERS_LIST_REFUSED"] = "Acessar grupo de recusadores da assinatura eletrônica para RH";
+$MESS["SIGN_B2E_TEMPLATES_1"] = "Acessar documentos recentes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_CREATE"] = "Criar modelos e pacotes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_DELETE"] = "Excluir modelos e pacotes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_EDIT"] = "Editar modelos e pacotes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_READ"] = "Visualizar modelos e pacotes";
+$MESS["SIGN_B2E_TEMPLATE_CREATE"] = "Criar modelo";
+$MESS["SIGN_B2E_TEMPLATE_DELETE"] = "Excluir modelo";
+$MESS["SIGN_B2E_TEMPLATE_EDIT"] = "Editar modelo";
+$MESS["SIGN_B2E_TEMPLATE_READ"] = "Visualizar modelo";
+$MESS["SIGN_MY_SAFE"] = "Acessar a área \"Meu cofre\"";
+$MESS["SIGN_MY_SAFE_DOCUMENTS"] = "Acessar documentos em Meu Cofre";
+$MESS["SIGN_TEMPLATES"] = "Acesso ao modelo de documento";

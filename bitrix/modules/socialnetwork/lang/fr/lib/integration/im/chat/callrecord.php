@@ -1,0 +1,3 @@
+<?php
+$MESS["SOCIALNETWORK_CHAT_CALLRECORD_FILE_NOT_FOUND"] = "Fichier introuvable";
+$MESS["SOCIALNETWORK_CHAT_CALLRECORD_TEXT"] = "Fichier d'enregistrement d'appel #FILE_NAME#\n[DISK FILE ID=n#DISK_FILE_ID#]";

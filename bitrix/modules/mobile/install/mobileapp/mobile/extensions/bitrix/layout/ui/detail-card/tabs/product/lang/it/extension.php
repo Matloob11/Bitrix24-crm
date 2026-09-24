@@ -1,0 +1,22 @@
+<?php
+$MESS["CSPL_CREATE_PRODUCT_IN_DESKTOP_VERSION_MSGVER_1"] = "Crea prodotto nella versione web";
+$MESS["CSPL_DOCUMENT_HAS_NO_PRODUCTS"] = "L'oggetto dell'inventario non contiene alcun prodotto";
+$MESS["CSPL_MENU"] = "Menu";
+$MESS["CSPL_MENU_ADD_NEW_PRODUCT_TITLE"] = "Nuovo prodotto";
+$MESS["CSPL_MENU_CHOOSE_FROM_DB"] = "Seleziona dal catalogo";
+$MESS["CSPL_MENU_CREATE_ARTNUMBER"] = "Crea prodotto con N/S";
+$MESS["CSPL_MENU_CREATE_BARCODE"] = "Crea prodotto con codice a barre";
+$MESS["CSPL_MENU_CREATE_PRODUCT"] = "Crea prodotto";
+$MESS["CSPL_MENU_CREATE_SKU"] = "Crea SKU";
+$MESS["CSPL_MENU_SEARCH_PRODUCT_BY_BARCODE"] = "Trova il codice a barre";
+$MESS["CSPL_PRODUCT_CONTEXT_MENU_EDIT"] = "Modifica";
+$MESS["CSPL_PRODUCT_CONTEXT_MENU_OPEN"] = "Apri";
+$MESS["CSPL_PRODUCT_DELETE_CONFIRMATION"] = "Eliminare questo record dall'oggetto dell'inventario?";
+$MESS["CSPL_PRODUCT_DETAIL_BACKDROP_TITLE"] = "Informazioni sul prodotto";
+$MESS["CSPL_PRODUCT_NOT_FOUND_BY_BARCODE"] = "Non è stato trovato alcun prodotto con questo codice a barre nel catalogo";
+$MESS["CSPL_REMOVE_PRODUCT_ERROR"] = "Impossibile rimuovere il prodotto dall'oggetto dell'inventario";
+$MESS["CSPL_UNKNOWN_ERROR"] = "Qualcosa è andato storto...";
+$MESS["CSPL_UPDATE_TAB_ERROR"] = "Errore durante il caricamento dei dati";
+$MESS["CSPL_VALIDATION_ERROR_EMPTY_NAME"] = "L'elemento ##NUM# non ha un nome di prodotto";
+$MESS["CSPL_VALIDATION_ERROR_PHOTO_HAS_ERROR"] = "L'elemento ##NUM# ha immagini del prodotto non valide. Elimina le immagini e caricale di nuovo.";
+$MESS["CSPL_VALIDATION_ERROR_PHOTO_IS_LOADING"] = "L'elemento ##NUM# non ha foto di prodotto.";

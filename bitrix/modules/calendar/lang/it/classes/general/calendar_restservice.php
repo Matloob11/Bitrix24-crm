@@ -1,0 +1,23 @@
+<?php
+$MESS["CAL_REST_ACCESS_DENIED"] = "Accesso negato";
+$MESS["CAL_REST_CRM_FIELDS_ERROR"] = "L'elenco di eventi associati al CRM deve essere una matrice.";
+$MESS["CAL_REST_EVENT_DELETE_ERROR"] = "Errore durante l'eliminazione dell'evento";
+$MESS["CAL_REST_EVENT_ID_EXCEPTION"] = "L'ID evento non è specificato";
+$MESS["CAL_REST_EVENT_NEW_ERROR"] = "Errore durante la creazione dell'evento";
+$MESS["CAL_REST_EVENT_UPDATE_ERROR"] = "Errore durante la modifica dell'evento";
+$MESS["CAL_REST_GET_DATA_ERROR"] = "Errore durante il recupero dei dati";
+$MESS["CAL_REST_GET_STATUS_ERROR"] = "Errore durante il recupero dello stato";
+$MESS["CAL_REST_PARAM_ERROR"] = "Valore del parametro non valido per \"#PARAM_NAME#\"";
+$MESS["CAL_REST_PARAM_EXCEPTION"] = "Il parametro obbligatorio \"#PARAM_NAME#\" non è specificato per il metodo \"#REST_METHOD#\"";
+$MESS["CAL_REST_REC_MODE_ERROR"] = "Tipo di modifica non valido per l'evento ricorrente.";
+$MESS["CAL_REST_RESOURCE_BOOKING_ADD_ERROR"] = "Errore durante la prenotazione della risorsa";
+$MESS["CAL_REST_RESOURCE_NEW_ERROR"] = "Errore durante la creazione della risorsa";
+$MESS["CAL_REST_RESOURCE_UPDATE_ERROR"] = "Errore durante l'aggiornamento della risorsa";
+$MESS["CAL_REST_RES_BOOKING_DEFAULT_VALUE"] = "Prenotazione";
+$MESS["CAL_REST_RES_BOOKING_SERVICE_LABEL"] = "Servizio";
+$MESS["CAL_REST_RES_TYPE_ERROR"] = "Tipo risorsa non corretto. Valori possibili: #ALLOWED_TYPES#";
+$MESS["CAL_REST_SECTION_DELETE_ERROR"] = "Errore durante l'eliminazione della sezione";
+$MESS["CAL_REST_SECTION_ERROR"] = "Hai specificato un ID sezione del calendario non valido o l'utente corrente non ha accesso a esso";
+$MESS["CAL_REST_SECTION_NEW_ERROR"] = "Errore durante la creazione della sezione";
+$MESS["CAL_REST_SECTION_SAVE_ERROR"] = "Errore durante la modifica della sezione";
+$MESS["CAL_REST_SECT_ID_EXCEPTION"] = "L'ID sezione non è specificato";

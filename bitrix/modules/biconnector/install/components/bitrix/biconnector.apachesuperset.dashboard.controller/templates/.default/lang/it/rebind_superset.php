@@ -1,0 +1,5 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_BUTTON"] = "Procedi";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_DESCRIPTION"] = "Il tuo Bitrix24 è stato reinstallato. Generatore BI deve essere registrato di nuovo.";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_DESCRIPTION_NO_ACCESS"] = "Il tuo amministratore Bitrix24 dovrà configurare di nuovo Generatore BI.";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_REBIND_SUPERSET_TITLE"] = "Generatore BI deve essere configurato di nuovo";

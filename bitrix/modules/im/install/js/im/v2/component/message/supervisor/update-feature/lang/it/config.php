@@ -1,0 +1,21 @@
+<?php
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_info_enterprise_admin"] = "Passa al piano Enterprise per fornire a più utenti le autorizzazioni da amministratore.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_contact_center_mail_box_number"] = "Consenti agli utenti di collegare tutte le caselle di posta necessarie.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_crm_analytics_max_number"] = "Crea dei rapporti analitici su più elementi del CRM.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_crm_free_invoices"] = "Crea fatture nel CRM inserendo automaticamente le informazioni del cliente e del prodotto.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_crm_history_view"] = "Sfrutta la possibilità di visualizzare la cronologia modifiche di ogni elemento del CRM.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_crm_lead_unlimited"] = "Non perdere un potenziale cliente. Analizza le conversioni lead-affare in Bitrix24.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_office_login_history"] = "Visualizza tutti i dispositivi utilizzati dagli utenti per accedere a Bitrix24 e i rispettivi indirizzi IP.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_office_no_document"] = "Collabora su documenti, fogli di calcolo e presentazioni senza uscire da Bitrix24.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DESCRIPTION_limit_tasks_robots"] = "Sfrutta le regole di automazione per incarichi e progetti nel piano Professional.";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_DETAIL_BUTTON_TITLE"] = "Fai l'upgrade";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_INFO_BUTTON_TITLE"] = "Scopri di più";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_info_enterprise_admin"] = "Nomina più amministratori";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_contact_center_mail_box_number"] = "Collega più indirizzi e-mail";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_crm_analytics_max_number"] = "Analizza più dati nei rapporti";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_crm_free_invoices"] = "Crea fatture";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_crm_history_view"] = "Traccia le modifiche apportate agli elementi del CRM";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_crm_lead_unlimited"] = "Gestisci i lead nel CRM";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_office_login_history"] = "Visualizza la cronologia accessi nel piano Enterprise";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_office_no_document"] = "Modifica documenti online";
+$MESS["IM_MESSAGE_SUPERVISOR_UPDATE_FEATURE_TARIFF_TITLE_limit_tasks_robots"] = "Automatizza gli incarichi";

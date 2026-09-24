@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_ACCESS_RIGHTS"] = "Edycja uprawnień dostępu";
+$MESS["SIGN_B2E_MEMBER_DYNAMIC_FIELDS_DELETE"] = "Usuń niestandardowe pola informacji o pracowniku";
+$MESS["SIGN_B2E_MY_SAFE"] = "Wyświetlanie obszaru „Sejf firmy”";
+$MESS["SIGN_B2E_MY_SAFE_DOCUMENTS"] = "Uzyskaj dostęp do dokumentów w sejfe firmy";
+$MESS["SIGN_B2E_MY_SAFE_FIRED"] = "Pokaż zwolnionych pracowników w filtrze „Sejf firmy”";
+$MESS["SIGN_B2E_PROFILE_FIELDS_ADD"] = "Dodawanie danych osobowych do profilu pracownika";
+$MESS["SIGN_B2E_PROFILE_FIELDS_DELETE_MSG_VER_1"] = "Usuń pola danych osobistych";
+$MESS["SIGN_B2E_PROFILE_FIELDS_EDIT"] = "Edycja danych osobowych w profilu pracownika";
+$MESS["SIGN_B2E_PROFILE_FIELDS_READ"] = "Wyświetlanie danych osobowych w profilu pracownika";
+$MESS["SIGN_B2E_SIGNERS_LIST_ADD"] = "Tworzenie grup pracowników";
+$MESS["SIGN_B2E_SIGNERS_LIST_DELETE"] = "Usuwanie grup pracowników";
+$MESS["SIGN_B2E_SIGNERS_LIST_EDIT"] = "Edycja grup pracowników";
+$MESS["SIGN_B2E_SIGNERS_LIST_READ"] = "Wyświetlanie grup pracowników";
+$MESS["SIGN_B2E_SIGNERS_LIST_REFUSED"] = "Dostęp do grupy osób odmawiających użycia e-Podpisu w HR";
+$MESS["SIGN_B2E_TEMPLATES_1"] = "Uzyskaj dostęp do ostatnich dokumentów";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_CREATE"] = "Twórz szablony i zestawy";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_DELETE"] = "Usuń szablony i zestawy";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_EDIT"] = "Edytuj szablony i zestawy";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_READ"] = "Wyświetl szablony i zestawy";
+$MESS["SIGN_B2E_TEMPLATE_CREATE"] = "Utwórz szablon";
+$MESS["SIGN_B2E_TEMPLATE_DELETE"] = "Usuń szablon";
+$MESS["SIGN_B2E_TEMPLATE_EDIT"] = "Edytuj szablon";
+$MESS["SIGN_B2E_TEMPLATE_READ"] = "Wyświetl szablon";
+$MESS["SIGN_MY_SAFE"] = "Uzyskaj dostęp do obszaru \"Mój sejf\"";
+$MESS["SIGN_MY_SAFE_DOCUMENTS"] = "Uzyskaj dostęp do dokumentów w Moim sejfie";
+$MESS["SIGN_TEMPLATES"] = "Dostęp do szablonu dokumentu";

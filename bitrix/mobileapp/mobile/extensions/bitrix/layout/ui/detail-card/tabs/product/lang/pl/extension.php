@@ -1,0 +1,22 @@
+<?php
+$MESS["CSPL_CREATE_PRODUCT_IN_DESKTOP_VERSION_MSGVER_1"] = "Utwórz produkt w wersji internetowej";
+$MESS["CSPL_DOCUMENT_HAS_NO_PRODUCTS"] = "Obiekt magazynowy nie zawiera produktów";
+$MESS["CSPL_MENU"] = "Menu";
+$MESS["CSPL_MENU_ADD_NEW_PRODUCT_TITLE"] = "Nowy produkt";
+$MESS["CSPL_MENU_CHOOSE_FROM_DB"] = "Wybierz z katalogu";
+$MESS["CSPL_MENU_CREATE_ARTNUMBER"] = "Utwórz produkt z S/N";
+$MESS["CSPL_MENU_CREATE_BARCODE"] = "Utwórz produkt z kodem kreskowym";
+$MESS["CSPL_MENU_CREATE_PRODUCT"] = "Utwórz produkt";
+$MESS["CSPL_MENU_CREATE_SKU"] = "Utwórz kod SKU";
+$MESS["CSPL_MENU_SEARCH_PRODUCT_BY_BARCODE"] = "Znajdź według kodu kreskowego";
+$MESS["CSPL_PRODUCT_CONTEXT_MENU_EDIT"] = "Edytuj";
+$MESS["CSPL_PRODUCT_CONTEXT_MENU_OPEN"] = "Otwórz";
+$MESS["CSPL_PRODUCT_DELETE_CONFIRMATION"] = "Czy na pewno chcesz usunąć ten rekord z obiektu magazynowego?";
+$MESS["CSPL_PRODUCT_DETAIL_BACKDROP_TITLE"] = "Dane produktu";
+$MESS["CSPL_PRODUCT_NOT_FOUND_BY_BARCODE"] = "W katalogu nie znaleziono żadnego produktu z tym kodem kreskowym";
+$MESS["CSPL_REMOVE_PRODUCT_ERROR"] = "Nie można usunąć produktu z obiektu magazynowego";
+$MESS["CSPL_UNKNOWN_ERROR"] = "Coś poszło nie tak...";
+$MESS["CSPL_UPDATE_TAB_ERROR"] = "Błąd podczas ładowania danych";
+$MESS["CSPL_VALIDATION_ERROR_EMPTY_NAME"] = "Pozycja ##NUM# nie ma nazwy produktu";
+$MESS["CSPL_VALIDATION_ERROR_PHOTO_HAS_ERROR"] = "Pozycja ##NUM# zawiera nieprawidłowe zdjęcia produktów. Usuń te obrazy i prześlij je ponownie.";
+$MESS["CSPL_VALIDATION_ERROR_PHOTO_IS_LOADING"] = "Pozycja ##NUM# nie ma zdjęć produktów.";

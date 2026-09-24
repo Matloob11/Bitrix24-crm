@@ -1,0 +1,4461 @@
+<?php define("TIMELIMIT_VERSION", true);?><?php
+
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+use Bitrix\Main\Application;
+use Bitrix\Main\DB;
+
+//Disable statistics
+define("STOP_STATISTICS", true);
+define("NO_AGENT_STATISTIC", true);
+define("NO_AGENT_CHECK", true);
+
+@set_time_limit(3600);
+@ignore_user_abort(true);
+
+define("BX_PRODUCT_INSTALLATION", true);
+
+if (defined("DEBUG_MODE"))
+{
+	error_reporting(E_ALL);
+}
+else
+{
+	error_reporting(E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR | E_PARSE);
+}
+
+if (isset($_REQUEST["clear_db"]))
+{
+	setcookie("clear_db", $_REQUEST["clear_db"], time() + 3600);
+}
+
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/bx_root.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/lib/loader.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/autoload.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/tools.php");
+
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/wizard.php"); //Wizard API
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/version.php"); //Sitemanager version
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/install/wizard/template.php"); //Wizard template
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/install/wizard/utils.php"); //Wizard utils
+
+@set_time_limit(3600);
+
+//Get Wizard Settings
+$GLOBALS["arWizardConfig"] = BXInstallServices::GetWizardsSettings();
+
+if (!empty($GLOBALS["arWizardConfig"]["LANGUAGE_ID"]))
+{
+	define("LANGUAGE_ID", $GLOBALS["arWizardConfig"]["LANGUAGE_ID"]);
+}
+elseif (defined('PRE_LANGUAGE_ID'))
+{
+	define("LANGUAGE_ID", PRE_LANGUAGE_ID);
+}
+else
+{
+	define("LANGUAGE_ID", 'en');
+}
+
+//Init new kernel
+$application = \Bitrix\Main\HttpApplication::getInstance();
+$context = new \Bitrix\Main\HttpContext($application);
+$language = \Bitrix\Main\Localization\LanguageTable::wakeUpObject(LANGUAGE_ID);
+$context->setLanguage($language);
+$application->setContext($context);
+
+//Lang files
+IncludeModuleLangFile(__FILE__);
+
+Application::resetAccelerator();
+
+class WelcomeStep extends CWizardStep
+{
+	function InitStep()
+	{
+		$this->SetStepID("welcome");
+		$this->SetNextStep("agreement");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetTitle(GetMessage("INS_STEP1_TITLE"));
+	}
+
+	function ShowStep()
+	{
+		global $arWizardConfig;
+
+		//wizard customization file
+		$bxProductConfig = [];
+		if (file_exists($_SERVER["DOCUMENT_ROOT"] . BX_ROOT . "/.config.php"))
+		{
+			include($_SERVER["DOCUMENT_ROOT"] . BX_ROOT . "/.config.php");
+		}
+
+		if (isset($bxProductConfig["product_wizard"]["welcome_text"]))
+		{
+			$this->content .= '<div class="inst-cont-text-block"><div class="inst-cont-text">' . $bxProductConfig["product_wizard"]["welcome_text"] . '</div></div>';
+		}
+		else
+		{
+			$this->content .= '<div class="inst-cont-text-block"><div class="inst-cont-text">' . ($arWizardConfig["welcomeText"] ?? GetMessage("FIRST_PAGE")) . '</div></div>';
+		}
+	}
+
+	public static function unformat($str)
+	{
+		$str = strtolower(trim($str));
+		$res = intval($str);
+		$suffix = substr($str, -1);
+		if ($suffix == "k")
+		{
+			$res *= 1024;
+		}
+		elseif ($suffix == "m")
+		{
+			$res *= 1048576;
+		}
+		elseif ($suffix == "g")
+		{
+			$res *= 1048576 * 1024;
+		}
+		return $res;
+	}
+}
+
+class AgreementStep extends CWizardStep
+{
+	function InitStep()
+	{
+		$this->SetStepID("agreement");
+		if (!BXInstallServices::IsShortInstall())
+		{
+			$this->SetPrevStep("welcome");
+		}
+		$this->SetNextStep("check_license_key");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetPrevCaption(GetMessage("PREVIOUS_BUTTON"));
+		$this->SetTitle(GetMessage("INS_STEP2_TITLE"));
+	}
+
+	function OnPostForm()
+	{
+		$wizard = $this->GetWizard();
+
+		if ($wizard->IsPrevButtonClick())
+		{
+			return;
+		}
+
+		$agreeLicense = $wizard->GetVar("agree_license");
+		if ($agreeLicense !== "Y")
+		{
+			$this->SetError(GetMessage("ERR_AGREE_LICENSE"), "agree_license");
+		}
+	}
+
+	function ShowStep()
+	{
+		$this->content = '<br /><iframe name="license_text" src="/bitrix/legal/license.php" width="100%" height="350" border="0" frameBorder="1" scrolling="yes"></iframe><br /><br />';
+		$this->content .= $this->ShowCheckboxField("agree_license", "Y", ["id" => "agree_license_id", "tabindex" => "1"]);
+		$this->content .= '&nbsp;<label for="agree_license_id">' . GetMessage("LICENSE_AGREE_PROMT") . '</label>';
+
+		$this->content .= '<script>setTimeout(function() {document.getElementById("agree_license_id").focus();}, 500);</script>';
+	}
+}
+
+class CheckLicenseKey extends CWizardStep
+{
+	function InitStep()
+	{
+		$this->SetStepID("check_license_key");
+		if (BXInstallServices::IsShortInstall())
+		{
+			$this->SetNextStep("create_modules");
+		}
+		else
+		{
+			$this->SetNextStep("requirements");
+		}
+		$this->SetPrevStep("agreement");
+		$this->SetPrevCaption(GetMessage("PREVIOUS_BUTTON"));
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+
+		$arDBTypes = BXInstallServices::GetDBTypes();
+		if (count($arDBTypes) > 1)
+		{
+			$this->SetTitle(GetMessage("INS_DB_SELECTION"));
+		}
+		else
+		{
+			$this->SetTitle(GetMessage("INS_LICENSE_HEAD"));
+		}
+
+		$wizard = $this->GetWizard();
+
+		if (defined("TRIAL_VERSION"))
+		{
+			$wizard->SetDefaultVar("lic_key_variant", "Y");
+		}
+
+		if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/bitrix/license_key.php'))
+		{
+			$LICENSE_KEY = '';
+			include($_SERVER['DOCUMENT_ROOT'] . '/bitrix/license_key.php');
+			$wizard->SetDefaultVar("license", $LICENSE_KEY);
+		}
+
+		$defaultDbType = "mysql";
+		foreach ($arDBTypes as $dbType => $active)
+		{
+			$defaultDbType = $dbType;
+			if ($active)
+			{
+				break;
+			}
+		}
+
+		$wizard->SetDefaultVar("dbType", $defaultDbType);
+	}
+
+	function OnPostForm()
+	{
+		$wizard = $this->GetWizard();
+
+		if ($wizard->IsPrevButtonClick())
+		{
+			return;
+		}
+
+		$dbType = $wizard->GetVar("dbType");
+		$arDBTypes = BXInstallServices::GetDBTypes();
+
+		if (count($arDBTypes) > 1 && (!array_key_exists($dbType, $arDBTypes) || $arDBTypes[$dbType] === false))
+		{
+			$this->SetError(GetMessage("ERR_NO_DATABSEL"), "dbType");
+		}
+
+		if (defined("TRIAL_VERSION"))
+		{
+			$lic_key_variant = $wizard->GetVar("lic_key_variant");
+
+			if ($lic_key_variant == "Y")
+			{
+				$lic_key_user_surname = trim($wizard->GetVar("user_surname"));
+				$lic_key_user_name = trim($wizard->GetVar("user_name"));
+				$lic_key_email = trim($wizard->GetVar("email"));
+
+				if ($lic_key_user_name == '')
+				{
+					$this->SetError(GetMessage("ACT_KEY_BAD_NAME"), "user_name");
+				}
+				if ($lic_key_user_surname == '')
+				{
+					$this->SetError(GetMessage("ACT_KEY_BAD_LAST_NAME"), "user_surname");
+				}
+				if ($lic_key_email == '' || !check_email($lic_key_email))
+				{
+					$this->SetError(GetMessage("ACT_KEY_BAD_EMAIL"), "email");
+				}
+
+				if (empty($this->GetErrors()))
+				{
+					$key = $this->GetRegistrationKey();
+
+					if ($key !== false)
+					{
+						$wizard->SetVar("license", $key);
+					}
+				}
+			}
+		}
+		else
+		{
+			if (!preg_match('/[A-Z0-9]{3}-[A-Z]{2}-?[A-Z0-9]{12,30}/i', $wizard->GetVar("license")))
+			{
+				$this->SetError(GetMessage("BAD_LICENSE_KEY"), "license");
+			}
+
+			if (empty($this->GetErrors()))
+			{
+				$this->CheckKey();
+			}
+		}
+
+		if (BXInstallServices::IsShortInstall())
+		{
+			$this->CheckShortInstall();
+		}
+
+		if (empty($this->GetErrors()))
+		{
+			$this->CreateLicenseFile();
+		}
+	}
+
+	protected function CreateLicenseFile()
+	{
+		$wizard = $this->GetWizard();
+		$licenseKey = $wizard->GetVar("license");
+
+		if ($licenseKey == '')
+		{
+			$licenseKey = "DEMO";
+		}
+
+		$filePath = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/license_key.php";
+
+		if (!$fp = @fopen($filePath, "wb"))
+		{
+			return false;
+		}
+
+		$fileContent = "<" . "? \$" . "LICENSE_KEY = \"" . addslashes($licenseKey) . "\"; ?" . ">";
+
+		if (!fwrite($fp, $fileContent))
+		{
+			return false;
+		}
+
+		@fclose($fp);
+
+		@chmod($filePath, octdec("0644"));
+
+		return true;
+	}
+
+	protected function CheckKey()
+	{
+		$wizard = $this->GetWizard();
+
+		$http = new \Bitrix\Main\Web\HttpClient([
+			'socketTimeout' => 10,
+			'streamTimeout' => 10,
+			'sendEvents' => false,
+		]);
+
+		$data = [
+			'license_key' => md5($wizard->GetVar("license")),
+			'check_active' => 'y',
+		];
+
+		if ($res = $http->post(BXInstallServices::GetRegistrationUrl(), $data))
+		{
+			$info = json_decode($res, true);
+			if (isset($info["result"]) && $info["result"] != "ok")
+			{
+				$this->SetError(GetMessage('INST_ERR_ACTIVATE'), "license");
+			}
+		}
+	}
+
+	protected function GetRegistrationKey()
+	{
+		$wizard = $this->GetWizard();
+
+		$http = new \Bitrix\Main\Web\HttpClient([
+			'socketTimeout' => 10,
+			'streamTimeout' => 10,
+			'sendEvents' => false,
+		]);
+		$http->setHeader('User-Agent', 'bitrixKeyReq');
+
+		$arClientModules = [];
+		$handle = @opendir($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules");
+		if ($handle)
+		{
+			while (false !== ($dir = readdir($handle)))
+			{
+				if (is_dir($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $dir)
+					&& $dir != "." && $dir != "..")
+				{
+					$module_dir = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $dir;
+					if (file_exists($module_dir . "/install/index.php"))
+					{
+						$arClientModules[] = $dir;
+					}
+				}
+			}
+			closedir($handle);
+		}
+
+		$uri = match (LANGUAGE_ID)
+		{
+			'ru' => "https://www.1c-bitrix.ru/bsm_register_key.php",
+			'kz' => "https://www.1c-bitrix.kz/bsm_register_key.php",
+			default => "https://www.bitrixsoft.com/bsm_register_key.php",
+		};
+
+		$query = [
+			"sur_name" => trim($wizard->GetVar("user_surname")),
+			"first_name" => trim($wizard->GetVar("user_name")),
+			"email" => trim($wizard->GetVar("email")),
+			"site" => $_SERVER["HTTP_HOST"] ?: "localhost",
+			"modules" => serialize($arClientModules),
+			"db" => $wizard->GetVar("dbType"),
+			"lang" => LANGUAGE_ID,
+			"bx" => "Y",
+			"max_users" => 0,
+		];
+		if (defined("install_license_type"))
+		{
+			$query["cp_type"] = install_license_type;
+		}
+		if (defined("install_edition"))
+		{
+			$query["edition"] = install_edition;
+		}
+
+		if ($content = $http->post($uri, $query))
+		{
+			$arContent = explode("\n", $content);
+
+			$bOk = false;
+			$key = "";
+			foreach ($arContent as $v)
+			{
+				if ($v == "OK")
+				{
+					$bOk = true;
+				}
+
+				if (strlen($v) > 10)
+				{
+					$key = trim($v);
+				}
+			}
+			if ($bOk && $key != '')
+			{
+				return $key;
+			}
+		}
+
+		return false;
+	}
+
+	function ShowStep()
+	{
+		$wizard = $this->GetWizard();
+
+		BXInstallServices::SetSession();
+
+		if (!defined("TRIAL_VERSION"))
+		{
+			$this->content .= '
+				<table border="0" class="data-table">
+				<tr>
+					<td colspan="2" class="header">' . GetMessage("INS_LICENSE_HEAD") . '</td>
+				</tr>
+				<tr>
+					<td align="right" width="40%" valign="top">
+						<span style="color:red">*</span>&nbsp;' . GetMessage("INS_LICENSE") . '
+					</td>
+					<td width="60%" valign="top">' . $this->ShowInputField("text", "license", ["size" => "30", "tabindex" => "1", "id" => "license_id"]) . '
+						<br>
+						<small>' . GetMessage("INS_LICENSE_NOTE_SOURCE") . '</small>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" width="40%" valign="top">
+						<span style="color:red">*</span>&nbsp;' . GetMessage('INST_ACTIVATE') . '
+					</td>
+					<td width="60%" valign="top">
+						<script>' . file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/install/js/main/md5/dist/md5.bundle.js") . '</script>
+						<input type="button" value="' . GetMessage('INST_ACTIVATE_BTN') . '" class="instal-btn-inp" onclick="SubmitForm(
+								\'keyRegistrationForm\', 
+								\'' . BXInstallServices::GetRegistrationUrl() . '\', 
+								{\'license_key\': BX.md5(document.getElementById(\'license_id\').value)}
+							)">
+							<br>
+							<small>' . GetMessage('INST_ACTIVATE_NOTE') . '</small>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" width="40%" valign="top">
+						' . GetMessage("INSTALL_DEVSRV") . '
+					</td>
+					<td width="60%" valign="top">' . $this->ShowCheckboxField("devsrv", "Y") . '
+						<br>
+						<small>' . GetMessage("INSTALL_DEVSRV_NOTE") . '</small>
+					</td>
+				</tr>
+				</table>
+			';
+		}
+		else
+		{
+			$this->content .= '
+			<script>
+				function changeLicKey(val)
+				{
+					if(val)
+					{
+						document.getElementById("lic_key_activation").style.display = "block";
+					}
+					else
+					{
+						document.getElementById("lic_key_activation").style.display = "none";
+					}
+				}
+			</script>
+
+			<table border="0" class="data-table">
+			<tr>
+				<td colspan="2" class="header">' . GetMessage("INS_LICENSE_HEAD") . '</td>
+			</tr>
+			';
+
+			$this->content .= '<tr><td colspan="2"><label for="lic_key_variant">' . $this->ShowCheckboxField("lic_key_variant", "Y", ["id" => "lic_key_variant", "onclick" => "javascript:changeLicKey(this.checked)"]) . GetMessage("ACT_KEY") . '</label></td></tr>';
+
+			$lic_key_variant = $wizard->GetVar("lic_key_variant", true);
+			$this->content .= '
+			</table>
+
+			<div id="lic_key_activation">
+			<table border="0" class="data-table" style="border-top:none;">
+			<tr>
+				<td align="right" width="40%" style="border-top:none;"><span style="color:red">*</span>&nbsp;' . GetMessage("ACT_KEY_NAME") . ':</td>
+				<td width="60%" valign="top" style="border-top:none;">' . $this->ShowInputField("text", "user_name", ["size" => "30", "tabindex" => "4", "id" => "user_name"]) . '</td>
+			</tr>
+			<tr>
+				<td align="right" width="40%" style="border-top:none;"><span style="color:red">*</span>&nbsp;' . GetMessage("ACT_KEY_LAST_NAME") . ':</td>
+				<td width="60%" valign="top" style="border-top:none;">' . $this->ShowInputField("text", "user_surname", ["size" => "30", "tabindex" => "5", "id" => "user_surname"]) . '</td>
+			</tr>
+			<tr>
+				<td align="right" width="40%" style="border-top:none;"><span style="color:red">*</span>&nbsp;Email:</td>
+				<td width="60%" valign="top" style="border-top:none;">' . $this->ShowInputField("text", "email", ["size" => "30", "tabindex" => "6", "id" => "email"]) . '</td>
+			</tr>
+			</table>
+			</div>
+
+			<script>
+			changeLicKey(' . (($lic_key_variant == "Y") ? 'true' : 'false') . ');
+			</script>
+			';
+		}
+
+		$arDBTypes = BXInstallServices::GetDBTypes();
+
+		if (count($arDBTypes) > 1)
+		{
+			$strDBTypes = "";
+			foreach ($arDBTypes as $dbType => $active)
+			{
+				$arParams = ($active ? [] : ["disabled" => "disabled"]);
+				$strDBTypes .= $this->ShowRadioField("dbType", $dbType, ["id" => "dbType_" . $dbType] + $arParams);
+
+				$dbName = $dbType;
+				if ($dbType == "mysql")
+				{
+					$dbName = "MySQL";
+				}
+				elseif ($dbType == "pgsql")
+				{
+					$dbName = "PostgreSQL";
+				}
+
+				$strDBTypes .= '<label for="' . "dbType_" . $dbType . '">&nbsp;' . $dbName . '</label><br>';
+			}
+
+			$this->content .= '
+				<br />
+				<table border="0" class="data-table">
+				<tr>
+					<td colspan="2" class="header">' . GetMessage("INS_DB_SELECTION") . '</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" width="40%">
+						<span style="color:red">*</span>&nbsp;' . GetMessage("INS_DB_PROMT") . ':<br><small>' . GetMessage("INS_DB_PROMT_ALT") . '<br></small>
+					</td>
+					<td valign="top" width="60%">
+						' . $strDBTypes . '
+						<small>' . GetMessage("INS_DB_PROMT_HINT") . '<br></small>
+					</td>
+				</tr>
+				</table>
+			';
+		}
+		else
+		{
+			$wizard->SetVar("dbType", $wizard->GetDefaultVar("dbType"));
+		}
+
+		$this->content .= '
+			<script>
+				setTimeout(function() {
+					if(document.getElementById("license_id"))
+					{
+						document.getElementById("license_id").focus();
+					}
+					else
+					{
+						if(document.getElementById("lic_key_variant"))
+							document.getElementById("lic_key_variant").focus();
+					}
+				}, 500);
+			</script>
+		';
+	}
+
+	public function CheckShortInstall()
+	{
+		$wizard = $this->GetWizard();
+
+		$dbType = $wizard->GetVar("dbType");
+
+		//PHP
+		$requireStep = new RequirementStep;
+		if (!$requireStep->CheckRequirements($dbType))
+		{
+			$this->SetError($requireStep->GetErrors());
+			return;
+		}
+
+		//UTF-8
+		if (!BXInstallServices::IsUTF8Support())
+		{
+			$this->SetError(GetMessage("INST_UTF8_NOT_SUPPORT"));
+			return;
+		}
+
+		//Check connection
+		require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/start.php");
+
+		IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/main.php");
+
+		$application = \Bitrix\Main\HttpApplication::getInstance();
+		$conPool = $application->getConnectionPool();
+		$connection = $conPool->getConnection();
+
+		$conPool->useMasterOnly(true);
+
+		// Database-dependent classes
+		CAllDatabase::registerAutoload($dbType);
+
+		$DB = new CDatabase;
+
+		if (!$DB->DoConnect())
+		{
+			$this->SetError(GetMessage("COULD_NOT_CONNECT") . " " . $DB->db_Error);
+			return;
+		}
+
+		$databaseStep = new CreateDBStep;
+		$databaseStep->DB = $DB;
+		$databaseStep->dbType = $dbType;
+		$databaseStep->dbName = $connection->getDatabase();
+		$databaseStep->filePermission = (defined("BX_FILE_PERMISSIONS") ? sprintf("%04o", BX_FILE_PERMISSIONS) : 0);
+		$databaseStep->folderPermission = (defined("BX_DIR_PERMISSIONS") ? sprintf("%04o", BX_DIR_PERMISSIONS) : 0);
+
+		$clearDb = defined("DEBUG_MODE") || (isset($_COOKIE["clear_db"]) && $_COOKIE["clear_db"] == "Y");
+
+		if (!$clearDb && $databaseStep->IsBitrixInstalled())
+		{
+			$this->SetError($databaseStep->GetErrors());
+			return;
+		}
+
+		//Database check
+		if ($dbType == "mysql")
+		{
+			$databaseStep->checkMysqlRequirements($connection);
+		}
+		elseif ($dbType == "pgsql")
+		{
+			$databaseStep->checkPgsqlRequirements($connection);
+		}
+
+		if (!empty($databaseStep->GetErrors()))
+		{
+			$this->SetError($databaseStep->GetErrors());
+			return;
+		}
+
+		if ($dbType == "mysql")
+		{
+			$DB->Query("ALTER DATABASE `" . $databaseStep->dbName . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci", true);
+
+			//Create after_connect.php if not exists
+			if (!file_exists($_SERVER["DOCUMENT_ROOT"] . BX_PERSONAL_ROOT . "/php_interface/after_connect_d7.php") && $databaseStep->CreateAfterConnect() === false)
+			{
+				$this->SetError($databaseStep->GetErrors());
+			}
+		}
+
+		if (!$databaseStep->CheckDBOperation())
+		{
+			$this->SetError($databaseStep->GetErrors());
+		}
+	}
+
+	function SetError($strError, $id = false)
+	{
+		if (is_array($strError))
+		{
+			$this->stepErrors = array_merge($this->stepErrors, $strError);
+		}
+		else
+		{
+			$this->stepErrors[] = [$strError, $id];
+		}
+	}
+}
+
+class RequirementStep extends CWizardStep
+{
+	protected $memoryMin = 256;
+	protected $memoryRecommend = 512;
+	protected $diskSizeMin = 1500;
+	protected $phpMinVersion = "8.2.0";
+	protected $apacheMinVersion = "2.0";
+	protected $nginxMinVersion = "1.22.0";
+	protected $bitrixVmMinVersion = '9.0.0';
+	protected $arCheckFiles = [];
+
+	function InitStep()
+	{
+		$this->SetStepID("requirements");
+		$this->SetNextStep("create_database");
+		$this->SetPrevStep("check_license_key");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetPrevCaption(GetMessage("PREVIOUS_BUTTON"));
+		$this->SetTitle(GetMessage("INS_STEP4_TITLE"));
+	}
+
+	function OnPostForm()
+	{
+		$wizard = $this->GetWizard();
+
+		if ($wizard->IsPrevButtonClick())
+		{
+			return null;
+		}
+
+		$dbType = $wizard->GetVar("dbType");
+
+		if (!BXInstallServices::IsUTF8Support())
+		{
+			$this->SetError(GetMessage("INST_UTF8_RECOMENDATION2"));
+			return false;
+		}
+
+		$mbEncoding = ini_get("mbstring.internal_encoding");
+		if ($mbEncoding <> '' && strtoupper($mbEncoding) <> strtoupper(ini_get("default_charset")))
+		{
+			$this->SetError(GetMessage("INST_UTF8_DEFAULT_ENCODING"));
+			return false;
+		}
+
+		if (!BXInstallServices::CheckSession())
+		{
+			$this->SetError(GetMessage("INST_SESSION_NOT_SUPPORT"));
+			return false;
+		}
+
+		if (!$this->CheckRequirements($dbType))
+		{
+			return false;
+		}
+		return null;
+	}
+
+	function CheckRequirements($dbType)
+	{
+		if ($this->CheckServerVersion($serverName, $serverVersion, $serverMinVersion) === false)
+		{
+			$this->SetError(GetMessage("SC_WEBSERVER_VER_ER"));
+			return false;
+		}
+
+		if (function_exists('apache_get_modules') && !in_array('mod_rewrite', apache_get_modules()))
+		{
+			$this->SetError(GetMessage("SC_MOD_REWRITE"));
+			return false;
+		}
+
+		if (!$this->CheckPHPVersion())
+		{
+			$this->SetError(GetMessage("SC_PHP_VER_ER"));
+			return false;
+		}
+
+		if ($this->GetPHPSetting("safe_mode") == "ON")
+		{
+			$this->SetError(GetMessage("SC_SAFE_MODE_ER"));
+			return false;
+		}
+
+		if (ini_get("date.timezone") == '')
+		{
+			$this->SetError(GetMessage("SC_TIME_ZONE_ER"));
+			return false;
+		}
+
+		if (extension_loaded('eaccelerator'))
+		{
+			$this->SetError(GetMessage("SC_EA_ER"));
+			return false;
+		}
+
+		$arDBTypes = BXInstallServices::GetDBTypes();
+		if (!array_key_exists($dbType, $arDBTypes) || $arDBTypes[$dbType] === false)
+		{
+			$this->SetError(GetMessage("SC_NO_MYS_LIB_ER"));
+			return false;
+		}
+
+		if (!function_exists("hash"))
+		{
+			$this->SetError(GetMessage("SC_NO_HASH"));
+			return false;
+		}
+
+		if (!function_exists("openssl_encrypt"))
+		{
+			$this->SetError(GetMessage("SC_NO_OPENSSL_LIB_ER"));
+			return false;
+		}
+
+		if (!function_exists("mb_strlen"))
+		{
+			$this->SetError(GetMessage("SC_NO_MBSTRING_LIB_ER"));
+			return false;
+		}
+
+		if (intval(ini_get("mbstring.func_overload")) > 0)
+		{
+			$this->SetError(GetMessage("SC_FUNC_OVERLOAD_ER1"));
+			return false;
+		}
+
+		if (!$this->CheckFileAccess())
+		{
+			$files = "";
+			foreach ($this->arCheckFiles as $arFile)
+			{
+				if (!$arFile["ACCESS"])
+				{
+					$files .= "<br />&nbsp;" . $arFile["PATH"];
+				}
+			}
+
+			$this->SetError(GetMessage("INST_ERROR_ACCESS_FILES") . $files);
+			return false;
+		}
+
+		return true;
+	}
+
+	function GetPHPSetting($value)
+	{
+		return (ini_get($value) == "1" || strtoupper(ini_get($value)) == "ON" ? "ON" : "OFF");
+	}
+
+	function ShowResult($resultText, $type = "OK")
+	{
+		if ($resultText == '')
+		{
+			return "";
+		}
+
+		if (strtoupper($type) == "ERROR" || $type === false)
+		{
+			return "<b><span style=\"color:red\">" . $resultText . "</span></b>";
+		}
+		elseif (strtoupper($type) == "OK" || $type === true)
+		{
+			return "<b><span style=\"color:green\">" . $resultText . "</span></b>";
+		}
+		elseif (strtoupper($type) == "NOTE" || strtoupper($type) == "N")
+		{
+			return "<b><span style=\"color:black\">" . $resultText . "</span></b>";
+		}
+		return "";
+	}
+
+	function CheckServerVersion(&$serverName, &$serverVersion, &$serverMinVersion)
+	{
+		$serverName = "";
+		$serverVersion = "";
+		$serverMinVersion = "";
+
+		if (isset($_SERVER['BITRIX_VA_VER']))
+		{
+			// Bitrix VM on board
+			$serverName = 'Bitrix VM';
+			$serverVersion = $_SERVER['BITRIX_VA_VER'];
+			$serverMinVersion = $this->bitrixVmMinVersion;
+
+			return BXInstallServices::VersionCompare($serverVersion, $serverMinVersion);
+		}
+		else
+		{
+			$serverSoftware = $_SERVER["SERVER_SOFTWARE"];
+			if ($serverSoftware == '')
+			{
+				$serverSoftware = $_SERVER["SERVER_SIGNATURE"];
+			}
+			$serverSoftware = trim($serverSoftware);
+
+			if (!preg_match("#^([a-zA-Z-]+).*?([\\d]+\\.[\\d]+(\\.[\\d]+)?)#i", $serverSoftware, $arMatch))
+			{
+				return null;
+			}
+
+			$serverName = $arMatch[1];
+			$serverVersion = $arMatch[2];
+
+			$serverNameUpper = strtoupper($serverName);
+			if ($serverNameUpper == "APACHE")
+			{
+				$serverMinVersion = $this->apacheMinVersion;
+				return BXInstallServices::VersionCompare($serverVersion, $serverMinVersion);
+			}
+			elseif ($serverNameUpper == "NGINX")
+			{
+				$serverMinVersion = $this->nginxMinVersion;
+				return BXInstallServices::VersionCompare($serverVersion, $serverMinVersion);
+			}
+
+			return null;
+		}
+	}
+
+	function CheckPHPVersion()
+	{
+		return BXInstallServices::VersionCompare(phpversion(), $this->phpMinVersion);
+	}
+
+	function CheckFileAccess()
+	{
+		$this->arCheckFiles = [
+			["PATH" => $_SERVER["DOCUMENT_ROOT"], "DESC" => GetMessage("SC_DISK_PUBLIC"), "RESULT" => "", "ACCESS" => true],
+			["PATH" => $_SERVER["DOCUMENT_ROOT"] . "/bitrix", "DESC" => GetMessage("SC_DISK_BITRIX"), "RESULT" => "", "ACCESS" => true],
+			["PATH" => $_SERVER["DOCUMENT_ROOT"] . "/index.php", "DESC" => GetMessage("SC_FILE"), "RESULT" => "", "ACCESS" => true],
+			["PATH" => $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules", "DESC" => GetMessage("SC_CATALOG"), "RESULT" => "", "ACCESS" => true],
+		];
+
+		$success = true;
+		foreach ($this->arCheckFiles as $index => $arFile)
+		{
+			$readable = is_readable($arFile["PATH"]);
+			$writeable = is_writeable($arFile["PATH"]);
+
+			if ($readable && $writeable)
+			{
+				$this->arCheckFiles[$index]["RESULT"] = $this->ShowResult(GetMessage("SC_DISK_AVAIL_READ_WRITE1"), "OK");
+				continue;
+			}
+
+			$success = false;
+			$this->arCheckFiles[$index]["ACCESS"] = false;
+
+			if (!$writeable)
+			{
+				$this->arCheckFiles[$index]["RESULT"] .= $this->ShowResult(GetMessage("SC_CAN_NOT_WRITE"), "ERROR");
+			}
+
+			if (!$writeable && !$readable)
+			{
+				$this->arCheckFiles[$index]["RESULT"] .= " " . GetMessage("SC_AND") . " ";
+			}
+
+			if (!$readable)
+			{
+				$this->arCheckFiles[$index]["RESULT"] .= $this->ShowResult(GetMessage("SC_CAN_NOT_READ"), "ERROR");
+			}
+		}
+
+		if ($success === false)
+		{
+			return false;
+		}
+
+		return $this->CreateTemporaryFiles();
+	}
+
+	function CreateTemporaryFiles()
+	{
+		$htaccessTest = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/httest";
+		$rootTest = $_SERVER["DOCUMENT_ROOT"] . "/bxtest";
+
+		if (!file_exists($htaccessTest) && @mkdir($htaccessTest) === false)
+		{
+			$this->arCheckFiles[] = [
+				"PATH" => $htaccessTest,
+				"DESC" => GetMessage("SC_CATALOG"),
+				"RESULT" => $this->ShowResult(GetMessage("SC_CAN_NOT_WRITE"), "ERROR"),
+				"ACCESS" => false,
+			];
+			return false;
+		}
+
+		if (!file_exists($rootTest) && @mkdir($rootTest) === false)
+		{
+			$this->arCheckFiles[] = [
+				"PATH" => $rootTest,
+				"ACCESS" => false,
+				"RESULT" => $this->ShowResult(GetMessage("SC_CAN_NOT_WRITE"), "ERROR"),
+				"DESC" => GetMessage("SC_CATALOG"),
+			];
+			return false;
+		}
+
+		$arFiles = [
+			[
+				"PATH" => $_SERVER["DOCUMENT_ROOT"] . "/bitrix/httest/.htaccess",
+				"CONTENT" => 'ErrorDocument 404 /bitrix/httest/404.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.+\.php$ /bitrix/httest/404.php
+</IfModule>',
+			],
+			[
+				"PATH" => $_SERVER["DOCUMENT_ROOT"] . "/bitrix/httest/404.php",
+				"CONTENT" => "<" . "?\n" .
+					"$" . "cgi = (stristr(php_sapi_name(), \"cgi\") !== false);\n" .
+					"$" . "fastCGI = (" . "$" . "cgi && stristr(" . "$" . "_SERVER[\"SERVER_SOFTWARE\"], \"Microsoft-IIS\") !== false);\n" .
+					"if (" . "$" . "cgi && !" . "$" . "fastCGI)\n" .
+					"	header(\"Status: 200 OK\");\n" .
+					"else\n" .
+					"	header(\"HTTP/1.0 200 OK\");\n" .
+					"echo \"SUCCESS\";\n" .
+					"?" . ">",
+			],
+			[
+				"PATH" => $_SERVER["DOCUMENT_ROOT"] . "/bxtest/test.php",
+				"CONTENT" => "test",
+			],
+		];
+
+		foreach ($arFiles as $arFile)
+		{
+			if (!$fp = @fopen($arFile["PATH"], "wb"))
+			{
+				$this->arCheckFiles[] = ["PATH" => $arFile["PATH"], "ACCESS" => false, "SKIP" => true];
+				return false;
+			}
+
+			if (!fwrite($fp, $arFile["CONTENT"]))
+			{
+				$this->arCheckFiles[] = ["PATH" => $arFile["PATH"], "ACCESS" => false, "SKIP" => true];
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	function ShowStep()
+	{
+		$wizard = $this->GetWizard();
+
+		$this->content .= '<h3>' . GetMessage("SC_SUBTITLE_REQUIED") . '</h3>' . GetMessage("SC_SUBTITLE_REQUIED_DESC") . '<br><br>';
+
+		$this->content .= '
+		<table border="0" class="data-table data-table-multiple-column">
+			<tr>
+				<td class="header">' . GetMessage("SC_PARAM") . '</td>
+				<td class="header">' . GetMessage("SC_REQUIED") . '</td>
+				<td class="header">' . GetMessage("SC_CURRENT") . '</td>
+			</tr>';
+
+		//Web server version
+		$success = $this->CheckServerVersion($serverName, $serverVersion, $serverMinVersion);
+		$this->content .= '
+		<tr>
+			<td valign="top">
+					' . str_replace("#SERVER#", (($serverName <> '') ? $serverName : GetMessage("SC_UNKNOWN")), GetMessage("SC_SERVER_VERS")) . '
+			</td>
+			<td valign="top">
+				' . ($serverMinVersion <> '' ? str_replace("#VER#", $serverMinVersion, GetMessage("SC_VER_VILKA1")) : "") . '
+			</td>
+			<td valign="top">
+				' . ($success !== null ? $this->ShowResult($serverVersion, $success) : $this->ShowResult(GetMessage("SC_UNKNOWN1"), "ERROR")) . '
+			</td>
+		</tr>';
+
+		if (function_exists('apache_get_modules'))
+		{
+			// mod_rewrite
+			$this->content .= '
+			<tr>
+				<td valign="top">mod_rewrite</td>
+				<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+				<td valign="top">
+						' . (in_array('mod_rewrite', apache_get_modules()) ?
+					$this->ShowResult(GetMessage("SC_SETTED"), "OK") :
+					$this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")
+				) . '
+				</td>
+			</tr>';
+		}
+
+		//PHP version
+		$success = $this->CheckPHPVersion();
+		$this->content .= '
+		<tr>
+			<td valign="top">' . GetMessage("SC_PHP_VERS") . '</td>
+			<td valign="top">
+					' . ($this->phpMinVersion <> '' ? str_replace("#VER#", $this->phpMinVersion, GetMessage("SC_VER_VILKA1")) : "") . '
+			</td>
+			<td valign="top">' . $this->ShowResult(phpversion(), $success) . '</td>
+		</tr>';
+
+		$this->content .= '
+		<tr>
+			<td colspan="3"><b>' . GetMessage("SC_PHP_SETTINGS") . '</b></td>
+		</tr>';
+
+		//Save mode
+		$this->content .= '
+		<tr>
+			<td valign="top">safe mode</td>
+			<td valign="top">' . GetMessage("SC_TURN_OFF") . '</td>
+			<td valign="top">
+					' . ($this->GetPHPSetting("safe_mode") == "ON" ?
+				$this->ShowResult(GetMessage("SC_TURN_ON"), "ERROR") :
+				$this->ShowResult(GetMessage("SC_TURN_OFF"), "OK")
+			) . '
+			</td>
+		</tr>';
+
+		//timezone
+		$this->content .= '
+		<tr>
+			<td valign="top">date.timezone</td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+					' . (($zone = ini_get("date.timezone")) == '' ?
+				$this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR") :
+				$this->ShowResult($zone, "OK")
+			) . '
+			</td>
+		</tr>';
+
+		if ($this->GetPHPSetting('opcache.enable') == 'ON')
+		{
+			$this->content .= '
+			<tr>
+				<td valign="top">opcache.validate_timestamps</td>
+				<td valign="top">1</td>
+				<td valign="top">
+						' . ($this->GetPHPSetting('opcache.validate_timestamps') == "ON" ?
+					$this->ShowResult(1, "OK") :
+					$this->ShowResult(0, "ERROR")
+				) . '
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">opcache.revalidate_freq</td>
+				<td valign="top">0</td>
+				<td valign="top">
+						' . (ini_get('opcache.revalidate_freq') > 0 ?
+					$this->ShowResult(ini_get('opcache.revalidate_freq'), "ERROR") :
+					$this->ShowResult("0", "OK")
+				) . '
+				</td>
+			</tr>';
+		}
+
+		if (extension_loaded('eaccelerator'))
+		{
+			$this->content .= '
+			<tr>
+				<td valign="top">eAccelerator</td>
+				<td valign="top">' . GetMessage("SC_NOT_SETTED") . '</td>
+				<td valign="top">' . $this->ShowResult(GetMessage("SC_SETTED"), "ERROR") . '</td>
+			</tr>';
+		}
+
+		//UTF-8
+		$encoding = ini_get("default_charset");
+		if ($encoding == "")
+		{
+			$encoding = $this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR");
+		}
+		else
+		{
+			$encoding = $this->ShowResult($encoding, (strtoupper($encoding) == "UTF-8" ? "OK" : "ERROR"));
+		}
+
+		$this->content .= '
+			<tr>
+				<td valign="top">default_charset</td>
+				<td valign="top">UTF-8</td>
+				<td valign="top">' . $encoding . '</td>
+			</tr>';
+
+		if (intval(ini_get("mbstring.func_overload")) > 0)
+		{
+			$this->content .= '
+				<tr>
+					<td valign="top">mbstring.func_overload</td>
+					<td valign="top">-</td>
+					<td valign="top">' . $this->ShowResult(ini_get("mbstring.func_overload"), "ERROR") . '</td>
+				</tr>';
+		}
+
+		//Database support in PHP
+		$dbType = $wizard->GetVar("dbType");
+		$arDBTypes = BXInstallServices::GetDBTypes();
+		$success = (array_key_exists($dbType, $arDBTypes) && $arDBTypes[$dbType] === true);
+
+		$library = '';
+		if ($dbType == "mysql")
+		{
+			$library = '<a href="https://www.php.net/manual/en/book.mysqli.php" target="_blank">' . GetMessage("SC_MOD_MYSQL") . '</a>';
+		}
+		elseif ($dbType == "pgsql")
+		{
+			$library = '<a href="https://www.php.net/manual/en/book.pgsql.php" target="_blank">PostgreSQL</a>';
+		}
+
+		$this->content .= '
+		<tr>
+			<td colspan="3"><b>' . GetMessage("SC_REQUIED_PHP_MODS") . '</b></td>
+		</tr>
+		<tr>
+			<td valign="top">' . $library . '</td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+			' . (
+			$success ?
+				$this->ShowResult(GetMessage("SC_SETTED"), "OK") :
+				$this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")
+			) . '</td>
+		</tr>';
+
+		$this->content .= '
+		<tr>
+			<td valign="top">
+				<a href="http://php.net/manual/book.hash.php" target="_blank">' . GetMessage("SC_MOD_HASH") . '</a>
+			</td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+					' . (function_exists("hash") ? $this->ShowResult(GetMessage("SC_SETTED"), "OK") : $this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")) . '
+			</td>
+		</tr>';
+
+		$this->content .= '
+		<tr>
+			<td valign="top">
+				<a href="http://php.net/manual/en/book.openssl.php" target="_blank">OpenSSL</a>
+			</td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+					' . (function_exists("openssl_encrypt") ? $this->ShowResult(GetMessage("SC_SETTED"), "OK") : $this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")) . '
+			</td>
+		</tr>';
+		$this->content .= '
+		<tr>
+			<td valign="top">
+				<a href="http://php.net/manual/en/book.mbstring.php" target="_blank">Multibyte String</a>
+			</td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+					' . (function_exists("mb_strlen") ? $this->ShowResult(GetMessage("SC_SETTED"), "OK") : $this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")) . '
+			</td>
+		</tr>';
+
+		if (!BXInstallServices::CheckSession())
+		{
+			$this->content .= '
+				<tr>
+					<td valign="top">
+							<a href="http://www.php.net/manual/en/book.session.php" target="_blank">' . GetMessage("INST_SESSION_SUPPORT") . '</a>
+					</td>
+					<td valign="top">' . GetMessage("INST_YES") . '</td>
+					<td valign="top">' . $this->ShowResult(GetMessage("INST_NO") . ". " . GetMessage("INST_SESSION_NOT_SUPPORT"), "ERROR") . '</td>
+				</tr>';
+		}
+
+		$this->content .= '</table>';
+
+		//File and folder permissons
+		$this->content .= '<h3>' . GetMessage("SC_SUBTITLE_DISK") . '</h3>' . GetMessage("SC_SUBTITLE_DISK_DESC") . '<br><br>';
+		$this->content .= '
+		<table border="0" class="data-table data-table-multiple-column">
+		<tr>
+			<td class="header">' . GetMessage("SC_PARAM") . '</td>
+			<td class="header">' . GetMessage("SC_VALUE") . '</td>
+		</tr>';
+
+		$this->CheckFileAccess();
+		foreach ($this->arCheckFiles as $arFile)
+		{
+			if (isset($arFile["SKIP"]))
+			{
+				continue;
+			}
+
+			$this->content .= '
+			<tr>
+				<td valign="top">' . $arFile["DESC"] . ' <i>' . $arFile["PATH"] . '</i></td>
+				<td valign="top">' . $arFile["RESULT"] . '</td>
+			</tr>';
+		}
+
+		$this->content .= '</table>';
+
+		//Recommend
+		$this->content .= '<h3>' . GetMessage("SC_SUBTITLE_RECOMMEND") . '</h3>' . GetMessage("SC_SUBTITLE_RECOMMEND_DESC") . '<br><br>';
+		$this->content .= '
+		<table border="0" class="data-table data-table-multiple-column">
+			<tr>
+				<td class="header">' . GetMessage("SC_PARAM") . '</td>
+				<td class="header">' . GetMessage("SC_RECOMMEND") . '</td>
+				<td class="header">' . GetMessage("SC_CURRENT") . '</td>
+			</tr>';
+
+		if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/intranet"))
+		{
+			if (!($vm = getenv('BITRIX_VA_VER')))
+			{
+				$txt = $this->ShowResult(GetMessage('SC_VMBITRIX_UNKNOWN'), false);
+			}
+			elseif (version_compare($vm, $this->bitrixVmMinVersion, '<'))
+			{
+				$txt = $this->ShowResult(str_replace('#VER#', htmlspecialcharsbx($vm), GetMessage('SC_VMBITRIX_OLD')), false);
+			}
+			else
+			{
+				$txt = $this->ShowResult(GetMessage('SC_VMBITRIX_OK'), true);
+			}
+
+			$this->content .= '
+			<tr>
+				<td valign="top">' . GetMessage("SC_VMBITRIX") . '</td>
+				<td valign="top">' . str_replace('#VER#', $this->bitrixVmMinVersion, GetMessage('SC_VMBITRIX_RECOMMENDED')) . '</td>
+				<td valign="top">' . $txt . '</td>
+			</tr>';
+		}
+
+		if (str_contains(strtolower($_SERVER['SERVER_SOFTWARE']), 'apache'))
+		{
+			$this->content .= '
+			<tr>
+				<td valign="top">' . GetMessage("SC_HTACCESS") . '</td>
+				<td valign="top">' . GetMessage("SC_TURN_ON2") . '</td>
+				<td valign="top"><span id="httest">' . $this->ShowResult(GetMessage("SC_TESTING"), "N") . '</span>
+				<script>
+					req = false;
+					if(window.XMLHttpRequest)
+					{
+						try{req = new XMLHttpRequest();}
+						catch(e) {req = false;}
+					} else if(window.ActiveXObject)
+					{
+						try {req = new ActiveXObject("Msxml2.XMLHTTP");}
+						catch(e)
+						{
+							try {req = new ActiveXObject("Microsoft.XMLHTTP");}
+							catch(e) {req = false;}
+						}
+					}
+
+					if (req)
+					{
+						req.onreadystatechange = processReqChange;
+						req.open("GET", "/bitrix/httest/test_404.php?random=" + Math.random(), true);
+						req.send("");
+					}
+					else
+						document.getElementById("httest").innerHTML = \'' . $this->ShowResult(GetMessage("SC_HTERR"), "ERROR") . '\';
+
+					function processReqChange() {
+						if (req.readyState == 4) {
+							if (req.responseText == "SUCCESS") {
+								res = \'' . $this->ShowResult(GetMessage("SC_TURN_ON2"), "OK") . '\';
+							} else {
+								res = \'' . $this->ShowResult(GetMessage("SC_TURN_OFF2"), "ERROR") . '\';
+							}
+							document.getElementById("httest").innerHTML = res;
+						}
+					}
+				</script>
+				</td>
+			</tr>';
+		}
+
+		$freeSpace = @disk_free_space($_SERVER["DOCUMENT_ROOT"]);
+		$freeSpace = $freeSpace * 1.0 / 1000000.0;
+		$this->content .= '
+		<tr>
+			<td valign="top">' . GetMessage("SC_AVAIL_DISK_SPACE") . '</td>
+			<td valign="top">
+				' . (intval($this->diskSizeMin) > 0 ? str_replace("#SIZE#", $this->diskSizeMin, GetMessage("SC_AVAIL_DISK_SPACE_SIZE")) : "") . '&nbsp;
+			</td>
+			<td valign="top">
+					' . ($freeSpace > $this->diskSizeMin ? $this->ShowResult(round($freeSpace, 1) . " Mb", "OK") : $this->ShowResult(round($freeSpace, 1) . " Mb", "ERROR")) . '
+			</td>
+		</tr>';
+
+		$memoryLimit = WelcomeStep::unformat(ini_get('memory_limit'));
+		if (!$memoryLimit || $memoryLimit == '')
+		{
+			$memoryLimit = WelcomeStep::unformat(get_cfg_var('memory_limit'));
+		}
+
+		if ($memoryLimit > 0 && $memoryLimit < $this->memoryMin)
+		{
+			@ini_set("memory_limit", $this->memoryMin . "M");
+			$memoryLimit = WelcomeStep::unformat(ini_get('memory_limit'));
+		}
+
+		$recommendMemory = "";
+		if (intval($this->memoryMin) > 0)
+		{
+			$recommendMemory .= str_replace("#SIZE#", $this->memoryMin, GetMessage("SC_AVAIL_MEMORY_MIN"));
+		}
+		if (intval($this->memoryMin) > 0 && intval($this->memoryRecommend) > 0)
+		{
+			$recommendMemory .= ", ";
+		}
+		if (intval($this->memoryRecommend) > 0)
+		{
+			$recommendMemory .= str_replace("#SIZE#", $this->memoryRecommend, GetMessage("SC_AVAIL_MEMORY_REC"));
+		}
+
+		$this->content .= '
+		<tr>
+			<td colspan="3"><b>' . GetMessage("SC_RECOM_PHP_SETTINGS") . '</b></td>
+		</tr>
+		<tr>
+			<td valign="top">' . GetMessage("SC_AVAIL_MEMORY") . '</td>
+			<td valign="top">' . $recommendMemory . '</td>
+			<td valign="top">
+					' . ($memoryLimit > 0 && $memoryLimit < $this->memoryMin * 1048576 ? $this->ShowResult(ini_get('memory_limit'), "ERROR") : $this->ShowResult(ini_get('memory_limit'), "OK")) . '
+			</td>
+		</tr>';
+
+		$this->content .= '
+		<tr>
+			<td valign="top">' . GetMessage("SC_ALLOW_UPLOAD") . ' (file_uploads)</td>
+			<td valign="top">' . GetMessage("SC_TURN_ON1") . '</td>
+			<td valign="top">
+					' . ($this->GetPHPSetting("file_uploads") == "ON" ? $this->ShowResult(GetMessage("SC_TURN_ON1"), "OK") : $this->ShowResult(GetMessage("SC_TURN_OFF1"), "ERROR")) . '
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">' . GetMessage("SC_SHOW_ERRORS") . ' (display_errors)</td>
+			<td valign="top">' . GetMessage("SC_TURN_OFF1") . '</td>
+			<td valign="top">
+					' . ($this->GetPHPSetting("display_errors") == "ON" ? $this->ShowResult(GetMessage("SC_TURN_ON1"), "ERROR") : $this->ShowResult(GetMessage("SC_TURN_OFF1"), "OK")) . '
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">' . GetMessage("SC_magic_quotes_sybase") . ' (magic_quotes_sybase)</td>
+			<td valign="top">' . GetMessage("SC_TURN_OFF1") . '</td>
+			<td valign="top">
+					' . ($this->GetPHPSetting("magic_quotes_sybase") == "ON" ? $this->ShowResult(GetMessage("SC_TURN_ON1"), "ERROR") : $this->ShowResult(GetMessage("SC_TURN_OFF1"), "OK")) . '
+			</td>
+		</tr>';
+
+		//Recommended extensions
+		$this->content .= '
+		<tr>
+			<td colspan="3"><b>' . GetMessage("SC_RECOM_PHP_MODULES") . '</b></td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<a href="http://www.php.net/manual/en/ref.zlib.php" target="_blank">Zlib Compression</a>
+			</td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+					' . (extension_loaded("zlib") && function_exists("gzcompress") ? $this->ShowResult(GetMessage("SC_SETTED"), "OK") : $this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")) . '
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<a href="http://www.php.net/manual/en/ref.image.php" target="_blank">' . GetMessage("SC_MOD_GD") . '</a>
+			</td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+					' . (function_exists("imagecreate") ? $this->ShowResult(GetMessage("SC_SETTED"), "OK") : $this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")) . '
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="http://www.freetype.org" target="_blank">Free Type Library</a></td>
+			<td valign="top">' . GetMessage("SC_SETTED") . '</td>
+			<td valign="top">
+					' . (function_exists("imagettftext") ? $this->ShowResult(GetMessage("SC_SETTED"), "OK") : $this->ShowResult(GetMessage("SC_NOT_SETTED"), "ERROR")) . '
+			</td>
+		</tr>';
+
+		$this->content .= '</table>';
+
+		$this->content .= '<br /><br /><table class="data-table"><tr><td width="0%">' . GetMessage("SC_NOTES1") . '</td></tr></table>';
+	}
+}
+
+class CreateDBStep extends CWizardStep
+{
+	const MIN_MYSQL_VERSION = '8.0.0';
+	const MIN_PGSQL_VERSION = '13.0.0';
+
+	var $dbType;
+	var $dbUser;
+	var $dbPassword;
+	var $dbHost;
+	var $dbName;
+	var $createDatabase;
+	var $createUser;
+	var $rootUser;
+	var $rootPassword;
+	var $filePermission;
+	var $folderPermission;
+	var $DB = null;
+	var $sqlMode = false;
+	protected $collation = 'utf8mb4_0900_ai_ci';
+
+	function InitStep()
+	{
+		$this->SetStepID("create_database");
+		$this->SetNextStep("create_modules");
+		$this->SetPrevStep("requirements");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetPrevCaption(GetMessage("PREVIOUS_BUTTON"));
+		$this->SetTitle(GetMessage("INS_STEP5_TITLE"));
+
+		$wizard = $this->GetWizard();
+
+		$wizard->SetDefaultVars([
+			"folder_access_perms" => "0755",
+			"file_access_perms" => "0644",
+			"create_user" => "N",
+			"create_database" => "N",
+		]);
+
+		$wizard->SetDefaultVar("database", "sitemanager");
+		$wizard->SetDefaultVar("host", "localhost");
+	}
+
+	function OnPostForm()
+	{
+		$wizard = $this->GetWizard();
+
+		if ($wizard->IsPrevButtonClick())
+		{
+			return;
+		}
+
+		$this->dbType = $wizard->GetVar("dbType");
+		$this->dbUser = $wizard->GetVar("user");
+		$this->dbPassword = $wizard->GetVar("password");
+		$this->dbHost = $wizard->GetVar("host");
+		$this->dbName = $wizard->GetVar("database");
+
+		$this->createDatabase = $wizard->GetVar("create_database");
+		$this->createDatabase = ($this->createDatabase == "Y");
+
+		$this->createUser = $wizard->GetVar("create_user");
+		$this->createUser = ($this->createUser == "Y");
+
+		$this->rootUser = $wizard->GetVar("root_user");
+		$this->rootPassword = $wizard->GetVar("root_password");
+
+		if (preg_match("/(0[0-7]{3})/", $wizard->GetVar("file_access_perms"), $match))
+		{
+			$this->filePermission = $match[1];
+		}
+		else
+		{
+			$this->filePermission = $wizard->GetDefaultVar("file_access_perms");
+		}
+
+		if (preg_match("/(0[0-7]{3})/", $wizard->GetVar("folder_access_perms"), $match))
+		{
+			$this->folderPermission = $match[1];
+		}
+		else
+		{
+			$this->folderPermission = $wizard->GetDefaultVar("folder_access_perms");
+		}
+
+		// /bitrix/admin permissions
+		BXInstallServices::CheckDirPath($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/", octdec($this->folderPermission));
+		if (!is_readable($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/") || !is_writeable($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/"))
+		{
+			$this->SetError("Access denied: /bitrix/admin/");
+			return;
+		}
+
+		// define.php
+		$definePath = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/admin/define.php";
+		if (file_exists($definePath))
+		{
+			if (!is_readable($definePath) || !is_writeable($definePath))
+			{
+				$this->SetError("Access denied: /bitrix/modules/main/admin/define.php");
+				return;
+			}
+		}
+		else
+		{
+			$sc = false;
+			if ($fp = @fopen($definePath, "wb"))
+			{
+				if (fwrite($fp, "test"))
+				{
+					$sc = true;
+				}
+
+				@fclose($fp);
+				@unlink($definePath);
+			}
+
+			if (!$sc)
+			{
+				$this->SetError("Access denied: /bitrix/modules/main/admin/define.php");
+				return;
+			}
+		}
+
+		//Bad database type
+		$arDBTypes = BXInstallServices::GetDBTypes();
+		if (!array_key_exists($wizard->GetVar("dbType"), $arDBTypes) || $arDBTypes[$wizard->GetVar("dbType")] === false)
+		{
+			$this->SetError(GetMessage("ERR_INTERNAL_NODEF"));
+			return;
+		}
+
+		//Empty database user
+		if ($this->dbUser == '')
+		{
+			$this->SetError(GetMessage("ERR_NO_USER"), "user");
+			return;
+		}
+
+		$connectionParameters = [
+			'host' => $this->dbHost,
+			'database' => $this->dbName,
+			'login' => $this->dbUser,
+			'password' => $this->dbPassword,
+			'options' => 2,
+		];
+
+		if ($this->dbType == 'pgsql')
+		{
+			$connectionParameters['className'] = "\\Bitrix\\Main\\DB\\PgsqlConnection";
+			$connectionParameters['charset'] = 'utf8';
+		}
+		else
+		{
+			$connectionParameters['className'] = "\\Bitrix\\Main\\DB\\MysqliConnection";
+		}
+
+		$application = \Bitrix\Main\HttpApplication::getInstance();
+		$conPool = $application->getConnectionPool();
+		$conPool->setConnectionParameters(
+			\Bitrix\Main\Data\ConnectionPool::DEFAULT_CONNECTION_NAME,
+			$connectionParameters
+		);
+
+		$conPool->useMasterOnly(true);
+
+		if ($this->dbType == "mysql" && !$this->CreateMySQL())
+		{
+			return;
+		}
+
+		if ($this->dbType == "pgsql" && !$this->CreatePgSQL())
+		{
+			return;
+		}
+
+		if ($this->dbType == "mysql" && !$this->CreateAfterConnect())
+		{
+			return;
+		}
+
+		IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/main.php");
+
+		// Database-dependent classes
+		CAllDatabase::registerAutoload($this->dbType);
+
+		global $DB;
+		try
+		{
+			$DB = new CDatabase();
+			$this->DB = $DB;
+		}
+		catch (Exception $e)
+		{
+			$this->SetError((string)$e);
+			return;
+		}
+
+		$DB->DebugToFile = false;
+
+		if (!$DB->DoConnect())
+		{
+			$this->SetError(GetMessage("COULD_NOT_CONNECT") . " " . $DB->db_Error);
+			return;
+		}
+
+		$DB->debug = true;
+
+		if ($this->IsBitrixInstalled())
+		{
+			return;
+		}
+
+		if (!$this->CheckDBOperation())
+		{
+			return;
+		}
+
+		if (!$this->createSettings($connectionParameters))
+		{
+			return;
+		}
+
+		if (!$this->CreateDBConn())
+		{
+			return;
+		}
+
+		//Delete cache files if exists
+		BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bitrix/managed_cache");
+		BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bitrix/stack_cache");
+	}
+
+	function IsBitrixInstalled()
+	{
+		$DB =& $this->DB;
+
+		$res = $DB->Query("SELECT COUNT(ID) FROM b_user", true);
+		if ($res && $res->Fetch())
+		{
+			$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_ALREADY_INST1")));
+			return true;
+		}
+
+		return false;
+	}
+
+	function CreatePgSQL()
+	{
+		if (
+			preg_match("/[\\x0\\xFF\\/\\\\.]/", $this->dbName)
+			|| preg_match("/\\s$/", $this->dbName)
+			|| strlen($this->dbName) > 63
+		)
+		{
+			$this->SetError(GetMessage("ERR_DATABASE_NAME"));
+			return false;
+		}
+
+		$config = [
+			'host' => $this->dbHost,
+		];
+		if ($this->createDatabase || $this->createUser)
+		{
+			$config['login'] = $this->rootUser;
+			$config['password'] = $this->rootPassword;
+		}
+		else
+		{
+			$config['login'] = $this->dbUser;
+			$config['password'] = $this->dbPassword;
+			$config['database'] = $this->dbName;
+		}
+
+		$conn = new DB\PgsqlConnection($config);
+
+		try
+		{
+			$conn->connect();
+		}
+		catch (DB\ConnectionException $e)
+		{
+			$this->SetError(GetMessage("ERR_CONNECT2MYSQL") . " " . $e->getDatabaseMessage());
+			return false;
+		}
+
+		$this->checkPgsqlRequirements($conn);
+
+		if ($this->GetErrors())
+		{
+			return false;
+		}
+
+		if ($this->createDatabase)
+		{
+			$dbResult = $conn->query("SELECT datname FROM pg_database WHERE datname = '" . $conn->getSqlHelper()->forSql($this->dbName) . "'");
+			if ($dbResult->fetch())
+			{
+				$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_EXISTS_DB1")));
+				return false;
+			}
+
+			//Check default template1 collation
+			$dbResult = $conn->query("SELECT DATCTYPE FROM pg_database where datname='template1'");
+			$row = $dbResult->fetch();
+			if (preg_match('/\.(UTF-8|UTF8)$/i', $row['DATCTYPE']))
+			{
+				try
+				{
+					$conn->queryExecute("CREATE DATABASE " . $conn->getSqlHelper()->quote($this->dbName));
+				}
+				catch (DB\SqlQueryException $e)
+				{
+					$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_CREATE_DB1")) . ' ' . $e);
+					return false;
+				}
+			}
+			else //use slower template0 creation
+			{
+				try
+				{
+					$conn->queryExecute("CREATE DATABASE " . $conn->getSqlHelper()->quote($this->dbName) . " lc_ctype='C.UTF-8' template template0");
+				}
+				catch (DB\SqlQueryException)
+				{
+					//Windows ?
+					try
+					{
+						$conn->queryExecute("CREATE DATABASE " . $conn->getSqlHelper()->quote($this->dbName) . " lc_ctype='us.UTF8' template template0");
+					}
+					catch (DB\SqlQueryException $e)
+					{
+						$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_CREATE_DB1")) . ' ' . $e);
+						return false;
+					}
+				}
+			}
+
+			$config['database'] = $this->dbName;
+			$conn = new DB\PgsqlConnection($config);
+			try
+			{
+				$conn->queryExecute("CREATE EXTENSION IF NOT EXISTS pgcrypto");
+			}
+			catch (DB\SqlQueryException $e)
+			{
+				$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_CREATE_DB1")) . ' ' . $e);
+				return false;
+			}
+		}
+
+		if ($this->createDatabase || $this->createUser)
+		{
+			if ($this->createUser)
+			{
+				$createUser = "create user " . $conn->getSqlHelper()->quote($this->dbUser) . " with password '" . $conn->getSqlHelper()->forSql($this->dbPassword) . "'";
+				try
+				{
+					$conn->queryExecute($createUser);
+				}
+				catch (DB\SqlQueryException $e)
+				{
+					$this->SetError(GetMessage("ERR_CREATE_USER") . " " . $e->getDatabaseMessage());
+					return false;
+				}
+			}
+
+			$grantPrivileges = [
+				"grant all privileges on database  " . $conn->getSqlHelper()->quote($this->dbName) . " to " . $conn->getSqlHelper()->quote($this->dbUser),
+				"grant create on schema public to " . $conn->getSqlHelper()->quote($this->dbUser), //Start with Postgre15 requires explicit privilege
+			];
+			foreach ($grantPrivileges as $grant)
+			{
+				try
+				{
+					$conn->queryExecute($grant);
+				}
+				catch (DB\SqlQueryException $e)
+				{
+					$this->SetError(GetMessage("ERR_GRANT_USER") . " " . $e->getDatabaseMessage());
+					return false;
+				}
+			}
+		}
+
+		if (!$this->createDatabase)
+		{
+			$config['login'] = $this->dbUser;
+			$config['password'] = $this->dbPassword;
+			$config['database'] = $this->dbName;
+
+			//Check pgcrypto extention
+			$dbResult = $conn->query("select * from pg_available_extensions where name = 'pgcrypto' and installed_version is not null");
+			if (!$dbResult->fetch())
+			{
+				$this->SetError(GetMessage("SC_DB_PGSQL_PGCRYPTO_ER"));
+				return false;
+			}
+
+			//Check database collation
+			$dbResult = $conn->query("SELECT DATCTYPE FROM pg_database where datname='" . $conn->getSqlHelper()->forSql($this->dbName) . "'");
+			$row = $dbResult->fetch();
+			if (!preg_match('/\.(UTF-8|UTF8)$/i', $row['DATCTYPE']))
+			{
+				$this->SetError(GetMessage("SC_DB_PGSQL_DATABASE_CTYPE_ER"));
+				return false;
+			}
+
+			if (defined("DEBUG_MODE") || (isset($_COOKIE["clear_db"]) && $_COOKIE["clear_db"] == "Y"))
+			{
+				$conn = new DB\PgsqlConnection($config);
+				try
+				{
+					$conn->query("
+						DO \$\$
+						DECLARE
+							mytab RECORD;
+							myfunc RECORD;
+							myseq RECORD;
+							myview RECORD;
+						BEGIN
+							FOR mytab IN (SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = 'public')
+							LOOP
+								EXECUTE 'DROP TABLE IF EXISTS ' || quote_ident(mytab.table_name) || ' CASCADE';
+								COMMIT;
+							END LOOP;
+							FOR myfunc IN (SELECT routine_name FROM information_schema.routines WHERE routine_type='FUNCTION' AND specific_schema='public' AND external_language in ('SQL', 'PLPGSQL'))
+							LOOP
+								EXECUTE format('DROP FUNCTION %I.%I', 'public', myfunc.routine_name);
+							END LOOP;
+							FOR myseq IN (SELECT sequence_name FROM information_schema.sequences WHERE sequence_schema='public')
+							LOOP
+								EXECUTE format('DROP SEQUENCE %I.%I', 'public', myseq.sequence_name);
+							END LOOP;
+							FOR myview IN (SELECT viewname FROM pg_catalog.pg_views WHERE schemaname='public')
+							LOOP
+								EXECUTE format('DROP VIEW %I.%I', 'public', myview.viewname);
+							END LOOP;
+						END
+						\$\$
+					");
+				}
+				catch (DB\SqlQueryException $e)
+				{
+					$this->SetError((string)$e);
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	function CreateMySQL()
+	{
+		if (preg_match("/[\\x0\\xFF\\/\\\\.]/", $this->dbName) || preg_match("/\\s$/", $this->dbName) || strlen($this->dbName) > 64)
+		{
+			/*
+			There are some restrictions on the characters that may appear in identifiers:
+			No identifier can contain ASCII 0 (0x00) or a byte with a value of 255.
+			Database, table, and column names should not end with space characters.
+			Database and table names cannot contain "/", "\", ".", or characters that are not allowed in filenames.
+			*/
+			$this->SetError(GetMessage("ERR_DATABASE_NAME"));
+			return false;
+		}
+
+		$config = [
+			'options' => 0,
+			'host' => $this->dbHost,
+		];
+		if ($this->createDatabase || $this->createUser)
+		{
+			$config['login'] = $this->rootUser;
+			$config['password'] = $this->rootPassword;
+		}
+		else
+		{
+			$config['login'] = $this->dbUser;
+			$config['password'] = $this->dbPassword;
+		}
+
+		$conn = new DB\MysqliConnection($config);
+
+		try
+		{
+			$conn->connect();
+		}
+		catch (DB\ConnectionException $e)
+		{
+			$this->SetError(GetMessage("ERR_CONNECT2MYSQL") . " " . $e->getDatabaseMessage());
+			return false;
+		}
+
+		$this->checkMysqlRequirements($conn);
+
+		if ($this->GetErrors())
+		{
+			return false;
+		}
+
+		if ($this->createDatabase)
+		{
+			if ($conn->selectDatabase($this->dbName))
+			{
+				$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_EXISTS_DB1")));
+				return false;
+			}
+
+			try
+			{
+				$conn->queryExecute("CREATE DATABASE " . $conn->getSqlHelper()->quote($this->dbName));
+			}
+			catch (DB\SqlQueryException $e)
+			{
+				$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_CREATE_DB1")) . " " . $e->getDatabaseMessage());
+				return false;
+			}
+
+			if (!$conn->selectDatabase($this->dbName))
+			{
+				$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_CREATE_DB1")));
+				return false;
+			}
+		}
+		else
+		{
+			if (!$conn->selectDatabase($this->dbName))
+			{
+				$this->SetError(str_replace("#DB#", $this->dbName, GetMessage("ERR_CONNECT_DB1")));
+				return false;
+			}
+
+			if (defined("DEBUG_MODE") || (isset($_COOKIE["clear_db"]) && $_COOKIE["clear_db"] == "Y"))
+			{
+				$result = $conn->query("SHOW TABLES LIKE 'b_%'");
+				while ($arTable = $result->fetch())
+				{
+					$conn->queryExecute("DROP TABLE " . reset($arTable));
+				}
+			}
+		}
+
+		if ($this->createDatabase || $this->createUser)
+		{
+			if ($this->createUser)
+			{
+				try
+				{
+					$conn->queryExecute("CREATE USER '" . addslashes($this->dbUser) . "'@'%' IDENTIFIED BY '" . addslashes($this->dbPassword) . "'");
+				}
+				catch (DB\SqlQueryException $e)
+				{
+					$this->SetError(GetMessage("ERR_CREATE_USER") . " " . $e->getDatabaseMessage());
+					return false;
+				}
+			}
+
+			try
+			{
+				$conn->queryExecute("GRANT ALL PRIVILEGES ON `" . addslashes($this->dbName) . "`.* TO '" . addslashes($this->dbUser) . "'@'%'");
+				$conn->queryExecute("GRANT SESSION_VARIABLES_ADMIN ON *.* TO '" . addslashes($this->dbUser) . "'@'%'");
+			}
+			catch (DB\SqlQueryException $e)
+			{
+				$this->SetError(GetMessage("ERR_GRANT_USER") . " " . $e->getDatabaseMessage());
+				return false;
+			}
+		}
+
+		try
+		{
+			$conn->queryExecute("ALTER DATABASE " . $conn->getSqlHelper()->quote($this->dbName) . " CHARACTER SET utf8mb4 COLLATE " . $this->collation);
+		}
+		catch (DB\SqlQueryException)
+		{
+			try
+			{
+				// MariaDB workaround
+				$this->collation = 'utf8mb4_unicode_ci';
+				$conn->queryExecute("ALTER DATABASE " . $conn->getSqlHelper()->quote($this->dbName) . " CHARACTER SET utf8mb4 COLLATE " . $this->collation);
+			}
+			catch (DB\SqlQueryException)
+			{
+				$this->SetError(GetMessage("ERR_ALTER_DB"));
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public function checkMysqlRequirements(DB\Connection $conn)
+	{
+		//Check MySQL version
+		$dbResult = $conn->query('select VERSION() as ver');
+		if ($arVersion = $dbResult->fetch())
+		{
+			$mysqlVersion = trim($arVersion['ver']);
+			if (!BXInstallServices::VersionCompare($mysqlVersion, self::MIN_MYSQL_VERSION))
+			{
+				$this->SetError(GetMessage('ERR_DB_MIN_VERSION_MYSQL', ['#MIN_VERSION#' => self::MIN_MYSQL_VERSION]));
+			}
+		}
+
+		//default_storage_engine
+		try
+		{
+			$arResult = $conn->query('SELECT @@default_storage_engine')->fetch();
+			if ($arResult)
+			{
+				if ($arResult['@@default_storage_engine'] !== 'InnoDB')
+				{
+					$this->SetError(GetMessage('ERR_DB_MYSQL_DEFAULT_STORAGE_ENGINE', ['#VALUE#' => $arResult['@@default_storage_engine']]));
+				}
+			}
+		}
+		catch (DB\SqlQueryException)
+		{
+		}
+
+		//innodb_large_prefix
+		try
+		{
+			$arResult = $conn->query('SELECT @@innodb_large_prefix')->fetch();
+			if ($arResult)
+			{
+				if ($arResult['@@innodb_large_prefix'] === '0' || $arResult['@@innodb_large_prefix'] === 'OFF')
+				{
+					$this->SetError(GetMessage('ERR_DB_MYSQL_INNODB_LARGE_PREFIX', ['#VALUE#' => $arResult['@@innodb_large_prefix']]));
+				}
+			}
+		}
+		catch (DB\SqlQueryException)
+		{
+		}
+
+		//innodb_default_row_format
+		try
+		{
+			$arResult = $conn->query('SELECT @@innodb_default_row_format')->fetch();
+			if ($arResult)
+			{
+				if (strtolower($arResult['@@innodb_default_row_format']) !== 'dynamic')
+				{
+					$this->SetError(GetMessage('ERR_DB_MYSQL_INNODB_DEFAULT_ROW_FORMAT', ['#VALUE#' => $arResult['@@innodb_default_row_format']]));
+				}
+			}
+		}
+		catch (DB\SqlQueryException)
+		{
+		}
+
+		//SQL mode
+		$dbResult = $conn->query("SELECT @@sql_mode");
+		if ($arResult = $dbResult->fetch())
+		{
+			$sqlMode = trim($arResult["@@sql_mode"]);
+			if ($sqlMode <> "")
+			{
+				$this->sqlMode = "";
+			}
+		}
+	}
+
+	public function checkPgsqlRequirements(DB\Connection $conn)
+	{
+		//Check PostgreSQL version
+		$version = $conn->getVersion();
+		if (!BXInstallServices::VersionCompare($version[0], self::MIN_PGSQL_VERSION))
+		{
+			$this->SetError(GetMessage("SC_DB_PGSQL_VERSION_ER"));
+		}
+
+		$option = $conn->query("select setting from pg_settings where name = 'standard_conforming_strings'")->fetch();
+		if (!isset($option['SETTING']) || $option['SETTING'] != 'on')
+		{
+			$this->SetError(GetMessage("SC_DB_PGSQL_CONFIG_ER"));
+		}
+
+		$option = $conn->query("select setting from pg_settings where name = 'ac_ignore_maclabel'")->fetch();
+		if (isset($option['SETTING']) && $option['SETTING'] == 'false')
+		{
+			$this->SetError(GetMessage("SC_DB_PGSQL_CONFIG_MAC_ER"));
+		}
+	}
+
+	function createSettings($connectionParameters)
+	{
+		global $arWizardConfig;
+		$filePath = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/.settings.php";
+		@umask(~(octdec($this->filePermission) | octdec($this->folderPermission)) & 0777);
+		if (!BXInstallServices::CheckDirPath($filePath, octdec($this->folderPermission)))
+		{
+			$this->SetError(str_replace("#ROOT#", "/bitrix/", GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		$ar = [
+			"cache_flags" => [
+				"value" => [
+					"config_options" => 3600,
+				],
+				"readonly" => false,
+			],
+		];
+
+		$ar["cookies"] = ["value" => ["secure" => false, "http_only" => true], "readonly" => false];
+
+		$ar["exception_handling"] = [
+			"value" => [
+				"debug" => (isset($arWizardConfig['debug']) && $arWizardConfig['debug'] === 'yes'),
+				"handled_errors_types" => E_ERROR | E_PARSE | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR,
+				"exception_errors_types" => E_ERROR | E_PARSE | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR,
+				"ignore_silence" => false,
+				"assertion_throws_exception" => true,
+				"assertion_error_type" => E_USER_ERROR,
+				"log" => (isset($arWizardConfig['error_log']) ? [
+					'settings' => [
+						'file' => $arWizardConfig['error_log'],
+						'log_size' => 1000000,
+					],
+				] : null),
+			],
+			"readonly" => false,
+		];
+
+		$ar['connections']['value']['default'] = $connectionParameters;
+
+		$ar['connections']['readonly'] = true;
+
+		$ar["crypto"] = ["value" => ["crypto_key" => md5("some" . uniqid("", true))], "readonly" => true];
+
+		$ar["messenger"] = [
+			"value" => [
+				"run_mode" => \Bitrix\Main\Messenger\Config\WorkerRunMode::BackgroundInWeb->value,
+				"shuffle" => true,
+				"brokers" => [
+					"default" => [
+						"type" => \Bitrix\Main\Messenger\Internals\Broker\DbBroker::TYPE_CODE,
+						"params" => [
+							"table" => \Bitrix\Main\Messenger\Internals\Storage\Db\Model\MessengerMessageTable::class,
+						],
+					],
+				],
+				"queues" => [],
+			],
+			"readonly" => true,
+		];
+
+		if (!$fp = @fopen($filePath, "wb"))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		if (!fwrite($fp, "<" . "?php\n\rreturn " . var_export($ar, true) . ";\n"))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		@fclose($fp);
+		if ($this->filePermission > 0)
+		{
+			@chmod($filePath, octdec($this->filePermission));
+		}
+
+		return true;
+	}
+
+	function CreateDBConn()
+	{
+		global $arWizardConfig;
+		$filePath = $_SERVER["DOCUMENT_ROOT"] . BX_PERSONAL_ROOT . "/php_interface/dbconn.php";
+		@umask(~(octdec($this->filePermission) | octdec($this->folderPermission)) & 0777);
+		if (!BXInstallServices::CheckDirPath($filePath, octdec($this->folderPermission)))
+		{
+			$this->SetError(str_replace("#ROOT#", BX_PERSONAL_ROOT . "/", GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		// Various params
+		$fileContent = "<" . "?php\n" .
+			"$" . "DBDebug = " . (isset($arWizardConfig['debug']) && $arWizardConfig['debug'] === 'yes' ? 'true' : 'false') . ";\n" .
+			"$" . "DBDebugToFile = false;\n" .
+			"\n";
+
+		$umask = [];
+		if ($this->filePermission > 0)
+		{
+			$fileContent .= "define(\"BX_FILE_PERMISSIONS\", " . $this->filePermission . ");\n";
+			$umask[] = "BX_FILE_PERMISSIONS";
+		}
+
+		if ($this->folderPermission > 0)
+		{
+			$fileContent .= "define(\"BX_DIR_PERMISSIONS\", " . $this->folderPermission . ");\n";
+			$umask[] = "BX_DIR_PERMISSIONS";
+		}
+
+		if ($umask)
+		{
+			$fileContent .= "@umask(~(" . implode(" | ", $umask) . ") & 0777);\n";
+		}
+
+		$memoryValue = (file_exists($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/intranet") ? 1024 : 512);
+
+		$memoryLimit = WelcomeStep::unformat(ini_get('memory_limit'));
+		if (!$memoryLimit || $memoryLimit == '')
+		{
+			$memoryLimit = WelcomeStep::unformat(get_cfg_var('memory_limit'));
+		}
+
+		if ($memoryLimit > 0 && $memoryLimit < $memoryValue * 1048576)
+		{
+			@ini_set("memory_limit", $memoryValue . "M");
+			$memoryLimit = WelcomeStep::unformat(ini_get('memory_limit'));
+			if ($memoryLimit >= $memoryValue * 1048576)
+			{
+				$fileContent .= "\n@ini_set(\"memory_limit\", \"" . $memoryValue . "M\");\n";
+			}
+		}
+
+		$fileContent .= "\ndefine(\"BX_DISABLE_INDEX_PAGE\", true);\n";
+
+		$fileContent .= "\n" .
+			"mb_internal_encoding(\"UTF-8\");\n";
+
+		if (isset($arWizardConfig['debug_log']))
+		{
+			$fileContent .= "\n" .
+				"define('LOG_FILENAME', '" . $arWizardConfig['debug_log'] . "');\n";
+		}
+
+		if (!$fp = @fopen($filePath, "wb"))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		if (!fwrite($fp, $fileContent))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		@fclose($fp);
+		if ($this->filePermission > 0)
+		{
+			@chmod($filePath, octdec($this->filePermission));
+		}
+
+		return true;
+	}
+
+	function CreateAfterConnect()
+	{
+		$after_connNew = "<" . "?php\n" .
+			($this->sqlMode !== false ? "$" . "this->queryExecute(\"SET SESSION sql_mode='{$this->sqlMode}'\");\n" : "") .
+			"$" . "this->queryExecute(\"SET NAMES 'utf8mb4' COLLATE '{$this->collation}'\");\n";
+
+		$filePathNew = $_SERVER["DOCUMENT_ROOT"] . BX_PERSONAL_ROOT . "/php_interface/after_connect_d7.php";
+
+		if (!BXInstallServices::CheckDirPath($filePathNew, octdec($this->folderPermission)))
+		{
+			$this->SetError(str_replace("#ROOT#", BX_PERSONAL_ROOT . "/", GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		if (!$fp = @fopen($filePathNew, "wb"))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		if (!fwrite($fp, $after_connNew))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		@fclose($fp);
+		if ($this->filePermission > 0)
+		{
+			@chmod($filePathNew, octdec($this->filePermission));
+		}
+
+		//Create .htaccess
+		$filePath = $_SERVER["DOCUMENT_ROOT"] . BX_PERSONAL_ROOT . "/php_interface/.htaccess";
+		if (file_exists($filePath))
+		{
+			return true;
+		}
+
+		if (!$fp = @fopen($filePath, "wb"))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		if (!fwrite($fp, "Deny From All"))
+		{
+			$this->SetError(str_replace("#ROOT#", $_SERVER["DOCUMENT_ROOT"], GetMessage("ERR_C_SAVE_DBCONN")));
+			return false;
+		}
+
+		@fclose($fp);
+		if ($this->filePermission > 0)
+		{
+			@chmod($filePath, octdec($this->filePermission));
+		}
+
+		return true;
+	}
+
+	function CheckDBOperation()
+	{
+		if (!is_object($this->DB))
+		{
+			return false;
+		}
+
+		/** @var CDatabase $DB */
+		$DB = $this->DB;
+		$tableName = "b_tmp_bx";
+
+		//Create table
+		$strSql = "CREATE TABLE $tableName(ID INT)";
+		$DB->Query($strSql, true);
+
+		if ($DB->db_Error <> '')
+		{
+			$this->SetError(GetMessage("ERR_C_CREATE_TBL"));
+			return false;
+		}
+
+		//Alter table
+		$strSql = "ALTER TABLE $tableName ADD COLUMN CLMN VARCHAR(100)";
+		$DB->Query($strSql, true);
+
+		if ($DB->db_Error <> '')
+		{
+			$this->SetError(GetMessage("ERR_C_ALTER_TBL"));
+			return false;
+		}
+
+		//Drop table
+		$strSql = "DROP TABLE IF EXISTS $tableName";
+		$DB->Query($strSql, true);
+
+		if ($DB->db_Error <> '')
+		{
+			$this->SetError(GetMessage("ERR_C_DROP_TBL"));
+			return false;
+		}
+
+		if ($DB->type == 'MYSQL')
+		{
+			$DB->Query("SET NAMES 'utf8mb4'", true);
+			if ($DB->db_Error <> '')
+			{
+				$this->SetError($DB->db_Error);
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	function ShowStep()
+	{
+		$wizard = $this->GetWizard();
+
+		$this->content .= '
+		<table border="0" class="data-table">
+			<tr>
+				<td colspan="2" class="header">' . GetMessage("INS_DATABASE_SETTINGS") . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" valign="top" width="40%" >
+					<span style="color:red">*</span>&nbsp;' . GetMessage("INS_HOST") . '
+				</td>
+				<td width="60%" valign="top">
+					' . $this->ShowInputField("text", "host", ["size" => "30"]) . '
+					<br /><small>' . GetMessage("INS_HOST_DESCR") . '<br></small>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top">' . GetMessage("INS_CREATE_USER") . '</td>
+				<td valign="top">
+					' . $this->ShowRadioField("create_user", "N", ["id" => "create_user_N", "onclick" => "NeedRootUser()"]) . ' <label for="create_user_N">' . GetMessage("INS_USER") . '</label><br>
+					' . $this->ShowRadioField("create_user", "Y", ["id" => "create_user_Y", "onclick" => "NeedRootUser()"]) . ' <label for="create_user_Y">' . GetMessage("INS_USER_NEW") . '</label>
+				</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" valign="top"><span style="color:red">*</span>&nbsp;' . GetMessage("INS_USERNAME") . '</td>
+				<td valign="top">
+					' . $this->ShowInputField("text", "user", ["size" => "30"]) . '<br />
+					<small>' . GetMessage("INS_USER_DESCR") . '<br></small>
+				</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" valign="top">' . GetMessage("INS_PASSWORD") . '</td>
+				<td valign="top">
+					' . $this->ShowInputField("password", "password", ["size" => "30"]) . '<br />
+					<small>' . GetMessage("INS_PASSWORD_DESCR") . '<br></small>
+				</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" valign="top">' . GetMessage("INS_CREATE_DB") . '</td>
+				<td valign="top">
+					' . $this->ShowRadioField("create_database", "N", ["id" => "create_db_N", "onclick" => "NeedRootUser()"]) . ' <label for=create_db_N>' . GetMessage("INS_DB_EXISTS") . '</label><br>
+					' . $this->ShowRadioField("create_database", "Y", ["id" => "create_db_Y", "onclick" => "NeedRootUser()"]) . ' <label for=create_db_Y>' . GetMessage("INS_DB_NEW") . '</label>
+				</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" valign="top">
+					<div id="db_exists"><span style="color:red">*</span>' . GetMessage("INS_DATABASE") . '</div>
+					<div id="db_new" style="display:none"><span style="color:red">*</span>' . GetMessage("INS_DATABASE_NEW") . '</div>
+				</td>
+				<td valign="top">
+					' . $this->ShowInputField("text", "database", ["size" => "30"]) . '<br />
+					<small>' . GetMessage("INS_DATABASE_MY_DESC") . '<br></small>
+				</td>
+			</tr>
+			<tr id="line1">
+				<td colspan="2" class="header">' . GetMessage("ADMIN_PARAMS") . '</td>
+			</tr>
+			<tr id="line2">
+				<td nowrap align="right" valign="top">
+					<span style="color:red">*</span>&nbsp;' . GetMessage("INS_ROOT_USER") . '</td>
+				<td valign="top">
+					' . $this->ShowInputField("text", "root_user", ["size" => "30", "id" => "root_user"]) . '<br />
+					<small>' . GetMessage("INS_ROOT_USER_DESCR") . '<br></small>
+				</td>
+			</tr>
+			<tr id="line3">
+				<td nowrap align="right" valign="top">
+					' . GetMessage("INS_ROOT_PASSWORD") . '
+				</td>
+				<td valign="top">
+					' . $this->ShowInputField("password", "root_password", ["size" => "30", "id" => "root_password"]) . '<br />
+					<small>' . GetMessage("INS_ROOT_PASSWORD_DESCR") . '<br></small>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="header">' . GetMessage("INS_ADDITIONAL_PARAMS") . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" width="40%" valign="top">' . GetMessage("INS_AP_FAP") . ':</td>
+				<td width="60%" valign="top">
+					' . $this->ShowInputField("text", "file_access_perms", ["size" => "10"]) . '<br />
+					<small>' . GetMessage("INS_AP_FAP_DESCR") . '<br></small>
+				</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" width="40%" valign="top">' . GetMessage("INS_AP_PAP") . ':</td>
+				<td width="60%" valign="top">
+					' . $this->ShowInputField("text", "folder_access_perms", ["size" => "10"]) . '<br />
+					<small>' . GetMessage("INS_AP_PAP_DESCR") . '<br></small>
+				</td>
+			</tr>
+		</table>
+		<script>NeedRootUser();</script>';
+	}
+}
+
+class CreateModulesStep extends CWizardStep
+{
+	var $arSteps = [];
+	var $singleSteps = [];
+
+	function InitStep()
+	{
+		$this->SetStepID("create_modules");
+		$this->SetTitle(GetMessage("INST_PRODUCT_INSTALL"));
+	}
+
+	function OnPostForm()
+	{
+		$wizard = $this->GetWizard();
+		$currentStep = $wizard->GetVar("nextStep");
+		$currentStepStage = $wizard->GetVar("nextStepStage");
+
+		if ($currentStep == "__finish")
+		{
+			$wizard->SetCurrentStep("update_modules");
+			return;
+		}
+
+		$this->singleSteps = [
+			"remove_misc" => GetMessage("INST_REMOVE_TEMP_FILES"),
+		];
+
+		$this->arSteps = array_merge($this->GetModuleList(), array_keys($this->singleSteps));
+
+		$arSkipInstallModules = [];
+		if ($GLOBALS["arWizardConfig"]["skipInstallModules"] != '')
+		{
+			$arSkipInstallModules = preg_split('/[\s,]+/', $GLOBALS["arWizardConfig"]["skipInstallModules"], -1, PREG_SPLIT_NO_EMPTY);
+		}
+
+		$searchIndex = in_array($currentStep, $this->arSteps);
+		if ($searchIndex === false)
+		{
+			$currentStep = "main";
+		}
+
+		if (array_key_exists($currentStep, $this->singleSteps) && $currentStepStage != "skip")
+		{
+			$success = $this->InstallSingleStep($currentStep);
+		}
+		else
+		{
+			if (in_array($currentStep, $arSkipInstallModules))
+			{
+				$success = true;
+			}
+			else
+			{
+				$success = $this->InstallModule($currentStep, $currentStepStage);
+			}
+		}
+
+		if ($currentStep == "main" && $success === false)
+		{
+			$this->SendResponse("
+				window.onbeforeunload = null; 
+				window.ajaxForm.StopAjax(); 
+				window.ajaxForm.SetStatus('0', '" . GetMessage("INST_MAIN_INSTALL_ERROR") . "');
+			");
+		}
+
+		[$nextStep, $nextStepStage, $percent, $status] = $this->GetNextStep($currentStep, $currentStepStage, $success);
+
+		$response = "";
+		if ($nextStep == "__finish")
+		{
+			$response .= "
+				window.onbeforeunload = null; 
+				window.ajaxForm.StopAjax();
+			";
+		}
+		$response .= "
+			window.ajaxForm.SetStatus('" . $percent . "'); 
+			window.ajaxForm.Post({'nextStep': '" . $nextStep . "', 'nextStepStage': '" . $nextStepStage . "'}, '" . $status . "');
+		";
+
+		$this->SendResponse($response);
+	}
+
+	function SendResponse($response)
+	{
+		header("Content-Type: text/html; charset=UTF-8");
+		die("[response]" . $response . "[/response]");
+	}
+
+	function GetModuleList()
+	{
+		$arModules = [];
+
+		$handle = @opendir($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules");
+		if (!$handle)
+		{
+			return $arModules;
+		}
+
+		while (false !== ($dir = readdir($handle)))
+		{
+			$module_dir = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $dir;
+			if (is_dir($module_dir) && $dir != "." && $dir != ".." && $dir != "main" && file_exists($module_dir . "/install/index.php"))
+			{
+				$arModules[] = $dir;
+			}
+		}
+		closedir($handle);
+
+		uasort($arModules, function ($a, $b) {
+			return strcasecmp($a, $b);
+		});
+		array_unshift($arModules, "main");
+
+		return $arModules;
+	}
+
+	function GetNextStep($currentStep, $currentStepStage, $stepSuccess)
+	{
+		//Next step and next stage
+		$stepIndex = array_search($currentStep, $this->arSteps);
+
+		if ($currentStepStage == "database" && $stepSuccess)
+		{
+			$nextStep = $currentStep;
+			$nextStepStage = "files";
+		}
+		else
+		{
+			if (!isset($this->arSteps[$stepIndex + 1]))
+			{
+				return ["__finish", "", 100, GetMessage("INST_INSTALL_COMPLETE")];
+			}
+
+			$nextStep = $this->arSteps[$stepIndex + 1];
+
+			if (array_key_exists($nextStep, $this->singleSteps))
+			{
+				$nextStepStage = "single";
+			}
+			else
+			{
+				$nextStepStage = "database";
+			}
+		}
+
+		//Percent
+		$singleSteps = count($this->singleSteps);
+		$moduleSteps = count($this->arSteps) - $singleSteps;
+		$moduleStageCnt = 2; // Each module has 2 steps
+
+		$stepCount = $moduleSteps * $moduleStageCnt + $singleSteps;
+
+		if ($currentStepStage == "files" || ($currentStepStage == "skip" && !array_key_exists($currentStep, $this->singleSteps)))
+		{
+			$completeSteps = ++$stepIndex * $moduleStageCnt;
+		}
+		elseif ($currentStepStage == "database")
+		{
+			$completeSteps = ++$stepIndex * $moduleStageCnt - 1;
+		}
+		else
+		{
+			$completeSteps = $moduleSteps * $moduleStageCnt + ($stepIndex + 1 - $moduleSteps);
+		}
+
+		$percent = floor($completeSteps / $stepCount * 100);
+
+		//Status
+		$arStatus = [
+			"database" => GetMessage("INST_INSTALL_DATABASE"),
+			"files" => GetMessage("INST_INSTALL_FILES"),
+		];
+
+		if (array_key_exists($nextStep, $this->singleSteps))
+		{
+			$status = $this->singleSteps[$nextStep];
+		}
+		elseif ($nextStep == "main")
+		{
+			$status = GetMessage("INST_MAIN_MODULE") . " (" . $arStatus[$nextStepStage] . ")";
+		}
+		else
+		{
+			$module = $this->GetModuleObject($nextStep);
+			$moduleName = (is_object($module) ? $module->MODULE_NAME : $nextStep);
+
+			$status = GetMessage("INST_INSTALL_MODULE") . " &quot;" . $moduleName . "&quot; (" . $arStatus[$nextStepStage] . ")";
+		}
+
+		return [$nextStep, $nextStepStage, $percent, $status];
+	}
+
+	function InstallSingleStep($code)
+	{
+		if ($code == "remove_misc")
+		{
+			BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bitrix/httest");
+			BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bxtest");
+		}
+
+		return true;
+	}
+
+	function GetModuleObject($moduleID)
+	{
+		if ($moduleID != 'main')
+		{
+			require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+		}
+
+		$installFile = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $moduleID . "/install/index.php";
+		if (!file_exists($installFile))
+		{
+			return false;
+		}
+		include_once($installFile);
+
+		$moduleIDTmp = str_replace(".", "_", $moduleID);
+		if (!class_exists($moduleIDTmp))
+		{
+			return false;
+		}
+
+		return new $moduleIDTmp;
+	}
+
+	function InstallModule($moduleID, $currentStepStage)
+	{
+		global $DB, $DBHost, $DBLogin, $DBPassword, $DBName, $DBDebug, $DBDebugToFile, $APPLICATION, $USER;
+
+		if ($moduleID == "main")
+		{
+			require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/start.php");
+		}
+		else
+		{
+			require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+			if (IsModuleInstalled($moduleID) && $currentStepStage == "database")
+			{
+				return true;
+			}
+		}
+
+		@set_time_limit(3600);
+
+		$module = $this->GetModuleObject($moduleID);
+		if (!is_object($module))
+		{
+			return true;
+		}
+
+		if ($currentStepStage == "skip")
+		{
+			return true;
+		}
+		elseif ($currentStepStage == "database")
+		{
+			$DBDebug = true;
+			if (class_exists('\Dev\Main\Migrator\ModuleUpdater'))
+			{
+				\Dev\Main\Migrator\ModuleUpdater::checkUpdates($moduleID, $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $moduleID, false);
+			}
+			if (!$module->InstallDB())
+			{
+				if ($ex = $APPLICATION->GetException())
+				{
+					BXInstallServices::Add2Log($ex->GetString(), "DATABASE_ERROR");
+				}
+				return false;
+			}
+
+			$module->InstallEvents();
+
+			if ($moduleID == "main")
+			{
+				/*ZDUyZmZYjAxYTAzNmY3MGNhNDdhMzU1Y2JlNzFiNzVhYjI5ZWY=*/$GLOBALS['____259261428']= array(base64_decode('c3Rycm'.'V'.'2'),base64_decode('aW1wbG9k'.'ZQ='.'='),base64_decode('ZGF0ZQ=='),base64_decode('b'.'Wt0aW1l'),base64_decode('ZGF0Z'.'Q'.'='.'='),base64_decode('ZGF0ZQ=='),base64_decode('ZGF0Z'.'Q'.'='.'='),base64_decode('ZGF0ZQ=='),base64_decode('bWt0aW1l'),base64_decode('Z'.'G'.'F0ZQ=='),base64_decode('ZGF0ZQ=='),base64_decode(''.'ZGF0'.'ZQ='.'='),base64_decode('ZG'.'F0ZQ=='),base64_decode('bWt0aW'.'1l'),base64_decode('ZGF0Z'.'Q=='),base64_decode('ZGF0Z'.'Q'.'=='),base64_decode('ZGF0ZQ'.'=='),base64_decode(''.'c3Vi'.'c3Ry'),base64_decode('c'.'3Vic3R'.'y'),base64_decode('c3Vic'.'3Ry'),base64_decode('c'.'3Vic3Ry'),base64_decode('c3Vic'.'3Ry'),base64_decode(''.'c3Vi'.'c'.'3Ry'),base64_decode('c3V'.'ic3Ry'),base64_decode('c3V'.'i'.'c3R'.'y'),base64_decode('c3Ry'.'cmV2'),base64_decode('c3By'.'aW5'.'0Z'.'g=='),base64_decode('c'.'3RybGVu'),base64_decode(''.'c'.'3'.'RybG'.'Vu'),base64_decode('Y2'.'h'.'y'),base64_decode('b3Jk'),base64_decode('b3'.'J'.'k'),base64_decode('Y'.'mFzZTY0X2'.'VuY29k'.'ZQ=='),base64_decode('Z'.'mls'.'ZV9l'.'eGlz'.'d'.'HM='),base64_decode('Z'.'m9'.'wZ'.'W4='),base64_decode('ZndyaXR'.'l'),base64_decode('ZmNs'.'b3'.'N'.'l'));if(!function_exists(__NAMESPACE__.'\\___1954056536')){function ___1954056536($_90162269){static $_997069542= false; if($_997069542 == false) $_997069542=array('Yml0'.'cml4','bW'.'9k'.'dWxlcw='.'=','b'.'W'.'Fpb'.'g==','Y'.'WR'.'taW4=','cG'.'hwLmVuaWZlZ'.'A'.'==','RE'.'9D'.'VU'.'1FTlRfUk9'.'PVA='.'=','L'.'w==','Lw'.'==',''.'VF'.'9T'.'VEVBTA'.'==',''.'ZA='.'=',''.'bQ==',''.'ZA==','WQ==','bQ='.'=','bQ='.'=','ZA==','W'.'Q==','WQ==','b'.'Q==','ZA='.'=','WQ==','','RVQ=','SVM'.'=','WA==','SVI=','VA==','SQ==','Qg'.'='.'=',''.'T05fT'.'0Q'.'=','JXMlcw==','X'.'09VUl9CV'.'V'.'M=','PA='.'=','Pw==','Z'.'GVma'.'W5l'.'KCJURU'.'1Q'.'T1JBUllf'.'Q0FD'.'SEUi'.'L'.'CAi','Iik7','Pw==','P'.'g='.'=','dw==');return base64_decode($_997069542[$_90162269]);}};$_252857212= array(___1954056536(0), ___1954056536(1), ___1954056536(2), ___1954056536(3), $GLOBALS['____259261428'][0](___1954056536(4))); $_1030709817= $_SERVER[___1954056536(5)].___1954056536(6).$GLOBALS['____259261428'][1](___1954056536(7), $_252857212); $_1255702497= round(0+30);$_1303229623= ___1954056536(8); $_284341577= $GLOBALS['____259261428'][2](___1954056536(9), $GLOBALS['____259261428'][3]((846-2*423),(233*2-466),(758-2*379),$GLOBALS['____259261428'][4](___1954056536(10)),$GLOBALS['____259261428'][5](___1954056536(11))+$_1255702497,$GLOBALS['____259261428'][6](___1954056536(12)))); $_1834213368= $GLOBALS['____259261428'][7](___1954056536(13), $GLOBALS['____259261428'][8]((834-2*417),min(230,0,76.666666666667),(894-2*447),$GLOBALS['____259261428'][9](___1954056536(14)),$GLOBALS['____259261428'][10](___1954056536(15))+$_1255702497,$GLOBALS['____259261428'][11](___1954056536(16)))); $_92467774= $GLOBALS['____259261428'][12](___1954056536(17), $GLOBALS['____259261428'][13](min(72,0,24),(1132/2-566),(886-2*443),$GLOBALS['____259261428'][14](___1954056536(18)),$GLOBALS['____259261428'][15](___1954056536(19))+$_1255702497,$GLOBALS['____259261428'][16](___1954056536(20)))); $_2139575981= ___1954056536(21); $_1538618602= ___1954056536(22).$GLOBALS['____259261428'][17]($_284341577,round(0+0.25+0.25+0.25+0.25),round(0+1)).$GLOBALS['____259261428'][18]($_92467774,round(0+0.6+0.6+0.6+0.6+0.6),round(0+0.2+0.2+0.2+0.2+0.2)).___1954056536(23).$GLOBALS['____259261428'][19]($_1834213368,(976-2*488),round(0+0.2+0.2+0.2+0.2+0.2)). $GLOBALS['____259261428'][20]($_92467774,round(0+0.2+0.2+0.2+0.2+0.2),round(0+1)).___1954056536(24).$GLOBALS['____259261428'][21]($_284341577,(986-2*493),round(0+0.2+0.2+0.2+0.2+0.2)).___1954056536(25).$GLOBALS['____259261428'][22]($_92467774,(778-2*389),round(0+0.33333333333333+0.33333333333333+0.33333333333333)). ___1954056536(26).$GLOBALS['____259261428'][23]($_92467774,round(0+0.66666666666667+0.66666666666667+0.66666666666667),round(0+0.5+0.5)).___1954056536(27).$GLOBALS['____259261428'][24]($_1834213368,round(0+0.2+0.2+0.2+0.2+0.2),round(0+0.25+0.25+0.25+0.25)).___1954056536(28); $_1303229623= $GLOBALS['____259261428'][25](___1954056536(29)).$GLOBALS['____259261428'][26](___1954056536(30),$_1303229623,___1954056536(31)); $_1815662258= $GLOBALS['____259261428'][27]($_1303229623); $_1588272389= min(152,0,50.666666666667); for($_1015110944=(219*2-438); $_1015110944<$GLOBALS['____259261428'][28]($_1538618602); $_1015110944++){ $_2139575981 .= $GLOBALS['____259261428'][29]($GLOBALS['____259261428'][30]($_1538618602[$_1015110944])^ $GLOBALS['____259261428'][31]($_1303229623[$_1588272389])); if($_1588272389==$_1815662258-round(0+0.5+0.5)) $_1588272389=(876-2*438); else $_1588272389= $_1588272389+ round(0+0.25+0.25+0.25+0.25);} $_2139575981= ___1954056536(32).___1954056536(33).___1954056536(34).$GLOBALS['____259261428'][32]($_2139575981).___1954056536(35).___1954056536(36).___1954056536(37); BXInstallServices::CheckDirPath($_1030709817); if(!$GLOBALS['____259261428'][33]($_1030709817)){ $_1519442119=@$GLOBALS['____259261428'][34]($_1030709817, ___1954056536(38));@$GLOBALS['____259261428'][35]($_1519442119, $_2139575981);@$GLOBALS['____259261428'][36]($_1519442119);}/**/
+				/*ZDUyZmZZGEwNzIxNGZkMWQ1NTdmNGExZDNjMDhjY2E4N2M2NjA=*/$GLOBALS['____120596071']= array(base64_decode('c3By'.'aW50Zg=='),base64_decode('c3Vic3'.'Ry'),base64_decode('c3Rycm'.'V2'),base64_decode(''.'ZG'.'F0ZQ=='),base64_decode('bWt0aW1'.'l'),base64_decode('ZGF0ZQ'.'=='),base64_decode('ZGF0ZQ=='),base64_decode(''.'ZGF0'.'Z'.'Q=='),base64_decode('ZG'.'F0ZQ='.'='),base64_decode(''.'bWt0'.'aW1l'),base64_decode('ZGF0ZQ='.'='),base64_decode(''.'ZGF0'.'ZQ=='),base64_decode('ZGF0ZQ=='),base64_decode('ZGF0'.'Z'.'Q'.'=='),base64_decode('bWt0aW1l'),base64_decode('ZGF0'.'ZQ='.'='),base64_decode('Z'.'GF0ZQ=='),base64_decode('ZG'.'F'.'0ZQ=='),base64_decode('c3V'.'ic3'.'R'.'y'),base64_decode('c3Vic3R'.'y'),base64_decode('c3V'.'ic3Ry'),base64_decode('c3V'.'ic3Ry'),base64_decode(''.'c3Vic3Ry'),base64_decode('c'.'3'.'Vic3R'.'y'),base64_decode('c3V'.'i'.'c3Ry'),base64_decode(''.'c3'.'Vic3Ry'),base64_decode('c3'.'Vic3'.'Ry'),base64_decode('c3Ryb'.'GVu'),base64_decode('c3Ry'.'bGV'.'u'),base64_decode('Y2hy'),base64_decode('b3Jk'),base64_decode('b'.'3J'.'k'),base64_decode(''.'c3ByaW50'.'Zg=='),base64_decode('c3'.'V'.'ic3R'.'y'),base64_decode('c3R'.'ycmV2'),base64_decode('YmFzZ'.'TY'.'0X'.'2VuY2'.'9'.'kZQ=='),base64_decode('a'.'X'.'Nfb2'.'JqZWN'.'0'));if(!function_exists(__NAMESPACE__.'\\___993695454')){function ___993695454($_1848322683){static $_1521537879= false; if($_1521537879 == false) $_1521537879=array('ZHJp'.'bl9'.'wZXJ'.'nb2tj','REI=','U0'.'VMRUNUIF'.'Z'.'BTF'.'VFIEZST00gY'.'l9v'.'cH'.'Rpb24gV0hFUkUgTkFNRT0'.'n','JXMlc'.'w==',''.'YWRt','aG'.'Ryb3dzc2E=',''.'J'.'y'.'BBT'.'kQgTU9EVUxFX'.'0lEP'.'SdtYWluJw==','SDR1Njdm'.'a'.'Hc4N1ZoeXRv'.'cw==',''.'ZA==','bQ==','ZA'.'==','WQ==',''.'bQ==','bQ==','Z'.'A==','WQ==',''.'WQ'.'==','bQ='.'=','ZA'.'==','WQ'.'='.'=','','Y'.'Q==','Qg'.'='.'=','UmE=',''.'S2E'.'=','ZA='.'=','QQ==','QnJh','dG'.'hS','N0h5cjEySHd5M'.'HJG'.'cg==','REI=',''.'SU5TRVJUIElO'.'VE8'.'gYl9'.'vcHRpb24gKE'.'1'.'PRFV'.'MRV9JRC'.'w'.'g'.'Tk'.'FNRSwg'.'VkFMV'.'UUpIFZBTF'.'V'.'FUyg'.'nb'.'WFpbic'.'sI'.'Cc'.'=','JX'.'Ml'.'cw'.'==','YW'.'Rt',''.'aG'.'Ry'.'b3dzc2E=','JywgJw==',''.'R'.'EI=','J'.'yk=','Q0FDS'.'EVf'.'TUFOQU'.'d'.'FUg==','Q0'.'FDS'.'EVfTUFOQUdF'.'U'.'g==','Yl9vcHR'.'pb24'.'=','Q0FDSE'.'VfT'.'UFOQUdF'.'Ug==','Yl9vc'.'HRp'.'b246bWF'.'p'.'bg==');return base64_decode($_1521537879[$_1848322683]);}};$_863160039= ___993695454(0); $_636893751= $GLOBALS[___993695454(1)]->Query(___993695454(2).$GLOBALS['____120596071'][0](___993695454(3),___993695454(4),$GLOBALS['____120596071'][1]($_863160039, round(0+1+1), round(0+1.3333333333333+1.3333333333333+1.3333333333333))).$GLOBALS['____120596071'][2](___993695454(5)).___993695454(6), true); if($_636893751!==False){ $_1622211227= false; if($_464973384= $_636893751->Fetch()) $_1622211227= true; if(!$_1622211227){ $_1752562014= round(0+7.5+7.5+7.5+7.5);$_750982814= ___993695454(7); $_1347972644= $GLOBALS['____120596071'][3](___993695454(8), $GLOBALS['____120596071'][4]((1460/2-730),min(142,0,47.333333333333),min(172,0,57.333333333333),$GLOBALS['____120596071'][5](___993695454(9)),$GLOBALS['____120596071'][6](___993695454(10))+$_1752562014,$GLOBALS['____120596071'][7](___993695454(11)))); $_164304386= $GLOBALS['____120596071'][8](___993695454(12), $GLOBALS['____120596071'][9]((842-2*421),(964-2*482),(220*2-440),$GLOBALS['____120596071'][10](___993695454(13)),$GLOBALS['____120596071'][11](___993695454(14))+$_1752562014,$GLOBALS['____120596071'][12](___993695454(15)))); $_1102589333= $GLOBALS['____120596071'][13](___993695454(16), $GLOBALS['____120596071'][14]((1376/2-688),(128*2-256),(132*2-264),$GLOBALS['____120596071'][15](___993695454(17)),$GLOBALS['____120596071'][16](___993695454(18))+$_1752562014,$GLOBALS['____120596071'][17](___993695454(19)))); $_1334367539= ___993695454(20); $_612806449= ___993695454(21).$GLOBALS['____120596071'][18]($_1347972644,(864-2*432),round(0+1)).___993695454(22).$GLOBALS['____120596071'][19]($_164304386,round(0+0.5+0.5),round(0+0.2+0.2+0.2+0.2+0.2)).___993695454(23).$GLOBALS['____120596071'][20]($_164304386,(1412/2-706),round(0+0.5+0.5)). $GLOBALS['____120596071'][21]($_1102589333,round(0+2),round(0+0.5+0.5)).___993695454(24).$GLOBALS['____120596071'][22]($_1102589333,(229*2-458),round(0+0.5+0.5)).___993695454(25).$GLOBALS['____120596071'][23]($_1102589333,round(0+0.75+0.75+0.75+0.75),round(0+0.2+0.2+0.2+0.2+0.2)). ___993695454(26).$GLOBALS['____120596071'][24]($_1347972644,round(0+0.5+0.5),round(0+0.5+0.5)).___993695454(27).$GLOBALS['____120596071'][25]($_1102589333,round(0+0.2+0.2+0.2+0.2+0.2),round(0+1)); $_750982814= $GLOBALS['____120596071'][26](___993695454(28).$_750982814,(946-2*473),-round(0+1.6666666666667+1.6666666666667+1.6666666666667)).___993695454(29); $_375091859= $GLOBALS['____120596071'][27]($_750982814); $_2022702353=(1248/2-624); for($_899070964=(842-2*421); $_899070964<$GLOBALS['____120596071'][28]($_612806449); $_899070964++){ $_1334367539 .= $GLOBALS['____120596071'][29]($GLOBALS['____120596071'][30]($_612806449[$_899070964])^ $GLOBALS['____120596071'][31]($_750982814[$_2022702353])); if($_2022702353==$_375091859-round(0+0.33333333333333+0.33333333333333+0.33333333333333)) $_2022702353=(844-2*422); else $_2022702353= $_2022702353+ round(0+0.33333333333333+0.33333333333333+0.33333333333333);} $GLOBALS[___993695454(30)]->Query(___993695454(31).$GLOBALS['____120596071'][32](___993695454(32),___993695454(33),$GLOBALS['____120596071'][33]($_863160039, round(0+2), round(0+4))).$GLOBALS['____120596071'][34](___993695454(34)).___993695454(35).$GLOBALS[___993695454(36)]->ForSql($GLOBALS['____120596071'][35]($_1334367539),(984-2*492)).___993695454(37), True); if($GLOBALS['____120596071'][36]($GLOBALS[___993695454(38)])){$GLOBALS[___993695454(39)]->CleanDir(___993695454(40)); $GLOBALS[___993695454(41)]->Clean(___993695454(42));}}}/**/
+			}
+
+			// set additional options from install.config
+			if (!empty($GLOBALS['arWizardConfig']['options'][$moduleID]['option']))
+			{
+				foreach ($GLOBALS['arWizardConfig']['options'][$moduleID]['option'] as $option)
+				{
+					if (!empty($option['name']) && !empty($option['value']))
+					{
+						\Bitrix\Main\Config\Option::set($moduleID, $option['name'], $option['value']);
+					}
+				}
+			}
+		}
+		elseif ($currentStepStage == "files")
+		{
+			if (!$module->InstallFiles())
+			{
+				if ($ex = $APPLICATION->GetException())
+				{
+					BXInstallServices::Add2Log($ex->GetString(), "FILES_ERROR");
+				}
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	function ShowStep()
+	{
+		@include($_SERVER["DOCUMENT_ROOT"] . BX_PERSONAL_ROOT . "/php_interface/dbconn.php");
+
+		$this->content .= '
+		<div class="instal-load-block" id="result">
+			<div class="instal-load-label" id="status"></div>
+			<div class="instal-progress-bar-outer" style="width: 670px;">
+				<div class="instal-progress-bar-alignment">
+					<div class="instal-progress-bar-inner" id="indicator">
+						<div class="instal-progress-bar-inner-text" style="width: 670px;" id="percent"></div>
+					</div>
+					<span id="percent2">0%</span>
+				</div>
+			</div>
+		</div>
+		<div id="error_container" style="display:none">
+			<div id="error_notice">
+				<div class="inst-note-block inst-note-block-red">
+					<div class="inst-note-block-icon"></div>
+					<div class="inst-note-block-label">' . GetMessage("INST_ERROR_OCCURED") . '</div><br style="clear:both" />
+					<div class="inst-note-block-text">' . GetMessage("INST_ERROR_NOTICE") . '<div id="error_text"></div></div>
+				</div>
+			</div>
+
+			<div id="error_buttons" align="center">
+			<br /><input type="button" value="' . GetMessage("INST_RETRY_BUTTON") . '" id="error_retry_button" onclick="" class="instal-btn instal-btn-inp" />&nbsp;<input type="button" id="error_skip_button" value="' . GetMessage("INST_SKIP_BUTTON") . '" onclick="" class="instal-btn instal-btn-inp" />&nbsp;</div>
+		</div>
+
+		' . $this->ShowHiddenField("nextStep", "main") . '
+		' . $this->ShowHiddenField("nextStepStage", "database") . '
+		<iframe style="display:none;" id="iframe-post-form" name="iframe-post-form" src="javascript:\'\'"></iframe>
+		';
+
+		$wizard = $this->GetWizard();
+
+		$this->content .= '
+			<script>
+				var ajaxForm = new CAjaxForm("' . $wizard->GetFormName() . '", "iframe-post-form", {
+					"nextStep": "' . $wizard->GetRealName("nextStep") . '",
+					"nextStepStage": "' . $wizard->GetRealName("nextStepStage") . '"
+				});
+				ajaxForm.Post({}, "' . GetMessage("INST_MAIN_MODULE") . ' (' . GetMessage("INST_INSTALL_DATABASE") . ')");
+			</script>
+		';
+	}
+}
+
+class UpdateStep extends CWizardStep
+{
+	protected array $steps = ['check'];
+	protected int $updatesCount = 0;
+	protected int $installedUpdatesCount = 0;
+
+	function InitStep()
+	{
+		$this->SetStepID("update_modules");
+		$this->SetTitle(GetMessage("INST_PRODUCT_UPDATE"));
+	}
+
+	function OnPostForm()
+	{
+		require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+
+		$wizard = $this->GetWizard();
+		$currentStep = $wizard->GetVar("nextStep");
+		$currentStepStage = $wizard->GetVar("nextStepStage");
+
+		if (defined("TRIAL_VERSION") && $currentStep == "check")
+		{
+			// the user chose not to register a trial key - skip updates
+			if ($wizard->GetVar("lic_key_variant") != 'Y')
+			{
+				$currentStepStage = "skip";
+			}
+		}
+
+		if ($currentStepStage == "skip")
+		{
+			$this->SendResponse("
+				window.onbeforeunload = null; 
+				window.ajaxForm.StopAjax();
+				window.ajaxForm.Post({'nextStep': '__finish', 'nextStepStage': 'dummy'}, '');
+			");
+		}
+
+		if ($currentStep == "__finish")
+		{
+			$wizard->SetCurrentStep("create_admin");
+			return;
+		}
+
+		$nextStep = null;
+		$percent = null;
+		$status = null;
+		$success = true;
+
+		if ($currentStep == "check")
+		{
+			$success = $this->GetUpdatesList();
+		}
+		else
+		{
+			$this->steps = explode(',', $wizard->GetVar("updateSteps"));
+			$this->updatesCount = (int)$wizard->GetVar("updatesCount");
+			$this->installedUpdatesCount = (int)$wizard->GetVar("installedUpdatesCount");
+
+			if ($currentStep == 'repair')
+			{
+				$success = $this->Repair();
+				$nextStep = "check";
+			}
+			elseif ($currentStep == "upgrade")
+			{
+				$success = $this->Upgrade();
+				$nextStep = "check";
+			}
+			elseif ($currentStep == "load")
+			{
+				$result = $this->Load($message);
+				if ($result === false)
+				{
+					$success = false;
+				}
+				elseif ($result == 'F')
+				{
+					// finish
+					$nextStep = "__finish";
+					$percent = 100;
+				}
+				else
+				{
+					$status = GetMessage('INST_UPDATE_VERSION', ['#VER#' => $message]);
+				}
+			}
+			elseif ($currentStep == "update")
+			{
+				$success = $this->Update();
+				if ($success)
+				{
+					$nextStep = "load";
+				}
+			}
+		}
+
+		if (!$success)
+		{
+			$this->SendResponse("
+				window.ajaxForm.ShowError('" . CUtil::JSEscape($this->getErrorString()) . "');
+			");
+		}
+
+		// Next step
+		if ($nextStep === null)
+		{
+			$stepIndex = array_search($currentStep, $this->steps);
+
+			if ($stepIndex === false || !isset($this->steps[$stepIndex + 1]))
+			{
+				$nextStep = "__finish";
+				$percent = 100;
+			}
+			else
+			{
+				$nextStep = $this->steps[$stepIndex + 1];
+			}
+		}
+
+		// Percent
+		if ($percent === null)
+		{
+			if ($this->updatesCount > 0)
+			{
+				$percent = floor($this->installedUpdatesCount / $this->updatesCount * 100);
+			}
+			else
+			{
+				$percent = 0;
+			}
+		}
+
+		// Status
+		if ($status === null)
+		{
+			$status = match ($nextStep)
+			{
+				'check' => GetMessage('INST_STATUS_CHECK'),
+				'upgrade', 'repair' => GetMessage('INST_STATUS_UPGRADE'),
+				'__finish' => GetMessage('INST_STATUS_FINISH'),
+				default => "",
+			};
+		}
+
+		$response = "";
+		if ($nextStep == "__finish")
+		{
+			$response .= "
+				window.onbeforeunload = null; 
+				window.ajaxForm.StopAjax();
+			";
+		}
+
+		$response .= "
+			window.ajaxForm.SetStatus('" . $percent . "'); 
+			window.ajaxForm.Post(
+				{
+					'updateSteps': '" . implode(',', $this->steps) . "',
+					'updatesCount': " . $this->updatesCount . ",
+					'installedUpdatesCount': " . $this->installedUpdatesCount . ",
+					'nextStep': '" . $nextStep . "'
+				}, 
+				'" . CUtil::JSEscape($status) . "'
+			);
+		";
+
+		$this->SendResponse($response);
+	}
+
+	protected function getErrorString()
+	{
+		$errors = '';
+		foreach ($this->GetErrors() as $error)
+		{
+			$errors .= $error[0];
+		}
+		return $errors;
+	}
+
+	function ShowStep()
+	{
+		$this->content .= '
+		<div class="instal-load-block" id="result">
+			<div class="instal-load-label" id="status"></div>
+			<div class="instal-progress-bar-outer" style="width: 670px;">
+				<div class="instal-progress-bar-alignment">
+					<div class="instal-progress-bar-inner" id="indicator">
+						<div class="instal-progress-bar-inner-text" style="width: 670px;" id="percent"></div>
+					</div>
+					<span id="percent2">0%</span>
+				</div>
+			</div>
+		</div>
+		<div id="error_container" style="display:none">
+			<div id="error_notice">
+				<div class="inst-note-block inst-note-block-red">
+					<div class="inst-note-block-icon"></div>
+					<div class="inst-note-block-label">' . GetMessage("INST_ERROR_OCCURED") . '</div><br style="clear:both" />
+					<div class="inst-note-block-text">' . GetMessage("INST_ERROR_NOTICE") . '<div id="error_text"></div></div>
+				</div>
+			</div>
+
+			<div id="error_buttons" align="center">
+			<br /><input type="button" value="' . GetMessage("INST_RETRY_BUTTON") . '" id="error_retry_button" onclick="" class="instal-btn instal-btn-inp" />&nbsp;<input type="button" id="error_skip_button" value="' . GetMessage("INST_SKIP_BUTTON") . '" onclick="" class="instal-btn instal-btn-inp" />&nbsp;</div>
+		</div>
+
+		' . $this->ShowHiddenField("nextStep", "check") . '
+		' . $this->ShowHiddenField("nextStepStage", "") . '
+		' . $this->ShowHiddenField("updateSteps", "check") . '
+		' . $this->ShowHiddenField("updatesCount", 0) . '
+		' . $this->ShowHiddenField("installedUpdatesCount", 0) . '
+		<iframe style="display:none;" id="iframe-post-form" name="iframe-post-form" src="javascript:\'\'"></iframe>
+		';
+
+		$wizard = $this->GetWizard();
+
+		$formName = $wizard->GetFormName();
+
+		$this->content .= '
+			<script>
+				var ajaxForm = new CAjaxForm("' . $wizard->GetFormName() . '", "iframe-post-form", {
+					"nextStep": "' . $wizard->GetRealName("nextStep") . '",
+					"nextStepStage": "' . $wizard->GetRealName("nextStepStage") . '",
+					"updateSteps": "' . $wizard->GetRealName("updateSteps") . '",
+					"updatesCount": "' . $wizard->GetRealName("updatesCount") . '",
+					"installedUpdatesCount": "' . $wizard->GetRealName("installedUpdatesCount") . '"
+				});
+				ajaxForm.Post({}, "' . GetMessage('INST_STATUS_CHECK') . '");
+			</script>
+		';
+	}
+
+	function SendResponse($response)
+	{
+		header("Content-Type: text/html; charset=UTF-8");
+		die("[response]" . $response . "[/response]");
+	}
+
+	protected function GetUpdatesList()
+	{
+		$error = '';
+		$updateList = CUpdateClient::GetUpdatesList($error);
+
+		if ($error != '')
+		{
+			$this->SetError($error);
+			return false;
+		}
+
+		if (isset($updateList["ERROR"]))
+		{
+			foreach ($updateList["ERROR"] as $errorMessage)
+			{
+				if ($errorMessage["@"]["TYPE"] != "NEW_UPDATE_SYSTEM")
+				{
+					$error .= "[" . $errorMessage["@"]["TYPE"] . "] " . $errorMessage["#"] . "<br>";
+				}
+			}
+			if ($error != '')
+			{
+				$this->SetError($error);
+				return false;
+			}
+		}
+		if (isset($updateList['REPAIR']))
+		{
+			$this->steps[] = 'repair';
+		}
+		if (isset($updateList['UPDATE_SYSTEM']))
+		{
+			$this->steps[] = 'upgrade';
+		}
+
+		$clientModules = CUpdateClient::GetCurrentModules($error);
+		if ($error != '')
+		{
+			$this->SetError($error);
+			return false;
+		}
+
+		$this->updatesCount = array_sum(CUpdateClient::getUpdatesCount($updateList, $clientModules));
+		if ($this->updatesCount > 0)
+		{
+			$this->steps[] = 'load';
+			$this->steps[] = 'update';
+		}
+
+		return true;
+	}
+
+	protected function Upgrade()
+	{
+		$error = '';
+		if (!CUpdateClient::UpdateUpdate($error))
+		{
+			$this->SetError($error);
+			return false;
+		}
+		return true;
+	}
+
+	protected function Repair()
+	{
+		$error = '';
+		if (!CUpdateClient::RegisterVersion($error))
+		{
+			$this->SetError($error);
+			return false;
+		}
+		return true;
+	}
+
+	protected function Load(&$message)
+	{
+		$error = '';
+		$loadResult = CUpdateClient::LoadModulesUpdates($error, $updateDescription);
+
+		if ($loadResult == 'S')
+		{
+			if (isset($updateDescription['DATA']['#']['ITEM']))
+			{
+				$message = '';
+				foreach ($updateDescription['DATA']['#']['ITEM'] as $description)
+				{
+					if ($message != '')
+					{
+						$message .= ', ';
+					}
+					$message .= $description['@']['NAME'];
+					if (!empty($description['@']['VALUE']))
+					{
+						$message .= ' (' . $description['@']['VALUE'] . ')';
+					}
+				}
+			}
+		}
+		elseif ($loadResult == 'E')
+		{
+			if ($error == '')
+			{
+				$error = '[CL02] Cannot extract files from archive.';
+			}
+			$this->SetError($error);
+			return false;
+		}
+
+		return $loadResult;
+	}
+
+	protected function Update()
+	{
+		$error = '';
+		$loadResult = CUpdateClient::LoadModulesUpdates($error, $updateDescription);
+
+		if ($loadResult == 'E')
+		{
+			$this->SetError($error);
+			return false;
+		}
+
+		$temporaryUpdatesDir = '';
+		if (!CUpdateClient::UnGzipArchive($temporaryUpdatesDir, $error))
+		{
+			$this->SetError($error);
+			return false;
+		}
+
+		if (!CUpdateClient::CheckUpdatability($temporaryUpdatesDir, $error))
+		{
+			$this->SetError($error);
+			return false;
+		}
+
+		if (!CUpdateClient::UpdateStepModules($temporaryUpdatesDir, $error))
+		{
+			$error .= '[CL04] Module update failed.';
+			$this->SetError($error);
+			return false;
+		}
+
+		CUpdateClient::logUpdates($updateDescription["DATA"]["#"]["ITEM"]);
+
+		CUpdateClient::finalizeModuleUpdate($updateDescription["DATA"]["#"]["ITEM"]);
+
+		$this->installedUpdatesCount += count($updateDescription["DATA"]["#"]["ITEM"]);
+
+		return true;
+	}
+}
+
+class CreateAdminStep extends CWizardStep
+{
+	function InitStep()
+	{
+		$this->SetStepID("create_admin");
+		$this->SetNextStep("select_wizard");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetTitle(GetMessage("INST_CREATE_ADMIN"));
+
+		$wizard = $this->GetWizard();
+		$wizard->SetDefaultVar("login", "admin");
+		$wizard->SetDefaultVar("email", "");
+	}
+
+	function OnPostForm()
+	{
+		global $DB, $DBHost, $DBLogin, $DBPassword, $DBName, $DBDebug, $DBDebugToFile, $APPLICATION, $USER;
+		require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+
+		$wizard = $this->GetWizard();
+
+		$email = $wizard->GetVar("email");
+		$login = $wizard->GetVar("login");
+		$adminPass = $wizard->GetVar("admin_password");
+		$adminPassConfirm = $wizard->GetVar("admin_password_confirm");
+		$userName = $wizard->GetVar("user_name");
+		$userSurname = $wizard->GetVar("user_surname");
+
+		if ($email == '')
+		{
+			$this->SetError(GetMessage("INS_FORGOT_EMAIL"));
+			return false;
+		}
+		elseif (!check_email($email))
+		{
+			$this->SetError(GetMessage("INS_WRONG_EMAIL"));
+			return false;
+		}
+
+		if ($login == '')
+		{
+			$this->SetError(GetMessage("INS_FORGOT_LOGIN"));
+			return false;
+		}
+		elseif (strlen($login) < 3)
+		{
+			$this->SetError(GetMessage("INS_LOGIN_MIN"));
+			return false;
+		}
+
+		if ($adminPass == '')
+		{
+			$this->SetError(GetMessage("INS_FORGOT_PASSWORD"));
+			return false;
+		}
+		elseif (strlen($adminPass) < 6)
+		{
+			$this->SetError(GetMessage("INS_PASSWORD_MIN"));
+			return false;
+		}
+		elseif ($adminPass != $adminPassConfirm)
+		{
+			$this->SetError(GetMessage("INS_WRONG_CONFIRM"));
+			return false;
+		}
+
+		if (trim($userName) == '')
+		{
+			$this->SetError(GetMessage("ACT_KEY_BAD_NAME"), "user_name");
+			return false;
+		}
+		if (trim($userSurname) == '')
+		{
+			$this->SetError(GetMessage("ACT_KEY_BAD_LAST_NAME"), "user_surname");
+			return false;
+		}
+
+		$admin = $DB->Query("SELECT * FROM b_user WHERE ID=1", true);
+		if ($admin === false)
+		{
+			return false;
+		}
+
+		$isAdminExists = (bool)$admin->Fetch();
+
+		$arFields = [
+			"NAME" => $userName,
+			"LAST_NAME" => $userSurname,
+			"EMAIL" => $email,
+			"LOGIN" => $login,
+			"ACTIVE" => "Y",
+			"GROUP_ID" => ["1"],
+			"PASSWORD" => $adminPass,
+			"CONFIRM_PASSWORD" => $adminPassConfirm,
+		];
+
+		if ($isAdminExists)
+		{
+			$userID = 1;
+			$success = $USER->Update($userID, $arFields);
+		}
+		else
+		{
+			$userID = $USER->Add($arFields);
+			$success = (intval($userID) > 0);
+		}
+
+		if (!$success)
+		{
+			$this->SetError($USER->LAST_ERROR);
+			return false;
+		}
+
+		COption::SetOptionString("main", "email_from", $email);
+
+		$USER->Authorize($userID, true);
+
+		if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/intranet") && !defined("FIRST_EDITION"))
+		{
+			RegisterModuleDependences('main', 'OnBeforeProlog', 'main', 'CWizardSolPanel', 'ShowPanel', 100, '/modules/main/install/wizard_sol/panel_button.php');
+		}
+
+		$devsrv = $wizard->GetVar("devsrv");
+		if ($devsrv == "Y")
+		{
+			COption::SetOptionString("main", "update_devsrv", $devsrv);
+		}
+
+		$wizardName = BXInstallServices::GetConfigWizard();
+		if ($wizardName === false)
+		{
+			$arWizardsList = BXInstallServices::GetWizardsList();
+			if (empty($arWizardsList))
+			{
+				$wizardName = BXInstallServices::GetDemoWizard();
+			}
+		}
+		if ($wizardName !== false)
+		{
+			if (BXInstallServices::CreateWizardIndex($wizardName, $errorMessageTmp))
+			{
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/readme.html");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/install.config");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/restore.php");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bitrixsetup.php");
+
+				BXInstallServices::LocalRedirect("/index.php");
+			}
+			else
+			{
+				$this->SetError($errorMessageTmp);
+			}
+		}
+
+		return true;
+	}
+
+	function ShowStep()
+	{
+		$this->content = '
+		<table border="0" class="data-table">
+			<tr>
+				<td colspan="2" class="header">' . GetMessage("INS_ADMIN_SETTINGS") . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right" ><span style="color:red">*</span>&nbsp;' . GetMessage("INS_LOGIN") . '</td>
+				<td >' . $this->ShowInputField("text", "login", ["size" => "30"]) . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right"><span style="color:red">*</span>&nbsp;' . GetMessage("INS_ADMIN_PASSWORD") . '</td>
+				<td >' . $this->ShowInputField("password", "admin_password", ["size" => "30"]) . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right"><span style="color:red">*</span>&nbsp;' . GetMessage("INS_PASSWORD_CONF") . '</td>
+				<td>' . $this->ShowInputField("password", "admin_password_confirm", ["size" => "30"]) . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right"><span style="color:red">*</span>&nbsp;' . GetMessage("INS_EMAIL") . '</td>
+				<td>' . $this->ShowInputField("text", "email", ["size" => "30"]) . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right"><span style="color:red">*</span>&nbsp;' . GetMessage("INS_NAME") . '</td>
+				<td>' . $this->ShowInputField("text", "user_name", ["size" => "30"]) . '</td>
+			</tr>
+			<tr>
+				<td nowrap align="right"><span style="color:red">*</span>&nbsp;' . GetMessage("INS_LAST_NAME") . '</td>
+				<td>' . $this->ShowInputField("text", "user_surname", ["size" => "30"]) . '</td>
+			</tr>
+		</table>';
+	}
+}
+
+class SelectWizardStep extends CWizardStep
+{
+	function InitStep()
+	{
+		$this->SetStepID("select_wizard");
+		$this->SetNextStep("finish");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetTitle(GetMessage("INST_SELECT_WIZARD"));
+	}
+
+	function OnPostForm()
+	{
+		global $DB, $DBHost, $DBLogin, $DBPassword, $DBName, $DBDebug, $DBDebugToFile, $APPLICATION, $USER;
+
+		require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+
+		$wizard = $this->GetWizard();
+		$selectedWizard = $wizard->GetVar("selected_wizard");
+
+		if ($selectedWizard == '')
+		{
+			$this->SetError(GetMessage("INS_WRONG_WIZARD"));
+			return null;
+		}
+
+		if ($selectedWizard == "@")
+		{
+			$wizard->SetCurrentStep("load_module");
+			return true;
+		}
+
+		$arTmp = explode(":", $selectedWizard);
+		$ar = [];
+		foreach ($arTmp as $a)
+		{
+			$a = preg_replace("#[^a-z0-9_.-]+#i", "", $a);
+			if ($a <> '')
+			{
+				$ar[] = $a;
+			}
+		}
+
+		if (count($ar) > 2)
+		{
+			$path = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $ar[0] . "/install/wizards/" . $ar[1] . "/" . $ar[2];
+
+			if (!file_exists($path) || !is_dir($path))
+			{
+				$this->SetError(GetMessage("INS_WIZARD_NOT_FOUND"));
+				return null;
+			}
+
+			BXInstallServices::CopyDirFiles(
+				$_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $ar[0] . "/install/wizards/" . $ar[1] . "/" . $ar[2],
+				$_SERVER["DOCUMENT_ROOT"] . "/bitrix/wizards/" . $ar[1] . "/" . $ar[2]
+			);
+
+			$ar = [$ar[1], $ar[2]];
+		}
+
+		if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/bitrix/wizards/" . $ar[0] . "/" . $ar[1])
+			|| !is_dir($_SERVER["DOCUMENT_ROOT"] . "/bitrix/wizards/" . $ar[0] . "/" . $ar[1]))
+		{
+			$this->SetError(GetMessage("INS_WIZARD_NOT_FOUND"));
+			return null;
+		}
+
+		if (BXInstallServices::CreateWizardIndex($ar[0] . ":" . $ar[1], $errorMessageTmp))
+		{
+			$u = "/index.php";
+			if (defined("WIZARD_DEFAULT_SITE_ID"))
+			{
+				$rsSite = CSite::GetList("sort", "asc", ["ID" => WIZARD_DEFAULT_SITE_ID]);
+				$arSite = $rsSite->GetNext();
+
+				$u = "";
+				if (is_array($arSite["DOMAINS"]) && $arSite["DOMAINS"][0] <> '' || $arSite["DOMAINS"] <> '')
+				{
+					$u .= "http://";
+				}
+				if (is_array($arSite["DOMAINS"]))
+				{
+					$u .= $arSite["DOMAINS"][0];
+				}
+				else
+				{
+					$u .= $arSite["DOMAINS"];
+				}
+				$u .= $arSite["DIR"];
+			}
+			else
+			{
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/readme.html");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/install.config");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/restore.php");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bitrixsetup.php");
+			}
+
+			BXInstallServices::LocalRedirect($u);
+		}
+		else
+		{
+			$this->SetError($errorMessageTmp);
+		}
+
+		return true;
+	}
+
+	function ShowStep()
+	{
+		$wizard = $this->GetWizard();
+		$prefixName = $wizard->GetRealName("selected_wizard");
+
+		$arWizardsList = BXInstallServices::GetWizardsList();
+
+		$this->content = '
+		<script>
+			function SelectSolution(element, solutionId)
+			{
+				var hidden = document.getElementById("id_' . CUtil::JSEscape($prefixName) . '");
+				hidden.value = solutionId;
+				document.getElementById("id_radio_"+solutionId).checked=true;
+			}
+		</script>
+		';
+
+		$arWizardsList[] = [
+			"ID" => "@",
+			"IMAGE" => "/bitrix/images/install/marketplace.gif",
+			"NAME" => GetMessage("INS_LOAD_FROM_MARKETPLACE"),
+			"DESCRIPTION" => GetMessage("INS_LOAD_FROM_MARKETPLACE_DESCR"),
+		];
+
+		$this->content .= '<table class="inst-module-table" id="solutions-container">';
+		$i = 0;
+		foreach ($arWizardsList as $w)
+		{
+			if ($i == 0)
+			{
+				$this->content .= '<tr>';
+			}
+			$this->content .= '
+				<td class="inst-module-cell">
+					<div class="inst-module-block" onclick="SelectSolution(this, \'' . htmlspecialcharsbx($w["ID"]) . '\');" ondblclick="document.forms[\'' . htmlspecialcharsbx($wizard->GetFormName()) . '\'].submit();">
+							<div class="inst-module-title"><span class="inst-module-title-alignment"></span><span class="inst-module-title-text">' . $w["NAME"] . '</span></div>
+							<div class="inst-module-cont">
+								' . ($w["IMAGE"] <> '' ? '<div class="inst-module-img"><img alt="" src="' . htmlspecialcharsbx($w["IMAGE"]) . '" /></div>' : "") . '
+								<div class="inst-module-text">' . $w["DESCRIPTION"] . '</div>
+							</div>
+							<input type="radio" id="id_radio_' . htmlspecialcharsbx($w["ID"]) . '" name="redio" class="inst-module-checkbox" />
+					</div>
+				</td>';
+
+			if ($i == 1)
+			{
+				$this->content .= '</tr>';
+				$i = 0;
+			}
+			else
+			{
+				$i++;
+			}
+		}
+		if ($i == 0)
+		{
+			$this->content .= '<td></td></tr>';
+		}
+		$this->content .= '</table>
+		<input type="hidden" id="id_' . htmlspecialcharsbx($prefixName) . '" name="' . htmlspecialcharsbx($prefixName) . '" value="">';
+	}
+}
+
+class LoadModuleStep extends CWizardStep
+{
+	function InitStep()
+	{
+		$this->SetStepID("load_module");
+		$this->SetNextStep("select_wizard1");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetTitle(GetMessage("INS_MODULE_LOADING"));
+	}
+
+	function OnPostForm()
+	{
+		global $DB, $DBHost, $DBLogin, $DBPassword, $DBName, $DBDebug, $DBDebugToFile, $APPLICATION, $USER;
+		require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+		require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/update_client_partner.php");
+
+		@set_time_limit(3600);
+
+		$wizard = $this->GetWizard();
+		$selectedModule = $wizard->GetVar("selected_module");
+		$selectedModule = preg_replace("#[^a-z0-9._-]#i", "", $selectedModule);
+		$coupon = $wizard->GetVar("coupon");
+		$wizard->SetVar("MP_ACT_OK", "");
+
+		if ($coupon <> '')
+		{
+			if (CUpdateClientPartner::ActivateCoupon($coupon, $error))
+			{
+				$wizard->SetVar("MP_ACT_OK", "OK");
+			}
+			else
+			{
+				$this->SetError(GetMessage("MP_COUPON_ACT_ERROR") . ": " . $error);
+			}
+
+			$wizard->SetCurrentStep("load_module");
+			return null;
+		}
+
+		if ($selectedModule == '')
+		{
+			$wizard->SetCurrentStep("select_wizard");
+			return true;
+		}
+
+		//CUtil::InitJSCore(array('window'));
+		$wizard->SetVar("nextStepStage", $selectedModule);
+		$wizard->SetCurrentStep("load_module_action");
+
+		return true;
+	}
+
+	function GetModuleObject($moduleID)
+	{
+		$installFile = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $moduleID . "/install/index.php";
+		if (!file_exists($installFile))
+		{
+			return false;
+		}
+
+		@include_once($installFile);
+		$moduleIDTmp = str_replace(".", "_", $moduleID);
+		if (!class_exists($moduleIDTmp))
+		{
+			return false;
+		}
+
+		return new $moduleIDTmp;
+	}
+
+	function ShowStep()
+	{
+		$wizard = $this->GetWizard();
+		$prefixName = $wizard->GetRealName("selected_module");
+		$couponName = $wizard->GetRealName("coupon");
+
+		$arModulesList = [];
+
+		require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/update_client_partner.php");
+
+		$arModules = CUpdateClientPartner::SearchModulesEx(
+			["SORT" => "DESC", "NAME" => "ASC"],
+			["CATEGORY" => [7, 14]],
+			1,
+			LANGUAGE_ID,
+			$errorMessage
+		);
+		if (is_array($arModules) && is_array($arModules["ERROR"]))
+		{
+			foreach ($arModules["ERROR"] as $e)
+			{
+				$errorMessage .= $e["#"] . ". ";
+			}
+		}
+
+		if (is_array($arModules) && is_array($arModules["MODULE"]))
+		{
+			foreach ($arModules["MODULE"] as $module)
+			{
+				$arModulesList[] = [
+					"ID" => $module["@"]["ID"],
+					"NAME" => $module["@"]["NAME"],
+					"DESCRIPTION" => $module["@"]["DESCRIPTION"],
+					"IMAGE" => $module["@"]["IMAGE"],
+					"IMAGE_HEIGHT" => $module["@"]["IMAGE_HEIGHT"],
+					"IMAGE_WIDTH" => $module["@"]["IMAGE_WIDTH"],
+					"VERSION" => $module["@"]["VERSION"],
+					"BUYED" => $module["@"]["BUYED"],
+					"LINK" => "https://marketplace.1c-bitrix.ru/solutions/" . $module["@"]["ID"] . "/",
+				];
+			}
+		}
+
+		if ($errorMessage <> '')
+		{
+			$this->SetError($errorMessage);
+		}
+
+		$this->content .= '
+		<script>
+			function SelectSolutionMP(element, solutionId)
+			{
+				var hidden = document.getElementById("id_' . CUtil::JSEscape($prefixName) . '");
+				hidden.value = solutionId;
+
+				var container = document.getElementById("solutions-container");
+				var anchors = container.getElementsByTagName("TD");
+				for (var i = 0; i < anchors.length; i++)
+				{
+					anchors[i].className = "inst-module-cell";
+				}
+
+				element.parentNode.className = "inst-module-cell inst-module-cell-active";
+
+				document.getElementById("id_radio_"+solutionId).checked=true;
+			}
+		</script>
+		';
+
+		$license = Application::getInstance()->getLicense();
+
+		if (!$license->isDemoKey() && !$license->isDemo())
+		{
+			$actRes = $wizard->GetVar("MP_ACT_OK");
+			if ($actRes == "OK")
+			{
+				$this->content .= '<div class="inst-note-block inst-note-block-blue">
+						<div class="inst-note-block-icon"></div>
+						<div class="inst-note-block-text">' . GetMessage("MP_COUPON_ACTIVATION_OK") . '</div>
+					</div>';
+			}
+			$this->content .= '
+				<div class="inst-discount-pass">
+					<span class="inst-discount-label">' . GetMessage("MP_COUPON") . ':</span><input type="text" name="' . $couponName . '" value="" class="inst-discount-inp"><span class="instal-btn inst-btn-discount" onclick="document.forms[\'' . htmlspecialcharsbx($wizard->GetFormName()) . '\'].submit();">' . GetMessage("MP_ACTIVATE") . '</span>
+				</div>';
+		}
+
+		$arModulesList[] = [
+			"ID" => "",
+			"IMAGE" => "",
+			"NAME" => GetMessage("INS_SKIP_MODULE_LOADING"),
+			"DESCRIPTION" => GetMessage("INS_SKIP_MODULE_LOADING_DESCR"),
+		];
+
+		$this->content .= '<table class="inst-module-table" id="solutions-container">';
+
+		$arCurrentModules = CUpdateClientPartner::GetCurrentModules($errorMessage);
+
+		$i = 0;
+		foreach ($arModulesList as $m)
+		{
+			if ($i == 0)
+			{
+				$this->content .= '<tr>';
+			}
+
+			$bLoaded = array_key_exists($m["ID"], $arCurrentModules);
+
+			$this->content .= '
+				<td class="inst-module-cell">
+					<div class="inst-module-block" onclick="' . 'SelectSolutionMP(this, \'' . htmlspecialcharsbx($m["ID"]) . '\');" ondblclick="' . ($bLoaded ? 'return false;' : 'document.forms[\'' . htmlspecialcharsbx($wizard->GetFormName()) . '\'].submit();') . '">
+							<div class="inst-module-title"><span class="inst-module-title-alignment"></span><span class="inst-module-title-text">' . TruncateText($m["NAME"], 59) . '</span></div>
+							<div class="inst-module-cont">
+								' . ($m["IMAGE"] <> '' ? '<div class="inst-module-img-mp"><img alt="" src="' . htmlspecialcharsbx($m["IMAGE"]) . '" /></div>' : "") . '
+								<div class="inst-module-text-mp">' .
+				(isset($m["BUYED"]) && $m["BUYED"] == "Y" ? '<b>' . GetMessage("INS_MODULE_IS_BUYED") . '</b><br />' : '') .
+				($bLoaded ? '<b>' . GetMessage("INS_MODULE_IS_ALREADY_LOADED") . '</b><br />' : '') .
+				TruncateText($m["DESCRIPTION"], 90) . '</div>
+							</div>' .
+				(!empty($m["LINK"]) ? '<div class="inst-module-footer"><a class="inst-module-more" href="' . $m["LINK"] . '" target="_blank">' . GetMessage("MP_MORE") . '</a></div>' : '') . '
+							<input type="radio" id="id_radio_' . htmlspecialcharsbx($m["ID"]) . '" name="redio" class="inst-module-checkbox" />
+					</div>
+				</td>';
+
+			if ($i == 1)
+			{
+				$this->content .= '</tr>';
+				$i = 0;
+			}
+			else
+			{
+				$i++;
+			}
+		}
+		if ($i == 0)
+		{
+			$this->content .= '<td></td></tr>';
+		}
+
+		$this->content .= '</table>
+		<input type="hidden" id="id_' . htmlspecialcharsbx($prefixName) . '" name="' . htmlspecialcharsbx($prefixName) . '" value="">';
+	}
+}
+
+class LoadModuleActionStep extends CWizardStep
+{
+	var $arSteps = [];
+	var $singleSteps = [];
+
+	function InitStep()
+	{
+		$this->SetStepID("load_module_action");
+		$this->SetTitle(GetMessage("INS_MODULE_LOADING1"));
+	}
+
+	function OnPostForm()
+	{
+		global $DB, $DBHost, $DBLogin, $DBPassword, $DBName, $DBDebug, $DBDebugToFile, $APPLICATION, $USER;
+		require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+
+		@set_time_limit(3600);
+
+		$wizard = $this->GetWizard();
+		$currentStep = $wizard->GetVar("nextStep");
+		$selectedModule = $wizard->GetVar("nextStepStage");
+		$selectedModule = preg_replace("#[^a-z0-9_.-]+#i", "", $selectedModule);
+
+		if ($selectedModule == "skip")
+		{
+			$wizard->SetCurrentStep("select_wizard");
+			return;
+		}
+
+		$this->singleSteps = [
+			"do_load_module" => GetMessage("INS_MODULE_LOADING"),
+			"do_update_module" => GetMessage("INS_MODULE_LOADING"),
+			"do_install_module" => GetMessage("INS_MODULE_INSTALLING"),
+			"do_load_wizard" => GetMessage("INS_WIZARD_LOADING"),
+		];
+
+		$this->arSteps = array_keys($this->singleSteps);
+
+		if (!in_array($currentStep, $this->arSteps))
+		{
+			if ($currentStep == "LocalRedirect")
+			{
+				$arWizardsList = BXInstallServices::GetWizardsList($selectedModule);
+
+				$arTmp = explode(":", $arWizardsList[0]["ID"]);
+				$ar = [];
+				foreach ($arTmp as $a)
+				{
+					$a = preg_replace("#[^a-z0-9_.-]+#i", "", $a);
+					if ($a <> '')
+					{
+						$ar[] = $a;
+					}
+				}
+
+				$errorMessageTmp = "";
+				if (BXInstallServices::CreateWizardIndex($ar[1] . ":" . $ar[2], $errorMessageTmp))
+				{
+					$u = "/index.php";
+					if (defined("WIZARD_DEFAULT_SITE_ID"))
+					{
+						$rsSite = CSite::GetList("sort", "asc", ["ID" => WIZARD_DEFAULT_SITE_ID]);
+						$arSite = $rsSite->GetNext();
+
+						$u = "";
+						if (is_array($arSite["DOMAINS"]) && $arSite["DOMAINS"][0] <> '' || $arSite["DOMAINS"] <> '')
+						{
+							$u .= "http://";
+						}
+						if (is_array($arSite["DOMAINS"]))
+						{
+							$u .= $arSite["DOMAINS"][0];
+						}
+						else
+						{
+							$u .= $arSite["DOMAINS"];
+						}
+						$u .= $arSite["DIR"];
+					}
+					else
+					{
+						BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/readme.html");
+						BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/install.config");
+						BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/restore.php");
+						BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bitrixsetup.php");
+					}
+
+					BXInstallServices::LocalRedirect($u);
+					return;
+				}
+			}
+			else
+			{
+				$wizard->SetCurrentStep($currentStep);
+				return;
+			}
+		}
+
+		$nextStep = "do_load_module";
+		$percent = 0;
+		$status = "";
+
+		if ($currentStep == "do_load_module" || $currentStep == "do_update_module")
+		{
+			if (($currentStep == "do_update_module") || !file_exists($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $selectedModule))
+			{
+				require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/update_client_partner.php");
+
+				$loadModuleResult = CUpdateClientPartner::loadModule4Wizard($selectedModule, LANGUAGE_ID);
+				$loadModuleResultCode = substr($loadModuleResult, 0, 3);
+				if ($loadModuleResultCode == "ERR")
+				{
+					$this->SendResponse("
+						window.onbeforeunload = null; 
+						window.ajaxForm.StopAjax(); 
+						window.ajaxForm.SetStatus('0', '" . substr($loadModuleResult, 3) . "'); 
+						window.ajaxForm.ShowError('" . substr($loadModuleResult, 3) . "');
+					");
+				}
+				elseif ($loadModuleResultCode == "STP")
+				{
+					$nextStep = "do_update_module";
+					$status = $this->singleSteps["do_update_module"];
+					$percent = 40;
+				}
+				else
+				{
+					$nextStep = "do_install_module";
+					$status = $this->singleSteps["do_install_module"];
+					$percent = 40;
+				}
+			}
+			else
+			{
+				$nextStep = "do_install_module";
+				$status = $this->singleSteps["do_install_module"];
+				$percent = 40;
+			}
+		}
+		elseif ($currentStep == "do_install_module")
+		{
+			if (!IsModuleInstalled($selectedModule))
+			{
+				$module = $this->GetModuleObject($selectedModule);
+				if (!is_object($module))
+				{
+					$this->SendResponse("
+						window.onbeforeunload = null; 
+						window.ajaxForm.StopAjax(); 
+						window.ajaxForm.SetStatus('0', '" . GetMessage("INS_MODULE_CANNOT_BE_INSTALLED") . "');
+						window.ajaxForm.ShowError('" . GetMessage("INS_MODULE_CANNOT_BE_INSTALLED") . "');
+					");
+				}
+
+				if (!$module->InstallDB())
+				{
+					if ($ex = $APPLICATION->GetException())
+					{
+						$this->SendResponse("
+							window.onbeforeunload = null; 
+							window.ajaxForm.StopAjax(); 
+							window.ajaxForm.SetStatus('0', '" . $ex->GetString() . "');
+						");
+					}
+					else
+					{
+						$this->SendResponse("
+							window.onbeforeunload = null; 
+							window.ajaxForm.StopAjax(); 
+							window.ajaxForm.SetStatus('0', '" . GetMessage("INS_MODULE_DATABASE_ERROR") . "');
+						");
+					}
+				}
+
+				$module->InstallEvents();
+
+				if (!$module->InstallFiles())
+				{
+					if ($ex = $APPLICATION->GetException())
+					{
+						$this->SendResponse("
+							window.onbeforeunload = null; 
+							window.ajaxForm.StopAjax(); 
+							window.ajaxForm.SetStatus('0', '" . $ex->GetString() . "');
+						");
+					}
+					else
+					{
+						$this->SendResponse("
+							window.onbeforeunload = null; 
+							window.ajaxForm.StopAjax(); 
+							window.ajaxForm.SetStatus('0', '" . GetMessage("INS_MODULE_FILES_ERROR") . "');
+						");
+					}
+				}
+			}
+			$nextStep = "do_load_wizard";
+			$status = $this->singleSteps["do_load_wizard"];
+			$percent = 80;
+		}
+		elseif ($currentStep == "do_load_wizard")
+		{
+			$arWizardsList = BXInstallServices::GetWizardsList($selectedModule);
+			if (count($arWizardsList) == 1)
+			{
+				$arTmp = explode(":", $arWizardsList[0]["ID"]);
+				$ar = [];
+				foreach ($arTmp as $a)
+				{
+					$a = preg_replace("#[^a-z0-9_.-]+#i", "", $a);
+					if ($a <> '')
+					{
+						$ar[] = $a;
+					}
+				}
+
+				BXInstallServices::CopyDirFiles(
+					$_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $ar[0] . "/install/wizards/" . $ar[1] . "/" . $ar[2],
+					$_SERVER["DOCUMENT_ROOT"] . "/bitrix/wizards/" . $ar[1] . "/" . $ar[2]
+				);
+
+				$nextStep = "LocalRedirect";
+			}
+			elseif (empty($arWizardsList))
+			{
+				$nextStep = "select_wizard";
+			}
+			else
+			{
+				$nextStep = "select_wizard1";
+			}
+			$percent = 100;
+			$status = $this->singleSteps["do_load_wizard"];
+		}
+
+		$response = "";
+		if (!in_array($nextStep, $this->arSteps))
+		{
+			$response .= "
+				window.onbeforeunload = null; 
+				window.ajaxForm.StopAjax();
+			";
+		}
+
+		$response .= "
+			window.ajaxForm.SetStatus('" . $percent . "'); 
+			window.ajaxForm.Post({'nextStep': '" . $nextStep . "', 'nextStepStage': '" . $selectedModule . "'}, '" . $status . "');
+		";
+
+		$this->SendResponse($response);
+	}
+
+	function SendResponse($response)
+	{
+		header("Content-Type: text/html; charset=UTF-8");
+		die("[response]" . $response . "[/response]");
+	}
+
+	function GetModuleObject($moduleID)
+	{
+		$installFile = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $moduleID . "/install/index.php";
+		if (!file_exists($installFile))
+		{
+			return false;
+		}
+
+		@include_once($installFile);
+		$moduleIDTmp = str_replace(".", "_", $moduleID);
+		if (!class_exists($moduleIDTmp))
+		{
+			return false;
+		}
+
+		return new $moduleIDTmp;
+	}
+
+	function ShowStep()
+	{
+		@include_once($_SERVER["DOCUMENT_ROOT"] . BX_PERSONAL_ROOT . "/php_interface/dbconn.php");
+
+		$wizard = $this->GetWizard();
+		$nextStepStage = $wizard->GetVar("nextStepStage");
+
+		$this->content .= '
+		<div class="instal-load-block" id="result">
+			<div class="instal-load-label" id="status"></div>
+			<div class="instal-progress-bar-outer" style="width: 670px;">
+				<div class="instal-progress-bar-alignment">
+					<div class="instal-progress-bar-inner" id="indicator">
+						<div class="instal-progress-bar-inner-text" style="width: 670px;" id="percent"></div>
+					</div>
+					<span id="percent2">0%</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="error_container" style="display:none">
+			<div id="error_notice">
+				<div class="inst-note-block inst-note-block-red">
+					<div class="inst-note-block-icon"></div>
+					<div class="inst-note-block-label">' . GetMessage("INST_ERROR_OCCURED") . '</div><br style="clear:both" />
+					<div class="inst-note-block-text">' . GetMessage("INST_ERROR_NOTICE") . '<div id="error_text"></div></div>
+				</div>
+			</div>
+
+			<div id="error_buttons" align="center">
+			<br /><input type="button" value="' . GetMessage("INST_RETRY_BUTTON") . '" id="error_retry_button" style="display:none" onclick="" class="instal-btn instal-btn-inp" />&nbsp;<input type="button" id="error_skip_button" value="' . GetMessage("INST_SKIP_BUTTON") . '" onclick="" class="instal-btn instal-btn-inp" />&nbsp;</div>
+		</div>
+
+		' . $this->ShowHiddenField("nextStep", "do_load_module") . '
+		' . $this->ShowHiddenField("nextStepStage", $nextStepStage) . '
+		<iframe style="display:none;" id="iframe-post-form" name="iframe-post-form" src="javascript:\'\'"></iframe>
+		';
+
+		$wizard = $this->GetWizard();
+
+		$formName = $wizard->GetFormName();
+
+		$this->content .= '
+			<script>
+				var ajaxForm = new CAjaxForm("' . $wizard->GetFormName() . '", "iframe-post-form", {
+					"nextStep": "' . $wizard->GetRealName("nextStep") . '",
+					"nextStepStage": "' . $wizard->GetRealName("nextStepStage") . '"
+				});
+				ajaxForm.Post({}, "' . GetMessage("INS_MODULE_LOADING") . '");
+			</script>
+		';
+	}
+}
+
+class SelectWizard1Step extends SelectWizardStep
+{
+	function InitStep()
+	{
+		$this->SetStepID("select_wizard1");
+		$this->SetNextStep("finish");
+		$this->SetNextCaption(GetMessage("NEXT_BUTTON"));
+		$this->SetTitle(GetMessage("INST_SELECT_WIZARD1"));
+	}
+
+	function OnPostForm()
+	{
+		global $DB, $DBHost, $DBLogin, $DBPassword, $DBName, $DBDebug, $DBDebugToFile, $APPLICATION, $USER;
+		require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+
+		$wizard = $this->GetWizard();
+		$selectedWizard = $wizard->GetVar("selected_wizard");
+
+		if ($selectedWizard == '')
+		{
+			$this->SetError(GetMessage("INS_WRONG_WIZARD"));
+			return null;
+		}
+
+		if ($selectedWizard == "@")
+		{
+			$wizard->SetCurrentStep("load_module");
+			return true;
+		}
+
+		$arTmp = explode(":", $selectedWizard);
+		$ar = [];
+		foreach ($arTmp as $a)
+		{
+			$a = preg_replace("#[^a-z0-9_.-]+#i", "", $a);
+			if ($a <> '')
+			{
+				$ar[] = $a;
+			}
+		}
+
+		if (count($ar) > 2)
+		{
+			$path = $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $ar[0] . "/install/wizards/" . $ar[1] . "/" . $ar[2];
+
+			if (!file_exists($path) || !is_dir($path))
+			{
+				$this->SetError(GetMessage("INS_WIZARD_NOT_FOUND"));
+				return null;
+			}
+
+			BXInstallServices::CopyDirFiles(
+				$_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $ar[0] . "/install/wizards/" . $ar[1] . "/" . $ar[2],
+				$_SERVER["DOCUMENT_ROOT"] . "/bitrix/wizards/" . $ar[1] . "/" . $ar[2]
+			);
+
+			$ar = [$ar[1], $ar[2]];
+		}
+
+		if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/bitrix/wizards/" . $ar[0] . "/" . $ar[1])
+			|| !is_dir($_SERVER["DOCUMENT_ROOT"] . "/bitrix/wizards/" . $ar[0] . "/" . $ar[1]))
+		{
+			$this->SetError(GetMessage("INS_WIZARD_NOT_FOUND"));
+			return null;
+		}
+
+		if (BXInstallServices::CreateWizardIndex($ar[0] . ":" . $ar[1], $errorMessageTmp))
+		{
+			$u = "/index.php";
+			if (defined("WIZARD_DEFAULT_SITE_ID"))
+			{
+				$rsSite = CSite::GetList("sort", "asc", ["ID" => WIZARD_DEFAULT_SITE_ID]);
+				$arSite = $rsSite->GetNext();
+
+				$u = "";
+				if (is_array($arSite["DOMAINS"]) && $arSite["DOMAINS"][0] <> '' || $arSite["DOMAINS"] <> '')
+				{
+					$u .= "http://";
+				}
+				if (is_array($arSite["DOMAINS"]))
+				{
+					$u .= $arSite["DOMAINS"][0];
+				}
+				else
+				{
+					$u .= $arSite["DOMAINS"];
+				}
+				$u .= $arSite["DIR"];
+			}
+			else
+			{
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/readme.html");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/install.config");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/restore.php");
+				BXInstallServices::DeleteDirRec($_SERVER["DOCUMENT_ROOT"] . "/bitrixsetup.php");
+			}
+
+			BXInstallServices::LocalRedirect($u);
+		}
+		else
+		{
+			$this->SetError($errorMessageTmp);
+		}
+
+		return true;
+	}
+
+	function ShowStep()
+	{
+		$wizard = $this->GetWizard();
+		$prefixName = $wizard->GetRealName("selected_wizard");
+
+		$selectedModule = $wizard->GetVar("selected_module");
+
+		$arWizardsList = BXInstallServices::GetWizardsList($selectedModule);
+
+		$this->content = '
+		<script>
+			function SelectSolution(element, solutionId)
+			{
+				var hidden = document.getElementById("id_' . CUtil::JSEscape($prefixName) . '");
+				hidden.value = solutionId;
+
+				var container = document.getElementById("solutions-container");
+				var anchors = container.getElementsByTagName("TD");
+				for (var i = 0; i < anchors.length; i++)
+				{
+					anchors[i].className = "inst-module-cell";
+				}
+
+				element.parentNode.className = "inst-module-cell inst-module-cell-active";
+				
+				document.getElementById("id_radio_"+solutionId).checked=true;
+			}
+		</script>
+		';
+
+		$arWizardsList[] = [
+			"ID" => "@",
+			"IMAGE" => "/bitrix/images/install/marketplace.gif",
+			"NAME" => GetMessage("INS_LOAD_FROM_MARKETPLACE"),
+			"DESCRIPTION" => GetMessage("INS_LOAD_FROM_MARKETPLACE_DESCR"),
+		];
+
+		$this->content .= '<table class="inst-module-table" id="solutions-container">';
+		$i = 0;
+		foreach ($arWizardsList as $w)
+		{
+			if ($i == 0)
+			{
+				$this->content .= '<tr>';
+			}
+			$this->content .= '
+				<td class="inst-module-cell">
+					<div class="inst-module-block" onclick="SelectSolution(this, \'' . htmlspecialcharsbx($w["ID"]) . '\');" ondblclick="document.forms[\'' . htmlspecialcharsbx($wizard->GetFormName()) . '\'].submit();">
+							<div class="inst-module-title"><span class="inst-module-title-alignment"></span><span class="inst-module-title-text">' . TruncateText($w["NAME"], 59) . '</span></div>
+							<div class="inst-module-cont">
+								' . ($w["IMAGE"] <> '' ? '<div class="inst-module-img"><img alt="" src="' . htmlspecialcharsbx($w["IMAGE"]) . '" /></div>' : "") . '
+								<div class="inst-module-text">' . TruncateText($w["DESCRIPTION"], 90) . '</div>
+							</div>
+							<input type="radio" id="id_radio_' . htmlspecialcharsbx($w["ID"]) . '" name="redio" class="inst-module-checkbox" />
+					</div>
+				</td>';
+
+			if ($i == 1)
+			{
+				$this->content .= '</tr>';
+				$i = 0;
+			}
+			else
+			{
+				$i++;
+			}
+		}
+		if ($i == 0)
+		{
+			$this->content .= '<td></td></tr>';
+		}
+		$this->content .= '</table>
+		<input type="hidden" id="id_' . htmlspecialcharsbx($prefixName) . '" name="' . htmlspecialcharsbx($prefixName) . '" value="">';
+	}
+}
+
+//Create wizard
+$wizard = new CWizardBase(str_replace("#VERS#", SM_VERSION, GetMessage("INS_TITLE")), $package = null);
+
+if (defined("WIZARD_DEFAULT_TONLY") && WIZARD_DEFAULT_TONLY === true)
+{
+	global $USER;
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include.php");
+	if ($USER->CanDoOperation('edit_other_settings'))
+	{
+		$arSteps = [
+			"SelectWizardStep",
+			"LoadModuleStep",
+			"LoadModuleActionStep",
+			"SelectWizard1Step",
+		];
+	}
+	else
+	{
+		die();
+	}
+}
+elseif (BXInstallServices::IsShortInstall())
+{
+	//Short installation
+	$arSteps = [
+		"AgreementStep",
+		"CheckLicenseKey",
+		"CreateModulesStep",
+		"UpdateStep",
+		"CreateAdminStep",
+		"SelectWizardStep",
+		"LoadModuleStep",
+		"LoadModuleActionStep",
+		"SelectWizard1Step",
+	];
+}
+else
+{
+	//Full installation
+	$arSteps = [
+		"WelcomeStep",
+		"AgreementStep",
+		"CheckLicenseKey",
+		"RequirementStep",
+		"CreateDBStep",
+		"CreateModulesStep",
+		"UpdateStep",
+		"CreateAdminStep",
+		"SelectWizardStep",
+		"LoadModuleStep",
+		"LoadModuleActionStep",
+		"SelectWizard1Step",
+	];
+}
+
+$wizard->AddSteps($arSteps); //Add steps
+$wizard->SetTemplate(new WizardTemplate);
+$wizard->SetReturnOutput();
+$content = $wizard->Display();
+
+header("Content-Type: text/html; charset=UTF-8");
+echo $content;

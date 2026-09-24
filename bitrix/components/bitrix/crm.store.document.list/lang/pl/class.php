@@ -1,0 +1,28 @@
+<?php
+$MESS["CRM_DOCUMENT_LIST_ACTION_CANCEL_TEXT_2"] = "Anuluj przetwarzanie";
+$MESS["CRM_DOCUMENT_LIST_ACTION_CONDUCT_TEXT_2"] = "Przetwórz";
+$MESS["CRM_DOCUMENT_LIST_ACTION_DELETE_TEXT"] = "Usuń";
+$MESS["CRM_DOCUMENT_LIST_ACTION_OPEN_TEXT"] = "Otwórz";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_2"] = "Utwórz";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_DISABLE_HINT_MSGVER_1"] = "Niewystarczające uprawnienia do utworzenia obiektu magazynowego.";
+$MESS["CRM_DOCUMENT_LIST_CANCEL_GROUP_ACTION"] = "Anuluj przetwarzanie";
+$MESS["CRM_DOCUMENT_LIST_CONDUCT_GROUP_ACTION"] = "Przetwórz";
+$MESS["CRM_DOCUMENT_LIST_DOC_TYPE_W"] = "Zamówienie sprzedaży";
+$MESS["CRM_DOCUMENT_LIST_EMPTY_STORE_TITLE"] = "Bez nazwy";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED"] = "Niewystarczające uprawnienia do wyświetlenia obszaru zamówień sprzedaży.";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_BOX"] = "Nie masz uprawnień dostępu do Zarządzania asortymentem. Aby uzyskać dostęp, skontaktuj się z administratorem Bitrix24. <a href=\"https://training.bitrix24.com/support/training/course/index.php?COURSE_ID=178&LESSON_ID=25118\" target=\"_blank\">Dowiedz się więcej</a>";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_CLOUD"] = "Nie masz uprawnień dostępu do Zarządzania asortymentem. Aby uzyskać dostęp, skontaktuj się z administratorem Bitrix24. Administrator będzie musiał przypisać Ci rolę Menedżera w ustawieniach CRM. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Dowiedz się więcej</a>";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_COMPANY"] = "Ukryta firma";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_CONTACT"] = "Ukryty kontakt";
+$MESS["CRM_DOCUMENT_LIST_SELECT_GROUP_ACTION"] = "Wybierz działanie";
+$MESS["CRM_DOCUMENT_LIST_STATUS_CANCELLED"] = "Anulowano";
+$MESS["CRM_DOCUMENT_LIST_STATUS_N"] = "Wersja robocza";
+$MESS["CRM_DOCUMENT_LIST_STATUS_Y"] = "Przetworzono";
+$MESS["CRM_DOCUMENT_LIST_STUB_DESCRIPTION_SHIPMENT"] = "Produkt sprzedany? Dodaj wpis do zarządzania asortymentem. Dokładne śledzenie asortymentu pomaga zespołowi sprzedażowemu szybciej przetwarzać zamówienia.";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_LOSSES"] = "Jak śledzić straty?";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_SHIPMENT"] = "Jak rejestrować sprzedaż?";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_DESCRIPTION"] = "Spróbuj zresetować filtr lub zmień wyszukiwaną frazę.";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_TITLE"] = "To żądanie wyszukiwania nie zwróciło żadnych wyników.";
+$MESS["CRM_DOCUMENT_LIST_STUB_TITLE_SHIPMENT"] = "Dodaj pierwszą sprzedaż";
+$MESS["CRM_DOCUMENT_LIST_TITLE"] = "Zamówienie sprzedaży ##DOCUMENT_ID#";
+$MESS["CRM_DOCUMENT_LIST_TITLE_DOCUMENT_DATE"] = "z #DATE#";

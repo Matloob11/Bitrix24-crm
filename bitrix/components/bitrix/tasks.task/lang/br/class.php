@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_ACTION_RESULT_REQUIRED"] = "O criador da tarefa requer que você forneça um relatório de tarefa.<br> Deixe um comentário sobre a tarefa e marque-o como um resumo do status da tarefa.";
+$MESS["TASKS_TASK_FLOW_DEADLINE_LABEL"] = "Definição automática";
+$MESS["TASKS_TASK_FLOW_SECRET_PROJECT_LABEL"] = "Projeto oculto";
+$MESS["TASKS_TASK_TAG_ACCESS_DENIED"] = "Permissões insuficientes.";
+$MESS["TASKS_TASK_TAG_ALREADY_EXISTS"] = "Este marcador já existe.";
+$MESS["TASKS_TASK_TAG_UNKNOWN_ERROR"] = "Não é possível adicionar o marcador. Por favor, tente novamente.";
+$MESS["TASKS_TEMPLATE_CREATE_FORBIDDEN"] = "Não é possível criar o modelo porque o acesso foi negado";
+$MESS["TASKS_TT_AUTO_CHANGE_ASSIGNEE"] = "A pessoa responsável por esta tarefa foi alterada";
+$MESS["TASKS_TT_AUTO_CHANGE_GROUP"] = "A tarefa foi anexada ao projeto atual";
+$MESS["TASKS_TT_AUTO_CHANGE_ORIGINATOR"] = "O criador da tarefa foi alterado automaticamente para o usuário atual";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT"] = "A tarefa foi anexada à tarefa principal";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT_GROUP"] = "A tarefa foi anexada ao projeto da tarefa principal";
+$MESS["TASKS_TT_COPY_READ_ERROR"] = "Erro ao ler o objeto a ser copiado";
+$MESS["TASKS_TT_FORUM_MODULE_NOT_INSTALLED"] = "O módulo de Fórum não está instalado.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE"] = "A tarefa não foi encontrada ou o acesso é negado.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE_COPY"] = "A tarefa a ser copiada não foi encontrada ou o acesso foi negado.";
+$MESS["TASKS_TT_SAVE_AS_TEMPLATE_ERROR_MESSAGE_PREFIX"] = "O modelo não foi criado";
+$MESS["TASKS_TT_SOCIALNETWORK_MODULE_NOT_INSTALLED"] = "O módulo de Rede Social não está instalado.";
+$MESS["TASKS_TT_TASKS_MODULE_NOT_INSTALLED"] = "O módulo de Tarefas não está instalado.";

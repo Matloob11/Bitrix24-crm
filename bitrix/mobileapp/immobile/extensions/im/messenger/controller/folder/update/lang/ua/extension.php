@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_FOLDER_UPDATE_NAV_TITLE"] = "Налаштування папки";
+$MESS["IMMOBILE_FOLDER_UPDATE_SAVE_BUTTON"] = "Зберегти";

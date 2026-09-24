@@ -1,0 +1,22 @@
+<?php
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_NEGATIVE_DURATION"] = "La durata del giorno lavorativo non può essere negativa";
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_SHIFT_DURATION_EXCEEDS_DAY"] = "La durata della giornata lavorativa non può superare le 24 ore.";
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_STOP_GREATER_THAN_NOW"] = "L'orario di uscita non può essere successivo all'ora corrente.";
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_STOP_LESS_THAN_START"] = "L'orario di uscita non può essere precedente all'orario di entrata.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_END_FEMALE"] = "#USER_NAME# ha registrato la sua uscita prima di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_END_MALE"] = "#USER_NAME# ha registrato la sua uscita prima di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_START_FEMALE"] = "#USER_NAME# ha registrato la sua entrata prima di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_START_MALE"] = "#USER_NAME# ha registrato la sua entrata prima di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EDIT_WITH_URL_FEMALE"] = "#USER_NAME# ha modificato l'orario di lavoro per #DATE#. <a href=\"#URL#\">Conferma obbligatoria</a>";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EDIT_WITH_URL_MALE"] = "#USER_NAME# ha modificato l'orario di lavoro per #DATE#. <a href=\"#URL#\">Conferma obbligatoria</a>";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_FORBIDDEN_DEVICE_B24TIME"] = "Spiacenti, non puoi utilizzare Bitrix24.Time per gestire le tue ore lavorative.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_FORBIDDEN_DEVICE_BROWSER"] = "Spiacenti, non puoi utilizzare il browser per gestire le tue ore lavorative.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_FORBIDDEN_DEVICE_MOBILE"] = "Spiacenti, non puoi utilizzare i dispositivi mobili per gestire le tue ore lavorative.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_END_FEMALE"] = "#USER_NAME# ha registrato la sua uscita più tardi di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_END_MALE"] = "#USER_NAME# ha registrato la sua uscita più tardi di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_SHIFT_START_FEMALE"] = "#USER_NAME# ha iniziato il suo turno più tardi di quanto pianificato";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_SHIFT_START_MALE"] = "#USER_NAME# ha iniziato il suo turno più tardi di quanto pianificato";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_START_FEMALE"] = "#USER_NAME# ha registrato la sua entrata più tardi di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_START_MALE"] = "#USER_NAME# ha registrato la sua entrata più tardi di quanto pianificato.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_MIN_DAY_DURATION_FEMALE"] = "Le ore lavorative di #USER_NAME# sono meno di quelle pianificate.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_MIN_DAY_DURATION_MALE"] = "Le ore lavorative di #USER_NAME# sono meno di quelle pianificate.";

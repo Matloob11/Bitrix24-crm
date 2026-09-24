@@ -1,0 +1,5 @@
+<?
+$MESS["CRM_REPORT_FILTER_NEW_LEAD_CURRENT_MONTH_PRESET_TITLE"] = "Początkowo w tym miesiącu";
+$MESS["CRM_REPORT_FILTER_NEW_LEAD_LAST_30_DAYS_PRESET_TITLE"] = "Początkowe ostatnie 30 dni";
+$MESS["CRM_REPORT_FILTER_NEW_LEAD_LAST_MONTH_PRESET_TITLE"] = "Początkowo w poprzednim miesiącu";
+?>

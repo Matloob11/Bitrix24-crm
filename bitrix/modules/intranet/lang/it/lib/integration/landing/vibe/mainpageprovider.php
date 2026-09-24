@@ -1,0 +1,3 @@
+<?php
+$MESS["INTRANET_MAINPAGE_VIBE_PROVIDER_PAGE_TITLE"] = "Pagina principale";
+$MESS["INTRANET_MAINPAGE_VIBE_PROVIDER_TITLE"] = "Pagina principale";

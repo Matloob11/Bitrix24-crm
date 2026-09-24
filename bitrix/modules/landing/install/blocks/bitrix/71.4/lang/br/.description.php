@@ -1,0 +1,12 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_71_4_NAME"] = "Bloco de texto: um título, um subtítulo e um texto formatado em 3 colunas";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_BADGE"] = "Aba de bloco";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_CARD"] = "Bloco";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_CARD_BOTTOM"] = "Parte inferior do bloco";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_CARD_BUTTON"] = "Botão";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_CARD_TEXT"] = "Texto do bloco";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_CARD_TITLE"] = "Título do bloco";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_CARD_TOP"] = "Parte superior do bloco";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_CONTAINER"] = "Contêiner";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_SUBTITLE"] = "Legenda";
+$MESS["LANDING_BLOCK_WIDGET_71_4_NODE_TITLE"] = "Título";

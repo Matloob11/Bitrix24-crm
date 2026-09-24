@@ -1,0 +1,34 @@
+<?
+$MESS["SONET_GRE_T_BUTTON_ACCEPT"] = "Accetta";
+$MESS["SONET_GRE_T_BUTTON_DECLINE"] = "Rifiuta";
+$MESS["SONET_GRE_T_CHECK_ALL"] = "Seleziona tutto / Deseleziona tutto";
+$MESS["SONET_GRE_T_DATE_REQUEST_IN"] = "Data richiesta";
+$MESS["SONET_GRE_T_DATE_REQUEST_OUT"] = "Data invito";
+$MESS["SONET_GRE_T_DO_SAVE"] = "Approva iscrizione";
+$MESS["SONET_GRE_T_ERROR"] = "Errore durante l'elaborazione della richiesta.";
+$MESS["SONET_GRE_T_INVITE"] = "Invita al gruppo";
+$MESS["SONET_GRE_T_INVITE_PROJECT"] = "Invita al progetto";
+$MESS["SONET_GRE_T_MESSAGE2_IN"] = "Testo richiesta";
+$MESS["SONET_GRE_T_MESSAGE2_OUT"] = "Testo di invito";
+$MESS["SONET_GRE_T_MESSAGE_IN"] = "Messaggi da utenti";
+$MESS["SONET_GRE_T_MESSAGE_OUT"] = "Messaggi a utenti";
+$MESS["SONET_GRE_T_NO_REQUESTS"] = "Nessuna richiesta.";
+$MESS["SONET_GRE_T_NO_REQUESTS2"] = "Al momento non sono presenti richieste di iscrizione al gruppo di lavoro.";
+$MESS["SONET_GRE_T_NO_REQUESTS2_OUT"] = "Al momento non sono presenti inviti al gruppo di lavoro.";
+$MESS["SONET_GRE_T_NO_REQUESTS2_OUT_PROJECT"] = "Non sono attualmente presenti inviti al progetto.";
+$MESS["SONET_GRE_T_NO_REQUESTS2_PROJECT"] = "Al momento non sono presenti richieste di iscrizione al progetto.";
+$MESS["SONET_GRE_T_NO_REQUESTS_DESCR"] = "Mostra le richieste degli utenti per l'iscrizione al gruppo.";
+$MESS["SONET_GRE_T_NO_REQUESTS_DESCR_PROJECT"] = "Mostra le richieste degli utenti per l'iscrizione al progetto.";
+$MESS["SONET_GRE_T_NO_REQUESTS_OUT"] = "Nessun invito.";
+$MESS["SONET_GRE_T_NO_REQUESTS_OUT_DESCR"] = "Mostra gli inviti per l'iscrizione al gruppo di lavoro.";
+$MESS["SONET_GRE_T_NO_REQUESTS_OUT_DESCR_PROJECT"] = "Mostra gli inviti per l'iscrizione al progetto.";
+$MESS["SONET_GRE_T_RECIPIENT"] = "Destinatario";
+$MESS["SONET_GRE_T_REJECT"] = "Rifiuta";
+$MESS["SONET_GRE_T_REJECT_OUT"] = "Annulla inviti";
+$MESS["SONET_GRE_T_SENDER"] = "Mittente";
+$MESS["SONET_GRE_T_SUBTITLE_IN"] = "Richiesta iscrizione gruppo di lavoro";
+$MESS["SONET_GRE_T_SUBTITLE_IN_PROJECT"] = "Richieste iscrizione progetto";
+$MESS["SONET_GRE_T_SUBTITLE_OUT"] = "Inviti iscrizione gruppo di lavoro";
+$MESS["SONET_GRE_T_SUBTITLE_OUT_PROJECT"] = "Inviti iscrizione progetto";
+$MESS["SONET_GRE_T_USER"] = "Utente";
+?>

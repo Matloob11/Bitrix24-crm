@@ -1,0 +1,40 @@
+/**
+ * @module mail/statemanager/redux/slices/messages/model/message
+ */
+jn.define('mail/statemanager/redux/slices/messages/model/message', (require, exports, module) => {
+	class MessageModel
+	{
+		/**
+		 * @public
+		 * @param {object} sourceServerMessage
+		 * @returns {MessageReduxModel}
+		 */
+		static prepareReduxMailFromServer(sourceServerMessage)
+		{
+			return {
+				direction: Number(sourceServerMessage.direction),
+				id: Number(sourceServerMessage.id),
+				uidId: sourceServerMessage.uidId,
+				to: sourceServerMessage.to,
+				from: sourceServerMessage.from,
+				date: sourceServerMessage.date,
+				isRead: sourceServerMessage.isRead,
+				isRemoved: sourceServerMessage.isRemoved,
+				isSelected: sourceServerMessage.isSelected,
+				crmBindId: sourceServerMessage.crmBindId,
+				taskBindId: sourceServerMessage.taskBindId,
+				eventBindId: sourceServerMessage.eventBindId,
+				crmBindTypeId: sourceServerMessage.crmBindTypeId,
+				chatBindId: sourceServerMessage.chatBindId,
+				subject: String(sourceServerMessage.subject ?? ''),
+				abbreviatedText: String(sourceServerMessage.abbreviatedText ?? ''),
+				withAttachments: sourceServerMessage.withAttachments,
+				isMultiSelectMode: sourceServerMessage.isMultiSelectMode ?? false,
+				mailboxId: sourceServerMessage.mailboxId,
+				folderId: sourceServerMessage.folderId ? Number(sourceServerMessage.folderId) : null,
+			};
+		}
+	}
+
+	module.exports = { MessageModel };
+});

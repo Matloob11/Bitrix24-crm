@@ -1,0 +1,7 @@
+<?php
+$MESS["INTRANET_ANNUAL_SUMMARY_CARD_COPY_LINK"] = "Сілтемені көшіру";
+$MESS["INTRANET_ANNUAL_SUMMARY_CARD_DOWNLOAD_BTN"] = "Жүктеу";
+$MESS["INTRANET_ANNUAL_SUMMARY_CARD_NOTIFY_COPY"] = "Көшірілді! Нәтижені әріптестеріңізбен бөлісіңіз";
+$MESS["INTRANET_ANNUAL_SUMMARY_CARD_SHARE_LINK_TITLE"] = "Сілтемені бөлісу";
+$MESS["INTRANET_ANNUAL_SUMMARY_CARD_SHARE_SCREENSHOT_TITLE"] = "Суретті бөлісу";
+$MESS["INTRANET_ANNUAL_SUMMARY_CARD_SHARE_TITLE"] = "Битрикс24-мен жыл қорытындысы";

@@ -1,0 +1,7 @@
+<?php
+$MESS["VOX_INVOICES_DATE_RANGE"] = "Intervallo di date";
+$MESS["VOX_INVOICES_DOCUMENT_DATE"] = "Data fattura";
+$MESS["VOX_INVOICES_DOCUMENT_NUMBER"] = "#";
+$MESS["VOX_INVOICES_DOCUMENT_TYPE"] = "Tipo documento";
+$MESS["VOX_INVOICES_DOWNLOAD"] = "Download";
+$MESS["VOX_INVOICES_TOTAL_AMOUNT"] = "Importo totale";

@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_CANCEL"] = "Annuler";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_CHANNEL_NOT_AVAILABLE"] = "Méthode indisponible";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_CHECK_OUT_FILE_BY_LINK"] = "Voir le document #URL#";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_COPY_LINK_DONE"] = "Copié";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_COPY_LINK_ERROR"] = "Impossible de créer le lien";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_COPY_LINK_SUBTITLE"] = "Le client accédera au document via un lien";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_COPY_LINK_TITLE"] = "Copier le lien";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_EMAIL_FILE_ATTACHED"] = "Voir le document joint";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_EMAIL_NOT_FOUND"] = "L'adresse e-mail du client n'est pas spécifiée";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_EMAIL_TITLE"] = "E-mail";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_OPENLINE_NOT_FOUND"] = "Aucun canal ouvert attribué";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_OPENLINE_TITLE"] = "Canal ouvert";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_PHONE_NOT_FOUND"] = "Le numéro de téléphone du client n'est pas spécifié";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_SIGN_SUBTITLE"] = "Envoyer via Bitrix24.Sign";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_SIGN_TITLE"] = "Signer";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_SMS_TITLE"] = "SMS/WhatsApp";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_SYSTEM_SHARE_SUBTITLE"] = "Télécharger ou envoyer aux contacts du téléphone";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_SYSTEM_SHARE_TITLE"] = "Partager le document";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_TARIFF_RESTRICTION"] = "Indisponible avec votre abonnement";
+$MESS["M_CRM_DOCUMENT_SHARE_DIALOG_TITLE"] = "Envoyer le document au client";

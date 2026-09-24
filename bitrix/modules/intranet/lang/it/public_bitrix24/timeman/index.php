@@ -1,0 +1,4 @@
+<?php
+$MESS["ABSENCE_TARIFF_RESTRICTION_TITLE"] = "Grafico assenze e altri utili strumenti sono disponibili su piani commerciali selezionati.";
+$MESS["TARIFF_RESTRICTION_TEXT"] = "Il grafico delle assenze fornisce una presentazione visiva immediata della sede di una persona e della ragione della sua assenza: lavoro, malattia o congedo per maternità. Il grafico sarà utile anche quando si pianificano le ferie nei periodi festivi, in quanto le assenze simultanee indesiderate di più persone sono immediatamente visibili. È facile da usare: le ferie possono essere aggiunte da un dipendente o dal responsabile HR. Il sistema può anche aggiungere ferie automaticamente in base ai flussi di lavoro di approvazione delle richieste di ferie. <a href=\"javascript:void(0)\" onclick='top.BX.Helper.show(\"redirect=detail&code=5349195\");'>Dettagli</a>";
+$MESS["TITLE"] = "Grafico assenze";

@@ -1,0 +1,21 @@
+<?php
+$MESS["TASKS_V2_CHANGE_DESCRIPTION"] = "Description";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_ATTACH_TITLE"] = "Joindre";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_CREATING"] = "Création de la liste de vérification...";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT"] = "CoPilot créera une liste de vérification à partir de cette description.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT_MSGVER_1"] = "#COPILOT_NAME# créera une liste de vérification à partir de cette description.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_TITLE"] = "Liste de contrôle";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_COPILOT_TITLE"] = "CoPilot";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_MENTION_TITLE"] = "Mentionner";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_COLLAPSE"] = "Réduire";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_EXPAND"] = "Développer";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_SAVE"] = "Enregistrer";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_BUTTON_OK"] = "Enregistrer ma version";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_F"] = "#NAME# a modifié la description pendant que vous l'éditiez. Ses modifications seront perdues si vous enregistrez votre version. Voulez-vous vraiment enregistrer votre version ?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_M"] = "#NAME# a modifié la description pendant que vous l'éditiez. Ses modifications seront perdues si vous enregistrez votre version. Voulez-vous vraiment enregistrer votre version ?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_TITLE"] = "Description modifiée";
+$MESS["TASKS_V2_DESCRIPTION_EDITOR_PLACEHOLDER"] = "Saisissez @ pour mentionner quelqu'un ou appuyez sur Espace pour utiliser CoPilot";
+$MESS["TASKS_V2_DESCRIPTION_FILES_COUNT"] = "Fichiers : #COUNT#";
+$MESS["TASKS_V2_DESCRIPTION_INLINE_EDITOR_PLACEHOLDER"] = "Description";
+$MESS["TASKS_V2_DESCRIPTION_PREVIEW_BUTTON_MORE"] = "plus";
+$MESS["TASKS_V2_DESCRIPTION_TITLE"] = "Description de la tâche";

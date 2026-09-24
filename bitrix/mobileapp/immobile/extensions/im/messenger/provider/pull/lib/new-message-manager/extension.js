@@ -1,0 +1,288 @@
+/**
+ * @module im/messenger/provider/pull/lib/new-message-manager
+ */
+jn.define('im/messenger/provider/pull/lib/new-message-manager', (require, exports, module) => {
+	/* global ChatMessengerCommon */
+	const { MessengerParams } = require('im/messenger/lib/params');
+	const { DialogType, MessageStatus } = require('im/messenger/const');
+	const { RecentDataConverter } = require('im/messenger/lib/converter/data/recent');
+	const { Feature } = require('im/messenger/lib/feature');
+
+	/**
+	 * @class NewMessageManager
+	 */
+	class NewMessageManager
+	{
+		/** @type {MessageAddParams} */
+		#params;
+		/**  @type {PullExtraParams} */
+		#extra;
+
+		constructor(params, extra = {})
+		{
+			this.#params = params;
+			this.#extra = extra;
+		}
+
+		/**
+		 * @return {Array<string>|null}
+		 */
+		getRecentTabs()
+		{
+			return this.#params.recentConfig?.sections;
+		}
+
+		/**
+		 * @return {number}
+		 */
+		getChatId()
+		{
+			return this.#params.chatId;
+		}
+
+		/**
+		 * @return {string}
+		 */
+		getDialogId()
+		{
+			return this.#params.dialogId;
+		}
+
+		/**
+		 * @return {number}
+		 */
+		getParentChatId()
+		{
+			return this.getChat()?.parent_chat_id || 0;
+		}
+
+		/**
+		 * @return {object}
+		 */
+		getChat()
+		{
+			const chatId = this.getChatId();
+
+			return this.#params.chat?.[chatId];
+		}
+
+		/**
+		 * @return {string}
+		 */
+		getChatType()
+		{
+			const chat = this.getChat();
+
+			return chat?.type ?? '';
+		}
+
+		/**
+		 * @return {object} // todo check types
+		 */
+		getMessage()
+		{
+			return this.#params.message;
+		}
+
+		/**
+		 * @return {BlockConfig|null}
+		 */
+		getBlock()
+		{
+			return this.getMessage().block;
+		}
+
+		/**
+		 * @return {string}
+		 */
+		getPurifyMessageText()
+		{
+			return ChatMessengerCommon.purifyText(
+				this.getMessage().text,
+				this.getMessage().params,
+			);
+		}
+
+		/**
+		 * @return {number}
+		 */
+		getSenderId()
+		{
+			return this.getMessage().senderId;
+		}
+
+		/**
+		 * @return {{id: number}}
+		 */
+		getSender()
+		{
+			const senderId = this.getSenderId();
+
+			return this.#params.users?.[senderId] ?? { id: 0 };
+		}
+
+		/**
+		 * @return {number}
+		 */
+		getCurrentUserId()
+		{
+			return MessengerParams.getUserId();
+		}
+
+		/**
+		 * @return {RecentModelState}
+		 */
+		getPreparedRecentItem()
+		{
+			const message = this.getPreparedRecentMessage();
+
+			const recentItem = RecentDataConverter.fromPullToModel({
+				id: this.getDialogId(),
+				chat: this.getChat(),
+				user: this.getSender(),
+				lines: this.#params.lines,
+				counter: this.#params.counter,
+				liked: false,
+				lastActivityDate: this.#params.dateLastActivity,
+				message,
+			});
+
+			this.#applyOwnMessage(recentItem);
+
+			return recentItem;
+		}
+
+		/**
+		 * @param {RecentModelState|false} recentItem
+		 */
+		#applyOwnMessage(recentItem)
+		{
+			if (!recentItem || typeof recentItem !== 'object')
+			{
+				return;
+			}
+
+			if (!Feature.isCollabPreviewSourceAvailable || !this.isCollabChat())
+			{
+				return;
+			}
+
+			recentItem.ownMessage = this.#getPreparedOwnMessage();
+		}
+
+		/**
+		 * @return {object}
+		 */
+		#getPreparedOwnMessage()
+		{
+			const ownMessage = this.getPreparedRecentMessage();
+			ownMessage.text = ChatMessengerCommon.purifyText(ownMessage.text, ownMessage.params);
+
+			return ownMessage;
+		}
+
+		/**
+		 * @return {RecentModelState}
+		 */
+		getPreparedRecentItemByUserInvite()
+		{
+			return RecentDataConverter.fromPullUserInviteToModel(this.#params);
+		}
+
+		/**
+		 * @return {RecentModelState}
+		 */
+		getPreparedRecentItemByUserUpdate()
+		{
+			return RecentDataConverter.fromPullUserUpdateToModel(this.#params);
+		}
+
+		getPreparedRecentMessage()
+		{
+			const messageStatus = this.getSenderId() === this.getCurrentUserId()
+				? MessageStatus.received
+				: ''
+			;
+
+			return {
+				...this.getMessage(),
+				status: messageStatus,
+			};
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		needToSkipMessageEvent()
+		{
+			if (this.isCommentChat())
+			{
+				return true;
+			}
+
+			return !Feature.isOpenlinesInMessengerAvailable && this.isLinesChat();
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		isLinesChat()
+		{
+			return Boolean(this.#params.lines);
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		isCommentChat()
+		{
+			return this.getChatType() === DialogType.comment;
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		isChannelChat()
+		{
+			return [
+				DialogType.generalChannel,
+				DialogType.openChannel,
+				DialogType.channel,
+			].includes(this.getChatType());
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		isCopilotChat()
+		{
+			return this.getChatType() === DialogType.copilot;
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		isCollabChat()
+		{
+			return this.getChatType() === DialogType.collab;
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		isOpenLineChat()
+		{
+			return this.getChatType() === DialogType.lines;
+		}
+
+		/**
+		 * @return {boolean}
+		 */
+		isChannelListEvent()
+		{
+			return this.isChannelChat() && this.#extra.is_shared_event;
+		}
+	}
+
+	module.exports = { NewMessageManager };
+});

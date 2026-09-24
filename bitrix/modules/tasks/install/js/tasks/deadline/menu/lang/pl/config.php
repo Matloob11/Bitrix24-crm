@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_DAY"] = "1 dzień";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_WEEK"] = "1 tydzień";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_2_WEEKS"] = "2 tygodnie";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_3_DAYS"] = "3 dni";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_CUSTOM"] = "Niestandardowy";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_EMPTY"] = "Brak terminu";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_HINT"] = "Data będzie ustawiona jako domyślny termin dla wszystkich nowo tworzonych zadań. Można ją zmienić w dowolnym momencie.";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_TITLE"] = "Domyślny termin";
+$MESS["TASKS_DEADLINE_MENU_ERROR_DESCRIPTION"] = "Załaduj ponownie tę stronę i spróbuj ponownie.";
+$MESS["TASKS_DEADLINE_MENU_ERROR_TITLE"] = "Błąd";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DELIMITER"] = "Powiadomienie o wolnym terminie";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DONT_SKIP"] = "Przy każdym utworzeniu zadania";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_HINT"] = "Wybierz sposób otrzymywania powiadomień o wolnych terminach w tworzonych przez siebie zadaniach.";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOREVER"] = "Nigdy";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_DAY"] = "Nie przypominaj dzisiaj";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_MONTH"] = "Nie przypominaj w tym miesiącu";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_WEEK"] = "Nie przypominaj w tym tygodniu";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_TITLE"] = "Powiadomienie o wolnym terminie";

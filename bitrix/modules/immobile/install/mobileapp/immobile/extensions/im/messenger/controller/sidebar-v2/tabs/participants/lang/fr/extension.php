@@ -1,0 +1,24 @@
+<?php
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_BUTTON_ADD_NEW_ITEM"] = "Ajouter";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_BUTTON_SELECTOR_ADD"] = "Terminé";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_CONFIRM_REMOVE_DESCRIPTION_PROJECT"] = "Voulez-vous vraiment supprimer ce membre du projet ? Il perdra l'accès au chat du projet, aux fichiers, aux tâches et/ou aux événements du calendrier.";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_CONFIRM_REMOVE_GUEST_DESCRIPTION"] = "L'invité sera retiré du chat. Il pourra le rejoindre à nouveau tant que son lien d'invitation sera valide, soit pendant 24 heures. Souhaitez-vous retirer l'invité ?";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_CONFIRM_REMOVE_TITLE"] = "Voulez-vous vraiment supprimer cet utilisateur du chat ?";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_CONFIRM_REMOVE_TITLE_CHANNEL"] = "Voulez-vous vraiment supprimer cet abonné de la chaîne ?";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_CONFIRM_REMOVE_TITLE_PROJECT"] = "Supprimer le membre du projet";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_CONFIRM_REMOVE_YES"] = "Supprimer";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_EMPTY_SCREEN_TITLE"] = "Aucun participant";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_IS_YOU"] = "(Vous)";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_ADD_MANAGER"] = "Assigner en tant qu'administrateur";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_COLLAB_LEAVE"] = "Quitter";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_LEAVE"] = "Quitter le chat";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_LEAVE_CHANNEL"] = "Se désabonner de la chaîne";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_MENTION"] = "Mention";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_NOTES"] = "Mes notes";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_REMOVE"] = "Supprimer de la conversation";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_REMOVE_CHANNEL"] = "Expulser de la chaîne";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_REMOVE_FROM_COLLAB"] = "Supprimer de la collab";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_REMOVE_FROM_PROJECT"] = "Supprimer du projet";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_REMOVE_MANAGER"] = "Supprimer des administrateurs";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_MENU_ITEM_LIST_SEND"] = "Envoyer un message privé";
+$MESS["IMMOBILE_SIDEBAR_V2_PARTICIPANTS_USER_INVITED_FROM_STRUCTURE_DELETE_ERROR"] = "Impossible de retirer cet utilisateur de ce chat, car il appartient au département que vous avez ajouté à la conversation.";

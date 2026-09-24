@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_CRM"] = "Données CRM";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_DOCUMENT"] = "Document";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_FILE"] = "Fichier";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_FILE_DISK"] = "Chercher un fichier sur Bitrix24";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_FILE_UPLOAD"] = "Téléverser un fichier";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_PAYMENT"] = "Recevoir le paiement";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_ADD"] = "Ajouter";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_CANCEL"] = "Annuler";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_NO_CHANNELS"] = "Connecter les fournisseurs de messagerie";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_SEND"] = "Envoyer";
+$MESS["CRM_MESSAGESENDER_EDITOR_COUNTER"] = "[color]#COUNT#[/color]/#MAX#";
+$MESS["CRM_MESSAGESENDER_EDITOR_FROM"] = "Le message sera envoyé de #FROM#";
+$MESS["CRM_MESSAGESENDER_EDITOR_GENERIC_ERROR"] = "Impossible de terminer l'action. Veuillez réessayer.";
+$MESS["CRM_MESSAGESENDER_EDITOR_NO_RECEIVER"] = "Le destinataire n'est pas spécifié";
+$MESS["CRM_MESSAGESENDER_EDITOR_NO_TEMPLATE_BODY"] = "Enregistrez votre modèle avec votre canal de communication pour envoyer des messages.";
+$MESS["CRM_MESSAGESENDER_EDITOR_NO_TEMPLATE_TITLE"] = "Créer un modèle de message";
+$MESS["CRM_MESSAGESENDER_EDITOR_PLACEHOLDER"] = "Saisissez le texte du message";
+$MESS["CRM_MESSAGESENDER_EDITOR_PLACEHOLDER_FILLED_LATER_HINT"] = "Certaines données du message seront complétées après l'envoi du message.";
+$MESS["CRM_MESSAGESENDER_EDITOR_PREVIEW"] = "Prévisualiser le message en tant que client";
+$MESS["CRM_MESSAGESENDER_EDITOR_RECEIVER_SUBTITLE_TEMPLATE"] = "#ADDRESS#, #TYPE#";
+$MESS["CRM_MESSAGESENDER_EDITOR_SUGGEST_TEMPLATE"] = "Suggérer un modèle";
+$MESS["CRM_MESSAGESENDER_EDITOR_TEMPLATES"] = "Modèles";
+$MESS["CRM_MESSAGESENDER_EDITOR_TEMPLATE_MESSAGE"] = "Message basé sur un modèle";
+$MESS["CRM_MESSAGESENDER_TEMPLATE_EDITOR_SELECT_FIELD"] = "Champ CRM";

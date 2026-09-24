@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_SELECTOR_ADD_FOLDER"] = "créer un dossier";
+$MESS["LANDING_SELECTOR_ADD_FORM"] = "Créer un formulaire";
+$MESS["LANDING_SELECTOR_ADD_OR"] = "ou";
+$MESS["LANDING_SELECTOR_ADD_PAGE"] = "Créer une page";
+$MESS["LANDING_SELECTOR_HINT_SEARCH_PAGE"] = "Rechercher et sélectionner une page";
+$MESS["LANDING_SELECTOR_PREVIEW_TEXT"] = "Afficher";
+$MESS["LANDING_SELECTOR_TYPE_FOLDER"] = "Dossier";
+$MESS["LANDING_SELECTOR_TYPE_FORM"] = "Formulaire";
+$MESS["LANDING_SELECTOR_TYPE_PAGE"] = "Page";

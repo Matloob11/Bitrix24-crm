@@ -1,0 +1,24 @@
+<?php
+$MESS["CATALOG_STORE_DOCUMENT_BARCODE_EXIST_ERROR"] = "Il codice a barre \"#BARCODE#\" è già assegnato a un prodotto diverso nel catalogo.";
+$MESS["CATALOG_STORE_DOCUMENT_CANCEL_CONDUCT_BUTTON"] = "Annulla elaborazione";
+$MESS["CATALOG_STORE_DOCUMENT_CONDUCT_BUTTON"] = "Elabora";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_CANCEL_ERROR"] = "Errore durante l'annullamento dell'elaborazione";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_CARD_NO_WRITE_RIGHTS_ERROR"] = "Autorizzazioni insufficienti per salvare l'oggetto dell'inventario.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_CONDUCT_ERROR"] = "Errore di elaborazione";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOCUMENT_NOT_FOUND_ERROR"] = "L'oggetto dell'inventario non è stato trovato.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOCUMENT_TYPE_NOT_SPECIFIED_ERROR"] = "Il tipo di oggetto dell'inventario è obbligatorio.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_A"] = "Ricevuta di rimanenza a magazzino";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_D"] = "Storno";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_ERROR"] = "Il tipo di oggetto dell'inventario non è corretto.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_DOC_TYPE_M"] = "Trasferimento rimanenza a magazzino";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_INCORRECT_VALUE"] = "Il valore di \"#FIELD_NAME#\" non è corretto";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_NO_INVENTORY_MANAGEMENT_ENABLED_ERROR"] = "La gestione inventario non è disponibile sul tuo piano.";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_NO_VIEW_RIGHTS_ERROR"] = "Autorizzazioni insufficienti per visualizzare l'oggetto dell'inventario";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_NO_WRITE_RIGHTS_ERROR"] = "Autorizzazioni insufficienti per salvare l'oggetto dell'inventario";
+$MESS["CATALOG_STORE_DOCUMENT_DETAIL_SAVE_ERROR"] = "Errore durante il salvataggio dell'oggetto dell'inventario";
+$MESS["CATALOG_STORE_DOCUMENT_ELEMENT_STORE_ACCESS_DENIED"] = "Non disponi dell'autorizzazione necessaria per accedere a questo magazzino per salvare le entità per \"#PRODUCT_NAME#\".";
+$MESS["CATALOG_STORE_DOCUMENT_ERR_ACCESS_DENIED"] = "Autorizzazione insufficiente per visualizzare l'area Gestione inventario.";
+$MESS["CATALOG_STORE_DOCUMENT_ERR_ACCESS_DENIED_BOX"] = "Non disponi dell'autorizzazione necessaria per accedere a Gestione inventario. Contatta l'amministratore di Bitrix24 per ottenere l'accesso. <a href=\"https://training.bitrix24.com/support/training/course/index.php?COURSE_ID=178&LESSON_ID=25118\" target=\"_blank\">Maggiori informazioni</a>";
+$MESS["CATALOG_STORE_DOCUMENT_ERR_ACCESS_DENIED_CLOUD"] = "Non disponi dell'autorizzazione necessaria per accedere a Gestione inventario. Contatta l'amministratore di Bitrix24 per ottenere l'accesso. L'amministratore dovrà assegnarti il ruolo di Manager nelle impostazioni del CRM. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">Maggiori informazioni</a>";
+$MESS["CATALOG_STORE_DOCUMENT_NO_PRODUCT"] = "Devi selezionare o creare un prodotto per salvare l'oggetto dell'inventario";
+$MESS["CATALOG_STORE_DOCUMENT_SAVE_AND_CONDUCT_BUTTON"] = "Salva ed elabora";

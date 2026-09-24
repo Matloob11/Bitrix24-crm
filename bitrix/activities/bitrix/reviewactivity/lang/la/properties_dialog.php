@@ -1,0 +1,25 @@
+<?php
+$MESS["BPAR_PD_ACCESS_CONTROL"] = "Muestra la descripción de la asignación solo a las personas responsables";
+$MESS["BPAR_PD_APPROVE_TYPE"] = "Requiere lectura por";
+$MESS["BPAR_PD_APPROVE_TYPE_ALL"] = "Todos los empleados";
+$MESS["BPAR_PD_APPROVE_TYPE_ANY"] = "Cualquier empleado";
+$MESS["BPAR_PD_COMMENT_LABEL_MESSAGE_1"] = "Nombres del campo \"Notas\"";
+$MESS["BPAR_PD_COMMENT_REQUIRED_1"] = "Solicitar notas";
+$MESS["BPAR_PD_DELEGATION_TYPE"] = "Delegado a";
+$MESS["BPAR_PD_DESCR"] = "Descripción de la asignación";
+$MESS["BPAR_PD_NAME"] = "Nombre de la asignación";
+$MESS["BPAR_PD_NO"] = "No";
+$MESS["BPAR_PD_REVIEWERS"] = "Informar a los empleados";
+$MESS["BPAR_PD_SET_STATUS_MESSAGE"] = "Establecer texto de estado";
+$MESS["BPAR_PD_SHOW_COMMENT_1"] = "Mostrar el campo \"Notas\"";
+$MESS["BPAR_PD_STATUS_MESSAGE"] = "Texto de estado";
+$MESS["BPAR_PD_STATUS_MESSAGE_HINT1"] = "Son posibles las siguientes macros: #PERCENT# - conocimientos de la relación,el número de personas con las que cuentan actualmente, #TOTAL# - total de personas requeridas, #REVIEWERS# - los usuarios que vieron el tema";
+$MESS["BPAR_PD_TASK_BUTTON_MESSAGE"] = "Etiqueta del botón Asignación";
+$MESS["BPAR_PD_TIMEOUT_DURATION"] = "Periodo de examinación";
+$MESS["BPAR_PD_TIMEOUT_DURATION_HINT"] = "El proceso para analizar elementos finalizará automáticamente cuando se acabe el periodo de tiempo. Un valor vacío o igual a cero indica que no se aplicará un periodo de aprobación.";
+$MESS["BPAR_PD_TIMEOUT_LIMIT"] = "Tiempo mínimo de aprobación";
+$MESS["BPAR_PD_TIME_D"] = "días";
+$MESS["BPAR_PD_TIME_H"] = "horas";
+$MESS["BPAR_PD_TIME_M"] = "minutos";
+$MESS["BPAR_PD_TIME_S"] = "segundos";
+$MESS["BPAR_PD_YES"] = "Si";

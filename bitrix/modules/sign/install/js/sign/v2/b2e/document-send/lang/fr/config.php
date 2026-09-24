@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_EMAIL"] = "utiliser aussi les e-mails";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_HINT"] = "Le lien du document sera envoyé dans le messenger Bitrix24.";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_IDLE"] = "Bitrix24 chat";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_NOT_SET"] = "Sélectionner un autre canal";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_SMS"] = "utiliser aussi les SMS";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_TITLE_MSGVER_1"] = "Envoyer le lien du document à";
+$MESS["SIGN_DOCUMENT_SEND_DATETIME_LIMIT_SELECTOR_HINT"] = "Le document doit être signé par toutes les parties avant cette date.";
+$MESS["SIGN_DOCUMENT_SEND_FIRST_PARTY"] = "Expéditeur";
+$MESS["SIGN_DOCUMENT_SEND_FIRST_PARTY_TEMPLATE"] = "Partie signataire au nom de l'entreprise (représentant)";
+$MESS["SIGN_DOCUMENT_SEND_HEADER_1"] = "Vérifiez les données du document";
+$MESS["SIGN_DOCUMENT_SEND_LANG_SELECTOR_HINT"] = "Le certificat de signature sera créé dans la langue sélectionnée.";
+$MESS["SIGN_DOCUMENT_SEND_REMINDER_TYPE_SELECTOR_HINT"] = "Le robot des RH rappellera le responsable au sujet du nouveau document pendant trois jours.";
+$MESS["SIGN_DOCUMENT_SEND_SECOND_PARTY"] = "Destinataire";
+$MESS["SIGN_DOCUMENT_SUMMARY_TEMPLATE_TITLE"] = "Modèle";
+$MESS["SIGN_DOCUMENT_SUMMARY_TITLE"] = "Document à signer";
+$MESS["SIGN_SEND_CLOSE_BTN"] = "Fermer cette page";
+$MESS["SIGN_SEND_CLOSE_DESCRIPTION"] = "Cela peut prendre un certain temps. Vous pouvez fermer cette page. L'envoi se poursuivra en arrière-plan.";
+$MESS["SIGN_SEND_PROGRESS_TITLE"] = "Envoi des documents";
+$MESS["SIGN_SEND_SIGNING_COMPANY"] = "Votre entreprise";
+$MESS["SIGN_SEND_SIGNING_EMPLOYEES"] = "Employés";
+$MESS["SIGN_SEND_SIGNING_REPRESENTATIVE"] = "Représentant";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_EDITOR"] = "Remplissez les champs";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_REVIEWER"] = "Approuver";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_REVIEWER_TEMPLATE"] = "Approbateur";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_TITLE_EDITOR"] = "Fournissez les informations de l'employé";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_TITLE_REVIEWER_MSGVER_1"] = "Le document sera approuvé par";

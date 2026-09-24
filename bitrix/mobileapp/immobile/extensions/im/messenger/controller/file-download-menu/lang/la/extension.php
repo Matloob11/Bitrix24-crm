@@ -1,0 +1,9 @@
+<?php
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_FROM_SERVER"] = "Descargar del servidor";
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_FROM_SERVER_INFO"] = "Descargue los archivos del servidor antes de guardarlos.";
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_MENU_DOWNLOAD_TO_DEVICE"] = "Descargar";
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_MENU_DOWNLOAD_TO_DISK_MSGVER_1"] = "Guardar en Archivos";
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_TO_DEVICE_FAILURE"] = "Error en la descarga.";
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_TO_DEVICE_SUCCESS"] = "El archivo se guardó en su dispositivo.";
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_TO_DISK_FAILURE"] = "No se pudieron guardar los archivos en sus Archivos.";
+$MESS["IMMOBILE_MESSENGER_FILE_DOWNLOAD_TO_DISK_SUCCESS_MSGVER_1"] = "El archivo se guardó en sus Archivos.";

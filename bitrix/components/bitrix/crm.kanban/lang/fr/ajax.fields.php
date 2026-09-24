@@ -1,0 +1,11 @@
+<?php
+$MESS["CRM_KANBAN_FIELD_DELIVERY_STAGE"] = "Statut de livraison";
+$MESS["CRM_KANBAN_FIELD_OBSERVER"] = "Observateurs";
+$MESS["CRM_KANBAN_FIELD_OPPORTUNITY_WITH_CURRENCY"] = "Montant et devise";
+$MESS["CRM_KANBAN_FIELD_ORDER_PAYMENTS"] = "Paiements";
+$MESS["CRM_KANBAN_FIELD_ORDER_PROBLEM_NOTIFICATION"] = "Problème de commande";
+$MESS["CRM_KANBAN_FIELD_ORDER_SHIPMENTS"] = "Livraisons";
+$MESS["CRM_KANBAN_FIELD_ORDER_TITLE"] = "Nom de la commande";
+$MESS["CRM_KANBAN_FIELD_PAYMENT_STAGE"] = "Statut du paiement";
+$MESS["CRM_KANBAN_FIELD_RECURRING"] = "Transaction récurrente";
+$MESS["CRM_KANBAN_FIELD_SOURCE_DESCRIPTION"] = "Description de la source";

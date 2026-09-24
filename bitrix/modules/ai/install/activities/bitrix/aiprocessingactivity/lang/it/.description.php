@@ -1,0 +1,3 @@
+<?php
+$MESS["AI_ACTIVITY_PROCESSING_DESC"] = "Esegue un prompt IA.";
+$MESS["AI_ACTIVITY_PROCESSING_NAME_MSGVER_2"] = "Esegui prompt IA";

@@ -1,0 +1,7 @@
+<?php
+$MESS["PRODUCT_GRID_SUMMARY_ITEMS_COUNT_MSGVER_1"] = "Pozycje: #NUM#";
+$MESS["PRODUCT_GRID_SUMMARY_TAX_INCLUDED"] = "Z podatkiem";
+$MESS["PRODUCT_GRID_SUMMARY_TAX_NOT_INCLUDED_MSGVER_1"] = "dodany do ceny produktu";
+$MESS["PRODUCT_GRID_SUMMARY_TAX_PARTLY_INCLUDED"] = "Niektóre produkty nie zawierają podatku";
+$MESS["PRODUCT_GRID_SUMMARY_TOTAL"] = "Łącznie:";
+$MESS["PRODUCT_GRID_SUMMARY_TOTAL_TAX"] = "Suma podatku:";

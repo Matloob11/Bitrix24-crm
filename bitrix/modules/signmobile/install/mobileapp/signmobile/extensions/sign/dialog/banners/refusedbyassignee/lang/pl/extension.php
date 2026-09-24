@@ -1,0 +1,6 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_BUTTON_CLOSE"] = "Zamknij";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_BUTTON_SAVE_TITLE"] = "Pobierz";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_DESCRIPTION"] = "[COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]#DOCUMENT_TITLE#[/COLOR] został odrzucony. Możesz pobrać podpisaną przez siebie wersję.";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_SAVE_FILE_ERROR_TEXT"] = "Nie można ukończyć działania. Uruchom ponownie aplikację i spróbuj ponownie.";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_TITLE"] = "Dokument odrzucony";

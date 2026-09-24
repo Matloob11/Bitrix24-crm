@@ -1,0 +1,34 @@
+/**
+ * @module im/messenger/lib/utils
+ */
+jn.define('im/messenger/lib/utils', (require, exports, module) => {
+	const { UserUtils } = require('im/messenger/lib/utils/user');
+	const { DateUtils } = require('im/messenger/lib/utils/date');
+	const { ObjectUtils } = require('im/messenger/lib/utils/object');
+	const { ColorUtils } = require('im/messenger/lib/utils/color');
+	const { emojiRegex } = require('im/messenger/lib/utils/emoji-regex');
+	const { createPromiseWithResolvers, delay, delayWithCancel, withTimeout } = require('im/messenger/lib/utils/promise');
+	const { AsyncQueue } = require('im/messenger/lib/utils/src/async-queue');
+	const { Queue } = require('im/messenger/lib/utils/src/queue');
+	const { ModelUtils } = require('im/messenger/lib/utils/model');
+	const { Normalizer } = require('im/messenger/lib/utils/normalizer');
+	const { encodeHtml, decodeHtml } = require('im/messenger/lib/utils/html');
+
+	module.exports = {
+		UserUtils,
+		DateUtils,
+		ObjectUtils,
+		ColorUtils,
+		ModelUtils,
+		emojiRegex,
+		AsyncQueue,
+		Queue,
+		createPromiseWithResolvers,
+		delay,
+		delayWithCancel,
+		withTimeout,
+		Normalizer,
+		encodeHtml,
+		decodeHtml,
+	};
+});

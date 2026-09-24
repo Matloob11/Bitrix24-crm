@@ -1,0 +1,12 @@
+<?php
+$MESS["M_CRM_TL_BASKET_ITEM_NAME"] = "Pagamento";
+$MESS["M_CRM_TL_FIELD_NAME_CLIENT"] = "Cliente";
+$MESS["M_CRM_TL_FIELD_NAME_DATE_PAID"] = "Data e ora pagamento";
+$MESS["M_CRM_TL_FIELD_NAME_PAYMENT_SYSTEM"] = "Metodo di pagamento";
+$MESS["M_CRM_TL_FIELD_NAME_PHONE"] = "Invia ricevuta a un numero di telefono";
+$MESS["M_CRM_TL_FIELD_NAME_SLIP_LINK"] = "Ricevuta terminale";
+$MESS["M_CRM_TL_FIELD_NAME_STATUS"] = "Stato del pagamento";
+$MESS["M_CRM_TL_FIELD_NAME_STATUS_VALUE_NOT_PAID"] = "Non pagato";
+$MESS["M_CRM_TL_FIELD_NAME_STATUS_VALUE_PAID"] = "Pagato";
+$MESS["M_CRM_TL_FIELD_NAME_SUM"] = "Importo";
+$MESS["M_CRM_TL_PAYMENT_TITLE"] = "Pagamento ##NUMBER#";

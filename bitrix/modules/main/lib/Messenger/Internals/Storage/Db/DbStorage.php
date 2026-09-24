@@ -1,0 +1,178 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Main\Messenger\Internals\Storage\Db;
+
+use Bitrix\Main\Application;
+use Bitrix\Main\DI\ServiceLocator;
+use Bitrix\Main\Messenger\Entity\MessageBox;
+use Bitrix\Main\Messenger\Entity\MessageBoxCollection;
+use Bitrix\Main\Messenger\Internals\Config\QueueConfigRegistry;
+use Bitrix\Main\Messenger\Internals\Exception\Storage\PersistenceException;
+use Bitrix\Main\Messenger\Internals\Storage\Db\Model\MessageStatus;
+use Bitrix\Main\Messenger\Internals\Storage\StorageInterface;
+use Bitrix\Main\ORM\Entity;
+use Bitrix\Main\SystemException;
+use Bitrix\Main\Type\DateTime;
+
+class DbStorage implements StorageInterface
+{
+	private const LOCK_KEY_PREFIX = 'queueLock_';
+	private const REQUEUE_LOCK_PREFIX = 'main_messenger_requeue_';
+
+	private const REQUEUE_CACHE_TTL = 600;
+	private const REQUEUE_THRESHOLD_SECONDS = 172800; // 2 days
+
+	private MessageRepository $repository;
+
+	private QueueConfigRegistry $queueRegistry;
+
+	private readonly string $lockKey;
+
+	/** @var array<string, bool> lock state per queue table */
+	private static array $locked = [];
+
+	public function __construct(Entity $tableEntity)
+	{
+		$this->repository = new MessageRepository($tableEntity);
+		$this->queueRegistry = ServiceLocator::getInstance()->get(QueueConfigRegistry::class);
+
+		$this->lockKey = self::LOCK_KEY_PREFIX . $tableEntity->getDBTableName();
+
+		$this->requeueStaleMessages($tableEntity);
+	}
+
+	public function __destruct()
+	{
+		$this->unlock();
+	}
+
+	private function requeueStaleMessages(Entity $tableEntity): void
+	{
+		$cache = Application::getInstance()->getManagedCache();
+
+		$key = 'main_messenger_requeue_' . $tableEntity->getDBTableName();
+
+		if ($cache->read(self::REQUEUE_CACHE_TTL, $key))
+		{
+			$expiredAt = (int)$cache->get($key);
+
+			if ($expiredAt >= time())
+			{
+				return;
+			}
+		}
+
+		// Save the cache BEFORE starting the job so that parallel processes skip the attempt
+		// and don't try to execute the same UPDATE at the same time (thundering herd)
+		$cache->setImmediate($key, time() + self::REQUEUE_CACHE_TTL);
+
+		// In case of distributed environment or cache invalidation we need the lock
+		$connection = Application::getConnection();
+
+		$lockName = self::REQUEUE_LOCK_PREFIX . $tableEntity->getDBTableName();
+
+		if (!$connection->lock($lockName, 0))
+		{
+			return;
+		}
+
+		try
+		{
+			$this->processRequeue();
+		}
+		finally
+		{
+			$connection->unlock($lockName);
+		}
+	}
+
+	private function processRequeue(): void
+	{
+		$thresholdDate = DateTime::createFromTimestamp(time() - self::REQUEUE_THRESHOLD_SECONDS);
+
+		$this->repository->requeueStaleMessages($thresholdDate);
+	}
+
+	/**
+	 * @throws PersistenceException
+	 * @throws SystemException
+	 */
+	public function getOneByQueue(string $queueId): ?MessageBox
+	{
+		if (!$this->lock())
+		{
+			return null;
+		}
+
+		$messageBox = $this->repository->getOneByQueue($queueId);
+
+		if ($messageBox !== null)
+		{
+			$this->repository->updateStatus(new MessageBoxCollection($messageBox), MessageStatus::Processing);
+		}
+
+		$this->unlock();
+
+		return $messageBox;
+	}
+
+	/**
+	 * @throws PersistenceException
+	 * @throws SystemException
+	 */
+	public function getReadyMessagesOfQueue(string $queueId, int $limit = 500): iterable
+	{
+		if (!$this->lock())
+		{
+			return [];
+		}
+
+		$queueConfig = $this->queueRegistry->getQueueConfig($queueId);
+
+		$messageBoxes = $this->repository->getReadyMessagesOfQueue($queueId, $limit, $queueConfig->totalProcessingLimit);
+
+		$this->repository->updateStatus($messageBoxes, MessageStatus::Processing);
+
+		$this->unlock();
+
+		return $messageBoxes;
+	}
+
+	/**
+	 * @throws PersistenceException
+	 */
+	public function save(MessageBox $messageBox): void
+	{
+		$this->repository->save($messageBox);
+	}
+
+	/**
+	 * @throws PersistenceException
+	 */
+	public function delete(MessageBox $messageBox): void
+	{
+		$this->repository->delete($messageBox);
+	}
+
+	private function lock(): bool
+	{
+		if (self::$locked[$this->lockKey] ?? false)
+		{
+			return true;
+		}
+
+		return self::$locked[$this->lockKey] = Application::getConnection()->lock($this->lockKey);
+	}
+
+	private function unlock(): void
+	{
+		if (self::$locked[$this->lockKey] ?? false)
+		{
+			Application::getConnection()->unlock($this->lockKey);
+
+			unset(self::$locked[$this->lockKey]);
+		}
+	}
+}

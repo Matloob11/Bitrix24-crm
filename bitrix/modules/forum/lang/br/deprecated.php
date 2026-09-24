@@ -1,0 +1,20 @@
+<?php
+$MESS['FDATE_LAST_MESSAGE'] = "data da última mensagem";
+$MESS['FMESSAGE_TOPIC'] = "tópico da mensagem";
+$MESS['FNUM_ANSWERS'] = "número de respostas";
+$MESS['FNUM_VIEWS'] = "número de visualizações";
+$MESS['FSTART_DATE'] = "data de criação do tópico";
+$MESS['FAUTHOR_TOPIC'] = "autor do tópico";
+$MESS['FASC'] = "ascendente";
+$MESS['FDESC'] = "descendente";
+$MESS['FNO_ACCESS'] = "nenhum acesso";
+$MESS['FREAD_ACCESS'] = "ler";
+$MESS['FANSWER_ACCESS'] = "Responder";
+$MESS['FNEW_MESSAGE_ACCESS'] = "criar novo tópico";
+$MESS['FMODERATE_ACCESS'] = "moderar";
+$MESS['FEDIT_ACCESS'] = "editar";
+$MESS['FFULL_ACCESS'] = "completo";
+$MESS['FSUBSC_NO_SPERMS'] = "Você não tem permissões suficientes para excluir essa inscrição";
+$MESS['FORUM_NO_MODULE'] = "Módulo de fórum não está instalado";
+$MESS['FR_VIDEO'] = "Inserir vídeo";
+$MESS['FR_VIDEO_P'] = "Caminho de vídeo";

@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY"] = "Responsable";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_DEPARTMENT"] = "Service du responsable";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_DEPARTMENT_FULL"] = "Chemin dans la structure de l'entreprise";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_FULL"] = "L'ID et le nom de l'utilisateur qui a été désigné comme responsable du prospect";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_ID"] = "ID du responsable";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_ID_FULL"] = "L'ID de l'utilisateur qui a été désigné comme responsable du prospect";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_NAME"] = "Personne responsable";
+$MESS["CRM_BIC_LSH_FIELD_ASSIGNED_BY_NAME_FULL"] = "Le nom de l'utilisateur qui a été désigné comme responsable pour ce prospect";
+$MESS["CRM_BIC_LSH_FIELD_DATE_CREATE"] = "Date de création";
+$MESS["CRM_BIC_LSH_FIELD_ID"] = "Clé unique";
+$MESS["CRM_BIC_LSH_FIELD_LEAD_ID"] = "ID du prospect";
+$MESS["CRM_BIC_LSH_FIELD_STATUS"] = "Statut";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_ID"] = "ID du statut";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_NAME"] = "Nom du statut";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_SEMANTIC"] = "Type de statut";
+$MESS["CRM_BIC_LSH_FIELD_STATUS_SEMANTIC_ID"] = "ID du type de statut";
+$MESS["CRM_BIC_LSH_FIELD_TYPE_ID"] = "Type d’enregistrement";
+$MESS["CRM_BIC_LSH_TABLE"] = "Prospect : effacer l'historique des statuts";
+$MESS["CRM_BIC_LSH_TABLE_DESCRIPTION_FULL"] = "Contient des données sur les changements de statut des prospects à partir des champs standard.";

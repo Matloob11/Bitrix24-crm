@@ -1,0 +1,4 @@
+<?php
+$MESS["SENDER_INTEGRATION_MESSAGE_CONFIG_SENDING_END"] = "Ora di fine";
+$MESS["SENDER_INTEGRATION_MESSAGE_CONFIG_SENDING_START"] = "Ora di inizio";
+$MESS["SENDER_INTEGRATION_MESSAGE_CONFIG_SENDING_TIME"] = "Invia newsletter solo entro il tempo specificato";

@@ -1,0 +1,3 @@
+<?php
+$MESS["INTRANET_CONTROLLER_SEARCHENTITY_GETALL_ENTITY_EMPTY"] = "Tipo entità non specificato.";
+$MESS["INTRANET_CONTROLLER_SEARCHENTITY_GETALL_ENTITY_INCORRECT"] = "Tipo entità non corretto specificato.";

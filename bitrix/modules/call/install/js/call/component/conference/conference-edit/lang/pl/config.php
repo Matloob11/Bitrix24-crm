@@ -1,0 +1,35 @@
+<?php
+$MESS["BX_IM_COMPONENT_CONFERENCE_BROADCAST_CHECKBOX_LABEL"] = "Użyj trybu rozgłaszania";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BROADCAST_HINT"] = "W trybie rozgłaszania możesz zezwolić tylko wybranym mówcom na nadawanie obrazu i dźwięku. Inni uczestnicy mogą oglądać transmisję i komunikować się na czacie.";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BROADCAST_LABEL"] = "Tryb rozgłaszania";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BROADCAST_MODE_OFF"] = "Nie";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BROADCAST_MODE_ON"] = "Tak";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BUTTON_CANCEL"] = "Anuluj";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BUTTON_CHAT"] = "Czat";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BUTTON_CREATE"] = "Utwórz";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BUTTON_EDIT"] = "Edytuj";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BUTTON_INVITATION_COPY"] = "Skopiuj zaproszenie";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BUTTON_SAVE"] = "Zapisz";
+$MESS["BX_IM_COMPONENT_CONFERENCE_BUTTON_START"] = "Zacznij";
+$MESS["BX_IM_COMPONENT_CONFERENCE_DEFAULT_INVITATION"] = "#CREATOR# zaprasza Cię do uczestnictwa w konferencji
+#TITLE#
+Aby dołączyć, użyj linku: #LINK#";
+$MESS["BX_IM_COMPONENT_CONFERENCE_DEFAULT_TITLE"] = "Nowa konferencja";
+$MESS["BX_IM_COMPONENT_CONFERENCE_DURATION"] = "Czas trwania";
+$MESS["BX_IM_COMPONENT_CONFERENCE_DURATION_HOURS"] = "godziny";
+$MESS["BX_IM_COMPONENT_CONFERENCE_DURATION_MINUTES"] = "minuty";
+$MESS["BX_IM_COMPONENT_CONFERENCE_INVITATION_COPIED"] = "Skopiowano zaproszenie";
+$MESS["BX_IM_COMPONENT_CONFERENCE_INVITATION_TITLE"] = "Wiadomość z zaproszeniem do wideokonferencji";
+$MESS["BX_IM_COMPONENT_CONFERENCE_NETWORK_ERROR"] = "Nie mogliśmy połączyć się z Twoim Bitrix24, prawdopodobnie z powodu słabego połączenia z Internetem. Spróbuj ponownie później.";
+$MESS["BX_IM_COMPONENT_CONFERENCE_NO_PASSWORD"] = "Nie";
+$MESS["BX_IM_COMPONENT_CONFERENCE_PASSWORD_CHECKBOX_LABEL"] = "Użyj hasła";
+$MESS["BX_IM_COMPONENT_CONFERENCE_PASSWORD_EXISTS"] = "Tak";
+$MESS["BX_IM_COMPONENT_CONFERENCE_PASSWORD_LABEL"] = "Hasło";
+$MESS["BX_IM_COMPONENT_CONFERENCE_PASSWORD_PLACEHOLDER"] = "Wprowadź hasło";
+$MESS["BX_IM_COMPONENT_CONFERENCE_PRESENTER_SELECTOR_LABEL"] = "Mówcy";
+$MESS["BX_IM_COMPONENT_CONFERENCE_PUSH_ERROR"] = "Do korzystania z konferencji zaktualizuj serwer Push";
+$MESS["BX_IM_COMPONENT_CONFERENCE_START_DATE_AND_TIME"] = "Godzina i data wydarzenia";
+$MESS["BX_IM_COMPONENT_CONFERENCE_TITLE_LABEL"] = "Nazwa";
+$MESS["BX_IM_COMPONENT_CONFERENCE_TITLE_PLACEHOLDER"] = "wprowadź nazwę";
+$MESS["BX_IM_COMPONENT_CONFERENCE_USER_SELECTOR_LABEL"] = "Uczestnicy";
+$MESS["BX_IM_COMPONENT_CONFERENCE_VOXIMPLANT_ERROR_WITH_LINK"] = "Aby korzystać z funkcji konferencji, musisz skonfigurować środowisko. <a onclick=\"top.BX.Helper.show('redirect=detail&code=11392174')\"> Dowiedz się więcej</a>";

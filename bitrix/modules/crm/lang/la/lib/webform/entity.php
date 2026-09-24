@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_COMPANY_TEMPLATE"] = "compañía";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_CONTACT_TEMPLATE"] = "individual";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_TEMPLATE"] = "Completar formulario del CRM \"#FORM_NAME#\"";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT"] = "Cliente";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_DESC"] = "contacto o compañía";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC"] = "contacto o compañía, factura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC1"] = "contacto o compañía, pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL"] = "Negociación";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_DESC"] = "negociación, contacto o compañía";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC"] = "negociación, contacto o compañía, factura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC1"] = "negociación, contacto o compañía, pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC"] = "Automatización Inteligente de Procesos";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_DESC"] = "Automatización Inteligente de Procesos, contacto o compañía";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_INVOICE_DESC"] = "Automatización Inteligente de Procesos, contacto o compañía, pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE"] = "Factura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE_DESC"] = "factura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED"] = "Prospecto";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_DESC"] = "prospecto";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC"] = "prospecto,contacto o compañía, factura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC1"] = "prospecto, contacto o compañía, pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_DESC_MSGVER_1"] = "cotización, contacto o compañía";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC1_MSGVER_1"] = "cotización, contacto o compañía, pedido";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC_MSGVER_1"] = "cotización, contacto o compañía, factura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_MSGVER_1"] = "Cotización";

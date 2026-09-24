@@ -1,0 +1,7 @@
+<?php
+$MESS["IMMOBILE_MESSENGER_HEADER_BUTTON_READ_ALL"] = "Marcar tudo como lido";
+$MESS["IMMOBILE_MESSENGER_HEADER_BUTTON_READ_ALL_TASKS"] = "Marcar todos os bate-papos de tarefas como lidos";
+$MESS["IMMOBILE_MESSENGER_HEADER_CONNECTION"] = "Conectando...";
+$MESS["IMMOBILE_MESSENGER_HEADER_DEFAULT"] = "Messenger";
+$MESS["IMMOBILE_MESSENGER_HEADER_NETWORK_WAITING"] = "Aguardando rede...";
+$MESS["IMMOBILE_MESSENGER_HEADER_SYNC"] = "Atualizando...";

@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Corbeille";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Cela inclut des articles (#COUNT#) dont l'espace parent d'origine a été supprimé. Sélectionnez un nouvel espace parent pour ces articles.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Les #COUNT# articles seront restaurés depuis la corbeille.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Restaurer les articles";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Commencez à saisir le nom de l’espace";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "L'espace d'origine contenant l'article \"#DOCUMENT#\" n'existe plus. Sélectionnez un nouvel espace parent pour cet article.";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Restaurer l'article";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Annuler";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Tous les articles dans la corbeille seront supprimés définitivement. Cette action ne peut pas être annulée. Voulez-vous vraiment continuer ?";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "Voulez-vous restaurer tous les articles de la corbeille ?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Vider la corbeille";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Oui";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Vider la corbeille";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "La corbeille est vide.";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "La corbeille a été vidée. Articles supprimés : #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "Impossible de terminer l'action.";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "L'article a été définitivement supprimé.";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Actions";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Restaurer";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Restaurer tout";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Articles restaurés : #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Articles restaurés : #COUNT#. #SKIPPED# articles ignorés, car ils nécessitent un nouvel espace.";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "L'article a été restauré.";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Les articles sont conservés dans la corbeille pendant 30 jours. Après cette période de rétention de 30 jours, ils seront définitivement supprimés.";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Corbeille";

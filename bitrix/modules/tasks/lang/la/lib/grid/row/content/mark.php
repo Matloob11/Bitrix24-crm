@@ -1,0 +1,6 @@
+<?
+$MESS["TASKS_GRID_ROW_CONTENT_MARK"] = "Evaluado";
+$MESS["TASKS_GRID_ROW_CONTENT_MARK_N"] = "Negativo";
+$MESS["TASKS_GRID_ROW_CONTENT_MARK_NONE"] = "No evaluado";
+$MESS["TASKS_GRID_ROW_CONTENT_MARK_P"] = "Positivo";
+?>

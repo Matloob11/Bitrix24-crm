@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_USER_CONSENT_DATA_PROVIDER_NAME"] = "Miei dettagli azienda in CRM";
+$MESS["CRM_USER_CONSENT_DATA_PROVIDER_PAYMENT_NAME"] = "Dettagli pagamento";
+$MESS["CRM_USER_CONSENT_DEF_NAME"] = "Esempio di consenso per l'elaborazione dei dati personali";
+$MESS["CRM_USER_CONSENT_NOTIFY_TEXT_BTN"] = "Altro";
+$MESS["CRM_USER_CONSENT_PROVIDER_ITEM_NAME"] = "Attività CRM #%id%";
+$MESS["CRM_USER_CONSENT_PROVIDER_NAME"] = "Attività CRM";
+$MESS["CRM_USER_CONSENT_PROVIDER_PAYMENT_ITEM_NAME"] = "Pagamento ##ACCOUNT_NUMBER#, #DATE#";
+$MESS["CRM_USER_CONSENT_PROVIDER_PAYMENT_NAME"] = "Ricevi pagamento";

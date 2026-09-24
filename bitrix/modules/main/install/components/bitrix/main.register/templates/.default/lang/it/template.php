@@ -1,0 +1,3 @@
+<?php
+$MESS["REGISTER_FIELD_PASSWORD"] = "Password";
+$MESS["REGISTER_FIELD_WORK_DEPARTMENT"] = "Reparto";

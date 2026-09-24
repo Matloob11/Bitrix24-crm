@@ -1,0 +1,20 @@
+.mark-task-button {
+	white-space: nowrap;
+}
+
+.mark-task-button__text {}
+
+.mark-task-button__icon {}
+.mark-task-button__icon.ui-icon-set {
+	width: 20px;
+	height: 20px;
+}
+.mark-task-button__icon.ui-icon-set.--o-like {
+	--ui-icon-set__icon-color: var(--ui-color-accent-main-success-alt-2);
+}
+.mark-task-button__icon.ui-icon-set.--o-dislike {
+	--ui-icon-set__icon-color: var(--ui-color-accent-main-alert);
+}
+.mark-task-button__icon.ui-icon-set.--lock-m {
+	--ui-icon-set__icon-color: var(--ui-color-accent-main-primary-alt-2);
+}

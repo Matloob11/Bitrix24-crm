@@ -1,0 +1,19 @@
+<?php
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_CURRENCY"] = "Құжат валютасы";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_CREATE"] = "Құрылған күні";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_MODIFY"] = "Өзгерту күні";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE"] = "Құжат түрі";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE_CODE"] = "Құжат түрінің коды";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_ID"] = "Бірегей құжат идентификаторы";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE"] = "ID және жауапты адамның аты";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_ID"] = "Жауаптының ID-і";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_NAME"] = "Жауапты адамның аты";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS"] = "Құжат мәртебесі";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE"] = "Құжат мәртебесінің коды";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE_FULL"] = "Құжат өткізілді ме: Y - өткізілді, N - бастапқы үлгі";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TITLE"] = "Құжаттың атауы";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TOTAL"] = "Құжат бойынша тауарлардың жалпы құны";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED"] = "Құжат жойылды";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED_FULL"] = "Құжат жойылды ма: Y - иә, N - жоқ";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE"] = "Қойма құжаттары";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE_DESCRIPTION_FULL"] = "Жинақта тауарлардың қозғалысын тіркейтін қойма құжаттары туралы мәліметтер бар.";

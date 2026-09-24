@@ -1,0 +1,5 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_BUTTON_CLOSE"] = "Podpisz później";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_BUTTON_START_SIGNING"] = "Podpisz teraz";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_DESCRIPTION_MSGVER_1"] = "Po podpisaniu dokumentu [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]#DOCUMENT_TITLE#[/COLOR] będzie on dostępny w Twoim profilu na karcie [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]Moje dokumenty[/COLOR].";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_TITLE"] = "Podpisz dokument";

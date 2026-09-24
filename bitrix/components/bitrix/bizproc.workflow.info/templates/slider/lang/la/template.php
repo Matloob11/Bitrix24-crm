@@ -1,0 +1,24 @@
+<?php
+$MESS["BPWFI_SLIDER_ARGUMENT_NULL"] = "El campo '#PARAM#' es obligatorio.";
+$MESS["BPWFI_SLIDER_BANNER_BODY"] = "Deje sus comentarios y discuta el flujo de trabajo con los participantes.";
+$MESS["BPWFI_SLIDER_BANNER_TITLE"] = "No hay comentarios en este flujo de trabajo";
+$MESS["BPWFI_SLIDER_BUTTON_DELEGATE"] = "Delegar";
+$MESS["BPWFI_SLIDER_CONFIRM_ACCEPT"] = "Sí";
+$MESS["BPWFI_SLIDER_CONFIRM_CANCEL"] = "No";
+$MESS["BPWFI_SLIDER_CONFIRM_DESCRIPTION"] = "¿Seguro que desea cancelar los cambios que se hicieron en el flujo de trabajo? Los valores que introdujo en los campos se perderán.";
+$MESS["BPWFI_SLIDER_CONFIRM_TITLE"] = "Cancelar los cambios en el flujo de trabajo";
+$MESS["BPWFI_SLIDER_DESCRIPTION"] = "Descripción";
+$MESS["BPWFI_SLIDER_DISCUSSION_COMMENTS_COUNT"] = "Comentarios: #COMMENTS_COUNT#";
+$MESS["BPWFI_SLIDER_DISCUSSION_TITLE"] = "Discusión en el flujo de trabajo";
+$MESS["BPWFI_SLIDER_DISCUSSION_ZERO_COMMENTS_COUNT"] = "No hay comentarios en este flujo de trabajo.";
+$MESS["BPWFI_SLIDER_DOCUMENT"] = "Elemento del flujo de trabajo";
+$MESS["BPWFI_SLIDER_FIELDS_TITLE"] = "Parámetros de la asignación (requerido)";
+$MESS["BPWFI_SLIDER_MODIFIED"] = "Última actualización";
+$MESS["BPWFI_SLIDER_NAME"] = "Nombre";
+$MESS["BPWFI_SLIDER_NOT_MY_PROCESS"] = "Está viendo el flujo de trabajo de #USER#.";
+$MESS["BPWFI_SLIDER_NOT_MY_TASK"] = "Está viendo las asignaciones de #USER#";
+$MESS["BPWFI_SLIDER_PROCESS"] = "Flujo de trabajo";
+$MESS["BPWFI_SLIDER_STATUS"] = "Estado";
+$MESS["BPWFI_SLIDER_TASK"] = "Asignación";
+$MESS["BPWFI_SLIDER_TIMELINE_MSGVER_1"] = "Acta";
+$MESS["BPWFI_SLIDER_TYPE"] = "Tipo de flujo de trabajo";

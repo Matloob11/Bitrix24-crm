@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_RECENT_CONTEXT_MENU_CALL"] = "Połączenie wideo HD";
+$MESS["IM_RECENT_CONTEXT_MENU_HIDE"] = "Ukryj czat";
+$MESS["IM_RECENT_CONTEXT_MENU_HISTORY"] = "Wyświetl dziennik wiadomości";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL"] = "Anuluj zaproszenie";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL_CONFIRM"] = "Czy na pewno chcesz anulować zaproszenie?";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL_DONE"] = "Zaproszenie zostało anulowane.";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_RESEND"] = "Zaproś ponownie";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_RESEND_DONE"] = "Zaproszenie zostało wysłane.";
+$MESS["IM_RECENT_CONTEXT_MENU_LEAVE"] = "Opuść czat";
+$MESS["IM_RECENT_CONTEXT_MENU_LOADING"] = "Ładowanie menu...";
+$MESS["IM_RECENT_CONTEXT_MENU_MUTE"] = "Wyłącz powiadamianie";
+$MESS["IM_RECENT_CONTEXT_MENU_PIN"] = "Przypnij rozmowę";
+$MESS["IM_RECENT_CONTEXT_MENU_PROFILE"] = "Wyświetl profil";
+$MESS["IM_RECENT_CONTEXT_MENU_READ"] = "Oznacz jako przeczytane";
+$MESS["IM_RECENT_CONTEXT_MENU_UNMUTE"] = "Włącz powiadomienia";
+$MESS["IM_RECENT_CONTEXT_MENU_UNPIN"] = "Odepnij rozmowę";
+$MESS["IM_RECENT_CONTEXT_MENU_UNREAD"] = "Oznacz jako nieprzeczytane";
+$MESS["IM_RECENT_CONTEXT_MENU_WRITE"] = "Wyślij wiadomość";

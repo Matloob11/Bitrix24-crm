@@ -1,0 +1,108 @@
+export type UserMiniProfileOptions = {
+	userId: number,
+	bindElement: HTMLElement,
+	direction?: ?string,
+};
+
+export const MiniProfileDirection = Object.freeze({
+	Viewport: 'viewport',
+});
+
+export type UserRoleCodeType =
+	'firstAdmin'
+	| 'admin'
+	| 'employee'
+	| 'integrator'
+	| 'collaber'
+	| 'extranet'
+	| 'visitor'
+	| 'email'
+	| 'shop'
+	| 'external'
+;
+
+export const UserRole: Record<string, UserStatusCodeType> = Object.freeze({
+	FirstAdmin: 'firstAdmin',
+	Admin: 'admin',
+	Employee: 'employee',
+	Integrator: 'integrator',
+	Collaber: 'collaber',
+	Extranet: 'extranet',
+	Visitor: 'visitor',
+	Email: 'email',
+	Shop: 'shop',
+	External: 'external',
+});
+
+export type UserMiniProfileData = {
+	access: {
+		canChat: boolean,
+	},
+	baseInfo: UserData & {
+		time: string,
+		status: UserStatusType,
+		utcOffset: number,
+		role: UserRoleCodeType | null,
+		access: {
+			canChat: boolean,
+		},
+		personalGender: string | null,
+	},
+	detailInfo?: {
+		personalMobile: string;
+		innerPhone: string;
+		email: string;
+	} | null,
+	structure?: StructureType | null,
+};
+
+export type UserData = {
+	name: string;
+	workPosition: string,
+	avatar: string,
+	id: number,
+	url: string,
+}
+
+export type StructureType = {
+	title: string,
+	departmentDictionary: Record<string, DepartmentType>,
+	userDepartmentIds: Array<number>,
+	headDictionary: HeadDictionary,
+	teams: Array<TeamType>,
+	userHeadIds: Array<number>,
+};
+
+export type HeadDictionary = Record<string, UserData>;
+
+export type NodeType = {
+	id: number,
+	title: string,
+}
+
+export type DepartmentType = NodeType & {
+	employeeCount: number,
+	headIds: Array<number>,
+	parentId: number | null,
+};
+
+export type TeamType = NodeType;
+
+export type UserStatusType = {
+	code: UserStatusCodeType,
+	lastSeenTs?: number | null,
+	vacationTs?: number | null,
+};
+
+export type UserStatusCodeType = 'online' | 'offline' | 'dnd' | 'vacation' | 'fired';
+export const UserStatus: Record<string, UserStatusCodeType> = Object.freeze({
+	Online: 'online',
+	Offline: 'offline',
+	DoNotDisturb: 'dnd',
+	Vacation: 'vacation',
+	Fired: 'fired',
+});
+
+export const UserStatusToShow: Record<string, UserStatusCodeType> = Object.freeze({
+	Vacation: UserStatus.Vacation,
+});

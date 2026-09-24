@@ -1,0 +1,23 @@
+<?php
+$MESS["M_INTRANET_PERSONAL_MOBILE_IS_NOT_FILLED"] = "L'utente non ha indicato il numero di telefono";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_BUTTON_TEXT"] = "Rendi amministratore";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_DESCRIPTION"] = "Gli amministratori hanno l'accesso completo alle informazioni personali degli utenti e dei clienti. Possono invitare e rimuovere utenti e dipendenti, oltre a modificare le autorizzazioni degli utenti e le impostazioni di Bitrix24. Rendere amministratore questo utente?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_TITLE"] = "Rendere amministratore questo utente?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_BUTTON_TEXT"] = "Invia notifica";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_DESCRIPTION"] = "Con Bitrix24, gli utenti possono proteggere il proprio account aggiungendo un secondo fattore di autenticazione. Invia all'utente una notifica per consigliargli di abilitare l'autenticazione a due fattori.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_TITLE"] = "Chiedi all'utente di proteggere il suo account con l'autenticazione a due fattori (2FA)";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_ALREADY_INSTALLED"] = "App desktop già installata";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_BUTTON_TEXT"] = "Sollecita";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_DESCRIPTION"] = "Basterà fare clic su un'icona del desktop anziché aprire il browser. Inoltre, l'app desktop consente di registrare videochiamate e squilla in caso di chiamate telefoniche in entrata.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_IS_NOT_INSTALLED"] = "App desktop non installata";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_TITLE"] = "Sollecita l'utente a installare l'app desktop Bitrix24";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_ALREADY_INSTALLED"] = "App mobile già installata";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_IS_NOT_INSTALLED"] = "App mobile non installata";
+$MESS["M_INTRANET_USER_STATUS_ADMIN"] = "Amministratore";
+$MESS["M_INTRANET_USER_STATUS_DESKTOP_INSTALLED"] = "Computer";
+$MESS["M_INTRANET_USER_STATUS_EXTRANET"] = "Extranet";
+$MESS["M_INTRANET_USER_STATUS_GUEST"] = "Ospite";
+$MESS["M_INTRANET_USER_STATUS_INVITED"] = "Invito in sospeso";
+$MESS["M_INTRANET_USER_STATUS_INVITE_IS_SENDED"] = "Nuovo invito inviato";
+$MESS["M_INTRANET_USER_STATUS_MOBILE_APP_INSTALLED"] = "Telefono";
+$MESS["M_INTRANET_USER_STATUS_PENDING"] = "In attesa di conferma accesso";

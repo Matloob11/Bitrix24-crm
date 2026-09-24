@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Cestino";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Tra questi vi sono articoli (#COUNT#) il cui spazio originale è stato eliminato. Seleziona un nuovo spazio principale per questi articoli.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Tutti e #COUNT# gli articoli verranno ripristinati dal Cestino.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Ripristina articoli";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Inizia a digitare il nome dello spazio";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "Lo spazio originale contenente l'articolo \"#DOCUMENT#\" non esiste più. Seleziona un nuovo spazio principale per questo articolo.";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Ripristina articolo";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Annulla";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Tutti gli articoli nel Cestino verranno eliminati definitivamente. Questa azione non può essere annullata. Continuare?";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "Vuoi ripristinare tutti gli articoli dal Cestino?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Svuota Cestino";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Sì";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Svuota Cestino";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "Il Cestino è vuoto.";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "Il Cestino è stato svuotato. Articoli eliminati: #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "Impossibile completare l'operazione.";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "L'articolo non è più ripristinabile.";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Azioni";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Ripristina";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Ripristina tutto";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Articoli ripristinati: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Articoli ripristinati: #COUNT#. #SKIPPED# articoli sono stati ignorati perché necessitano di un nuovo spazio.";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "L'articolo è stato ripristinato.";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Gli articoli vengono conservati nel Cestino per 30 giorni. Dopo il periodo di conservazione di 30 giorni, verranno eliminati definitivamente.";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Cestino";

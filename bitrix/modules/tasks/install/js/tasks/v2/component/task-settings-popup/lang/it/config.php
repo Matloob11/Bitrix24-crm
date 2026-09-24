@@ -1,0 +1,23 @@
+<?php
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_AUTO_COMPLETE_SUBTASKS_LABEL"] = "Completa automaticamente l'incarico quando tutti gli incarichi secondari sono completati e viceversa";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_CANCEL"] = "Annulla";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_SAVE"] = "OK";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_HINT"] = "Non appena il responsabile contrassegnerà l'incarico come completato, questo ti verrà inviato per la revisione. Potrai accettare l'incarico (che verrà chiuso) o restituirlo per ulteriori correzioni.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_LABEL"] = "Richiedi approvazione al completamento";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINES_LABEL"] = "Il responsabile può modificare la scadenza";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_BEFORE"] = "Ultima scadenza possibile: [date/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LABEL"] = "Imposta scadenza predefinita per tutti i nuovi incarichi:";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_COUNT"] = "per numero di modifiche";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_DATE"] = "per data";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_LABEL"] = "Limita modifica della scadenza";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_NOT_GREATER_THAN"] = "Limite di modifiche: [count/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_DAY"] = "giorni";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_HOUR"] = "ore";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_MONTH"] = "mesi";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_WEEK"] = "settimane";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_HINT"] = "Il responsabile dovrà aggiungere un commento che spieghi il motivo della modifica della scadenza.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_LABEL"] = "Richiedi un motivo per la modifica";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE"] = "Preferenze incarico";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE_HINT"] = "Si applicano a tutti gli incarichi che crei.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_HINT"] = "Se le date pianificate dell'incarico includono fine settimana o festività, la scadenza dell'incarico verrà posticipata per tenere conto dei giorni non lavorativi.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_LABEL"] = "Salta i fine settimana";

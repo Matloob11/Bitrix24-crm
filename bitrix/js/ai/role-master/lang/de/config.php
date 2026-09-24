@@ -1,0 +1,27 @@
+<?php
+$MESS["ROLE_MASTER_ABOUT_ROLE_MASTER_LINK"] = "Mehr";
+$MESS["ROLE_MASTER_BACK_TO_EDITOR_BTN"] = "Zurück zum Editor";
+$MESS["ROLE_MASTER_CLOSE_BTN"] = "Schließen";
+$MESS["ROLE_MASTER_EDIT_WARNING_TEXT"] = "Die Rolle wird für alle geändert, die sie nutzen.";
+$MESS["ROLE_MASTER_FILE_DROPAREA_TEXT"] = "Verschieben Sie Ihre Dateien hierher";
+$MESS["ROLE_MASTER_LOADER_TEXT"] = "Rolle wird gespeichert";
+$MESS["ROLE_MASTER_NEXT_BUTTON"] = "Weiter";
+$MESS["ROLE_MASTER_POPUP_TITLE"] = "Neue Rolle";
+$MESS["ROLE_MASTER_POPUP_TITLE_EDIT_MODE"] = "Rolle bearbeiten";
+$MESS["ROLE_MASTER_PREV_BUTTON"] = "Zurück";
+$MESS["ROLE_MASTER_REPEAT_REQUEST_BTN"] = "Erneut versuchen";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD"] = "Name und Icon";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD_PLACEHOLDER"] = "Max. 70 Zeichen";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD"] = "Beschreibung";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD_HINT"] = "Hinweis für das Feld \"Beschreibung\"";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD_PLACEHOLDER"] = "Ich kann Daten analysieren, Konzept verbessern und eine Projektzusammenfassung erstellen";
+$MESS["ROLE_MASTER_ROLE_MAIN_STEP_TITLE"] = "Name und Zugriffsrechte";
+$MESS["ROLE_MASTER_ROLE_TEXT_FIELD_PLACEHOLDER"] = "Geben Sie den Prompt-Text für diese Rolle ein. Für Architekten könnte der Prompt bspw. wie folgt lauten. Handeln Sie wie ein erfahrener Architekt. Ihre Aufgabe ist es, mir bei der Analyse von Daten aus der realen Welt wie geografischen und topografischen Bedingungen zu helfen.";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE"] = "Fügen Sie einen Prompt für diese Rolle hinzu";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE_HINT"] = "Legen Sie die Rolle fest und beschreiben Sie die Aufgabe";
+$MESS["ROLE_MASTER_ROLE_USERS_WITH_ACCESS_FIELD"] = "Verfügbar machen für";
+$MESS["ROLE_MASTER_SAVE_BUTTON"] = "Speichern";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_SHORT_TEXT"] = "Rolle konnte nicht gespeichert werden.";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_TEXT"] = "Besteht das Problem weiterhin, wechseln Sie zurück zum Prompt-Editor und kopieren Sie den Prompt-Text, damit er nicht verloren geht.";
+$MESS["ROLE_MASTER_SAVING_DONE"] = "Fertig";
+$MESS["ROLE_MASTER_USER_SELECTOR_ADD_BTN"] = "Bearbeiten";

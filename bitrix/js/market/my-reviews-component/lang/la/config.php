@@ -1,0 +1,20 @@
+<?php
+$MESS["MARKET_DONT_HAVE_REVIEWS"] = "No tiene ninguna reseña.";
+$MESS["MARKET_DONT_HAVE_REVIEWS_FILTER"] = "No se encontraron reseñas.";
+$MESS["MARKET_MY_REVIEWS"] = "Mis reseñas";
+$MESS["MARKET_NO_REVIEW_APPS"] = "No tiene reseñas en ninguna aplicación.";
+$MESS["MARKET_NO_REVIEW_APPS_FILTER"] = "Ninguna de sus reseñas coincide con los filtros especificados.";
+$MESS["MARKET_REVIEWS_DEVELOPER"] = "Desarrollador";
+$MESS["MARKET_REVIEWS_MENU_ITEM_EDITING"] = "Editar la reseña";
+$MESS["MARKET_REVIEW_ANSWER"] = "Respuesta del desarrollador";
+$MESS["MARKET_REVIEW_EDITING_CANCEL"] = "Cancelar";
+$MESS["MARKET_REVIEW_EDITING_RE_MODERATION_TITLE"] = "La reseña que actualizó se enviará a moderación.";
+$MESS["MARKET_REVIEW_EDITING_SAVE"] = "Guardar";
+$MESS["MARKET_REVIEW_EDITING_TITLE"] = "Editar la reseña";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_ERROR"] = "Error al actualizar la reseña.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_NOT_ALLOWED"] = "No se puede editar la reseña.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_SUCCESS"] = "Su reseña se actualizó exitosamente.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_TEXT_ERROR"] = "El texto de la reseña es obligatorio.";
+$MESS["MARKET_REVIEW_NO_PUBLISHED"] = "No publicado";
+$MESS["MARKET_REVIEW_PUBLISHED"] = "Publicado";
+$MESS["MARKET_REVIEW_SENT_TO_DEVELOPER"] = "Enviado al desarrollador";

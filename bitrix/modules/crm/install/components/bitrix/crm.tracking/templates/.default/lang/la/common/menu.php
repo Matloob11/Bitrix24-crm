@@ -1,0 +1,7 @@
+<?
+$MESS["CRM_TRACKING_COMMON_MENU_ARCHIVE"] = "Archivo de fuentes";
+$MESS["CRM_TRACKING_COMMON_MENU_MAIN"] = "Fuentes y canales";
+$MESS["CRM_TRACKING_COMMON_MENU_PERMISSIONS"] = "Permisos de acceso";
+$MESS["CRM_TRACKING_COMMON_MENU_REPORTS"] = "Reportes";
+$MESS["CRM_TRACKING_COMMON_MENU_SETTINGS"] = "Configuraciones";
+?>

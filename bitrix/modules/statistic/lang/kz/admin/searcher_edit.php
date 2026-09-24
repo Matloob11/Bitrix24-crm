@@ -1,0 +1,22 @@
+<?php
+$MESS["STAT_ACTIVE"] = "Белсенді:";
+$MESS["STAT_CHAR_SET"] = "Іздеу сұрауының кодталуы";
+$MESS["STAT_CHECK_ACTIVITY"] = "Белсенділік лимитін тексеру:";
+$MESS["STAT_DELETE_SEARCHER"] = "Іздеу жүйесін жою";
+$MESS["STAT_DELETE_SEARCHER_CONFIRM"] = "Іздеу жүйесін жойғыңыз келетініне сенімдісіз бе?";
+$MESS["STAT_DOMAIN"] = "Домен [%_]";
+$MESS["STAT_DYNAMIC_KEEP_DAYS"] = "Динамиканы қанша күн сақтау керек:";
+$MESS["STAT_EDIT_RECORD"] = "Іздеу жүйесінің параметрлері # #ID#";
+$MESS["STAT_FORGOT_NAME"] = "Сіз \"Атауы\" өрісін енгізуді ұмыттыңыз";
+$MESS["STAT_FORM_ERROR_SAVE"] = "Сақтау қатесі";
+$MESS["STAT_HIT_KEEP_DAYS"] = "Хиттерді қанша күн сақтау керек:";
+$MESS["STAT_NAME"] = "Атауы:";
+$MESS["STAT_NEW_RECORD"] = "Жаңа іздеу жүйесі";
+$MESS["STAT_NEW_SEARCHER"] = "Жаңа іздеу жүйесі";
+$MESS["STAT_PIE_CHART"] = "Әдепкі индекстеуді<br>диаграмма мен графикке қосу:";
+$MESS["STAT_PROP_TITLE"] = "Іздеу жүйесінің параметрлері";
+$MESS["STAT_RECORDS_LIST"] = "Іздеу жүйесінің тізімі";
+$MESS["STAT_SEARCHER_DOMAINS"] = "Домендер:";
+$MESS["STAT_STATISTICS"] = "Хиттерді сақтау:";
+$MESS["STAT_USER_AGENT"] = "UserAgent:";
+$MESS["STAT_VARIABLE"] = "Айнымалылар<br>(үтір арқылы)";

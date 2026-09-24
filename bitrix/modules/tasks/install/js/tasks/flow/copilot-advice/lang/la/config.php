@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_BOT_TITLE"] = "CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_CREATE_MEETING"] = "Crear una reunión";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_CREATE_TASK"] = "Crear una tarea";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_EDIT_FLOW"] = "Editar flujo";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_LOADER_TEXT"] = "Cargando las recomendaciones...";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_1"] = "En el 68% de los casos, la causa del aumento en el tiempo de ejecución de las tareas fue el retraso en la aprobación por parte del responsable del flujo. En el 30% de todos los casos, la aprobación manual de la tarea tardó 5 días o incluso más.\n\n[b]Recomendación[/b]\nReducir el proceso de aprobación manual de la tarea, asignar a una persona responsable diferente o utilizar la fila automática. Si las tareas se asignan con más rapidez, los tiempos del ciclo de las tareas en el flujo serán más cortos.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_2"] = "En el 78% de los casos, las tareas con fecha límite vencida tenían 4 o más comentarios. Las tareas que se completaron a tiempo solo tenían comentarios en el 13% de los casos.\n\n[b]Recomendación[/b]\nIdentificar la información necesaria para completar las tareas más rápidamente, mejorar las plantillas de las tareas. Es probable que la plantilla de tareas actual no incluya toda la información que necesita la persona responsable.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_3"] = "La mayoría de los asignados en las tareas del flujo tienen una eficiencia óptima, excepto uno que tiene una puntuación de solo el 67%. En promedio, completó tres veces menos tareas que sus colegas.\n\n[b]Recomendación[/b]\nHable con esta persona frente a frente para hallar y eliminar las razones de su baja eficiencia.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_EXAMPLE"] = "Este es un ejemplo de mis recomendaciones.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_HIGH"] = "Esta es mi opinión sobre las razones por las que el equipo es tan eficiente.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_LOW"] = "Identifiqué varias razones qué causan la baja eficiencia y puedo proporcionar recomendaciones.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_EXAMPLE"] = "Estaré listo para ofrecer recomendaciones una vez que el flujo tenga al menos 10 tareas.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_HIGH"] = "La eficiencia del flujo es perfecta, #EFFICIENCY#%.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_LOW"] = "La eficiencia se redujo a #EFFICIENCY#%.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_TITLE"] = "¡Hola! Soy CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_TITLE_MSGVER_1"] = "¡Hola! Soy #COPILOT_NAME#";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_TITLE"] = "Recomendaciones de CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_TITLE_MSGVER_1"] = "Recomendaciones de #COPILOT_NAME#";

@@ -1,0 +1,55 @@
+<?php
+// A7_INLINE_CRM_AUDIO_PLAYER
+// Loads inline CRM timeline voice-note player assets on CRM detail pages.
+if (!function_exists('a7_inline_crm_audio_player')) {
+    AddEventHandler('main', 'OnEndBufferContent', 'a7_inline_crm_audio_player');
+
+    function a7_inline_crm_audio_player(&$content)
+    {
+        if (defined('ADMIN_SECTION') && ADMIN_SECTION === true) {
+            return;
+        }
+
+        $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+        if (!preg_match('#^/crm/(lead|deal|contact|company)/details/[0-9]+/#', $uri)) {
+            return;
+        }
+
+        if (strpos($content, 'A7_INLINE_CRM_AUDIO_PLAYER_ASSET') !== false) {
+            return;
+        }
+
+        $asset = '<link id="A7_INLINE_CRM_AUDIO_PLAYER_ASSET_CSS" rel="stylesheet" href="/bitrix/css/a7_inline_crm_audio_player.css?v=20260621a">' . "
+" .
+            '<script id="A7_INLINE_CRM_AUDIO_PLAYER_ASSET" src="/bitrix/js/a7_inline_crm_audio_player.js?v=20260621a" defer></script>' . "
+";
+
+        if (stripos($content, '</body>') !== false) {
+            $content = preg_replace('#</body>#i', $asset . '</body>', $content, 1);
+        } else {
+            $content .= $asset;
+        }
+    }
+}
+
+// A7 3CX Click-to-Call bridge: inject on CRM pages for logged-in users.
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', static function () {
+        global $APPLICATION, $USER;
+        $uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+        if (strpos($uri, '/crm/') !== 0) {
+            return;
+        }
+        if (!is_object($USER) || !$USER->IsAuthorized()) {
+            return;
+        }
+        if (!is_object($APPLICATION) || !method_exists($APPLICATION, 'AddHeadScript')) {
+            return;
+        }
+        $scriptPath = '/bitrix/js/a7_3cx_click_to_call.js';
+        $fullPath = (string)($_SERVER['DOCUMENT_ROOT'] ?? '') . $scriptPath;
+        $version = is_readable($fullPath) ? (string)@filemtime($fullPath) : (string)time();
+        $APPLICATION->AddHeadScript($scriptPath . '?v=' . $version);
+    });
+}
+

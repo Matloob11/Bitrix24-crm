@@ -1,0 +1,25 @@
+<?php
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_ACTIVITY"] = "La tarea se creó con base en una #A_BEGIN#notificación sobre la creación/actualización de una actividad en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_COMPANY"] = "La tarea \"#TASK_NAME#\" se creó a partir de un #A_BEGIN#comentario que se dejó en una notificación sobre la creación/actualización de la empres en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_CONTACT"] = "La tarea \"#TASK_NAME#\" se creó a partir de un #A_BEGIN#comentario que se dejó en una notificación sobre la creación/actualización del prospecto en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_DEAL"] = "La tarea \"#TASK_NAME#\" se creó a partir del #A_BEGIN#comentario dejado en una notificación del noticias sobre la creación/actualización de la negociación#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_INVOICE"] = "La tarea se creó con base en una #A_BEGIN#notificación sobre la creación/actualización de una factura en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_LEAD"] = "La tarea \"#TASK_NAME#\" se creó a partir de un #A_BEGIN#comentario que se dejó en una notificación sobre la creación/actualización del prospecto en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_ACTIVITY"] = "La tarea se creó con base en una #A_BEGIN#notificación sobre la creación/actualización de una actividad en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_INVOICE"] = "La tarea se creó con base en una #A_BEGIN#notificación sobre la creación/actualización de una factura en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_COMPANY"] = "La tarea \"#TASK_NAME#\" se creó a partir de una notificación sobre la creación/actualización de la compañía en el noticias#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_CONTACT"] = "La tarea \"#TASK_NAME#\" se creó a partir de una #A_BEGIN#notificación sobre la creación/actualización de un contacto en el noticiases#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_DEAL"] = "La tarea \"#TASK_NAME#\" se creó a partir de una notificación del noticias sobre la creación/actualización de la negociación.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_LEAD"] = "La tarea \"#TASK_NAME#\" se creó a partir de una notificación sobre la creación/actualización del prospecto en el noticiases.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ACTIVITY"] = "La tarea se creó con base en una #A_BEGIN#notificación sobre la creación/actualización de una actividad en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_ACTIVITY"] = "La tarea se creó con base en una #A_BEGIN#notificación sobre la creación/actualización de una actividad en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_COMPANY"] = "La tarea se creó a partir de un #A_BEGIN#comentario que se dejó en una notificación sobre la creación/actualización de la compañía en el noticias#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_CONTACT"] = "La tarea se creó a partir de un #A_BEGIN#comentario que se dejó en una notificación sobre la creación/actualización de un contacto en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_DEAL"] = "La tarea se creó a partir del #A_BEGIN#comentario dejado en una notificación del noticias sobre la creación/actualización de la negociación#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_INVOICE"] = "La tarea se creó con base en un #A_BEGIN#comentario que se dejo en una notificación sobre la creación/actualización de una factura en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_LEAD"] = "La tarea se creó a partir de un #A_BEGIN#comentario que se dejó en una notificación sobre la creación/actualización del prospecto en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_INVOICE"] = "La tarea se creó a partir de una #A_BEGIN#notificación sobre la creación/actualización de una factura en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_COMPANY"] = "La tarea se creó a partir de una #A_BEGIN#notificación sobre la creación/actualización de un contacto en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_CONTACT"] = "La tarea se creó a partir de una #A_BEGIN#notificación sobre la creación/actualización de un contacto en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_DEAL"] = "La tarea se creó a partir de una #A_BEGIN#notificación sobre la creación/actualización del prospecto en el noticiases#A_END#.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_LEAD"] = "La tarea se creó a partir de una #A_BEGIN#notificación sobre la creación/actualización del prospecto en el noticiases#A_END#.";

@@ -1,0 +1,3 @@
+<?php
+$MESS["SONET_LIVEFEED_INTRANET_NEW_USER_PINNED_DESCRIPTION"] = "Nuovo dipendente assunto: #USER_NAME#";
+$MESS["SONET_LIVEFEED_INTRANET_NEW_USER_TITLE"] = "L'utente #USER_NAME# è stato aggiunto";

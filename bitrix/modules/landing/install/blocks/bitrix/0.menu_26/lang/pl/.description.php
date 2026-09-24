@@ -1,0 +1,7 @@
+<?php
+$MESS["LANDING_BLOCK_MENU_26-HAMBURGER"] = "Menu poziome";
+$MESS["LANDING_BLOCK_MENU_26-LINK"] = "Link";
+$MESS["LANDING_BLOCK_MENU_26-NAME"] = "Zwinięte menu pionowe";
+$MESS["LANDING_BLOCK_MENU_26-NAVBAR"] = "Menu";
+$MESS["LANDING_BLOCK_MENU_26-TEXT"] = "Tekst";
+$MESS["LANDING_BLOCK_MENU_26_HAMB"] = "Menu mobilne";

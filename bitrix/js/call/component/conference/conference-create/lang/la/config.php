@@ -1,0 +1,23 @@
+<?php
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_ADD_USERS"] = "Agregar";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BROADCAST_MODE"] = "Modo de transmisión";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BROADCAST_MODE_HINT"] = "En el modo de transmisión puede permitir que solo los oradores seleccionados transmitan video y sonido. Otros participantes (asistentes) podrán ver la transmisión y comunicarse mediante el chat.";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_CANCEL"] = "Cancelar";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_CLOSE"] = "Cerrar";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_OPEN_CHAT"] = "Abrir chat";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_SAVE"] = "Guardar y copiar el enlace";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_START"] = "Iniciar la conferencia";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_COPY_CONFIRMATION"] = "Enlace copiado";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_HEADER_TITLE"] = "Crear conferencia";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LABEL_LINK"] = "Enlace";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LABEL_TITLE"] = "Nombre de la conferencia";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LABEL_USERS"] = "Invitar a los asistentes";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LINK_LOADING"] = "Creando el enlace...";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_NETWORK_ERROR"] = "No pudimos conectarnos a su Bitrix24, probablemente debido a una mala conexión a Internet. Intente de nuevo más tarde.";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PLACEHOLDER_TITLE"] = "Ingrese su nombre";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PLACEHOLDER_TITLE_2"] = "Videoconferencia";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PRESENTERS"] = "Ponentes";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PUSH_ERROR"] = "Actualice su servidor Push para utilizar las conferencias";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_SUCCESS"] = "¡La conferencia se creó con éxito!";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_USERS_LOADING"] = "Cargando...";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_VOXIMPLANT_ERROR_WITH_LINK"] = "Debe configurar el entorno para utilizar la función de conferencia. <a onclick=\"top.BX.Helper.show('redirect=detail&code=11392174')\"> Más información</a>";

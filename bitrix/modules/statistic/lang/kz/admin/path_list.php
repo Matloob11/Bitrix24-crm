@@ -1,0 +1,27 @@
+<?php
+$MESS["STAT_ADV_BACK"] = "қайтаруда";
+$MESS["STAT_ADV_NO_BACK"] = "тік кіру жолында";
+$MESS["STAT_ADV_SUMMA"] = "тура және қайтару сомасы";
+$MESS["STAT_ENTER_POINTS_S"] = "Жолдың басы";
+$MESS["STAT_F_ADV"] = "Жарнамалық науқандар";
+$MESS["STAT_F_ADV_DATA_TYPE"] = "Жарнамалық науқандар үшін деректер түрі";
+$MESS["STAT_F_FIRST_PAGE"] = "Жолдың бірінші парақшасы";
+$MESS["STAT_F_FULL_PATH"] = "Толық жолдар";
+$MESS["STAT_F_LAST_PAGE"] = "Жолдың соңғы парақшасы";
+$MESS["STAT_F_PAGE"] = "Жолдың кез келген парақшасы";
+$MESS["STAT_F_SEGMENT_PATH"] = "Жол бөліктері";
+$MESS["STAT_F_STEPS"] = "Жолдағы парақша саны";
+$MESS["STAT_GO"] = "Көрсетілген парақшаға өту";
+$MESS["STAT_NEXT_PAGES"] = "Осы жол бөлігінен өтулер";
+$MESS["STAT_NEXT_STEP"] = "Жолдың келесі қадамы";
+$MESS["STAT_NUM"] = "Нөмірі";
+$MESS["STAT_PAGE"] = "Парақша";
+$MESS["STAT_PATH_ALT_1"] = "Берілген жол бөліміне дейінгі өтулер саны";
+$MESS["STAT_PATH_ALT_2"] = "Жолдың басталуына қатысты құрайды";
+$MESS["STAT_PATH_ALT_3"] = "Шығын пайызы";
+$MESS["STAT_PATH_PAGES"] = "Жазбалар";
+$MESS["STAT_PATH_PART"] = "Жолдың бөлігі";
+$MESS["STAT_PATH_START"] = "Жолдың басы";
+$MESS["STAT_PERCENT"] = "Пайыз";
+$MESS["STAT_RECORDS_LIST"] = "Сайттағы жолдар";
+$MESS["STAT_TRANSFER"] = "Өтулер";

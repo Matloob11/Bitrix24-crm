@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_ACTIVITY_TODO_COMPANY_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en la empresa \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_COMPANY_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en la empresa \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_CONTACT_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en el contacto \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_CONTACT_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en el contacto \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEAL_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en la negociación \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEAL_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en la negociación \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEFAULT_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en el elemento \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEFAULT_BECOME_RESPONSIBLE_EMPTY_SUBJECT"] = "Ahora es responsable de la actividad \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">##TODO_ID#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEFAULT_BECOME_RESPONSIBLE_EX"] = "Ahora es responsable de la actividad \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#SUBJECT#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEFAULT_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en el elemento \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEFAULT_NO_LONGER_RESPONSIBLE_EMPTY_SUBJECT"] = "Ahora ya no es responsable de la actividad \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">##TODO_ID#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DEFAULT_NO_LONGER_RESPONSIBLE_EX"] = "Ahora ya no es responsable de la actividad \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#SUBJECT#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DYNAMIC_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en el elemento SPA \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_DYNAMIC_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en el elemento SPA \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_LEAD_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en el prospecto \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_LEAD_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en el prospecto \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_ORDER_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en el pedido \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_ORDER_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en el pedido \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_QUOTE_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en la cotización \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_QUOTE_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en la cotización \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_RESPONSIBLE_SUBJECT"] = "#AUTHOR# le asignó como persona responsable de la actividad <a href=\"#URL#\" class=\"bx-notifier-item-action\">#SUBJECT#</a>.";
+$MESS["CRM_ACTIVITY_TODO_RESPONSIBLE_SUBJECT_EMPTY"] = "#AUTHOR# le asignó como persona responsable de la actividad <a href=\"#URL#\" class=\"bx-notifier-item-action\">##TODO_ID#</a>:";
+$MESS["CRM_ACTIVITY_TODO_SMART_INVOICE_BECOME_RESPONSIBLE"] = "Ahora usted es responsable de la actividad \"#SUBJECT#\" en la factura \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";
+$MESS["CRM_ACTIVITY_TODO_SMART_INVOICE_NO_LONGER_RESPONSIBLE"] = "Ahora ya no es responsable de la actividad \"#SUBJECT#\" en la factura \"<a href=\"#URL#\" class=\"bx-notifier-item-action\">#ENTITY_TITLE#</a>\".";

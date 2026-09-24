@@ -1,0 +1,15 @@
+<?php
+$MESS["MENU_ACCOUNT_POPUP_CONNECT"] = "Conectar";
+$MESS["MENU_ACCOUNT_POPUP_CONNECT_MSGVER_1"] = "Activar notificaciones";
+$MESS["MENU_ACCOUNT_POPUP_CONNECT_MSGVER_2"] = "Iniciar sesión";
+$MESS["MENU_ACCOUNT_POPUP_DISCONNECT"] = "Desconectar";
+$MESS["MENU_ACCOUNT_POPUP_DISCONNECT_MSGVER_1"] = "Desactivar notificaciones";
+$MESS["MENU_ACCOUNT_POPUP_DISCONNECT_MSGVER_2"] = "Cerrar sesión";
+$MESS["MENU_ACCOUNT_POPUP_REMOVE"] = "Eliminar";
+$MESS["MENU_ACCOUNT_POPUP_REMOVE_MSGVER_1"] = "Eliminar de la lista";
+$MESS["MENU_ADD"] = "Agregar";
+$MESS["MENU_HISTORY_ITEM_ICON"] = "B";
+$MESS["MENU_HISTORY_ITEM_NAME"] = "Bitrix24";
+$MESS["MENU_NEWLY_OPENED"] = "Páginas recientes";
+$MESS["MENU_SHOW_ALL"] = "Mostrar todo";
+$MESS["MENU_YOUR_BITRIX24"] = "Su Bitrix24";

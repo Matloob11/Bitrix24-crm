@@ -1,0 +1,4 @@
+export type FlowDto = {
+	id: number,
+	name: string,
+};

@@ -1,0 +1,23 @@
+<?php
+$MESS["ROLE_LIBRARY_GRID_ACTION_OPEN_EDIT_MASTER_ERROR"] = "Não foi possível abrir o editor de funções. Tente novamente.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ACTIVATE"] = "A função \"#NAME#\" está ativa.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_DEACTIVATE"] = "A função \"#NAME#\" não está ativa.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_ADD"] = "A função \"#NAME#\" foi adicionada aos Favoritos.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_REMOVE"] = "A função \"#NAME#\" foi removida dos Favoritos.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE"] = "A função \"#NAME#\" não está visível no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE_MSGVER_1"] = "A função \"#NAME#\" não está visível no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTION_DEFAULT"] = "Ação concluída com sucesso.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTIVATE"] = "As funções estão ativas.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_DEACTIVATE"] = "As funções não estão ativas.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE"] = "As funções não estão visíveis no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE_MSGVER_1"] = "As funções não estão visíveis no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW"] = "As funções estão visíveis no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW_MSGVER_1"] = "As funções estão visíveis no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_MASTER_OPEN_ERROR"] = "Não foi possível abrir o editor de funções. Tente novamente.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_SAVE_SUCCESS"] = "A função \"#NAME#\" foi salva.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW"] = "A função \"#NAME#\" está visível no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_MSGVER_1"] = "A função \"#NAME#\" está visível no menu Minhas funções.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_ROLE_USERS_ERROR"] = "Não foi possível carregar a lista de usuários. Tente novamente.";
+$MESS["ROLE_LIBRARY_GRID_TOUR_DESCRIPTION"] = "Crie funções e compartilhe-as com seus colegas.";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE"] = "Adicione suas funções ao CoPilot";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE_MSGVER_1"] = "Adicione suas funções ao #COPILOT_NAME#";

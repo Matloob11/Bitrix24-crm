@@ -1,0 +1,4 @@
+<?php
+$MESS["SPL_TEMPLETE_PAYMENT_TITLE"] = "Pagamenti affare";
+$MESS["SPL_TEMPLETE_SALESCENTER_PAYMENT_SENT_NOTIFICATION"] = "Il pagamento ##PAYMENT_ID# è stato inviato";
+$MESS["SPL_TEMPLETE_SALESCENTER_SEND_PAYMENT"] = "Invia in chat";

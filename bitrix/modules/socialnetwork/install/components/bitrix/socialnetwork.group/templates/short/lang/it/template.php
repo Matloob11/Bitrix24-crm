@@ -1,0 +1,35 @@
+<?
+$MESS["SONET_C39_ARCHIVE_GROUP"] = "Gruppo archiviazione";
+$MESS["SONET_C39_SEND_MESSAGE_GROUP"] = "Scrivi messaggio ";
+$MESS["SONET_C39_SEND_MESSAGE_GROUP_TITLE"] = "Scrivi un messaggio ai membri del gruppo";
+$MESS["SONET_C6_ACT_BAN"] = "Elenco esclusi";
+$MESS["SONET_C6_ACT_DELETE"] = "Elimina gruppo";
+$MESS["SONET_C6_ACT_EDIT"] = "Modifica gruppo";
+$MESS["SONET_C6_ACT_EXIT"] = "Lascia il gruppo";
+$MESS["SONET_C6_ACT_FEAT"] = "Modifica impostazioni";
+$MESS["SONET_C6_ACT_JOIN"] = "Entra nel gruppo";
+$MESS["SONET_C6_ACT_MOD"] = "Modifica moderatori";
+$MESS["SONET_C6_ACT_MOD1"] = "Moderatori";
+$MESS["SONET_C6_ACT_REQU"] = "Invita al gruppo";
+$MESS["SONET_C6_ACT_USER"] = "Modifica utenti";
+$MESS["SONET_C6_ACT_USER1"] = "Membri";
+$MESS["SONET_C6_ACT_VREQU"] = "Visualizza richieste di partecipazione";
+$MESS["SONET_C6_ACT_VREQU_OUT"] = "Inviti gruppo";
+$MESS["SONET_C6_AL_USERS"] = "Tutti i membri";
+$MESS["SONET_C6_BLOG_T"] = "Blog";
+$MESS["SONET_C6_CREATED"] = "Creato";
+$MESS["SONET_C6_DESCR"] = "Descrizione";
+$MESS["SONET_C6_FORUM_T"] = "Forum";
+$MESS["SONET_C6_MODS_TITLE"] = "Moderatori";
+$MESS["SONET_C6_NMEM"] = "Membri";
+$MESS["SONET_C6_NO_MODS"] = "Nessun moderatore";
+$MESS["SONET_C6_NO_USERS"] = "Nessun membro";
+$MESS["SONET_C6_PHOTO_T"] = "Foto";
+$MESS["SONET_C6_TOPIC"] = "Argomento";
+$MESS["SONET_C6_TYPE"] = "Tipo gruppo";
+$MESS["SONET_C6_TYPE_O1"] = "Questo è un gruppo pubblico. Chiunque può entrare.";
+$MESS["SONET_C6_TYPE_O2"] = "Questo è un gruppo privato. L'iscrizione dell'utente è soggetta all'approvazione dell'amministratore.";
+$MESS["SONET_C6_TYPE_V1"] = "Questo gruppo è visibile a chiunque.";
+$MESS["SONET_C6_TYPE_V2"] = "Questo gruppo è invisibile. Solo i membri del gruppo possono vederlo.";
+$MESS["SONET_C6_USERS_T"] = "Membri";
+?>

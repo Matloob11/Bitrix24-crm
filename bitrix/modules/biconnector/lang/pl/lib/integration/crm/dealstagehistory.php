@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY"] = "Osoba odpowiedzialna";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_DEPARTMENT"] = "Dział osoby odpowiedzialnej";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_DEPARTMENT_FULL"] = "Ścieżka w strukturze firmy";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_FULL"] = "Identyfikator i nazwa użytkownika, który został przypisany jako odpowiedzialny za deala";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_ID"] = "Identyfikator osoby odpowiedzialnej";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_ID_FULL"] = "Identyfikator użytkownika, który został przypisany jako odpowiedzialny za deala";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_NAME"] = "Osoba odpowiedzialna";
+$MESS["CRM_BIC_DSH_FIELD_DATE_CREATE"] = "Utworzono";
+$MESS["CRM_BIC_DSH_FIELD_DEAL_ID"] = "Identyfikator deala";
+$MESS["CRM_BIC_DSH_FIELD_END_DATE"] = "Data końcowa";
+$MESS["CRM_BIC_DSH_FIELD_ID"] = "Unikatowy klucz";
+$MESS["CRM_BIC_DSH_FIELD_STAGE"] = "Etap";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_ID"] = "Identyfikator etapu";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_NAME"] = "Nazwa etapu";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_SEMANTIC"] = "Typ etapu";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_SEMANTIC_ID"] = "Identyfikator typu etapu";
+$MESS["CRM_BIC_DSH_FIELD_START_DATE"] = "Data początkowa";
+$MESS["CRM_BIC_DSH_FIELD_TYPE_ID"] = "Typ rekordu";
+$MESS["CRM_BIC_DSH_TABLE"] = "Deal: historia etapów";
+$MESS["CRM_BIC_DSH_TABLE_DESCRIPTION_FULL"] = "Zawiera dane o postępie deala ze standardowych pól: datę, status deala, imiona i nazwiska odpowiedzialnych użytkowników i inne.";

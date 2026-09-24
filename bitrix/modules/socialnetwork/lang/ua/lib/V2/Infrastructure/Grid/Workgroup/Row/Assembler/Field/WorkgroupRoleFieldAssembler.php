@@ -1,0 +1,4 @@
+<?php
+$MESS["SONET_V2_GRID_WORKGROUP_ROLE_A"] = "Власник";
+$MESS["SONET_V2_GRID_WORKGROUP_ROLE_E"] = "Модератор";
+$MESS["SONET_V2_GRID_WORKGROUP_ROLE_K"] = "Учасник групи";

@@ -1,0 +1,20 @@
+import { FilterOptions } from './filter-options';
+
+export type DashboardEmbeddedParameters = {
+	uuid: string,
+	id: number,
+	title: string,
+	guestToken: string,
+	supersetDomain: string,
+	nativeFilters: string,
+	urlParams: Object,
+	editUrl: string,
+	type: string,
+	appId: string,
+	dashboardUrl: string,
+	embeddedUrl: string,
+	canEdit: boolean,
+	canExport: boolean,
+	isUseExternalDatasets: boolean,
+	filters: FilterOptions,
+}

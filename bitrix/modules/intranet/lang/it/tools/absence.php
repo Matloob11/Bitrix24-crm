@@ -1,0 +1,19 @@
+<?php
+$MESS["INTR_ABSENCE_ACTIVE_FROM"] = "Inizio:";
+$MESS["INTR_ABSENCE_ACTIVE_TO"] = "Fine:";
+$MESS["INTR_ABSENCE_ADD"] = "Aggiungi";
+$MESS["INTR_ABSENCE_ADD_MORE"] = "Aggiungi altro";
+$MESS["INTR_ABSENCE_EDIT"] = "Modifica";
+$MESS["INTR_ABSENCE_FROM_TO_ERR"] = "La data di inizio deve essere precedente alla data di fine.";
+$MESS["INTR_ABSENCE_IBLOCK_MODULE"] = "Il modulo Blocchi di informazioni non è installato.";
+$MESS["INTR_ABSENCE_NAME"] = "Motivo assenza *";
+$MESS["INTR_ABSENCE_NAME_HINT"] = "Il motivo dell'assenza sarà visibile a tutti i dipendenti";
+$MESS["INTR_ABSENCE_NO_TYPE"] = "(non specificato)";
+$MESS["INTR_ABSENCE_PERIOD"] = "Periodo assenza";
+$MESS["INTR_ABSENCE_SUCCESS"] = "Voce di assenza aggiunta.";
+$MESS["INTR_ABSENCE_TYPE"] = "Tipo assenza";
+$MESS["INTR_ABSENCE_USER"] = "Seleziona persona assente *";
+$MESS["INTR_ADD_TITLE"] = "Aggiungi elemento";
+$MESS["INTR_EDIT_TITLE"] = "Modifica voce di assenza";
+$MESS["INTR_USER_CHOOSE"] = "Seleziona da struttura";
+$MESS["INTR_USER_ERR_NO_RIGHT"] = "L'accesso per apportare modifiche non è concesso";

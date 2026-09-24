@@ -1,0 +1,19 @@
+<?php
+$MESS["MENU_PRESET_CRM_DESC1"] = "Автоматизувати продажі";
+$MESS["MENU_PRESET_CRM_DESC2"] = "підвищити конверсію, спілкуватися з клієнтами";
+$MESS["MENU_PRESET_CRM_DESC11"] = "Продавати більше";
+$MESS["MENU_PRESET_CRM_TITLE"] = "CRM";
+$MESS["MENU_PRESET_DESC"] = "Це спростить щоденну роботу: вибраний інструмент буде відкриватися першим, в меню залишаться тільки потрібні вам розділи. Поміняти меню ви зможете в будь-який час.";
+$MESS["MENU_PRESET_SITES_DESC1"] = "Створювати сайти, які продають";
+$MESS["MENU_PRESET_SITES_DESC2"] = "самим створювати сайти та лендінги відразу в CRM";
+$MESS["MENU_PRESET_SITES_TITLE"] = "Сайти";
+$MESS["MENU_PRESET_SOCIAL_DESC1"] = "Спілкуватися всередині компанії";
+$MESS["MENU_PRESET_SOCIAL_DESC2"] = "швидко вирішувати будь-які питання";
+$MESS["MENU_PRESET_SOCIAL_DESC11"] = "Спілкуватися та працювати разом";
+$MESS["MENU_PRESET_SOCIAL_TITLE1_1"] = "Спільна робота";
+$MESS["MENU_PRESET_TASKS_DESC1"] = "Управляти проєктами";
+$MESS["MENU_PRESET_TASKS_DESC2"] = "стежити за термінами та контролювати виконання";
+$MESS["MENU_PRESET_TASKS_DESC11"] = "Працювати разом та встигати вчасно";
+$MESS["MENU_PRESET_TASKS_TITLE"] = "Завдання";
+$MESS["MENU_PRESET_TASKS_TITLE1"] = "Завдання та проєкти";
+$MESS["MENU_PRESET_TITLE"] = "Виберіть, з чим ви плануєте працювати в Бітрікс24 найчастіше";

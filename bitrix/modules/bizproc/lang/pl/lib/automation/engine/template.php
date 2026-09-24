@@ -1,0 +1,5 @@
+<?php
+$MESS["BIZPROC_AUTOMATION_PARALLEL_ACTIVITY"] = "Wykonanie równoległe";
+$MESS["BIZPROC_AUTOMATION_ROBOT_DELAY_ACTIVITY"] = "Wstrzymanie reguły automatyzacji";
+$MESS["BIZPROC_AUTOMATION_TEMPLATE_NAME"] = "Szablon automatyzacji (#STATUS#)";
+$MESS["BIZPROC_AUTOMATION_TEMPLATE_SCRIPT_NAME"] = "Nowy skrypt";

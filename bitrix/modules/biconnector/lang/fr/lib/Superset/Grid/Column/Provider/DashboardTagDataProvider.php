@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_TAG_GRID_COLUMN_DASHBOARD_COUNT_NAME"] = "Tableaux de bord avec cette balise";
+$MESS["BICONNECTOR_SUPERSET_TAG_GRID_COLUMN_TITLE_NAME"] = "Nom de la balise";

@@ -1,0 +1,2 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_GRID_GROUPS"] = "#FIRST_GROUPS# [hint]y&nbsp;#COUNT#&nbsp;más[/hint]";

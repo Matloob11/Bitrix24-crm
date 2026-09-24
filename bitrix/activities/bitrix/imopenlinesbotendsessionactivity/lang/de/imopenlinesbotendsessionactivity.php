@@ -1,0 +1,5 @@
+<?php
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_ERROR_CANNOT_END_SESSION"] = "Konversation mit dem Chatbot konnte nicht beendet werden.";
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_ERROR_CHAT_NOT_EXISTS"] = "Der Chat wurde nicht gefunden.";
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_ERROR_MODULE_NOT_INCLUDED"] = "Das Modul \"#MODULE#\" ist erforderlich.";
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_PARAM_CHAT_ID_NAME"] = "Chat-ID";

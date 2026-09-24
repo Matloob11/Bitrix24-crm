@@ -1,0 +1,7 @@
+<?
+$MESS["BASE_REPORT_HANDLER_GROUPING"] = "Regrouper par :";
+$MESS["BASE_REPORT_HANDLER_WHAT_WILL_CALCULATE"] = "Calculer :";
+$MESS["SELECT_DATA_PROVIDER"] = "Source :";
+$MESS["SELECT_REPORT_HANDLER_CATEGORY"] = "Catégorie :";
+$MESS["WITHOUT_DATA"] = "Sans données";
+?>

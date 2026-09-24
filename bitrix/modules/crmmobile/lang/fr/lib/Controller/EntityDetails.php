@@ -1,0 +1,11 @@
+<?php
+$MESS["M_CRM_ENTITY_DETAILS_COPY_TEXT"] = "Copier l'élément";
+$MESS["M_CRM_ENTITY_DETAILS_COPY_TEXT_COMPANY"] = "Copier l'entreprise";
+$MESS["M_CRM_ENTITY_DETAILS_COPY_TEXT_CONTACT"] = "Copier le contact";
+$MESS["M_CRM_ENTITY_DETAILS_COPY_TEXT_DEAL"] = "Copier la transaction";
+$MESS["M_CRM_ENTITY_DETAILS_COPY_TEXT_LEAD"] = "Copier le prospect";
+$MESS["M_CRM_ENTITY_DETAILS_COPY_TEXT_QUOTE"] = "Copier le devis";
+$MESS["M_CRM_ENTITY_DETAILS_COPY_TEXT_SMART_INVOICE"] = "Copier la facture";
+$MESS["M_CRM_ENTITY_DETAILS_REPEATED_APPROACH_DEAL"] = "Requête répétée";
+$MESS["M_CRM_ENTITY_DETAILS_REPEATED_DEAL"] = "Transaction répétée";
+$MESS["M_CRM_ENTITY_DETAILS_REPEATED_LEAD"] = "Prospect répété";

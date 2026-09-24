@@ -1,0 +1,6 @@
+<?php
+$MESS["SELECTOR_COMPONENT_CREATE_CONTRACTOR"] = "Utwórz dostawcę";
+$MESS["SELECTOR_COMPONENT_CREATING_CONTRACTOR"] = "Tworzenie dostawcy...";
+$MESS["SELECTOR_COMPONENT_PICK_CONTRACTOR_2"] = "Dostawca";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_CREATE_CONTRACTOR"] = "Zacznij pisać, aby utworzyć dostawcę";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_SEARCH_CONTRACTOR"] = "Zacznij wprowadzanie, aby znaleźć dostawcę.";

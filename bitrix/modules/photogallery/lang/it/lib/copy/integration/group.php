@@ -1,0 +1,4 @@
+<?
+$MESS["GROUP_FEATURE_SECTION_NAME_PREFIX"] = "Gruppo:";
+$MESS["GROUP_STEPPER_PROGRESS_TITLE"] = "Copia album";
+?>

@@ -1,0 +1,23 @@
+<?php
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_AUTO_COMPLETE_SUBTASKS_LABEL"] = "Terminer automatiquement la tâche lorsque toutes les sous-tâches sont terminées et vice versa";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_CANCEL"] = "Annuler";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_SAVE"] = "OK";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_HINT"] = "Dès que le responsable marque la tâche comme terminée, elle vous est envoyée pour que vous puissiez la passer en revue. Vous pouvez l'accepter (elle sera fermée) ou la renvoyer pour révision.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_LABEL"] = "Nécessite une approbation à l'achèvement";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINES_LABEL"] = "Le responsable peut modifier la date limite";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_BEFORE"] = "Dernière date limite possible : [date/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LABEL"] = "Fixer la date limite pour toutes les nouvelles tâches à :";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_COUNT"] = "par nombre de changements";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_DATE"] = "par date";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_LABEL"] = "Restreindre le changement de date limite";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_NOT_GREATER_THAN"] = "Nombre maximum de changements : [count/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_DAY"] = "jours";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_HOUR"] = "heures";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_MONTH"] = "mois";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_WEEK"] = "semaines";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_HINT"] = "Le responsable devra ajouter un commentaire expliquant pourquoi il va changer la date limite.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_LABEL"] = "Demander une raison pour le changement";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE"] = "Préférences de la tâche";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE_HINT"] = "Cela s'applique à toutes les tâches que vous créez.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_HINT"] = "Si les dates prévues de la tâche coïncident avec des week-ends ou des jours fériés, la date limite de la tâche sera prolongée pour tenir compte des jours de congé.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_LABEL"] = "Ignorer les week-ends";

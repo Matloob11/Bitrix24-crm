@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "O painel não foi encontrado.";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Novo painel";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Novo painel (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Selecione um grupo para criar um painel.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "O painel deve ser adicionado a pelo menos um grupo.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "O nome do painel é obrigatório.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "Não é possível criar painel. Tente novamente.";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Ajuda";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "O painel inclui imagens inválidas. Atualize a página e tente novamente.";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "O intervalo de data está incorreto.";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "Apenas painéis personalizados podem ser editados.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Permissão insuficiente para criar painel.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "Permissão insuficiente para usar o Criador de BI.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "O Criador de BI não está disponível.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Permissões insuficientes para editar o painel.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "Não foi possível salvar a descrição do painel. Tente novamente.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "Não foi possível salvar a galeria do painel. Tente novamente.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "Não é possível criar parâmetros do painel. Abra as propriedades do painel e tente novamente.";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Novo painel";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "O nome do painel não deve ter mais de 128 caracteres.";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "Não foi possível atualizar o painel. Tente novamente.";

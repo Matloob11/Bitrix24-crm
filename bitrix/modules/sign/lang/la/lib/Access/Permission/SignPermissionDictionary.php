@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_ACCESS_RIGHTS"] = "Editar permisos de acceso";
+$MESS["SIGN_B2E_MEMBER_DYNAMIC_FIELDS_DELETE"] = "Eliminar campos de información personalizada del empleado";
+$MESS["SIGN_B2E_MY_SAFE"] = "Ver el área \"Bóveda de la empresa\"";
+$MESS["SIGN_B2E_MY_SAFE_DOCUMENTS"] = "Acceder a los documentos que están en la bóveda de la empresa";
+$MESS["SIGN_B2E_MY_SAFE_FIRED"] = "Mostrar a los empleados que fueron dados de baja en el filtro de la \"Bóveda de la empresa\"";
+$MESS["SIGN_B2E_PROFILE_FIELDS_ADD"] = "Agregar datos personales en el perfil del empleado";
+$MESS["SIGN_B2E_PROFILE_FIELDS_DELETE_MSG_VER_1"] = "Eliminar campos de información personal";
+$MESS["SIGN_B2E_PROFILE_FIELDS_EDIT"] = "Editar los datos personales en el perfil del empleado";
+$MESS["SIGN_B2E_PROFILE_FIELDS_READ"] = "Ver los datos personales en el perfil del empleado";
+$MESS["SIGN_B2E_SIGNERS_LIST_ADD"] = "Crear grupos de empleados";
+$MESS["SIGN_B2E_SIGNERS_LIST_DELETE"] = "Eliminar grupos de empleados";
+$MESS["SIGN_B2E_SIGNERS_LIST_EDIT"] = "Editar grupos de empleados";
+$MESS["SIGN_B2E_SIGNERS_LIST_READ"] = "Ver grupos de empleados";
+$MESS["SIGN_B2E_SIGNERS_LIST_REFUSED"] = "Acceder al grupo de personas que rechazaron la Firma electrónica para RR. HH.";
+$MESS["SIGN_B2E_TEMPLATES_1"] = "Acceder a documentos recientes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_CREATE"] = "Crear plantillas y paquetes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_DELETE"] = "Eliminar plantillas y paquetes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_EDIT"] = "Editar plantillas y paquetes";
+$MESS["SIGN_B2E_TEMPLATE_AND_FOLDER_READ"] = "Ver las plantillas y los paquetes";
+$MESS["SIGN_B2E_TEMPLATE_CREATE"] = "Crear plantilla";
+$MESS["SIGN_B2E_TEMPLATE_DELETE"] = "Eliminar plantilla";
+$MESS["SIGN_B2E_TEMPLATE_EDIT"] = "Editar plantilla";
+$MESS["SIGN_B2E_TEMPLATE_READ"] = "Ver plantilla";
+$MESS["SIGN_MY_SAFE"] = "Acceder al área \"Mi bóveda\"";
+$MESS["SIGN_MY_SAFE_DOCUMENTS"] = "Acceder a los documentos en Mi bóveda";
+$MESS["SIGN_TEMPLATES"] = "Acceso a la plantilla del documento";

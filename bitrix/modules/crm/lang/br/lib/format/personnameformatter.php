@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_PRSN_NM_FRMT_DEFAULT"] = "[padrão]";
+$MESS["CRM_PRSN_NM_FRMT_FIRST_LAST"] = "José Silva";
+$MESS["CRM_PRSN_NM_FRMT_FIRST_SECOND_LAST"] = "José Carlos da Silva";
+$MESS["CRM_PRSN_NM_FRMT_HONORIFIC_LAST"] = "Sr. Silva";
+$MESS["CRM_PRSN_NM_FRMT_LAST_FIRST"] = "Silva, José";
+$MESS["CRM_PRSN_NM_FRMT_LAST_FIRST_SECOND"] = "Silva, José Carlos";

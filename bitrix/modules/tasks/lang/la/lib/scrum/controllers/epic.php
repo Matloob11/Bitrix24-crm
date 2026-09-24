@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_EC_ERROR_ACCESS_DENIED"] = "Acceso denegado.";
+$MESS["TASKS_EC_ERROR_COULD_NOT_DELETE_EPIC"] = "No se puede eliminar epic.";
+$MESS["TASKS_EC_ERROR_COULD_NOT_READ_EPIC"] = "No se puede encontrar epic.";
+$MESS["TASKS_EC_ERROR_INCLUDE_MODULE_ERROR"] = "No se pueden conectar los módulos necesarios.";
+$MESS["TASKS_SCRUM_EPIC_GRID_ACTION_EDIT"] = "Editar";
+$MESS["TASKS_SCRUM_EPIC_GRID_ACTION_REMOVE"] = "Eliminar";
+$MESS["TASKS_SCRUM_EPIC_GRID_ACTION_VIEW"] = "Ver";
+$MESS["TASKS_SCRUM_EPIC_GRID_NAME"] = "Nombre de epic";
+$MESS["TASKS_SCRUM_EPIC_GRID_NAME_ERROR"] = "El nombre de Epic no está especificado";
+$MESS["TASKS_SCRUM_EPIC_GRID_NAME_SHORT"] = "Nombre";
+$MESS["TASKS_SCRUM_EPIC_GRID_TAGS"] = "Etiquetas";
+$MESS["TASKS_SCRUM_EPIC_GRID_TASKS_COMPLETED"] = "Tareas completadas";
+$MESS["TASKS_SCRUM_EPIC_GRID_TASKS_TOTAL"] = "Total de tareas";
+$MESS["TASKS_SCRUM_EPIC_GRID_USER"] = "Creado por";
+$MESS["TASKS_SCRUM_EPIC_GRID_USER_SHORT"] = "Creado";
+$MESS["TASKS_SCRUM_TASKS_GRID_ASSIGNEE"] = "Responsable";
+$MESS["TASKS_SCRUM_TASKS_GRID_NAME"] = "Nombre";
+$MESS["TASKS_SCRUM_TASKS_GRID_STORY_POINTS"] = "Puntos de la historia";

@@ -1,0 +1,326 @@
+<?php
+
+namespace Bitrix\Im\V2\Integration\HumanResources\Sync;
+
+use Bitrix\HumanResources\Repository\NodeRelationRepository;
+use Bitrix\HumanResources\Service\NodeMemberService;
+use Bitrix\HumanResources\Item\NodeMember;
+use Bitrix\HumanResources\Item\NodeRelation;
+use Bitrix\HumanResources\Service\Container;
+use Bitrix\HumanResources\Service\NodeRelationService;
+use Bitrix\HumanResources\Type\RelationEntityType;
+use Bitrix\Im\V2\Chat;
+use Bitrix\Im\V2\Chat\Tree\Async\UnlinkDepartmentFromDescendantsMessage;
+use Bitrix\Im\V2\Chat\Tree\ChatTreeDepartmentSynchronizer;
+use Bitrix\Im\V2\Common\PeriodAgentTrait;
+use Bitrix\Im\V2\Integration\HumanResources\Sync\Item\EntityType;
+use Bitrix\Im\V2\Integration\HumanResources\Sync\SyncProcessor\Base;
+use Bitrix\Im\V2\Result;
+use Bitrix\Main\DI\ServiceLocator;
+use Bitrix\Main\Event;
+use Bitrix\Main\Loader;
+
+class SyncService
+{
+	use PeriodAgentTrait;
+
+	protected const AGENT_SHORT_PERIOD = 5;
+	protected const AGENT_LONG_PERIOD = 300;
+
+	protected NodeMemberService $memberService;
+	protected NodeRelationService $relationService;
+	protected NodeRelationRepository $relationRepository;
+	protected SyncProcessor $syncProcessor;
+	protected EntityType $entityType;
+
+	public function __construct(EntityType $entityType)
+	{
+		Loader::requireModule('humanresources');
+
+		$this->entityType = $entityType;
+		$this->syncProcessor = Base::getInstance($entityType);
+		$this->memberService = Container::getNodeMemberService();
+		$this->relationService = Container::getNodeRelationService();
+		$this->relationRepository = Container::getNodeRelationRepository();
+	}
+
+	protected static function getAgentNameByEntityType(Item\EntityType $entityType): string
+	{
+		$agentNameByType = [
+			Item\EntityType::CHAT->value => '\Bitrix\Im\V2\Integration\HumanResources\Sync\SyncService::syncRelationAgent();',
+			Item\EntityType::USER->value => '\Bitrix\Im\V2\Integration\HumanResources\Sync\SyncService::syncMemberAgent();',
+		];
+
+		return $agentNameByType[$entityType->value];
+	}
+
+	public static function onMemberAdded(Event $event): void
+	{
+		/** @var NodeMember $member */
+		$member = $event->getParameter('member');
+
+		(new static(EntityType::USER))
+			->startSync(Item\SyncInfo::createFromNodeMember($member, Item\SyncDirection::ADD))
+		;
+	}
+
+	public static function onMemberDeleted(Event $event): void
+	{
+		/** @var NodeMember $member */
+		$member = $event->getParameter('member');
+
+		(new static(EntityType::USER))
+			->startSync(Item\SyncInfo::createFromNodeMember($member, Item\SyncDirection::DELETE))
+		;
+	}
+
+	public static function onMemberUpdated(Event $event): void
+	{
+		/** @var NodeMember $member */
+		$member = $event->getParameter('member');
+		/** @var NodeMember|null $previousMember */
+		$previousMember = $event->getParameter('previousMember');
+
+		if ($previousMember === null)
+		{
+			return;
+		}
+
+		if ($member->nodeId === $previousMember->nodeId)
+		{
+			return;
+		}
+
+		(new static(EntityType::USER))
+			->startSync(Item\SyncInfo::createFromNodeMember($member, Item\SyncDirection::ADD))
+		;
+		(new static(EntityType::USER))
+			->startSync(Item\SyncInfo::createFromNodeMember($previousMember, Item\SyncDirection::DELETE))
+		;
+	}
+
+	public static function onRelationAdded(Event $event): void
+	{
+		/** @var NodeRelation $relation */
+		$relation = $event->getParameter('relation');
+		if (
+			$relation->entityType !== RelationEntityType::CHAT
+			|| $relation->node === null
+		)
+		{
+			return;
+		}
+
+		(new static(EntityType::CHAT))
+			->startSync(Item\SyncInfo::createFromNodeRelation($relation, Item\SyncDirection::ADD))
+		;
+
+		// Mirror the department onto ancestor chats so the tree invariant holds. Order does not matter for
+		// correctness: each chat adds its own members through its own (gate-exempt) structure sync. Syncing
+		// this chat first also keeps it first in line for the per-request add budget.
+		self::syncDepartmentsToAncestors((int)$relation->entityId);
+	}
+
+	/**
+	 * Maintains the tree invariant: a department/team linked to a chat is mirrored onto its ancestor chats.
+	 * This is the single choke-point — every link path (attach cascade, member-edit, Structure::link, create)
+	 * goes through NodeRelationRepository::create() and raises this OnRelationAdded(CHAT) event.
+	 */
+	private static function syncDepartmentsToAncestors(int $chatId): void
+	{
+		if ($chatId <= 0)
+		{
+			return;
+		}
+
+		$chat = Chat::getInstance($chatId);
+		if ((int)$chat->getChatId() <= 0)
+		{
+			return;
+		}
+
+		ServiceLocator::getInstance()
+			->get(ChatTreeDepartmentSynchronizer::class)
+			->syncToAncestors($chat)
+		;
+	}
+
+	/**
+	 * Down-cascade complement of syncDepartmentsToAncestors: a department unlinked from a chat must be gone
+	 * from its descendants too (e.g. socialnetwork drops the department off the project chat on COLLAB
+	 * unlink — im propagates it down the tree). Offloaded to a queue and processed batch by batch
+	 * (DepartmentTreeSyncReceiver) so a wide/deep tree never blocks the request.
+	 */
+	private static function enqueueDescendantDepartmentUnlink(int $chatId, int $nodeId): void
+	{
+		if ($chatId <= 0 || $nodeId <= 0)
+		{
+			return;
+		}
+
+		(new UnlinkDepartmentFromDescendantsMessage($chatId, $nodeId))->sendToQueue();
+	}
+
+	public static function onRelationDeleted(Event $event): void
+	{
+		/** @var NodeRelation $relation */
+		$relation = $event->getParameter('relation');
+		if ($relation->entityType !== RelationEntityType::CHAT)
+		{
+			return;
+		}
+
+		$syncService = new static(EntityType::CHAT);
+
+		if (Container::getNodeService()->getNodeInformation($relation->nodeId) !== null)
+		{
+			$syncService->startSync(
+				Item\SyncInfo::createFromNodeRelation($relation, Item\SyncDirection::DELETE)
+			);
+
+			self::enqueueDescendantDepartmentUnlink((int)$relation->entityId, (int)$relation->nodeId);
+		}
+		else
+		{
+			$syncService->startSync(
+				Item\SyncInfo::createFromNodeRelation($relation, Item\SyncDirection::NODE_DELETE)
+			);
+		}
+	}
+
+	public static function onRelationPartDeleted(Event $event): void
+	{
+		/** @var NodeRelation $relation */
+		$relation = $event->getParameter('relation');
+		if (
+			$relation->entityType !== RelationEntityType::CHAT
+			|| $relation->node === null
+			|| $relation->node->isDepartment()
+		)
+		{
+			return;
+		}
+
+		$syncService = new static(EntityType::CHAT);
+		$syncService->startSync(
+			Item\SyncInfo::createFromNodeRelation($relation, Item\SyncDirection::NODE_DELETE)
+		);
+	}
+
+	public static function syncRelationAgent(): string
+	{
+		if (!Loader::includeModule('humanresources'))
+		{
+			return self::getAgentNameByEntityType(Item\EntityType::CHAT);
+		}
+
+		(new static(EntityType::CHAT))->sync();
+
+		return self::getAgentNameByEntityType(Item\EntityType::CHAT);
+	}
+
+	public static function syncMemberAgent(): string
+	{
+		if (!Loader::includeModule('humanresources'))
+		{
+			return self::getAgentNameByEntityType(Item\EntityType::USER);
+		}
+
+		(new static(EntityType::USER))->sync();
+
+		return self::getAgentNameByEntityType(Item\EntityType::USER);
+	}
+
+	protected function startSync(Item\SyncInfo $syncInfo): Result
+	{
+		$itemResult = $this->syncProcessor->getOrCreateWithLock($syncInfo);
+		if ($itemResult->skip())
+		{
+			$this->determinePeriod(false);
+
+			return new Result();
+		}
+
+		$item = $itemResult->getResult();
+		try
+		{
+			$firstIterationResult = $this->syncProcessor->makeIteration($item);
+			if (!$firstIterationResult->hasMore())
+			{
+				$this->syncProcessor->finalizeSync($item);
+			}
+			$this->determinePeriod(false);
+
+			return $firstIterationResult;
+		}
+		catch (\Throwable $exception)
+		{
+			$item->setErrorStatus();
+
+			return new Result();
+		}
+		finally
+		{
+			$item->unlock();
+		}
+	}
+
+	protected function sync(): Result
+	{
+		$result = $this->syncNext();
+		$this->determinePeriod(true);
+
+		return $result;
+	}
+
+	protected function syncNext(): Result
+	{
+		$result = new Result();
+		$syncInfo = $this->syncProcessor->dequeue();
+
+		if ($syncInfo === null)
+		{
+			return $result;
+		}
+
+		$item = $this->syncProcessor->tryGetWithLock($syncInfo);
+		if ($item === null)
+		{
+			return $result;
+		}
+		try
+		{
+			$iterationResult = $this->syncProcessor->makeIteration($item);
+			if ($iterationResult->hasMore())
+			{
+				$item->unlock();
+			}
+			else
+			{
+				$this->syncProcessor->finalizeSync($item);
+			}
+		}
+		catch (\Throwable $exception)
+		{
+			$item->unlock();
+			$item->setErrorStatus();
+		}
+
+		return $result;
+	}
+
+	protected static function isAgentPeriodShort(int $newPeriod): bool
+	{
+		return $newPeriod === self::AGENT_SHORT_PERIOD;
+	}
+
+	protected function getPeriodGetter(): callable
+	{
+		return fn () => $this->syncProcessor->hasItemsInQueue() ? self::AGENT_SHORT_PERIOD : self::AGENT_LONG_PERIOD;
+	}
+
+	protected function determinePeriod(bool $fromAgent): void
+	{
+		self::setPeriodByName($fromAgent, self::getAgentNameByEntityType($this->entityType), $this->getPeriodGetter());
+	}
+}

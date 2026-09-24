@@ -1,0 +1,21 @@
+<?php
+$MESS["IBEL_BIZPROC_ACTIVE_WORKFLOWS"] = "Processus d'entreprise actifs";
+$MESS["IBEL_BIZPROC_ACTIVE_WORKFLOWS_EMPTY"] = "Aucun processus d'entreprise n'est actif pour le moment";
+$MESS["IBEL_BIZPROC_APPLY"] = "Exécuter les commandes";
+$MESS["IBEL_BIZPROC_CANCEL"] = "Annuler";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS"] = "Processus d'entreprise terminés";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_EMPTY"] = "Il n'y a aucun processus d'entreprise";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_SHOW"] = "Afficher";
+$MESS["IBEL_BIZPROC_COMPLETED_WORKFLOWS_SHOW_MORE"] = "Plus d'informations";
+$MESS["IBEL_BIZPROC_DATE_MSGVER_1"] = "Date du statut actuel :";
+$MESS["IBEL_BIZPROC_DEL"] = "supprimer";
+$MESS["IBEL_BIZPROC_LOG"] = "journal";
+$MESS["IBEL_BIZPROC_LOG_TITLE"] = "Journal de trace";
+$MESS["IBEL_BIZPROC_NEW"] = "Nouveaux processus d'entreprise";
+$MESS["IBEL_BIZPROC_RUN_CMD"] = "Exécuter l'action";
+$MESS["IBEL_BIZPROC_RUN_CMD_NO"] = "Non";
+$MESS["IBEL_BIZPROC_SAVE"] = "Enregistrer";
+$MESS["IBEL_BIZPROC_START"] = "Exécuter le nouveau processus d'entreprise";
+$MESS["IBEL_BIZPROC_STATE_MSGVER_1"] = "Statut actuel :";
+$MESS["IBEL_BIZPROC_STOP"] = "arrêter";
+$MESS["IBEL_BIZPROC_TASKS_MSGVER_1"] = "Affectations dans le processus d'entreprise :";

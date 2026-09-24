@@ -1,0 +1,3 @@
+<?php
+$MESS["MOBILEAPP_CALL_LIST_CREATE_GROUP_CALL_BUTTON"] = "Зателефонувати";
+$MESS["MOBILEAPP_CALL_LIST_CREATE_GROUP_CALL_TITLE"] = "Груповий дзвінок";

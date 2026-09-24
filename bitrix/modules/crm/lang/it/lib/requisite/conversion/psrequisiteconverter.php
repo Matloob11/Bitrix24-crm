@@ -1,0 +1,5 @@
+<?
+$MESS["CRM_PS_RQ_CONV_ACC_NUM_DEF_VAL"] = "Numero di conto";
+$MESS["CRM_PS_RQ_CONV_INTRO"] = "I dettagli della tua azienda sono importanti per molte entità Bitrix24. Fatture, preventivi, sistemi di pagamento e altre componenti di Bitrix24 richiedono di fornire dettagli aziendali.<br><br>Non è più necessario inserire ogni volta manualmente i dettagli dell'azienda. Ti basta inserire queste informazioni una volta e usarle ovunque. <br><br> Per utilizzare i dettagli esistenti, converti i sistemi di pagamento in dettagli aziendali. Questi dettagli saranno inseriti automaticamente nelle fatture esistenti al termine della conversione.<br><br> <a id=\"#EXEC_ID#\" href=\"#EXEC_URL#\">Converti</a> <a id=\"#SKIP_ID#\" href=\"#SKIP_URL#\">Ignora</a>";
+$MESS["CRM_PS_RQ_CONV_PRESET_NAME"] = "Venditore";
+?>

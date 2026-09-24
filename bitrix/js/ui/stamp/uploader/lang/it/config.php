@@ -1,0 +1,22 @@
+<?php
+$MESS["UI_STAMP_UPLOADER_CROP_BUTTON_LABEL"] = "Ritaglia";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_HEADER"] = "Carica immagine del timbro";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_TEXT"] = "O trascina il file immagine qui";
+$MESS["UI_STAMP_UPLOADER_HEADER_CHANGE_CONTACT_BUTTON_LABEL"] = "Modifica";
+$MESS["UI_STAMP_UPLOADER_HEADER_TITLE"] = "Timbro da usare con";
+$MESS["UI_STAMP_UPLOADER_PREPARING_STATUS"] = "Elaborazione";
+$MESS["UI_STAMP_UPLOADER_PREVIEW_TITLE"] = "Fai clic per caricare un'altra immagine";
+$MESS["UI_STAMP_UPLOADER_SAVE_BUTTON_LABEL"] = "Salva";
+$MESS["UI_STAMP_UPLOADER_SELECT_PHOTO_BUTTON_LABEL_1"] = "Carica immagine del timbro";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM"] = "Le modifiche non sono state salvate. Chiudere il pannello di scorrimento?";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CANCEL"] = "Annulla";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CLOSE"] = "Chiudi";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_DESCRIPTION"] = "Carica l'immagine del timbro e usala per firmare i documenti. L'immagine verrà elaborata dall'intelligenza artificiale in modo da sembrare autentica.";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_TITLE"] = "Timbro";
+$MESS["UI_STAMP_UPLOADER_TAKE_PHOTO_BUTTON_LABEL"] = "Cattura un'immagine con il telefono";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_PERCENT"] = "{{number}} %";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE"] = "{{number}} {{text}}";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_B"] = "byte";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_KB"] = "KB";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_MB"] = "MB";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_TEXT"] = "Caricamento file";

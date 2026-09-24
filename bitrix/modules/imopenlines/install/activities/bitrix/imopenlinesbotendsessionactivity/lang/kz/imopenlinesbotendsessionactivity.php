@@ -1,0 +1,5 @@
+<?php
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_ERROR_CANNOT_END_SESSION"] = "Чат-ботымен сессияны аяқтау мүмкін болмады";
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_ERROR_CHAT_NOT_EXISTS"] = "Чатты табу мүмкін болмады";
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_ERROR_MODULE_NOT_INCLUDED"] = "#MODULE# модулін орнату";
+$MESS["IMOL_BOT_END_SESSION_ACTIVITY_PARAM_CHAT_ID_NAME"] = "Чат идентификаторы";

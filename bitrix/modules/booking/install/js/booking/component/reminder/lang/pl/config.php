@@ -1,0 +1,22 @@
+<?php
+$MESS["BOOKING_REMINDER_0"] = "W momencie rozpoczęcia wydarzenia";
+$MESS["BOOKING_REMINDER_5"] = "5 min przed wydarzeniem";
+$MESS["BOOKING_REMINDER_10"] = "10 min przed wydarzeniem";
+$MESS["BOOKING_REMINDER_15"] = "15 min przed wydarzeniem";
+$MESS["BOOKING_REMINDER_20"] = "20 min przed wydarzeniem";
+$MESS["BOOKING_REMINDER_30"] = "30 min przed wydarzeniem";
+$MESS["BOOKING_REMINDER_60"] = "1 godz. przed wydarzeniem";
+$MESS["BOOKING_REMINDER_120"] = "2 godz. przed wydarzeniem";
+$MESS["BOOKING_REMINDER_1440"] = "1 dzień przed wydarzeniem";
+$MESS["BOOKING_REMINDER_2880"] = "2 dni przed wydarzeniem";
+$MESS["BOOKING_REMINDER_CREATE"] = "Dodaj";
+$MESS["BOOKING_REMINDER_SHORT_0"] = "W momencie rozpoczęcia wydarzenia";
+$MESS["BOOKING_REMINDER_SHORT_5"] = "5 min";
+$MESS["BOOKING_REMINDER_SHORT_10"] = "10 min";
+$MESS["BOOKING_REMINDER_SHORT_15"] = "15 min";
+$MESS["BOOKING_REMINDER_SHORT_20"] = "20 min";
+$MESS["BOOKING_REMINDER_SHORT_30"] = "30 min";
+$MESS["BOOKING_REMINDER_SHORT_60"] = "1 godz.";
+$MESS["BOOKING_REMINDER_SHORT_120"] = "2 godz.";
+$MESS["BOOKING_REMINDER_SHORT_1440"] = "1 dzień";
+$MESS["BOOKING_REMINDER_SHORT_2880"] = "2 dni";

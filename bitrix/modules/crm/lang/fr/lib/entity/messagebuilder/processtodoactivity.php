@@ -1,0 +1,11 @@
+<?php
+$MESS["CRM_PROCESS_TODO_ACTIVITY_COMPANY_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans l'entreprise <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_CONTACT_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans le contact <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_DEAL_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans la transaction <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_DEFAULT_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans l'élément \"#ENTITY_TYPE_CAPTION#\" <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_DYNAMIC_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans l'élément du processus intelligent \"#ENTITY_TYPE_CAPTION#\" <a href=\"#url#\" class=\"bx-notifier-item-action\">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_LEAD_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans le prospect <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_ORDER_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans la commande <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_QUOTE_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans l'estimation <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_RECURRING_DEAL_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans le modèle de transaction <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";
+$MESS["CRM_PROCESS_TODO_ACTIVITY_SMART_INVOICE_PING"] = "Ceci est un rappel concernant l'activité \"#subject#\" dans la facture <a href= \"#url# \" class= \"bx-notifier-item-action \">#title#</a>, avec la date limite #deadline#";

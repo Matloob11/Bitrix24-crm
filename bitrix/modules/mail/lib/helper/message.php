@@ -1,0 +1,1131 @@
+<?php
+
+namespace Bitrix\Mail\Helper;
+
+use Bitrix\Mail\Integration\Calendar\ICal\ICalMailManager;
+use Bitrix\Mail\Internals\MailMessageAttachmentTable;
+use Bitrix\Mail\Internals\MessageAccessTable;
+use Bitrix\Mail\Internals\MessageClosureTable;
+use Bitrix\Mail\MailboxTable;
+use Bitrix\Mail\MailMessageTable;
+use Bitrix\Main;
+use Bitrix\Main\Security;
+use Bitrix\Mail\Internals;
+use Bitrix\Mail\Helper\MessageAccess as AccessHelper;
+use Bitrix\Main\Config\Option;
+use Bitrix\Main\Config\Ini;
+use Bitrix\Main\Mail\Converter;
+use Bitrix\Mail\Helper\Message\Parsers;
+use Bitrix\Main\Engine\UrlManager;
+use Bitrix\Main\Web\Uri;
+
+class Message
+{
+	// entity types with special access rules (group tokens)
+	public const ENTITY_TYPE_USER_MESSAGE = MessageAccessTable::ENTITY_TYPE_USER_MESSAGE;
+	public const ENTITY_TYPE_CHAT_MESSAGE = MessageAccessTable::ENTITY_TYPE_CHAT_MESSAGE;
+	public const ENTITY_TYPE_IM_CHAT = MessageAccessTable::ENTITY_TYPE_IM_CHAT;
+	public const ENTITY_TYPE_CALENDAR_EVENT = MessageAccessTable::ENTITY_TYPE_CALENDAR_EVENT;
+	private const MAX_FILE_SIZE_MAIL_ATTACHMENT = 20000000;
+	private const DISPLAY_SUBJECT_MAX_LENGTH = 60;
+
+	private static array $countersForUsersCache = [];
+
+	public static function getMaxAttachedFilesSize()
+	{
+		// @TODO: Until the 'Main' module update of is released with the reset of the option for the cloud
+		if (IsModuleInstalled('bitrix24'))
+		{
+			return self::MAX_FILE_SIZE_MAIL_ATTACHMENT;
+		}
+		else
+		{
+			return (int)Option::get('main', 'max_file_size');
+		}
+	}
+
+	public static function getMaxAttachedFilesSizeAfterEncoding()
+	{
+		return floor(static::getMaxAttachedFilesSize()/4)*3;
+	}
+
+	/**
+	 * Returns a whitelist of attributes for the html sanitizer
+	 * (\CBXSanitizer::SanitizeHtml)
+	 *
+	 * @return array
+	 */
+	public static function getWhitelistTagAttributes()
+	{
+		$validTagAttributes = [
+			'colspan',
+			'border',
+			'bgcolor',
+			'width',
+			'background',
+			'style',
+			'align',
+			'height',
+			'background-color',
+			'border',
+			'ltr',
+			'rtl',
+			'class',
+		];
+
+		$tableAttributes = array_merge(
+			$validTagAttributes,
+			[
+				'cellpadding',
+				'cellspacing',
+			]
+		);
+
+		$tdAttributes = array_merge(
+			$validTagAttributes,
+			[
+				'rowspan',
+			]
+		);
+
+		return [
+			'style' => [],
+			'colgroup' => [],
+			'col' => ['width'],
+			'table' => $tableAttributes,
+			'center' => $validTagAttributes,
+			'div' => $validTagAttributes,
+			'td' =>$tdAttributes,
+		];
+	}
+
+	private static function prepareField($value)
+	{
+		if (trim($value))
+		{
+			$address = new Main\Mail\Address($value);
+
+			if ($address->validate())
+			{
+				return [
+					'name' => $address->getName(),
+					'email' => $address->getEmail(),
+					'formated' => ($address->getName() ? $address->get() : $address->getEmail()),
+				];
+			}
+			else
+			{
+				return [
+					'name'  => $value,
+				];
+			}
+		}
+
+		return false;
+	}
+
+	private static function checkMessageIsOutcomeByField($message,$keyField,$value)
+	{
+		if (trim($value))
+		{
+			$isFromField = in_array($keyField, ['__from', '__reply_to']);
+			$address = new Main\Mail\Address($value);
+
+			if ($address->validate())
+			{
+				if ($isFromField && $address->getEmail() == $message['__email'])
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Adapts a message(result of Mail\MailMessageTable::getList) for output in the public interface.
+	 *
+	 * @param array &$message(result of Mail\MailMessageTable::getList. Changes the data in a variable!).
+	 *
+	 * @return array(modified $message).
+	 */
+	public static function prepare(&$message)
+	{
+		$message['__email'] = null;
+		foreach (array($message['MAILBOX_EMAIL'], $message['MAILBOX_NAME'], $message['MAILBOX_LOGIN']) as $item)
+		{
+			$address = new Main\Mail\Address($item);
+			if ($address->validate())
+			{
+				$message['__email'] = $address->getEmail();
+				break;
+			}
+		}
+
+		$fieldsMap = array(
+			'__from' => 'FIELD_FROM',
+			'__reply_to' => 'FIELD_REPLY_TO',
+			'__to' => 'FIELD_TO',
+			'__cc' => 'FIELD_CC',
+			'__bcc' => 'FIELD_BCC',
+			'__rcpt' => 'FIELD_RCPT',
+		);
+
+		if ('' != $message['HEADER'])
+		{
+			foreach ($fieldsMap as $field)
+			{
+				if (mb_strlen($message[$field]) == 255)
+				{
+					$parsedHeader = \CMailMessage::parseHeader($message['HEADER'], LANG_CHARSET);
+
+					$message['FIELD_FROM'] = $parsedHeader->getHeader('FROM');
+					$message['FIELD_REPLY_TO'] = $parsedHeader->getHeader('REPLY-TO');
+					$message['FIELD_TO'] = $parsedHeader->getHeader('TO');
+					$message['FIELD_CC'] = $parsedHeader->getHeader('CC');
+					$message['FIELD_BCC'] = join(', ', array_merge(
+						(array) $parsedHeader->getHeader('X-Original-Rcpt-to'),
+						(array) $parsedHeader->getHeader('BCC')
+					));
+
+					break;
+				}
+			}
+		}
+
+		foreach ($fieldsMap as $fieldKey => $fieldName)
+		{
+			$message[$fieldKey] = [];
+
+			if($fieldName === 'FIELD_FROM')
+			{
+				if(static::checkMessageIsOutcomeByField($message,$fieldKey,$message[$fieldName]))
+				{
+					$message['__is_outcome'] = true;
+				}
+
+				$filed = static::prepareField($message[$fieldName]);
+
+				if($filed !== false)
+				{
+					$message[$fieldKey][] = $filed;
+				}
+
+				continue;
+			}
+
+			foreach (explode(',', $message[$fieldName]) as $item)
+			{
+				if(static::checkMessageIsOutcomeByField($message,$fieldKey,$item))
+				{
+					$message['__is_outcome'] = true;
+				}
+
+				$filed = static::prepareField($item);
+
+				if($filed !== false)
+				{
+					$message[$fieldKey][] = $filed;
+				}
+			}
+		}
+
+		if (empty($message['__reply_to']))
+		{
+			$message['__reply_to'] = $message['__from'];
+		}
+
+		// @TODO: path
+		$message['__href'] = sprintf('/mail/message/%u', $message['ID']);
+
+		$urlManager = Attachment\Storage::getUrlManager();
+
+		if (!empty($message['__files']) && is_array($message['__files']))
+		{
+			$urlParams = array();
+
+			if (isset($_REQUEST['mail_uf_message_token']) && is_string($_REQUEST['mail_uf_message_token']))
+			{
+				$urlParams['mail_uf_message_token'] = $_REQUEST['mail_uf_message_token'];
+			}
+
+			foreach ($message['__files'] as $k => $item)
+			{
+				if ($diskFile = Attachment\Storage::getObjectByAttachment($item, true))
+				{
+					$message['__files'][$k] = array(
+						'id' => sprintf('n%u', $diskFile->getId()),
+						'name' => $item['FILE_NAME'],
+						'url' => $urlManager->getUrlForShowFile($diskFile, $urlParams),
+						'size' => \CFile::formatSize($diskFile->getSize()),
+						'fileId' => $diskFile->getFileId(),
+						'objectId' => $diskFile->getId(),
+						'bytes' => $diskFile->getSize(),
+					);
+
+					if (\Bitrix\Disk\TypeFile::isImage($diskFile))
+					{
+						$message['__files'][$k]['preview'] = $urlManager->getUrlForShowFile(
+							$diskFile,
+							array_merge(
+								array('width' => 80, 'height' => 80, 'exact' => 'Y'),
+								$urlParams
+							)
+						);
+					}
+
+					$fileInfo = $diskFile->getFile();
+
+					if (isset($fileInfo['SRC']))
+					{
+						$message['BODY_HTML'] = Parsers\ReplacingImagesLinks::parse(
+							(string)$message['BODY_HTML'],
+							$item['ID'],
+							(new Uri($fileInfo['SRC']))->toAbsolute()->getLocator(),
+						);
+					}
+				}
+				else
+				{
+					$file = \CFile::getFileArray($item['FILE_ID']);
+					if (!empty($file) && is_array($file))
+					{
+						$message['__files'][$k] = array(
+							'id' => $file['ID'],
+							'name' => $item['FILE_NAME'],
+							'url' => $file['SRC'],
+							'size' => \CFile::formatSize($file['FILE_SIZE']),
+							'fileId' => $file['ID'],
+							'bytes' => $file['FILE_SIZE'],
+						);
+
+						if (\CFile::isImage($item['FILE_NAME'], $item['CONTENT_TYPE']))
+						{
+							$preview = \CFile::resizeImageGet(
+								$file, array('width' => 80, 'height' => 80),
+								BX_RESIZE_IMAGE_EXACT, false
+							);
+
+							if (!empty($preview['src']))
+							{
+								$message['__files'][$k]['preview'] = $preview['src'];
+							}
+						}
+
+						if (isset($file['SRC']))
+						{
+							$message['BODY_HTML'] = Parsers\ReplacingImagesLinks::parse(
+								(string)$message['BODY_HTML'],
+								$item['ID'],
+								(new Uri($file['SRC']))->toAbsolute()->getLocator(),
+							);
+						}
+					}
+					else
+					{
+						unset($message['__files'][$k]);
+					}
+				}
+			}
+		}
+
+		return $message;
+	}
+
+	public static function hasAccess(&$message, $userId = null)
+	{
+		global $USER;
+
+		if (
+			!($userId > 0 || is_object($USER) && $USER->isAuthorized()) ||
+			//If message id = 0 , the message is deleted or not loaded:
+			is_null($message['ID']) || $message['ID'] === 0 || $message['ID'] === '0'
+		)
+		{
+			return false;
+		}
+
+		if (!($userId > 0))
+		{
+			$userId = $USER->getId();
+		}
+
+		$messageAccess = \Bitrix\Mail\MessageAccess::createByMessageId($message['ID'], $userId);
+		$access = $messageAccess->isOwner();
+
+		$message['__access_level'] = $access ? 'full' : false;
+
+		// check access by tokens
+		if (!$access && isset($_REQUEST['mail_uf_message_token']))
+		{
+			$token = $signature = '';
+			if (is_string($_REQUEST['mail_uf_message_token']) && mb_strpos($_REQUEST['mail_uf_message_token'], ':') > 0)
+			{
+				[$token, $signature] = explode(':', $_REQUEST['mail_uf_message_token'], 2);
+			}
+
+			if ($token <> '' && $signature <> '')
+			{
+				$excerpt = MessageAccessTable::getList(array(
+					'select' => array('SECRET', 'MESSAGE_ID', 'ENTITY_TYPE', 'ENTITY_ID'),
+					'filter' => array(
+						'=TOKEN' => $token,
+						'=MAILBOX_ID' => $message['MAILBOX_ID'],
+					),
+					'limit' => 1,
+				))->fetch();
+
+				if (!empty($excerpt['SECRET']))
+				{
+					if (self::checkAccessForEntityToken($excerpt['ENTITY_TYPE'], (int)$excerpt['ENTITY_ID'], $userId))
+					{
+						$salt = self::getSaltByEntityType($excerpt['ENTITY_TYPE'], (int)$excerpt['ENTITY_ID'], $userId);
+
+						$signer = new Security\Sign\Signer(new Security\Sign\HmacAlgorithm('md5'));
+
+						if ($signer->validate($excerpt['SECRET'], $signature, $salt))
+						{
+							$access = $message['ID'] == $excerpt['MESSAGE_ID'];
+
+							if (!$access) // check parent access
+							{
+								$access = (bool) MessageClosureTable::getList(array(
+									'select' => array('PARENT_ID'),
+									'filter' => array(
+										'=MESSAGE_ID' => $message['ID'],
+										'=PARENT_ID' => $excerpt['MESSAGE_ID'],
+									),
+								))->fetch();
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// check access by direct links
+		if (!$access)
+		{
+			$access = $messageAccess->canViewMessage();
+		}
+
+		if (false === $message['__access_level'])
+		{
+			$message['__access_level'] = $access ? 'read' : false;
+		}
+
+		return $access;
+	}
+
+	public static function prepareSearchContent(&$fields)
+	{
+		// @TODO: filter short words, filter duplicates, str_rot13?
+		return str_rot13(join(
+			' ',
+			array(
+				$fields['FIELD_FROM'],
+				$fields['FIELD_REPLY_TO'],
+				$fields['FIELD_TO'],
+				$fields['FIELD_CC'],
+				$fields['FIELD_BCC'],
+				$fields['SUBJECT'],
+				self::isolateBase64Files((string)$fields['BODY']),
+			)
+		));
+	}
+
+	public static function prepareSearchString($string)
+	{
+		return str_rot13($string);
+	}
+
+	/**
+	 * @param $userId
+	 * @param $onlyGeneralCounter
+	 * @return array|int
+	 */
+	public static function getCountersForUserMailboxes($userId, $onlyGeneralCounter = false)
+	{
+		if (!isset(self::$countersForUsersCache[$userId]))
+		{
+			$mailboxes = MailboxTable::getUserMailboxes($userId, true);
+
+			if (empty($mailboxes))
+			{
+				return array();
+			}
+
+			$mailboxIds = array_column($mailboxes, 'ID');
+
+			$totalUnseen = Internals\MailCounterTable::getList([
+				'select' => [
+					new \Bitrix\Main\Entity\ExpressionField(
+						'UNSEEN',
+						'SUM(VALUE)'
+					),
+					'VALUE',
+					'ENTITY_ID',
+				],
+				'filter' => [
+					'=ENTITY_TYPE' => 'MAILBOX',
+					'@ENTITY_ID' => $mailboxIds,
+				],
+			])->fetchAll();
+
+			$counters = [];
+
+			$totalCounter = 0;
+
+			foreach ($totalUnseen as $index => $item)
+			{
+				$totalCounter += $item['VALUE'];
+
+				$counters[$item['ENTITY_ID']] = [
+					'UNSEEN' => $item['VALUE'],
+				];
+			}
+
+			self::$countersForUsersCache[$userId] = [
+				'mailboxesWithCounters' => $counters,
+				'totalCounter' => $totalCounter,
+			];
+		}
+
+		if($onlyGeneralCounter)
+		{
+			return self::$countersForUsersCache[$userId]['totalCounter'];
+		}
+		else
+		{
+			return self::$countersForUsersCache[$userId]['mailboxesWithCounters'];
+		}
+	}
+
+	public static function resetCountersCache(int $userId): void
+	{
+		unset(self::$countersForUsersCache[$userId]);
+	}
+
+	public static function setUserUnseenCounter(int $userId, string $siteId): int
+	{
+		$unseen = max((int)static::getCountersForUserMailboxes($userId, true), 0);
+		$unseen += (new Mailbox\MailboxConnectionRequestService($userId))->getPendingCount();
+		$unseen += Mailbox\PasswordlessConnectHelper::getUserPendingCount($userId, $siteId);
+
+		\CUserCounter::set($userId, 'mail_unseen', $unseen, $siteId);
+
+		return $unseen;
+	}
+
+	public static function ensureAttachments(&$message)
+	{
+		if ($message['ATTACHMENTS'] > 0 || !($message['OPTIONS']['attachments'] > 0))
+		{
+			return false;
+		}
+
+		if (Option::get('mail', 'save_attachments', B_MAIL_SAVE_ATTACHMENTS) !== 'Y')
+		{
+			return false;
+		}
+
+		$mailboxHelper = Mailbox::createInstance($message['MAILBOX_ID'], false);
+
+		$attachments = empty($mailboxHelper) ? false : $mailboxHelper->downloadAttachments($message);
+
+		if (false === $attachments)
+		{
+			$logEntry = sprintf(
+				'Helper\Message: Attachments downloading failed (%u:%s:%u)',
+				$message['MAILBOX_ID'],
+				$message['DIR_MD5'],
+				$message['MSG_UID']
+			);
+
+			if (!empty($mailboxHelper) && !$mailboxHelper->getErrors()->isEmpty())
+			{
+				$logEntry .= PHP_EOL . join(PHP_EOL, $mailboxHelper->getErrors()->toArray());
+			}
+
+			addMessage2Log($logEntry, 'mail', 2);
+
+			return false;
+		}
+
+		$originalBody = $message['BODY_HTML'] ?? null;
+		foreach ($attachments as $i => $item)
+		{
+			$attachFields = array(
+				'MESSAGE_ID'   => $message['ID'],
+				'FILE_NAME'    => $item['FILENAME'],
+				'CONTENT_TYPE' => $item['CONTENT-TYPE'],
+				'FILE_DATA'    => $item['BODY'],
+				'CONTENT_ID'   => $item['CONTENT-ID'],
+			);
+
+			$attachmentId = \CMailMessage::addAttachment($attachFields);
+
+			if ($attachmentId > 0)
+			{
+				$message['ATTACHMENTS']++;
+
+				if (isset($message['BODY_HTML']) && mb_strlen($message['BODY_HTML']) > 0)
+				{
+					$bodyWithReplaced = self::replaceBodyInlineImgContentId(
+						(string)$message['BODY_HTML'],
+						(string)$item['CONTENT-ID'],
+						$attachmentId
+					);
+					if ($bodyWithReplaced)
+					{
+						$message['BODY_HTML'] = $bodyWithReplaced;
+					}
+				}
+			}
+		}
+
+		if ($message['ATTACHMENTS'] > 0)
+		{
+			if ($originalBody !== $message['BODY_HTML'])
+			{
+				\CMailMessage::update($message['ID'], ['BODY_HTML' => $message['BODY_HTML']], $message['MAILBOX_ID']);
+			}
+
+			return $message['ID'];
+		}
+	}
+
+	public static function parseAddressList($column)
+	{
+		$column = trim($column);
+		//'email@email' => 'email@domain'
+		//'Name <email@domain>, Name2 <email2@domain2>' => 'Name <email@domain'
+		$columns = preg_split("/>,?/", $column);
+		$validColumns = [];
+
+		foreach ($columns as $value)
+		{
+			//'email@email' => 'email@domain'
+			//'Name <email@domain' => 'Name <email@domain>'
+			if(preg_match("/</", $value))
+			{
+				$value.='>';
+			}
+
+			if($value !== '')
+			{
+				$validColumns[] = $value;
+			}
+		}
+
+		return $validColumns;
+	}
+
+	public static function isolateSelector($matches): string
+	{
+		$head = $matches['head'];
+		$body = $matches['body'];
+		$prefix = 'mail-message-';
+		$wrapper = '#mail-message-wrapper ';
+		if(substr($head,0,1)==='@') $wrapper ='';
+		$closure = $matches['closure'];
+		$head = preg_replace('%([\.#])([a-z][-_a-z0-9]+)%mi', '$1'.$prefix.'$2', $head);
+
+		return $wrapper.preg_replace('/,/', ', ' . $wrapper . ' ', $head).$body.$closure;
+	}
+
+	public static function isolateStylesInTheTag($matches)
+	{
+		$wrapper = '#mail-message-wrapper ';
+		$openingTag = $matches['openingTag'];
+		$closingTag = $matches['closingTag'];
+		$styles = $matches['styles'];
+
+		// neutralize viewport-dependent units to prevent infinite iframe resize loop
+		$styles = preg_replace('/(\d+(?:\.\d+)?)\s*(vh|vw|vmin|vmax|svh|svw|lvh|lvw|dvh|dvw)\b/i', '0px', $styles);
+
+		// remove all rules that do not start with a class selector
+		$styles = preg_replace('/(?:^|})\s*(?!(\.|@|\s*#mail-message-wrapper\s*\.))\s*[^@}{]+\s*\{[^}]*}/is', '', $styles);
+
+		$bodySelectorPattern = '#(.*?)(^|\s)(body)\s*((?:\{)(?:.*?)(?:\}))(.*)#msi';
+		$bodySelector = preg_replace($bodySelectorPattern, '$2' . $wrapper . '$4', $styles);
+		//cut off body selector
+		$styles = preg_replace($bodySelectorPattern, '$1$5', $styles);
+		$styles = preg_replace('#(^|\s)(body)\s*({)#iU', '$1mail-msg-view-body$3', $styles);
+		$styles = preg_replace_callback('%(?:^|\s)(?<head>[@#\.]?[a-z].*?\{)(?<body>.*?)(?<closure>\})%msi', 'static::isolateSelector', $styles);
+		return  $openingTag.$bodySelector.$styles.$closingTag;
+	}
+
+	public static function isolateInlineStyles($matches): string
+	{
+		$styles = $matches['styles'];
+		$quote = $matches['quote'];
+
+		//remove position:fixed
+		$styles = preg_replace('/position\s*:\s*fixed\s*;?/i', '', $styles);
+
+		// neutralize viewport-dependent units to prevent infinite iframe resize loop
+		$styles = preg_replace('/(\d+(?:\.\d+)?)\s*(vh|vw|vmin|vmax|svh|svw|lvh|lvw|dvh|dvw)\b/i', '0px', $styles);
+
+		$styles = preg_replace_callback(
+			'/z-index\s*:\s*(?<value>\d+)\s*;?/i',
+			function ($matches)
+			{
+				//cap z-index at 1000
+				if ((int)$matches['value'] > 1000)
+				{
+					return 'z-index: 1000;';
+				}
+
+				return $matches[0];
+			},
+			$styles
+		);
+
+		return 'style=' . $quote . $styles . $quote;
+	}
+
+	public static function isolateStylesInTheBody($html)
+	{
+		$prefix = 'mail-message-';
+		$html = preg_replace('%((?:^|\s)(?:class|id)(?:^|\s*)(?:=)(?:^|\s*)("|\'))((?:.*?)(?:\2))%', '$1'.$prefix.'$3', $html);
+		return $html;
+	}
+
+	public static function isolateMessageStyles($messageHtml)
+	{
+		Ini::adjustPcreBacktrackLimit(strlen($messageHtml)*2);
+
+		//isolates the positioning of the element
+		$messageHtml = preg_replace('%((?:^|\s)position(?:^|\s)?:(?:^|\s)?)(absolute|fixed|inherit)%', '$1relative', $messageHtml);
+
+		//remove media queries
+		$messageHtmlAfterClearingFromMedia = preg_replace('%@media\b[^{]*({((?:[^{}]+|(?1))*)})%mi', '', $messageHtml);
+
+		/*
+			If due to strong nesting it was not possible to delete media,
+			then we make them invalid for the browser by deactivating them.
+		*/
+		if (is_null($messageHtmlAfterClearingFromMedia))
+		{
+			$messageHtml = preg_replace('/@media/i', '@mail-message-disabled-media', $messageHtml);
+		}
+		else
+		{
+			$messageHtml = $messageHtmlAfterClearingFromMedia;
+		}
+
+		//remove loading fonts
+		$messageHtml = preg_replace('%@font-face\b[^{]*({(?>[^{}]++|(?1))*})%mi', '', $messageHtml);
+
+		$messageHtml = static::isolateStylesInTheBody($messageHtml);
+
+		$messageHtml = preg_replace_callback(
+			'/style\s*=\s*(?<quote>["\'])(?<styles>[^"\']*)\k<quote>/i',
+			'static::isolateInlineStyles',
+			$messageHtml
+		);
+
+		return preg_replace_callback('|(?<openingTag><style[^>]*>)(?<styles>.*)(?<closingTag><\/style>)|isU', 'static::isolateStylesInTheTag', $messageHtml);
+	}
+
+	private static function neutralizeViewportUnits($messageHtml)
+	{
+		Ini::adjustPcreBacktrackLimit(strlen($messageHtml) * 2);
+
+		$viewportUnitsPattern = '/(\d+(?:\.\d+)?)\s*(vh|vw|vmin|vmax|svh|svw|lvh|lvw|dvh|dvw)\b/i';
+
+		$messageHtml = static::replaceWithCallbackOrKeep(
+			'/style\s*=\s*"(?<styles>[^"]*)"/i',
+			static function (array $matches) use ($viewportUnitsPattern): string
+			{
+				$styles = preg_replace($viewportUnitsPattern, '0px', $matches['styles']);
+
+				return 'style="' . ($styles ?? $matches['styles']) . '"';
+			},
+			$messageHtml
+		);
+		$messageHtml = static::replaceWithCallbackOrKeep(
+			"/style\\s*=\\s*'(?<styles>[^']*)'/i",
+			static function (array $matches) use ($viewportUnitsPattern): string
+			{
+				$styles = preg_replace($viewportUnitsPattern, '0px', $matches['styles']);
+
+				return "style='" . ($styles ?? $matches['styles']) . "'";
+			},
+			$messageHtml
+		);
+
+		return static::replaceWithCallbackOrKeep(
+			'|(?<openingTag><style[^>]*>)(?<styles>.*?)(?<closingTag><\/style>)|is',
+			static function (array $matches) use ($viewportUnitsPattern): string
+			{
+				$styles = preg_replace($viewportUnitsPattern, '0px', $matches['styles']);
+
+				return $matches['openingTag'] . ($styles ?? $matches['styles']) . $matches['closingTag'];
+			},
+			$messageHtml
+		);
+	}
+
+	private static function replaceWithCallbackOrKeep(string $pattern, callable $callback, string $subject): string
+	{
+		return preg_replace_callback($pattern, $callback, $subject) ?? $subject;
+	}
+
+	public static function sanitizeHtml($html, $isolateStyles = false)
+	{
+		$cleared = (string)$html;
+		foreach (['/<!--.*?-->/is', '/<script[^>]*>.*?<\/script>/is', '/<title[^>]*>.*?<\/title>/is'] as $pattern)
+		{
+			$result = preg_replace($pattern, '', $cleared);
+			$cleared = $result ?? $cleared;
+		}
+		$sanitizer = new \CBXSanitizer();
+		$sanitizer->setLevel(\CBXSanitizer::SECURE_LEVEL_LOW);
+		$sanitizer->applyDoubleEncode(false);
+		$sanitizer->addTags(static::getWhitelistTagAttributes());
+		$cleared = $sanitizer->sanitizeHtml($cleared);
+
+		if($isolateStyles)
+		{
+			$cleared = static::isolateMessageStyles($cleared);
+		}
+
+		return $cleared;
+	}
+
+	/**
+	 * Sanitizes HTML for rendering inside the sandboxed mail message iframe.
+	 *
+	 * @internal
+	 */
+	public static function sanitizeHtmlForMessageView($html)
+	{
+		return static::neutralizeViewportUnits(static::sanitizeHtml($html));
+	}
+
+	public static function reSyncBody($mailboxId, $messageIds)
+	{
+		if (empty($messageIds) || !is_array($messageIds))
+		{
+			return false;
+		}
+
+		$messages = \Bitrix\Mail\MailMessageUidTable::getList([
+			'select' => [
+				'*'
+			],
+			'filter' => [
+				'=MAILBOX_ID' => $mailboxId,
+				'@MESSAGE_ID' => $messageIds,
+			],
+		]);
+
+		$notProcessed = array_combine($messageIds, $messageIds);
+
+		$mailboxHelper = Mailbox::createInstance($mailboxId, false);
+
+		if(!empty($mailboxHelper))
+		{
+			$mailbox = $mailboxHelper->getMailbox();
+
+			while ($message = $messages->fetch())
+			{
+				$technicalTitle = $mailboxHelper->downloadMessage($message);
+				if ($technicalTitle)
+				{
+					$charset = $mailbox['CHARSET'] ?: $mailbox['LANG_CHARSET'];
+					[$header, $html, $text, $attachments] = \CMailMessage::parseMessage($technicalTitle, $charset);
+
+					if (\CMailMessage::isLongMessageBody($text))
+					{
+						[$text, $html] = \CMailMessage::prepareLongMessage($text, $html);
+					}
+
+					if (rtrim($text) || $html)
+					{
+						\CMailMessage::update(
+							$message['MESSAGE_ID'],
+							[
+								'BODY' => rtrim($text),
+								'BODY_HTML' => $html,
+								MailMessageTable::FIELD_SANITIZE_ON_VIEW => 1,
+							]
+						);
+					}
+				}
+				self::updateMailEntityOptionsRow($mailboxId, (int)$message['MESSAGE_ID']);
+				unset($notProcessed[$message['MESSAGE_ID']]);
+			}
+		}
+
+		foreach ($notProcessed as $messageId)
+		{
+			self::updateMailEntityOptionsRow($mailboxId, (int)$messageId);
+		}
+
+		return true;
+	}
+
+	public static function getSaltByEntityType(string $entityType, int $entityId, ?int $userId = null): string
+	{
+		switch ($entityType)
+		{
+			case Message::ENTITY_TYPE_IM_CHAT:
+			case Message::ENTITY_TYPE_CHAT_MESSAGE:
+				return sprintf('chat%u', $entityId);
+			case Message::ENTITY_TYPE_CALENDAR_EVENT:
+				return sprintf('event'.'%u', $entityId);
+			default:
+				// per-user tokens for USER_MESSAGE, TASKS_TASK, CRM_ACTIVITY, ...
+				return sprintf('user'.'%u', $userId);
+		}
+	}
+
+	/**
+	 * @param int $mailboxId
+	 * @param int $userId
+	 *
+	 * @return bool
+	 *
+	 * @use MailboxAccess::isMailboxOwner and
+	 * @use MailboxAccess::isMailboxSharedWithUser
+	 * @deprecated
+	 *
+	 * checked if the user has access to the mailbox by using getTheOwnersMailboxes and getTheSharedMailboxes from MailboxTable
+	 */
+	public static function isMailboxOwner(int $mailboxId, int $userId): bool
+	{
+		return (bool)MailboxTable::getUserMailbox($mailboxId, $userId);
+	}
+
+	private static function checkAccessForEntityToken(?string $entityType, int $entityId, int $userId): bool
+	{
+		switch ($entityType)
+		{
+			case Message::ENTITY_TYPE_IM_CHAT:
+			case Message::ENTITY_TYPE_CHAT_MESSAGE:
+				return AccessHelper::checkAccessForChat($entityId, $userId);
+			case Message::ENTITY_TYPE_CALENDAR_EVENT:
+				return AccessHelper::checkAccessForCalendarEvent($entityId, $userId);
+			default:
+				return true; // tasks, crm, user messages create per-user tokens
+		}
+	}
+
+	/**
+	 * @param $mailboxId
+	 * @param $messageId
+	 * @return void
+	 */
+	public static function updateMailEntityOptionsRow($mailboxId, $messageId): void
+	{
+		Internals\MailEntityOptionsTable::update([
+				'MAILBOX_ID' => $mailboxId,
+				'ENTITY_ID' => $messageId,
+				'ENTITY_TYPE' => 'MESSAGE',
+				'PROPERTY_NAME' => 'UNSYNC_BODY',
+			],
+			[
+				'VALUE' => 'N',
+			]
+		);
+	}
+
+	/**
+	 * Is message body contains link to attachment
+	 *
+	 * @param string $body HTML body of message
+	 *
+	 * @return bool
+	 */
+	public static function isBodyNeedUpdateAfterLoadAttachments(string $body): bool
+	{
+		return preg_match('/<img([^>]+)src\s*=\s*([\'"])?\s*((?:http:\/\/)?cid:.+)\s*\2([^>]*)>/is', $body);
+	}
+
+	/**
+	 * Replace html body inline image content id with attachment id
+	 *
+	 * @param string $body HTML string
+	 * @param string $contentId Content Id in img tag (with or without http://)
+	 * @param int $attachmentId Attachment ID in DB
+	 *
+	 * @return string
+	 */
+	public static function replaceBodyInlineImgContentId(string $body, string $contentId, int $attachmentId): string
+	{
+		Ini::adjustPcreBacktrackLimit(strlen($body)*2);
+
+		$replacedBody = preg_replace(
+			sprintf('/<img([^>]+)src\s*=\s*(\'|\")?\s*((?:http:\/\/)?cid:%s)\s*\2([^>]*)>/is', preg_quote($contentId, '/')),
+			sprintf('<img\1src="aid:%u"\4>', $attachmentId),
+			$body
+		);
+
+		return $replacedBody ?? $body;
+	}
+
+	public static function isolateBase64Files(string $text): string
+	{
+		$pattern = '/\[\s*data:(?!text\b)[^;]+;base64,\S+ \]/';
+
+		return (string)preg_replace($pattern, '', $text);
+	}
+
+	public static function isIcalMessage(\Bitrix\Mail\Item\Message $message)
+	{
+		$attachments = MailMessageAttachmentTable::getList([
+			'select' => [
+				'ID',
+				'FILE_ID',
+				'FILE_NAME',
+				'FILE_SIZE',
+				'CONTENT-TYPE' => 'CONTENT_TYPE',
+			],
+			'filter' => [
+				'=MESSAGE_ID'   => $message->getId(),
+				'@CONTENT_TYPE' => ICalMailManager::CONTENT_TYPES
+			],
+		])->fetchAll();
+
+		return ICalMailManager::hasICalAttachments($attachments);
+	}
+
+	/**
+	 * @param string $subject Original compose subject.
+	 * @param string $body Compose body (HTML or plain text).
+	 * @param string $emptySubjectPlaceholder Placeholder for empty subjects.
+	 * @return string
+	 */
+	public static function getOutgoingSubject(
+		string $subject,
+		string $body,
+		string $emptySubjectPlaceholder,
+	): string
+	{
+		if (trim($subject) !== '')
+		{
+			return $subject;
+		}
+
+		$generated = static::extractSubjectFromBody($body);
+
+		return $generated !== '' ? $generated : $emptySubjectPlaceholder;
+	}
+
+	public static function getWithAccessCheck(int $messageId, ?int $userId): ?array
+	{
+		$message = \Bitrix\Mail\MailMessageTable::getRow([
+			'runtime' => [
+				new \Bitrix\Main\Entity\ReferenceField(
+					'MESSAGE_UID',
+					\Bitrix\Mail\MailMessageUidTable::class,
+					[
+						'=this.MAILBOX_ID' => 'ref.MAILBOX_ID',
+						'=this.ID' => 'ref.MESSAGE_ID',
+					],
+					['join_type' => 'INNER'],
+				),
+			],
+			'select' => [
+				'*',
+				'MAILBOX_EMAIL' => 'MAILBOX.EMAIL',
+				'INTERNALDATE' => 'MESSAGE_UID.INTERNALDATE',
+			],
+			'filter' => ['=ID' => $messageId],
+		]);
+
+		if ($message === null || !self::hasAccess($message, $userId))
+		{
+			return null;
+		}
+
+		return $message;
+	}
+
+	public static function getMessageUrl(int $messageId): string
+	{
+		$uri = new Uri(
+			UrlManager::getInstance()->getHostUrl()
+			. \Bitrix\Mail\Integration\Intranet\Secretary::getDirectMessageUrl($messageId)
+		);
+
+		return $uri->getLocator();
+	}
+
+	/**
+	 * @param string $body Message body (plain text or HTML).
+	 * @return string Generated subject or empty string.
+	 */
+	public static function extractSubjectFromBody(string $body): string
+	{
+		$text = static::normalizeBodyText($body);
+		$maxLength = self::DISPLAY_SUBJECT_MAX_LENGTH;
+
+		if ($text === '' || mb_strlen($text, 'UTF-8') <= $maxLength)
+		{
+			return $text;
+		}
+
+		$trimmed = mb_substr($text, 0, $maxLength, 'UTF-8');
+		$lastSpace = mb_strrpos($trimmed, ' ', 0, 'UTF-8');
+		if ($lastSpace !== false && $lastSpace > 0)
+		{
+			$trimmed = mb_substr($trimmed, 0, $lastSpace, 'UTF-8');
+		}
+
+		return $trimmed . '...';
+	}
+
+	public static function getDisplaySnippet(string $body, string $subject): string
+	{
+		if (trim($subject) === '')
+		{
+			return $body;
+		}
+
+		$subjectForMatch = str_ends_with($subject, '...')
+			? trim(mb_substr($subject, 0, -3, 'UTF-8'))
+			: trim($subject)
+		;
+
+		if ($subjectForMatch === '')
+		{
+			return $body;
+		}
+
+		$normalizedBody = static::normalizeBodyText($body);
+		if (!str_starts_with($normalizedBody, $subjectForMatch))
+		{
+			return $body;
+		}
+
+		return trim(mb_substr(
+			$normalizedBody,
+			mb_strlen($subjectForMatch, 'UTF-8'),
+			null,
+			'UTF-8',
+		));
+	}
+
+	private static function normalizeBodyText(string $body): string
+	{
+		$text = $body;
+		if (str_contains($text, '<') && str_contains($text, '>'))
+		{
+			$text = preg_replace(
+				'#</?(?:br|div|p|li|tr|td|th|h[1-6]|blockquote|hr|ol|ul|pre|section|article|header|footer)\b[^>]*>#i',
+				' ',
+				$text,
+			) ?? $text;
+			$text = Converter::htmlToText($text);
+		}
+		$text = html_entity_decode($text, ENT_QUOTES | ENT_HTML401, SITE_CHARSET);
+		$text = trim(preg_replace('/\s+/u', ' ', $text));
+
+		return trim(preg_replace('/^[\p{P}\p{S}\p{Z}\p{C}]+/u', '', $text));
+	}
+}

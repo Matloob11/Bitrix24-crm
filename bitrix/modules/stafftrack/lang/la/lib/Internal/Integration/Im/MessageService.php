@@ -1,0 +1,4 @@
+<?php
+$MESS["STAFFTRACK_DEFAULT_CHECK_IN_DESCRIPTION"] = "¡Hola! Estoy en línea.";
+$MESS["STAFFTRACK_INTEGRATION_IM_CHAT_FEATURE_BANNER_MESSAGE"] = "Active el check-in para sus empleados.";
+$MESS["STAFFTRACK_INTEGRATION_IM_CHAT_FEATURE_TITLE"] = "Habilitar el check-in";

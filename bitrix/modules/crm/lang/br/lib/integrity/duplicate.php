@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_DUP_ENTITY_COUNT_PLURAL_0"] = "Resultado ";
+$MESS["CRM_DUP_ENTITY_COUNT_PLURAL_1"] = "Resultados ";
+$MESS["CRM_DUP_ENTITY_COUNT_PLURAL_2"] = "Resultados ";

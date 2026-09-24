@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_ONLYOFFICE_GUEST_USER_LOGIN"] = "Convidado";
+$MESS["DISK_ONLYOFFICE_GUEST_USER_NAME"] = "Convidado";

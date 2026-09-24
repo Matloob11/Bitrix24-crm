@@ -1,0 +1,25 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_ACCOUNT_LINK"] = "Enlace al chat en vivo";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_ACCOUNT_PHONE"] = "Número de teléfono de la cuenta que está conectada";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_AUTH_TOKEN"] = "Token de autenticación:";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_CHANGE_ANY_TIME"] = "Puede editarlo o desactivarlo en cualquier momento";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_CONNECTED"] = "WhatsApp está conectado";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_CONNECT_HELP"] = "<div class=\"imconnector-field-button-subtitle\">Me gustaría</div><div class=\"imconnector-field-button-name\"><span class=\"imconnector-field-box-text-bold\">conectarme</span> a WhatsApp mediante Twilio</div>";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_CONNECT_STEP_NEW"] = "#LINK_START#Siga las instrucciones#LINK_END# para conectar WhatsApp.";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_CONNECT_TITLE"] = "Conectar WhatsApp a su canal abierto";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_COPY"] = "Copiar";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_FINAL_FORM_DESCRIPTION"] = "WhatsApp se conectó a su canal abierto. En lo sucesivo, verá todos los mensajes en su Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INDEX_ADDITIONAL_DESCRIPTION_NEW"] = "#LINK_START#Siga las instrucciones#LINK_END# para conectar WhatsApp.";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INDEX_LIST_ITEM_1"] = "Guarde los contactos y el historial de comunicaciones en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INDEX_LIST_ITEM_2"] = "Guíe al cliente a lo largo del embudo de ventas en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INDEX_LIST_ITEM_3"] = "Responda a sus clientes cuando y donde prefieran";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INDEX_LIST_ITEM_4"] = "Las consultas de los clientes se distribuyen entre los agentes de ventas según las reglas de la cola.";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INDEX_SUBTITLE"] = "Responda a sus clientes en la forma que prefieran. Si un cliente opina que WhatsApp es más conveniente que otros medios de comunicación, reciba sus mensajes en su Bitrix24 y responda de inmediato.";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INDEX_TITLE"] = "Hable con sus clientes en WhatsApp";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INFO"] = "Información";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_INSTRUCTION_TITLE"] = "<span class=\"imconnector-field-box-text-bold\">Cómo conectar su WhatsApp a una cuenta empresarial</span>:";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_I_KNOW_TOKEN"] = "Tengo el token";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_PHONE"] = "Número de teléfono de la cuenta (utilice el formato internacional: +99999999999):";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_SID"] = "SID de la cuenta:";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_SIMPLE_FORM_DESCRIPTION"] = "Especifique esta dirección en el campo Webhook en la consola de Twilio:";
+$MESS["IMCONNECTOR_COMPONENT_WHATSAPPBYTWILIO_TESTED"] = "Prueba de conexión";

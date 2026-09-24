@@ -1,0 +1,26 @@
+<?php
+$MESS["VI_BACKUP_LINE_LABEL"] = "Inoltra le chiamate al numero di backup da";
+$MESS["VI_BACKUP_LINE_SAVE"] = "Salva";
+$MESS["VI_BACKUP_LINE_TITLE"] = "Numero di telefono di backup";
+$MESS["VI_BACKUP_NUMBER"] = "Reindirizza chiamata a";
+$MESS["VI_BACKUP_NUMBER_LABEL"] = "Specifica il numero al quale una chiamata sarà reindirizzata se il tuo account Bitrix24 non è disponibile per qualsiasi motivo";
+$MESS["VI_COMBINATIONS_SAVE"] = "Salva";
+$MESS["VI_COMBINATIONS_TITLE"] = "Codici di chiamata";
+$MESS["VI_COMBINATION_INTERCEPT_GROUP"] = "Intercettazione chiamate in questo gruppo coda:";
+$MESS["VI_CRM_INTEGRATION_SAVE"] = "Salva";
+$MESS["VI_CRM_INTEGRATION_TITLE"] = "Integrazione CRM";
+$MESS["VI_CRM_INTEGRATION_WORKFLOW_EXECUTION_TITLE"] = "Inizia flusso di lavoro creazione nuovo lead:";
+$MESS["VI_INTERFACE_CHAT_ADD"] = "Crea chat separata per ogni chiamata";
+$MESS["VI_INTERFACE_CHAT_APPEND"] = "Crea chat singola per tutte le chiamate";
+$MESS["VI_INTERFACE_CHAT_NONE"] = "Non visualizzare le chiamate telefoniche in Messenger";
+$MESS["VI_INTERFACE_CHAT_TITLE"] = "Visualizza chiamate telefoniche in Messenger: ";
+$MESS["VI_INTERFACE_SAVE"] = "Salva";
+$MESS["VI_INTERFACE_TITLE"] = "Configura interfaccia di chiamata";
+$MESS["VI_NUMBERS_APPLY"] = "Applica";
+$MESS["VI_NUMBERS_CANCEL"] = "Annulla";
+$MESS["VI_NUMBERS_CONFIG"] = "Configura";
+$MESS["VI_NUMBERS_CONFIG_BACKPHONE"] = "Numero predefinito per chiamate in uscita";
+$MESS["VI_NUMBERS_CONFIG_BACKPHONE_TITLE"] = "La tua controparte vedrà questo numero quando chiami utilizzando Bitrix24";
+$MESS["VI_NUMBERS_EDIT"] = "Modifica";
+$MESS["VI_NUMBERS_SAVE"] = "Salva";
+$MESS["VI_NUMBERS_TITLE_2"] = "Configura numeri predefiniti";

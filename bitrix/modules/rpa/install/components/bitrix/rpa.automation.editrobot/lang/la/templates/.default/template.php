@@ -1,0 +1,4 @@
+<?
+$MESS["RPA_AUTOMATION_EDITROBOT_TPL_SAVE_SUCCESS"] = "Los cambios se guardaron.";
+$MESS["RPA_AUTOMATION_EDITROBOT_TPL_SECTION_MAIN"] = "General";
+?>

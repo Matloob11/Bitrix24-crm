@@ -1,0 +1,6 @@
+<?php
+$MESS["MESSAGESERVICE_NOTIFICATIONS_CHANNEL_DESCRIPTION"] = "Envíe enlaces de pago y otros documentos usando plantillas.";
+$MESS["MESSAGESERVICE_NOTIFICATIONS_CHANNEL_DESCRIPTION_MSGVER_1"] = "Envíe enlaces de pago y otros documentos usando plantillas.";
+$MESS["MESSAGESERVICE_NOTIFICATIONS_CHANNEL_NAME"] = "Mensajería de Bitrix24";
+$MESS["MESSAGESERVICE_NOTIFICATIONS_CHANNEL_SHORT_NAME"] = "Bitrix24";
+$MESS["MESSAGESERVICE_NOTIFICATIONS_CHANNEL_TITLE"] = "Mensajería de Bitrix24";

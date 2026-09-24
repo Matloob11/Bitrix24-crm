@@ -1,0 +1,6 @@
+<?php
+$MESS["MAILMOBILE_MESSAGE_ACTIONS_FOLDERS_SETTINGS_BANNER_DESCRIPTION"] = "Мобильді қосымшадағы хаттарды жою және жылжыту үшін Битрикс24 веб-нұсқасындағы бумаларды баптаңыз";
+$MESS["MAILMOBILE_MESSAGE_ACTIONS_FOLDERS_SPAM_BANNER_TITLE"] = "Спамға салу";
+$MESS["MAILMOBILE_MESSAGE_ACTIONS_FOLDERS_TRASH_BANNER_TITLE"] = "Хатты жою";
+$MESS["MAILMOBILE_MESSAGE_ACTIONS_IN_FOLDER_TOAST"] = "\"#FOLDER_NAME#\" ауыстырылды";
+$MESS["MAILMOBILE_MESSAGE_ACTIONS_IN_TRASH_TOAST"] = "Себетке ауыстырылды";

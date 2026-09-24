@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_COMPANY_TEMPLATE"] = "entreprise";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_CONTACT_TEMPLATE"] = "particulier";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_TEMPLATE"] = "Remplissez le formulaire CRM \"#FORM_NAME#\"";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT"] = "Client";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_DESC"] = "contact ou société";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC"] = "contact ou société, facture";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC1"] = "contact ou entreprise ; commande";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL"] = "Transaction";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_DESC"] = "transaction, contact ou société";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC"] = "transaction, contact ou société, facture";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC1"] = "transaction ; contact ou entreprise ; commande";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC"] = "Processus intelligents";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_DESC"] = "Processus intelligent, contact ou entreprise";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_INVOICE_DESC"] = "Processus intelligent, contact ou entreprise, commande";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE"] = "Facture";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE_DESC"] = "facture";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED"] = "Prospect";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_DESC"] = "prospect";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC"] = "prospect, contact ou société, facture";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC1"] = "prospect ; contact ou entreprise ; commande";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_DESC_MSGVER_1"] = "devis, contact ou société";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC1_MSGVER_1"] = "devis ; contact ou entreprise ; commande";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC_MSGVER_1"] = "devis, contact ou société, facture";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_MSGVER_1"] = "Devis";

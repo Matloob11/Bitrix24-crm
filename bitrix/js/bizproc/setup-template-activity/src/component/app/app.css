@@ -1,0 +1,45 @@
+.bizproc-setuptemplateactivity-app {
+
+}
+
+.bizproc-setuptemplateactivity-app__blocks {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 18px;
+}
+
+#bizproc-setuptemplateactivity-app .ui-ctl-element {
+	background-color: var(--ui-color-palette-white-base) !important;
+	background-image: none !important;
+	border-radius: var(--ui-border-radius-md) !important;
+}
+
+#bizproc-setuptemplateactivity-app .ui-ctl-title {
+	font-size: var(--ui-font-size-sm);
+	letter-spacing: var(--ui-letter-spacing-l);
+	color: var(--ui-color-base-3);
+}
+
+#bizproc-setuptemplateactivity-app .ui-ctl-element.--error {
+	border-color: var(--ui-field-color-danger) !important;
+}
+
+#bizproc-setuptemplateactivity-app .ui-ctl-label-text-error {
+	color: var(--ui-color-text-alert) !important;
+}
+
+.node-settings-panel #bizproc-setuptemplateactivity-app .ui-ctl:not(:first-child) {
+	margin-top: 0 !important;
+}
+
+.node-settings-panel .adm-detail-content-table #bizproc-setuptemplateactivity-app select:not(:last-child), .ui-ctl-element:not(:last-child) {
+	margin: 0 !important;
+}
+
+.side-panel-container.--bizproc-setuptemplateactivity-preview {
+	border-top-left-radius: 18px;
+	border-bottom-left-radius: 18px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}

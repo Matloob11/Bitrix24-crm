@@ -1,0 +1,10 @@
+<?php
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_ALL_SCRIPTS_BUTTON_TITLE"] = "Wszystkie skrypty";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_COMMON_ATTACH_ERROR"] = "Nie można wybrać skryptu.";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_NOT_RESOLVED_SCRIPT_DESCRIPTION"] = "Wybierz skrypt z powyższej listy.";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_NOT_RESOLVED_SCRIPT_TITLE"] = "Brak skryptu przypisanego do połączenia";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_NO_AVAILABLE_SCRIPTS_DESCRIPTION"] = "Dodaj nowy skrypt lub włącz wybrany na stronie <br> [link]Analiza mowy AI i Skrypty sprzedażowe[/link].";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_NO_AVAILABLE_SCRIPTS_TITLE"] = "Brak skryptów";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_TAB_TITLE"] = "Skrypty AI";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_UPDATE_SCRIPT_BUTTON_TITLE"] = "Edytuj scenariusz";
+$MESS["CRM_COPILOT_CALL_CARD_REPLACEMENT_UPDATE_SCRIPT_BUTTON_TITLE_HINT"] = "Funkcja dostępna wkrótce. Edytuj skrypt na stronie „Analiza mowy AI i Skrypty sprzedażowe”.";

@@ -1,0 +1,19 @@
+<?php
+$MESS["WIZARD_FIELD_ACCESS_DENIED"] = "Autorizzazioni insufficienti";
+$MESS["WIZARD_FIELD_MEASURE_CODE"] = "Unità di misura";
+$MESS["WIZARD_FIELD_PRODUCT_AMOUNT"] = "Quantità arrivata";
+$MESS["WIZARD_FIELD_PRODUCT_BARCODE"] = "Codice a barre";
+$MESS["WIZARD_FIELD_PRODUCT_BASE_PRICE"] = "Prezzo di vendita";
+$MESS["WIZARD_FIELD_PRODUCT_CURRENCY"] = "Valuta";
+$MESS["WIZARD_FIELD_PRODUCT_NAME"] = "Nome prodotto";
+$MESS["WIZARD_FIELD_PRODUCT_NEW_NAME"] = "Nuovo prodotto";
+$MESS["WIZARD_FIELD_PRODUCT_PHOTO"] = "Immagini prodotto";
+$MESS["WIZARD_FIELD_PRODUCT_PURCHASING_PRICE"] = "Prezzo di acquisto";
+$MESS["WIZARD_FIELD_PRODUCT_STORE"] = "Magazzino";
+$MESS["WIZARD_FIELD_PRODUCT_STORE_FROM"] = "Magazzino di origine";
+$MESS["WIZARD_FIELD_PRODUCT_STORE_TO"] = "Magazzino di destinazione";
+$MESS["WIZARD_STEP_FOOTER_ADD_STORE"] = "Aggiungi magazzino";
+$MESS["WIZARD_STEP_FOOTER_BIND_TO_SECTION"] = "Associa a sezione";
+$MESS["WIZARD_STEP_FOOTER_SECTION_BINDINGS"] = "Sezione selezionata: #SECTIONS#";
+$MESS["WIZARD_STEP_FOOTER_TEXT_PRICE"] = "Inserisci il prezzo di acquisto e la valuta riportati nel documento";
+$MESS["WIZARD_STEP_FOOTER_TEXT_PRODUCT"] = "Inserisci il nome del prodotto come visualizzato nell'oggetto dell'inventario";

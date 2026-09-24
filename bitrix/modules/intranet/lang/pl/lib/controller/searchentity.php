@@ -1,0 +1,3 @@
+<?php
+$MESS["INTRANET_CONTROLLER_SEARCHENTITY_GETALL_ENTITY_EMPTY"] = "Nie określono typu jednostki.";
+$MESS["INTRANET_CONTROLLER_SEARCHENTITY_GETALL_ENTITY_INCORRECT"] = "Określono nieprawidłowy typ jednostki.";

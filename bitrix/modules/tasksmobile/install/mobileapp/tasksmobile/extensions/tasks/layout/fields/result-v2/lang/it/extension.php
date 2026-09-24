@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_PLACEHOLDER"] = "Usa @ per menzionare una persona, un gruppo di lavoro o un reparto";
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_TITLE"] = "Riepilogo stato";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_ADD_RESULT"] = "Aggiungi un altro riepilogo stato";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE"] = "Riepiloghi stato";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE_MULTI"] = "Riepiloghi stato: #COUNT#";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_0"] = "Mostra #COUNT# altro riepilogo";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_1"] = "Mostra altri #COUNT# riepiloghi";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_2"] = "Mostra altri #COUNT# riepiloghi";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_TITLE"] = "Riepilogo stato";
+$MESS["TASKS_FIELDS_RESULT_V2_EMPTY_ERROR"] = "Inserisci riepilogo stato dell'incarico";
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_WIDGET_TITLE"] = "Riepiloghi stato";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_REMOVE"] = "Elimina riepilogo stato";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_UPDATE"] = "Modifica riepilogo stato";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_DESCRIPTION"] = "Vuoi rimuovere dal commento il contrassegno di riepilogo stato dell'incarico? Il commento non verrà rimosso dall'incarico.";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_TITLE"] = "Rimuovi risultato";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_YES"] = "Sì";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ACTION_COMPLETE"] = "Complete task";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ANOTHER_RESULTS"] = "Altri riepiloghi stato";

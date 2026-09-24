@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_UI_WEBPACK_CALL_TRACKER_DEMO_1"] = "Źródło demo 1";
+$MESS["CRM_UI_WEBPACK_CALL_TRACKER_DEMO_2"] = "Źródło demo 2";
+?>

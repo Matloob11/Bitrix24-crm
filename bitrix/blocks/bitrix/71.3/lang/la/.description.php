@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_71_3_NAME"] = "Bloque de texto: un título, un subtítulo y 12 mosaicos de texto";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_BADGE"] = "Pestaña de mosaico";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD"] = "Icono";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD_BADGE"] = "Pestaña de mosaico";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD_TEXT"] = "Texto del icono";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD_TITLE"] = "Título del icono";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_ELEMENT"] = "Elemento";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_SUBTITLE"] = "Subtítulo";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_TITLE"] = "Título";

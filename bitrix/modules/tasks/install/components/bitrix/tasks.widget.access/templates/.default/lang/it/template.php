@@ -1,0 +1,8 @@
+<?
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL"] = "Autorizzazione di accesso";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_10"] = "Lettura";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_20"] = "Scrittura";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_30"] = "Elimina";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_40"] = "Modifica autorizzazioni di accesso";
+$MESS["TASKS_TWR_TEMPLATE_USER"] = "Utente";
+?>

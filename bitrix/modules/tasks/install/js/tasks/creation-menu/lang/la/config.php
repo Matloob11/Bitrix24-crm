@@ -1,0 +1,7 @@
+<?php
+$MESS["TASKS_CREATION_MENU_CREATE_TASK"] = "Tarea";
+$MESS["TASKS_CREATION_MENU_CREATE_TASK_BY_TEMPLATE"] = "Tarea usando una plantilla";
+$MESS["TASKS_CREATION_MENU_EMPTY_TEMPLATE_LIST"] = "No hay plantillas de tarea";
+$MESS["TASKS_CREATION_MENU_ERROR_LOAD_TEMPLATE_LIST"] = "Error al cargar la lista.";
+$MESS["TASKS_CREATION_MENU_LOAD_TEMPLATE_LIST"] = "Cargando lista...";
+$MESS["TASKS_CREATION_MENU_TEMPLATE_LIST"] = "Todas las plantillas";

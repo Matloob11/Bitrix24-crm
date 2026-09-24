@@ -1,0 +1,2 @@
+<?php
+$MESS["INTRANET_USER_LIST_GROUP_ACTION_CONFIRM_TITLE"] = "Confirmar el inicio de sesión";

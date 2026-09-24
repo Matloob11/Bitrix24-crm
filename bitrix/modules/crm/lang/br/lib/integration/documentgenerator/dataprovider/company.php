@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_DOCGEN_DATAPROVIDER_COMPANY_MY_COMPANY"] = "Minha empresa";

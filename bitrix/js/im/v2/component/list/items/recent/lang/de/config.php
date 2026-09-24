@@ -1,0 +1,20 @@
+<?php
+$MESS["IM_LIST_RECENT_BIRTHDAY"] = "hat heute Geburtstag!";
+$MESS["IM_LIST_RECENT_BIRTHDAY_DATE"] = "heute";
+$MESS["IM_LIST_RECENT_CHAT_SELF"] = "Das sind Sie";
+$MESS["IM_LIST_RECENT_CHAT_SELF_SUBTITLE"] = "Nur für Sie sichtbar";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_GROUP_V2"] = "Gruppenchat";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_OPEN_CHANNEL"] = "Öffentlicher Kanal";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_PRIVATE_CHANNEL"] = "Privater Kanal";
+$MESS["IM_LIST_RECENT_CHAT_TYPE_TASK_COMMENTS"] = "Aufgabenchat";
+$MESS["IM_LIST_RECENT_CONNECT_ERROR"] = "Verbindung zu Ihrem Bitrix24 konnte nicht hergestellt werden. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.";
+$MESS["IM_LIST_RECENT_DELETED_MESSAGE"] = "Diese Nachricht wurde gelöscht.";
+$MESS["IM_LIST_RECENT_EMPTY"] = "Es gibt keine Chats.";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_INVITE_USERS"] = "Nutzer einladen";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_SUBTITLE_MSGVER_1"] = "Laden Sie andere Nutzer ein, um eine Diskussion zu starten.";
+$MESS["IM_LIST_RECENT_EMPTY_STATE_TITLE_MSGVER_1"] = "Hier gibt es noch keine Chats";
+$MESS["IM_LIST_RECENT_INVITATION_NOT_ACCEPTED_MSGVER_1"] = "Einladung noch nicht akzeptiert";
+$MESS["IM_LIST_RECENT_NEW_USER_POPUP_TEXT"] = "Ich bin Ihrem Team beigetreten.";
+$MESS["IM_LIST_RECENT_VACATION"] = "Im Urlaub bis #VACATION_END_DATE#";
+$MESS["IM_LIST_UNREAD_RECENT_EMPTY_STATE_SUBTITLE"] = "Hier werden Ihre ungelesenen Nachrichten angezeigt, wenn Sie welche haben.";
+$MESS["IM_LIST_UNREAD_RECENT_EMPTY_STATE_TITLE_MSGVER_1"] = "Keine ungelesenen Nachrichten";

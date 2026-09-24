@@ -1,0 +1,24 @@
+<?php
+$MESS["TASKS_UNSUPPORTED_FEATURE_OPEN_WEB"] = "In der Webversion öffnen";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_BUTTON"] = "In der Webversion öffnen";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_FOOTNOTE"] = "Analytik ist noch nicht in der mobilen Version verfügbar.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_DEEP_RESEARCH"] = "Profitieren Sie von Berichtsvorlagen";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_METRIC"] = "Achten Sie darauf, wann das Team den Erschöpfungszustand erreicht";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_ITEM_PROCESS"] = "Finden Sie Engpässe";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_QR_TITLE"] = "Analytik";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_ANALYTICS_TITLE"] = "Entscheidungsfindung anhand von Daten";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_BUTTON"] = "In der Webversion öffnen";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_FOOTNOTE"] = "Nutzen Sie die Webversion, um Flows hinzuzufügen.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_CUSTOMER_VISIBILITY"] = "Der Aufgabenbesitzer weiß über die verantwortliche Person, Frist und den Status";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TEAM_LOAD"] = "Die Teambelastung und Engpässe sind einfach zu erkennen";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_ITEM_TYPICAL_TASKS"] = "Gruppieren Sie ähnliche Aufgaben in einen Flow";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_QR_TITLE"] = "Flows";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_FLOWS_TITLE"] = "Aufgaben mit Flows automatisch verteilen und verfolgen";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_PROJECT_RESTRICTION_DESCRIPTION"] = "Zugriff auf das Projekt wurde verweigert, oder das Projekt wurde gelöscht.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_PROJECT_RESTRICTION_TITLE"] = "Das Projekt wurde nicht gefunden";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_FOOTNOTE"] = "Scrum ist noch nicht in der mobilen Version verfügbar.";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_BACKLOG"] = "Gemeinsames Backlog und Sprints";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_DESKTOP"] = "Fortschritt verfolgen";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_ITEM_PROCESS"] = "Nur aktuelle Aufgaben im Fokus";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_QR_TITLE"] = "Scrum";
+$MESS["TASKS_UNSUPPORTED_FEATURE_TYPE_SCRUM_TITLE"] = "Scrum zur Projektverwaltung nutzen";

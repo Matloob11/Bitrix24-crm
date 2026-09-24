@@ -1,0 +1,22 @@
+<?php
+$MESS["M_RP_PS_CASHBOX_CONNECTED"] = "Cajas registradoras en línea conectadas";
+$MESS["M_RP_PS_CASHBOX_NOT_CONNECTED"] = "Cajas registradoras en línea no conectadas";
+$MESS["M_RP_PS_CASHBOX_SETTINGS_QRAUTH_TITLE"] = "Editar cajas registradoras en línea";
+$MESS["M_RP_PS_NEXT_STEP"] = "Continuar";
+$MESS["M_RP_PS_PAY_SYSTEM_DESC"] = "Reciba pagos en línea de la manera que su cliente prefiera. Mejore la lealtad del cliente y aumente el promedio de ganancias.";
+$MESS["M_RP_PS_PAY_SYSTEM_NOT_WORK"] = "Sistemas de pago no conectados";
+$MESS["M_RP_PS_PAY_SYSTEM_SETTINGS_QRAUTH_TITLE"] = "Sistemas de pago";
+$MESS["M_RP_PS_PAY_SYSTEM_WORK"] = "Sistemas de pago conectados";
+$MESS["M_RP_PS_PROGRESS_BAR_TITLE"] = "Sistemas de pago y cajas registradoras en línea";
+$MESS["M_RP_PS_SETTINGS_BANNER_DESCRIPTION"] = "Este proceso no tardará mucho. Todo lo que debe hacer es iniciar sesión en su perfil de procesador de pagos.";
+$MESS["M_RP_PS_SETTINGS_BANNER_TITLE"] = "Conectar sistema de pago";
+$MESS["M_RP_PS_SETTINGS_BUTTON_TITLE"] = "Conectar";
+$MESS["M_RP_PS_SETTINGS_CHOOSE"] = "Seleccionar un sistema de pago";
+$MESS["M_RP_PS_SETTINGS_LINK_TITLE"] = "Configurar";
+$MESS["M_RP_PS_SETTINGS_OTHER"] = "Otro";
+$MESS["M_RP_PS_SETTINGS_RECOMMENDED"] = "Recomendado";
+$MESS["M_RP_PS_SETTINGS_TITLE"] = "Sistemas de pago";
+$MESS["M_RP_PS_SHOW_MORE"] = "Mostrar #COUNT# más";
+$MESS["M_RP_PS_SKIP_STEP"] = "Omitir este paso";
+$MESS["M_RP_PS_SKIP_STEP_DESC"] = "Puede omitir este paso en el futuro si los sistemas de pago requeridos están conectados y configurados";
+$MESS["M_RP_PS_TITLE"] = "Pago";

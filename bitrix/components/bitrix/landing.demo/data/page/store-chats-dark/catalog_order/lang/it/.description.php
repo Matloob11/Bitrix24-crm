@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_DEMO_STORE_CHATS_ORDER-BACK"] = "Indietro";
+$MESS["LANDING_DEMO_STORE_CHATS_ORDER-NAME"] = "Completa transazione";

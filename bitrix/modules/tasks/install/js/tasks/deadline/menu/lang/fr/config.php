@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_DAY"] = "1 jour";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_1_WEEK"] = "1 semaine";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_2_WEEKS"] = "2 semaines";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_3_DAYS"] = "3 jours";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_CUSTOM"] = "Personnalisée";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_EMPTY"] = "Pas de date limite";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_HINT"] = "Cette date sera définie comme la date limite par défaut pour toutes les nouvelles tâches que vous créerez. Vous pouvez la modifier à tout moment.";
+$MESS["TASKS_DEADLINE_MENU_DEFAULT_ITEM_TITLE"] = "Date limite par défaut";
+$MESS["TASKS_DEADLINE_MENU_ERROR_DESCRIPTION"] = "Veuillez recharger la page et réessayer.";
+$MESS["TASKS_DEADLINE_MENU_ERROR_TITLE"] = "Erreur";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DELIMITER"] = "Notification de date limite vide";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_DONT_SKIP"] = "Chaque fois qu'une tâche est créée";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_HINT"] = "Sélectionnez la façon dont vous souhaitez être informé(e) des dates limites vides dans les tâches que vous créez.";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOREVER"] = "Jamais";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_DAY"] = "Ne pas envoyer de rappel aujourd’hui";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_MONTH"] = "Ne pas envoyer de rappel ce mois-ci";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_SKIP_FOR_WEEK"] = "Ne pas envoyer de rappel cette semaine";
+$MESS["TASKS_DEADLINE_MENU_NOTIFICATION_ITEM_TITLE"] = "Notification de date limite vide";

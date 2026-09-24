@@ -1,0 +1,5 @@
+<?
+$MESS["LANDING_MENU_APPLY_BUTTON_LABEL"] = "Appliquer";
+$MESS["LANDING_MENU_CLOSE_BUTTON_LABEL"] = "Masquer le champ";
+$MESS["LANDING_MENU_CREATE_NEW_PAGE"] = "Nouvelle page";
+?>

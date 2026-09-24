@@ -1,0 +1,11 @@
+<?
+$MESS["CRM_INVOICE_STATUSN_D"] = "Non pagato";
+$MESS["CRM_INVOICE_STATUSN_F"] = "Pagato";
+$MESS["CRM_INVOICE_STATUSN_N"] = "Nuovo";
+$MESS["CRM_INVOICE_STATUSN_P"] = "Pagato";
+$MESS["CRM_INVOICE_STATUS_D"] = "Rifiutato";
+$MESS["CRM_INVOICE_STATUS_F"] = "Pagato";
+$MESS["CRM_INVOICE_STATUS_N"] = "Bozza";
+$MESS["CRM_INVOICE_STATUS_P"] = "Completato";
+$MESS["CRM_STATUS_TYPE_INVOICE_STATUS"] = "Stati fatture";
+?>

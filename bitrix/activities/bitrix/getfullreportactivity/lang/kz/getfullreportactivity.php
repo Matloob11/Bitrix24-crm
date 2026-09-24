@@ -1,0 +1,4 @@
+<?php
+$MESS["TIMEMAN_GET_FULL_REPORT_ACTIVITY_EMPLOYEE_COMMENT"] = "Қызметкердің пікірі";
+$MESS["TIMEMAN_GET_FULL_REPORT_ACTIVITY_ERROR_EMPTY_USER"] = "Есеп алу үшін қызметкер көрсетілмеген";
+$MESS["TIMEMAN_GET_FULL_REPORT_ACTIVITY_USER_PROPERTY"] = "Қызметкер";

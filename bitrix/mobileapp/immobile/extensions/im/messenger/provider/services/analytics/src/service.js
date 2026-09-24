@@ -1,0 +1,1042 @@
+/**
+ * @module im/messenger/provider/services/analytics/service
+ */
+jn.define('im/messenger/provider/services/analytics/service', (require, exports, module) => {
+	const { AnalyticsEvent } = require('analytics');
+
+	const { Analytics } = require('im/messenger/const');
+	const { DialogHelper } = require('im/messenger/lib/helper');
+	const { serviceLocator } = require('im/messenger/lib/di/service-locator');
+	const { AnalyticsHelper } = require('im/messenger/provider/services/analytics/helper');
+
+	const { MessageDelete } = require('im/messenger/provider/services/analytics/message-delete');
+	const { ChatDelete } = require('im/messenger/provider/services/analytics/chat-delete');
+	const { DialogEdit } = require('im/messenger/provider/services/analytics/dialog-edit');
+	const { ChatCreate } = require('im/messenger/provider/services/analytics/chat-create');
+	const { Messenger } = require('im/messenger/provider/services/analytics/messenger');
+	const { CollabEntities } = require('im/messenger/provider/services/analytics/collab-entities');
+	const { TariffRestrictions } = require('im/messenger/provider/services/analytics/tariff-restrictions');
+	const { FileSending } = require('im/messenger/provider/services/analytics/file-sending');
+	const { DownloadFile } = require('im/messenger/provider/services/analytics/download-file');
+	const { EntityManager } = require('im/messenger/provider/services/analytics/entity-manager');
+	const { ImagePicker } = require('im/messenger/provider/services/analytics/image-picker');
+	const { MessagePin } = require('im/messenger/provider/services/analytics/message-pin');
+	const { MessageType } = require('im/messenger/provider/services/analytics/message-type');
+	const { VoteAnalytics } = require('im/messenger/provider/services/analytics/vote');
+	const { MessageCreateMenu } = require('im/messenger/provider/services/analytics/message-create-menu');
+	const { ChatOpen } = require('im/messenger/provider/services/analytics/chat-open');
+	const { Suggests } = require('im/messenger/provider/services/analytics/suggests');
+	const { ChatPin } = require('im/messenger/provider/services/analytics/chat-pin');
+	const { NavigationTab } = require('im/messenger/provider/services/analytics/navigation-tab');
+	const { AudioAnalytics } = require('im/messenger/provider/services/analytics/src/audio');
+	const { AssistantButtonAnalytics } = require('im/messenger/provider/services/analytics/src/assistant-button');
+	const { VideoNoteAnalytics } = require('im/messenger/provider/services/analytics/video-note');
+	const { NotificationAnalytics } = require('im/messenger/provider/services/analytics/src/notification');
+	const { Reactions } = require('im/messenger/provider/services/analytics/src/reaction');
+	const { Mention } = require('im/messenger/provider/services/analytics/src/mention');
+	const { StickerAnalytics } = require('im/messenger/provider/services/analytics/src/sticker');
+	const { DialogTextFormatAnalytics } = require('im/messenger/provider/services/analytics/src/dialog-text-format');
+	const { SearchAnalytics } = require('im/messenger/provider/services/analytics/src/search');
+	const { RecentAnalytics } = require('im/messenger/provider/services/analytics/src/recent');
+	const { MessageMenu } = require('im/messenger/provider/services/analytics/src/message-menu');
+	const { FolderAnalytics } = require('im/messenger/provider/services/analytics/src/folder');
+	const { GuestAnalytics } = require('im/messenger/provider/services/analytics/src/guest');
+
+	/** @type {AnalyticsService} */
+	let instance = null;
+
+	/**
+	 * @class AnalyticsService
+	 */
+	class AnalyticsService
+	{
+		/** @type {VideoNoteAnalytics} */
+		#videoNote;
+		/** @type {AudioAnalytics} */
+		#audio;
+		/** @type {MessageDelete} */
+		#messageDelete;
+		/** @type {ChatDelete} */
+		#chatDelete;
+		/** @type {DialogEdit} */
+		#dialogEdit;
+		/** @type {ChatCreate} */
+		#chatCreate;
+		/** @type {CollabEntities} */
+		#collabEntities;
+		/** @type {MessengerCoreStore} */
+		#store;
+		/** @type {TariffRestrictions} */
+		#tariffRestrictions;
+		/** @type {FileSending} */
+		#fileSending;
+		/** @type {DownloadFile} */
+		#downloadFile;
+		/** @type {EntityManager} */
+		#entityManager;
+		/** @type {ImagePicker} */
+		#imagePicker;
+		/** @type {MessagePin} */
+		#messagePin;
+		/** @type {MessageType} */
+		#messageType;
+		/** @type {VoteAnalytics} */
+		#vote;
+		/** @type {Messenger} */
+		#messenger;
+		/** @type {MessageCreateMenu} */
+		#messageCreateMenu;
+		/** @type {ChatOpen} */
+		#chatOpen;
+		/** @type {Suggests} */
+		#suggests;
+		/** @type {ChatPin} */
+		#chatPin;
+		/** @type {NavigationTab} */
+		#navigation;
+		/** @type {AssistantButtonAnalytics} */
+		#assistantButtonAnalytics;
+		/** @type {NotificationAnalytics} */
+		#notificationAnalytics;
+		/** @type {RecentAnalytics} */
+		#recentFilter;
+		/** @type {Reactions} */
+		#reactions;
+		/** @type {Mention} */
+		#mention;
+		/** @type {StickerAnalytics} */
+		#sticker;
+		/** @type {DialogTextFormatAnalytics} */
+		#dialogTextFormat;
+		/** @type {SearchAnalytics} */
+		#search;
+		/** @type {MessageMenu} */
+		#messageMenu;
+		/** @type {FolderAnalytics} */
+		#folder;
+		/** @type {GuestAnalytics} */
+		#guest;
+
+		static getInstance()
+		{
+			instance ??= new this();
+
+			return instance;
+		}
+
+		/** @protected */
+		get messageDelete()
+		{
+			this.#messageDelete = this.#messageDelete ?? new MessageDelete();
+
+			return this.#messageDelete;
+		}
+
+		/** @protected */
+		get chatDelete()
+		{
+			this.#chatDelete = this.#chatDelete ?? new ChatDelete();
+
+			return this.#chatDelete;
+		}
+
+		/** @protected */
+		get dialogEdit()
+		{
+			this.#dialogEdit = this.#dialogEdit ?? new DialogEdit();
+
+			return this.#dialogEdit;
+		}
+
+		/** @protected */
+		get chatCreate()
+		{
+			this.#chatCreate = this.#chatCreate ?? new ChatCreate();
+
+			return this.#chatCreate;
+		}
+
+		/** @protected */
+		get collabEntities()
+		{
+			this.#collabEntities = this.#collabEntities ?? new CollabEntities();
+
+			return this.#collabEntities;
+		}
+
+		/** @protected */
+		get store()
+		{
+			this.#store = this.#store ?? serviceLocator.get('core').getStore();
+
+			return this.#store;
+		}
+
+		/** @protected */
+		get tariffRestrictions()
+		{
+			this.#tariffRestrictions = this.#tariffRestrictions ?? new TariffRestrictions();
+
+			return this.#tariffRestrictions;
+		}
+
+		/** @protected */
+		get fileSending()
+		{
+			this.#fileSending = this.#fileSending ?? new FileSending();
+
+			return this.#fileSending;
+		}
+
+		/** @protected */
+		get downloadFile()
+		{
+			this.#downloadFile = this.#downloadFile ?? new DownloadFile();
+
+			return this.#downloadFile;
+		}
+
+		/** @protected */
+		get entityManager()
+		{
+			this.#entityManager = this.#entityManager ?? new EntityManager();
+
+			return this.#entityManager;
+		}
+
+		/** @protected */
+		get imagePicker()
+		{
+			this.#imagePicker = this.#imagePicker ?? new ImagePicker();
+
+			return this.#imagePicker;
+		}
+
+		/** @protected */
+		get messagePin()
+		{
+			this.#messagePin = this.#messagePin ?? new MessagePin();
+
+			return this.#messagePin;
+		}
+
+		/** @protected */
+		get messageType()
+		{
+			this.#messageType = this.#messageType ?? new MessageType();
+
+			return this.#messageType;
+		}
+
+		/** @protected */
+		get vote()
+		{
+			this.#vote = this.#vote ?? new VoteAnalytics();
+
+			return this.#vote;
+		}
+
+		/** @protected */
+		get messenger()
+		{
+			this.#messenger = this.#messenger ?? new Messenger();
+
+			return this.#messenger;
+		}
+
+		/** @protected */
+		get messageCreateMenu()
+		{
+			this.#messageCreateMenu = this.#messageCreateMenu ?? new MessageCreateMenu();
+
+			return this.#messageCreateMenu;
+		}
+
+		/** @protected */
+		get chatOpen()
+		{
+			this.#chatOpen = this.#chatOpen ?? new ChatOpen();
+
+			return this.#chatOpen;
+		}
+
+		/**
+		 * @protected
+		 * @return {Suggests}
+		 */
+		get suggests()
+		{
+			this.#suggests = this.#suggests ?? new Suggests();
+
+			return this.#suggests;
+		}
+
+		/** @protected */
+		get chatPin()
+		{
+			this.#chatPin = this.#chatPin ?? new ChatPin();
+
+			return this.#chatPin;
+		}
+
+		/** @protected */
+		get videoNote()
+		{
+			this.#videoNote = this.#videoNote ?? new VideoNoteAnalytics();
+
+			return this.#videoNote;
+		}
+
+		get audio()
+		{
+			this.#audio = this.#audio ?? new AudioAnalytics();
+
+			return this.#audio;
+		}
+
+		get notificationAnalytics()
+		{
+			this.#notificationAnalytics = this.#notificationAnalytics ?? new NotificationAnalytics();
+
+			return this.#notificationAnalytics;
+		}
+
+		/** @protected */
+		get assistantButtonAnalytics()
+		{
+			this.#assistantButtonAnalytics = this.#assistantButtonAnalytics ?? new AssistantButtonAnalytics();
+
+			return this.#assistantButtonAnalytics;
+		}
+
+		/**
+		 * @return {RecentAnalytics}
+		 */
+		get recentAnalytics()
+		{
+			this.#recentFilter = this.#recentFilter ?? new RecentAnalytics();
+
+			return this.#recentFilter;
+		}
+
+		get reactions()
+		{
+			this.#reactions = this.#reactions ?? new Reactions();
+
+			return this.#reactions;
+		}
+
+		/**
+		 * @return {Mention}
+		 */
+		get mention()
+		{
+			this.#mention = this.#mention ?? new Mention();
+
+			return this.#mention;
+		}
+
+		/**
+		 * @return {StickerAnalytics}
+		 */
+		get stickerAnalytics()
+		{
+			this.#sticker = this.#sticker ?? new StickerAnalytics();
+
+			return this.#sticker;
+		}
+
+		/**
+		 * @return {DialogTextFormatAnalytics}
+		 */
+		get dialogTextFormatAnalytics()
+		{
+			this.#dialogTextFormat = this.#dialogTextFormat ?? new DialogTextFormatAnalytics();
+
+			return this.#dialogTextFormat;
+		}
+
+		/**
+		 * @return {SearchAnalytics}
+		 */
+		get searchAnalytics()
+		{
+			this.#search = this.#search ?? new SearchAnalytics();
+
+			return this.#search;
+		}
+
+		/**
+		 * @return {MessageMenu}
+		 */
+		get messageMenuAnalytics()
+		{
+			this.#messageMenu = this.#messageMenu ?? new MessageMenu();
+
+			return this.#messageMenu;
+		}
+
+		/** @protected */
+		get guest()
+		{
+			this.#guest = this.#guest ?? new GuestAnalytics();
+
+			return this.#guest;
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendCopyGuestLink(dialogId)
+		{
+			return this.guest.sendCopyGuestLink(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendViewJoinPopup(dialogId)
+		{
+			return this.guest.sendViewJoinPopup(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} recordLength
+		 */
+		sendRecordAudioInChat({ dialogId, recordLength })
+		{
+			return this.audio.sendRecordAudioInChat({ dialogId, recordLength });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendTapToPlayVideoNote(dialogId)
+		{
+			return this.videoNote.sendTapToPlay(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendTapToPauseVideoNote(dialogId)
+		{
+			return this.videoNote.sendTapToPause(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} duration
+		 */
+		sendRecordVideoNote(dialogId, duration)
+		{
+			return this.videoNote.sendRecord(dialogId, duration);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendClickToPlayAudioInChat({ dialogId })
+		{
+			return this.audio.sendClickToPlayAudioInChat({ dialogId });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendClickToPauseAudioInChat({ dialogId })
+		{
+			return this.audio.sendClickToPauseAudioInChat({ dialogId });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {AudioRate} speed
+		 */
+		sendClickToChangeAudioSpeedInChat({ dialogId, speed })
+		{
+			return this.audio.sendClickToChangeAudioSpeedInChat({ dialogId, speed });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {?string} status
+		 */
+		sendViewTranscriptionInChat({ dialogId, status = Analytics.Status.success })
+		{
+			return this.audio.sendViewTranscriptionInChat({ dialogId, status });
+		}
+
+		/** @protected */
+		get navigation()
+		{
+			this.#navigation = this.#navigation ?? new NavigationTab();
+
+			return this.#navigation;
+		}
+
+		sendMessageDeleteActionClicked({ messageId, dialogId, isNestedSection })
+		{
+			return this.messageDelete.sendMessageDeleteActionClicked({ messageId, dialogId, isNestedSection });
+		}
+
+		sendMessageDeletingCanceled({ messageId, dialogId })
+		{
+			return this.messageDelete.sendMessageDeletingCanceled({ messageId, dialogId });
+		}
+
+		sendToastShownMessageNotFound({ dialogId, context })
+		{
+			return this.messageDelete.sendToastShownMessageNotFound({ dialogId, context });
+		}
+
+		sendToastShownChannelPublicationNotFound({ chatId, parentChatId })
+		{
+			return this.messageDelete.sendToastShownChannelPublicationNotFound({ chatId, parentChatId });
+		}
+
+		sendChatDeletePopupShown({ dialogId })
+		{
+			return this.chatDelete.sendChatDeletePopupShown({ dialogId });
+		}
+
+		sendChatDeleteCanceled({ dialogId })
+		{
+			return this.chatDelete.sendChatDeleteCanceled({ dialogId });
+		}
+
+		sendChatDeleteConfirmed({ dialogId })
+		{
+			return this.chatDelete.sendChatDeleteConfirmed({ dialogId });
+		}
+
+		sendToastShownChatDelete({ chatId, chatType, isChatOpened = false })
+		{
+			return this.chatDelete.sendToastShownChatDelete({
+				chatId,
+				chatType,
+				isChatOpened,
+			});
+		}
+
+		sendCollabEntityOpened({ dialogId, entityType })
+		{
+			return this.collabEntities.sendCollabEntityOpened({ dialogId, entityType });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} section
+		 */
+		sendChatOpen({ dialogId, context })
+		{
+			return this.chatOpen.sendChatOpen({ dialogId, context });
+		}
+
+		sendPinChatNotes()
+		{
+			return this.chatPin.sendPinChatNotes();
+		}
+
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} [context]
+		 * @param {ModesState} [modesState]
+		 */
+		sendOpenCopilotDialog({ dialogId, context, modesState })
+		{
+			return this.chatOpen.sendOpenCopilotDialog({ dialogId, context, modesState });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendOpenAiAssistantDialog({ dialogId })
+		{
+			return this.chatOpen.sendOpenAiAssistantDialog({ dialogId });
+		}
+
+		sendUserAddButtonClicked({ dialogId })
+		{
+			const chatData = this.store.getters['dialoguesModel/getById'](dialogId);
+
+			const helper = DialogHelper.createByModel(chatData);
+			if (!helper)
+			{
+				return;
+			}
+
+			const analytics = new AnalyticsEvent()
+				.setTool(Analytics.Tool.im)
+				.setCategory(AnalyticsHelper.getCategoryByChatType(chatData.type))
+				.setEvent(Analytics.Event.clickAddUser)
+				.setSection(Analytics.Section.chatSidebar)
+				.setP1(AnalyticsHelper.getP1ByDialog(chatData))
+				.setP2(AnalyticsHelper.getP2ByUserType())
+				.setP5(AnalyticsHelper.getFormattedChatId(chatData.chatId))
+			;
+
+			if (helper.isCollab)
+			{
+				analytics.setP4(AnalyticsHelper.getFormattedCollabIdByDialogId(chatData.dialogId));
+			}
+
+			analytics.send();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendDialogEditHeaderMenuClick(dialogId)
+		{
+			return this.dialogEdit.sendDialogEditHeaderMenuClick(dialogId);
+		}
+
+		/**
+		 * @param {DialogId|DialoguesModelState} dialog
+		 */
+		sendDialogEditButtonDoneDialogInfoClick(dialog)
+		{
+			return this.dialogEdit.sendDialogEditButtonDoneDialogInfoClick(dialog);
+		}
+
+		/**
+		 * @param {{category, type, section}} params
+		 */
+		sendStartCreation(params)
+		{
+			return this.chatCreate.sendStartCreation(params);
+		}
+
+		/**
+		 * @param {{chatId: number}} params
+		 */
+		sendCreateCopilotDialog(params)
+		{
+			return this.chatCreate.sendCreateCopilotDialog(params);
+		}
+
+		/**
+		 * @param {{dialog: DialoguesModelState|{}}} params
+		 */
+		sendAnalyticsShowBannerByStart(params)
+		{
+			return this.tariffRestrictions.sendAnalyticsShowBannerByStart(params);
+		}
+
+		/**
+		 * @param {AnalyticsEvent} params
+		 */
+		sendAnalyticsOpenPlanLimitWidget(params)
+		{
+			return this.tariffRestrictions.sendAnalyticsOpenPlanLimitWidget(params);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} filesCount
+		 */
+		sendToastShownGalleryLimitExceeded({ dialogId, filesCount })
+		{
+			return this.fileSending.sendToastShownGalleryLimitExceeded({ dialogId, filesCount });
+		}
+
+		/**
+		 * @param {string} temporaryMessageId
+		 * @param {string} fileId
+		 */
+		async sendFileUploadCancel({ temporaryMessageId, fileId })
+		{
+			return this.fileSending.sendFileUploadCancel({ temporaryMessageId, fileId });
+		}
+
+		/**
+		 * @param {sendAnalyticsParams} params
+		 */
+		sendDownloadToDevice(params)
+		{
+			return this.downloadFile.sendDownloadToDevice(params);
+		}
+
+		/**
+		 * @param {sendAnalyticsParams} params
+		 */
+		sendDownloadToDisk(params)
+		{
+			return this.downloadFile.sendDownloadToDisk(params);
+		}
+
+		/**
+		 * @param {sendAnalyticsParams} params
+		 */
+		sendDownloadError(params)
+		{
+			return this.downloadFile.sendDownloadError(params);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendOpenCreateTask(dialogId)
+		{
+			return this.entityManager.sendClickToOpenCreateTask(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendOpenCreateMeeting(dialogId)
+		{
+			return this.entityManager.sendClickToOpenCreateMeeting(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendShowImagePicker(dialogId)
+		{
+			return this.imagePicker.sendShowImagePicker(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} chatId
+		 * @param {boolean} isNestedSection
+		 */
+		sendMessagePin({ dialogId, chatId, isNestedSection })
+		{
+			return this.messagePin.sendMessagePin({ dialogId, chatId, isNestedSection });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} chatId
+		 * @param {boolean} isNestedSection
+		 * @param {boolean} isContextMenu
+		 */
+		sendMessageUnpin({ dialogId, chatId, isNestedSection, isContextMenu })
+		{
+			return this.messagePin.sendMessageUnpin({ dialogId, chatId, isNestedSection, isContextMenu });
+		}
+
+		sendTypeMessageChatNotes()
+		{
+			return this.messageType.sendTypeMessageChatNotes();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendPinListOpened({ dialogId })
+		{
+			return this.messagePin.sendPinListOpened({ dialogId });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendPinnedMessageLimitException({ dialogId })
+		{
+			return this.messagePin.sendPinnedMessageLimitException({ dialogId });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendOpenCreateVote(dialogId)
+		{
+			this.vote.sendClickToOpenCreateVote(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} voteId
+		 * @param {Object} voteData
+		 */
+		sendOnVotePublished(dialogId, voteId, voteData)
+		{
+			this.vote.sendOnVotePublished(dialogId, voteId, voteData);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} voteId
+		 */
+		sendVoteVoted(dialogId, voteId)
+		{
+			this.vote.sendVoteVoted(dialogId, voteId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} voteId
+		 * @param {object} params
+		 */
+		sendVoteFinished(dialogId, voteId, params)
+		{
+			this.vote.sendVoteFinished(dialogId, voteId, params);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} voteId
+		 * @param {object} params
+		 */
+		sendVoteCancelled(dialogId, voteId, params)
+		{
+			this.vote.sendVoteCancelled(dialogId, voteId, params);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} voteId
+		 */
+		sendVoteResultLinkCopied(dialogId, voteId)
+		{
+			this.vote.sendVoteResultLinkCopied(dialogId, voteId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {number} voteId
+		 * @param {boolean} isNestedSection
+		 */
+		sendVoteMessageLinkCopied(dialogId, voteId, isNestedSection)
+		{
+			this.vote.sendVoteMessageLinkCopied(dialogId, voteId, isNestedSection);
+		}
+
+		sendOpenDialogCreator()
+		{
+			this.messenger.sendOpenDialogCreator();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendOpenMessageCreateMenu(dialogId)
+		{
+			this.messageCreateMenu.sendOpenCreateMenu(dialogId);
+		}
+
+		/**
+		 * @param {string} currentTab
+		 * @param {object} analyticsOptions
+		 */
+		sendChangeNavigationTab(currentTab, analyticsOptions)
+		{
+			this.navigation.sendChangeTab(currentTab, analyticsOptions);
+		}
+
+		sendOpenNotifications()
+		{
+			this.notificationAnalytics.sendOpenNotifications();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {boolean} isActive
+		 */
+		sendToggleReasoning({ dialogId, isActive })
+		{
+			this.assistantButtonAnalytics.sendToggleReasoning({ dialogId, isActive });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendClickMCPIntegrations(dialogId)
+		{
+			this.assistantButtonAnalytics.sendClickMCPIntegrations(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {ModesState} [modesState]
+		 */
+		sendSuggestsShow({ dialogId, modesState })
+		{
+			this.suggests.sendSuggestsShow({ dialogId, modesState });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} suggestText
+		 * @param {ModesState} [modesState]
+		 */
+		sendSuggestsClick({ dialogId, suggestText, modesState })
+		{
+			this.suggests.sendSuggestsClick({ dialogId, suggestText, modesState });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} mode - one of Analytics.ChatMode
+		 * @param {ModesState} [modesState]
+		 */
+		sendModeChange({ dialogId, mode, modesState })
+		{
+			this.assistantButtonAnalytics.sendModeChange({ dialogId, mode, modesState });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {ModesState} [modesState]
+		 */
+		sendRoleChange({ dialogId, modesState })
+		{
+			this.assistantButtonAnalytics.sendRoleChange({ dialogId, modesState });
+		}
+
+		/**
+		 * @param {string|number} dialogId
+		 */
+		sendAnalyticsExpandReactionList(dialogId)
+		{
+			this.reactions.sendExpandReactionList(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendAddParticipantFromMentionPanel(dialogId)
+		{
+			this.mention.sendAddParticipant(dialogId);
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendOpenStickerSelector(dialogId)
+		{
+			this.stickerAnalytics.sendOpenStickerSelector(dialogId);
+		}
+
+		sendCreateStickerPack()
+		{
+			this.stickerAnalytics.sendCreateStickerPack();
+		}
+
+		sendAddStickerPack()
+		{
+			this.stickerAnalytics.sendAddStickerPack();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} actionId
+		 */
+		sendUseTextFormatting(dialogId, actionId)
+		{
+			this.dialogTextFormatAnalytics.sendUseTextFormatting(dialogId, actionId);
+		}
+
+		sendOpenSearch()
+		{
+			this.searchAnalytics.sendOpenSearch();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} recentSelectorSection
+		 */
+		sendClickRecentSuggest(dialogId, recentSelectorSection)
+		{
+			this.searchAnalytics.sendClickRecentSuggest(dialogId, recentSelectorSection);
+		}
+
+		sendStartSearch()
+		{
+			this.searchAnalytics.sendStartSearch();
+		}
+
+		/**
+		 * @param {boolean} hasResult
+		 */
+		sendSearchResult(hasResult)
+		{
+			this.searchAnalytics.sendSearchResult(hasResult);
+		}
+
+		sendCancelSearch()
+		{
+			this.searchAnalytics.sendCancelSearch();
+		}
+
+		/**
+		 * @param {number} position
+		 */
+		sendSelectSearchResult(position)
+		{
+			this.searchAnalytics.sendSelectSearchResult(position);
+		}
+
+		/**
+		 * @return {FolderAnalytics}
+		 */
+		get folderAnalytics()
+		{
+			this.#folder = this.#folder ?? new FolderAnalytics();
+
+			return this.#folder;
+		}
+
+		/**
+		 * @param {string} subSection
+		 */
+		sendClickCreateFolder(subSection)
+		{
+			this.folderAnalytics.sendClickCreateFolder(subSection);
+		}
+
+		/**
+		 * @param {object} params
+		 * @param {number} params.folderId
+		 * @param {string} params.subSection
+		 */
+		sendClickDeleteFolder({ folderId, subSection })
+		{
+			this.folderAnalytics.sendClickDelete({ folderId, subSection });
+		}
+
+		/**
+		 * @param {object} params
+		 * @param {DialogId} params.dialogId
+		 * @param {string} params.subSection
+		 */
+		sendAddToFolder({ dialogId, subSection })
+		{
+			this.folderAnalytics.sendAddToFolder({ dialogId, subSection });
+		}
+
+		/**
+		 * @param {string} subSection
+		 */
+		sendOpenFolderList(subSection)
+		{
+			this.folderAnalytics.sendOpenList(subSection);
+		}
+
+		/**
+		 * @param {string} subSection
+		 */
+		sendClickEditFolder(subSection)
+		{
+			this.folderAnalytics.sendClickEdit(subSection);
+		}
+
+		/**
+		 * @param {object} params
+		 * @param {number} params.folderId
+		 */
+		sendOpenFolder({ folderId })
+		{
+			this.folderAnalytics.sendOpenFolder({ folderId });
+		}
+
+	}
+
+	module.exports = { AnalyticsService };
+});

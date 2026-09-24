@@ -1,0 +1,21 @@
+<?php
+$MESS["SIGN_SERVICE_DEFAULT_ERROR"] = "Não é possível concluir a ação. Tente novamente mais tarde.";
+$MESS["SIGN_SERVICE_DEFAULT_ERROR_WITH_CODE"] = "Não é possível executar a ação. Tente novamente mais tarde (código de erro: #CODE#).";
+$MESS["SIGN_SERVICE_ERROR_BLANK_DELETE_FAILED"] = "Não é possível excluir o modelo. Tente novamente mais tarde.";
+$MESS["SIGN_SERVICE_ERROR_DELETE_DOCUMENTS_EXISTS"] = "Não é possível excluir este modelo porque há documentos baseados nele.";
+$MESS["SIGN_SERVICE_ERROR_DOCUMENT_SIGNING_EXPIRED"] = "O prazo de assinatura do documento venceu.";
+$MESS["SIGN_SERVICE_ERROR_DOCUMENT_TO_MANY_MEMBERS"] = "São necessárias duas partes signatárias.";
+$MESS["SIGN_SERVICE_ERROR_EMPTY_MEMBER_CHANNEL"] = "Especifique o número de telefone ou e-mail da parte signatária.";
+$MESS["SIGN_SERVICE_ERROR_FIELD_FILE_NOT_IMAGE"] = "Apenas arquivos de imagem podem ser adicionados a este campo.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TOO_BIG"] = "Tamanho máximo de arquivo excedido.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TOO_BIG_SIZE_MSG_1"] = "O arquivo é muito grande. O limite máximo de tamanho não pode exceder #SIZE# MB.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TO_MANY_PAGES_COUNT"] = "O número máximo de páginas do arquivo não pode exceder #COUNT#.";
+$MESS["SIGN_SERVICE_ERROR_MEMBERS_NOT_READY_FOR_RESEND"] = "O documento não está pronto para ser enviado.";
+$MESS["SIGN_SERVICE_ERROR_MEMBER_INVALID_PHONE"] = "Digite um número de telefone correto para usar o SMS ou selecione a opção de e-mail.";
+$MESS["SIGN_SERVICE_ERROR_MEMBER_PHONE_UNSUPPORTED_COUNTRY_CODE"] = "Este número de telefone está temporariamente não compatível. Use o e-mail para enviar o documento para assinatura.";
+$MESS["SIGN_SERVICE_ERROR_NO_FILE_TYPE"] = "Este formato de arquivo não é compatível. Você pode adicionar arquivos nos formatos PDF, DOC, DOCX, RTF, ODT, JPG e PNG.";
+$MESS["SIGN_SERVICE_ERROR_PREVIOUS_MEMBER_NOT_DONE"] = "Por favor, aguarde, uma das partes signatárias ainda não assinou o documento.";
+$MESS["SIGN_SERVICE_ERROR_PROTECTED_PDF"] = "O arquivo é protegido por senha e não pode ser carregado.";
+$MESS["SIGN_SERVICE_ERROR_REQUIRED_FIELDS_VALIDATION"] = "Um ou mais campos obrigatórios estão vazios.";
+$MESS["SIGN_SERVICE_ERROR_SMS_LIMIT_EXCEEDED"] = "Máximo de novos SMS excedido.";
+$MESS["SIGN_SERVICE_ERROR_TOO_MANY_FILES_COUNT"] = "Você pode enviar para assinatura um documento por vez em PDF, DOC, DOCX, RTF ou ODT, ou até %imageCountLimit% imagens em JPG/PNG.";

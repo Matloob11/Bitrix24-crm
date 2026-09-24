@@ -1,0 +1,378 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Intranet\Service\UseCase\Invitation;
+
+use Bitrix\Intranet;
+use Bitrix\Intranet\CurrentUser;
+use Bitrix\Intranet\Dto;
+use Bitrix\Intranet\Command;
+use Bitrix\Intranet\Entity\Collection\UserCollection;
+use Bitrix\Intranet\Entity\Type\Email;
+use Bitrix\Intranet\Internal\Integration\Socialnetwork\CollabService;
+use Bitrix\Intranet\Public\Type\EmailInvitation;
+use Bitrix\Intranet\Entity\Type\InvitationsContainer;
+use Bitrix\Intranet\Entity\Type\Phone;
+use Bitrix\Intranet\Public\Type\PhoneInvitation;
+use Bitrix\Intranet\Entity\User;
+use Bitrix\Intranet\Enum\InvitationStatus;
+use Bitrix\Intranet\Service\ServiceContainer;
+use Bitrix\Main\ArgumentException;
+use Bitrix\Main\ArgumentOutOfRangeException;
+use Bitrix\Main\Config\Option;
+use Bitrix\Main\EventManager;
+use Bitrix\Main\Loader;
+use Bitrix\Main\LoaderException;
+use Bitrix\Main\ObjectPropertyException;
+use Bitrix\Main\Result;
+use Bitrix\Intranet\Contract;
+use Bitrix\Main\SystemException;
+use Bitrix\Main\UserTable;
+use Bitrix\Socialnetwork\Collab\Control\Event\CollabUpdateEvent;
+
+class BulkInviteUsersToCollabAndPortal
+{
+	private Contract\Repository\UserRepository $userRepository;
+	private bool $currentUserIsIntranet;
+	private int $currentUserId;
+
+	/**
+	 * @throws ArgumentOutOfRangeException
+	 */
+	public function __construct(?int $userId = null)
+	{
+		$this->userRepository = ServiceContainer::getInstance()->userRepository();
+		$this->currentUserId = $userId ?? (int)CurrentUser::get()->getId();
+		$this->currentUserIsIntranet = (new Intranet\User($this->currentUserId ))->isIntranet();
+	}
+
+	/**
+	 * @throws LoaderException
+	 * @throws ArgumentException
+	 * @throws ObjectPropertyException
+	 * @throws SystemException
+	 */
+	public function execute(
+		int $collabId,
+		Dto\Invitation\UserInvitationDtoCollection $userInvitationDtoCollection,
+	): Result
+	{
+		[
+			$userInvitationDtoCollectionByEmail,
+			$userInvitationDtoCollectionByPhone,
+		] = $this->splitUserInvitationDtoCollection($userInvitationDtoCollection);
+
+		$userCollectionRegisteredByEmail = $this->getRegisteredUserCollectionByEmails(
+			$userInvitationDtoCollectionByEmail->getEmails(),
+		);
+		$userCollectionRegisteredByPhone = $this->getRegisteredUserCollectionByPhones(
+			$userInvitationDtoCollectionByPhone->getPhones(),
+		);
+
+		$invitationToPortalAndGroupCollection = new Intranet\Public\Type\Collection\InvitationCollection();
+		$userCollectionForInviteOnlyToGroup = new UserCollection();
+
+		$this->distributeEmailDtoCollection(
+			$userInvitationDtoCollectionByEmail,
+			$userCollectionRegisteredByEmail,
+			$invitationToPortalAndGroupCollection,
+			$userCollectionForInviteOnlyToGroup,
+		);
+		$this->distributePhoneDtoCollection(
+			$userInvitationDtoCollectionByPhone,
+			$userCollectionRegisteredByPhone,
+			$invitationToPortalAndGroupCollection,
+			$userCollectionForInviteOnlyToGroup,
+		);
+
+		return $this->executeInvite(
+			$collabId,
+			$invitationToPortalAndGroupCollection,
+			$userCollectionForInviteOnlyToGroup,
+		);
+	}
+
+	/**
+	 * @param Dto\Invitation\UserInvitationDtoCollection $collection
+	 * @return array{0: Dto\Invitation\UserInvitationDtoCollection, 1: Dto\Invitation\UserInvitationDtoCollection}
+	 * @throws ArgumentException
+	 */
+	private function splitUserInvitationDtoCollection(Dto\Invitation\UserInvitationDtoCollection $collection): array
+	{
+		$collectionForEmailInvitation = new Dto\Invitation\UserInvitationDtoCollection();
+		$collectionForPhoneInvitation = new Dto\Invitation\UserInvitationDtoCollection();
+
+		$collection->forEach(
+			function (
+				Dto\Invitation\UserInvitationDto $dto,
+			) use ($collectionForEmailInvitation, $collectionForPhoneInvitation) {
+				if ($dto->email instanceof Email)
+				{
+					$collectionForEmailInvitation->add($dto);
+				}
+				elseif ($dto->phone instanceof Phone)
+				{
+					$collectionForPhoneInvitation->add($dto);
+				}
+			},
+		);
+
+		return [$collectionForEmailInvitation, $collectionForPhoneInvitation];
+	}
+
+	private function distributeEmailDtoCollection(
+		Dto\Invitation\UserInvitationDtoCollection $userInvitationDtoCollectionByEmail,
+		UserCollection $userCollectionRegisteredByEmail,
+		Intranet\Public\Type\Collection\InvitationCollection $invitationToPortalAndGroupCollection,
+		UserCollection $userCollectionForInviteOnlyToGroup,
+	): void
+	{
+		$userInvitationDtoCollectionByEmail->forEach(
+			function (
+				Dto\Invitation\UserInvitationDto $userInvitationDto,
+			) use ($userCollectionRegisteredByEmail, $invitationToPortalAndGroupCollection, $userCollectionForInviteOnlyToGroup) {
+				$foundUser = null;
+
+				$userCollectionRegisteredByEmail->forEach(
+					function (User $user) use ($userInvitationDto, &$foundUser) {
+						if (mb_strtolower($user->getEmail()) === mb_strtolower($userInvitationDto->email->toLogin()))
+						{
+							$userInvitationDto->invitationStatus = $user->getInviteStatus();
+							$foundUser = $user;
+						}
+					},
+				);
+
+				if (!$foundUser || $this->shouldInviteByUser($foundUser))
+				{
+					$invitationToPortalAndGroupCollection->add(new EmailInvitation(
+						$userInvitationDto->email->toLogin(),
+						$userInvitationDto->name,
+						$userInvitationDto->lastName,
+						null,
+						$userInvitationDto->languageId,
+					));
+				}
+				else
+				{
+					$userCollectionForInviteOnlyToGroup->add($foundUser);
+				}
+			},
+		);
+	}
+
+	private function distributePhoneDtoCollection(
+		Dto\Invitation\UserInvitationDtoCollection $userInvitationDtoCollectionByPhone,
+		UserCollection $userCollectionRegisteredByPhone,
+		Intranet\Public\Type\Collection\InvitationCollection $invitationToPortalAndGroupCollection,
+		UserCollection $userCollectionForInviteOnlyToGroup,
+	): void
+	{
+		$userInvitationDtoCollectionByPhone->forEach(
+			function (
+				Dto\Invitation\UserInvitationDto $userInvitationDto,
+			) use ($userCollectionRegisteredByPhone, $invitationToPortalAndGroupCollection, $userCollectionForInviteOnlyToGroup) {
+				$foundUser = null;
+
+				$userCollectionRegisteredByPhone->forEach(
+					function (User $user) use ($userInvitationDto, &$foundUser) {
+						if ($user->getAuthPhoneNumber() === $userInvitationDto->phone->defaultFormat())
+						{
+							$userInvitationDto->invitationStatus = $user->getInviteStatus();
+							$foundUser = $user;
+						}
+					},
+				);
+
+				if (!$foundUser || $this->shouldInviteByUser($foundUser))
+				{
+					$invitationToPortalAndGroupCollection->add(new PhoneInvitation(
+						$userInvitationDto->phone->defaultFormat(),
+						$userInvitationDto->name,
+						$userInvitationDto->lastName,
+					));
+				}
+				else
+				{
+					$userCollectionForInviteOnlyToGroup->add($foundUser);
+				}
+			},
+		);
+	}
+
+	private function shouldInviteByUser(User $user): bool
+	{
+		$status = $user->getInviteStatus();
+
+		if (in_array($user->getExternalAuthId(), ['email', 'shop']))
+		{
+			return true;
+		}
+
+		if (!$this->currentUserIsIntranet)
+		{
+			if ($user->isIntranet())
+			{
+				return false;
+			}
+
+			return $status === InvitationStatus::INVITED || $status === InvitationStatus::NOT_REGISTERED;
+		}
+
+		if ($user->isIntranet())
+		{
+			return $status === InvitationStatus::NOT_REGISTERED;
+		}
+
+		return $status === InvitationStatus::INVITED || $status === InvitationStatus::NOT_REGISTERED;
+	}
+
+	/**
+	 * @throws LoaderException
+	 * @throws ArgumentException
+	 * @throws ObjectPropertyException
+	 * @throws SystemException
+	 */
+	private function executeInvite(
+		int $collabId,
+		Intranet\Public\Type\Collection\InvitationCollection $invitationToPortalAndGroupCollection,
+		UserCollection $userCollectionForInviteOnlyToGroup,
+	): Result
+	{
+		$usersInvitedPortalAndGroup = [];
+		$usersInvitedOnlyToGroup = [];
+		$userIdsAlreadyInCollab = [];
+
+		$this->subscribeExistingMembersUpdate($collabId, $userIdsAlreadyInCollab);
+
+		if (!$invitationToPortalAndGroupCollection->empty())
+		{
+			$invitationContainer = new InvitationsContainer($invitationToPortalAndGroupCollection);
+			$inviteToPortalAndGroupResult = Intranet\Public\Service\InvitationService::inviteUsersToGroup(
+				$collabId,
+				$invitationContainer,
+				$this->currentUserId,
+			);
+
+			if (!$inviteToPortalAndGroupResult->isSuccess())
+			{
+				return $inviteToPortalAndGroupResult;
+			}
+
+			$usersInvitedPortalAndGroup = $inviteToPortalAndGroupResult->getData();
+		}
+
+		if (!$userCollectionForInviteOnlyToGroup->empty())
+		{
+			$commandToInviteOnlyToGroup = new Command\Invitation\InviteUserCollectionToGroupCommand(
+				groupId: $collabId,
+				userCollection: $userCollectionForInviteOnlyToGroup,
+				currentUserId: $this->currentUserId,
+			);
+			$commandInviteOnlyToGroupResult = $commandToInviteOnlyToGroup->execute();
+
+			if (!$commandInviteOnlyToGroupResult->isSuccess())
+			{
+				return $commandInviteOnlyToGroupResult;
+			}
+
+			$usersInvitedOnlyToGroup = $commandInviteOnlyToGroupResult->getData();
+		}
+
+		$allUsersInvitedCollection = new UserCollection(...$usersInvitedPortalAndGroup, ...$usersInvitedOnlyToGroup);
+		$userIdsAlreadyInCollabFlipped = array_flip($userIdsAlreadyInCollab);
+
+		$users = [];
+
+		foreach ($allUsersInvitedCollection as $user)
+		{
+			$users[] = [
+				'id' => $user->getId(),
+				'status' => isset($userIdsAlreadyInCollabFlipped[$user->getId()])
+					? InvitationStatus::ACTIVE->value
+					: InvitationStatus::INVITED->value
+				,
+			];
+		}
+
+		return (new Result())->setData($users);
+	}
+
+	private function subscribeExistingMembersUpdate(int $collabId, array &$userIdsAlreadyInCollab): void
+	{
+		if (Loader::includeModule('socialnetwork'))
+		{
+			EventManager::getInstance()->addEventHandler(
+				'socialnetwork',
+				'OnCollabUpdate',
+				static function (CollabUpdateEvent $event) use ($collabId, &$userIdsAlreadyInCollab): void
+				{
+					if ($collabId === $event->getCollabBefore()->getId())
+					{
+						$userIdsAlreadyInCollab = $event->getCollabBefore()->getUserMemberIds();
+					}
+				},
+			);
+		}
+	}
+
+	/**
+	 * @param array<string> $emails
+	 * @return UserCollection
+	 */
+	private function getRegisteredUserCollectionByEmails(array $emails): UserCollection
+	{
+		if (empty($emails))
+		{
+			return new UserCollection();
+		}
+
+		if (Option::get('main', 'new_user_email_uniq_check', 'N') === 'Y')
+		{
+			$userCollection = $this->userRepository->findUsersByLoginsAndEmails($emails);
+		}
+		else
+		{
+			$userCollection = $this->userRepository->findUsersByLogins($emails);
+		}
+
+		return $this->filterRegisteredUserCollectionByExternalAuthId($userCollection);
+	}
+
+	/**
+	 * @param array<string> $phones
+	 * @return UserCollection
+	 */
+	private function getRegisteredUserCollectionByPhones(array $phones): UserCollection
+	{
+		if (empty($phones))
+		{
+			return new UserCollection();
+		}
+
+		if (Option::get('main', 'new_user_email_uniq_check', 'N') === 'Y')
+		{
+			$userCollection = $this->userRepository->findUsersByLoginsAndPhoneNumbers($phones);
+		}
+		else
+		{
+			$userCollection = $this->userRepository->findUsersByLogins($phones);
+		}
+
+		return $this->filterRegisteredUserCollectionByExternalAuthId($userCollection);
+	}
+
+	private function filterRegisteredUserCollectionByExternalAuthId(UserCollection $userCollection): UserCollection
+	{
+		return $userCollection->filter(
+			function (User $user) {
+				return !in_array(
+					$user->getExternalAuthId(),
+					array_diff(UserTable::getExternalUserTypes(), ['email', 'shop']),
+					true,
+				);
+			},
+		);
+	}
+}

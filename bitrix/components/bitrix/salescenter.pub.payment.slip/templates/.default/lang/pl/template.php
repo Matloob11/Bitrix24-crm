@@ -1,0 +1,8 @@
+<?php
+$MESS["SALE_PS_SLIP_FIELD_METHOD"] = "Metoda płatności";
+$MESS["SALE_PS_SLIP_FIELD_SUM"] = "KWOTA";
+$MESS["SALE_PS_SLIP_FIELD_TERMINAL_DATE"] = "Data płatności";
+$MESS["SALE_PS_SLIP_FIELD_TRANSACTION_ID"] = "Identyfikator transakcji";
+$MESS["SALE_PS_SLIP_NUMBER"] = "numer telefonu: #NUMBER#";
+$MESS["SALE_PS_SLIP_PAYMENT_RESULT_SUCCESS"] = "SUKCES";
+$MESS["SALE_PS_SLIP_PAYMENT_TITLE"] = "Płatność";

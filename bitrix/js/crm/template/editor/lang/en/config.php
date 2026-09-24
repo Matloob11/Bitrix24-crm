@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_TEMPLATE_EDITOR_SELECT_FIELD"] = "CRM field";

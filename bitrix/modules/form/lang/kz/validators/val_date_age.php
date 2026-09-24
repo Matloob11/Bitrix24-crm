@@ -1,0 +1,6 @@
+<?php
+$MESS["FORM_VALIDATOR_VAL_DATE_AGE_DESCRIPTION"] = "Жасы";
+$MESS["FORM_VALIDATOR_VAL_DATE_AGE_ERROR_LESS"] = "#FIELD_NAME#: жас талаптарға сәйкес келмейді";
+$MESS["FORM_VALIDATOR_VAL_DATE_AGE_ERROR_MORE"] = "#FIELD_NAME#: жас талаптарға сәйкес келмейді";
+$MESS["FORM_VALIDATOR_VAL_DATE_AGE_SETTINGS_DATE_FROM"] = "Төменгі жас шегі";
+$MESS["FORM_VALIDATOR_VAL_DATE_AGE_SETTINGS_DATE_TO"] = "Жоғарғы жас шегі";

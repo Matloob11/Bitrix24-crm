@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_ABSENCE_POPUP_SINGLE_DATE_TEXT"] = "#USER_NAME# #DATE# күні болмайды";
+$MESS["TASKS_V2_ABSENCE_POPUP_TEXT"] = "#USER_NAME# #DATE_FROM# бастап #DATE_TO# дейін болмайды";
+$MESS["TASKS_V2_ABSENCE_POPUP_VIEWED_BUTTON_LABEL"] = "Енді көрсетпеңіз";

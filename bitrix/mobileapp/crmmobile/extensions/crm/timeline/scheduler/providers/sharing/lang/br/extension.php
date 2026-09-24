@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_B24_AGREEMENT_NOTIFY"] = "Você tem que concordar com os Termos para enviar o convite pelo Bitrix24";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_EMAIL"] = "#CHANNEL# do e-mail #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_PHONE"] = "#CHANNEL# do número #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CONNECT"] = "Conectar";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_COPY_LINK"] = "Copiar link";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_1"] = "O cliente escolherá um horário preferido";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_2"] = "A reunião será adicionada às suas atividades";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_HOW_IT_WORKS"] = "Editar horários disponíveis";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_LINK_COPIED"] = "Link copiado";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_DESC"] = "Conecte um serviço SMS para compartilhar links dos seus horários disponíveis com os clientes";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_TITLE"] = "O serviço SMS não está conectado";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC"] = "Especifique no negócio o número de telefone do cliente para enviar um link dos horários disponíveis a ele";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC_V2"] = "Forneça o número de telefone ou e-mail do cliente para o qual o link será enviado.";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_TITLE"] = "Adicionar contatos do cliente";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_OK"] = "OK";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_RECEIVER"] = "Para";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SENDER"] = "Canal de comunicação";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SEND_LINK"] = "Compartilhar link";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SETTINGS"] = "Parâmetros de compartilhamento do link";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_TITLE_TEXT"] = "Envie ao cliente um link para agendar a reunião";

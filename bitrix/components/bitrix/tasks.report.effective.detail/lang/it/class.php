@@ -1,0 +1,9 @@
+<?
+$MESS["TASKS_COLUMN_CREATED_DATE"] = "Data scaduta";
+$MESS["TASKS_COLUMN_DEADLINE"] = "Scadenza";
+$MESS["TASKS_COLUMN_GROUP"] = "Group";
+$MESS["TASKS_COLUMN_ORIGINATOR"] = "Creato da";
+$MESS["TASKS_COLUMN_REPAIR_DATE"] = "Data di correzione";
+$MESS["TASKS_COLUMN_TASK"] = "Incarico";
+$MESS["TASKS_COLUMN_USER_TYPE2"] = "Ruolo";
+?>

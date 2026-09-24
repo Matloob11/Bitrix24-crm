@@ -1,0 +1,6 @@
+<?php
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_BOTTOM"] = "Itens do menu inferior";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_LINK"] = "Link";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_NAME_3"] = "Menu vertical para modelo de CRM + Loja on-line";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_NODES_MENU_ITEM"] = "Item do menu";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_TOP"] = "Principais itens do menu";

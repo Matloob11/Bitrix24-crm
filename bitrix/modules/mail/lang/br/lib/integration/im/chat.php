@@ -1,0 +1,8 @@
+<?php
+$MESS["MAIL_CREATE_MAIL_CHAT_EMPTY_SUBJECT"] = "Mensagem de e-mail #MESSAGE_ID#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_BODY"] = "Texto do e-mail: #BODY#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_FROM"] = "De: #FROM#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_RECEIVED_DATE"] = "Data de recebimento: #RECEIVED_DATE#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_SUBJECT"] = "E-mail: \n #SUBJECT#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_TO"] = "Para: #TO#";
+$MESS["MAIL_POST_WELCOME_MESSAGE"] = "Bate-papo criado a partir da mensagem de e-mail \"#MAIL_TITLE#\".";

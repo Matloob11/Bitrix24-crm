@@ -1,0 +1,5 @@
+<?php
+$MESS["IMCONNECTOR_UPDATER_2112000_ADMIN_NOTIFY"] = "Prorrogue a janela de mensagens do cliente para 7 dias!
+As regras especificam que você pode responder a mensagem de um cliente no Facebook ou Instagram dentro de 24 horas após a última mensagem. Agora você pode prorrogar esse tempo para 7 dias. O Facebook não permite o envio de anúncios (incluindo descontos e cupons) ou mensagens automáticas para os clientes após a expiração da janela de 24 horas. Sua conta será bloqueada se você não seguir essas diretrizes. <a href=\"#HREF#\">Detalhes</a>";
+$MESS["IMCONNECTOR_UPDATER_2112000_CHAT"] = "[B]Prorrogue a janela de mensagens do cliente para 7 dias![/B]
+As regras especificam que você pode responder a mensagem de um cliente no Facebook ou Instagram em até 24 horas após a última mensagem. Agora você pode prorrogar esse tempo para 7 dias. O Facebook não permite o envio de anúncios (incluindo descontos e cupons) ou mensagens automáticas para os clientes após a expiração da janela de 24 horas. Sua conta será bloqueada se você não seguir essas diretrizes. [URL=#HREF#]Detalhes[/URL].";

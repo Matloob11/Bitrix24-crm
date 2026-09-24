@@ -1,0 +1,6 @@
+<?php
+$MESS["LANDING_BLOCK_52_2_BTN_AREA"] = "Area pulsanti";
+$MESS["LANDING_BLOCK_52_2_CONTAINER"] = "Raccolta elementi";
+$MESS["LANDING_BLOCK_52_TEXT_WITH_BTN_LEFT-BTN"] = "Pulsante";
+$MESS["LANDING_BLOCK_52_TEXT_WITH_BTN_LEFT-NAME"] = "Testo con pulsante a sinistra";
+$MESS["LANDING_BLOCK_52_TEXT_WITH_BTN_LEFT-TEXT"] = "Testo";

@@ -1,0 +1,35 @@
+<?
+$MESS["CRM_WEBFORM_SCRIPT_BTN_COPY"] = "copia";
+$MESS["CRM_WEBFORM_SCRIPT_BTN_EDIT"] = "configura";
+$MESS["CRM_WEBFORM_SCRIPT_COPY_ONE_LINE"] = "una linea";
+$MESS["CRM_WEBFORM_SCRIPT_HINT_INJECT"] = "Inserisci il codice prima del pulsante o link";
+$MESS["CRM_WEBFORM_SCRIPT_INLINE"] = "A pagina";
+$MESS["CRM_WEBFORM_SCRIPT_LINK"] = "Link";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_ANIMATION"] = "Animazione con effetto dissolvenza";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_ANIMATION_BOTTOM"] = "In basso";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_ANIMATION_TOP"] = "In alto";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_DELAY"] = "Ritardo visualizzazione";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_POSITION"] = "Posizione";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_POSITION_CENTER"] = "Centro";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_POSITION_LEFT"] = "Sinistra";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_POSITION_RIGHT"] = "Destra";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_VIEW_TYPE"] = "Visualizza";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_VIEW_TYPE_PANEL"] = "Pannello";
+$MESS["CRM_WEBFORM_SCRIPT_PARAM_VIEW_TYPE_POPUP"] = "Finestra";
+$MESS["CRM_WEBFORM_SCRIPT_SCRIPT_ON_SITE"] = "Codice di incorporamento";
+$MESS["CRM_WEBFORM_SCRIPT_SEC"] = "s";
+$MESS["CRM_WEBFORM_SCRIPT_SELECTOR"] = "Mostra codice legacy";
+$MESS["CRM_WEBFORM_SCRIPT_SEND_TO_EMAIL"] = "invia codice tramite e-mail";
+$MESS["CRM_WEBFORM_SCRIPT_TAB_ONPAGE"] = "A pagina";
+$MESS["CRM_WEBFORM_SCRIPT_TAB_SCRIPT_BUTTON"] = "Pulsante";
+$MESS["CRM_WEBFORM_SCRIPT_TAB_SCRIPT_CLICK"] = "Clic su un pulsante o link";
+$MESS["CRM_WEBFORM_SCRIPT_TAB_SCRIPT_DELAY"] = "Ritardato";
+$MESS["CRM_WEBFORM_SCRIPT_TAB_SCRIPT_INLINE"] = "Incorporato";
+$MESS["CRM_WEBFORM_SCRIPT_TAB_SCRIPT_LINK"] = "Link";
+$MESS["CRM_WEBFORM_SCRIPT_TAB_WINDOW"] = "Propria finestra";
+$MESS["CRM_WEBFORM_SCRIPT_WINDOW_BUTTON"] = "Finestra popup - pulsante";
+$MESS["CRM_WEBFORM_SCRIPT_WINDOW_CLICK"] = "Mostra finestra pop-up al clic su un pulsante o link";
+$MESS["CRM_WEBFORM_SCRIPT_WINDOW_DELAY"] = "Finestra popup - mostra dopo ritardo";
+$MESS["CRM_WEBFORM_SCRIPT_WINDOW_INLINE"] = "Il modulo sarà incorporato nella tua pagina";
+$MESS["CRM_WEBFORM_SCRIPT_WINDOW_LINK"] = "Finestra popup - link";
+?>

@@ -1,0 +1,24 @@
+<?php
+$MESS["M_DISK_COLLAB_FILES_EMPTY_DESCRIPTION"] = "Esta vista mostrará los archivos que se enviaron al chat, las tareas y el calendario del collab.";
+$MESS["M_DISK_COLLAB_FILES_EMPTY_TITLE"] = "Archivos del collab";
+$MESS["M_DISK_COMMON_ERROR_OK"] = "OK";
+$MESS["M_DISK_COMMON_READ_MORE"] = "Más información";
+$MESS["M_DISK_EMPTY_FOLDER_TITLE"] = "No hay archivos aquí";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_DESCRIPTION_MSGVER_2"] = "Cambie la consulta de búsqueda o trate de buscar en todas partes.";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_GLOBAL_DESCRIPTION"] = "Revise si hay errores en la entrada. Además, es posible que se niegue el acceso al archivo.";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_GLOBAL_TITLE"] = "No se encontró el archivo";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_SEARCH_EVERYWHERE"] = "Buscar en todas partes";
+$MESS["M_DISK_EMPTY_SEARCH_RESULT_TITLE_MSGVER_2"] = "El archivo no se encontró en esta carpeta";
+$MESS["M_DISK_FILE_GRID_TRASHCAN_TITLE"] = "Papelera de reciclaje";
+$MESS["M_DISK_GROUP_FILES_EMPTY_DESCRIPTION_MSGVER_1"] = "En esta pantalla se mostrarán los archivos que subió.";
+$MESS["M_DISK_GROUP_FILES_EMPTY_TITLE"] = "Archivos del proyecto";
+$MESS["M_DISK_MY_FILES_EMPTY_DESCRIPTION"] = "Esta vista mostrará los archivos que utiliza en su Bitrix24.";
+$MESS["M_DISK_MY_FILES_EMPTY_TITLE"] = "Mis archivos";
+$MESS["M_DISK_RECENT_FILES_EMPTY_DESCRIPTION"] = "Esta vista mostrará sus archivos recientes.";
+$MESS["M_DISK_RECENT_FILES_EMPTY_TITLE"] = "Archivos recientes";
+$MESS["M_DISK_SHARED_FILES_EMPTY_DESCRIPTION"] = "Esta vista mostrará los archivos de la empresa a los que tiene acceso.";
+$MESS["M_DISK_SHARED_FILES_EMPTY_TITLE"] = "Archivos de la empresa";
+$MESS["M_DISK_STORAGE_LOAD_ERROR_TEXT"] = "Intente de nuevo más tarde. Si el problema persiste, comuníquese con su administrador de Bitrix24.";
+$MESS["M_DISK_STORAGE_LOAD_ERROR_TITLE"] = "El almacenamiento no está disponible temporalmente";
+$MESS["M_DISK_UPLOAD_BUTTON_FOR_COLLABER_AHA_MOMENT"] = "Agregue archivos y discútalos \ncon los miembros del collab";
+$MESS["M_DISK_UPLOAD_IS_POSSIBLE_ONLY_TO_COLLAB_DIR"] = "Abra la carpeta del collab para agregar archivos.";

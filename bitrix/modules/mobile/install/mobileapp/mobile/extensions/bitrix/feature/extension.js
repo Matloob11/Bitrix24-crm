@@ -1,0 +1,148 @@
+/**
+ * @module feature
+ */
+jn.define('feature', (require, exports, module) => {
+	const { feature } = require('native/feature');
+	const isAndroid = Application.getPlatform() === 'android';
+
+	/**
+	 * @class Feature
+	 */
+	class Feature
+	{
+		static async showDefaultUnsupportedWidget(props = {}, parentWidget = PageManager)
+		{
+			const { AppUpdateNotifier } = await requireLazy('app-update-notifier');
+
+			AppUpdateNotifier.open(props, parentWidget);
+		}
+
+		static isToastSupported()
+		{
+			return Boolean(require('native/notify'));
+		}
+
+		static isSafeAreaSupportedOnAndroid()
+		{
+			return isAndroid && minApiVersion(59, 'isSafeAreaSupportedOnAndroid');
+		}
+
+		static isSelectorWidgetOnViewHiddenEventBugFixed()
+		{
+			if (isAndroid)
+			{
+				return minApiVersion(59, 'isSelectorWidgetOnViewHiddenEventBugFixed');
+			}
+
+			return true;
+		}
+
+		static get isSupportedMediaGalleryCollection()
+		{
+			return minApiVersion(
+				60,
+				'isSupportedMediaGalleryCollection',
+			) && feature?.isFeatureEnabled('viewer_gallery');
+		}
+
+		static isMultipleFilesDownloadSupported()
+		{
+			return minApiVersion(60, 'isMultipleFilesDownloadSupported');
+		}
+
+		static isNativeStoreSupported()
+		{
+			// api 59
+			return Boolean(require('native/store'));
+		}
+
+		static canUseAnimatedCounter()
+		{
+			return !isAndroid || minApiVersion(60, 'canUseAnimatedCounter');
+		}
+
+		static canGetAppActiveTab()
+		{
+			// api 61
+			return feature?.isFeatureEnabled('tabbar_api_v2');
+		}
+
+		static canUseSpotlightIds()
+		{
+			return Boolean(feature?.isFeatureEnabled('reaction_v2'));
+		}
+
+		static canUseWidgetEventOpened()
+		{
+			return feature?.isFeatureEnabled('widget_event_opened');
+		}
+
+		static isNativeSettingApiSupported()
+		{
+			return Boolean(feature?.isFeatureEnabled('module-config-app-settings'));
+		}
+
+		static isNativeSettingsCacheApiSupported()
+		{
+			return Boolean(feature?.isFeatureEnabled('cache_module_api'));
+		}
+
+		static isNewReactionVersionSupported()
+		{
+			// api 61
+			return Boolean(feature?.isFeatureEnabled('reaction_v2'));
+		}
+
+		static isNativeBottomPanelApiSupported()
+		{
+			return Boolean(feature?.isFeatureEnabled('bottom_panel'));
+		}
+
+		static isNativeSnapshotApiSupported()
+		{
+			return Boolean(feature?.isFeatureEnabled('jnlayout_take_snapshot'));
+		}
+
+		static isRefreshViewFixEnabled()
+		{
+			return Application.getPlatform() !== 'android' || Boolean(feature?.isFeatureEnabled('refresh_view_fixed'));
+		}
+
+		static isDynamicTabsEditSupported()
+		{
+			return Boolean(feature?.isFeatureEnabled('tabswidget_api_v1'));
+		}
+
+		/**
+		 * Fullscreen backgrounds for user's profile screen and main menu
+		 * @return {boolean}
+		 */
+		static canUseWidgetBackground()
+		{
+			return Boolean(feature?.isFeatureEnabled('widget_background_layout'));
+		}
+
+		static isLocationStatusSupported()
+		{
+			return Boolean(feature?.isFeatureEnabled('device_location_status'));
+		}
+	}
+
+	/**
+	 * @private
+	 * @param {number} minVersion
+	 * @param {string} featureName
+	 * @return {boolean}
+	 */
+	const minApiVersion = (minVersion, featureName) => {
+		const currentVersion = Application.getApiVersion();
+		if ((currentVersion - minVersion) > 2)
+		{
+			console.warn(`Feature ${featureName} requires API ${minVersion} and probably can be omitted (current is ${currentVersion}).`);
+		}
+
+		return currentVersion >= minVersion;
+	};
+
+	module.exports = { Feature };
+});

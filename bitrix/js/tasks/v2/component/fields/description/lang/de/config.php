@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_V2_CHANGE_DESCRIPTION"] = "Beschreibung";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_ATTACH_TITLE"] = "Anhängen";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_CREATING"] = "Checkliste wird erstellt";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT"] = "CoPilot erstellt eine Checkliste aus dieser Beschreibung.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT_MSGVER_1"] = "#COPILOT_NAME# erstellt eine Checkliste aus dieser Beschreibung.";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_TITLE"] = "Checkliste";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_MENTION_TITLE"] = "Erwähnen";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_COLLAPSE"] = "Minimieren";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_EXPAND"] = "Maximieren";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_SAVE"] = "Speichern";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_BUTTON_OK"] = "Meine Version speichern";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_F"] = "#NAME# hat die Beschreibung geändert, während Sie sie bearbeitet haben. Die Änderungen dieses Nutzers gehen verloren, wenn Sie Ihre Version speichern. Möchten Sie Ihre Version wirklich speichern?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_M"] = "#NAME# hat die Beschreibung geändert, während Sie sie bearbeitet haben. Die Änderungen dieses Nutzers gehen verloren, wenn Sie Ihre Version speichern. Möchten Sie Ihre Version wirklich speichern?";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_TITLE"] = "Beschreibung geändert";
+$MESS["TASKS_V2_DESCRIPTION_FILES_COUNT"] = "Dateien: #COUNT#";
+$MESS["TASKS_V2_DESCRIPTION_INLINE_EDITOR_PLACEHOLDER"] = "Beschreibung";
+$MESS["TASKS_V2_DESCRIPTION_PREVIEW_BUTTON_MORE"] = "mehr";
+$MESS["TASKS_V2_DESCRIPTION_TITLE"] = "Aufgabenbeschreibung";

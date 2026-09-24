@@ -1,0 +1,27 @@
+<?php
+$MESS["TASKS_SCRUM_BUTTON_TEXT_REMOVE"] = "Usuń";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE"] = "Czy na pewno chcesz usunąć ten typ?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_NEW"] = "Czy na pewno chcesz usunąć listę kontrolną <b>#name#<b>?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_TITLE"] = "Usuń listę kontrolną";
+$MESS["TASKS_SCRUM_CREATE_TYPE"] = "Utwórz typ";
+$MESS["TASKS_SCRUM_CREATE_TYPE_PROMPT"] = "Utwórz nowy typ zadania";
+$MESS["TASKS_SCRUM_DOD_BTN_CREATE_TYPE"] = "Dodaj";
+$MESS["TASKS_SCRUM_DOD_BTN_EDIT_TYPE"] = "Zmień nazwę";
+$MESS["TASKS_SCRUM_DOD_BTN_REMOVE_TYPE"] = "Usuń";
+$MESS["TASKS_SCRUM_DOD_BTN_SAVE"] = "Zapisz";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_COMPLETE_BUTTON_TEXT"] = "Zamknij zadanie";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_SAVE_BUTTON_TEXT"] = "Zapisz";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_TEXT_COMPLETE"] = "Czy chcesz zamknąć zadanie jako zakończone, czy zapisać Definicję Zrobionego?";
+$MESS["TASKS_SCRUM_DOD_INFO_TEXT"] = "Aby zakończyć zadanie, należy zakończyć wszystkie pozycje w Definicji Zrobionego";
+$MESS["TASKS_SCRUM_DOD_LABEL_EMPTY"] = "Należy <span>skonfigurować</span> Definicję Zrobionego ";
+$MESS["TASKS_SCRUM_DOD_LABEL_TYPES"] = "Typ zadania";
+$MESS["TASKS_SCRUM_DOD_LABEL_USER_SELECTOR"] = "Zapytaj o DoD:";
+$MESS["TASKS_SCRUM_DOD_OPTIONS_REQUIRED_LABEL"] = "Te pozycje są wymagane do zakończenia";
+$MESS["TASKS_SCRUM_DOD_POPUP_EMPTY_NAME"] = "Wprowadź nazwę";
+$MESS["TASKS_SCRUM_DOD_POPUP_INPUT_PLACEHOLDER"] = "Nazwa";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_CREATE"] = "Utwórz listę kontrolną";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_EDIT"] = "Zmień nazwę listy kontrolnej";
+$MESS["TASKS_SCRUM_DOD_SAVE_SETTINGS_NOTIFY"] = "Zapisano ustawienia.";
+$MESS["TASKS_SCRUM_DOD_TITLE"] = "Definicja Zrobionego";
+$MESS["TASKS_SCRUM_DOD_TOOLBAR_SETTINGS"] = "Konfiguruj";
+$MESS["TSD_ERROR_POPUP_TITLE"] = "To jest błąd.";

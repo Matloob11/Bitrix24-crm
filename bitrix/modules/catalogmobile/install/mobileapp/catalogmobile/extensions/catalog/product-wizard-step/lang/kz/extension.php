@@ -1,0 +1,20 @@
+<?php
+$MESS["WIZARD_FIELD_ACCESS_DENIED"] = "Құқықтар жеткіліксіз";
+$MESS["WIZARD_FIELD_MEASURE_CODE"] = "Бірліктер";
+$MESS["WIZARD_FIELD_PRODUCT_AMOUNT"] = "Қоймаға қабылданды";
+$MESS["WIZARD_FIELD_PRODUCT_BARCODE"] = "Штрихкод";
+$MESS["WIZARD_FIELD_PRODUCT_BASE_PRICE"] = "Сату бағасы";
+$MESS["WIZARD_FIELD_PRODUCT_CURRENCY"] = "Валюта";
+$MESS["WIZARD_FIELD_PRODUCT_NAME"] = "Тауар атауы";
+$MESS["WIZARD_FIELD_PRODUCT_NEW_NAME"] = "Жаңа тауар";
+$MESS["WIZARD_FIELD_PRODUCT_PHOTO"] = "Тауардың фотосуреттері";
+$MESS["WIZARD_FIELD_PRODUCT_PURCHASING_PRICE"] = "Сатып алу бағасы";
+$MESS["WIZARD_FIELD_PRODUCT_STORE"] = "Қойма";
+$MESS["WIZARD_FIELD_PRODUCT_STORE_FROM"] = "Қойма-жөнелтуші";
+$MESS["WIZARD_FIELD_PRODUCT_STORE_TO"] = "Қабылдаушы қойма";
+$MESS["WIZARD_STEP_BUTTON_FINISH_TEXT_MSGVER_1"] = "Жасау";
+$MESS["WIZARD_STEP_FOOTER_ADD_STORE"] = "Қойманы қосу";
+$MESS["WIZARD_STEP_FOOTER_BIND_TO_SECTION"] = "Бөлімге байланыстыру";
+$MESS["WIZARD_STEP_FOOTER_SECTION_BINDINGS"] = "Таңдалған бөлім: #SECTIONS#";
+$MESS["WIZARD_STEP_FOOTER_TEXT_PRICE"] = "Сатып алу бағасын ресми бланкідегідей көрсетіңіз";
+$MESS["WIZARD_STEP_FOOTER_TEXT_PRODUCT"] = "Тауардың атауын ресми бланкідегідей көрсетіңіз";

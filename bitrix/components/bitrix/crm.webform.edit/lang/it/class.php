@@ -1,0 +1,27 @@
+<?php
+$MESS["BIZPROC_MODULE_NOT_INSTALLED"] = "Il modulo Processi aziendali non è installato.";
+$MESS["CRM_MODULE_ERROR_NOT_FOUNT"] = "Modulo non trovato";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_CATALOG"] = "Il modulo Catalogo commerciale non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_CURRENCY"] = "Il modulo Valuta non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_REST"] = "Il modulo Rest non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_SALE"] = "Il modulo e-Store non è installato.";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";
+$MESS["CRM_WEBFORM_EDIT_"] = "Ricerca";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_DOMAIN"] = "Nome di dominio";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_DOMAIN_DESC"] = "Nome di dominio da cui viene inviato il modulo";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_FORM_ID"] = "ID modulo";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_FORM_ID_DESC"] = "ID modulo";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_FORM_NAME"] = "Nome modulo";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_FORM_NAME_DESC"] = "Nome modulo";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_PARAM"] = "Parametro";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_PARAM_DESC"] = "Nome del parametro URL che utilizzerai per riconoscere il modulo";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_RESULT_ID"] = "ID risultato";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_RESULT_ID_DESC"] = "Specifica numero assegnato a risultato del modulo.";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_URL"] = "Indirizzo pagina";
+$MESS["CRM_WEBFORM_EDIT_PRESET_MACROS_URL_DESC"] = "Indirizzo della pagina da cui viene inviato il modulo";
+$MESS["CRM_WEBFORM_EDIT_SECOND_SHORT"] = "sec";
+$MESS["CRM_WEBFORM_EDIT_TITLE"] = "Modifica modulo CRM";
+$MESS["CRM_WEBFORM_EDIT_TITLE_ADD"] = "Crea modulo CRM";
+$MESS["CRM_WEBFORM_EDIT_TITLE_VIEW"] = "Visualizza modulo CRM";
+$MESS["CRM_WEBFORM_SCENARIO_NAME_TEMPLATE"] = "#NAME# di #DATE#";

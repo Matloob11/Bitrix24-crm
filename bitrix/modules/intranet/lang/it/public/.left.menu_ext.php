@@ -1,0 +1,19 @@
+<?php
+$MESS["LEFT_MENU_BLOG"] = "Conversazioni";
+$MESS["LEFT_MENU_BP"] = "Flusso di lavoro";
+$MESS["LEFT_MENU_CALENDAR"] = "Calendario";
+$MESS["LEFT_MENU_DISC"] = "Mio drive";
+$MESS["LEFT_MENU_IM_MESSENGER"] = "Chat e chiamate";
+$MESS["LEFT_MENU_LIVE_FEED"] = "Feed";
+$MESS["LEFT_MENU_LIVE_FEED2"] = "Feed";
+$MESS["LEFT_MENU_MAIL"] = "Webmail";
+$MESS["LEFT_MENU_MAIL_SETTING"] = "Modifica impostazioni";
+$MESS["LEFT_MENU_MY_PROCESS"] = "Le mie richieste";
+$MESS["LEFT_MENU_PHOTO"] = "Mie foto";
+$MESS["LEFT_MENU_TASKS"] = "Incarichi";
+$MESS["TOP_MENU_COMPANY"] = "Azienda";
+$MESS["TOP_MENU_EMPLOYEES"] = "Dipendenti";
+$MESS["TOP_MENU_MARKETPLACE_2"] = "Market";
+$MESS["TOP_MENU_OPENLINES"] = "Canali aperti";
+$MESS["TOP_MENU_SERVICES"] = "Servizi";
+$MESS["TOP_MENU_TELEPHONY"] = "Telefonia";

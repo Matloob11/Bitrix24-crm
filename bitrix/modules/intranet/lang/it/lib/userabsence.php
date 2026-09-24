@@ -1,0 +1,10 @@
+<?
+$MESS["INTR_USER_ABSENCE_TYPE_ASSIGNMENT"] = "Viaggio di lavoro";
+$MESS["INTR_USER_ABSENCE_TYPE_LEAVEMATERINITY"] = "Congedo di maternità";
+$MESS["INTR_USER_ABSENCE_TYPE_LEAVESICK"] = "Congedo per malattia";
+$MESS["INTR_USER_ABSENCE_TYPE_LEAVEUNPAYED"] = "Congedo non retribuito";
+$MESS["INTR_USER_ABSENCE_TYPE_OTHER"] = "Altro";
+$MESS["INTR_USER_ABSENCE_TYPE_PERSONAL"] = "Calendari personali";
+$MESS["INTR_USER_ABSENCE_TYPE_UNKNOWN"] = "Assente senza permesso";
+$MESS["INTR_USER_ABSENCE_TYPE_VACATION"] = "Ferie annuali";
+?>

@@ -1,0 +1,25 @@
+<?php
+$MESS["NOTIFY_BANNER_INFO_ALL_EMPLOYEE_BLOCK"] = "Todos os dados no seu Bitrix24 estão em risco se uma única pessoa da sua empresa não usar autenticação de dois fatores. Sua empresa pode enfrentar:";
+$MESS["NOTIFY_BANNER_INFO_CONFIRM_WITHOUT_TITLE_MSGVER_1"] = "Ative a [SPAN]nova autenticação de dois fatores[/SPAN] para confirmar seu login sem precisar digitar um código.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE"] = "Ative a <span class=\"intranet-otp-motivating-popup__title--accent\">autenticação de dois fatores</span> para proteger os dados da sua empresa.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE_MSGVER_1"] = "Ative <span class=\"intranet-otp-motivating-popup__title--accent\">autenticação de dois fatores</span> para proteger sua conta.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE"] = "Proteja seus dados. Ative a <span class=\"intranet-otp-motivating-popup__title--accent\">autenticação de dois fatores</span> para todos.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE_MSGVER_1"] = "Proteja seus dados corporativos. Ative <span class=\"intranet-otp-motivating-popup__title--accent\">autenticação de dois fatores</span> para todos.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK"] = "A autenticação de dois fatores impede que atacantes acessem sua conta mesmo se sua senha foi vazada. Isso manterá seus dados pessoais e empresariais seguros.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK_MSGVER_1"] = "A autenticação de dois fatores impede que atacantes acessem sua conta mesmo se sua senha foi vazada. Isso manterá seus dados pessoais e empresariais seguros.";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_ALL_BTN"] = "Ativar para todos";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_BTN"] = "Ativar";
+$MESS["NOTIFY_BANNER_INFO_EXIST_BLOCK_MSGVER_1"] = "Agora está ainda mais fácil proteger seu Bitrix24. Você não precisa mais digitar o código. Confirme seu login no aplicativo móvel.";
+$MESS["NOTIFY_BANNER_INFO_FIN_OPT"] = "Danos financeiros e à reputação";
+$MESS["NOTIFY_BANNER_INFO_IS_PROJECT_BLOCK"] = "A autenticação de dois fatores faz parte da iniciativa <b>Segurança de dados pessoais</b>, que implementa uma ampla gama de soluções de proteção de informações.";
+$MESS["NOTIFY_BANNER_INFO_LATER_BTN"] = "Lembre-me depois";
+$MESS["NOTIFY_BANNER_INFO_LEAK_OPT"] = "Vazamentos de informações confidenciais";
+$MESS["NOTIFY_BANNER_INFO_LEGAL_OPT"] = "Consequências legais";
+$MESS["NOTIFY_BANNER_INFO_MORE_BTN"] = "Saiba mais";
+$MESS["NOTIFY_BANNER_INFO_NEW_OTP_BLOCK"] = "Agora está ainda mais fácil proteger seu Bitrix24. Você não precisa mais digitar o código. Confirme seu login no aplicativo móvel.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK"] = "O administrador do seu Bitrix24 alterou os parâmetros de segurança. A partir de <b>#END_DATE#</b>, você só poderá entrar na sua conta confirmando o login no aplicativo móvel.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE"] = "A partir de <b>#END_DATE#</b>, você só poderá entrar na sua conta confirmando o login no aplicativo móvel.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE_MSGVER_1"] = "A partir de <b>#END_DATE#</b>, você só poderá entrar na sua conta confirmando o login no aplicativo móvel.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_MSGVER_1"] = "O administrador do seu Bitrix24 alterou os parâmetros de segurança. A partir de <b>#END_DATE#</b>, você só poderá entrar na sua conta usando um segundo fator de autenticação confirmando o login no aplicativo móvel.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK"] = "Os ciberataques a empresas estão aumentando. Vazamentos de informações inevitavelmente resultam em danos financeiros e à reputação.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK_MSGVER_1"] = "Os ciberataques a empresas estão aumentando. Vazamentos de informações inevitavelmente resultam em danos financeiros e à reputação.";

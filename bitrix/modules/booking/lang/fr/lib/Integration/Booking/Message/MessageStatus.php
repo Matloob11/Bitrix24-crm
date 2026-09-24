@@ -1,0 +1,6 @@
+<?php
+$MESS["MESSAGE_STATUS_DELIVERED"] = "Livré";
+$MESS["MESSAGE_STATUS_FAILED"] = "Échec de l'envoi";
+$MESS["MESSAGE_STATUS_READ"] = "Vu";
+$MESS["MESSAGE_STATUS_SENDING"] = "Envoi en cours";
+$MESS["MESSAGE_STATUS_SENT"] = "Envoyé";

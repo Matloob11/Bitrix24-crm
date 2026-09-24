@@ -1,0 +1,3 @@
+<?php
+$MESS["LISTSMOBILE_LIB_CONTROLLER_ENTITY_DETAILS_INCORRECT_FIELD_VALUE"] = "Parámetros de entrada incorrectos";
+$MESS["LISTSMOBILE_LIB_CONTROLLER_ENTITY_DETAILS_INCORRECT_IBLOCK_TYPE"] = "Tipo de bloque de información incorrecto.";

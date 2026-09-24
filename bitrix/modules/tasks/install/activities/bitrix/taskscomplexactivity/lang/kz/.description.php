@@ -1,0 +1,5 @@
+<?php
+$MESS["TASKS_COMPLEX_ACTIVITY_DESCRIPTION"] = "Міндеттермен жұмыс істеу үшін нода";
+$MESS["TASKS_COMPLEX_ACTIVITY_NAME"] = "Міндет";
+$MESS["TASKS_COMPLEX_ACTIVITY_NODE_ACTION_CHANGE_STATUS"] = "Мәртебені өзгерту";
+$MESS["TASKS_COMPLEX_ACTIVITY_NODE_ACTION_DELETE_TASK"] = "Міндетті жою";

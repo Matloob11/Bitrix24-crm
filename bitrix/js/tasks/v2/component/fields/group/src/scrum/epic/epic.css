@@ -1,0 +1,44 @@
+.tasks-field-epic {
+	overflow: hidden;
+	margin-right: 10px;
+	display: flex;
+	align-items: center;
+	max-width: max-content;
+	padding: 3px 3px 3px 10px;
+	border-radius: var(--ui-border-radius-xs);
+	white-space: nowrap;
+	color: var(--ui-color-base-1);
+	background: var(--ui-color-base-7);
+	cursor: pointer;
+}
+
+.tasks-field-epic.--filled {
+	--epic-color: #00C0D5;
+	--epic-background: #00BFD51A;
+	background: var(--epic-background);
+}
+
+.tasks-field-epic.--dark {
+	color: var(--epic-color);
+}
+
+.tasks-field-epic-title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tasks-field-epic .ui-icon-set {
+	margin-left: 3px;
+	--ui-icon-set__icon-size: 20px;
+	--ui-icon-set__icon-color: var(--ui-color-base-4);
+}
+
+.tasks-field-epic.--dark .ui-icon-set {
+	--ui-icon-set__icon-color: var(--epic-color);
+}
+
+.tasks-field-epic-loader {
+	display: flex;
+	align-items: center;
+	height: 26px;
+}

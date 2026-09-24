@@ -1,0 +1,5 @@
+<?
+$MESS["CRM_ORDER_SHIPMENT_MENU_DESCRIPTION"] = "Barre d'outils";
+$MESS["CRM_ORDER_SHIPMENT_MENU_NAME"] = "Barre d'outils";
+$MESS["CRM_ORDER_SHIPMENT_NAME"] = "Livraisons";
+?>

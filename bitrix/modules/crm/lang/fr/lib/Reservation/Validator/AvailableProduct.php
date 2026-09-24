@@ -1,0 +1,5 @@
+<?php
+$MESS["CRM_RESERVATION_ERROR_AVAILABLE_PRODUCT_ERROR_MULTI_PRODUCTS"] = "Impossible de réserver les articles \"#PRODUCTS#\" en raison d'un stock insuffisant. Vous pourrez les réserver une fois qu'ils arriveront à l'entrepôt ou que la réservation précédente sera annulée.";
+$MESS["CRM_RESERVATION_ERROR_AVAILABLE_PRODUCT_ERROR_ONE_PRODUCT"] = "Impossible de réserver l'article \"#PRODUCTS#\" en raison d'un stock insuffisant. Vous pourrez le réserver une fois qu'il arrivera à l'entrepôt ou que la réservation précédente sera annulée.";
+$MESS["CRM_RESERVATION_ERROR_AVAILABLE_PRODUCT_ERROR_TOO_MANY_PRODUCTS"] = "Impossible de réserver les articles \"#PRODUCTS#\" et d'autres en raison d'un stock insuffisant. Vous pourrez les réserver une fois qu'ils arriveront à l'entrepôt ou que la réservation précédente sera annulée.";
+$MESS["CRM_RESERVATION_VALIDATOR_AVAILABLE_PRODUCT_ERROR_CATALOG_IS_ABSENT"] = "La fonction de réservation n'est pas disponible, car le module \"Catalogue commercial\" n'est pas installé.";

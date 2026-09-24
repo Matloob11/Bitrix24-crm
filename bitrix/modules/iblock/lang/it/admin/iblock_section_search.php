@@ -1,0 +1,2 @@
+<?php
+$MESS["IBLOCK_SECSEARCH_XML_ID_MSGVER_1"] = "ID esterno";

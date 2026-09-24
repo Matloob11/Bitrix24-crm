@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_CONNECTOR_INTRANET_HIDE_ALERT_BUTTON"] = "Ukryj";
+$MESS["LANDING_CONNECTOR_INTRANET_HIDE_ALERT_MESSAGE"] = "Czy na pewno chcesz ukryć tę bazę wiedzy?";
+$MESS["LANDING_CONNECTOR_INTRANET_HIDE_ALERT_TITLE"] = "Ukryj bazę wiedzy #title#";

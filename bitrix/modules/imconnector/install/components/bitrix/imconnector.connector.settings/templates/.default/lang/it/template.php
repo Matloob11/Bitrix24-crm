@@ -1,0 +1,24 @@
+<?php
+$MESS["IIMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_ERROR_ACTION"] = "L'azione è stata annullata poiché si è verificato un errore.";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_LINE_ACTIVATION_BUTTON_ACTIVE"] = "Attiva";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_LINE_ACTIVATION_BUTTON_NO"] = "Annulla";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_LINE_ACTIVATION_DESCRIPTION"] = "Questo Canale aperto è inattivo. Attivarlo?";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_LINE_ACTIVATION_TITLE"] = "Attiva Canale aperto";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_QUEUE_DESCRIPTION"] = "Seleziona gli agenti che risponderanno alle richieste in questo Canale aperto.";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_CLOSE"] = "Chiudi";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_CONFIGURE"] = "configura";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_CONFIGURE_CHANNEL"] = "Preferenze Canali aperti";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_CONFIGURE_CHANNEL_MSGVER_1"] = "Canale aperto e autorizzazioni";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_CONNECT"] = "Configurazione canale";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_CREATE_OPEN_LINE"] = "Crea Canale aperto";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_LM_ADD"] = "Aggiungi";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_NO_GRANTS"] = "Autorizzazioni insufficienti per connettere questo Canale aperto.<br />Contatta il tuo amministratore di Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_NO_GRANTS_BUTTON"] = "Contatta l'amministratore";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_NO_OPEN_LINE"] = "Non hai alcun Canale aperto di cui sia possibile configurare le comunicazioni. Crea un nuovo Canale aperto.";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_NO_OPEN_LINE_AND_NOT_ADD_OPEN_LINE"] = "Non hai alcun Canale aperto di cui sia possibile configurare le comunicazioni. Non disponi dell'autorizzazione necessaria per creare Canali aperti.<br>Contatta l'amministratore del tuo portale.";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_OPEN_LINE"] = "Canale aperto:";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_OPEN_LINE_TIP"] = "I Canali aperti ricevono messaggi da tutti i canali e li distribuiscono agli operatori.";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_PERMISSIONS"] = "Autorizzazioni di accesso";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_PERMISSIONS_TIP"] = "Le preferenze selezionate verranno applicate sia al Canale aperto che a tutti gli altri canali.";
+$MESS["IMCONNECTOR_COMPONENT_CONNECTOR_SETTINGS_QUEUE"] = "Utenti in coda";
+$MESS["IMCONNECTOR_COMPONENT_HEAD_DEPARTMENT_EXCLUDED_QUEUE"] = "Verranno selezionati solo i dipendenti del dipartimento, con l'esclusione dei dirigenti dei dipartimenti";

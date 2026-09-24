@@ -1,0 +1,303 @@
+<?php
+
+
+namespace Bitrix\Crm\Integration\Rest\Configuration;
+
+
+use Bitrix\Main\Event;
+use Bitrix\Main\Localization\Loc;
+use Exception;
+
+Loc::loadMessages(__FILE__);
+
+class Controller
+{
+	private static $entityList = [
+		Entity\Lead::ENTITY_CODE => 200,
+		Entity\Deal::ENTITY_CODE => 200,
+		Entity\AutomatedSolution::ENTITY_CODE => 200,
+		Entity\DynamicTypes::ENTITY_CODE => 200,
+		Entity\Status::ENTITY_CODE => 300,
+		Entity\Field::ENTITY_CODE => 400,
+		Entity\DetailConfiguration::ENTITY_CODE => 500,
+		Entity\Setting::ENTITY_CODE => 600,
+		Entity\WebForm::ENTITY_CODE => 800,
+		Entity\Role::ENTITY_CODE => 900,
+	];
+
+	/**
+	 * @return array of entity
+	 */
+	public static function getEntityList()
+	{
+		return static::$entityList;
+	}
+
+	/**
+	 * check can work with current step
+	 * @param Event $event
+	 *
+	 * @return bool
+	 */
+	protected static function check(Event $event)
+	{
+		$manifestCode = $event->getParameter('MANIFEST_CODE');
+
+		if (!is_string($manifestCode))
+		{
+			$manifest = $event->getParameter('MANIFEST');
+			if (
+				is_array($manifest)
+				&& isset($manifest['CODE'])
+			)
+			{
+				$manifestCode = $manifest['CODE'];
+			}
+		}
+
+		if (
+			!is_string($manifestCode)
+			|| (
+				str_starts_with($manifestCode, 'automated_solution')
+				&& (new \Bitrix\Crm\Restriction\AutomatedSolutionImportedLimit())->isRestricted()
+			)
+		)
+		{
+			return false;
+		}
+
+		return (bool)static::getEntityList()[$event->getParameter('CODE')];
+	}
+
+	/**
+	 * @param Event $event
+	 *
+	 * @return array|null
+	 */
+	public static function onManifestSetting(Event $event): ?array
+	{
+		$code = $event->getParameter('CODE');
+		if (
+			is_string($code)
+			&& str_starts_with($code, 'automated_solution')
+			&& (new \Bitrix\Crm\Restriction\AutomatedSolutionImportedLimit())->isRestricted()
+		)
+		{
+			return ['ERROR_EXCEPTION' => Loc::getMessage('CRM_ERROR_CONFIGURATION_AS_RESTRICTED')];
+		}
+
+		return null;
+	}
+
+	protected static function isAutomatedSolutionRestricted(Event $event): bool
+	{
+		$manifestCode = $event->getParameter('MANIFEST_CODE');
+		if (!is_string($manifestCode))
+		{
+			$manifest = $event->getParameter('MANIFEST');
+			if (is_array($manifest) && isset($manifest['CODE']))
+			{
+				$manifestCode = $manifest['CODE'];
+			}
+		}
+
+		return is_string($manifestCode)
+			&& str_starts_with($manifestCode, 'automated_solution')
+			&& (new \Bitrix\Crm\Restriction\AutomatedSolutionImportedLimit())->isRestricted();
+	}
+
+	/**
+	 * @param Event $event
+	 *
+	 * @return array export result
+	 * @return null for skip no access step
+	 */
+	public static function onExport(Event $event)
+	{
+		$result = null;
+		if(static::check($event))
+		{
+			$data = $event->getParameters();
+			try
+			{
+				switch ($data['CODE'])
+				{
+					case Entity\Status::ENTITY_CODE:
+						$result = Entity\Status::export($data);
+						break;
+					case Entity\Field::ENTITY_CODE:
+						$result = Entity\Field::export($data);
+						break;
+					case Entity\DetailConfiguration::ENTITY_CODE:
+						$result = Entity\DetailConfiguration::getInstance()->export($data);
+						break;
+					case Entity\Setting::ENTITY_CODE:
+						$result = Entity\Setting::export($data);
+						break;
+					case Entity\WebForm::ENTITY_CODE:
+						$result = Entity\WebForm::getInstance()->export($data);
+						break;
+					case Entity\DynamicTypes::ENTITY_CODE:
+						$result = Entity\DynamicTypes::getInstance()->export($data);
+						break;
+					case Entity\AutomatedSolution::ENTITY_CODE:
+						$result = Entity\AutomatedSolution::getInstance()->export($data);
+						break;
+					case Entity\Role::ENTITY_CODE:
+						$result = Entity\Role::getInstance()->export($data);
+						break;
+				}
+			}
+			catch (Exception $e)
+			{
+				$result['NEXT'] = false;
+				$result['ERROR_ACTION'] = $e->getMessage();
+				$result['ERROR_MESSAGES'] = Loc::getMessage(
+					'CRM_ERROR_CONFIGURATION_EXPORT_EXCEPTION',
+					[
+						'#CODE#' => $data['CODE']
+					]
+				);
+			}
+		}
+		elseif (static::isAutomatedSolutionRestricted($event))
+		{
+			$result = [
+				'NEXT' => false,
+				'ERROR_EXCEPTION' => Loc::getMessage('CRM_ERROR_CONFIGURATION_AS_RESTRICTED'),
+			];
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @param Event $event
+	 *
+	 * @return array clear result
+	 * @return null for skip no access step
+	 */
+	public static function onClear(Event $event)
+	{
+		$result = null;
+		if (static::check($event))
+		{
+			$data = $event->getParameters();
+			try
+			{
+				switch ($data['CODE'])
+				{
+					case Entity\Status::ENTITY_CODE:
+						$result = Entity\Status::clear($data);
+						break;
+					case Entity\Field::ENTITY_CODE:
+						$result = Entity\Field::clear($data);
+						break;
+					case Entity\DetailConfiguration::ENTITY_CODE:
+						$result = Entity\DetailConfiguration::getInstance()->clear($data);
+						break;
+					case Entity\Lead::ENTITY_CODE:
+						$result = Entity\Lead::clear($data);
+						break;
+					case Entity\Deal::ENTITY_CODE:
+						$result = Entity\Deal::clear($data);
+						break;
+					case Entity\WebForm::ENTITY_CODE:
+						$result = Entity\WebForm::getInstance()->clear($data);
+						break;
+					case Entity\DynamicTypes::ENTITY_CODE:
+						$result = Entity\DynamicTypes::getInstance()->clear($data);
+						break;
+					case Entity\Role::ENTITY_CODE:
+						$result = Entity\Role::getInstance()->clear($data);
+						break;
+				}
+			}
+			catch (Exception $e)
+			{
+				$result['NEXT'] = false;
+				$result['ERROR_ACTION'] = $e->getMessage();
+				$result['ERROR_MESSAGES'] = Loc::getMessage(
+					'CRM_ERROR_CONFIGURATION_CLEAR_EXCEPTION',
+					[
+						'#CODE#' => $data['CODE']
+					]
+				);
+			}
+		}
+		elseif (static::isAutomatedSolutionRestricted($event))
+		{
+			$result = [
+				'NEXT' => false,
+				'ERROR_EXCEPTION' => Loc::getMessage('CRM_ERROR_CONFIGURATION_AS_RESTRICTED'),
+			];
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @param Event $event
+	 *
+	 * @return array import result
+	 * @return null for skip no access step
+	 */
+	public static function onImport(Event $event)
+	{
+		$result = null;
+		if (static::check($event))
+		{
+			$data = $event->getParameters();
+			try
+			{
+				switch ($data['CODE'])
+				{
+					case Entity\Status::ENTITY_CODE:
+						$result = Entity\Status::import($data);
+						break;
+					case Entity\Field::ENTITY_CODE:
+						$result = Entity\Field::import($data);
+						break;
+					case Entity\DetailConfiguration::ENTITY_CODE:
+						$result = Entity\DetailConfiguration::getInstance()->import($data);
+						break;
+					case Entity\Setting::ENTITY_CODE:
+						$result = Entity\Setting::import($data);
+						break;
+					case Entity\WebForm::ENTITY_CODE:
+						$result = Entity\WebForm::getInstance()->import($data);
+						break;
+					case Entity\DynamicTypes::ENTITY_CODE:
+						$result = Entity\DynamicTypes::getInstance()->import($data);
+						break;
+					case Entity\AutomatedSolution::ENTITY_CODE:
+						$result = Entity\AutomatedSolution::getInstance()->import($data);
+						break;
+					case Entity\Role::ENTITY_CODE:
+						$result = Entity\Role::getInstance()->import($data);
+						break;
+				}
+			}
+			catch (Exception $e)
+			{
+				$result['NEXT'] = false;
+				$result['ERROR_ACTION'] = $e->getMessage();
+				$result['ERROR_MESSAGES'] = Loc::getMessage(
+					'CRM_ERROR_CONFIGURATION_IMPORT_EXCEPTION',
+					[
+						'#CODE#' => $data['CODE']
+					]
+				);
+			}
+		}
+		elseif (static::isAutomatedSolutionRestricted($event))
+		{
+			$result = [
+				'NEXT' => false,
+				'ERROR_EXCEPTION' => Loc::getMessage('CRM_ERROR_CONFIGURATION_AS_RESTRICTED'),
+			];
+		}
+
+		return $result;
+	}
+}

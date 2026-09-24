@@ -1,0 +1,452 @@
+<?php
+
+namespace Bitrix\Crm\Integration;
+
+use Bitrix\Im;
+use Bitrix\Im\Counter;
+use Bitrix\Im\V2\Message;
+use Bitrix\Im\V2\Message\CounterService;
+use Bitrix\ImBot\Bot\OpenLinesBizprocBot;
+use Bitrix\ImBot\Integration\Im\Repository\OpenLinesBotRepository;
+use Bitrix\ImOpenLines\Chat;
+use Bitrix\ImOpenLines\Config;
+use Bitrix\ImOpenLines\Model\SessionTable;
+use Bitrix\ImOpenLines\Operator;
+use Bitrix\Main\DI\ServiceLocator;
+use Bitrix\Main\Loader;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\ModuleManager;
+use Bitrix\Main\Result;
+use CCrmDateTimeHelper;
+
+Loc::loadMessages(__FILE__);
+
+class OpenLineManager
+{
+	private static $isEnabled;
+
+	/**
+	 * List of supported IM types
+	 *
+	 * @var array
+	 */
+	private static array $supportedTypes = [
+		'IM' => [
+			'IMOL' => true,
+			'OPENLINE' => true,
+			'BITRIX24' => true,
+			'FACEBOOK' => true,
+			'TELEGRAM' => true,
+			'VK' => true,
+			'VIBER' => true,
+			'INSTAGRAM' => true,
+		]
+	];
+
+	private static array $supportedConnectors = [
+		'livechat',
+		'viber',
+		'wechat',
+		'network',
+		'facebook',
+		'facebookmessenger',
+		'facebookcomments',
+		'fbinstagram',
+		'fbinstagramdirect',
+		'imessage',
+		'olx',
+		'notifications',
+		'whatsappbyedna',
+		'whatsappbytwilio',
+		'vkgroup',
+		'vkgrouporder',
+		'ok',
+		'avito',
+		'telegrambot',
+		'telegram',
+		'max',
+	];
+
+	public static function isEnabled()
+	{
+		if (self::$isEnabled === null)
+		{
+			self::$isEnabled = ModuleManager::isModuleInstalled('imopenlines')
+				&& Loader::includeModule('imopenlines');
+		}
+
+		return self::$isEnabled;
+	}
+
+	public static function getSupportedConnectors(): array
+	{
+		if (!self::isEnabled())
+		{
+			return [];
+		}
+
+		return self::$supportedConnectors;
+	}
+
+	public static function prepareMultiFieldLinkAttributes($typeName, $valueTypeID, $value)
+	{
+		if (!(isset(self::$supportedTypes[$typeName]) && isset(self::$supportedTypes[$typeName][$valueTypeID])))
+		{
+			return null;
+		}
+
+		$lineId = self::getLineId($value);
+		if (!$lineId)
+		{
+			return null;
+		}
+
+		$text = '';
+		if (\Bitrix\ImOpenLines\Config::canViewHistory($lineId))
+		{
+			$text = self::isImOpenLinesValue($value)
+				? self::getOpenLineTitle($value)
+				: self::getLineTitle($value)
+			;
+		}
+		if (!$text)
+		{
+			$items = explode('|', $value);
+			if (!(is_array($items) && count($items) > 2 && $items[0] === 'imol'))
+			{
+				return null;
+			}
+
+			$typeID = $items[1];
+			$suffix = mb_strtoupper(preg_replace('/[^a-z0-9]/i', '', $typeID));
+			$text =
+				Loc::getMessage("CRM_OPEN_LINE_{$suffix}")
+				?? Loc::getMessage("CRM_OPEN_LINE_{$suffix}_MSGVER_1")
+				?? Loc::getMessage('CRM_OPEN_LINE_SEND_MESSAGE')
+			;
+		}
+
+		return [
+			'HREF' => '#',
+			'ONCLICK' => "if(typeof(top.BXIM)!=='undefined') top.BXIM.openMessengerSlider('{$value}', {RECENT: 'N', MENU: 'N'}); return BX.PreventDefault(event);",
+			'TEXT' => $text,
+			'TITLE' => $text,
+		];
+	}
+
+	public static function getSessionMessages($sessionID, $limit = 20)
+	{
+		if (
+			!Loader::includeModule('im')
+			|| !Loader::includeModule('imopenlines')
+		)
+		{
+			return [];
+		}
+
+		$sessionID = (int)$sessionID;
+		if ($limit <= 0)
+		{
+			$limit = 20;
+		}
+
+		$query = "
+			SELECT 
+				MESSAGE, 
+				AUTHOR_ID,
+				FILE.ID as MESSAGE_FILE,
+				ATTACH.PARAM_VALUE as MESSAGE_ATTACH
+			FROM
+			   b_imopenlines_session S
+			   INNER JOIN b_im_message M ON 
+					M.CHAT_ID = S.CHAT_ID 
+					AND M.ID+0 >= S.START_ID 
+					AND ( M.ID+0 <= S.END_ID OR S.END_ID = 0 ) 
+					AND M.AUTHOR_ID > 0
+				LEFT JOIN b_im_message_param as FILE ON FILE.MESSAGE_ID = M.ID and FILE.PARAM_NAME = 'FILE_ID'
+				LEFT JOIN b_im_message_param as ATTACH ON ATTACH.MESSAGE_ID = M.ID and ATTACH.PARAM_NAME = 'ATTACH'
+			WHERE S.ID = ".$sessionID."
+			ORDER BY M.ID+0 ASC
+		";
+
+		$connection = \Bitrix\Main\Application::getConnection();
+		$dbResult = $connection->query($connection->getSqlHelper()->getTopSql($query, $limit));
+		$results = [];
+		while ($messageFields = $dbResult->fetch())
+		{
+			$messageFields['MESSAGE'] = Im\Text::parse($messageFields['MESSAGE']);
+			$messageFields['MESSAGE'] = Im\Text::removeBbCodes(
+				$messageFields['MESSAGE'],
+				$messageFields['MESSAGE_FILE'] > 0,
+				$messageFields['MESSAGE_ATTACH']
+			);
+			$messageFields['IS_EXTERNAL'] = Im\User::getInstance($messageFields['AUTHOR_ID'])->isConnector();
+
+			$results[] = $messageFields;
+		}
+
+		return $results;
+	}
+
+	public static function getLineConnectorType(?string $code): ?string
+	{
+		if (!isset($code) || !self::isEnabled())
+		{
+			return null;
+		}
+
+		$connectorId = Chat::parseLinesChatEntityId($code)['connectorId'] ?? '';
+		if (!in_array($connectorId, static::$supportedConnectors, true))
+		{
+			return null;
+		}
+
+		return $connectorId;
+	}
+
+	public static function getLineId(?string $code): ?string
+	{
+		if (!isset($code) || !self::isEnabled())
+		{
+			return null;
+		}
+
+		return self::isImOpenLinesValue($code)
+			? Chat::parseLinesChatEntityId(mb_substr($code, 5))['lineId']
+			: Chat::parseLinesChatEntityId($code)['lineId']
+		;
+	}
+
+	public static function getLineTitle(?string $code): ?string
+	{
+		if (!isset($code) || !self::isEnabled())
+		{
+			return null;
+		}
+
+		$lineId = Chat::parseLinesChatEntityId($code)['lineId'];
+		if (!isset($lineId))
+		{
+			return null;
+		}
+
+		return (new Config())->get($lineId)['LINE_NAME'] ?? null;
+	}
+
+	public static function isImOpenLinesValue(string $value): bool
+	{
+		return preg_match('/^imol\|/', $value) === 1;
+	}
+
+	public static function getOpenLineTitle(string $value): ?string
+	{
+		return self::getLineTitle(mb_substr($value, 5));
+	}
+
+	public static function getChatTitle(?string $code): ?string
+	{
+		if (!isset($code) || !self::isEnabled())
+		{
+			return null;
+		}
+
+		$chat = new Chat();
+		$isLoaded = $chat->load(['USER_CODE' => $code, 'ONLY_LOAD' => 'Y']);
+
+		return $isLoaded ? $chat->getData('TITLE') : null;
+	}
+
+	public static function getSessionData(?int $sessionId): array
+	{
+		if (!isset($sessionId) || !self::isEnabled())
+		{
+			return [];
+		}
+
+		$session = SessionTable::getById($sessionId)->fetch();
+
+		return $session ?: [];
+	}
+
+	public static function getChatUnReadMessagesCount(?string $userCode, ?int $userId): int
+	{
+		if (
+			!$userCode
+			|| !Loader::includeModule('im')
+			|| !Loader::includeModule('imopenlines')
+		)
+		{
+			return 0;
+		}
+
+		$chatId = Chat::getChatIdByUserCode($userCode);
+		if ($chatId <= 0)
+		{
+			return 0;
+		}
+
+		if (!method_exists('\Bitrix\ImOpenLines\Recent', 'isNonAnsweredChat'))
+		{
+			$counters = Counter::get($userId);
+
+			return isset($counters['LINES'][$chatId]) ? (int)$counters['LINES'][$chatId] : 0;
+		}
+
+		$counter = (new CounterService($userId))->getByChat($chatId);
+		if ($counter === 0)
+		{
+			return (int)\Bitrix\ImOpenLines\Recent::isNonAnsweredChat($chatId, $userId);
+		}
+
+		return $counter;
+	}
+
+	public static function isProcessedByAiAgent(?int $sessionId): bool
+	{
+		if (
+			!Loader::includeModule('im')
+			|| !Loader::includeModule('imopenlines')
+			|| !Loader::includeModule('imbot')
+		)
+		{
+			return false;
+		}
+
+		if (!class_exists(OpenLinesBotRepository::class))
+		{
+			return false;
+		}
+
+		$session = self::getSessionData($sessionId);
+		if (empty($session))
+		{
+			return false;
+		}
+
+		$operatorId = (int)($session['OPERATOR_ID'] ?? 0);
+		if ($operatorId <= 0)
+		{
+			return false;
+		}
+
+		$operator = Im\User::getInstance($operatorId);
+		if (!$operator->isBot())
+		{
+			return false;
+		}
+
+		$botId = (int)($operator->getFields()['bot_data']['id'] ?? 0);
+		if ($botId <= 0)
+		{
+			return false;
+		}
+
+		$bot = ServiceLocator::getInstance()->get(OpenLinesBotRepository::class)?->getById($botId);
+		if ($bot === null)
+		{
+			return false;
+		}
+
+		return
+			$bot->getClass() === OpenLinesBizprocBot::class
+			&& str_starts_with($bot->getCode(), 'ai_agent_openlines_') //  hack: add badges if the chatbot code from bp template starts with "ai_agent_openlines_"
+		;
+	}
+
+	public static function closeDialog(?string $userCode, ?int $userId = null): ?Result
+	{
+		if (
+			!isset($userCode)
+			|| !Loader::includeModule('im')
+			|| !Loader::includeModule('imopenlines')
+		)
+		{
+			return null;
+		}
+
+		$chatId = Chat::getChatIdByUserCode($userCode);
+		if (isset($chatId))
+		{
+			$control = new Operator($chatId, $userId ?: null);
+
+			return $control->closeDialog();
+		}
+
+		return null;
+	}
+
+	public static function getMessageData(string $userCode, int $limit = 50): array
+	{
+		if (
+			empty($userCode)
+			|| !self::isEnabled()
+			|| !Loader::includeModule('im')
+		)
+		{
+			return [];
+		}
+
+		$chatId = Chat::getChatIdByUserCode($userCode);
+		if ($chatId <= 0)
+		{
+			return [];
+		}
+
+		$data = Im\Chat::getMessages(
+			$chatId,
+			null,
+			[
+				'LIMIT' => $limit,
+				'USER_TAG_SPREAD' => 'Y',
+				'JSON' => 'Y',
+			]
+		);
+
+		if (
+			is_array($data)
+			&& !empty($data['messages'])
+			&& is_array($data['messages'])
+		)
+		{
+			return $data;
+		}
+
+		return [];
+	}
+
+	public static function getLastMessage(?string $userCode): ?Message
+	{
+		if (
+			empty($userCode)
+			|| !self::isEnabled()
+			|| !Loader::includeModule('im')
+		)
+		{
+			return null;
+		}
+
+		$chatId = Chat::getChatIdByUserCode($userCode);
+		if ($chatId <= 0)
+		{
+			return null;
+		}
+
+		$lastMessageId = (\Bitrix\Im\V2\Chat::getInstance($chatId))->getLastMessageId();
+
+		return new Message($lastMessageId);
+	}
+
+	public static function getMessageCreatedDate(Message $message): ?string
+	{
+		$date = $message->getDateCreate();
+		if ($date === null)
+		{
+			return null;
+		}
+
+		return FormatDate(
+			CCrmDateTimeHelper::getDefaultDateTimeFormat(),
+			$date->getTimestamp()
+		);
+	}
+}

@@ -1,0 +1,24 @@
+<?php
+$MESS["SIGN_BLANK_SELECTOR_CLEAR_ALL"] = "Elimina tutto";
+$MESS["SIGN_BLANK_SELECTOR_CREATED_MYSELF"] = "Tu";
+$MESS["SIGN_BLANK_SELECTOR_CREATE_NEW_PIC"] = "Immagine";
+$MESS["SIGN_BLANK_SELECTOR_DRAG_AREA"] = "Trascina qui i tuoi file";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_MIXED"] = "Documenti o immagini con [highlight]campi modificabili[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_PLACEHOLDERS"] = "Documenti o moduli con [highlight]campi simbolici modificabili[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_FIELD_ADD_BUTTON_LABEL"] = "Seleziona modello di documento";
+$MESS["SIGN_BLANK_SELECTOR_LOAD_MORE"] = "Mostra altro";
+$MESS["SIGN_BLANK_SELECTOR_MIXED"] = "Documenti o immagini con campi modificabili.";
+$MESS["SIGN_BLANK_SELECTOR_NEW_BADGE"] = "Novità";
+$MESS["SIGN_BLANK_SELECTOR_NEW_DOC"] = "Microsoft Word";
+$MESS["SIGN_BLANK_SELECTOR_NEW_PDF"] = "Documento PDF";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX"] = "Documento con campi simbolici";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX_MSGVER_1"] = "Documenti o moduli con campi simbolici modificabili.";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK_MSGVER_1"] = "Campi simbolici";
+$MESS["SIGN_BLANK_SELECTOR_RECENT_TEMPLATES_TITLE"] = "Modelli recenti";
+$MESS["SIGN_BLANK_SELECTOR_SLIDER_SELECT_BLANK_BUTTON_LABEL"] = "Seleziona";
+$MESS["SIGN_BLANK_SELECTOR_UPLOADER_ERROR_INCOMPLETE"] = "Impossibile caricare il file. Riprova.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_HINT"] = "Puoi inviare per la firma un documento PDF, DOC, DOCX, RTF o ODT alla volta, o fino a %imageCountLimit% immagini JPG/PNG.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_GROUP_HINT"] = "Ciascun file di immagine non può superare i 10 MB.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_HINT"] = "Le dimensioni del file di immagine non devono superare i 10 MB.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_LIMIT_HINT"] = "Il modello può contenere un solo documento. Per sostituire o eliminare il documento caricato, usa il menu del documento nell'area soprastante.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_PLACEHOLDERS_HINT"] = "Sono supportati solo i file DOCX con campi simbolici modificabili.";

@@ -1,0 +1,8 @@
+<?php
+$MESS["UI_REACTIONS_CHECK_MARK"] = "Marca de verificação";
+$MESS["UI_REACTIONS_CROSS_MARK"] = "Marca de X";
+$MESS["UI_REACTIONS_EYES"] = "Olhos";
+$MESS["UI_REACTIONS_HANDSHAKE"] = "Aperto de mãos";
+$MESS["UI_REACTIONS_HUNDRED_POINTS"] = "Cem pontos";
+$MESS["UI_REACTIONS_NONSENSE_2"] = "Sem sentido";
+$MESS["UI_REACTIONS_SLEEPING"] = "Zzz";

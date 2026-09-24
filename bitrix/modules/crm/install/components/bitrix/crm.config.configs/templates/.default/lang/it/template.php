@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_TAB_ACTIVITY_CONFIG"] = "Attività";
+$MESS["CRM_TAB_ACTIVITY_CONFIG_TITLE2"] = "Preferenze attività";
+$MESS["CRM_TAB_CONFIG"] = "Invio e-mail";
+$MESS["CRM_TAB_CONFIG_TITLE"] = "Configura parametri di invio e-mail";
+$MESS["CRM_TAB_DEAL_CONFIG"] = "Affari";
+$MESS["CRM_TAB_DEAL_CONFIG_TITLE"] = "Parametri affare";
+$MESS["CRM_TAB_DUPLICATE_CONTROL"] = "Controllo duplicati";
+$MESS["CRM_TAB_DUPLICATE_CONTROL_TITLE"] = "Parametri controllo duplicati";
+$MESS["CRM_TAB_FORMAT"] = "Formato";
+$MESS["CRM_TAB_FORMAT_TITLE"] = "Parametri formato";
+$MESS["CRM_TAB_GENERAL"] = "Generale";
+$MESS["CRM_TAB_GENERAL_TITLE"] = "Parametri comuni";
+$MESS["CRM_TAB_HISTORY"] = "Cronologia";
+$MESS["CRM_TAB_HISTORY_TITLE"] = "Impostazioni cronologia";
+$MESS["CRM_TAB_LIVEFEED2"] = "Feed";
+$MESS["CRM_TAB_LIVEFEED_TITLE2"] = "Impostazioni feed";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG"] = "Cestino";
+$MESS["CRM_TAB_RECYCLE_BIN_CONFIG_TITLE"] = "Impostazioni Cestino";
+$MESS["CRM_TAB_REST_2"] = "Market";
+$MESS["CRM_TAB_REST_2_MSGVER_1"] = "Market";
+$MESS["CRM_TAB_REST_TITLE"] = "Impostazioni applicazione";
+$MESS["CRM_TAB_STATUS_CONFIG"] = "Stati e menu a discesa";
+$MESS["CRM_TAB_STATUS_CONFIG_TITLE"] = "Controlli di selezione entità";

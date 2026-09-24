@@ -1,0 +1,15 @@
+<?php
+$MESS["CONTACT_SELECTOR_ALERT_CANCEL_BUTTON_TEXT"] = "Cancelar";
+$MESS["CONTACT_SELECTOR_ALERT_OPEN_SETTINGS_BUTTON_TEXT"] = "Abrir la configuración";
+$MESS["CONTACT_SELECTOR_LOADING_ITEM_TEXT"] = "Cargando";
+$MESS["CONTACT_SELECTOR_NEED_TO_ADD_CONTACT_ACCESS_ALERT_DESCRIPTION"] = "Bitrix24 solicita acceso a los Contactos para enviar invitaciones.";
+$MESS["CONTACT_SELECTOR_NEED_TO_ADD_CONTACT_ACCESS_ALERT_TITLE"] = "Se requiere acceso a los contactos";
+$MESS["CONTACT_SELECTOR_NOTHING_FOUND_ITEM_TEXT"] = "No se han encontrado entradas.";
+$MESS["CONTACT_SELECTOR_NOTHING_FOUND_ITEM_TEXT_MSGVER_1"] = "No hay resultados";
+$MESS["CONTACT_SELECTOR_SEARCH_PLACEHOLDER_TEXT"] = "Nombre o número";
+$MESS["CONTACT_SELECTOR_SEND_BUTTON_TEXT"] = "Continuar";
+$MESS["CONTACT_SELECTOR_TITLE"] = "Invitar contactos";
+$MESS["CONTACT_SELECTOR_TITLE_MSGVER_1"] = "Invitar mediante SMS";
+$MESS["PHONE_INPUT_BOX_BUTTON_TEXT"] = "Continuar";
+$MESS["PHONE_INPUT_BOX_OPEN_SETTINGS_BUTTON_TEXT"] = "Permitir el acceso a los contactos";
+$MESS["PHONE_INPUT_BOX_TITLE"] = "Invitar mediante SMS";

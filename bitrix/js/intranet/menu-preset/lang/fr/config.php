@@ -1,0 +1,19 @@
+<?php
+$MESS["MENU_PRESET_CRM_DESC1"] = "Automatiser les ventes";
+$MESS["MENU_PRESET_CRM_DESC2"] = "améliorer la conversion et communiquer avec les clients";
+$MESS["MENU_PRESET_CRM_DESC11"] = "Automatiser les ventes";
+$MESS["MENU_PRESET_CRM_TITLE"] = "CRM";
+$MESS["MENU_PRESET_DESC"] = "Ceci facilitera votre routine quotidienne : l'outil sélectionné sera affiché en premier, et le menu inclura uniquement les objets requis. Vous pouvez modifier le menu à tout moment.";
+$MESS["MENU_PRESET_SITES_DESC1"] = "Créer de superbes sites efficaces";
+$MESS["MENU_PRESET_SITES_DESC2"] = "pas besoin de compétences en codage";
+$MESS["MENU_PRESET_SITES_TITLE"] = "Sites";
+$MESS["MENU_PRESET_SOCIAL_DESC1"] = "Communiquez avec vos collègues";
+$MESS["MENU_PRESET_SOCIAL_DESC2"] = "résoudre des problèmes en un rien de temps";
+$MESS["MENU_PRESET_SOCIAL_DESC11"] = "Communiquer et collaborer";
+$MESS["MENU_PRESET_SOCIAL_TITLE1_1"] = "Collaboration";
+$MESS["MENU_PRESET_TASKS_DESC1"] = "Gérez les projets";
+$MESS["MENU_PRESET_TASKS_DESC2"] = "surveiller les délais et contrôler la performance";
+$MESS["MENU_PRESET_TASKS_DESC11"] = "Travailler ensemble et rester dans les temps";
+$MESS["MENU_PRESET_TASKS_TITLE"] = "Tâches";
+$MESS["MENU_PRESET_TASKS_TITLE1"] = "Tâches et projets";
+$MESS["MENU_PRESET_TITLE"] = "Sélectionnez l'outil Bitrix24 le plus utilisé";

@@ -1,0 +1,284 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Tasks\V2\Internal\Repository\Template;
+
+use Bitrix\Main\ORM\Query\Expression;
+use Bitrix\Main\ORM\Query\QueryHelper;
+use Bitrix\Main\Type\Collection;
+use Bitrix\Tasks\Internals\Task\TemplateTable;
+use Bitrix\Tasks\V2\Internal\Entity\CheckList\Type;
+use Bitrix\Tasks\V2\Internal\Entity\Template;
+use Bitrix\Tasks\V2\Internal\Entity\Template\TemplateCollection;
+use Bitrix\Tasks\Internals\Task;
+use Bitrix\Tasks\V2\Internal\Entity\UF\UserField;
+use Bitrix\Tasks\V2\Internal\Integration\CRM\Repository\CrmItemRepositoryInterface;
+use Bitrix\Tasks\V2\Internal\Repository\CheckListRepositoryInterface;
+use Bitrix\Tasks\V2\Internal\Repository\GroupRepositoryInterface;
+use Bitrix\Tasks\V2\Internal\Repository\Mapper\TemplateMapper;
+use Bitrix\Tasks\V2\Internal\Repository\Template\List\AccessChecker;
+use Bitrix\Tasks\V2\Internal\Repository\Template\List\Field;
+use Bitrix\Tasks\V2\Internal\Repository\UserRepositoryInterface;
+
+class TemplateReadRepository implements TemplateReadRepositoryInterface
+{
+	public function __construct(
+		private readonly TemplateTagRepositoryInterface $templateTagRepository,
+		private readonly ParentTemplateRepositoryInterface $parentTemplateRepository,
+		private readonly GroupRepositoryInterface $groupRepository,
+		private readonly UserRepositoryInterface $userRepository,
+		private readonly CheckListRepositoryInterface $checkListRepository,
+		private readonly CrmItemRepositoryInterface $crmItemRepository,
+		private readonly RelatedTaskTemplateRepositoryInterface $templateRelatedTaskRepository,
+		private readonly TemplatePermissionRepository $templatePermissionRepository,
+		private readonly SubTemplateRepositoryInterface $subTemplateRepository,
+		private readonly TemplateMapper $mapper,
+		private readonly List\QueryBuilder $queryBuilder,
+	)
+	{
+	}
+
+	public function getById(int $id, ?Select $select = null): ?Template
+	{
+		$selectFields = [
+			'*',
+		];
+
+		$select ??= new Select();
+
+		if ($select->members)
+		{
+			$selectFields[] = 'MEMBERS';
+		}
+
+		if ($select->params)
+		{
+			$selectFields[] = 'PARAMS';
+		}
+
+		if ($select->userFields)
+		{
+			$selectFields[] = 'UF_*';
+		}
+
+		$template =
+			TemplateTable::query()
+				->setSelect($selectFields)
+				->where('ID', $id)
+				->fetchObject()
+		;
+
+		if ($template === null)
+		{
+			return null;
+		}
+
+		$tags = null;
+		if ($select->tags)
+		{
+			$tags = $this->templateTagRepository->getById($id);
+		}
+
+		$group = null;
+		if ($select->group && $template->getGroupId() > 0)
+		{
+			$group = $this->groupRepository->getById($template->getGroupId());
+		}
+
+		$members = null;
+		if ($select->members)
+		{
+			$memberIds = array_merge(
+				$template->getMembers()->getUserIdList(),
+				[$template->getCreatedBy(), $template->getResponsibleId()]
+			);
+
+			Collection::normalizeArrayValuesByInt($memberIds, false);
+
+			$members = $this->userRepository->getByIds($memberIds);
+		}
+
+		$checkListIds = null;
+		if ($select->checkLists)
+		{
+			$checkListIds = $this->checkListRepository->getIdsByEntity($id, Type::Template);
+		}
+
+		$crmItemIds = null;
+		if ($select->crm)
+		{
+			$crmItemIds = $this->crmItemRepository->getIdsByTemplateId($id);
+		}
+
+		$permissions = null;
+		if ($select->permissions)
+		{
+			$permissions = $this->templatePermissionRepository->getPermissions($id);
+		}
+
+		$containsRelatedTasks = false;
+		if ($select->relatedTasks)
+		{
+			$containsRelatedTasks = $this->templateRelatedTaskRepository->containsRelatedTasks($id);
+		}
+
+		$containsSubTemplates = false;
+		if ($select->subTemplates)
+		{
+			$containsSubTemplates = $this->subTemplateRepository->containsSubTemplates($id);
+		}
+
+		$parent = null;
+		if ($select->parent)
+		{
+			$parent = $this->parentTemplateRepository->getParent($id);
+		}
+
+		$aggregates = [
+			'containsCheckList' => !empty($checkListIds),
+			'containsRelatedTasks' => $containsRelatedTasks,
+			'containsSubTemplates' => $containsSubTemplates,
+		];
+
+		$fileIds = $template->get(UserField::TASK_ATTACHMENTS);
+		if (empty($fileIds))
+		{
+			$fileIds = null;
+		}
+
+		$params = [];
+		$templateParams = $template->getParams();
+		if ($templateParams && !$templateParams->isEmpty())
+		{
+			foreach ($templateParams as $param)
+			{
+				match ($param->getCode())
+				{
+					TemplateParameter::RequireResult->value => $params['requireResult'] = $param->getValue() === 'Y',
+					default => null,
+				};
+			}
+		}
+
+		return $this->mapper->mapFromTemplateObject(
+			templateObject: $template,
+			tags: $tags,
+			group: $group,
+			members: $members,
+			crmItemIds: $crmItemIds,
+			checkListIds: $checkListIds,
+			aggregates: $aggregates,
+			permissions: $permissions,
+			fileIds: $fileIds,
+			parent: $parent,
+			params: $params,
+		);
+	}
+
+	public function getAttachmentIds(int $templateId): array
+	{
+		$row =
+			TemplateTable::query()
+				->setSelect(['ID', UserField::TASK_ATTACHMENTS])
+				->where('ID', $templateId)
+				->fetch()
+		;
+
+		if (!is_array($row))
+		{
+			return [];
+		}
+
+		$value = $row[UserField::TASK_ATTACHMENTS] ?? null;
+
+		if (!is_array($value))
+		{
+			return [];
+		}
+
+		return $value;
+	}
+
+	public function getList(
+		List\Select $select,
+		List\Filter $filter,
+		List\Order $order,
+		int $limit = self::DEFAULT_LIMIT,
+		int $offset = 0
+	): TemplateCollection
+	{
+		$userId = $filter->getUserIdForAccessCheck();
+		if ($userId !== null)
+		{
+			$accessChecker = new AccessChecker($userId);
+			if (!$accessChecker->hasAccess())
+			{
+				return new TemplateCollection();
+			}
+		}
+
+		if (empty($select->getList()))
+		{
+			$select = new List\Select([Field::Id]);
+		}
+
+		if (empty($order->getList()))
+		{
+			$order = new List\Order([[Field::Id, 'ASC']]);
+		}
+
+		$query = $this->queryBuilder->buildListQuery($select, $filter, $order, $limit, $offset);
+
+		/** @var Task\Template\TemplateCollection $templatesCollection */
+		$templatesCollection = QueryHelper::decompose(query: $query, separateRelations: false);
+
+		return $this->prepareCollection($templatesCollection, $select);
+	}
+
+	public function getCount(List\Filter $filter): int
+	{
+		$query = $this->queryBuilder->buildListQuery(new List\Select(), $filter, new List\Order(), 1, 0);
+
+		$query->setSelect([])
+			->addSelect((new Expression())->countDistinct('ID'), 'cnt')
+		;
+
+		$result = $query->fetch();
+
+		return $result === false ? 0 : (int)$result['cnt'];
+	}
+
+	protected function prepareCollection(
+		Task\Template\TemplateCollection $templatesCollection,
+		List\Select $select
+	): TemplateCollection
+	{
+		$members = null;
+		if ($select->has(Field::Members))
+		{
+			$memberIds = [];
+			foreach ($templatesCollection as $templateObject)
+			{
+				$memberIds[] = $templateObject->getMembers()->getUserIdList();
+				$memberIds[] = array_filter([$templateObject->getCreatedBy(), $templateObject->getResponsibleId()]);
+			}
+
+			$memberIds = array_values(array_unique(array_merge(...$memberIds)));
+			$members = $this->userRepository->getByIds($memberIds);
+		}
+
+		$list = new TemplateCollection();
+		foreach ($templatesCollection as $templateObject)
+		{
+			$list->add(
+				$this->mapper->mapListItem(
+					templateObject: $templateObject,
+					members: $members,
+				)
+			);
+		}
+
+		return $list;
+	}
+}

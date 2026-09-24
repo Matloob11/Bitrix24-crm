@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_DELETE_DATA_ACTIVITY_DESCRIPTION"] = "Видаляє дані зі сховища.";
+$MESS["BIZPROC_DELETE_DATA_ACTIVITY_NAME"] = "Видалення даних";
+$MESS["BIZPROC_DELETE_DATA_STORAGE_CATEGORY"] = "Сховище";

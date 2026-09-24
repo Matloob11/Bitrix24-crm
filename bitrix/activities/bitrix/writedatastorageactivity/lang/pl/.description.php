@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_STORAGE_CATEGORY"] = "Magazyn";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_DESCRIPTION"] = "Zapisuje dane w magazynie.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NAME"] = "Zapisz dane";

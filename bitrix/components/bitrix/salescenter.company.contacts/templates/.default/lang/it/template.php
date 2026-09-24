@@ -1,0 +1,6 @@
+<?php
+$MESS["SC_COMPANY_CONTACTS_COMPANY_NAME"] = "Nome azienda";
+$MESS["SC_COMPANY_CONTACTS_COMPANY_PHONE"] = "Telefono azienda";
+$MESS["SC_COMPANY_CONTACTS_HOW_TO_WORK"] = "Come funziona";
+$MESS["SC_COMPANY_CONTACTS_TITLE"] = "Contatti aziendali";
+$MESS["SC_COMPANY_CONTACTS_YOUR_CONTACTS"] = "I tuoi contatti";

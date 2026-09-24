@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_BOARDS_HANDLER_NAME"] = "Tableros";
+$MESS["DISK_BOARDS_VIEWER_HANDLER_ERROR_METHOD_IS_NOT_SUPPORTED"] = "Esta acción no es soportada.";

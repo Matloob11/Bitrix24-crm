@@ -1,0 +1,4 @@
+<?php
+$MESS["IMMOBILE_RECENT_RENDER_SECTION_ANSWERED_TITLE"] = "Жауап қайтарылғандар";
+$MESS["IMMOBILE_RECENT_RENDER_SECTION_NEW_TITLE"] = "Жауап қайтарылмағандар";
+$MESS["IMMOBILE_RECENT_RENDER_SECTION_WORK_TITLE"] = "Жұмыс үстінде";

@@ -1,0 +1,27 @@
+<?php
+$MESS["LANDING_404_ERROR"] = "Le modèle est introuvable";
+$MESS["LANDING_LOADER_WAIT_MSGVER_1"] = "Veuillez patienter, création de la boutique en ligne en cours...";
+$MESS["LANDING_PREVIEW_MAINPAGE_BUTTON_CANCEL_TEXT"] = "Annuler";
+$MESS["LANDING_PREVIEW_MAINPAGE_BUTTON_OK_TEXT"] = "Oui";
+$MESS["LANDING_PREVIEW_MAINPAGE_MESSAGE"] = "Votre page d'accueil utilise déjà un modèle. L'importation d'un nouveau modèle supprimera irréversiblement le modèle actuel et toutes les modifications que vous y avez apportées.<br />Voulez-vous supprimer le modèle actuel et en installer un nouveau ?";
+$MESS["LANDING_PREVIEW_MAINPAGE_TITLE"] = "Installation d'un nouveau modèle";
+$MESS["LANDING_TPL_BUTTON_CANCEL"] = "Annuler";
+$MESS["LANDING_TPL_BUTTON_CREATE"] = "Créer";
+$MESS["LANDING_TPL_BUTTON_CREATE_KB"] = "Créer une base de connaissances";
+$MESS["LANDING_TPL_BUTTON_CREATE_PAGE"] = "Créer une page";
+$MESS["LANDING_TPL_BUTTON_CREATE_SITE"] = "Créer un site";
+$MESS["LANDING_TPL_BUTTON_CREATE_STORE"] = "Créer une boutique en ligne";
+$MESS["LANDING_TPL_BUTTON_REPLACE_PAGE"] = "Appliquer le modèle";
+$MESS["LANDING_TPL_BUTTON_SHOW_IN_MOBILE"] = "Ouvrir sur un appareil mobile";
+$MESS["LANDING_TPL_DEMO_PREVIEW_LOGO_WELCOME_PAGE"] = "Page d'accueil";
+$MESS["LANDING_TPL_HEADER_LOGO_BITRIX"] = "Bitrix";
+$MESS["LANDING_TPL_HEADER_LOGO_KB"] = "Knowledge bases";
+$MESS["LANDING_TPL_HEADER_LOGO_MAINPAGE"] = "Vibe";
+$MESS["LANDING_TPL_HEADER_LOGO_SITE"] = "Sites";
+$MESS["LANDING_TPL_HEADER_RIGHT_CREATE_HINT_MSGVER_1"] = "Vous n'avez pas les autorisations nécessaires pour créer des sites. Veuillez contacter votre administrateur.";
+$MESS["LANDING_TPL_POPUP_REPEAT_BUTTON"] = "Redémarrer";
+$MESS["LANDING_TPL_POPUP_REPEAT_TEXT"] = "Une erreur s'est produite. Cliquez sur Redémarrer pour réessayer.";
+$MESS["LANDING_TPL_POPUP_TEXT"] = "Scannez le code QR pour ouvrir le site";
+$MESS["LANDING_TPL_POPUP_TEXT_KB"] = "Scannez le code QR pour ouvrir la base de connaissances";
+$MESS["LANDING_TPL_POPUP_TEXT_STORE"] = "Scannez le code QR pour accéder à la boutique en ligne";
+$MESS["LANDING_TPL_TITLE"] = "Aperçu du modèle";

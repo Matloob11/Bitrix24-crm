@@ -1,0 +1,17 @@
+<?php
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_CURRENCY"] = "Валюта документа";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DATE_CREATE"] = "Дата створення";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DATE_DEDUCTED"] = "Дата відвантаження";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DATE_UPDATE"] = "Дата зміни";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DEDUCTED"] = "Прапор відвантаження";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DEDUCTED_FULL"] = "Чи виконано відвантаження: Y — так, N — ні";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DELIVERY_NAME"] = "Найменування служби доставлення";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_ID"] = "Унікальний ідентифікатор";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_PRICE_DELIVERY"] = "Вартість доставлення";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_RESPONSIBLE"] = "ID та ім'я відповідального";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_RESPONSIBLE_ID"] = "ID відповідального";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_RESPONSIBLE_NAME"] = "Ім'я відповідального";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_WAS_CANCELLED"] = "Документ скасовано";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_WAS_CANCELLED_FULL"] = "Чи скасовано документ: Y — так, N — ні";
+$MESS["SALE_DOCUMENT_SALEORDER_TABLE"] = "Документи реалізації";
+$MESS["SALE_DOCUMENT_SALEORDER_TABLE_DESCRIPTION_FULL"] = "Набір містить дані про документи реалізації.";

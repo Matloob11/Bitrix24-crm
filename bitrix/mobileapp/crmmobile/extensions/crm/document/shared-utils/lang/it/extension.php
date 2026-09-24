@@ -1,0 +1,4 @@
+<?php
+$MESS["M_CRM_DOCUMENT_SHARED_PHRASES_DESKTOP_VERSION"] = "CRM web";
+$MESS["M_CRM_DOCUMENT_SHARED_PHRASES_LOADING"] = "Caricamento...";
+$MESS["M_CRM_DOCUMENT_SHARED_PHRASES_QR_CODE_CHANGE_DISABLED_DEFAULT_REASON"] = "Il codice QR non può essere modificato per questo documento";

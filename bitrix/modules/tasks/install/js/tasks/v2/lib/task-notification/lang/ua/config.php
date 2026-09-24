@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_OPEN"] = "Відкрити";
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_UPDATED"] = "Шаблон завдання змінено.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_FAIL"] = "Не вдалося зберегти шаблон.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_OPEN"] = "Відкрити";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_SUCC"] = "Шаблон створено.";

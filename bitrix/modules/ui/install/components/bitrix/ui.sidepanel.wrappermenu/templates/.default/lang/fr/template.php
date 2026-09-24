@@ -1,0 +1,5 @@
+<?
+$MESS["UI_SIDEPANEL_MENU_ADD_ITEM"] = "ajouter une page";
+$MESS["UI_SIDEPANEL_MENU_BUTTON_CLOSE"] = "Réduire";
+$MESS["UI_SIDEPANEL_MENU_BUTTON_OPEN"] = "Développer";
+?>

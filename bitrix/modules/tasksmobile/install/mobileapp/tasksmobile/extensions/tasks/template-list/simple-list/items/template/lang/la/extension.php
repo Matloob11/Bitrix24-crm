@@ -1,0 +1,2 @@
+<?php
+$MESS["TASKSMOBILE_TEMPLATE_DEADLINE_PILL_NO_DEADLINE"] = "Sin fecha límite";

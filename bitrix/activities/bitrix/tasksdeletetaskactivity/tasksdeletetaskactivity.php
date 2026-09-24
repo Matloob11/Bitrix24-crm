@@ -1,0 +1,113 @@
+<?php
+
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+use Bitrix\Tasks;
+use Bitrix\Tasks\Integration\BizProc\NodeFilter\TargetDocumentAccessGuard;
+use Bitrix\Tasks\Integration\BizProc\NodeFilter\TargetDocumentResolverTrait;
+
+use Bitrix\Main\Loader;
+
+use Bitrix\Crm\Integration\Analytics\Dictionary;
+
+$runtime = CBPRuntime::GetRuntime();
+$runtime->IncludeActivityFile('DeleteDocumentActivity');
+
+\Bitrix\Main\Loader::includeModule('tasks');
+
+class CBPTasksDeleteTaskActivity extends CBPDeleteDocumentActivity
+{
+	use TargetDocumentResolverTrait;
+
+	public function Execute()
+	{
+		if (!CModule::IncludeModule('tasks'))
+		{
+			return CBPActivityExecutionStatus::Closed;
+		}
+
+		$documentId = $this->resolveTargetDocumentId();
+		$documentType = $this->resolveTargetDocumentType($documentId)[2];
+		[$moduleId, $entity, $taskId] = array_pad(is_array($documentId) ? $documentId : [], 3, null);
+
+		$canDelete = $this->canDeleteResolvedTaskTarget($documentId);
+		if ($canDelete === null)
+		{
+			$canDelete = false;
+
+			if (
+				Tasks\Integration\Bizproc\Document\Task::isProjectTask($documentType)
+				|| Tasks\Integration\Bizproc\Document\Task::isScrumProjectTask($documentType)
+				|| Tasks\Integration\Bizproc\Document\Task::isBizprocTask($documentType)
+			)
+			{
+				$canDelete = true;
+			}
+			else
+			{
+				if (Tasks\Integration\Bizproc\Document\Task::isPlanTask($documentType))
+				{
+					$ownerId = Tasks\Integration\Bizproc\Document\Task::resolvePlanId($documentType);
+				}
+				else
+				{
+					$ownerId = Tasks\Integration\Bizproc\Document\Task::resolvePersonId($documentType);
+				}
+
+				if ($ownerId > 0)
+				{
+					$res = \CTasks::GetByID($taskId, false);
+					$taskFields = $res ? $res->fetch() : null;
+
+					if ($taskFields)
+					{
+						$allowedActions = \CTaskItem::getAllowedActionsArray($ownerId, $taskFields, true);
+
+						$canDelete = (isset($allowedActions['ACTION_REMOVE']) && $allowedActions['ACTION_REMOVE'] === true);
+					}
+				}
+			}
+		}
+
+		if (!$canDelete)
+		{
+			$this->WriteToTrackingService(GetMessage('TASKS_DTA_NO_PERMISSIONS'), 0, CBPTrackingType::Error);
+		}
+		else
+		{
+			$documentService = $this->workflow->GetService("DocumentService");
+			$documentService->DeleteDocument($documentId);
+
+			if (
+				Loader::includeModule('crm')
+				&& defined('Bitrix\Crm\Integration\Analytics\Dictionary::EVENT_ENTITY_DELETE')
+				&& method_exists(CCrmBizProcHelper::class, 'sendOperationsAnalytics')
+			)
+			{
+				\CCrmBizProcHelper::sendOperationsAnalytics(
+					Dictionary::EVENT_ENTITY_DELETE,
+					$this,
+					$documentType ?? '',
+					$moduleId,
+				);
+			}
+		}
+
+		return CBPActivityExecutionStatus::Closed;
+	}
+
+	private function canDeleteResolvedTaskTarget(array $documentId): ?bool
+	{
+		$rootDocumentId = $this->getRootActivity()->getDocumentId();
+
+		return TargetDocumentAccessGuard::checkResolvedTarget(
+			is_array($rootDocumentId) ? $rootDocumentId : [],
+			$documentId,
+			Tasks\Access\ActionDictionary::ACTION_TASK_REMOVE,
+			(int)($this->workflow?->getStartedBy() ?? 0),
+		);
+	}
+}

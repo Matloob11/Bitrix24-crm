@@ -1,0 +1,19 @@
+<?php
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS"] = "Regarder les champs";
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS_1"] = "Champs de suivi";
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS_CHOOSE"] = "Sélectionnez les champs";
+$MESS["CRM_AUTOMATION_CMP_FILL_TRACKNUM_DELIVERY"] = "Service de livraison";
+$MESS["CRM_AUTOMATION_CMP_FILL_TRACKNUM_DELIVERY_ANY"] = "n'importe";
+$MESS["CRM_AUTOMATION_CMP_OPENLINE_ANSWER_CTRL_CONDITION"] = "Champs de chat";
+$MESS["CRM_AUTOMATION_CMP_OPENLINE_MESSAGE_TEXT_CONDITION"] = "Le message contient du texte";
+$MESS["CRM_AUTOMATION_CMP_SHIPMENT_CHANGED_CONDITION"] = "Champs de livraison";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_ANY"] = "(n'importe quel(le)s)";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_CONDITION"] = "Champs de tâches";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_LABEL"] = "Statut";
+$MESS["CRM_AUTOMATION_CMP_TITLE_DEAL_EDIT"] = "Définir des règles d'automatisation pour toutes les transactions dans ce pipeline";
+$MESS["CRM_AUTOMATION_CMP_TITLE_DEAL_VIEW"] = "Étape actuelle de la transaction : \"#TITLE#\"";
+$MESS["CRM_AUTOMATION_CMP_TITLE_LEAD_EDIT"] = "Définir des règles d'automatisation pour tous les clients potentiels";
+$MESS["CRM_AUTOMATION_CMP_TITLE_LEAD_VIEW"] = "Statut actuel du prospect : \"#TITLE#\"";
+$MESS["CRM_AUTOMATION_CMP_TITLE_ORDER_EDIT"] = "Éditer les règles d'automatisation pour toutes les commandes";
+$MESS["CRM_AUTOMATION_CMP_TITLE_ORDER_VIEW"] = "Statut de la commande en cours";
+$MESS["CRM_AUTOMATION_CMP_WEBHOOK_PASSWORD_ALERT"] = "Le déclencheur nécessite un webhook entrant. Voulez-vous en #A1#créer un maintenant#A2# ?";

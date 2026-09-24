@@ -1,0 +1,86 @@
+<?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
+/**
+ * @var array $arResult
+ */
+
+Bitrix\Main\UI\Extension::load(["ui.tooltip", "ui.fonts.opensans"]);
+
+\Bitrix\Main\Page\Asset::getInstance()->addCss('/bitrix/js/crm/css/crm.css');
+if(\CCrmSipHelper::isEnabled())
+	\Bitrix\Main\Page\Asset::getInstance()->addJs('/bitrix/js/crm/common.js');
+
+$publicMode = isset($arParams["PUBLIC_MODE"]) && $arParams["PUBLIC_MODE"] === true;
+?><table cellpadding="0" cellspacing="0" class="field_crm"><?php
+	$_suf = rand(1, 100);
+	foreach ($arResult["VALUE"] as $entityType => $arEntity):
+		?><tr><?php
+		if($arParams['PREFIX']):
+			?><td class="field_crm_entity_type">
+			<?=GetMessage('CRM_ENTITY_TYPE_'.$entityType)?>:
+			</td><?php
+		endif;
+		?><td class="field_crm_entity"><?php
+
+		$first = true;
+		foreach ($arEntity as $entityId => $entity)
+		{
+			echo !$first ? ', ': '';
+
+			if ($publicMode)
+			{
+				echo htmlspecialcharsbx($entity['ENTITY_TITLE']);
+			}
+			else
+			{
+				echo (new \Bitrix\Crm\ItemMiniCard\Builder\MiniCardHtmlBuilder($entity['ENTITY_TYPE_ID'], (int)$entityId))
+					->setTitle($entity['ENTITY_TITLE'])
+					->build();
+			}
+
+			$first = false;
+		}
+
+		?></td>
+		</tr><?php
+	endforeach;
+	?></table>
+
+<?php if(\CCrmSipHelper::isEnabled()):?>
+<script>
+	BX.ready(
+		function()
+		{
+			if(typeof(window["BXIM"]) === "undefined" || typeof(BX.CrmSipManager) === "undefined")
+			{
+				return;
+			}
+
+			if(typeof(BX.CrmSipManager.messages) === "undefined")
+			{
+				BX.CrmSipManager.messages =
+				{
+					"unknownRecipient": "<?= GetMessageJS('CRM_SIP_MGR_UNKNOWN_RECIPIENT')?>",
+					"makeCall": "<?= GetMessageJS('CRM_SIP_MGR_MAKE_CALL')?>"
+				};
+			}
+
+			var sipMgr = BX.CrmSipManager.getCurrent();
+			sipMgr.setServiceUrl(
+				"CRM_<?=CUtil::JSEscape(CCrmOwnerType::LeadName)?>",
+				"/bitrix/components/bitrix/crm.lead.show/ajax.php?<?=bitrix_sessid_get()?>"
+			);
+
+			sipMgr.setServiceUrl(
+				"CRM_<?=CUtil::JSEscape(CCrmOwnerType::ContactName)?>",
+				"/bitrix/components/bitrix/crm.contact.show/ajax.php?<?=bitrix_sessid_get()?>"
+			);
+
+			sipMgr.setServiceUrl(
+				"CRM_<?=CUtil::JSEscape(CCrmOwnerType::CompanyName)?>",
+				"/bitrix/components/bitrix/crm.company.show/ajax.php?<?=bitrix_sessid_get()?>"
+			);
+		}
+	);
+</script>
+<?php endif ?>

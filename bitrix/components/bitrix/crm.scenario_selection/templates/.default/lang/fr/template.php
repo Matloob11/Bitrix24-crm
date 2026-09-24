@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_SCENARIO_SELECTION_ACTIVE_ORDERS"] = "Commandes actives : #ORDER_COUNT#";
+$MESS["CRM_SCENARIO_SELECTION_CONVERT_ACTIVE_ORDERS"] = "Convertissez les commandes actives en transactions lors du changement de mode";
+$MESS["CRM_SCENARIO_SELECTION_DEALS"] = "Transactions";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION"] = "Le meilleur choix pour les ventes personnelles";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_1"] = "Toutes les demandes (appels, chats, formulaires CRM, commandes sur la boutique en ligne, etc.) seront ajoutées aux transactions CRM";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_2"] = "Les étapes de communication avec le client, de paiement et de livraison seront indiquées dans la chronologie de la transaction.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_3"] = "Les commerciaux communiquent personnellement avec chaque client";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_ONLY_WARNING"] = "Le traitement des commandes ne sera pas disponible si vous choisissez de traiter uniquement les transactions.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS"] = "Transactions et commandes";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION"] = "Idéal pour le traitement automatisé des commandes";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_1"] = "Les commandes de la boutique en ligne sont uniquement enregistrées dans les commandes CRM, et non ajoutées aux transactions";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_2"] = "Les transactions sont créées en tant qu'entités distinctes (par exemple, pour fournir des services supplémentaires)";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_3"] = "Certains commerciaux s'occupent des transactions, tandis que d'autres traitent les commandes de la boutique en ligne";
+$MESS["CRM_SCENARIO_SELECTION_SAVE_ERROR"] = "Erreur lors du changement de mode";
+$MESS["CRM_SCENARIO_SELECTION_SELECT"] = "Choisir";
+$MESS["CRM_SCENARIO_SELECTION_SELECTED"] = "Est marqué";
+$MESS["CRM_SCENARIO_SELECTION_TITLE"] = "Mode de traitement des commandes";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_CANCEL_BUTTON"] = "Passer en mode Transactions";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_OK_BUTTON"] = "Rester en mode Transactions et commandes";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_1"] = "Les commandes de votre boutique en ligne deviendront des transactions dans lesquelles vous pourrez accepter des paiements, créer des livraisons et réserver des stocks dans les entrepôts. Il n'y aura pas de zone autonome de \"Commandes\".";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_2"] = "Notez que vous ne pourrez pas repasser en mode Transactions et commandes car il n'est plus pris en charge.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_1"] = "Lire la suite";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_2"] = "sur ces deux modes avant de vous engager dans l'un ou l'autre.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TITLE"] = "Vous êtes sur le point de passer en mode Transactions";

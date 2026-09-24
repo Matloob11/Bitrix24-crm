@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_FLD_CURRENT_TIME"] = "Date et heure actuelles";
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_FLD_DOCUMENT_CREATE_TIME"] = "Date de création";
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_FLD_DOCUMENT_NUMBER"] = "#";
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_FLD_DOCUMENT_RESPONSIBLE"] = "Responsable";
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_FLD_DOCUMENT_STORE_FROM_TITLE"] = "Entrepôt sortant";
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_FLD_DOCUMENT_STORE_TO_TITLE"] = "Entrepôt entrant";
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_MULTI_STORE_PRINT_NOT_AVAILABLE"] = "L'impression de la documentation relative aux entrepôts multiples est en cours de développement.";
+$MESS["CRM_DOCGEN_DATAPROVIDER_SD_TITLE"] = "Document de la gestion de l'inventaire";

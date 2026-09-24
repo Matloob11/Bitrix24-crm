@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_SSMSA_EMPTY_PHONE_NUMBER"] = "Il numero di telefono non è specificato";
+$MESS["CRM_SSMSA_EMPTY_PROVIDER"] = "Nessun provider selezionato.";
+$MESS["CRM_SSMSA_EMPTY_TEXT"] = "Il testo del messaggio è vuoto.";
+$MESS["CRM_SSMSA_MESSAGE_FROM"] = "Da";
+$MESS["CRM_SSMSA_MESSAGE_TEXT"] = "Testo messaggio";
+$MESS["CRM_SSMSA_NO_MESSAGESERVICE"] = "Il modulo Servizio di messaggistica non è installato.";
+$MESS["CRM_SSMSA_NO_PROVIDER"] = "Il provider SMS non è registrato o è stato eliminato.";
+$MESS["CRM_SSMSA_PAYMENT_REQUIRED"] = "L'app non è stata pagata";
+$MESS["CRM_SSMSA_PHONE_TYPE"] = "Tipo numero di telefono cliente";
+$MESS["CRM_SSMSA_PHONE_TYPE_EMPTY_OPTION"] = "Selezione automatica";
+$MESS["CRM_SSMSA_PROVIDER"] = "Provider";
+$MESS["CRM_SSMSA_PROVIDER_DEFAULT"] = "Impostazioni predefinite (usa impostazioni CRM)";
+$MESS["CRM_SSMSA_RECIPIENT_TYPE"] = "Tipo destinatario";
+$MESS["CRM_SSMSA_RECIPIENT_TYPE_ENTITY"] = "Cliente";
+$MESS["CRM_SSMSA_RECIPIENT_TYPE_USER"] = "Dipendente";
+$MESS["CRM_SSMSA_RECIPIENT_USER"] = "Dipendente";
+$MESS["CRM_SSMSA_SEND_ACTIVITY_SUBJECT"] = "Messaggio SMS in uscita";
+$MESS["CRM_SSMSA_SEND_RESULT_TRUE"] = "Messaggio SMS inviato a #PHONE#";
+$MESS["CRM_SSMSA_TIMELINE_ERROR"] = "Il messaggio non è stato inviato. #ERROR_TEXT#";

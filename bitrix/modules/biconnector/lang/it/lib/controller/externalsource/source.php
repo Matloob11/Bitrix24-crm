@@ -1,0 +1,6 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_SOURCE_DELETE_ERROR_WRONG_MODULE"] = "Impossibile eliminare la connessione.";
+$MESS["BICONNECTOR_CONTROLLER_SOURCE_ERROR_FIELDS_INCOMPLETE"] = "Tutti i campi sono obbligatori.";
+$MESS["BICONNECTOR_CONTROLLER_SOURCE_ERROR_NOT_FOUND"] = "Connessione non trovata.";
+$MESS["BICONNECTOR_CONTROLLER_SOURCE_ERROR_NOT_SAVED"] = "Impossibile salvare le modifiche.";
+$MESS["BICONNECTOR_CONTROLLER_SOURCE_ERROR_UNKNOWN_TYPE"] = "Tipo di connessione sconosciuto.";

@@ -1,0 +1,25 @@
+<?php
+$MESS["BI_GROUP_ADD_DASHBOARD"] = "Adicionar painéis";
+$MESS["BI_GROUP_DASHBOARD_SCOPES_EMPTY"] = "Selecionar escopo";
+$MESS["BI_GROUP_EMPTY_SUBTITLE"] = "Clique em \"Adicionar painéis\" para adicionar painéis a este grupo.";
+$MESS["BI_GROUP_EMPTY_TITLE"] = "Não há painéis neste grupo";
+$MESS["BI_GROUP_NAME_NEW"] = "Novo grupo";
+$MESS["BI_GROUP_SAVE"] = "Salvar";
+$MESS["BI_GROUP_SAVE_CANCEL_MSGVER_1"] = "Cancelar";
+$MESS["BI_GROUP_SAVE_WARN_DONT_SHOW"] = "Não mostrar novamente";
+$MESS["BI_GROUP_SAVE_WARN_NO"] = "Não";
+$MESS["BI_GROUP_SAVE_WARN_TEXT_MSGVER_1"] = "Você tem certeza de que deseja remover o painel deste grupo? Você pode perder o acesso ao painel.";
+$MESS["BI_GROUP_SAVE_WARN_TITLE"] = "Remover painel do grupo";
+$MESS["BI_GROUP_SAVE_WARN_YES"] = "Sim";
+$MESS["BI_GROUP_SCOPES_DASHBOARD"] = "#FIRST_SCOPES# [hint]e mais #NUMBER#[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_EMPTY_MSGVER_1"] = "[title]Escopo do painel:[/title] selecionar";
+$MESS["BI_GROUP_SCOPES_GROUP_MANY_MSGVER_1"] = "[title]Escopo do painel:[/title] #FIRST_SCOPES# [hint]e mais #NUMBER#[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_MSGVER_1"] = "[title]Escopo do painel:[/title] #SCOPE#";
+$MESS["BI_GROUP_SCOPE_HINT_MSGVER_1"] = "Os escopos selecionados serão aplicados a todos os painéis do grupo. [link]Saiba mais[/link]";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_0"] = "#COUNT# painel";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_1"] = "#COUNT# painéis";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_2"] = "#COUNT# painéis";
+$MESS["BI_GROUP_SYSTEM_NAME_HINT"] = "Não é possível renomear um grupo do sistema.";
+$MESS["BI_GROUP_SYSTEM_SCOPES_HINT"] = "Não é possível alterar o escopo de um grupo do sistema.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE"] = "Para excluir o escopo deste painel, <br>remova o painel do grupo \"#GROUP_NAME#\".";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE_MANY"] = "Para excluir o escopo deste painel, <br>remova o painel destes grupos:";

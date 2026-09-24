@@ -1,0 +1,22 @@
+<?php
+$MESS["UI_STAMP_UPLOADER_CROP_BUTTON_LABEL"] = "Recortar";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_HEADER"] = "Carregue a imagem do carimbo";
+$MESS["UI_STAMP_UPLOADER_DROPZONE_TEXT"] = "Ou arraste o arquivo da imagem aqui";
+$MESS["UI_STAMP_UPLOADER_HEADER_CHANGE_CONTACT_BUTTON_LABEL"] = "Alterar";
+$MESS["UI_STAMP_UPLOADER_HEADER_TITLE"] = "Carimbo para usar com";
+$MESS["UI_STAMP_UPLOADER_PREPARING_STATUS"] = "Processando";
+$MESS["UI_STAMP_UPLOADER_PREVIEW_TITLE"] = "Clique para carregar outra imagem";
+$MESS["UI_STAMP_UPLOADER_SAVE_BUTTON_LABEL"] = "Salvar";
+$MESS["UI_STAMP_UPLOADER_SELECT_PHOTO_BUTTON_LABEL_1"] = "Carregue a imagem do carimbo";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM"] = "As alterações não foram salvas. Tem certeza de que deseja fechar o painel de controle deslizante?";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CANCEL"] = "Cancelar";
+$MESS["UI_STAMP_UPLOADER_SLIDER_CLOSE_CONFIRM_CLOSE"] = "Fechar";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_DESCRIPTION"] = "Carregue a imagem do carimbo e use-a para assinar documentos. A imagem será processada por IA para parecer autêntica.";
+$MESS["UI_STAMP_UPLOADER_SLIDER_MESSAGE_TITLE"] = "Carimbo";
+$MESS["UI_STAMP_UPLOADER_TAKE_PHOTO_BUTTON_LABEL"] = "Tire uma foto com seu celular";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_PERCENT"] = "{{number}} %";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE"] = "{{number}} {{text}}";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_B"] = "bytes";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_KB"] = "KB";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_SIZE_MB"] = "MB";
+$MESS["UI_STAMP_UPLOADER_UPLOAD_STATUS_TEXT"] = "Carregando arquivo";

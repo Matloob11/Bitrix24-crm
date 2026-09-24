@@ -1,0 +1,2005 @@
+<?php
+
+/**
+ * @global CMain $APPLICATION
+ * @var array $arParams
+ * @var array $arResult
+ */
+
+use Bitrix\Mail\Helper\LicenseManager;
+use Bitrix\Mail\Helper\Enum\MailboxStatus;
+use Bitrix\Mail\Helper\Mailbox\MailboxSettingsConfig;
+use Bitrix\Main;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Web\Json;
+use Bitrix\Main\Web\Uri;
+use Bitrix\Main\UI\Extension;
+use Bitrix\Main\Loader;
+use Bitrix\Mail\Helper\MailAccess;
+use Bitrix\Mail\Helper\OrphanedMailboxLifecycle;
+
+Extension::load([
+	'mail.setting-selector',
+	'ui.info-helper',
+	'ui.alerts',
+	'ui.forms',
+	'ui.sidepanel-content',
+	'ui.switcher',
+	'ui.layout-form',
+	'ui.tour',
+]);
+
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
+if (CModule::includeModule('bitrix24'))
+{
+	CBitrix24::initLicenseInfoPopupJS();
+}
+
+Extension::load(['ui.buttons', 'ui.hint']);
+Loader::includeModule('socialnetwork');
+CJsCore::init(array('socnetlogdest', 'popup', 'fx'));
+$APPLICATION->setAdditionalCSS('/bitrix/components/bitrix/main.post.form/templates/.default/style.css');
+
+$bodyClass = $APPLICATION->GetPageProperty("BodyClass");
+$APPLICATION->SetPageProperty("BodyClass", ($bodyClass ? $bodyClass." " : "")."workarea-transparent no-background");
+
+$mailbox = $arParams['MAILBOX'];
+$settings = $arParams['SERVICE'];
+$isPasswordlessMailbox =
+	!empty($mailbox)
+	&& in_array($mailbox['ACTIVE'], [
+		MailboxStatus::Pending->value,
+		MailboxStatus::Canceled->value,
+	], true)
+;
+
+if ('N' == $_REQUEST['oauth'])
+{
+	$hiddenOAuth = !empty($settings['oauth']);
+	unset($settings['oauth']);
+}
+
+$baseUri = (new Uri(Main\Context::getCurrent()->getRequest()->getRequestUri()))->deleteParams(['oauth']);
+
+if (!empty($mailbox))
+{
+	if (!is_array($mailbox['OPTIONS']))
+	{
+		$mailbox['OPTIONS'] = array();
+	}
+
+	$mailbox['OPTIONS']['flags'] = is_array($mailbox['OPTIONS']['flags'])
+		? array_values($mailbox['OPTIONS']['flags'])
+		: array();
+}
+
+// @TODO: split by types
+
+$accessSelectedCodes = [];
+$accessSelected = [];
+foreach ($arParams['ACCESS_LIST'] as $type => $list)
+{
+	foreach ($list as $id => $item)
+	{
+		$accessSelectedCodes[] = $id;
+		$accessSelected[] = [$type, $item['entityId']];
+	}
+}
+
+$crmQueueSelectedCodes = [];
+$crmQueueSelected = [];
+if ($arParams['CRM_AVAILABLE'])
+{
+	foreach ($arParams['CRM_QUEUE'] as $item)
+	{
+		$userCode = sprintf('U%u', $item['ID']);
+
+		$crmQueueSelectedCodes[] = $userCode;
+		$crmQueueSelected[] = ['user', $item['ID']];
+	}
+}
+
+$APPLICATION->includeComponent('bitrix:main.mail.confirm', '', array());
+
+$shareAccessSelectorContainerId = 'mail-share-access-selector-container';
+$shareAccessValueContainerId = 'mail-share-access-value-container';
+
+$crmQueueSelectorContainerId = 'mail-crm-queue-selector-container';
+$crmQueueValueContainerId = 'mail-crm-queue-value-container';
+
+$isCrmSwitcherChecked = !empty($mailbox['__crm']);
+
+$senderNameBlockHtml = '
+<div class="mail-connect-form-item ui-form-content">
+	<div class="ui-form-row">
+		<div class="ui-form-label" data-form-row-hidden="">
+			<label class="ui-ctl ui-ctl-checkbox ui-ctl-w100">
+				<input class="ui-ctl-element mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+					name="fields[use_sender_name]" id="mail_connect_mb_use_sender_name_field" value="Y"
+					' . ($arParams['USE_SENDER_NAME'] ? ' checked' : '') . '
+				>
+				<div class="ui-ctl-label-text">' . htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_MAILBOX_USE_SENDER_NAME')) . '</div>
+			</label>
+		</div>
+		<div class="mail-connect-form-limit-hidden-input ui-form-row-hidden">
+			<div class="mail-connect-form-limit-input ui-form-row">
+				<label class="mail-connect-form-label" for="mail_connect_mb_sender_field">' . Loc::getMessage('MAIL_CLIENT_CONFIG_MAILBOX_USERNAME') . '</label>
+				<input class="mail-connect-form-input ui-ctl-element" type="text"
+					name="fields[sender]" id="mail_connect_mb_sender_field"
+					value="' . htmlspecialcharsbx($arParams['SENDER_NAME']) . '"
+				>
+			</div>
+		</div>
+	</div>
+</div>';
+
+?>
+
+<div class="mail-connect mail-connect-slider">
+	<form id="mail_connect_form" method="POST"
+		action="/bitrix/services/main/ajax.php?c=<?=rawurlencode($this->getComponent()->getName()) ?>&action=save&mode=class">
+
+		<?=bitrix_sessid_post() ?>
+		<input type="hidden" name="fields[site_id]" value="<?=SITE_ID ?>">
+		<input type="hidden" name="fields[service_id]" value="<?=$settings['id'] ?>">
+		<? if (!empty($mailbox)): ?>
+			<input type="hidden" name="fields[mailbox_id]" value="<?=$mailbox['ID'] ?>">
+			<input type="hidden" name="fields[pass_placeholder]" value="<?=htmlspecialcharsbx($arParams['PASSWORD_PLACEHOLDER']) ?>">
+		<? endif ?>
+
+		<div class="ui-slider-section">
+			<div class="ui-slider-content-box">
+				<div class="ui-slider-paragraph-2">
+					<? if (empty($settings['oauth'])): ?>
+						<div class="mail-connect-section-block">
+							<div class="mail-connect-img-block">
+								<? if ($settings['icon']): ?>
+									<img class="mail-connect-img" src="<?=$settings['icon'] ?>" alt="<?=htmlspecialcharsbx($settings['name']) ?>">
+								<?php endif; ?>
+								<span class="mail-connect-text <? if (mb_strlen($settings['serviceName'] ?? $settings['name']) > 10): ?> mail-connect-text-small"<? endif ?>">
+								<?= htmlspecialcharsbx($settings['serviceName'] ?? ucfirst($settings['name'])) ?>
+								</span>
+							</div>
+						</div>
+					<? endif; ?>
+
+				<? if (!empty($mailbox)): ?>
+					<div class="mail-connect-section-block">
+						<div class="mail-connect-mailbox-block">
+							<div class="mail-connect-mailbox-name">
+								<?=htmlspecialcharsbx($mailbox['EMAIL'] ?: sprintf('#%u', $mailbox['ID'])) ?>
+							</div>
+							<? if ($arResult['LAST_MAIL_CHECK_DATE'] > 0): ?>
+								<div class="mail-connect-last-sync-wrapper">
+							<span class="mail-connect-last-sync-title">
+								<?=Loc::getMessage(
+									'MAIL_CLIENT_CONFIG_LAST_MAIL_CHECK_TITLE',
+									array(
+										'#TIME_AGO#' => formatDate(
+											array('s' => 'sago', 'i' => 'iago', 'H' => 'Hago', 'd' => 'dago', 'm' => 'mago', 'Y' => 'Yago'),
+											(int) $arResult['LAST_MAIL_CHECK_DATE']
+										)
+									)
+								) ?>
+							</span>
+								</div>
+							<? endif ?>
+						</div>
+					</div>
+				<? endif ?>
+
+		<div class="mail-connect-section-block">
+			<? if (!empty($settings['oauth'])): ?>
+				<input type="hidden" name="fields[oauth_uid]" value="<?=htmlspecialcharsbx($settings['oauth']->getStoredUid()) ?>">
+				<input type="hidden" id="mail_connect_mb_oauth_url_field"
+					value="<?=htmlspecialcharsbx($settings['oauth']->getUrl()) ?>">
+				<input type="hidden" name="fields[oauth_mode]" id="mail_connect_mb_oauth_field"
+					value="<?=(empty($settings['oauth_user']) ? 'N' : 'S') ?>">
+				<div class="mail-connect-inner">
+					<div class="mail-connect-img-block">
+						<? if ($settings['icon']): ?>
+							<img class="mail-connect-img" src="<?=$settings['icon'] ?>" alt="<?=htmlspecialcharsbx($settings['name']) ?>">
+						<? endif; ?>
+						<span class="mail-connect-text">
+							<?= htmlspecialcharsbx($settings['serviceName'] ?? ucfirst($settings['name'])) ?>
+						</span>
+					</div>
+					<button class="ui-btn ui-btn-primary" id="mail_connect_mb_oauth_btn" type="button">
+						<?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_OAUTH_CONNECT')) ?>
+					</button>
+					<div class="mail-connect-email-block" id="mail_connect_mb_oauth_status">
+						<div id="mail-connect-email-inner" class="mail-connect-email-inner">
+							<span class="mail-connect-email-img" id="mail_connect_mb_oauth_status_image"></span>
+							<a class="mail-connect-email-text" title="<?= htmlspecialcharsbx($settings['oauth_user']['email']); ?>" id="mail_connect_mb_oauth_status_email">
+								<? if (!empty($settings['oauth_user'])) echo htmlspecialcharsbx($settings['oauth_user']['email']); ?>
+							</a>
+						</div>
+						<button class="ui-btn ui-btn-md ui-btn-link ui-btn-no-caps mail-connect-email-btn-disable"
+							type="button" id="mail_connect_mb_oauth_cancel_btn"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_OAUTH_DISCONNECT') ?></button>
+					</div>
+				</div>
+				<a href="<?= htmlspecialcharsbx((clone $baseUri)->addParams(['oauth' => 'N'])) ?>"
+					data-slider-ignore-autobinding="true" style="display: none; ">password mode</a>
+
+						<div id="mail-email-oauth" class="ui-alert ui-alert-warning mail-connect-form-item">
+							<label class="mail-connect-form-label" for="mail-email-oauth-field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_EMAIL_OAUTH_FIELD_TITLE_OFFICE365') ?></label>
+							<div class="ui-ctl ui-ctl-after-icon ui-ctl-w100">
+								<div class="ui-ctl-after ui-ctl-icon-loader" id="oauth-wait-icon"></div>
+								<input type="text" disabled="disabled" class="mail-connect-form-input ui-ctl-element ui-ctl-textbox" id="mail-email-oauth-field" placeholder="info@example.com" name="fields[email]" value="<?=htmlspecialcharsbx($mailbox['EMAIL']) ?>">
+							</div>
+							<div class="mail-connect-form-error"></div>
+						</div>
+
+						<div class="ui-alert ui-alert-danger" id="mail-client-config-email-oauth-field-error">
+							<span class="ui-alert-message"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_EMAIL_OAUTH_FIELD_ERROR')) ?></span>
+						</div>
+
+						<div class="ui-alert ui-alert-success" id="mail-client-config-email-oauth-field-success">
+							<span class="ui-alert-message"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_EMAIL_OAUTH_FIELD_SUCCESS')) ?></span>
+						</div>
+					<? else: ?>
+						<div class="mail-connect-form-inner">
+							<? if (empty($mailbox['EMAIL'])): ?>
+								<div class="mail-connect-form-item">
+									<label class="mail-connect-form-label" for="mail_connect_mb_email_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_MAILBOX_EMAIL') ?></label>
+									<input class="mail-connect-form-input" type="text" placeholder="info@example.com"
+										   name="fields[email]" id="mail_connect_mb_email_field">
+									<div class="mail-connect-form-error"></div>
+								</div>
+							<?else:?>
+								<input type="hidden" name="fields[email]" value="<?=htmlspecialcharsbx($mailbox['EMAIL']) ?>">
+							<? endif ?>
+							<? if (empty($settings['server'])): ?>
+								<div class="mail-connect-form-item">
+									<label class="mail-connect-form-label" for="mail_connect_mb_server_imap_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_SERVER') ?></label>
+									<input class="mail-connect-form-input" type="text" placeholder="imap.example.com"
+										   name="fields[server_imap]" id="mail_connect_mb_server_imap_field"
+										<? if (!empty($mailbox)): ?> value="<?=htmlspecialcharsbx($mailbox['SERVER']) ?>" <? endif ?>>
+									<div class="mail-connect-form-error"></div>
+								</div>
+								<div class="mail-connect-form-item">
+									<label class="mail-connect-form-label" for="mail_connect_mb_port_imap_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_PORT') ?></label>
+									<div class="mail-connect-form-item-inner">
+										<input class="mail-connect-form-input" type="text" placeholder="993"
+											   name="fields[port_imap]" id="mail_connect_mb_port_imap_field"
+											<? if (!empty($mailbox)): ?> value="<?=htmlspecialcharsbx($mailbox['PORT']) ?>" <? endif ?>>
+										<div class="mail-connect-option-email">
+											<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+												   name="fields[ssl_imap]" id="mail_connect_mb_ssl_imap_field"
+												<? if (!empty($mailbox) && in_array($mailbox['USE_TLS'], array('Y', 'S'))): ?> value="<?=$mailbox['USE_TLS'] ?>" <? else: ?> value="Y" <? endif ?>
+												<? if (empty($mailbox) || in_array($mailbox['USE_TLS'], array('Y', 'S'))): ?> checked <? endif ?>>
+											<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_ssl_imap_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_SSL') ?></label>
+										</div>
+									</div>
+									<div class="mail-connect-form-error"></div>
+								</div>
+							<? endif ?>
+							<div class="mail-connect-form-item">
+								<label class="mail-connect-form-label" for="mail_connect_mb_login_imap_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_LOGIN') ?></label>
+								<input class="mail-connect-form-input" type="text"
+									   name="fields[login_imap]" id="mail_connect_mb_login_imap_field"
+									   onchange="this['__filled'] = this.value.length > 0; "
+									<? if (!empty($mailbox)): ?> value="<?=htmlspecialcharsbx($mailbox['LOGIN']) ?>" disabled <? endif ?>>
+								<div class="mail-connect-form-error"></div>
+							</div>
+							<div class="mail-connect-form-item" id="mail_password_form_wrapper">
+								<label class="mail-connect-form-label" for="mail_connect_mb_pass_imap_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_PASS') ?></label>
+								<input class="mail-connect-form-input" type="password" name="fields[pass_imap]" id="mail_connect_mb_pass_imap_field"
+									<? if (!empty($mailbox['PASSWORD'])): ?>
+										data-placeholder="<?=htmlspecialcharsbx($arParams['PASSWORD_PLACEHOLDER']) ?>"
+										onfocus="if (this.value == this.getAttribute('data-placeholder')) this.value = ''; "
+										onblur="if ('' == this.value) this.value = this.getAttribute('data-placeholder'); "
+										value="<?=htmlspecialcharsbx($arParams['PASSWORD_PLACEHOLDER']) ?>"
+									<? endif ?>>
+								<div class="mail-connect-form-error"></div>
+							</div>
+						</div>
+						<? if (!empty($hiddenOAuth)): ?>
+							<a href="<?=htmlspecialcharsbx((clone $baseUri)->addParams(['oauth' => 'Y'])) ?>"
+							   data-slider-ignore-autobinding="true" style="display: none; ">oauth mode</a>
+						<? endif ?>
+					<? endif ?>
+				</div>
+
+				<div class="mail-connect-section-block" id="mail-mailbox-connection-request-owner-block" style="display: none;">
+					<div class="mail-connect-form-inner">
+						<label class="mail-connect-form-label"><?= Loc::getMessage('MAIL_CLIENT_CONFIG_CONNECTION_REQUEST_OWNER') ?></label>
+						<div id="mail-mailbox-connection-request-selector-container"></div>
+					</div>
+					<input
+						type="hidden"
+						id="mail-mailbox-connection-request-id-input"
+						name="fields[mailbox_connection_request_id]"
+						value=""
+					>
+				</div>
+
+				<? $maxAgeLimit = LicenseManager::getSyncOldLimit(); ?>
+				<? if (empty($mailbox)): ?>
+					<div class="mail-connect-section-block">
+						<div class="mail-connect-form-inner">
+							<input type="checkbox" class="mail-connect-form-input mail-connect-form-input-check" name="fields[mail_connect_import_messages]" value="Y" id="mail_connect_mb_import_messages" checked>
+							<? [$label1, $label2] = explode('#AGE#', Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_AGE_MSGVER_1'), 2); ?>
+							<label class="mail_connect_mb_import_messages_label" for="mail_connect_mb_import_messages"><?=$label1 ?></label>
+							<div class="mail-connect-crm-selector-wrapper" id="mail-message-max-age"></div>
+							<?=$label2 ?>
+						</div>
+					</div>
+				<? elseif (!$isPasswordlessMailbox): ?>
+					<div class="mail-connect-section-block">
+						<a
+								class="mail-connect-dashed-switch"
+								href="<?=(new Uri($arParams['PATH_TO_MAIL_CONFIG_DIRS']))
+									->addParams([
+										'mailboxId' => (int)$mailbox['ID'],
+									])
+									->getUri()
+								?>"
+						>
+							<?=Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_LINK') ?>
+						</a>
+					</div>
+				<? endif ?>
+
+				<div class="mail-connect-section-block">
+			<span class="mail-connect-dashed-switch"
+				  onclick="this.style.display = 'none'; BX('mail_connect_mb_ext_params').style.display = ''; "
+			><?=Loc::getMessage('MAIL_CLIENT_CONFIG_EXT_SWITCH') ?></span>
+					<div id="mail_connect_mb_ext_params" style="display: none; ">
+						<div class="mail-connect-form-item">
+							<label class="mail-connect-form-label" for="mail_connect_mb_name_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_MAILBOX_NAME') ?></label>
+							<input class="mail-connect-form-input" type="text"
+								   name="fields[name]" id="mail_connect_mb_name_field"
+								   onchange="this['__filled'] = this.value.length > 0; "
+								<? if (!empty($mailbox)): ?> value="<?=htmlspecialcharsbx($mailbox['NAME']) ?>" <? endif ?>>
+						</div>
+						<?php if (empty($arParams['IS_SMTP_AVAILABLE'])): ?>
+							<?= $senderNameBlockHtml ?>
+						<?php endif ?>
+						<? if (empty($settings['link'])): ?>
+							<div class="mail-connect-form-item">
+								<label class="mail-connect-form-label" for="mail_connect_mb_link_field"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_MAILBOX_LINK') ?></label>
+								<input class="mail-connect-form-input" type="text" name="fields[link]" id="mail_connect_mb_link_field"
+									<? if (!empty($mailbox)): ?> value="<?=htmlspecialcharsbx($mailbox['LINK']) ?>" <? endif ?>>
+								<div class="mail-connect-form-error"></div>
+							</div>
+						<? endif ?>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<?php if (
+			!empty($mailbox)
+			&& MailAccess::hasCurrentUserAdminAccess()
+			&& OrphanedMailboxLifecycle::isOrphan($mailbox)
+		): ?>
+		<div class="ui-slider-section">
+			<div class="mail-connect-section-block">
+				<div class="mail-connect-title-block">
+					<div class="mail-connect-title"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_OWNER') ?></div>
+				</div>
+				<div class="mail-connect-option-email mail-connect-form-check-hidden">
+					<div id="mail-owner-selector-container"></div>
+				</div>
+				<input
+					type="hidden"
+					id="mail-owner-id-input"
+					name="fields[owner_id]"
+					value="<?= $arParams['OWNER_ACCESS_CODE'] ?>"
+				>
+			</div>
+		</div>
+		<?php endif; ?>
+
+		<? if (!empty($arParams['IS_SMTP_AVAILABLE'])): ?>
+			<div class="ui-slider-section">
+				<?php $hasSmtpFields = empty($settings['smtp']['server']) || !$settings['smtp']['login'] || !$settings['smtp']['password']; ?>
+				<div id="mail-connect-section-smtp-block" class="mail-connect-section-block mail-connect-section-block-with-switcher">
+					<div class="mail-connect-title-block mail-connect-title-block-with-switcher">
+						<div class="mail-connect-title"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_MSGVER_1') ?></div>
+						<div id="mail-connect-smtp-settings-title"></div>
+					</div>
+					<div class="mail-connect-form-items">
+						<?= $senderNameBlockHtml ?>
+						<div class="mail-connect-form-item ui-form-content">
+							<div class="ui-form-row">
+								<div class="ui-form-label" data-form-row-hidden="">
+									<label class="ui-ctl ui-ctl-checkbox ui-ctl-w100">
+										<input class="ui-ctl-element mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+											   name="fields[use_limit_smtp]" id="mail_connect_mb_use_limit_smtp_field" value="Y"
+											<?php if (!empty($mailbox['__smtp']) && !empty($mailbox['__smtp']['limit'])): ?> checked <?php endif ?>
+										>
+										<div class="ui-ctl-label-text"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_USE_LIMIT_MSGVER_1')) ?></div>
+									</label>
+								</div>
+								<div class="mail-connect-form-limit-hidden-input ui-form-row-hidden">
+									<div class="mail-connect-form-limit-input ui-form-row">
+										<label class="mail-connect-form-label" for="mail_connect_mb_limit_smtp_field"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_LIMIT_MSGVER_1')) ?></label>
+										<input class="mail-connect-form-input" type="number" min="0"
+											   name="fields[limit_smtp]" id="mail_connect_mb_limit_smtp_field"
+											   value= "<?= htmlspecialcharsbx($mailbox['__smtp']['limit'] ?? $arParams['DEFAULT_SEND_LIMIT']) ?>"
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php if (!empty($settings['oauth_smtp_enabled'])): ?>
+							<input type="hidden"
+								name="fields[user_principal_name]"
+								id="mail_user_principal_name"
+								value="<?= htmlspecialcharsbx($mailbox['__smtp']['login'] ?? '') ?>"
+							>
+						<?php endif; ?>
+						<?php $isExchangeService = in_array($settings['name'], $arResult['MICROSOFT_SERVICE_NAMES'], true); ?>
+						<?php if (empty($settings['oauth_smtp_enabled']) || $isExchangeService): ?>
+							<div class="mail-connect-form-hidden-block" style="display: none">
+								<div class="mail-connect-option-email">
+									<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+										   name="fields[use_smtp]" value="1" id="mail_connect_mb_server_smtp_switch"
+										<?php if ($settings['IS_SMTP_SWITCHER_CHECKED']): ?> checked <?php endif; ?>
+										   onchange="BX('mail_connect_mb_server_smtp_form').style.display = this.checked ? '' : 'none'; ">
+									>
+									<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_server_smtp_switch">
+										<?=htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_ACTIVE')) ?>
+									</label>
+								</div>
+							</div>
+							<div class="mail-connect-form-inner" id="mail_connect_mb_server_smtp_form"
+								<? if (!empty($mailbox) && empty($mailbox['__smtp'])): ?> style="display: none; " <? endif ?>>
+								<? if ($hasSmtpFields): ?>
+									<div class="mail-connect-warning-block">
+										<div class="mail-connect-warning-text"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_WARNING')) ?></div>
+									</div>
+								<? endif ?>
+								<? if (empty($settings['smtp']['server'])): ?>
+									<div class="mail-connect-form-item">
+										<label class="mail-connect-form-label" for="mail_connect_mb_server_smtp_field"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_SERVER_2')) ?></label>
+										<input class="mail-connect-form-input" type="text" placeholder="smtp.example.com"
+											   name="fields[server_smtp]" id="mail_connect_mb_server_smtp_field"
+											<? if (!empty($mailbox['__smtp'])): ?> value="<?=htmlspecialcharsbx($mailbox['__smtp']['server']) ?>" <? endif ?>>
+										<div class="mail-connect-form-error"></div>
+									</div>
+									<div class="mail-connect-form-item">
+										<label class="mail-connect-form-label" for="mail_connect_mb_port_smtp_field"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_PORT')) ?></label>
+										<div class="mail-connect-form-item-inner">
+											<input class="mail-connect-form-input" type="text" placeholder="587"
+												   name="fields[port_smtp]" id="mail_connect_mb_port_smtp_field"
+												<? if (!empty($mailbox['__smtp'])): ?> value="<?=htmlspecialcharsbx($mailbox['__smtp']['port']) ?>" <? endif ?>>
+											<div class="mail-connect-option-email">
+												<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+													   name="fields[ssl_smtp]" id="mail_connect_mb_ssl_smtp_field" value="Y"
+													<? if (!empty($mailbox['__smtp']) && 'smtps' == $mailbox['__smtp']['protocol']): ?> checked <? endif ?>>
+												<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_ssl_smtp_field"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_SSL')) ?></label>
+											</div>
+										</div>
+										<div class="mail-connect-form-error"></div>
+									</div>
+								<? endif ?>
+								<? if (!$settings['smtp']['login']): ?>
+									<div class="mail-connect-form-item">
+										<label class="mail-connect-form-label" for="mail_connect_mb_login_smtp_field"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_LOGIN')) ?></label>
+										<input class="mail-connect-form-input" type="text"
+											   name="fields[login_smtp]" id="mail_connect_mb_login_smtp_field"
+											   onchange="this['__filled'] = this.value.length > 0; "
+											<? if (!empty($mailbox['__smtp'])): ?> value="<?=htmlspecialcharsbx($mailbox['__smtp']['login']) ?>" <? endif ?>>
+										<div class="mail-connect-form-error"></div>
+									</div>
+								<? endif ?>
+								<? if (!$settings['smtp']['password']): ?>
+									<div class="mail-connect-form-item">
+										<label class="mail-connect-form-label" for="mail_connect_mb_pass_smtp_field">
+											<?php
+											$passLabel = !empty($settings['oauth'])
+												? Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_APP_PASS')
+												: Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_PASS')
+											;
+											?>
+											<?= htmlspecialcharsbx($passLabel) ?>
+										</label>
+										<input class="mail-connect-form-input" type="password"
+											   name="fields[pass_smtp]" id="mail_connect_mb_pass_smtp_field"
+											   onchange="this['__filled'] = this.value.length > 0; "
+											<? if (!empty($mailbox['__smtp'])): ?>
+												data-placeholder="<?=htmlspecialcharsbx($arParams['PASSWORD_PLACEHOLDER']) ?>"
+												onfocus="if (this.value == this.getAttribute('data-placeholder')) this.value = ''; "
+												onblur="if ('' == this.value) this.value = this.getAttribute('data-placeholder'); "
+												value="<?=htmlspecialcharsbx($arParams['PASSWORD_PLACEHOLDER']) ?>"
+											<? endif ?>>
+										<div class="mail-connect-form-error"></div>
+									</div>
+								<? endif ?>
+								<? if (empty($settings['upload_outgoing'])): ?>
+									<div class="mail-connect-form-item mail-connect-form-item-without-title">
+										<div class="mail-connect-option-email" style="position: relative; ">
+											<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+												   name="fields[upload_outgoing]" value="1" id="mail_connect_mb_server_smtp_upload"
+												<?= !in_array('deny_upload', $mailbox['OPTIONS']['flags'] ?? [], true) ? 'checked' : '' ?>
+											<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_server_smtp_upload">
+												<?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_UPLOAD')) ?>
+											</label>
+											<span style="position: absolute; bottom: 0; "
+												  data-hint="<?=Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_UPLOAD_HINT') ?>"
+											>
+											</span>
+										</div>
+									</div>
+								<? endif ?>
+							</div>
+						<?php endif ?>
+					</div>
+				</div>
+			</div>
+		<? endif ?>
+		<? if ($arParams['CRM_AVAILABLE']): ?>
+			<div class="ui-slider-section">
+				<div id="mail-connect-section-crm-block" class="mail-connect-section-block mail-connect-section-block-with-switcher">
+					<div class="mail-connect-title-block mail-connect-title-block-with-switcher">
+						<div class="mail-connect-title">
+							<a name="configcrm" id="configcrm"></a>
+							<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM') ?>
+						</div>
+						<div
+							id="mail-connect-crm-settings-title"
+							<?php if (!$isCrmSwitcherChecked && $arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?>
+							data-hint="<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NO_ACCESS') ?>"
+							<?php endif ?>
+						>
+						</div>
+					</div>
+					<div class="mail-connect-form-hidden-block mail-connect-form-items">
+						<?php if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?>
+							<div class="ui-alert ui-alert-warning">
+								<span class="ui-alert-message">
+									<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NO_ACCESS') ?>
+								</span>
+							</div>
+						<?php endif ?>
+						<div class="mail-connect-option-email" hidden>
+							<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+								   name="fields[use_crm]" value="Y" id="mail_connect_mb_crm_switch"
+								   onchange="BX('mail_connect_mb_crm_form').style.display = this.checked ? '' : 'none'; "
+								<?php if ($isCrmSwitcherChecked): ?> checked <?php endif ?>
+								<?php if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?> readonly <?php endif ?>>
+							<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_switch"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_ACTIVE') ?></label>
+						</div>
+						<div class="mail-connect-form-inner" id="mail_connect_mb_crm_form"
+							<? if (!empty($mailbox) && empty($mailbox['__crm'])): ?> style="display: none; " <? endif ?>>
+							<? if (empty($mailbox)): ?>
+								<div class="mail-connect-option-email mail-connect-form-check-hidden">
+									<? [$label1, $label2] = explode('#AGE#', Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_AGE_INFO_CRM'), 2); ?>
+									<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+										   name="fields[crm_sync_old]" value="Y" id="mail_connect_mb_crm_sync_old"
+										<? if (empty($mailbox)): ?> checked <? endif ?>
+										<? if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?> disabled <? endif ?>>
+									<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_sync_old">
+										<?=$label1 ?>
+									</label>
+									<div class="mail-connect-crm-selector-wrapper" id="mail-crm-max-age"></div>
+									<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_sync_old">
+										<?=$label2 ?>
+									</label>
+								</div>
+								<div class="ui-alert ui-alert-warning">
+									<span class="ui-alert-message">
+										<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_AGE_INFO_CRM_ATTENTION') ?>
+									</span>
+								</div>
+							<? endif ?>
+							<div class="mail-connect-option-email mail-connect-form-check-hidden">
+								<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+									   name="fields[crm_public]" value="Y" id="mail_connect_mb_crm_public"
+									<?php if (!empty($mailbox) && in_array('crm_public_bind', $mailbox['OPTIONS']['flags'])): ?> checked <?php endif ?>
+									<?php if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?> disabled <?php endif ?>>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_public">
+									<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_PUBLIC') ?>
+								</label>
+							</div>
+							<div class="mail-connect-option-email mail-connect-form-check-hidden">
+								<? [$label1, $label2] = explode('#ENTITY#', Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NEW_ENTITY_IN'), 2); ?>
+								<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+									   name="fields[crm_allow_entity_in]" value="Y" id="mail_connect_mb_crm_allow_entity_in"
+									<?php if (empty($mailbox) || !array_intersect(array('crm_deny_new_lead', 'crm_deny_entity_in'), $mailbox['OPTIONS']['flags'])): ?> checked <?php endif ?>
+									<?php if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?> disabled <?php endif ?>>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_allow_entity_in">
+									<?=$label1 ?>
+								</label>
+								<div class="mail-connect-crm-selector-wrapper" id="mail-connect-crm-allow-entity-in"></div>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_allow_entity_in">
+									<?=$label2 ?>
+								</label>
+								<div class="ui-alert ui-alert-warning">
+									<span class="ui-alert-message">
+										<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NEW_ENTITY_IN_INFO_CRM_ATTENTION') ?>
+									</span>
+								</div>
+							</div>
+							<div class="mail-connect-option-email mail-connect-form-check-hidden">
+								<? [$label1, $label2] = explode('#ENTITY#', Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NEW_ENTITY_OUT'), 2); ?>
+								<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+									   name="fields[crm_allow_entity_out]" value="Y" id="mail_connect_mb_crm_allow_entity_out"
+									<?php if (empty($mailbox) || !array_intersect(array('crm_deny_new_lead', 'crm_deny_entity_out'), $mailbox['OPTIONS']['flags'])): ?> checked <?php endif ?>
+									<?php if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?> disabled <?php endif ?>>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_allow_entity_out">
+									<?=$label1 ?>
+								</label>
+								<div class="mail-connect-crm-selector-wrapper" id="mail-connect-crm-allow-entity-out"></div>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_allow_entity_out">
+									<?=$label2 ?>
+								</label>
+								<div class="ui-alert ui-alert-warning">
+									<span class="ui-alert-message">
+										<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NEW_ENTITY_OUT_INFO_CRM_ATTENTION') ?>
+									</span>
+								</div>
+							</div>
+							<div class="mail-connect-option-email mail-connect-form-check-hidden">
+								<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+									   name="fields[crm_vcf]" value="Y" id="mail_connect_mb_crm_vcf"
+									<?php if (empty($mailbox) || !in_array('crm_deny_new_contact', $mailbox['OPTIONS']['flags'])): ?> checked <?php endif ?>
+									<?php if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?> disabled <?php endif ?>>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_vcf">
+									<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_VCF') ?>
+								</label>
+							</div>
+							<div class="mail-connect-option-email mail-connect-form-check-hidden">
+								<? [$label1, $label2] = explode('#SOURCE#', Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_LEAD_SOURCE'), 2); ?>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_lead_source">
+									<?=$label1 ?>
+								</label>
+								<div class="mail-connect-crm-selector-wrapper" id="mail-connect-crm-lead-source"></div>
+								<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_crm_lead_source">
+									<?=$label2 ?>
+								</label>
+							</div>
+							<div class="mail-connect-option-email mail-connect-form-check-hidden">
+								<? [$label1, $label2] = explode('#LIST#', Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NEW_LEAD_ALLWAYS'), 2); ?>
+								<label class="mail-connect-form-label mail-connect-form-label-check">
+									<?=$label1 ?>
+								</label>
+								<span class="
+										mail-set-textarea-show
+										<?php if ($arParams['HAS_ACCESS_TO_EDIT_CRM'] === false): ?> mail-set-textarea-show--disabled<?php endif ?>
+										<?php if (!empty($arParams['NEW_LEAD_FOR'])): ?> mail-set-textarea-show-open<?php endif ?>
+									"
+										id="mail_connect_mb_crm_new_lead_for_link"
+								><?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NEW_LEAD_ALLWAYS_LIST') ?></span>
+								<label class="mail-connect-form-label mail-connect-form-label-check">
+									<?=$label2 ?>
+								</label>
+							</div>
+							<div class="mail-connect-form-textarea-block" id="mail_connect_mb_crm_new_lead_for"
+								<? if (empty($arParams['NEW_LEAD_FOR'])): ?> style="display: none; " <? endif ?>>
+							<textarea class="mail-connect-form-textarea" name="fields[crm_new_lead_for]"
+									  placeholder="<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_NEW_LEAD_FOR_PROMPT') ?>"><?
+								echo join(', ', (array) $arParams['NEW_LEAD_FOR']);
+								?></textarea>
+							</div>
+							<div class="mail-connect-option-email mail-connect-form-check-hidden">
+								<label class="mail-connect-form-label mail-connect-form-label-check">
+									<?=Loc::getMessage('MAIL_CLIENT_CONFIG_CRM_QUEUE') ?>
+								</label>
+								<div id="<?= $crmQueueSelectorContainerId ?>"></div>
+								<input type="hidden"
+								id="<?=$crmQueueValueContainerId ?>"
+								name="fields[crm_queue]"
+								value="<?=htmlspecialcharsbx(\Bitrix\Main\Web\Json::encode($crmQueueSelectedCodes))?>">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<? endif ?>
+		<?php if ($arParams['IS_CALENDAR_AVAILABLE']): ?>
+			<div class="ui-slider-section">
+				<div class="mail-connect-section-block">
+					<div class="mail-connect-title-block">
+						<div class="mail-connect-title"><?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_ICAL_OPTIONS')) ?></div>
+					</div>
+					<div class="mail-connect-form-hidden-block">
+						<div class="mail-connect-option-email">
+							<input class="mail-connect-form-input mail-connect-form-input-check" type="checkbox"
+								   name="fields[ical_access]" value="Y" id="mail_connect_mb_server_ical_switch"
+								<?php if (empty($mailbox) || $arParams['IS_ICAL_CHECK']): ?> checked <?php endif; ?>
+							/>
+							<label class="mail-connect-form-label mail-connect-form-label-check" for="mail_connect_mb_server_ical_switch">
+								<?= htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_ICAL_ACTIVE')) ?>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+
+		<div class="ui-slider-section">
+			<div class="mail-connect-section-block">
+				<div class="mail-connect-title-block">
+					<div class="mail-connect-title"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_ACCESS') ?></div>
+				</div>
+				<div class="mail-connect-notice-block">
+					<div class="mail-connect-notice-text">
+						<?php
+							if ($arParams['HAS_NO_ACCESS_TO_SHARE_MAILBOX'])
+							{
+								echo Loc::getMessage('MAIL_CLIENT_CONFIG_DENIED_SHARE_ACCESS_HINT');
+							}
+							else
+							{
+								echo Loc::getMessage('MAIL_CLIENT_CONFIG_ACCESS_HINT_MSGVER_1');
+							}
+						?>
+					</div>
+				</div>
+				<div id="<?= $shareAccessSelectorContainerId ?>"></div>
+				<input
+					type="hidden"
+					 id="<?= $shareAccessValueContainerId ?>"
+					name="fields[share_access]"
+					value="<?=htmlspecialcharsbx(\Bitrix\Main\Web\Json::encode($accessSelectedCodes))?>"
+				>
+			</div>
+		</div>
+
+		<div class="mail-connect-footer mail-connect-footer-fixed">
+			<div id="mail_connect_form_error"></div>
+			<div class="mail-connect-footer-container">
+				<button class="ui-btn ui-btn-md ui-btn-success ui-btn-success mail-connect-btn-connect"
+					type="submit" id="mail_connect_save_btn"><?=Loc::getMessage(empty($mailbox) ? 'MAIL_CLIENT_CONFIG_BTN_CONNECT' : 'MAIL_CLIENT_CONFIG_BTN_SAVE') ?></button>
+				<? if (!empty($mailbox)): ?>
+					<button class="ui-btn ui-btn-md ui-btn ui-btn-danger mail-connect-btn-disconnect"
+						type="button" id="mail_connect_disconnect_btn"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_BTN_DISCONNECT') ?></button>
+				<? endif ?>
+				<button class="ui-btn ui-btn-md ui-btn-link mail-connect-btn-cancel"
+					type="reset" id="mail_connect_cancel_btn"><?=Loc::getMessage('MAIL_CLIENT_CONFIG_BTN_CANCEL') ?></button>
+			</div>
+		</div>
+
+	</form>
+
+</div>
+
+<?
+$settingsConfig = MailboxSettingsConfig::getConfig();
+$messageSyncIntervals = [];
+$crmSyncIntervals = [];
+
+$fullSyncPeriodKey = -1;
+$defaultSettings = $settingsConfig['defaults'] ?? [];
+$defaultMaxAgeMessageSync = (int)($defaultSettings['messageMaxAge'] ?? 7);
+$defaultMaxCrmSync = (int)($defaultSettings['crmSyncPeriod'] ?? 7);
+
+
+if (empty($mailbox))
+{
+	$maxAgeLimit = LicenseManager::getSyncOldLimit();
+	$showTariffUpgradeOffer = false;
+
+	if ($maxAgeLimit > 0 && $maxAgeLimit < 7)
+	{
+		$defaultMaxAgeMessageSync = 1;
+	}
+
+	if ($maxAgeLimit > 0 && $maxAgeLimit < 90)
+	{
+		$showTariffUpgradeOffer = true;
+	}
+
+	foreach (($settingsConfig['mailSyncIntervals'] ?? []) as $item)
+	{
+		$val = $item['value'];
+		if ($maxAgeLimit <= 0 || $val <= $maxAgeLimit)
+		{
+			$messageSyncIntervals[(string)$val] = htmlspecialcharsbx($item['label']);
+		}
+	}
+
+	if ($maxAgeLimit <= 0)
+	{
+		$messageSyncIntervals[$fullSyncPeriodKey] = htmlspecialcharsbx(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_AGE_2_I'));
+	}
+
+	foreach (($settingsConfig['crmSyncIntervals'] ?? []) as $item)
+	{
+		$val = $item['value'];
+		if ((int)$val === $fullSyncPeriodKey)
+		{
+			$crmSyncIntervals[(string)$val] = htmlspecialcharsbx($item['label']);
+
+			continue;
+		}
+
+		$crmSyncIntervals[(string)$val] = htmlspecialcharsbx($item['label']);
+	}
+}
+
+$ownerData = null;
+if (!empty($mailbox['USER_ID']))
+{
+	$user = CUser::GetByID($mailbox['USER_ID'])->Fetch();
+	if ($user)
+	{
+		$avatarUrl = null;
+		if (!empty($user['PERSONAL_PHOTO']))
+		{
+			$avatarFile = CFile::GetFileArray($user['PERSONAL_PHOTO']);
+			if ($avatarFile)
+			{
+				$avatarUrl = $avatarFile['SRC'];
+			}
+		}
+
+		$ownerData = [
+			'id' => $user['ID'],
+			'entityId' => 'user',
+			'title' => CUser::FormatName(CSite::getNameFormat(false), $user, true, false),
+			'avatar' => $avatarUrl,
+		];
+	}
+}
+
+$arJsParams = [
+	'crmSyncIntervals' => $crmSyncIntervals,
+	'messageSyncIntervals' => $messageSyncIntervals,
+	'crmEntityList' => $arParams['NEW_ENTITY_LIST'],
+	'leadSourceList' => $arParams['LEAD_SOURCE_LIST'],
+	'defaultMaxCrmSyncKey' => (string)$defaultMaxCrmSync,
+	'defaultMaxAgeMessageSyncKey' => (string)$defaultMaxAgeMessageSync,
+	'defaultLeadSourceKey' => $arParams['DEFAULT_LEAD_SOURCE'],
+	'defaultNewEntityInKey' => $arParams['DEFAULT_NEW_ENTITY_IN'],
+	'defaultNewEntityOutKey' => $arParams['DEFAULT_NEW_ENTITY_OUT'],
+	'isForbiddenToShare' => $arResult["FORBIDDEN_TO_SHARE_MAILBOX"],
+	'isSmtpSwitcherChecked' => $settings['IS_SMTP_SWITCHER_CHECKED'],
+	'isSmtpSwitcherDisabled' => $arResult['LOCK_SMTP'] && $settings['IS_SMTP_SWITCHER_CHECKED'],
+	'isCrmIntegrationAvailable' => !empty($arParams['CRM_AVAILABLE']),
+	'isCrmSwitcherChecked' => $isCrmSwitcherChecked,
+	'canEditCrmOptions' => !$arParams['HAS_ACCESS_TO_EDIT_CRM'],
+	'isSuccessSyncStatus' => $arResult['LAST_MAIL_CHECK_STATUS'],
+	'oauthUserIsEmpty' => empty($settings['oauth_user']),
+	'isOauthMode' => !empty($settings['oauth']),
+	'ownerId' => !empty($mailbox['USER_ID']) ? (int)$mailbox['USER_ID'] : null,
+	'owner' => $ownerData,
+	'ownerSelectText' => Loc::getMessage("MAIL_CLIENT_CONFIG_OWNER_CHANGE"),
+	'shareAccessSelectorId' => $shareAccessSelectorContainerId,
+	'shareAccessSelectorPreselectedIds' => $accessSelected,
+	'shareAccessValueContainerId' => $shareAccessValueContainerId,
+	'isShareAccessLocked' => $arParams["HAS_NO_ACCESS_TO_SHARE_MAILBOX"] ?? false,
+	'crmQueueSelectorId' => $crmQueueSelectorContainerId,
+	'crmQueueSelectorPreselectedIds' => $crmQueueSelected,
+	'crmQueueValueContainerId' => $crmQueueValueContainerId,
+	'serviceName' => $settings['name'],
+	'isNewMailbox' => empty($mailbox),
+];
+?>
+<script>
+
+	if (window === window.top)
+	{
+		BX.ready(function ()
+		{
+			var footerPanel = BX.findChildByClassName(BX('mail_connect_form'), 'mail-connect-footer', true);
+			footerPanel && document.body.appendChild(footerPanel);
+		});
+	}
+	else
+	{
+		top.BX.loadCSS('/bitrix/components/bitrix/mail.client.config/templates/.default/style.css');
+	}
+
+	BX.UI.Hint.init(BX('mail_connect_form'));
+
+	BX.ready(function() {
+		const initOwnerSelector = function (params) {
+			const ownerContainerNode = BX('mail-owner-selector-container');
+			const ownerInputNode = BX('mail-owner-id-input');
+
+			if (!ownerContainerNode || !ownerInputNode)
+			{
+				return;
+			}
+
+			ownerContainerNode.innerHTML = '';
+
+			const preselectedItems = [];
+			if (params.owner)
+			{
+				preselectedItems.push(['user', params.owner.id]);
+			}
+
+			const tagSelector = new BX.UI.EntitySelector.TagSelector({
+				addButtonCaptionMore: params.ownerSelectText,
+				multiple: false,
+				items: params.owner ? [params.owner] : [],
+				dialogOptions: {
+					context: 'MAIL_CLIENT_CONFIG_OWNER',
+					preselectedItems: preselectedItems,
+					undeselectedItems: preselectedItems,
+					entities: [{
+						id: 'user',
+						options: {
+							inviteEmployeeLink: false,
+							intranetUsersOnly: true
+						}
+					}],
+					events: {
+						'Item:onSelect': function (event) {
+							const selectedItem = event.getData().item;
+							ownerInputNode.value = 'U' + selectedItem.getId();
+							selectedItem.setDeselectable(false);
+						}
+					}
+				}
+			});
+
+			tagSelector.renderTo(ownerContainerNode);
+		};
+
+		if (!BX.MailClientConfig?.Edit?.isOwnerSelectorInited)
+		{
+			BX.MailClientConfig.Edit.isOwnerSelectorInited = true;
+
+			BX.MailClientConfig.Edit.init = (function(originalInit) {
+				return function(params) {
+					originalInit.apply(this, arguments);
+					initOwnerSelector(params);
+				};
+			})(BX.MailClientConfig.Edit.init);
+		}
+	});
+
+	BX.ready(function(){
+		BX.MailClientConfig.Edit.init(<?=Json::encode($arJsParams)?>);
+	});
+
+
+	BX.message({
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_TITLE': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_TITLE')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_SYNC': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_SYNC')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_FOR': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_FOR')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_OUTCOME': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_OUTCOME')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_TRASH': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_TRASH')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_SPAM': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_SPAM')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_EMPTY_DEFAULT': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_EMPTY_DEFAULT')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_BTN_SAVE': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_BTN_SAVE')) ?>',
+		'MAIL_CLIENT_CONFIG_IMAP_DIRS_BTN_CANCEL': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_DIRS_BTN_CANCEL')) ?>',
+		'MAIL_MAILBOX_LICENSE_SHARED_LIMIT_BODY': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_MAILBOX_LICENSE_SHARED_LIMIT_BODY', array('#LIMIT#' => LicenseManager::getSharedMailboxesLimit()))) ?>',
+		'MAIL_MAILBOX_LICENSE_SHARED_LIMIT_TITLE': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_MAILBOX_LICENSE_SHARED_LIMIT_TITLE')) ?>',
+		'MAIL_CONFIG_OAUTH_ERROR_TOUR_TITLE': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CONFIG_OAUTH_ERROR_TOUR_TITLE')) ?>',
+		'MAIL_CONFIG_OAUTH_ERROR_TOUR_TEXT': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CONFIG_OAUTH_ERROR_TOUR_TEXT')) ?>',
+		'MAIL_CONFIG_PASSWORD_ERROR_TOUR_TITLE': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CONFIG_PASSWORD_ERROR_TOUR_TITLE')) ?>',
+		'MAIL_CONFIG_PASSWORD_ERROR_TOUR_TEXT': '<?=CUtil::jsEscape(Loc::getMessage('MAIL_CONFIG_PASSWORD_ERROR_TOUR_TEXT')) ?>',
+	});
+
+
+	(function()
+	{
+		var form = BX('mail_connect_form');
+		var emailOauthBlock = BX('mail-email-oauth');
+
+		if(emailOauthBlock)
+		{
+			var emailOauthField = BX('mail-email-oauth-field');
+			var oauthBtn = BX('mail_connect_mb_oauth_btn');
+			var oauthFieldError = BX('mail-client-config-email-oauth-field-error');
+			var oauthFieldSuccess = BX('mail-client-config-email-oauth-field-success');
+			var oauthWaitIcon = BX('oauth-wait-icon');
+
+			BX.hide(emailOauthBlock);
+			BX.hide(oauthFieldError);
+			BX.hide(oauthFieldSuccess);
+			BX.hide(oauthWaitIcon);
+
+			emailOauthField.oninput = function()
+			{
+				BX.hide(oauthFieldError);
+			}.bind(this);
+
+			emailOauthField.onchange = function()
+			{
+				BX.show(oauthWaitIcon);
+				BX.ajax.runComponentAction('bitrix:mail.client.config', 'checkAvailabilityEMail', {
+					mode: 'class',
+					data: {
+						serviceId: form.elements['fields[service_id]'].value,
+						email: emailOauthField.value,
+						oauthUid: form.elements['fields[oauth_uid]'].value,
+					}
+				}).then(
+					function(response) {
+						BX.hide(oauthWaitIcon);
+						if (response['data'] === false)
+						{
+							BX.show(oauthFieldError);
+							BX.hide(oauthFieldSuccess);
+						}
+						else
+						{
+							BX.show(oauthFieldSuccess);
+							BX.hide(oauthFieldError);
+						}
+					}.bind(this)
+				);
+			}.bind(this);
+		}
+
+		var oauthHandler = function(uid, url, user, init)
+		{
+			if (uid != form.elements['fields[oauth_uid]'].value)
+			{
+				return;
+			}
+
+			if(user['emailIsIntended'])
+			{
+				BX.addClass(oauthBtn, 'ui-btn-wait');
+				oauthBtn.disabled = true;
+
+				BX.hide(BX('mail-connect-email-inner'));
+				BX.ajax.runComponentAction('bitrix:mail.client.config', 'checkAvailabilityEMail', {
+					mode: 'class',
+					data: {
+						serviceId: form.elements['fields[service_id]'].value,
+						email: user['email'],
+						oauthUid: form.elements['fields[oauth_uid]'].value,
+					}
+				}).then(
+					function(response) {
+
+						BX('mail_connect_mb_oauth_status').style.display = '';
+						oauthBtn.style.display = 'none';
+						oauthBtn.disabled = false;
+						BX.removeClass(oauthBtn, 'ui-btn-wait');
+
+						if (response['data'] === false)
+						{
+							emailOauthField.value = '';
+							BX.show(emailOauthBlock);
+							var emailField = form.elements['fields[email]'];
+							if (emailField)
+							{
+								emailField.removeAttribute('disabled');
+							}
+						}
+					}.bind(this)
+				);
+			}
+			else
+			{
+				BX('mail_connect_mb_oauth_status').style.display = '';
+				oauthBtn.disabled = false;
+				BX.removeClass(oauthBtn, 'ui-btn-wait');
+				oauthBtn.style.display = 'none';
+				BX.show(BX('mail-connect-email-inner'));
+			}
+
+			if (user.image && user.image.length > 0)
+			{
+				BX.adjust(
+					BX('mail_connect_mb_oauth_status_image'),
+					{
+						style: {
+							backgroundImage: 'url("' + encodeURI(user.image) + '")',
+							backgroundSize: 'cover'
+						}
+					}
+				);
+			}
+			else
+			{
+				var initials = '';
+				if (user.first_name && user.first_name.length > 0)
+				{
+					initials += user.first_name.substr(0, 1);
+				}
+				if (user.last_name && user.last_name.length > 0)
+				{
+					initials += user.last_name.substr(0, 1);
+				}
+				if (!(initials.length > 0) && user.full_name && user.full_name.length > 0)
+				{
+					initials += user.full_name.substr(0, 1);
+				}
+				if (!(initials.length > 0))
+				{
+					initials += user.email.substr(0, 1);
+				}
+
+				initials = initials.toUpperCase();
+
+				// @TODO: initials -> color
+				var color = Math.round(160 + Math.random() * (Math.pow(2, 24) - 320)).toString(16);
+				color = '#' + '0'.repeat(6 - color.length) + color;
+
+				BX.adjust(
+					BX('mail_connect_mb_oauth_status_image'),
+					{
+						text: initials,
+						style: {
+							background: color
+						}
+					}
+				);
+			}
+
+			BX.adjust(BX('mail_connect_mb_oauth_status_email'), { text: user.email });
+			BX('mail_connect_mb_oauth_url_field').value = url;
+			BX('mail_connect_mb_oauth_field').value = init ? 'S' : 'Y';
+
+			var emailField = form.elements['fields[email]'];
+			if (emailField)
+			{
+				emailField.value = user.email;
+				emailField.removeAttribute('disabled');
+			}
+			var userPrincipalField = form.elements['fields[user_principal_name]'];
+			if (userPrincipalField)
+			{
+				userPrincipalField.value = user.userPrincipalName || '';
+			}
+
+			var nameField = BX('mail_connect_mb_name_field');
+			if (!(nameField.value.length > 0) || !nameField['__filled'])
+			{
+				nameField.value = user.email;
+			}
+
+			if (oauthHandler['__submit'])
+			{
+				oauthHandler['__submit'] = false;
+
+				submitForm();
+			}
+		};
+
+		BX.addCustomEvent('OnMailOAuthBCompleted', oauthHandler);
+
+		var changedDirs = false;
+
+		BX.addCustomEvent(
+			'SidePanel.Slider:onMessage',
+			function (event) {
+				if (event.getEventId() === 'mail-mailbox-config-dirs-success') {
+					changedDirs = event.data.changed;
+				}
+			}
+		);
+
+		BX.bind(
+			BX('mail_connect_mb_oauth_btn'),
+			'click',
+			function (e)
+			{
+				BX.util.popup(BX('mail_connect_mb_oauth_url_field').value, 500, 600);
+
+				e.preventDefault();
+			}
+		);
+
+		BX.bind(BX('mail_connect_mb_oauth_cancel_btn'), 'click', BX.MailClientConfig.Edit.showOauthAuthorizationBlock);
+
+		for (var i = 0; i < form.elements.length; i++)
+		{
+			if (form.elements[i].name && form.elements[i].type.match(/^text|password$/i))
+			{
+				if ('fields[email]' == form.elements[i].name)
+				{
+					BX.bind(
+						form.elements[i],
+						'bxchange',
+						function ()
+						{
+							var nameField = BX('mail_connect_mb_name_field');
+							if (!(nameField.value.length > 0) || !nameField['__filled'])
+							{
+								nameField.value = this.value;
+							}
+
+							var loginField = BX('mail_connect_mb_login_imap_field');
+							if (loginField && (!(loginField.value.length > 0) || !loginField['__filled']))
+							{
+								loginField.value = this.value;
+							}
+
+							var loginSmtpField = BX('mail_connect_mb_login_smtp_field');
+							if (loginSmtpField && (!(loginSmtpField.value.length > 0) || !loginSmtpField['__filled']))
+							{
+								loginSmtpField.value = this.value;
+							}
+						}
+					);
+				}
+
+				if ('fields[login_imap]' == form.elements[i].name)
+				{
+					BX.bind(
+						form.elements[i],
+						'bxchange',
+						function ()
+						{
+							var loginSmtpField = BX('mail_connect_mb_login_smtp_field');
+							if (loginSmtpField && (!(loginSmtpField.value.length > 0) || loginSmtpField['__filled'] !== true))
+							{
+								loginSmtpField.value = this.value;
+								loginSmtpField['__filled'] = 1;
+							}
+						}
+					);
+				}
+
+				if ('fields[pass_imap]' == form.elements[i].name)
+				{
+					BX.bind(
+						form.elements[i],
+						'bxchange',
+						function ()
+						{
+							var passSmtpField = BX('mail_connect_mb_pass_smtp_field');
+							if (passSmtpField && (!(passSmtpField.value.length > 0) || !passSmtpField['__filled']))
+							{
+								passSmtpField.value = this.value;
+							}
+						}
+					);
+				}
+
+				BX.bind(
+					form.elements[i],
+					'bxchange',
+					BX.defer(
+						function ()
+						{
+							if (this.value != this['__last_value'])
+							{
+								var fieldContainer = BX.findParent(
+									this,
+									{
+										class: 'mail-connect-form-item'
+									},
+									form
+								);
+
+								BX.removeClass(fieldContainer, 'mail-connect-form-item-confirmed');
+								BX.removeClass(fieldContainer, 'mail-connect-form-item-warning');
+								BX.removeClass(fieldContainer, 'mail-connect-form-item-error');
+							}
+						},
+						form.elements[i]
+					)
+				);
+			}
+		}
+
+		const setLimitCheckbox = BX('mail_connect_mb_use_limit_smtp_field');
+		if (setLimitCheckbox)
+		{
+			BX.bind(setLimitCheckbox, 'click', () => {
+				const limitSmtpField = BX('mail_connect_mb_limit_smtp_field');
+				limitSmtpField.disabled = !setLimitCheckbox.checked;
+				setLimitCheckbox.value = setLimitCheckbox.checked === true ? 'Y' : 'N';
+			});
+		}
+
+		const setSenderNameCheckbox = BX('mail_connect_mb_use_sender_name_field');
+		if (setSenderNameCheckbox)
+		{
+			BX.bind(setSenderNameCheckbox, 'click', () => {
+				const limitSmtpField = BX('mail_connect_mb_sender_field');
+				limitSmtpField.disabled = !setLimitCheckbox.checked;
+				setLimitCheckbox.value = setLimitCheckbox.checked === true ? 'Y' : 'N';
+			});
+		}
+
+		const setSmtpCheckbox = BX('mail_connect_mb_server_smtp_switch');
+		if (setSmtpCheckbox)
+		{
+			BX.bind(setSmtpCheckbox, 'click', () => {
+				setSmtpCheckbox.value = setSmtpCheckbox.checked === true ? '1' : null;
+			});
+		}
+
+
+		var fieldError = function (field, error, text)
+		{
+			field['__last_value'] = field.value;
+
+			var fieldContainer = BX.findParent(
+				field,
+				{
+					class: 'mail-connect-form-item'
+				},
+				form
+			);
+
+			if (error)
+			{
+				BX.removeClass(fieldContainer, 'mail-connect-form-item-confirmed');
+				if (error.warning)
+				{
+					BX.removeClass(fieldContainer, 'mail-connect-form-item-error');
+					BX.addClass(fieldContainer, 'mail-connect-form-item-warning');
+				}
+				else
+				{
+					BX.removeClass(fieldContainer, 'mail-connect-form-item-warning');
+					BX.addClass(fieldContainer, 'mail-connect-form-item-error');
+				}
+				BX.adjust(
+					BX.findChildByClassName(fieldContainer, 'mail-connect-form-error', true),
+					{
+						text: text
+					}
+				);
+			}
+			else
+			{
+				BX.removeClass(fieldContainer, 'mail-connect-form-item-warning');
+				BX.removeClass(fieldContainer, 'mail-connect-form-item-error');
+				//BX.addClass(fieldContainer, 'mail-connect-form-item-confirmed');
+			}
+
+			return !(error && !error.warning);
+		};
+
+		var checkForm = function ()
+		{
+			if (BX('mail_connect_mb_oauth_field'))
+			{
+				if ('N' == BX('mail_connect_mb_oauth_field').value)
+				{
+					oauthHandler['__submit'] = true;
+
+					BX.util.popup(BX('mail_connect_mb_oauth_url_field').value, 500, 600);
+
+					return false;
+				}
+			}
+
+			var result = true;
+
+			var emailField = form.elements['fields[email]'];
+			if (emailField)
+			{
+				if (emailField.value.length > 0)
+				{
+					var atom = "[=a-z0-9_+~'!$&*^`|#%/?{}-]";
+					var pattern = new RegExp('^\\s*'+atom+'+(\\.'+atom+'+)*@([a-z0-9-]+\\.)+[a-z0-9-]{2,20}\\s*$', 'i');
+
+					result *= fieldError(
+						emailField,
+						!emailField.value.match(pattern),
+						'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_EMAIL_BAD')) ?>'
+					);
+				}
+				else
+				{
+					result *= fieldError(emailField, true, '<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_EMAIL_EMPTY')) ?>');
+				}
+			}
+
+			var serverField = form.elements['fields[server_imap]'];
+			if (serverField)
+			{
+				if (serverField.value.length > 0)
+				{
+					result *= fieldError(
+						serverField,
+						!serverField.value.match(/^\s*((http|https|ssl|tls|imap):\/\/)?([a-z0-9](-*[a-z0-9])*\.?)+\s*$/i),
+						'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SERVER_BAD')) ?>'
+					);
+				}
+				else
+				{
+					result *= fieldError(serverField, true, '<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SERVER_EMPTY')) ?>');
+				}
+			}
+
+			var portField = form.elements['fields[port_imap]'];
+			if (portField)
+			{
+				result *= fieldError(
+					portField,
+					!(portField.value.match(/^\s*[0-9]+\s*$/) && portField.value > 0 && portField.value <= 65535),
+					'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_PORT_BAD')) ?>'
+				);
+			}
+
+			var linkField = form.elements['fields[link]'];
+			if (linkField)
+			{
+				if (linkField.value.length > 0)
+				{
+					result *= fieldError(
+						linkField,
+						!linkField.value.match(/^\s*(https?:\/\/)?([a-z0-9](-*[a-z0-9])*\.?)+(:[0-9]+)?\/?/i),
+						'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_LINK_BAD')) ?>'
+					);
+				}
+			}
+
+			var loginField = form.elements['fields[login_imap]'];
+			if (loginField && !loginField.disabled)
+			{
+				result *= fieldError(
+					loginField,
+					!(loginField.value.length > 0),
+					'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_LOGIN_EMPTY')) ?>'
+				);
+			}
+
+			var passwordField = form.elements['fields[pass_imap]'];
+			var isPasswordless = <?= $isPasswordlessMailbox ? 'true' : 'false' ?>;
+			if (passwordField && !passwordField.hasAttribute('data-placeholder') && !isPasswordless)
+			{
+				result *= fieldError(
+					passwordField,
+					!(passwordField.value.length > 0),
+					'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_PASS_EMPTY')) ?>'
+				);
+			}
+
+			var smtpSwitch = form.elements['fields[use_smtp]'];
+			if (smtpSwitch ? smtpSwitch.checked : form.elements['fields[mailbox_id]'])
+			{
+				var serverSmtpField = form.elements['fields[server_smtp]'];
+				var serverError = false;
+				if (serverSmtpField)
+				{
+					if (serverSmtpField.value.length > 0)
+					{
+						result *= fieldError(
+							serverSmtpField,
+							serverError = !serverSmtpField.value.match(/^\s*((http|https|ssl|tls|smtp):\/\/)?([a-z0-9](-*[a-z0-9])*\.?)+\s*$/i),
+							'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SERVER_BAD')) ?>'
+						);
+					}
+					else
+					{
+						result *= fieldError(serverSmtpField, serverError = true, '<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SERVER_EMPTY')) ?>');
+					}
+				}
+
+				var portSmtpField = form.elements['fields[port_smtp]'];
+				if (portSmtpField && !serverError)
+				{
+					result *= fieldError(
+						portSmtpField,
+						!(portSmtpField.value.match(/^\s*[0-9]+\s*$/) && portSmtpField.value > 0 && portSmtpField.value <= 65535),
+						'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_PORT_BAD')) ?>'
+					);
+				}
+
+				var loginSmtpField = form.elements['fields[login_smtp]'];
+				if (loginSmtpField && !loginSmtpField.disabled)
+				{
+					result *= fieldError(
+						loginSmtpField,
+						!(loginSmtpField.value.length > 0),
+						'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_LOGIN_EMPTY')) ?>'
+					);
+				}
+
+				var passwordSmtpField = form.elements['fields[pass_smtp]'];
+				if (passwordSmtpField)
+				{
+					if (passwordSmtpField.value.length > 0)
+					{
+						if (passwordSmtpField.value.match(/^\^/))
+						{
+							result *= fieldError(
+								passwordSmtpField,
+								true,
+								'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_PASS_BAD_CARET')) ?>'
+							);
+						}
+						else if (passwordSmtpField.value.match(/\x00/))
+						{
+							result *= fieldError(
+								passwordSmtpField,
+								true,
+								'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_PASS_BAD_NULL')) ?>'
+							);
+						}
+						else if (passwordSmtpField.value.match(/^\s|\s$/))
+						{
+							result *= fieldError(
+								passwordSmtpField,
+								{warning: true},
+								'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_PASS_SPACE')) ?>'
+							);
+						}
+					}
+					else if (!form.elements['fields[mailbox_id]'])
+					{
+						result *= fieldError(
+							passwordSmtpField,
+							true,
+							'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_PASS_EMPTY')) ?>'
+						);
+					}
+				}
+
+				const smtpPortField = form.elements['fields[port_smtp]'];
+				if (smtpPortField)
+				{
+					result *= fieldError(
+						smtpPortField,
+						!(smtpPortField.value.match(/^\s*[0-9]+\s*$/) && smtpPortField.value > 0 && smtpPortField.value <= 65535),
+						'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_PORT_BAD')) ?>'
+					);
+				}
+
+				const smtpLimitField = form.elements['fields[limit_smtp]'];
+				const checkSmtpLimitField = form.elements['fields[use_limit_smtp]'];
+				if (smtpLimitField && checkSmtpLimitField)
+				{
+					result *= fieldError(
+						smtpLimitField,
+						!((smtpLimitField.value.match(/^\s*[0-9]+\s*$/) && smtpLimitField.value > 0) || !checkSmtpLimitField.checked),
+						'<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_SMTP_LIMIT_BAD')) ?>'
+					);
+				}
+			}
+
+			return result;
+		};
+
+		var closeForm = function (id)
+		{
+			id = id > 0 ? id : <?=intval($mailbox['ID']) ?>;
+
+			var slider = top.BX.SidePanel.Instance.getSliderByWindow(window);
+			if (slider)
+			{
+				slider.setCacheable(false);
+				slider.close();
+			}
+			else
+			{
+				if (id > 0)
+				{
+					window.location.href = BX.util.add_url_param(
+						'<?=\CUtil::jsEscape($arParams['PATH_TO_MAIL_MSG_LIST']) ?>'.replace('#id#', id).replace('#start_sync_with_showing_stepper#', true),
+						{ 'strict': 'N' }
+					);
+				}
+				else
+				{
+					window.location.href = '<?=\CUtil::jsEscape($arParams['PATH_TO_MAIL_HOME']) ?>';
+				}
+			}
+		};
+
+		var submitForm = function (e)
+		{
+			if (e && e.preventDefault)
+			{
+				e.preventDefault();
+			}
+
+			var button = BX('mail_connect_save_btn');
+
+			if (button.disabled)
+			{
+				return false;
+			}
+
+			button.disabled = false;
+
+			if (!checkForm())
+			{
+				return false;
+			}
+
+			BX.addClass(button, 'ui-btn-wait');
+			button.disabled = true;
+
+			var formField = function (name)
+			{
+				return form.elements['fields[' + name + ']'] || {};
+			}
+
+			var showError = function (text)
+			{
+				var alert = new BX.UI.Alert({
+					text: text,
+					inline: true,
+					closeBtn: true,
+					animate: true,
+					color: BX.UI.Alert.Color.DANGER,
+				});
+
+				var errorWrapper = BX('mail_connect_form_error');
+				errorWrapper.textContent ='';
+				errorWrapper.append(alert.getContainer());
+			}
+
+			BX.ajax.submitAjax(
+				form,
+				{
+					url: BX.util.add_url_param(
+						form.getAttribute('action'),
+						{
+							is_new: '<?=(empty($mailbox) ? 'Y' : 'N') ?>',
+							use_crm: formField('use_crm').checked ? 'Y' : 'N',
+							use_smtp: formField('use_smtp').checked ? 'Y' : 'N',
+							msg_age: formField('mail_connect_import_messages').checked ? formField('msg_max_age').value : 0,
+							crm_age: formField('use_crm').checked && formField('crm_sync_old').checked ? formField('crm_max_age').value : 0,
+							mail_serv: '<?=\CUtil::jsEscape($settings['name']) ?>'
+						}
+					),
+					method: 'POST',
+					data: form.__extData,
+					dataType: 'json',
+					onsuccess: function(json)
+					{
+						if ('success' != json.status)
+						{
+							 BX.MailClientConfig.Edit.sendAnalyticsData('error');
+
+							button.disabled = false;
+							BX.removeClass(button, 'ui-btn-wait');
+
+							var errorText = '<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_FORM_ERROR')) ?>';
+							if (json.errors && json.errors.length > 0)
+							{
+								if (json.errors.length == 1 && 'MAIL_CLIENT_CONFIG_SMTP_CONFIRM' == json.errors[0].message)
+								{
+									BXMainMailConfirm.showForm(
+										submitForm, // @TODO: skip if edit
+										{
+											mode: 'confirm',
+											data: {
+												email: form.elements['fields[email]'].value
+											}
+										}
+									);
+
+									return;
+								}
+
+								errorText = json.errors.map(
+									function (item)
+									{
+										var result = item.message;
+
+										if (item.customData)
+										{
+											result += ' (' +
+												'<span class="mail-connect-dashed-switch" onclick="BX.hide(this); BX.show(BX.findNextSibling(this, {class: \'main-connect-form-error-ext\'}), \'inline\'); return false;"><?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_CONFIG_IMAP_ERR_EXT')) ?></span>' +
+												'<span class="main-connect-form-error-ext">' + item.customData + '</span>' +
+											')';
+										}
+
+										return result;
+									}
+								).join('<br>');
+							}
+
+							showError(errorText);
+						}
+						else
+						{
+							BX.MailClientConfig.Edit.sendAnalyticsData('success');
+
+							<? if (!empty($mailbox)): ?>
+
+							if (json.data && json.data.id > 0)
+							{
+								top.BX.SidePanel.Instance.postMessage(
+									window,
+									'mail-mailbox-config-success',
+									{
+										id: json.data.id,
+										changed: changedDirs
+									}
+								);
+							}
+
+							closeForm(json.data ? json.data.id : 0);
+
+							<? else: ?>
+
+							if (json.data && json.data.id > 0) {
+								if (json.data.connectionRequestCompleted)
+								{
+									top.BX.SidePanel.Instance.postMessage(
+										window,
+										'mail-mailbox-connection-request-completed',
+										{
+											id: json.data.id,
+										}
+									);
+									closeForm(json.data.id);
+								}
+								else
+								{
+									const url = BX.util.add_url_param(
+										'<?=\CUtil::jsEscape($arParams['PATH_TO_MAIL_CONFIG_DIRS'])?>',
+										{
+											mailboxId: json.data.id,
+											INIT: 'Y',
+										}
+									);
+									top.BX.SidePanel.Instance.open(
+										url,
+										{
+											width: 640,
+											cacheable: false,
+											events: {
+												onClose: function () {
+													closeForm(json.data.id);
+													top.BX.SidePanel.Instance.postMessage(
+														window,
+														'mail-mailbox-config-success',
+														{
+															id: json.data.id,
+															changed: changedDirs
+														}
+													);
+												},
+											}
+										}
+									);
+								}
+							} else {
+								closeForm(0);
+							}
+
+							<? endif; ?>
+						}
+					},
+					onfailure: function(json)
+					{
+						BX.MailClientConfig.Edit.sendAnalyticsData('error');
+
+						button.disabled = false;
+						BX.removeClass(button, 'ui-btn-wait');
+						showError('<?=\CUtil::jsEscape(Loc::getMessage('MAIL_CLIENT_AJAX_ERROR')) ?>');
+					}
+				}
+			);
+		};
+
+		BX.bind(form, 'submit', submitForm);
+		BX.bind(BX('mail_connect_save_btn'), 'click', submitForm);
+
+		var nameField = BX('mail_connect_mb_name_field');
+		if (nameField && nameField.value.length > 0)
+		{
+			nameField['__filled'] = true;
+		}
+
+		var loginField = BX('mail_connect_mb_login_imap_field');
+		if (loginField && loginField.value.length > 0)
+		{
+			loginField['__filled'] = true;
+		}
+
+		var loginSmtpField = BX('mail_connect_mb_login_smtp_field');
+		if (loginSmtpField && loginSmtpField.value.length > 0)
+		{
+			loginSmtpField['__filled'] = true;
+		}
+
+		var passSmtpField = BX('mail_connect_mb_pass_smtp_field');
+		if (passSmtpField && passSmtpField.value.length > 0)
+		{
+			passSmtpField['__filled'] = true;
+		}
+
+		BX.bind(
+			BX('mail_connect_cancel_btn'),
+			'click',
+			function (e)
+			{
+				closeForm();
+			}
+		);
+
+		if (top.BX.SidePanel.Instance.getTopSlider())
+		{
+			BX.addCustomEvent(
+				top.BX.SidePanel.Instance.getTopSlider().getWindow(),
+				"SidePanel.Slider:onClose",
+				function (event)
+				{
+					top.BX.SidePanel.Instance.postMessage(
+						window,
+						'mail-mailbox-config-close',
+						{
+							changed: changedDirs
+						}
+					);
+				}
+			);
+		}
+
+		<? if (!empty($mailbox)): ?>
+
+		var deletePopup = false;
+		BX.bind(
+			BX('mail_connect_disconnect_btn'),
+			'click',
+			function (e)
+			{
+				var button = BX('mail_connect_disconnect_btn');
+
+				if (button.disabled)
+				{
+					return false;
+				}
+
+				BX.addClass(button, 'ui-btn-wait');
+				button.disabled = true;
+
+				if (deletePopup === false)
+				{
+					deletePopup = new BX.PopupWindow('delete-mailbox-confirm', null, {
+						closeIcon: true,
+						closeByEsc: true,
+						overlay: true,
+						lightShadow: true,
+						titleBar: '<?=\CUtil::jsEscape(getMessage('MAIL_MAILBOX_REMOVE_CONFIRM')) ?>',
+						content: '<?=\CUtil::jsEscape(getMessage('MAIL_MAILBOX_REMOVE_CONFIRM_TEXT')) ?>',
+						buttons: [
+							new BX.PopupWindowButton({
+								className: 'popup-window-button-decline',
+								text: '<?=\CUtil::jsEscape(getMessage('MAIL_CLIENT_CONFIG_BTN_DISCONNECT')) ?>',
+								events: {
+									click: function()
+									{
+										this.popupWindow.close();
+
+										var pr = BX.ajax.runComponentAction(
+											'bitrix:mail.client.config',
+											'delete',
+											{
+												mode: 'class',
+												data: {
+													id: form.elements['fields[mailbox_id]'].value
+												}
+											}
+										);
+
+										pr.then(
+											function (json)
+											{
+												top.BX.SidePanel.Instance.postMessage(
+													window,
+													'mail-mailbox-config-delete',
+													{
+														id: form.elements['fields[mailbox_id]'].value
+													}
+												);
+
+												closeForm();
+											},
+											function (json)
+											{
+												button.disabled = false;
+												BX.removeClass(button, 'ui-btn-wait');
+											}
+										);
+									}
+								}
+							}),
+							new BX.PopupWindowButtonLink({
+								text: '<?=CUtil::jsEscape(getMessage('MAIL_CLIENT_CONFIG_BTN_CANCEL')) ?>',
+								className: 'popup-window-button-link',
+								events: {
+									click: function()
+									{
+										this.popupWindow.close();
+
+										button.disabled = false;
+										BX.removeClass(button, 'ui-btn-wait');
+									}
+								}
+							})
+						]
+					});
+				}
+
+				deletePopup.show();
+			}
+		);
+
+		var mailboxData = <?=Json::encode(array(
+			'ID'       => $mailbox['ID'],
+			'EMAIL'    => $mailbox['EMAIL'],
+			'NAME'     => $mailbox['NAME'],
+			'USERNAME' => $mailbox['USERNAME'],
+			'SERVER'   => $mailbox['SERVER'],
+			'PORT'     => $mailbox['PORT'],
+			'USE_TLS'  => $mailbox['USE_TLS'],
+			'LOGIN'    => $mailbox['LOGIN'],
+			'LINK'     => $mailbox['LINK'],
+			'OPTIONS'  => array(
+				'flags' => $mailbox['OPTIONS']['flags'],
+			),
+		)) ?>;
+
+		BXMailMailbox.init(mailboxData);
+
+		<? endif ?>
+
+		<?php if (!empty($mailbox) && isset($_REQUEST['open_dirs'])): ?>
+
+		top.BX.SidePanel.Instance.open(
+			BX.util.add_url_param(
+				'<?=\CUtil::jsEscape($arParams['PATH_TO_MAIL_CONFIG_DIRS'])?>',
+				{
+					mailboxId: <?= (int)$mailbox['ID'] ?>,
+					INIT: 'Y',
+				}
+			),
+			{
+				width: 640,
+				cacheable: false,
+			}
+		);
+
+		<?php endif ?>
+
+		<? if (!empty($settings['oauth']) && !empty($settings['oauth_user'])): ?>
+
+		BX.onCustomEvent(
+			'OnMailOAuthBCompleted',
+			[
+				'<?=\CUtil::jsEscape($settings['oauth']->getStoredUid()) ?>',
+				'<?=\CUtil::jsEscape($settings['oauth']->getUrl()) ?>',
+				<?=Json::encode($settings['oauth_user']) ?>,
+				true
+			]
+		);
+
+		<? endif ?>
+
+	})();
+
+	<?
+
+	function get_plural_messages($prefix)
+	{
+		global $MESS;
+
+		$result = array();
+
+		$k = 0;
+		while ($form = getMessage($prefix.'PLURAL_'.++$k))
+			$result[] = $form;
+
+		return $result;
+	}
+
+	// http://localization-guide.readthedocs.org/en/latest/l10n/pluralforms.html
+	function plural_form($n, $forms)
+	{
+		switch (LANGUAGE_ID)
+		{
+			case 'ru':
+			case 'ua':
+				$p = $n%10 == 1 && $n%100 != 11 ? 0 : ($n%10 >= 2 && $n%10 <= 4 && ($n%100 < 10 || $n%100 >= 20) ? 1 : 2);
+				break;
+			case 'en':
+			case 'de':
+			case 'es':
+				$p = $n == 1 ? 0 : 1;
+				break;
+		}
+
+		return isset($forms[$p]) ? $forms[$p] : end($forms);
+	}
+
+	?>
+
+	function showLicenseInfoPopup()
+	{
+		BX.UI.InfoHelper.show('limit_contact_center_mail_storage');
+	}
+
+	BX.ready(function() {
+		new BX.UI.LayoutForm();
+	});
+
+</script>

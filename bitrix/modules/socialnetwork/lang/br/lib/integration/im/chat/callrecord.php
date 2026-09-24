@@ -1,0 +1,3 @@
+<?php
+$MESS["SOCIALNETWORK_CHAT_CALLRECORD_FILE_NOT_FOUND"] = "Arquivo não encontrado";
+$MESS["SOCIALNETWORK_CHAT_CALLRECORD_TEXT"] = "Arquivo de gravação de chamada #FILE_NAME#\n[DISK FILE ID=n#DISK_FILE_ID#]";

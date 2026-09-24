@@ -1,0 +1,22 @@
+<?php
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ANALYZE_COMMUNICATION_ENGINE_TITLE"] = "Автоматты істер мен спамға қарсы AI моделін таңдаңыз";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ANALYZE_COMMUNICATION_HEADER"] = "#COPILOT_NAME# клиентпен сөйлескеннен кейін менеджер үшін іс жасайды немесе қоңырауды маңызды емес деп анықтайды";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_CALL_ASSESSMENT_ENGINE_TITLE"] = "Сценарий бойынша қоңырауды бағалау үшін AI моделін таңдаңыз";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_CALL_ASSESSMENT_HEADER"] = "#COPILOT_NAME# менеджердің клиентпен әңгімесінің скриптіге сәйкестігін талдайды және <br>нені жақсартуға болатынын айтады";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ENGINE_AUDIO_TITLE"] = "Қоңырауларды мәтінге айналдыру үшін AI үлгісін таңдаңыз";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ENGINE_TEXT_TITLE"] = "AI моделін түйіндеме және өрістерді толтыру үшін таңдаңыз";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_ITEM_FROM_CALL_HEADER"] = "#COPILOT_NAME# телефон қоңырауларының шифрын ашады, оларды мәтінге аударады, бастысын бөлектейді және CRM ішіндегі өрістерді өзі толтырады";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_ITEM_FROM_CALL_TITLE"] = "CRM-де өрістерді толтыру үшін #COPILOT_NAME#";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_TODO_TEXT_HEADER"] = "#COPILOT_NAME# мәтінді жазуға немесе жақсартуға көмектеседі";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_TODO_TEXT_TITLE"] = "CRM-дегі істер мен пікірлер";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_GROUP_DESCRIPTION"] = "#COPILOT_NAME# CRM-де клиенттермен жұмыс істеуде таптырмас көмекші болады.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_GROUP_TITLE"] = "#COPILOT_NAME# CRM-де";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_MESSAGESENDER_EDITOR_HEADER"] = "#COPILOT_NAME# клиентке хабарламаңызды жақсартуға немесе жаңасын жазуға көмектеседі";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_MESSAGESENDER_EDITOR_TITLE"] = "CRM-дегі клиенттерге хабарламалар";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_REPEAT_SALE_ENGINE_TITLE"] = "Қайта сату сценарийлері үшін AI моделін таңдаңыз";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_REPEAT_SALE_HEADER"] = "#COPILOT_NAME# клиенттердің сатып алу тарихын талдайды және менеджерлерге ұсыныстар дайындайды";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_ANALYZE_COMMUNICATION_TITLE"] = "#COPILOT_NAME# автоматты істер және антиспамға қарсы";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_SUMMARIZE_HEADER"] = "#COPILOT_NAME# клиентпен қоңыраудан немесес чатта сөйлескеннен кейін түйіндемені дайындайды ";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_CALL_ASSESSMENT_TITLE"] = "Скрипті бойынша қоңырауды бағалау үшін #COPILOT_NAME#";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_REPEAT_SALE_TITLE"] = "Қайта сату сценарийлері үшін #COPILOT_NAME#";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_SUMMARIZE_TITLE"] = "Әңгіме түйіндемесі үшін #COPILOT_NAME#";

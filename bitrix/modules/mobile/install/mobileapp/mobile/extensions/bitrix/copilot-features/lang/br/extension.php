@@ -1,0 +1,19 @@
+<?php
+$MESS["COPILOT_FEATURE_ADVANTAGE_BUTTON_TEXT"] = "Saiba mais";
+$MESS["COPILOT_FEATURE_CHAT_DESCRIPTION"] = "Oferece conselhos especializados, sugere ideias e escreve textos para você.";
+$MESS["COPILOT_FEATURE_CHAT_TITLE"] = "Converse com o CoPilot";
+$MESS["COPILOT_FEATURE_CRM_ADVANTAGE_1"] = "Transcreve a chamada do cliente e preenche os campos faltantes do CRM.";
+$MESS["COPILOT_FEATURE_CRM_ADVANTAGE_2"] = "Compara a chamada do cliente com um roteiro e fornece dicas úteis.";
+$MESS["COPILOT_FEATURE_CRM_ADVANTAGE_3"] = "Cria um resumo da chamada e destaca pontos-chave.";
+$MESS["COPILOT_FEATURE_CRM_DESCRIPTION"] = "Transcreve a chamada do cliente, compara a chamada do cliente com um roteiro, cria um resumo da chamada e preenche os campos faltantes do CRM.";
+$MESS["COPILOT_FEATURE_CRM_TITLE"] = "CoPilot no CRM";
+$MESS["COPILOT_FEATURE_DESCRIPTION"] = "Use a IA para aumentar sua produtividade.";
+$MESS["COPILOT_FEATURE_FLOW_DESCRIPTION"] = "Avalia a eficiência do fluxo e sugere maneiras de aumentar o desempenho.";
+$MESS["COPILOT_FEATURE_FLOW_TITLE"] = "Recomendações de fluxo";
+$MESS["COPILOT_FEATURE_FLOW_UP_ADVANTAGE_1"] = "Treina a equipe para seguir as regras durante a reunião.";
+$MESS["COPILOT_FEATURE_FLOW_UP_ADVANTAGE_2"] = "Analisa a contribuição de cada participante e destaca pontos-chave.";
+$MESS["COPILOT_FEATURE_FLOW_UP_ADVANTAGE_3"] = "Documenta os resultados da reunião, fornece um resumo e uma transcrição.";
+$MESS["COPILOT_FEATURE_FLOW_UP_DESCRIPTION"] = "Analisa a reunião e cria um resumo.";
+$MESS["COPILOT_FEATURE_FLOW_UP_TITLE"] = "Acompanhamento de Chamada";
+$MESS["COPILOT_FEATURE_NEW_STATUS_TEXT"] = "Novo";
+$MESS["COPILOT_FEATURE_TITLE"] = "CoPilot";

@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Copia link";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Data di scadenza link:";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "Data e ora devono essere nel futuro.";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Seleziona data";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "La data è obbligatoria.";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Se la dashboard non viene condivisa, gli ospiti non possono visualizzarla nemmeno se dispongono di un link e di una password.";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Chiunque abbia un link e una password può visualizzare questa dashboard.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "Impossibile copiare il link.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "Impossibile condividere la dashboard.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "Impossibile annullare la condivisione della dashboard.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "Impossibile aggiornare il link.";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "I filtri per struttura aziendale, flusso di lavoro e flusso non sono disponibili durante la visualizzazione di una dashboard condivisa.";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Genera password";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "Il link è stato copiato.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "La password è stata creata.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Password:";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Crea password";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "La password è obbligatoria.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "La password non può includere più di 32 caratteri.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "La password deve includere almeno 8 caratteri.";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Condividi dashboard";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "Data e ora devono essere nel futuro.";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "Condividi dashboard \"#NAME#\"";

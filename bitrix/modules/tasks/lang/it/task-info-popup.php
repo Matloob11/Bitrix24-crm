@@ -1,0 +1,23 @@
+<?php
+$MESS["TASKS_ASSIGNEE"] = "Responsabile";
+$MESS["TASKS_DATE_COMPLETED"] = "Completato il";
+$MESS["TASKS_DATE_CREATED"] = "Creato il";
+$MESS["TASKS_DATE_DEADLINE"] = "Scadenza";
+$MESS["TASKS_DATE_END"] = "Data di fine";
+$MESS["TASKS_DATE_START"] = "Data di inizio";
+$MESS["TASKS_DATE_STARTED"] = "Iniziato il";
+$MESS["TASKS_DIRECTOR"] = "Creatore";
+$MESS["TASKS_FILES"] = "Files";
+$MESS["TASKS_PRIORITY_V2"] = "Incarico importante";
+$MESS["TASKS_QUICK_INFO_DETAILS"] = "Dettagli";
+$MESS["TASKS_QUICK_INFO_EMPTY_DATE"] = "no";
+$MESS["TASKS_STATUS"] = "Stato";
+$MESS["TASKS_STATUS_ACCEPTED"] = "In sospeso";
+$MESS["TASKS_STATUS_COMPLETED"] = "Completato";
+$MESS["TASKS_STATUS_DECLINED"] = "Rifiutato";
+$MESS["TASKS_STATUS_DELAYED"] = "Posticipato";
+$MESS["TASKS_STATUS_IN_PROGRESS"] = "In corso";
+$MESS["TASKS_STATUS_NEW"] = "Nuovo";
+$MESS["TASKS_STATUS_OVERDUE"] = "Scaduto";
+$MESS["TASKS_STATUS_WAITING"] = "Revisione in sospeso";
+$MESS["TASKS_TASK_TITLE_LABEL"] = "Task No.";

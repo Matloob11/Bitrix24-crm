@@ -1,0 +1,2 @@
+<?php
+$MESS["IMMOBILE_MESSENGER_DIALOG_SUGGESTS_COPILOT_TITLE"] = "Ciao! Come posso aiutarti?";

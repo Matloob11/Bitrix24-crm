@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_LEAD_SECTION_ADDITIONAL"] = "Altro";
+$MESS["CRM_LEAD_SECTION_MAIN"] = "Informazioni lead";
+$MESS["CRM_LEAD_SECTION_PRODUCTS"] = "Prodotti";

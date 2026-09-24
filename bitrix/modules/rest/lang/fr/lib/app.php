@@ -1,0 +1,24 @@
+<?php
+$MESS["MP_ERROR_INCORRECT_URL_INSTALL"] = "URL de l'installation incorrecte.";
+$MESS["PAYMENT_MESSAGE_D_N_Y"] = "Certaines fonctionnalités de l'application sont indisponibles. Veuillez contacter votre administrateur pour installer la version complète.";
+$MESS["PAYMENT_MESSAGE_D_N_Y_A"] = "Certaines fonctionnalités de l'application sont indisponibles. Vous pouvez acheter la version complète.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y"] = "Votre abonnement à l'application a expiré. Certaines fonctionnalités de l'application sont indisponibles. Merci de contacter votre administrateur pour installer la version complète.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y_A"] = "Votre abonnement à l'application a expiré. Certaines de ses fonctionnalités sont indisponibles.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD"] = "Cette application a été bloquée en raison d'une charge excessive. Veuillez contacter l'administrateur de Bitrix24.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD_A"] = "Cette application a été bloquée en raison d'une charge excessive. Veuillez contacter le service d'assistance pour résoudre le problème.";
+$MESS["PAYMENT_MESSAGE_P_N_Y"] = "Votre abonnement à l'application va expirer dans <b>#DAYS#</b> jours. Pour le renouveler, veuillez contacter votre administrateur.";
+$MESS["PAYMENT_MESSAGE_P_N_Y_A"] = "Votre abonnement à l'application va expirer dans <b>#DAYS#</b> jours.";
+$MESS["PAYMENT_MESSAGE_P_Y_N"] = "L'application n'est plus disponible car votre abonnement a expiré. Veuillez contacter votre administrateur pour le renouveler.";
+$MESS["PAYMENT_MESSAGE_P_Y_N_A"] = "L'application n'est plus disponible car votre abonnement a expiré.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y"] = "Votre abonnement à l'application a expiré. Veuillez contacter votre administrateur pour installer la version complète.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y_A"] = "Votre abonnement à l'application a expiré.";
+$MESS["PAYMENT_MESSAGE_S_N_Y"] = "Il vous reste <b>#DAYS#</b> jours avant l'expiration de votre abonnement à l'application. Veuillez contacter l'administrateur pour le renouvellement.";
+$MESS["PAYMENT_MESSAGE_S_N_Y_A"] = "Il vous reste <b>#DAYS#</b> jours avant l'expiration de votre abonnement à l'application.";
+$MESS["PAYMENT_MESSAGE_S_Y_N"] = "L'application a été bloquée car votre abonnement a expiré. Veuillez contacter l'administrateur pour le renouvellement.";
+$MESS["PAYMENT_MESSAGE_S_Y_N_A"] = "L'application a été bloquée car votre abonnement a expiré.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y"] = "Votre abonnement à l'application a expiré. Veuillez contacter l'administrateur pour le renouvellement.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y_A"] = "Votre abonnement à l'application a expiré.";
+$MESS["PAYMENT_MESSAGE_T_N_Y"] = "La période d'essai va expirer dans <b>#DAYS#</b> jours. Merci de contacter votre administrateur pour installer la version complète.";
+$MESS["PAYMENT_MESSAGE_T_N_Y_A"] = "La période d'essai va expirer dans <b>#DAYS#</b> jours.";
+$MESS["PAYMENT_MESSAGE_T_Y_N"] = "La période d'essai de l'application a expiré. Veuillez contacter votre administrateur pour installer la version complète.";
+$MESS["PAYMENT_MESSAGE_T_Y_N_A"] = "La période d'essai de l'application a expiré. Vous pouvez acheter la version complète.";

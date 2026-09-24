@@ -1,0 +1,4 @@
+<?php
+$MESS["ABSENCE_TARIFF_RESTRICTION_TITLE"] = "Un tableau des absences et d'autres outils utiles sont disponibles sur certaines offres commerciales.";
+$MESS["TARIFF_RESTRICTION_TEXT"] = "Le tableau des absences offre une représentation visuelle rapide de l'endroit où se trouve une personne et de la raison de son absence : congé d'affaires, de maladie ou de maternité. Le tableau sera également utile lors de la planification des vacances, car il est possible de visualiser tous les congés simultanés indésirables de plusieurs personnes à la fois. Il est facile à utiliser : des congés peuvent être ajoutés par un employé ou un responsable des ressources humaines. Le système peut également ajouter des congés automatiquement en fonction des flux de travail d'approbation de demande de congé. <a href=\"javascript:void(0)\" onclick='top.BX.Helper.show(\"redirect=detail&code=5349195\");'>Détails</a>";
+$MESS["TITLE"] = "Tableau des absences";

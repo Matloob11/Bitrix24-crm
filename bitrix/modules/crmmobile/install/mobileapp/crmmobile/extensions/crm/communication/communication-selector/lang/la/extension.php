@@ -1,0 +1,7 @@
+<?php
+$MESS["M_CRM_COMMUNICATION_SELECTOR_TITLE"] = "Contactos";
+$MESS["M_CRM_COMMUNICATION_SELECTOR_TITLE_COMPANY"] = "Contactos en la compañía";
+$MESS["M_CRM_COMMUNICATION_SELECTOR_TITLE_DEAL"] = "Contactos en la negociación";
+$MESS["M_CRM_COMMUNICATION_SELECTOR_TITLE_INVOICE"] = "Contactos en la factura";
+$MESS["M_CRM_COMMUNICATION_SELECTOR_TITLE_LEAD"] = "Contactos en el prospecto";
+$MESS["M_CRM_COMMUNICATION_SELECTOR_TITLE_QUOTE_MSGVER_1"] = "Contactos en el presupuesto";

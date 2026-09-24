@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Lixeira";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Isso inclui artigos (#COUNT#) cujo espaço original que os continha foi excluído. Selecione um novo espaço principal para esses artigos.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Todos os #COUNT# artigos serão restaurados da Lixeira.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Restaurar artigos";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Comece a digitar o nome do espaço";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "O espaço original que continha o artigo \"#DOCUMENT#\" não existe mais. Selecione um novo espaço principal para este artigo.";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Restaurar artigo";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Cancelar";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Todos os artigos na Lixeira serão excluídos permanentemente. Esta ação não pode ser desfeita. Tem certeza de que deseja continuar?";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "Deseja restaurar todos os artigos da Lixeira?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Esvaziar Lixeira";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Sim";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Esvaziar Lixeira";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "A Lixeira está vazia.";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "A Lixeira foi esvaziada. Artigos excluídos: #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "Não é possível concluir a ação.";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "O artigo foi excluído permanentemente.";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Ações";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Restaurar";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Restaurar tudo";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Artigos restaurados: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Artigos restaurados: #COUNT#. #SKIPPED# artigos foram ignorados porque precisam de um novo espaço.";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "O artigo foi restaurado.";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Os artigos são mantidos na Lixeira por 30 dias. Após o período de retenção de 30 dias, eles serão excluídos permanentemente.";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Lixeira";

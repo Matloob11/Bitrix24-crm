@@ -1,0 +1,6 @@
+<?php
+$MESS["QUALIFICATION_FIELDS_PHONE_BUTTON_DEFAULT_TEXT"] = "Продовжити";
+$MESS["QUALIFICATION_FIELDS_PHONE_ERROR"] = "Введіть правильний номер телефону.";
+$MESS["QUALIFICATION_FIELDS_PHONE_FOOTER"] = "Натискаючи кнопку «#BUTTON_TEXT#», ви приймаєте #URL_START#Privacy Policy#URL_END#.";
+$MESS["QUALIFICATION_FIELDS_USER_INVITATION_BUTTON"] = "Запросити";
+$MESS["QUALIFICATION_STEP_TITLE"] = "Крок #INDEX#";

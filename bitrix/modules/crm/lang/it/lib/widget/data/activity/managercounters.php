@@ -1,0 +1,8 @@
+<?php
+$MESS["CRM_MANAGER_CNTR_COMPANY"] = "Aziende";
+$MESS["CRM_MANAGER_CNTR_CONTACT"] = "Contatti";
+$MESS["CRM_MANAGER_CNTR_DEAL"] = "Affari";
+$MESS["CRM_MANAGER_CNTR_FAILED"] = "Rimanente";
+$MESS["CRM_MANAGER_CNTR_LEAD"] = "Lead";
+$MESS["CRM_MANAGER_CNTR_SUCCEED"] = "Completato";
+$MESS["CRM_MANAGER_CNTR_TITLE"] = "Contatori manager";

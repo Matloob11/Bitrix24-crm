@@ -1,0 +1,7 @@
+<?php
+$MESS["TASKS_SONET_LOG_ASSIGNEE"] = "Odpowiedzialny";
+$MESS["TASKS_SONET_LOG_DESCRIPTION"] = "Opis";
+$MESS["TASKS_SONET_LOG_LABEL_TITLE"] = "Zadanie";
+$MESS["TASKS_SONET_LOG_STATUS"] = "Status";
+$MESS["TASKS_SONET_LOG_STATUS_CHANGED"] = "Zmieniono status zadania";
+$MESS["TASKS_SONET_LOG_TAGS"] = "Tagi:";

@@ -1,0 +1,4 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REVIEW_SUCCESS_BUTTON_CLOSE"] = "Zamknij";
+$MESS["SIGN_MOBILE_DIALOG_REVIEW_SUCCESS_DESCRIPTION"] = "Dokument [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]#DOCUMENT_TITLE#[/COLOR] został zatwierdzony i wysłany innym stronom podpisującym.";
+$MESS["SIGN_MOBILE_DIALOG_REVIEW_SUCCESS_TITLE"] = "Dokument zatwierdzony";

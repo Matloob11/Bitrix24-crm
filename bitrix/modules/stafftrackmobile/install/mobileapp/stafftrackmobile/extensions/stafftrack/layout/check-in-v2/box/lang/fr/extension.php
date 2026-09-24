@@ -1,0 +1,20 @@
+<?php
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_BUTTON"] = "Ajouter un check-in au travail";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CANCEL_TITLE"] = "Annuler le check-in au travail";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CHAT_SELECTOR_TITLE"] = "Sélectionner un chat";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_DESCRIPTION_PLACEHOLDER"] = "Ajouter un commentaire";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_ERROR"] = "Impossible de terminer l'action. Veuillez réessayer plus tard.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_ACTION"] = "Oui";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_DESCRIPTION"] = "Vous devez pointer la sortie avant de pointer une nouvelle entrée. Souhaitez-vous pointer la sortie maintenant ?";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_TITLE"] = "Pointage de sortie";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILES_BUTTON"] = "Fichiers : #COUNT#";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILE_BUTTON_PLACEHOLDER"] = "Fichiers";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_GEO_PERMISSION_CANCEL_BUTTON"] = "Annuler";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_MESSENGER_BUTTON_PLACEHOLDER"] = "Chat";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_SUCCESS_TOAST"] = "Check-in au travail réussi";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TITLE"] = "Nouveau check-in au travail";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_BUTTON_TEXT"] = "Activer";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_DESCRIPTION"] = "Activez-le si vous souhaitez que vos utilisateurs puissent effectuer un check-in avec localisation.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_TITLE"] = "Check-in au travail désactivé";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_BUTTON_TEXT"] = "Envoyer un message à votre superviseur";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_DESCRIPTION"] = "Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";

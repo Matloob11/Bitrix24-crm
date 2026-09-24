@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_STORAGE_ITEM_CONFIRM_MESSAGE_OK"] = "Sì";
+$MESS["BIZPROC_STORAGE_ITEM_DELETE_MESSAGE"] = "La memoria è stata eliminata.";
+$MESS["BIZPROC_STORAGE_ITEM_LIST_CONFIRM_MESSAGE"] = "Eliminare questa memoria?";

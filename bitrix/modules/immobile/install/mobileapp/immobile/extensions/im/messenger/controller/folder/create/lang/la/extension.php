@@ -1,0 +1,4 @@
+<?php
+$MESS["IMMOBILE_FOLDER_CREATE_ERROR_LIMIT"] = "Se admiten hasta 20 carpetas.";
+$MESS["IMMOBILE_FOLDER_CREATE_NAV_TITLE"] = "Nueva carpeta";
+$MESS["IMMOBILE_FOLDER_CREATE_SUBMIT_BUTTON"] = "Crear";

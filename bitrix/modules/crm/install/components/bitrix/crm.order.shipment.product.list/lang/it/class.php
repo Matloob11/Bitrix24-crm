@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_CATALOG"] = "Il modulo Catalogo commerciale non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_CURRENCY"] = "Il modulo Valuta non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_SALE"] = "Il modulo e-Store non è installato.";
+$MESS["CRM_ORDER_SPLC_AMOUNT"] = "Da consegnare";
+$MESS["CRM_ORDER_SPLC_DIMENSIONS"] = "Dimensioni";
+$MESS["CRM_ORDER_SPLC_ERR_URL_BUILDER_ABSENT"] = "Generatore di link non trovato.";
+$MESS["CRM_ORDER_SPLC_FAILED_TO_CREATE_OBJECT"] = "Impossibile creare un oggetto di spedizione.";
+$MESS["CRM_ORDER_SPLC_FAILED_TO_CREATE_OBJECT_B"] = "Impossibile creare un oggetto del carrello.";
+$MESS["CRM_ORDER_SPLC_NAME"] = "Nome";
+$MESS["CRM_ORDER_SPLC_PICTURE"] = "Immagine";
+$MESS["CRM_ORDER_SPLC_PROPERTIES"] = "Proprietà";
+$MESS["CRM_ORDER_SPLC_QUANTITY"] = "Quantità";
+$MESS["CRM_ORDER_SPLC_SORTING"] = "Ordina";
+$MESS["CRM_ORDER_SPLC_STORE_BARCODE"] = "Codice a barre";
+$MESS["CRM_ORDER_SPLC_STORE_ID"] = "Magazzino";
+$MESS["CRM_ORDER_SPLC_STORE_QUANTITY"] = "Spedizione";
+$MESS["CRM_ORDER_SPLC_STORE_REMAINING_QUANTITY"] = "In magazzino";
+$MESS["CRM_ORDER_SPLC_WEIGHT"] = "Peso";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";

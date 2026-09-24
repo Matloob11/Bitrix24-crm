@@ -1,0 +1,23 @@
+<?php
+$MESS["ROLE_LIBRARY_GRID_ACTION_OPEN_EDIT_MASTER_ERROR"] = "No se pudo abrir el editor de roles. Intente de nuevo.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ACTIVATE"] = "El rol \"#NAME#\" está activo.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_DEACTIVATE"] = "El rol \"#NAME#\" no está activo.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_ADD"] = "El rol \"#NAME#\" se agregó a Favoritos.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_REMOVE"] = "El rol \"#NAME#\" se eliminó de Favoritos.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE"] = "El rol \"#NAME#\" no es visible en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE_MSGVER_1"] = "El rol \"#NAME#\" no es visible en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTION_DEFAULT"] = "La acción se completó con éxito.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTIVATE"] = "Los roles están activos.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_DEACTIVATE"] = "Los roles no están activos.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE"] = "Los roles no son visibles en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE_MSGVER_1"] = "Los roles no son visibles en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW"] = "Los roles son visibles en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW_MSGVER_1"] = "Los roles son visibles en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_MASTER_OPEN_ERROR"] = "No se pudo abrir el editor de roles. Intente de nuevo.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_SAVE_SUCCESS"] = "El rol \"#NAME#\" fue guardado.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW"] = "El rol \"#NAME#\" es visible en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_MSGVER_1"] = "El rol \"#NAME#\" es visible en el menú Mis roles.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_ROLE_USERS_ERROR"] = "No se ha podido cargar la lista de usuarios. Intente de nuevo.";
+$MESS["ROLE_LIBRARY_GRID_TOUR_DESCRIPTION"] = "Cree roles y compártalos con sus colegas.";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE"] = "Agregue su rol a CoPilot";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE_MSGVER_1"] = "Agregue su rol a #COPILOT_NAME#";

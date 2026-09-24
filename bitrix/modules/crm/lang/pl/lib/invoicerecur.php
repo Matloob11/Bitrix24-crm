@@ -1,0 +1,16 @@
+<?
+$MESS["CRM_INVOICE_RECURRING_ENTITY_ACTIVE_FIELD"] = "Aktywny";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_CATEGORY_ID_FIELD"] = "Kategoria nowego deala";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_COUNTER_REPEAT_FIELD"] = "Liczba utworzonych instancji";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_EMAIL_ID_FIELD"] = "ID e-maila";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_ID_FIELD"] = "ID";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_INVOICE_ID_FIELD"] = "ID faktury cyklicznej";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_IS_LIMIT_FIELD"] = "Metoda ograniczania";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_LAST_EXECUTION_FIELD"] = "Data wygenerowania ostatniej cyklicznej faktury";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_LIMIT_DATE_FIELD"] = "Według daty";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_LIMIT_REPEAT_FIELD"] = "Według liczby instancji";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_NEXT_EXECUTION_FIELD"] = "Data wygenerowania następnej cyklicznej faktury";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_PARAMS_FIELD"] = "Parametry do obliczenia następnej faktury cyklicznej";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_SEND_BILL_FIELD"] = "Wyślij fakturę przez e-mail";
+$MESS["CRM_INVOICE_RECURRING_ENTITY_START_DATE_FIELD"] = "Data rozpoczęcia tworzenia cyklicznych faktur od";
+?>

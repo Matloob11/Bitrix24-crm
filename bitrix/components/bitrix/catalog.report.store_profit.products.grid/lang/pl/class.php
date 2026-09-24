@@ -1,0 +1,20 @@
+<?php
+$MESS["STORE_SALE_PRODUCTS_FILTER_STORES_TITLE"] = "Magazyny";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN"] = "Ilość sprzedana w szt.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN_HINT"] = "Łączna ilość towarów sprzedanych dla okresu raportowania zgodnie z raportem obiektów magazynowych sprzedaży.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN"] = "Koszt produktu";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN_HINT"] = "Średni koszt jednostkowy towarów dla okresu raportowania zgodnie z raportem obiektów magazynowych sprzedaży.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_NO_PRODUCTS"] = "Nie znaleziono transakcji w wybranym okresie.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PRODUCT_COLUMN_MSGVER_1"] = "Produkt";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN"] = "Marża brutto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN_HINT"] = "Marża brutto to zysk brutto podzielony przez przychody ze sprzedaży i wyrażony w procentach.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN"] = "Zysk brutto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN_HINT"] = "Zysk brutto dla okresu raportowania zgodnie z raportem obiektów magazynowych sprzedaży.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN"] = "Dostarczona ilość";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN_HINT"] = "Łączna ilość towarów przyjętych do magazynów w wyniku operacji Przyjęcia, Korekty i Przesunięcia zapasów.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN"] = "Początkowy stan magazynowy";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN_HINT"] = "Stan magazynowy zarejestrowany na początku okresu raportowania.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN"] = "Łączny koszt";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN_HINT"] = "Łączny koszt towarów dla okresu raportowania zgodnie z raportem obiektów magazynowych sprzedaży.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN"] = "Przychody ze sprzedaży";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN_HINT"] = "Łączna kwota uzyskana ze sprzedaży towarów w okresie raportowania według obiektów magazynowych sprzedaży.";

@@ -1,0 +1,9 @@
+<?php
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL"] = "Permissão de acesso";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_10"] = "Ler";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_20"] = "Escrever";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_30"] = "Excluir";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_40"] = "Editar permissões de acesso";
+$MESS["TASKS_TWR_TEMPLATE_FEATURE_ACCESS_RESTRICTED"] = "As permissões de acesso estão disponíveis nos principais planos.";
+$MESS["TASKS_TWR_TEMPLATE_FEATURE_ACCESS_RESTRICTED_MORE"] = "Informações";
+$MESS["TASKS_TWR_TEMPLATE_USER"] = "Usuário";

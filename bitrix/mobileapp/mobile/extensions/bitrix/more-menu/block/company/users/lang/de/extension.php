@@ -1,0 +1,3 @@
+<?php
+$MESS["MORE_MENU_COMPANY_USERS_INVITE"] = "Einladen";
+$MESS["MORE_MENU_COMPANY_USERS_TITLE"] = "Mitarbeiter";

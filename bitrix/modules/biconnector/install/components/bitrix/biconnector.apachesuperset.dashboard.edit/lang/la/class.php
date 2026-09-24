@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "No se encontró el panel de control.";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Nuevo panel de control";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Nuevo panel de control (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Seleccione un grupo para crear un panel de control.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "El panel de control debe agregarse al menos a un grupo.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "Se requiere el nombre del panel de control.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "No se puede copiar el panel de control. Intente de nuevo.";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Ayuda";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "El panel de control incluye imágenes no válidas. Actualice la página e intente de nuevo.";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "El intervalo de fechas es incorrecto.";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "Solo se pueden editar los paneles de control personalizados.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Permisos insuficientes para crear el panel de control.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "Permisos insuficientes para utilizar BI Builder.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "BI Builder no está disponible.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Permisos insuficientes para editar el panel de control.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "No se pudo guardar la descripción del panel de control. Intente de nuevo.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "No se pudo guardar la galería del panel de control. Intente de nuevo.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "No se pueden crear los parámetros del panel de control. Abra las propiedades del panel de control e intente de nuevo.";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Nuevo panel de control";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "El nombre del panel de control no debe superar los 128 caracteres.";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "No se pudo actualizar el panel de control. Intente de nuevo.";

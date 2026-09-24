@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "Есеп табылмады";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Жаңа есеп";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Жаңа есеп (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Есеп жасау үшін топты таңдаңыз";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "Есепті барлық топтардан жою мүмкін емес";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "Есептің атауын қосыңыз.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "Есеп жасау мүмкін болмады. Қайталап көріңіз";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Көмек";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "Есептің дұрыс емес суреттері. Бетті жаңартып, қайталап көріңіз";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "Интервалдың дұрыс емес мәні";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "Тек пайдаланушы есебін өңдеуге болады";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Есепті құруға құқықтар жеткіліксіз";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "BI Құрастырушымен жұмыс істеуге құқықтар жеткіліксіз";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "BI Құрастырушының мүмкіндіктері қолжетімсіз";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Есепті өңдеуге құқықтар жеткіліксіз";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "Есеп сипаттамасын сақтау мүмкін болмады. Қайталап көріңіз";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "Есеп галереясын сақтау мүмкін болмады. Қайталап көріңіз";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "Есеп параметрлерін жасау мүмкін болмады. Есеп баптауларын ашып, қайталап көріңіз";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Есеп құру";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "Есеп атауы 128 таңбадан аспауы керек";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "Есепті жаңарту мүмкін болмады. Қайталап көріңіз";

@@ -1,0 +1,5 @@
+<?php
+$MESS["BIZPROC_LIB_API_CONTROLLER_WORKFLOW_STARTER_ERROR_ACCESS_DENIED"] = "Insufficient permission to start workflow. Please contact your supervisor or Bitrix24 administrator.";
+$MESS["BIZPROC_LIB_API_CONTROLLER_WORKFLOW_STARTER_ERROR_BIZPROC_FEATURE_DISABLED"] = "Workflow is not available. Please contact your Bitrix24 administrator.";
+$MESS["BIZPROC_LIB_API_CONTROLLER_WORKFLOW_STARTER_ERROR_INCORRECT_AUTO_EXECUTE_TYPE"] = "Incorrect workflow autorun type.";
+$MESS["BIZPROC_LIB_API_CONTROLLER_WORKFLOW_STARTER_ERROR_INCORRECT_DOCUMENT_ID"] = "Incorrect element ID.";

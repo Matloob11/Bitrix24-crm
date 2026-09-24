@@ -1,0 +1,11 @@
+<?php
+$MESS["TIMEMAN_SECTION_ABSENCE_ITEM_TITLE"] = "Gráfico de ausencias";
+$MESS["TIMEMAN_SECTION_BITRIX24_TIME_ITEM_TITLE"] = "Bitrix24.Time";
+$MESS["TIMEMAN_SECTION_MEETINGS_ITEM_TITLE"] = "Reuniones y sesiones informativas";
+$MESS["TIMEMAN_SECTION_MONITOR_REPORT_ITEM_TITLE"] = "Asistente para el tiempo de trabajo";
+$MESS["TIMEMAN_SECTION_PERMISSIONS_ITEM_TITLE"] = "Permisos de acceso";
+$MESS["TIMEMAN_SECTION_ROOT_ITEM_TITLE"] = "Tiempo y reportes";
+$MESS["TIMEMAN_SECTION_SCHEDULES_ITEM_TITLE"] = "Horarios de trabajo";
+$MESS["TIMEMAN_SECTION_USER_LOGIN_HISTORY"] = "Historial de acceso";
+$MESS["TIMEMAN_SECTION_WORK_REPORT_ITEM_TITLE"] = "Reportes de trabajo";
+$MESS["TIMEMAN_SECTION_WORK_TIME_ITEM_TITLE"] = "Tiempo de trabajo";

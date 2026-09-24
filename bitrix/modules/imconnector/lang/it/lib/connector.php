@@ -1,0 +1,20 @@
+<?php
+$MESS["IMCONNECTOR_ERROR_MAIN_MODULE_URL_SITE_USE"] = "I nomi di dominio specificati nelle impostazioni del modulo del kernel e il dominio corrente non corrispondono. Il nome di dominio #DOMAIN# specificato nelle impostazioni del modulo del kernel è utilizzato per la risposta del server. Per cambiare il nome di dominio, <a href=\"/bitrix/admin/settings.php?lang=ru&mid=main&mid_menu=1\">modifica il campo \"URL sito\".</a>";
+$MESS["IMCONNECTOR_ERROR_SERVER_NAME_USE"] = "Il campo \"URL sito\" del modulo del kernel è vuoto. Il nome di dominio corrente #DOMAIN# sarà utilizzato per la risposta del server. Per cambiare nome di dominio, <a href=\"/bitrix/admin/settings.php?lang=ru&mid=main&mid_menu=1\">modifica il campo \"URL sito\".</a>";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_AVITO"] = "Avito";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_FACEBOOK_COMMENTS_PAGE"] = "Facebook: Commenti";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_FACEBOOK_PAGE"] = "Facebook";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_FBINSTAGRAM"] = "Instagram Business";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_FBINSTAGRAMDIRECT"] = "Instagram Direct";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_IMESSAGE_NEW"] = "Apple Messages for Business";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_LIVECHAT"] = "Live chat";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_NETWORK"] = "Bitrix24.Network";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_NETWORK_MSGVER_1"] = "Network Bitrix24";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_NOTIFICATIONS_2"] = "Bitrix24 SMS e WhatsApp";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_OK"] = "Odnoklassniki";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_OLX"] = "OLX";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_TELEGRAM_BOT"] = "Telegram";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_VIBER_BOT"] = "Viber";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_WECHAT"] = "WeChat";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_WHATSAPPBYEDNA_IO"] = "WhatsApp Edna.io";
+$MESS["IMCONNECTOR_NAME_CONNECTOR_WHATSAPPBYTWILIO"] = "WhatsApp";

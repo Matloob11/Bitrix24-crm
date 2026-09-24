@@ -1,0 +1,99 @@
+<?php
+namespace Bitrix\Landing\Site;
+
+use Bitrix\Landing\Metrika;
+use Bitrix\Landing\Transfer\Requisite\FinishRedirectLinkDto;
+
+abstract class Scope
+{
+	protected static $currentScopeId = null;
+
+	/**
+	 * Method for first time initialization scope.
+	 * @param array $params Additional params.
+	 * @return void
+	 */
+	public static function init(array $params = [])
+	{
+		$reflectionClass = new \ReflectionClass(get_called_class());
+		self::$currentScopeId = mb_strtoupper($reflectionClass->getShortName());
+	}
+
+	/**
+	 * Returns current scope id.
+	 * @return string|null
+	 */
+	public static function getCurrentScopeId()
+	{
+		return self::$currentScopeId;
+	}
+
+	/**
+	 * Should return publication path string.
+	 * @return string
+	 */
+	abstract public static function getPublicationPath();
+
+	/**
+	 * Should return general key for site path (ID or CODE).
+	 * @return string
+	 */
+	abstract public static function getKeyCode();
+
+	/**
+	 * Should return domain id for new site.
+	 * @return int|string
+	 */
+	abstract public static function getDomainId();
+
+	/**
+	 * Should return filter value for 'TYPE' key.
+	 * @return mixed
+	 */
+	abstract public static function getFilterType();
+
+	/**
+	 * Returns array of hook's codes, which excluded by scope.
+	 * @return array
+	 */
+	abstract public static function getExcludedHooks(): array;
+
+	/**
+	 * Check is scope can use extension
+	 * @param string $code - name of extension
+	 * @return bool
+	 */
+	public static function isExtensionAllow(string $code): bool
+	{
+		return true;
+	}
+
+	/**
+	 * To be compatible with previously exported archives, the transfer may use old scope codes
+	 * @return string
+	 */
+	public static function getScopeIdForTransfer(): string
+	{
+		return mb_strtolower(self::$currentScopeId ?? '');
+	}
+
+	/**
+	 * Hook for transfer import finish URL resolution.
+	 * Scopes may override it when post-import navigation differs by site type.
+	 *
+	 * @param int $siteId
+	 * @return FinishRedirectLinkDto|null
+	 */
+	public static function onTransferFinishRedirectUrlGet(int $siteId): ?FinishRedirectLinkDto
+	{
+		return null;
+	}
+
+	/**
+	 * Hook for transfer finish analytics enrichment.
+	 * Scopes may append specific analytics params before send.
+	 */
+	public static function onTransferFinishAnalyticSend(int $siteId, Metrika\Metrika $metrika): void
+	{
+	}
+}

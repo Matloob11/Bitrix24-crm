@@ -1,0 +1,23 @@
+<?php
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION"] = "Animazione dispositivo di scorrimento";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_HINT"] = "Seleziona l'effetto di animazione per la transizione tra due slide consecutive. L'animazione con effetto dissolvenza è disponibile solo se è presente un'unica slide.";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_OFF"] = "Nessuna";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS"] = "Progettazione pulsanti";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS_0"] = "Nessun pulsante";
+$MESS["LANDING_BLOCK_ATTRS_AUTO"] = "Auto";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY"] = "Riproduzione automatica";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY_SPEED"] = "Velocità";
+$MESS["LANDING_BLOCK_ATTRS_DOTS"] = "Mostra punti di navigazione";
+$MESS["LANDING_BLOCK_ATTRS_NO"] = "No";
+$MESS["LANDING_BLOCK_ATTRS_OFF"] = "Disattiva";
+$MESS["LANDING_BLOCK_ATTRS_ON"] = "Attiva";
+$MESS["LANDING_BLOCK_ATTRS_PAUSE_HOVER"] = "Sospendi al passaggio del mouse";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW"] = "Presentazione a schermo";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW_HINT"] = "Il numero di slide simultanee che l'utente vedrà sullo schermo, affiancate. Questa opzione è supportata solo quando si visualizza il sito su un computer desktop o laptop.";
+$MESS["LANDING_BLOCK_ATTRS_TIME_1"] = "1 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_3"] = "3 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_5"] = "5 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_10"] = "10 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_15"] = "15 sec";
+$MESS["LANDING_BLOCK_ATTRS_TIME_30"] = "30 sec";
+$MESS["LANDING_BLOCK_ATTRS_YES"] = "Sì";

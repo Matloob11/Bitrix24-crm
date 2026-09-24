@@ -1,0 +1,20 @@
+<?php
+$MESS["MARKET_DONT_HAVE_REVIEWS"] = "Non hai nessuna recensione.";
+$MESS["MARKET_DONT_HAVE_REVIEWS_FILTER"] = "Nessuna recensione trovata.";
+$MESS["MARKET_MY_REVIEWS"] = "Le mie recensioni";
+$MESS["MARKET_NO_REVIEW_APPS"] = "Non hai recensito alcuna app.";
+$MESS["MARKET_NO_REVIEW_APPS_FILTER"] = "Nessuna delle tue recensioni corrisponde ai filtri specificati.";
+$MESS["MARKET_REVIEWS_DEVELOPER"] = "Sviluppatore";
+$MESS["MARKET_REVIEWS_MENU_ITEM_EDITING"] = "Modifica recensione";
+$MESS["MARKET_REVIEW_ANSWER"] = "Risposta dello sviluppatore";
+$MESS["MARKET_REVIEW_EDITING_CANCEL"] = "Annulla";
+$MESS["MARKET_REVIEW_EDITING_RE_MODERATION_TITLE"] = "La recensione aggiornata verrà inviata per la moderazione.";
+$MESS["MARKET_REVIEW_EDITING_SAVE"] = "Salva";
+$MESS["MARKET_REVIEW_EDITING_TITLE"] = "Modifica la recensione";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_ERROR"] = "Errore durante l'aggiornamento della recensione.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_NOT_ALLOWED"] = "Impossibile modificare la recensione.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_SUCCESS"] = "La tua recensione è stata aggiornata correttamente.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_TEXT_ERROR"] = "Il testo della recensione è obbligatorio.";
+$MESS["MARKET_REVIEW_NO_PUBLISHED"] = "Non pubblicato";
+$MESS["MARKET_REVIEW_PUBLISHED"] = "Pubblicato";
+$MESS["MARKET_REVIEW_SENT_TO_DEVELOPER"] = "Inviato allo sviluppatore";

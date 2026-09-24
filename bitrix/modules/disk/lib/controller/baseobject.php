@@ -1,0 +1,386 @@
+<?php
+
+namespace Bitrix\Disk\Controller;
+
+use Bitrix\Disk;
+use Bitrix\Disk\File;
+use Bitrix\Disk\Document\Flipchart\BoardService;
+use Bitrix\Disk\Driver;
+use Bitrix\Disk\ExternalLink;
+use Bitrix\Disk\Integration\Bitrix24Manager;
+use Bitrix\Disk\Internals;
+use Bitrix\Disk\Public\Provider\ExternalLinkProvider;
+use Bitrix\Disk\TypeFile;
+use Bitrix\Main\Analytics\AnalyticsEvent;
+use Bitrix\Main\DI\ServiceLocator;
+use Bitrix\Main\Error;
+use Bitrix\Main\Application;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Request;
+use Bitrix\Main\Web\Uri;
+
+abstract class BaseObject extends Internals\Engine\Controller
+{
+	protected ExternalLinkProvider $externalLinkProvider;
+
+	public function __construct(?Request $request = null)
+	{
+		parent::__construct($request);
+
+		$this->externalLinkProvider = ServiceLocator::getInstance()->get(ExternalLinkProvider::class);
+	}
+
+	protected function get(Disk\BaseObject $object)
+	{
+		return [
+			'object' => $object->jsonSerialize(),
+		];
+	}
+
+	/**
+	 * Returns default pre-filters for action.
+	 * @return array
+	 */
+	protected function getDefaultPreFilters()
+	{
+		$defaultPreFilters = parent::getDefaultPreFilters();
+		$defaultPreFilters[] = new Internals\Engine\ActionFilter\CheckReadPermission();
+
+		return $defaultPreFilters;
+	}
+
+	protected function getDefaultPostFilters()
+	{
+		$defaultPostFilters = parent::getDefaultPostFilters();
+		$defaultPostFilters[] = new Internals\Engine\ActionFilter\HumanReadableError();
+
+		return $defaultPostFilters;
+	}
+
+	protected function rename(
+		Disk\BaseObject $object,
+		string $newName,
+		bool $autoCorrect = false,
+		bool $generateUniqueName = false
+	)
+	{
+		$securityContext = $object->getStorage()?->getSecurityContext($this->getCurrentUser()->getId());
+		if (!$securityContext || !$object->canRename($securityContext))
+		{
+			$this->addError(new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED')));
+
+			return null;
+		}
+
+		if ($autoCorrect)
+		{
+			$newName = Disk\Ui\Text::correctFilename($newName);
+		}
+
+		if (!$object->rename($newName, $generateUniqueName))
+		{
+			$this->addErrors($object->getErrors());
+
+			return null;
+		}
+
+		return $this->get($object);
+	}
+
+	protected function deleteFile(Disk\File $file)
+	{
+		$securityContext = $file->getStorage()->getSecurityContext($this->getCurrentUser()->getId());
+		if (!$file->canDelete($securityContext))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return;
+		}
+
+		if (!$file->delete($this->getCurrentUser()->getId()))
+		{
+			$this->errorCollection->add($file->getErrors());
+		}
+	}
+
+	protected function deleteFolder(Disk\Folder $folder)
+	{
+		$securityContext = $folder->getStorage()->getSecurityContext($this->getCurrentUser()->getId());
+		if (!$folder->canDelete($securityContext))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return;
+		}
+
+		if (!$folder->deleteTree($this->getCurrentUser()->getId()))
+		{
+			$this->errorCollection->add($folder->getErrors());
+		}
+	}
+
+	protected function markDeleted(Disk\BaseObject $object)
+	{
+		$securityContext = $object->getStorage()->getSecurityContext($this->getCurrentUser()->getId());
+		if (!$object->canMarkDeleted($securityContext))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return;
+		}
+
+		if (!$object->markDeleted($this->getCurrentUser()->getId()))
+		{
+			$this->errorCollection->add($object->getErrors());
+		}
+	}
+
+	protected function restore(Disk\BaseObject $object)
+	{
+		$securityContext = $object->getStorage()->getSecurityContext($this->getCurrentUser()->getId());
+		if (!$object->canRestore($securityContext))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return;
+		}
+
+		if (!$object->restore($this->getCurrentUser()->getId()))
+		{
+			$this->errorCollection->add($object->getErrors());
+
+			return;
+		}
+
+		//@see \Bitrix\Disk\FileLink::restore and \Bitrix\Disk\BaseObject::restoreByLinkObject
+		//in this case the object which we want to restore is original. We can't get symlink now.
+		return $this->get(
+			$object->getRealObject()
+		);
+	}
+
+	protected function copyTo(Disk\BaseObject $object, Disk\Folder $toFolder)
+	{
+		$securityContext = $object->getStorage()->getSecurityContext($this->getCurrentUser()->getId());
+		if (!$object->canRead($securityContext) || !$toFolder->canAdd($securityContext))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return null;
+		}
+
+		$copiedObject = $object->copyTo($toFolder, $this->getCurrentUser()->getId(), true);
+		if (!$copiedObject)
+		{
+			$this->errorCollection->add($object->getErrors());
+
+			return null;
+		}
+
+		return $this->get($copiedObject);
+	}
+
+	protected function move(Disk\BaseObject $object, Disk\Folder $toFolder)
+	{
+		$securityContext = $object->getStorage()->getSecurityContext($this->getCurrentUser()->getId());
+		if (!$object->canMove($securityContext, $toFolder))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return;
+		}
+
+		$movedObject = $object->moveTo($toFolder, $this->getCurrentUser()->getId(), true);
+		if (!$movedObject)
+		{
+			$this->errorCollection->add($object->getErrors());
+
+			return;
+		}
+
+		return $this->get($movedObject);
+	}
+
+	protected function generateExternalLink(Disk\BaseObject $object)
+	{
+		if (!$this->canManageExternalLink($object))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return null;
+		}
+
+		$extLink = $this->getExternalLinkObject($object);
+		if (!$extLink)
+		{
+			$extLink = $object->getRealObject()->addExternalLink(array(
+				'CREATED_BY' => $this->getCurrentUser()->getId(),
+				'TYPE' => ExternalLink::TYPE_MANUAL,
+			));
+		}
+
+		if (!$extLink)
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_FILE_C_ERROR_COULD_NOT_CREATE_FIND_EXT_LINK'));
+
+			return null;
+		}
+
+		if ($object->getType() == Internals\ObjectTable::TYPE_FILE && $object->getRealObject()->getTypeFile() == TypeFile::FLIPCHART)
+		{
+			Application::getInstance()->addBackgroundJob(function() {
+				$event = new AnalyticsEvent('turnon_publiclink', 'boards', 'boards');
+				$event->send();
+			});
+		}
+
+		return $this->parseExternalLinkObject($extLink, $object);
+	}
+
+	protected function getExternalLink(Disk\BaseObject $object): ?array
+	{
+		$extLink = $this->getExternalLinkObject($object);
+
+		if (!$extLink)
+		{
+			return null;
+		}
+		return $this->parseExternalLinkObject($extLink, $object);
+	}
+
+	protected function disableExternalLink(Disk\BaseObject $object)
+	{
+		if (!$this->canManageExternalLink($object))
+		{
+			$this->errorCollection[] = new Error(Loc::getMessage('DISK_ERROR_MESSAGE_DENIED'));
+
+			return false;
+		}
+
+		$extLink = $this->getExternalLinkObject($object);
+		if (!$extLink)
+		{
+			return true;
+		}
+
+		if ($extLink->delete())
+		{
+			$file = $object->getRealObject();
+			if ($file instanceof File && $file->getTypeFile() == TypeFile::FLIPCHART)
+			{
+				BoardService::kickGuestsUsers($file);
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * @param Disk\BaseObject $object
+	 * @return bool
+	 */
+	private function canManageExternalLink(Disk\BaseObject $object): bool
+	{
+		$realObject = $object->getRealObject();
+
+		if (!$realObject)
+		{
+			return false;
+		}
+
+		$securityContext = $realObject->getStorage()?->getCurrentUserSecurityContext();
+
+		if (!$securityContext || !$realObject->canRead($securityContext))
+		{
+			return false;
+		}
+
+		if ($realObject->canUpdate($securityContext))
+		{
+			return true;
+		}
+
+		return $realObject->isAllowManagePublicAccessOnRead();
+	}
+
+	/**
+	 * @param Disk\BaseObject $object
+	 *
+	 * @return Disk\ExternalLink|null
+	 */
+	private function getExternalLinkObject(Disk\BaseObject $object): ?Disk\ExternalLink
+	{
+		return $this->externalLinkProvider->getForUse($object->getRealObjectId());
+	}
+
+	private function parseExternalLinkObject(Disk\ExternalLink $extLink, Disk\BaseObject $object): array
+	{
+		$driver = Driver::getInstance();
+		$link = new Uri($driver->getUrlManager()->getPublicExternalLink(
+			object: $object,
+			hash: $extLink->getHash(),
+		));
+
+		$isBoard = false;
+		$canEditDocument = null;
+		$availableEdit = $extLink->availableEdit();
+		if ($availableEdit)
+		{
+			$canEditDocument = $extLink->getAccessRight() === $extLink::ACCESS_RIGHT_EDIT;
+			if ($object instanceof Disk\File)
+			{
+				$fileType = (int)$object->getTypeFile();
+				$isBoard = $fileType === TypeFile::FLIPCHART;
+			}
+		}
+
+		return [
+			'externalLink' => [
+				'id' => $extLink->getId(),
+				'objectId' => $extLink->getObjectId(),
+				'hash' => $extLink->getHash(),
+				'link' => $link,
+				'hasPassword' => $extLink->hasPassword(),
+				'hasDeathTime' => $extLink->hasDeathTime(),
+				'availableEdit' => $availableEdit,
+				'canEditDocument' => $canEditDocument,
+				'deathTime' => $extLink->getDeathTime(),
+				'deathTimeTimestamp' => $extLink->hasDeathTime()? $extLink->getDeathTime()->getTimestamp() : null,
+				'isBoard' => $isBoard,
+			],
+		];
+	}
+
+	protected function getAllowedOperationsRights(Disk\BaseObject $object)
+	{
+		$userId = $this->getCurrentUser()->getId();
+
+		$rightsManager = Disk\Driver::getInstance()->getRightsManager();
+		$securityContext = $object->getStorage()->getSecurityContext($userId);
+		if ($securityContext instanceof Disk\Security\FakeSecurityContext)
+		{
+			$operations = $rightsManager->listOperations();
+		}
+		else
+		{
+			$operations = $rightsManager->getUserOperationsByObject(
+				$object->getRealObjectId(),
+				$userId
+			);
+		}
+
+		return [
+			'operations' => $operations,
+		];
+	}
+
+	protected function checkExternalLinkFeature(Disk\File $file): bool
+	{
+		$isBoardType = (int)$file->getTypeFile() === TypeFile::FLIPCHART;
+		$featureName = $isBoardType ? 'disk_board_external_link' : 'disk_manual_external_link';
+
+		return Bitrix24Manager::isFeatureEnabled($featureName);
+	}
+}

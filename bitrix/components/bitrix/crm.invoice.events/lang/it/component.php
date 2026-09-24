@@ -1,0 +1,27 @@
+<?php
+$MESS["CRM_COLUMN_ASSIGNED_BY_ID"] = "Responsabile";
+$MESS["CRM_COLUMN_CREATED_BY"] = "Creato da";
+$MESS["CRM_COLUMN_CREATED_BY_ID"] = "Creato da";
+$MESS["CRM_COLUMN_DATE_CREATE"] = "Data";
+$MESS["CRM_COLUMN_ENTITY"] = "Elemento CRM";
+$MESS["CRM_COLUMN_ENTITY_TITLE"] = "Titolo";
+$MESS["CRM_COLUMN_ENTITY_TYPE"] = "Tipo";
+$MESS["CRM_COLUMN_EVENT_DESC"] = "Descrizione";
+$MESS["CRM_COLUMN_EVENT_NAME"] = "Tipo evento";
+$MESS["CRM_COLUMN_EVENT_TYPE"] = "Tipo";
+$MESS["CRM_ENTITY_TYPE_COMPANY"] = "Azienda";
+$MESS["CRM_ENTITY_TYPE_CONTACT"] = "Contatto";
+$MESS["CRM_ENTITY_TYPE_DEAL"] = "Affare";
+$MESS["CRM_ENTITY_TYPE_LEAD"] = "Lead";
+$MESS["CRM_EVENT_DESC_AFTER"] = "Dopo";
+$MESS["CRM_EVENT_DESC_BEFORE"] = "Prima";
+$MESS["CRM_EVENT_DESC_MORE"] = "leggi di più";
+$MESS["CRM_EVENT_TYPE_CHANGE"] = "Modifiche";
+$MESS["CRM_EVENT_TYPE_SNS"] = "Messaggio e-mail";
+$MESS["CRM_EVENT_TYPE_USER"] = "Personalizzato";
+$MESS["CRM_MODULE_NOT_INSTALLED_CATALOG"] = "Il modulo Catalogo commerciale non è installato.";
+$MESS["CRM_MODULE_NOT_INSTALLED_SALE"] = "Il modulo e-Store non è installato.";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";
+$MESS["CRM_PRESET_CREATE_MY"] = "Creato da me";
+$MESS["CRM_PRESET_CREATE_TODAY"] = "Creato oggi";
+$MESS["CRM_PRESET_CREATE_YESTERDAY"] = "Creato ieri";

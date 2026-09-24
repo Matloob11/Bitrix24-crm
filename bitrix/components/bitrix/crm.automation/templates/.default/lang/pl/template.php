@@ -1,0 +1,19 @@
+<?php
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS"] = "Obserwuj pola";
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS_1"] = "Śledź pola";
+$MESS["CRM_AUTOMATION_CMP_FIELD_CHANGED_FIELDS_CHOOSE"] = "Wybierz pola";
+$MESS["CRM_AUTOMATION_CMP_FILL_TRACKNUM_DELIVERY"] = "Usługa dostawy";
+$MESS["CRM_AUTOMATION_CMP_FILL_TRACKNUM_DELIVERY_ANY"] = "dowolna";
+$MESS["CRM_AUTOMATION_CMP_OPENLINE_ANSWER_CTRL_CONDITION"] = "Pola czatu";
+$MESS["CRM_AUTOMATION_CMP_OPENLINE_MESSAGE_TEXT_CONDITION"] = "Wiadomość zawiera tekst";
+$MESS["CRM_AUTOMATION_CMP_SHIPMENT_CHANGED_CONDITION"] = "Pola wysyłki";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_ANY"] = "dowolny";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_CONDITION"] = "Pola zadań";
+$MESS["CRM_AUTOMATION_CMP_TASK_STATUS_LABEL"] = "Status";
+$MESS["CRM_AUTOMATION_CMP_TITLE_DEAL_EDIT"] = "Ustaw reguły automatyzacji dla wszystkich dealów w tym lejku";
+$MESS["CRM_AUTOMATION_CMP_TITLE_DEAL_VIEW"] = "Bieżący stan dealu: \"#TITLE#\"";
+$MESS["CRM_AUTOMATION_CMP_TITLE_LEAD_EDIT"] = "Ustaw reguły automatyzacji dla wszystkich leadów";
+$MESS["CRM_AUTOMATION_CMP_TITLE_LEAD_VIEW"] = "Bieżący stan leadu: \"#TITLE#\"";
+$MESS["CRM_AUTOMATION_CMP_TITLE_ORDER_EDIT"] = "Edytuj reguły automatyzacji dla wszystkich zamówień";
+$MESS["CRM_AUTOMATION_CMP_TITLE_ORDER_VIEW"] = "Bieżący status zamówienia";
+$MESS["CRM_AUTOMATION_CMP_WEBHOOK_PASSWORD_ALERT"] = "Wyzwalacz wymaga webhooka przychodzącego. Czy chcesz #A1#teraz jeden utworzyć#A2#?";

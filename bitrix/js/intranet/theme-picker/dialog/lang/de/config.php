@@ -1,0 +1,22 @@
+<?php
+$MESS["BITRIX24_THEME_CREATE_YOUR_OWN_THEME"] = "Eigenes Design erstellen";
+$MESS["BITRIX24_THEME_DEFAULT_THEME"] = "Standard";
+$MESS["BITRIX24_THEME_DEFAULT_THEME_FOR_ALL"] = "Als Standarddesign für alle Nutzer aktivieren";
+$MESS["BITRIX24_THEME_DIALOG_CANCEL_BUTTON"] = "Abbrechen";
+$MESS["BITRIX24_THEME_DIALOG_CREATE_BUTTON"] = "Erstellen";
+$MESS["BITRIX24_THEME_DIALOG_NEW_THEME"] = "Eigenes Design";
+$MESS["BITRIX24_THEME_DIALOG_SAVE_BUTTON"] = "Speichern";
+$MESS["BITRIX24_THEME_DRAG_BG_IMAGE"] = "oder verschieben Sie es hierher";
+$MESS["BITRIX24_THEME_EMPTY_FORM_DATA"] = "Wählen Sie ein Hintergrundbild oder eine -Farbe aus.";
+$MESS["BITRIX24_THEME_FILE_SIZE_EXCEEDED"] = "Max. Dateigröße überschritten (#LIMIT#).";
+$MESS["BITRIX24_THEME_NEW_THEME"] = "Neu";
+$MESS["BITRIX24_THEME_REMOVE_THEME"] = "Thema löschen";
+$MESS["BITRIX24_THEME_THEME_BG_COLOR"] = "Hintergrundfarbe";
+$MESS["BITRIX24_THEME_THEME_BG_IMAGE"] = "Hintergrundbild";
+$MESS["BITRIX24_THEME_THEME_DARK_COLOR"] = "Dunkel";
+$MESS["BITRIX24_THEME_THEME_LIGHT_COLOR"] = "Hell";
+$MESS["BITRIX24_THEME_THEME_TEXT_COLOR"] = "Textfarbe";
+$MESS["BITRIX24_THEME_UNKNOWN_ERROR"] = "Aktion kann nicht abgeschlossen werden. Versuchen Sie bitte erneut.";
+$MESS["BITRIX24_THEME_UPLOAD_BG_IMAGE"] = "Laden Sie ein Hintergrundbild hoch";
+$MESS["BITRIX24_THEME_WRONG_BG_COLOR"] = "Hintergrundfarbe ist nicht korrekt.";
+$MESS["BITRIX24_THEME_WRONG_FILE_TYPE"] = "Diese Datei ist nicht ein Bild.";

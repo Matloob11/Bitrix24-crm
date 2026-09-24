@@ -1,0 +1,22 @@
+<?php
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL"] = "Aby wykonać połączenie, dodaj klienta i jego numer telefonu";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL_COMPANY"] = "Aby wykonać połączenie, dodaj klienta i jego numer telefonu do firmy";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL_CONTACT"] = "Aby wykonać połączenie, dodaj numer telefonu do kontaktu";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL_DEAL"] = "Aby wykonać połączenie, dodaj klienta i jego numer telefonu do deala";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL_INVOICE"] = "Aby wykonać połączenie, dodaj klienta i jego numer telefonu do faktury";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL_LEAD"] = "Aby wykonać połączenie, dodaj klienta i jego numer telefonu do leada";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL_QUOTE"] = "Aby wykonać połączenie, dodaj klienta i jego numer telefonu do oferty";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_CALL_SMART_INVOICE"] = "Aby wykonać połączenie, dodaj klienta i jego numer telefonu do faktury";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND"] = "Aby wysłać wiadomość e-mail, dodaj klienta i jego adres e-mail";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND_COMPANY"] = "Aby wysłać wiadomość e-mail, dodaj klienta i jego adres e-mail do firmy";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND_CONTACT"] = "Aby wysłać wiadomość e-mail, dodaj adres e-mail do kontaktu";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND_DEAL"] = "Aby wysłać wiadomość e-mail, dodaj klienta i jego adres e-mail do deala";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND_INVOICE"] = "Aby wysłać wiadomość e-mail, dodaj klienta i jego adres e-mail do faktury";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND_LEAD"] = "Aby wysłać wiadomość e-mail, dodaj klienta i jego adres e-mail do leada";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND_QUOTE"] = "Aby wysłać wiadomość e-mail, dodaj klienta i jego adres e-mail do oferty";
+$MESS["CRM_TOOLBAR_COMPONENT_ADD_CLIENT_FOR_EMAIL_SEND_SMART_INVOICE"] = "Aby wysłać wiadomość e-mail, dodaj klienta i jego adres e-mail do faktury";
+$MESS["CRM_TOOLBAR_COMPONENT_ROBOTS_GUIDE_TEXT"] = "Uruchom workflow";
+$MESS["CRM_TOOLBAR_COMPONENT_ROBOTS_GUIDE_TEXT_1"] = "Tu można edytować reguły automatyzacji i wyzwalacze";
+$MESS["CRM_TOOLBAR_COMPONENT_SCRIPTS_GUIDE_TEXT"] = "Tu można edytować skrypty inteligentne";
+$MESS["CRM_TOOLBAR_COMPONENT_TELEPHONY_NOT_SUPPORTED"] = "Do wykonywania połączeń wymagany jest moduł Komunikatora. Skontaktuj się z administratorem Bitrix24.";
+$MESS["CRM_TOOLBAR_COMPONENT_TELEPHONY_NOT_SUPPORTED_OK"] = "OK";

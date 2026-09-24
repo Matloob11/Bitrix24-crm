@@ -1,0 +1,8 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_71_2_NAME"] = "Bloc de texte : un titre et 6 tuiles de texte";
+$MESS["LANDING_BLOCK_WIDGET_71_2_NODE_CARD"] = "Tuile";
+$MESS["LANDING_BLOCK_WIDGET_71_2_NODE_CARD_ELEMENT"] = "Élément de tuile";
+$MESS["LANDING_BLOCK_WIDGET_71_2_NODE_CARD_ICON"] = "Icône de tuile";
+$MESS["LANDING_BLOCK_WIDGET_71_2_NODE_CARD_TEXT"] = "Texte de la tuile";
+$MESS["LANDING_BLOCK_WIDGET_71_2_NODE_CARD_TITLE"] = "Titre de la tuile";
+$MESS["LANDING_BLOCK_WIDGET_71_2_NODE_TITLE"] = "Titre";

@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_ON_TASK_DISAPPROVED_TITLE"] = "Incarico restituito per la revisione";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_2"] = "In sospeso";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_3"] = "In corso";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_4"] = "Revisione in sospeso";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_5"] = "Completato";

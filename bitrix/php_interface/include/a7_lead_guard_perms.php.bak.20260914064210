@@ -1,0 +1,194 @@
+<?php
+/**
+ * A7 Lead Guard — shared-lead write permission (Bitrix service override).
+ *
+ * Deployed to: /home/bitrix/www/bitrix/php_interface/include/a7_lead_guard_perms.php
+ * Registered via: /home/bitrix/www/bitrix/.settings_extra.php
+ *     'services' => ['value' => ['crm.service.container' => ['className' => 'A7CrmContainer']]]
+ *
+ * Bitrix resolves \Bitrix\Crm\Service\Container through the ServiceLocator, and the
+ * site-level registration wins over the crm module's own one (registerByModuleSettings
+ * skips identifiers that already exist). We replace only ONE decision:
+ *
+ *     Item::canUpdateItemIdentifier(lead)  ->  true when the user is a *shared* user of
+ *                                              that lead (row in a7_lead_share + still an
+ *                                              observer on the lead).
+ *
+ * Everything else (read, delete, add, other entity types) is untouched. Delete stays
+ * blocked for everybody by the guard. Which fields a shared user may actually change is
+ * enforced in A7LeadGuard::onBeforeLeadUpdate (stage + stage-required fields only).
+ *
+ * "Shared" here means shared AFTER the guard went live (2026-09-14): the share flow in
+ * A7LeadGuard writes a row into a7_lead_share. The 800+ historical observer rows on the
+ * portal keep read-only behaviour.
+ */
+
+use Bitrix\Crm\ItemIdentifier;
+use Bitrix\Crm\Service\Container;
+use Bitrix\Crm\Service\UserPermissions;
+use Bitrix\Crm\Service\UserPermissions\EntityPermissions\Item;
+
+if (class_exists('A7CrmContainer', false)) {
+    return;
+}
+
+final class A7CrmContainer extends Container
+{
+    protected function createUserPermissions(int $userId): UserPermissions
+    {
+        return new A7UserPermissions($userId);
+    }
+}
+
+class A7UserPermissions extends UserPermissions
+{
+    /** @var A7ItemPermissions|null */
+    private $a7Item = null;
+
+    public function item(): Item
+    {
+        if (!$this->a7Item) {
+            // Bitrix builds Item from private dependencies; take them from the stock
+            // Item via reflection so we stay in sync with whatever the kernel wires.
+            $base = parent::item();
+            try {
+                $ref = new \ReflectionClass(Item::class);
+                $deps = [];
+                foreach (['permissionsManager', 'admin', 'entityAdmin', 'entityType', 'catalogEntityItem', 'saleEntityItem'] as $p) {
+                    $prop = $ref->getProperty($p);
+                    $prop->setAccessible(true);
+                    $deps[] = $prop->getValue($base);
+                }
+                $this->a7Item = new A7ItemPermissions($this->getUserId(), ...$deps);
+            } catch (\Throwable $e) {
+                // Kernel changed its internals: fall back to stock behaviour (no shared write).
+                return $base;
+            }
+        }
+        return $this->a7Item;
+    }
+}
+
+class A7ItemPermissions extends Item
+{
+    private int $a7UserId;
+
+    public function __construct(int $userId, ...$args)
+    {
+        $this->a7UserId = $userId;
+        parent::__construct(...$args);
+    }
+
+    public function canUpdateItemIdentifier(ItemIdentifier $itemIdentifier): bool
+    {
+        if (parent::canUpdateItemIdentifier($itemIdentifier)) {
+            return true;
+        }
+        try {
+            return A7LeadShare::mayUpdate($this->a7UserId, $itemIdentifier->getEntityTypeId(), $itemIdentifier->getEntityId());
+        } catch (\Throwable $e) {
+            return false;
+        }
+    }
+}
+
+/**
+ * Registry of leads shared through the guard (table a7_lead_share) + the decision helper.
+ */
+final class A7LeadShare
+{
+    public const TABLE = 'a7_lead_share';
+    public const LEAD = 1;
+
+    /** @var array<string,bool> per-request cache "uid:lead" => allowed */
+    private static array $cache = [];
+
+    public static function ensureTable(): void
+    {
+        $c = \Bitrix\Main\Application::getConnection();
+        if (!$c->isTableExists(self::TABLE)) {
+            $c->queryExecute(
+                'CREATE TABLE ' . self::TABLE . ' (
+                    LEAD_ID INT UNSIGNED NOT NULL,
+                    USER_ID INT UNSIGNED NOT NULL,
+                    SHARED_BY INT UNSIGNED NOT NULL DEFAULT 0,
+                    CREATED DATETIME NOT NULL,
+                    PRIMARY KEY (LEAD_ID, USER_ID),
+                    KEY IX_USER (USER_ID)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
+            );
+        }
+    }
+
+    public static function add(int $leadId, int $userId, int $sharedBy): void
+    {
+        if ($leadId <= 0 || $userId <= 0) {
+            return;
+        }
+        $c = \Bitrix\Main\Application::getConnection();
+        $c->queryExecute(sprintf(
+            'INSERT IGNORE INTO %s (LEAD_ID, USER_ID, SHARED_BY, CREATED) VALUES (%d, %d, %d, NOW())',
+            self::TABLE, $leadId, $userId, $sharedBy
+        ));
+        unset(self::$cache["$userId:$leadId"]);
+    }
+
+    public static function remove(int $leadId, int $userId): void
+    {
+        $c = \Bitrix\Main\Application::getConnection();
+        $c->queryExecute(sprintf('DELETE FROM %s WHERE LEAD_ID=%d AND USER_ID=%d', self::TABLE, $leadId, $userId));
+        unset(self::$cache["$userId:$leadId"]);
+    }
+
+    /** Is this user a guard-shared user of this lead (row present)? */
+    public static function isShared(int $leadId, int $userId): bool
+    {
+        if ($leadId <= 0 || $userId <= 0) {
+            return false;
+        }
+        $c = \Bitrix\Main\Application::getConnection();
+        if (!$c->isTableExists(self::TABLE)) {
+            return false;
+        }
+        $r = $c->query(sprintf('SELECT 1 AS X FROM %s WHERE LEAD_ID=%d AND USER_ID=%d LIMIT 1', self::TABLE, $leadId, $userId))->fetch();
+        return (bool) $r;
+    }
+
+    /** Shared users of a lead (ids). */
+    public static function usersOf(int $leadId): array
+    {
+        $c = \Bitrix\Main\Application::getConnection();
+        if ($leadId <= 0 || !$c->isTableExists(self::TABLE)) {
+            return [];
+        }
+        $out = [];
+        $q = $c->query(sprintf('SELECT USER_ID FROM %s WHERE LEAD_ID=%d', self::TABLE, $leadId));
+        while ($r = $q->fetch()) {
+            $out[] = (int) $r['USER_ID'];
+        }
+        return $out;
+    }
+
+    /**
+     * The one extra permission: a shared user may UPDATE the lead (so that stage changes,
+     * own comments and activities work). Requires: entity is a Lead, a share row exists,
+     * and the user is still an observer on the lead (removing the observer ends the share).
+     */
+    public static function mayUpdate(int $userId, int $entityTypeId, int $entityId): bool
+    {
+        if ($entityTypeId !== self::LEAD || $userId <= 0 || $entityId <= 0) {
+            return false;
+        }
+        $key = "$userId:$entityId";
+        if (isset(self::$cache[$key])) {
+            return self::$cache[$key];
+        }
+        $ok = false;
+        if (self::isShared($entityId, $userId) && class_exists('\Bitrix\Crm\Observer\ObserverManager')) {
+            $observers = array_map('intval', \Bitrix\Crm\Observer\ObserverManager::getEntityObserverIDs(self::LEAD, $entityId));
+            $ok = in_array($userId, $observers, true);
+        }
+        self::$cache[$key] = $ok;
+        return $ok;
+    }
+}

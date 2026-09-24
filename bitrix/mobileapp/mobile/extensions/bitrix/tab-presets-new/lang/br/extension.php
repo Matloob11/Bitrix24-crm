@@ -1,0 +1,23 @@
+<?php
+$MESS["PRESET_INFO_CANCEL"] = "Cancelar";
+$MESS["PRESET_INFO_SELECT"] = "Selecionar";
+$MESS["PRESET_INFO_SELECTED"] = "Selecionado";
+$MESS["PRESET_MANUAL_SETTINGS_BANNER_DESCRIPTION"] = "Selecione e reorganize os itens de menu que serão exibidos no menu inferior. Os itens restantes estarão disponíveis no ícone \"Mais\".";
+$MESS["PRESET_MANUAL_SETTINGS_BANNER_TITLE"] = "Crie seu próprio menu";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_HIDE"] = "Ocultar";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_SAVE"] = "Concluído";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_SHOW"] = "Adicionar";
+$MESS["PRESET_MANUAL_SETTINGS_SECTION_MENU_TITLE"] = "Itens do menu inferior";
+$MESS["PRESET_MANUAL_SETTINGS_SECTION_MORE_TITLE"] = "Itens do menu Mais";
+$MESS["PRESET_MANUAL_SETTINGS_TITLE"] = "Menu personalizado";
+$MESS["TAB_PRESETS_NEW_APPLY_ERROR"] = "Não é possível aplicar as alterações";
+$MESS["TAB_PRESETS_NEW_BANNER_DESCRIPTION"] = "Escolha o layout predefinido para o menu inferior ou selecione \"Menu personalizado\" para criar seu próprio layout.";
+$MESS["TAB_PRESETS_NEW_BANNER_TITLE"] = "Selecionar menu de botões";
+$MESS["TAB_PRESETS_NEW_CONFIRM_ACCEPT"] = "OK";
+$MESS["TAB_PRESETS_NEW_CONFIRM_CLOSE"] = "Cancelar";
+$MESS["TAB_PRESETS_NEW_CONFIRM_DESCRIPTION"] = "Deseja alterar o menu inferior? Você pode selecionar uma outra opção a qualquer momento.";
+$MESS["TAB_PRESETS_NEW_CONFIRM_TITLE"] = "Menu inferior";
+$MESS["TAB_PRESETS_NEW_EDIT"] = "Editar";
+$MESS["TAB_PRESETS_NEW_ERROR"] = "Não é possível abrir a página de configurações. Se o problema persistir, entre em contato o administrador do seu Bitrix24.";
+$MESS["TAB_PRESETS_NEW_SELECT"] = "Selecionar";
+$MESS["TAB_PRESETS_NEW_SELECTED"] = "Selecionado";

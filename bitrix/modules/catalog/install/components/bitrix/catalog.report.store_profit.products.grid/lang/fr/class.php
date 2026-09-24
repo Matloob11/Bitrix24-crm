@@ -1,0 +1,20 @@
+<?php
+$MESS["STORE_SALE_PRODUCTS_FILTER_STORES_TITLE"] = "Entrepôts";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN"] = "Quantité vendue, pièces.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN_HINT"] = "Quantité totale de biens vendus pour la période du rapport telle que déclarée par les articles d'inventaire des ventes.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN"] = "Coût du produit";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN_HINT"] = "Coût moyen par unité de biens pour la période du rapport déclaré par les articles d'inventaire des ventes.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_NO_PRODUCTS"] = "Aucune transaction trouvée pour la période sélectionnée.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PRODUCT_COLUMN_MSGVER_1"] = "Produit";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN"] = "Marge brute";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN_HINT"] = "La marge brute est le bénéfice brut divisé par le chiffre d'affaires et exprimée en pourcentage.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN"] = "Bénéfice brut";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN_HINT"] = "Bénéfice brut pour la période du rapport déclaré par les articles d'inventaire des ventes.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN"] = "Quantité arrivée";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN_HINT"] = "Quantité totale de marchandises reçues dans l'entrepôt à la suite des opérations de réception des stocks, d'ajustement des stocks et de transfert des stocks.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN"] = "Solde initial du stock";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN_HINT"] = "Solde des stocks enregistré au début de la période du rapport.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN"] = "Coût total";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN_HINT"] = "Coût total des marchandises pour la période du rapport déclaré par les articles d'inventaire des ventes.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN"] = "Chiffre d'affaires";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN_HINT"] = "Montant total de l'argent gagné de la vente des marchandises pour la période de déclaration, tel que déclaré par les articles d'inventaire des ventes.";

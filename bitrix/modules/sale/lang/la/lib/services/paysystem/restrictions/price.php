@@ -1,0 +1,6 @@
+<?php
+$MESS["SALE_PS_RESTRICTIONS_BY_PRICE"] = "por precio";
+$MESS["SALE_PS_RESTRICTIONS_BY_PRICE_ON_APPLY_ERROR_MSG"] = "Error al aplicar la restricción del precio.";
+$MESS["SALE_PS_RESTRICTIONS_BY_PRICE_TYPE_LESS"] = "valor, menos";
+$MESS["SALE_PS_RESTRICTIONS_BY_PRICE_TYPE_MORE"] = "valor, más";
+$MESS["SALE_PS_RESTRICTIONS_BY_PRICE_VALUE"] = "valor";

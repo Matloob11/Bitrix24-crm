@@ -1,0 +1,3 @@
+<?php
+$MESS["MAIL_MAILBOX_LIST_CONNECTION_REQUEST_PENDING"] = "En attente";
+$MESS["MAIL_MAILBOX_LIST_ROW_FIELDS_COUNTER_HINT"] = "Nombre d'e-mails non lus.";

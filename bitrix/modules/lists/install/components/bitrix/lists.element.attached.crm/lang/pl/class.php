@@ -1,0 +1,10 @@
+<?php
+$MESS["LEAC_ERROR_REQUIRED_PARAMETER"] = "Brakuje wymaganych parametrów";
+$MESS["LEAC_GRID_ACTION_ELEMENT_EDIT"] = "Edytuj";
+$MESS["LEAC_GRID_ACTION_ELEMENT_SHOW"] = "Wyświetl";
+$MESS["LEAC_GRID_ACTION_ELEMENT_SHOW_TITLE"] = "Otwórz stronę elementu";
+$MESS["LEAC_GRID_ACTION_ELEMENT_START_BP"] = "Uruchom workflow";
+$MESS["LEAC_GRID_ACTION_ELEMENT_UNBIND_DEL"] = "Usuń";
+$MESS["LEAC_GRID_ACTION_ELEMENT_UNBIND_TITLE_DEL"] = "Odłącz element";
+$MESS["LEAC_GRID_PAGE_SIZES_ALL"] = "Wszystko";
+$MESS["LEAC_MODULE_NOT_INSTALLED"] = "Moduł \"MODULE_ID\" nie jest zainstalowany";

@@ -1,0 +1,3 @@
+<?php
+$MESS["BOOKING_INTEGRATION_CALENDAR_ICS_DESCRIPTION_TPL"] = "Criado no Agendamento on-line Bitrix24. Veja os detalhes: #URL#";
+$MESS["BOOKING_INTEGRATION_CALENDAR_ICS_NAME_TPL"] = "Seu agendamento: #RESOURCE_TYPE# #RESOURCE_NAME# (#COMPANY_NAME#)";

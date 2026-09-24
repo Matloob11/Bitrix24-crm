@@ -1,0 +1,7 @@
+<?php
+$MESS["TASKS_FIELDS_CHECKLIST_AIR_ADD_CHECKLIST"] = "Agregar una lista de verificación";
+$MESS["TASKS_FIELDS_CHECKLIST_AIR_COMPACT_TITLE"] = "Lista de verificación";
+$MESS["TASKS_FIELDS_CHECKLIST_AIR_PROGRESS_MSGVER_1"] = "#COMPLETED# de #TOTAL# completadas";
+$MESS["TASKS_FIELDS_CHECKLIST_AIR_SHOW_MORE"] = "Mostrar #COUNT# más";
+$MESS["TASKS_FIELDS_CHECKLIST_AIR_TITLE"] = "Listas de verificación";
+$MESS["TASKS_FIELDS_CHECKLIST_AIR_TITLE_MULTI"] = "Listas de verificación: #COUNT#";

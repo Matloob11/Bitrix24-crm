@@ -1,0 +1,25 @@
+<?php
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_AUTHOR_NOT_FOUND"] = "Nie znaleziono użytkownika wybranego w polu „Dodaj rekord jako”.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_FIELD"] = "Utwórz nowe pole";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_STORAGE"] = "Utwórz nowy magazyn";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_ADD_FIELD"] = "Dodaj pole";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_NOT_EXIST"] = "Przynajmniej jedno pole jest wymagane.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_COLLAPSED_TEXT"] = "Filtr został zastosowany. Aby wyświetlić wyniki, kliknij pozycję Rozwiń.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_PROPERTY"] = "Filtr pól";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_ITEM_NOT_FOUND"] = "Identyfikator rekordu #ITEM_ID# nie został znaleziony w magazynie.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_MERGE_FIELDS"] = "Dopisz nowe dane";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NEW_ITEM"] = "Utwórz nowy rekord";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NOT_EXIST"] = "Wymagany parametr „#PROPERTY#” jest pusty.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_OPEN_STORAGE_LIST"] = "Dane magazynu";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_AUTHOR"] = "Dodaj rekord jako";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_MODE"] = "Tryb zapisu";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_NAME"] = "Nazwa";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_SORT"] = "Kolejność sortowania";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_REWRITE_FIELDS"] = "Zastąp rekord";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_SELECT_STORAGE"] = "Wybierz magazyn";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_NOT_FOUND"] = "Nie znaleziono magazynu.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_TAB_TITLE"] = "Magazyny";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_UNKNOWN_MODE"] = "Nieznany tryb zapisu: „#MODE#”.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_FIELD_VALUE"] = "Wybrano nieprawidłowe dane do zapisania w magazynie.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_ITEM_ID"] = "Identyfikator rekordu magazynu musi być liczbą dodatnią.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_STORAGE_ID"] = "Identyfikator magazynu musi być liczbą dodatnią.";

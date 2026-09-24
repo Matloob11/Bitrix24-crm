@@ -1,0 +1,15 @@
+<?php
+$MESS["TASKS_FLOW_VIEW_FORM_ADMINISTRATOR"] = "Administrador:";
+$MESS["TASKS_FLOW_VIEW_FORM_ALL_N"] = "Todos (#NUM#)";
+$MESS["TASKS_FLOW_VIEW_FORM_CREATE_TASK"] = "Criar tarefa";
+$MESS["TASKS_FLOW_VIEW_FORM_CREATOR"] = "Proprietário:";
+$MESS["TASKS_FLOW_VIEW_FORM_DETAILS"] = "Informações";
+$MESS["TASKS_FLOW_VIEW_FORM_LINK_TITLE"] = "Copiar link";
+$MESS["TASKS_FLOW_VIEW_FORM_NO_SIMILAR_FLOWS"] = "Não há fluxos semelhantes.";
+$MESS["TASKS_FLOW_VIEW_FORM_PROJECT"] = "Projeto:";
+$MESS["TASKS_FLOW_VIEW_FORM_PROJECT_DEMO"] = "fluxo não configurado";
+$MESS["TASKS_FLOW_VIEW_FORM_PROJECT_HIDDEN"] = "Projeto oculto";
+$MESS["TASKS_FLOW_VIEW_FORM_SIMILAR_FLOWS"] = "Fluxos semelhantes";
+$MESS["TASKS_FLOW_VIEW_FORM_SIMILAR_FLOWS_TITLE"] = "Outros fluxos deste usuário";
+$MESS["TASKS_FLOW_VIEW_FORM_TEAM"] = "Equipe do fluxo:";
+$MESS["TASKS_FLOW_VIEW_FORM_TITLE_COPY_LINK"] = "Link copiado";

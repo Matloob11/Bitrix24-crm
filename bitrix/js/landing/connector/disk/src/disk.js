@@ -1,0 +1,78 @@
+
+import { Runtime } from 'main.core';
+
+type OpenDialogOptions = {
+	onSelect: () => {},
+};
+
+export class Disk
+{
+	static openDialog({onSelect}: OpenDialogOptions): Promise<void>
+	{
+		return Runtime.loadExtension('disk.disk-picker')
+			.then((pickerExports) => {
+				const DiskPicker = pickerExports ? pickerExports.DiskPicker : null;
+				if (DiskPicker && DiskPicker.isEnabled())
+				{
+					const picker = new DiskPicker();
+					picker.open({
+						selectionMode: 'single',
+						onSelect: ({ items }) => {
+							const selectedItem = items[0];
+							if (selectedItem && onSelect)
+							{
+								onSelect(String(selectedItem.objectId));
+							}
+						},
+					});
+
+					return;
+				}
+
+				Disk.#openLegacyDialog(onSelect);
+			})
+			.catch(() => {
+				Disk.#openLegacyDialog(onSelect);
+			});
+	}
+
+	static #openLegacyDialog(onSelect: () => {})
+	{
+		const urlSelect = '/bitrix/tools/disk/uf.php?action=selectFile&dialog2=Y&SITE_ID=' + BX.message('SITE_ID');
+		const dialogName = 'LandingDiskFile';
+
+		BX.ajax.get(urlSelect, 'multiselect=N&dialogName=' + dialogName,
+			BX.delegate(function() {
+				setTimeout(BX.delegate(function() {
+					BX.DiskFileDialog.obElementBindPopup[dialogName].overlay = {
+						backgroundColor: '#cdcdcd',
+						opacity: '.1'
+					};
+					BX.DiskFileDialog.obCallback[dialogName] = {
+						saveButton: function(tab, path, selected)
+						{
+							const selectedItem = selected[Object.keys(selected)[0]];
+							if (!selectedItem)
+							{
+								return;
+							}
+
+							let fileId = selectedItem.id;
+							if (fileId[0] === 'n')
+							{
+								fileId = fileId.substring(1);
+							}
+
+							if (onSelect)
+							{
+								onSelect(fileId);
+							}
+
+						}.bind(this)
+					};
+					BX.DiskFileDialog.openDialog(dialogName);
+				}, this), 10);
+			}, this)
+		);
+	}
+}

@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_COMPANY_TEMPLATE"] = "firma";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_CONTACT_TEMPLATE"] = "indywidualnie";
+$MESS["CRM_WEBFORM_ENTITY_FIELD_NAME_TEMPLATE"] = "Wypełniony formularz CRM \"#FORM_NAME#\"";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT"] = "Klient";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_DESC"] = "kontakt lub firma";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC"] = "kontakt lub firma, faktura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_CLIENT_INVOICE_DESC1"] = "kontakt lub firma; zamówienie";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL"] = "Deal";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_DESC"] = "deal, kontakt lub firma";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC"] = "deal, kontakt lub firma, faktura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DEAL_INVOICE_DESC1"] = "deal; kontakt lub firma; zamówienie";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC"] = "Inteligentna automatyzacja procesów";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_DESC"] = "Inteligentna automatyzacja procesów, kontakt lub firma";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_DYNAMIC_INVOICE_DESC"] = "Inteligentna automatyzacja procesów, kontakt lub firma, zamówienie";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE"] = "Faktura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_INVOICE_DESC"] = "faktura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED"] = "Lead";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_DESC"] = "lead";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC"] = "lead, kontakt lub firma, faktura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_LEED_INVOICE_DESC1"] = "lead; kontakt lub firma; zamówienie";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_DESC_MSGVER_1"] = "oferta, kontakt lub firma";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC1_MSGVER_1"] = "oferta; kontakt lub firma; zamówienie";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_INVOICE_DESC_MSGVER_1"] = "oferta, kontakt lub firma, faktura";
+$MESS["CRM_WEBFORM_ENTITY_SCHEME_QUOTE_MSGVER_1"] = "Oferta";

@@ -1,0 +1,6 @@
+<?php
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_BOTTOM"] = "Pozycje menu dolnego";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_LINK"] = "Link";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_NAME_3"] = "Menu pionowe dla szablonu CRM + Sklep internetowy";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_NODES_MENU_ITEM"] = "Pozycja menu";
+$MESS["LANDING_BLOCK_STORE_MENU_SIDEBAR_TOP"] = "Pozycje menu górnego";

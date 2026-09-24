@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Сілтемені көшіру";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Кіруді жабу";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "Күн өтті";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Күнді таңдаңыз";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "Күнді таңдаңыз";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Битрикс24-те авторланбаған қонақтар сілтеме мен құпиясөз болса да есепті көре алмайды";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Есепті сілтемесі мен құпиясөзі бар [nbsp]барлық адамдар көре алады";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "Сілтемені көшіру мүмкін болмады";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "Жалпыға ортақ сілтемені қосу мүмкін болмады";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "Жалпыға ортақ сілтемені өшіру мүмкін болмады";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "Жалпыға ортақ сілтемені өзгерту мүмкін болмады";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "Қарау режимінде компания құрылымы, бизнес-процестер және ағындар бойынша сүзгілер қол жетімсіз болады";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Құпиясөз жасау";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "Сілтеме көшірілді";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "Құпиясөз жасалды";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Құпиясөз";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Құпиясөзді ойлап табыңыз";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "Құпиясөзді енгізіңіз";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "Максимум 32 таңба";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "Кем дегенде 8 таңба";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Қоғамдық сілтеме";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "Таңдалған уақыт өттіп кеткен";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "«#NAME#» есебіне қол жеткізу";

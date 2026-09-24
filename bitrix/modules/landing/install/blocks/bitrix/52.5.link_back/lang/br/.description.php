@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_STORE_V3_LINK_BACK_CONTAINER"] = "Itens";
+$MESS["LANDING_STORE_V3_LINK_BACK_NAME_2"] = "Link da página anterior";
+$MESS["LANDING_STORE_V3_LINK_BACK_TITLE"] = "Link";

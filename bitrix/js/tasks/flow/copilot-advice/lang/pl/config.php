@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_BOT_TITLE"] = "CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_CREATE_MEETING"] = "Utwórz spotkanie";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_CREATE_TASK"] = "Utwórz zadanie";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_EDIT_FLOW"] = "Edytuj przepływ";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_LOADER_TEXT"] = "Ładowanie zaleceń...";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_1"] = "W 68% przypadków przyczyną wydłużenia czasu ukończenia zadania było opóźnione zatwierdzenie przez właściciela przepływu. W 30% przypadków ręczne zatwierdzenie zadania trwało 5 dni lub nawet dłużej.\n\n[b]Zalecenie[/b]\nUsprawnij ręczne zatwierdzanie zadań, przypisz inną osobę odpowiedzialną lub użyj kolejki automatycznej. Szybsze przypisywanie zadań skróci czasy cykli zadań w przepływie.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_2"] = "W 78% przypadków zadania po terminie miały 4 lub więcej komentarzy. Zadania ukończone na czas miały komentarze tylko w 13% wszystkich przypadków.\n\n[b]Zalecenie[/b]\nOkreśl informacje wymagane do szybszego wykonywania zadań, ulepsz szablon(y) zadań. Bieżący szablon zadania prawdopodobnie nie zawiera wszystkich informacji potrzebnych osobie odpowiedzialnej.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_3"] = "Większość osób przypisanych do zadań w Twoim przepływie ma optymalną wydajność, z wyjątkiem jednej, której wynik wynosi zaledwie 67%. Średnio wykonuje ona trzy razy mniej zadań niż koledzy.\n\n[b]Zalecenie[/b]\nPorozmawiaj z nią osobiście, aby znaleźć i wyeliminować przyczyny niskiej wydajności.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_EXAMPLE"] = "Oto przykład moich zaleceń.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_HIGH"] = "Oto dlaczego według mnie zespół jest tak wydajny.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_LOW"] = "Zidentyfikowałem szereg przyczyn niskiej wydajności i mogę udzielić zaleceń.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_EXAMPLE"] = "Zalecenia będą gotowe, gdy przepływ będzie zawierał co najmniej 10 zadań.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_HIGH"] = "Wydajność przepływu jest po prostu idealna, #EFFICIENCY#%.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_LOW"] = "Wydajność spadła do #EFFICIENCY#%.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_TITLE"] = "Cześć! Jestem CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_TITLE_MSGVER_1"] = "Cześć! Jestem #COPILOT_NAME#";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_TITLE"] = "Zalecenia CoPilota";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_TITLE_MSGVER_1"] = "Zalecenia #COPILOT_NAME#a";

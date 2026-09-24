@@ -1,0 +1,11 @@
+<?php
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_AQUA"] = "Pacchetto acquamarina";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_BROWN"] = "Pacchetto marrone";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_DARK_BLUE"] = "Pacchetto blu scuro";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_GREEN"] = "Pacchetto verde";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_LIGHT_BLUE"] = "Pacchetto celeste";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_LIME"] = "Pacchetto lime";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_MINT"] = "Pacchetto menta";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_PINK"] = "Pacchetto rosa";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_PURPLE"] = "Pacchetto viola";
+$MESS["IM_MESSAGE_STICKER_PACK_NAME_RED"] = "Pacchetto rosso";

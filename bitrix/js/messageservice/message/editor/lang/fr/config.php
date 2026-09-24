@@ -1,0 +1,20 @@
+<?php
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE"] = "Fichier";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE_DISK"] = "Chercher un fichier sur Bitrix24";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE_UPLOAD"] = "Téléverser un fichier";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_ADD"] = "Ajouter";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_CANCEL"] = "Annuler";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_NO_CHANNELS"] = "Connecter les fournisseurs de messagerie";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_SEND"] = "Envoyer";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_COUNTER"] = "[color]#COUNT#[/color]/#MAX#";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_FROM"] = "Le message sera envoyé de #FROM#";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_GENERIC_ERROR"] = "Impossible de terminer l'action. Veuillez réessayer.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_RECEIVER"] = "Le destinataire n'est pas spécifié";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_TEMPLATE_BODY"] = "Enregistrez votre modèle avec votre canal de communication pour envoyer des messages.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_TEMPLATE_TITLE"] = "Créer un modèle de message";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PLACEHOLDER"] = "Saisissez le texte du message";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PLACEHOLDER_FILLED_LATER_HINT"] = "Certaines données du message seront complétées après l'envoi du message.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PREVIEW"] = "Prévisualiser le message en tant que client";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_SUGGEST_TEMPLATE"] = "Suggérer un modèle";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_TEMPLATES"] = "Modèles";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_TEMPLATE_MESSAGE"] = "Message basé sur un modèle";

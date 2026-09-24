@@ -1,0 +1,27 @@
+<?php
+$MESS["BLACKLIST_ABOUT_2"] = "La chiamata sarà rifiutata se l'ID chiamante è presente nell'elenco. Troverai informazioni su questa chiamata qui: \"#LINK#\"";
+$MESS["BLACKLIST_ABOUT_LINK"] = "Registro chiamate";
+$MESS["BLACKLIST_CANCEL"] = "Annulla";
+$MESS["BLACKLIST_DELETE_CONFIRM"] = "Rimuovere il numero dall'elenco?";
+$MESS["BLACKLIST_DELETE_ERROR"] = "Errore durante la rimozione del numero di telefono.";
+$MESS["BLACKLIST_ENABLE"] = "Blocca automaticamente numeri di telefono fuori orario d'ufficio";
+$MESS["BLACKLIST_ENABLE_TEXT"] = "Il fuori orario è specificato individualmente per ciascun numero di telefono nella pagina delle impostazioni.";
+$MESS["BLACKLIST_ERROR_TITLE"] = "Errore";
+$MESS["BLACKLIST_NUMBERS"] = "Numeri in elenco esclusi";
+$MESS["BLACKLIST_NUMBER_ADD"] = "Aggiungi numero";
+$MESS["BLACKLIST_NUMBER_DELETE"] = "Elimina";
+$MESS["BLACKLIST_REGISTER_IN_CRM_2"] = "Registra le chiamate nel CRM dai numeri di telefono nella lista nera";
+$MESS["BLACKLIST_SAVE"] = "Salva";
+$MESS["BLACKLIST_SETTINGS_TITLE"] = "Configura elenco esclusi";
+$MESS["BLACKLIST_TEXT1"] = "Se una chiamata ha origine dallo stesso ID chiamante";
+$MESS["BLACKLIST_TEXT2"] = "volte di fila entro";
+$MESS["BLACKLIST_TEXT3"] = "minuti";
+$MESS["BLACKLIST_TITLE"] = "Gestisci elenco esclusi";
+$MESS["VI_BLACKLIST_NUMBER_ALREADY_EXISTS"] = "Il numero è già inserito nell'elenco esclusi";
+$MESS["VOX_BLACKLIST_ADD_TO_LIST"] = "Aggiungi a elenco";
+$MESS["VOX_BLACKLIST_INTERVAL_IN_MINUTES"] = "Periodo";
+$MESS["VOX_BLACKLIST_NUMBERS_HINT"] = "Specifica qui i numeri di telefono. Separa più elementi con una nuova riga.";
+$MESS["VOX_BLACKLIST_NUMBERS_SUBTITLE"] = "Numeri di telefono";
+$MESS["VOX_BLACKLIST_NUMBERS_TITLE"] = "Aggiungi a elenco esclusi";
+$MESS["VOX_BLACKLIST_RINGS_COUNT"] = "Numero di chiamate";
+$MESS["VOX_BLACKLIST_VALUE"] = "Valore";

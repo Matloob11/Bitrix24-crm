@@ -1,0 +1,22 @@
+<?php
+$MESS["PROMPT_LIBRARY_GRID_ACTION_OPEN_EDIT_MASTER_ERROR"] = "Prompt-Editor konnte nicht geöffnet werden. Versuchen Sie es bitte erneut.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_ACTIVATE"] = "Prompt #NAME# ist aktiv.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_DEACTIVATE"] = "Prompt #NAME# ist nicht aktiv.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_FAVOURITE_ADD"] = "Prompt #NAME# zu Lesezeichen hinzugefügt.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_FAVOURITE_REMOVE"] = "Prompt #NAME# aus Lesezeichen entfernt.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_HIDE"] = "Prompt #NAME# ist im CoPIlot-Menü nicht sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_HIDE_MSGVER_1"] = "Prompt #NAME# ist im Menü von #COPILOT_NAME# nicht sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_ACTION_DEFAULT"] = "Aktion erfolgreich ausgeführt.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_ACTIVATE"] = "Prompts sind aktiv.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_DEACTIVATE"] = "Prompts sind nicht aktiv.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_HIDE"] = "Prompts sind im CoPilot-Menü nicht sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_HIDE_MSGVER_1"] = "Prompts sind im Menü von #COPILOT_NAME# nicht sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_SHOW"] = "Prompts sind im CoPilot-Menü sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_MASS_SHOW_MSGVER_1"] = "Prompts sind im Menü von #COPILOT_NAME# sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_PROMPT_MASTER_OPEN_ERROR"] = "Prompt-Editor konnte nicht geöffnet werden. Versuchen Sie es bitte erneut.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_PROMPT_SAVE_SUCCESS"] = "Prompt #NAME# wurde gesendet.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW"] = "Prompt #NAME# ist im CoPilot-Menü sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW_MSGVER_1"] = "Prompt #NAME# ist im Menü von #COPILOT_NAME# sichtbar.";
+$MESS["PROMPT_LIBRARY_GRID_NOTIFICATION_SHOW_PROMPT_USERS_ERROR"] = "Nutzerliste konnte nicht geladen werden. Versuchen Sie es bitte erneut.";
+$MESS["PROMPT_LIBRARY_GRID_TOUR_DESCRIPTION"] = "Speichern Sie Ihre beliebten Prompts in Bitrix24 und geben Sie sie für andere Nutzer frei.";
+$MESS["PROMPT_LIBRARY_GRID_TOUR_TITLE"] = "Fügen Sie Ihren ersten Prompt hinzu";

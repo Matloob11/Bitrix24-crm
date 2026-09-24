@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_BOT_TITLE"] = "CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_CREATE_MEETING"] = "Créer une réunion";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_CREATE_TASK"] = "Créer une tâche";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_EDIT_FLOW"] = "Modifier le flux";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_LOADER_TEXT"] = "Chargement des recommandations...";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_1"] = "Dans 68 % des cas, la cause de l'augmentation du temps d'exécution des tâches était un retard d'approbation par le propriétaire du flux. Dans 30 % des cas, l'approbation de la tâche manuelle prenait 5 jours ou même plus.\n\n[b]Recommandation[/b]\nRationalisez le processus d'approbation manuelle des tâches, affectez une autre personne responsable ou utilisez la file d'attente automatique. Le fait d'attribuer des tâches plus rapidement raccourcit les temps de cycle des tâches dans le flux.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_2"] = "Dans 78 % des cas, les tâches dont la date limite était dépassée avaient 4 commentaires ou plus, et les tâches terminées à temps n'avaient des commentaires que dans 13 % des cas.\n\n[b]Recommandation[/b]\nDéterminez les informations nécessaires pour effectuer les tâches plus rapidement et améliorer le(s) modèle(s) de tâche. Le modèle de tâche actuel ne comprendra probablement pas toutes les informations dont le responsable pourrait avoir besoin.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_MESSAGE_EXAMPLE_3"] = "La plupart des tâches assignées dans votre flux ont une efficacité optimale, sauf une avec un score de seulement 67 %. En moyenne, les personnes concernées ont accompli trois fois moins de tâches que leurs collègues.\n\n[b]Recommandation[/b]\nParlez-leur individuellement pour trouver et éliminer les raisons de la faible efficacité.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_EXAMPLE"] = "Voici un exemple de mes recommandations.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_HIGH"] = "Voici mon point de vue sur les raisons pour lesquelles l'équipe est si efficace.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_LOW"] = "J'ai identifié un certain nombre de raisons qui expliquent votre faible efficacité et je peux vous donner des recommandations.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_EXAMPLE"] = "Je pourrai fournir des recommandations une fois que le flux comprendra au moins 10 tâches.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_HIGH"] = "L'efficacité du flux est tout simplement parfaite, #EFFICIENCY#%.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_SUBTITLE_LOW"] = "L'efficacité a chuté à #EFFICIENCY#%.";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_TITLE"] = "Bonjour ! Je m'appelle CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_SYSTEM_MESSAGE_TITLE_MSGVER_1"] = "Bonjour ! Je m'appelle #COPILOT_NAME#";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_TITLE"] = "Recommandations CoPilot";
+$MESS["TASKS_FLOW_COPILOT_ADVICE_POPUP_TITLE_MSGVER_1"] = "Recommandations #COPILOT_NAME#";

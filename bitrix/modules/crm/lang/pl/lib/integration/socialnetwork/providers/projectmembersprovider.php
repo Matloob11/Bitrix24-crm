@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_INTEGRATION_PROJECT_MEMBER_PROVIDER_ALL"] = "Wszyscy członkowie grupy roboczej";
+$MESS["CRM_INTEGRATION_PROJECT_MEMBER_PROVIDER_MODERATOR"] = "Moderator grupy roboczej";
+$MESS["CRM_INTEGRATION_PROJECT_MEMBER_PROVIDER_OWNER"] = "Właściciel grupy roboczej";

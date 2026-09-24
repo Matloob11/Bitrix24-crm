@@ -1,0 +1,147 @@
+import { ajax } from 'main.core';
+import { BitrixVue } from 'ui.vue';
+import { Settings } from 'sale.payment-pay.lib';
+import { StageType } from 'sale.payment-pay.const';
+import { MixinMethods } from 'sale.payment-pay.mixins.application';
+import { UserConsent as UserConsentManager } from 'salescenter.payment-pay.user-consent';
+import { BackendProvider } from 'salescenter.payment-pay.backend-provider';
+
+BitrixVue.component('salescenter-payment_pay-components-application-pay_system', {
+	props: {
+		options: Object,
+	},
+	mixins: [MixinMethods],
+	data()
+	{
+		const settings = new Settings(this.options);
+
+		return {
+			stageType: StageType,
+			stages: this.prepareParamsStages(),
+			stage: this.setStageType(),
+			loading: false,
+			paymentProcess: this.prepareParamsPaymentProcess(settings),
+			consent: this.prepareUserConsentSettings(settings),
+			isNeedPaymentViewerViewAction: settings.get('isNeedPaymentViewerViewAction'),
+		};
+	},
+	created()
+	{
+		this.initPayment();
+		this.initUserConsent();
+		this.subscribeToGlobalEvents();
+		if (this.isNeedPaymentViewerViewAction)
+		{
+			ajax.runComponentAction(
+				'bitrix:salescenter.payment.pay',
+				'paymentViewerView',
+				{
+					mode: 'class',
+					data: {
+						fields: this.paymentProcess.backendProvider.options,
+					},
+				},
+			);
+		}
+	},
+	methods: {
+		initUserConsent()
+		{
+			this.userConsentManager = new UserConsentManager({
+				eventName: this.consent.eventName,
+				items: this.consent.items,
+			});
+		},
+		initBackendProvider()
+		{
+			this.backendProvider = new BackendProvider({
+				returnUrl: this.paymentProcess.returnUrl,
+				orderId: this.paymentProcess.orderId,
+				paymentId: this.paymentProcess.paymentId,
+				accessCode: this.paymentProcess.accessCode,
+			});
+		},
+		startPayment(paySystemId)
+		{
+			if (this.loading)
+			{
+				return;
+			}
+
+			this.userConsentManager.askUserToPerform(() => {
+				this.loading = true;
+				this.stages.paySystemList.selectedPaySystem = paySystemId;
+				this.backendProvider.paySystemId = paySystemId;
+				this.paymentProcess.start();
+			});
+		},
+		prepareParamsStages()
+		{
+			const settings = new Settings(this.options);
+
+			return {
+				paySystemList: {
+					paySystems: settings.get('app.paySystems', []),
+					selectedPaySystem: null,
+					title: settings.get('app.title'),
+				},
+				paySystemErrors: {
+					errors: [],
+				},
+				paySystemResult: {
+					html: null,
+					fields: null,
+				},
+			};
+		},
+		setStageType()
+		{
+			return StageType.list;
+		},
+		prepareUserConsentSettings(settings)
+		{
+			return {
+				items: settings.get('consent.items'),
+				title: settings.get('consent.title'),
+				eventName: settings.get('consent.eventName'),
+				containerId: settings.get('consent.containerId'),
+				autoSave: settings.get('consent.autoSave'),
+				originatorId: settings.get('consent.originatorId'),
+				originId: settings.get('consent.originId'),
+			};
+		},
+	},
+	// language=Vue
+	template: `
+		<div class="salescenter-payment-pay-app">
+			<salescenter-payment_pay-components-payment_system-pay_system_list
+				v-if="stage === stageType.list"
+				:paySystems="stages.paySystemList.paySystems"
+				:selectedPaySystem="stages.paySystemList.selectedPaySystem"
+				:loading="loading"
+				:title="stages.paySystemList.title"
+				@start-payment="startPayment($event)">
+				<template v-slot:user-consent>
+					<salescenter-payment_pay-components-payment_system-user_consent
+						:items="consent.items"
+						:title="consent.title"
+						:submitEventName="consent.eventName"
+						:autoSave="consent.autoSave"
+						:originatorId="consent.originatorId"
+						:originId="consent.originId"/>
+				</template>
+			</salescenter-payment_pay-components-payment_system-pay_system_list>
+			<salescenter-payment_pay-components-payment_system-error_box
+				v-if="stage === stageType.errors"
+				:errors="stages.paySystemErrors.errors">
+				<salescenter-payment_pay-components-payment_system-reset_panel @reset="resetView()"/>
+			</salescenter-payment_pay-components-payment_system-error_box>
+			<salescenter-payment_pay-components-payment_system-pay_system_result
+				v-if="stage === stageType.result"
+				:html="stages.paySystemResult.html"
+				:fields="stages.paySystemResult.fields">
+				<salescenter-payment_pay-components-payment_system-reset_panel @reset="resetView()"/>
+			</salescenter-payment_pay-components-payment_system-pay_system_result>
+		</div>
+	`,
+});

@@ -1,0 +1,8 @@
+<?
+$MESS["CRM_CONTACT_ACTIVITY_STREAM_STAT_GROUP_BY_STREAM"] = "Flusso di richiesta";
+$MESS["CRM_CONTACT_ACTIVITY_STREAM_STAT_INCOMING_QTY"] = "Numero di chiamate in ingresso";
+$MESS["CRM_CONTACT_ACTIVITY_STREAM_STAT_MISSING_QTY"] = "Numero di chiamate perse";
+$MESS["CRM_CONTACT_ACTIVITY_STREAM_STAT_OUTGOING_QTY"] = "Numero di chiamate in uscita";
+$MESS["CRM_CONTACT_ACTIVITY_STREAM_STAT_REVERSING_QTY"] = "Numero di callback";
+$MESS["CRM_CONTACT_ACTIVITY_STREAM_STAT_TOTAL"] = "Numero di chiamate (per flusso)";
+?>

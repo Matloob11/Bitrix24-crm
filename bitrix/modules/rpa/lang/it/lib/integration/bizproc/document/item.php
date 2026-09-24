@@ -1,0 +1,14 @@
+<?
+$MESS["RPA_BP_DOCUMENT_ITEM_CREATED_BY"] = "Creato da";
+$MESS["RPA_BP_DOCUMENT_ITEM_CREATED_TIME"] = "Creato il";
+$MESS["RPA_BP_DOCUMENT_ITEM_MOVED_BY"] = "Spostato da";
+$MESS["RPA_BP_DOCUMENT_ITEM_MOVED_TIME"] = "Spostato il";
+$MESS["RPA_BP_DOCUMENT_ITEM_NAME"] = "Nome";
+$MESS["RPA_BP_DOCUMENT_ITEM_PREVIOUS_STAGE_ID"] = "Fase precedente";
+$MESS["RPA_BP_DOCUMENT_ITEM_STAGE_ID"] = "Fase";
+$MESS["RPA_BP_DOCUMENT_ITEM_UPDATED_BY"] = "Modificato da";
+$MESS["RPA_BP_DOCUMENT_ITEM_UPDATED_TIME"] = "Ultimo aggiornamento il";
+$MESS["RPA_BP_DOCUMENT_ITEM_USER_GROUP_HEAD"] = "Supervisore creatore flusso di lavoro";
+$MESS["RPA_BP_DOCUMENT_ITEM_XML_ID"] = "ID esterno";
+$MESS["RPA_BP_ITEM_ENTITY_NAME"] = "Flussi di lavoro";
+?>

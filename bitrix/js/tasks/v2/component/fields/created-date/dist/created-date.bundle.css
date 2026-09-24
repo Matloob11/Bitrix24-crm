@@ -1,0 +1,21 @@
+.tasks-field-created-date {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--ui-space-inline-2xs2);
+	padding-left: 2px;
+}
+.tasks-field-created-date.--wrapped {}
+
+.tasks-field-created-date-icon {
+	--ui-icon-set__icon-color: var(--ui-color-accent-main-primary);
+}
+
+.tasks-field-created-date-text {}
+
+.tasks-field-created-date-separator {
+	color: var(--ui-color-base-3);
+}
+.tasks-field-created-date.--wrapped .tasks-field-created-date-separator {
+	opacity: 0;
+}

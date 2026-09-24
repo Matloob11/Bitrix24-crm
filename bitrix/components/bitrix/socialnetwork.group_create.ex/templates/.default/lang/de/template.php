@@ -1,0 +1,13 @@
+<?php
+$MESS["SONET_GCE_T_AJAX_ERROR"] = "Fehler bei Verarbeitung der Formulardaten. Versuchen Sie bitte erneut.";
+$MESS["SONET_GCE_T_DEMO_INFO_BTN_1"] = "OK";
+$MESS["SONET_GCE_T_DEMO_INFO_TEXT_SCRUM_1"] = " ";
+$MESS["SONET_GCE_T_DEMO_INFO_TEXT_TRIAL_1"] = "Bitte laden Sie jetzt Ihre Teammitglieder ein. Wir gewähren Ihnen kostenlos den Zugriff auf Premium-Funktionen des Projektmanagements für 15 Tage, damit Sie alle Möglichkeiten von Bitrix24 entdecken können.";
+$MESS["SONET_GCE_T_DEMO_INFO_TITLE_SCRUM_1"] = "<span>Danke dafür, dass Sie Bitrix24 testen!</span>";
+$MESS["SONET_GCE_T_GROUP_NAME_EXISTS"] = "Arbeitsgruppe mit diesem Namen existiert bereits.";
+$MESS["SONET_GCE_T_GROUP_NAME_EXISTS_PROJECT"] = "Projekt mit diesem Namen existiert bereits.";
+$MESS["SONET_GCE_T_STRING_FIELD_ERROR"] = "Feld ist erforderlich.";
+$MESS["SONET_GCE_T_SUCCESS_CREATE"] = "Die Gruppe wurde erstellt.";
+$MESS["SONET_GCE_T_SUCCESS_EDIT"] = "Gruppenparameter wurden erfolgreich geändert.";
+$MESS["SONET_GCE_T_WIZARD_DESCRIPTION"] = "Arbeiten Sie mit anderen Nutzern zusammen, verwenden Sie die verfügbaren Tools, um ein Maximum an Egebnissen zu erreichen.";
+$MESS["SONET_GCE_T_WIZARD_TITLE"] = "Das Team verwalten";

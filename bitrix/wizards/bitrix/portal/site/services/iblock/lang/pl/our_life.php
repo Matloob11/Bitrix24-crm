@@ -1,0 +1,3 @@
+<?
+$MESS["W_IB_OUR_LIFE_TAB1"] = "cedit1--#--Treść na liście--,--NAME--#--*Tytuł--,--ACTIVE_FROM--#--  Data--,--PREVIEW_TEXT--#--  PTreść wyświetlająca się na liście--;--cedit2--#--Treść wpisu--,--TAGS--#--  Tagi--,--DETAIL_TEXT--#--  Treść wpisu--;--cedit3--#--Zdjęcie--,--PREVIEW_PICTURE--#--  Zdjęcie na liście(generowane automatycznie jeśli nie podane)--,--DETAIL_PICTURE--#--  Zdjęcie w treści wpisu--;--";
+?>

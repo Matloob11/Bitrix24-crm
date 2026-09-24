@@ -1,0 +1,24 @@
+<?php
+$MESS["SN_COLLAB_ACCESS_RIGHTS"] = "Uprawnienia dostępu";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ALLOW_GUESTS_INVITATION_LABEL"] = "Zezwalaj na zapraszanie gości do tego Collabu:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ALLOW_GUESTS_INVITATION_LABEL_HINT_DISABLED"] = "Administrator Bitrix24 wyłączył zaproszenia do tego Collabu.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ALLOW_GUESTS_INVITATION_LABEL_HINT_ENABLED"] = "Członkowie Collabu mogą zapraszać gości.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_BUTTON_CANCEL"] = "Anuluj";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_BUTTON_SAVE"] = "Zapisz";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_CHAT_LABEL"] = "Użytkownicy mogący publikować wiadomości:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_CHAT_LABEL_HINT"] = "Uczestnicy collaba mogący pisać i publikować nowe wiadomości w ramach collaba.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_ERROR_REQUIRED_OWNER"] = "Wymagany właściciel collaba.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_INITIATE_LABEL"] = "Użytkownicy mogący zapraszać nowych uczestników collaba:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_INITIATE_LABEL_HINT"] = "Uczestnicy collaba mogący zapraszać pracowników i gości do collaba.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_MANAGEMENT_LABEL_MSGVER_1"] = "Administracja i uprawnienia";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_MODERATORS_LABEL"] = "Moderatorzy:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_MODERATORS_LABEL_HINT"] = "Moderatorzy to użytkownicy z większymi uprawnieniami nadanymi przez właściciela collaba.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_OWNER_LABEL"] = "Właściciel:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_OWNER_LABEL_HINT"] = "Właściciel ma pełny dostęp do wszystkich informacji w ramach collaba, może edytować wszelkie ustawienia i wyznaczać moderatorów collaba.";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_SHOW_HISTORY_LABEL"] = "Udostępniaj historię czatu nowym uczestnikom:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TASKS_LABEL"] = "Zadania collaba";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TCT_LABEL"] = "Użytkownicy mogący tworzyć nowe zadania:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TDT_LABEL"] = "Użytkownicy mogący usuwać zadania collaba:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TET_LABEL"] = "Użytkownicy mogący edytować zadania collaba:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TST_LABEL"] = "Użytkownicy mogący sortować i przenosić zadania collaba:";
+$MESS["SN_COLLAB_ACCESS_RIGHTS_TVU_LABEL"] = "Użytkownicy mogący wyświetlać zadania collaba:";

@@ -1,0 +1,25 @@
+<?php
+$MESS["SIGN_BLANK_SELECTOR_CLEAR_ALL"] = "Барлығын тазарту";
+$MESS["SIGN_BLANK_SELECTOR_CREATED_MYSELF"] = "Сіз жасаған";
+$MESS["SIGN_BLANK_SELECTOR_CREATE_NEW_PIC"] = "Кескін";
+$MESS["SIGN_BLANK_SELECTOR_DRAG_AREA"] = "Файлды осы жерге көшіруіңізге болады";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_MIXED"] = "[highlight] Өріс блоктары [/highlight] арқылы деректермен толтыруға болатын құжаттар немесе суреттер";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_PLACEHOLDERS"] = "[highlight] Символьдық коды [/highlight] арқылы деректермен толтыруға болатын құжаттар немесе нысандар";
+$MESS["SIGN_BLANK_SELECTOR_FIELD_ADD_BUTTON_LABEL"] = "Құжат үлгісін таңдау";
+$MESS["SIGN_BLANK_SELECTOR_LOAD_MORE"] = "Тағы да көрсету";
+$MESS["SIGN_BLANK_SELECTOR_MIXED"] = "Өріс блоктары арқылы деректермен толтыруға болатын құжаттар немесе суреттер";
+$MESS["SIGN_BLANK_SELECTOR_NEW_BADGE"] = "Жаңа";
+$MESS["SIGN_BLANK_SELECTOR_NEW_DOC"] = "Microsoft Word";
+$MESS["SIGN_BLANK_SELECTOR_NEW_PDF"] = "PDF құжаты";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX"] = "Символдық коды бар құжат";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX_MSGVER_1"] = "Символдық кодтар арқылы деректермен толтыруға болатын құжаттар немесе нысандар";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK"] = "Кодтар тізімі";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK_MSGVER_1"] = "Кодтары бар өрістер тізімі";
+$MESS["SIGN_BLANK_SELECTOR_RECENT_TEMPLATES_TITLE"] = "Құжат қалыптары";
+$MESS["SIGN_BLANK_SELECTOR_SLIDER_SELECT_BLANK_BUTTON_LABEL"] = "Таңдау";
+$MESS["SIGN_BLANK_SELECTOR_UPLOADER_ERROR_INCOMPLETE"] = "Файлды жүктеу кезінде қате пайда болды, қайталап көріңіз";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_HINT"] = "Қол қоюға %imageCountLimit% дейін кескіндерді немесе pdf, doc, docx, rtf, odt пішіміндегі 1 файлды жіберуге болады";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_GROUP_HINT"] = "Әрбір жүктелген кескіннің өлшемі 10 МБ тан аспауы керек";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_HINT"] = "Кескіннің өлшемі 10 МБ тан аспауы керек";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_LIMIT_HINT"] = "Үлгіге тек бір құжатты жүктеуге болады. Бұрыннан қосылған файлды жүктелген құжат блогы арқылы ауыстыруға немесе жоюға болады";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_PLACEHOLDERS_HINT"] = "Символдық коды бар құжатты тек docx форматында жүктеуге болады";

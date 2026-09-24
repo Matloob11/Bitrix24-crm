@@ -1,0 +1,23 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_ADD_WIDGET_PLACEHOLDER"] = "Utilisez @ pour mentionner une personne, un groupe de travail ou un département";
+$MESS["TASKS_FIELDS_RESULT_ADD_WIDGET_TITLE"] = "Résumé de statut";
+$MESS["TASKS_FIELDS_RESULT_AIR_ADD_RESULT"] = "Ajouter un autre résumé de statut";
+$MESS["TASKS_FIELDS_RESULT_AIR_COMPACT_TITLE"] = "Résumés de statut";
+$MESS["TASKS_FIELDS_RESULT_AIR_COMPACT_TITLE_MULTI"] = "Résumés de statut : #COUNT#";
+$MESS["TASKS_FIELDS_RESULT_AIR_SHOW_MORE_PLURAL_0"] = "Afficher #COUNT# résumé de plus";
+$MESS["TASKS_FIELDS_RESULT_AIR_SHOW_MORE_PLURAL_1"] = "Afficher #COUNT# résumés de plus";
+$MESS["TASKS_FIELDS_RESULT_AIR_SHOW_MORE_PLURAL_2"] = "Afficher #COUNT# résumés de plus";
+$MESS["TASKS_FIELDS_RESULT_AIR_TITLE"] = "Résumé de statut";
+$MESS["TASKS_FIELDS_RESULT_DATE_FORMAT"] = "Le #DATE# à #TIME#";
+$MESS["TASKS_FIELDS_RESULT_DATE_FORMAT_TODAY"] = "Aujourd'hui à #TIME#";
+$MESS["TASKS_FIELDS_RESULT_DATE_FORMAT_YESTERDAY"] = "Hier à #TIME#";
+$MESS["TASKS_FIELDS_RESULT_EMPTY_ERROR"] = "Saisissez le résumé du statut de la tâche";
+$MESS["TASKS_FIELDS_RESULT_LIST_WIDGET_TITLE"] = "Résumés de statut";
+$MESS["TASKS_FIELDS_RESULT_MENU_REMOVE"] = "Supprimer le résumé du statut";
+$MESS["TASKS_FIELDS_RESULT_MENU_UPDATE"] = "Modifier le résumé du statut";
+$MESS["TASKS_FIELDS_RESULT_REMOVE_CONFIRM_DESCRIPTION"] = "Voulez-vous retirer le commentaire en tant que résumé de statut de la tâche ? Le commentaire restera dans la tâche.";
+$MESS["TASKS_FIELDS_RESULT_REMOVE_CONFIRM_TITLE"] = "Supprimer le résumé du statut ?";
+$MESS["TASKS_FIELDS_RESULT_REMOVE_CONFIRM_TITLE_V2"] = "Supprimer le résultat";
+$MESS["TASKS_FIELDS_RESULT_REMOVE_CONFIRM_YES"] = "Oui";
+$MESS["TASKS_FIELDS_RESULT_VIEW_ACTION_COMPLETE"] = "Terminer la tâche";
+$MESS["TASKS_FIELDS_RESULT_VIEW_ANOTHER_RESULTS"] = "Autres résumés de statut";

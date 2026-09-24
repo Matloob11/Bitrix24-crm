@@ -1,0 +1,114 @@
+<?php
+
+namespace Bitrix\Sign\Type;
+
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Sign\Helper\StringHelper;
+
+/**
+ * @see \Bitrix\Sign\Callback\Messages\Member\InviteToSign::getProvider()
+ * @todo sync with enum
+ */
+final class ProviderCode
+{
+	public const GOS_KEY = 'GOS_KEY';
+	public const TAXCOM = 'TAXCOM';
+	public const SES_RU = 'SES_RU';
+	public const SES_COM = 'SES_COM';
+	public const SES_RU_EXPRESS = 'SES_RU_EXPRESS';
+	public const EXTERNAL = 'EXTERNAL';
+
+	/**
+	 * @return array<self::*>
+	 */
+	public static function getAll(): array
+	{
+		return [
+			self::GOS_KEY,
+			self::TAXCOM,
+			self::SES_RU,
+			self::SES_COM,
+			self::SES_RU_EXPRESS,
+			self::EXTERNAL,
+		];
+	}
+
+	/**
+	 * @return array<string>
+	 */
+	public static function getAllFormattedCodes(): array
+	{
+		return array_filter(
+			array_map([self::class, 'toRepresentativeString'], self::getAll())
+		);
+	}
+
+	public static function isValid(string $providerCode): bool
+	{
+		return in_array($providerCode, self::getAll(), true);
+	}
+
+	/**
+	 * @param string $providerLikeString
+	 *
+	 * @return self::*|null
+	 */
+	public static function createFromProviderLikeString(string $providerLikeString): ?string
+	{
+		if (self::isValid($providerLikeString))
+		{
+			return $providerLikeString;
+		}
+
+		$convertedProviderCode = StringHelper::convertKebabCaseToScreamingSnakeCase($providerLikeString);
+		if ($providerLikeString === 'goskey')
+		{
+			$convertedProviderCode = self::GOS_KEY;
+		}
+
+		return self::isValid($convertedProviderCode) ? $convertedProviderCode : null;
+	}
+
+	public static function toRepresentativeString(string $providerCode): string
+	{
+		return match ($providerCode)
+		{
+			self::GOS_KEY => 'goskey',
+			self::TAXCOM => 'taxcom',
+			self::SES_RU => 'ses-ru',
+			self::SES_COM => 'ses-com',
+			self::SES_RU_EXPRESS => 'ses-ru-express',
+			self::EXTERNAL => 'external',
+			default => '',
+		};
+	}
+
+	public static function isNotRepresentativeString(string $value): bool
+	{
+		return in_array($value, self::getAll(), true);
+	}
+
+	public static function toAnalyticString(string $providerCode): string
+	{
+		return match ($providerCode)
+		{
+			self::SES_RU, self::SES_COM, self::SES_RU_EXPRESS => 'integration_bitrix24KEDO',
+			self::GOS_KEY => 'integration_Goskluch',
+			self::EXTERNAL => 'integration_external',
+			default => 'integration_N',
+		};
+	}
+
+	public static function getProviderName(string $providerCode, ?string $language = null): string
+	{
+		return match ($providerCode) {
+			'goskey' => Loc::getMessage(code: 'SIGN_B2E_PROVIDER_GOSKEY_NAME', language: $language) ?? '',
+			'taxcom' => Loc::getMessage(code: 'SIGN_B2E_PROVIDER_TAXCOM_NAME', language: $language) ?? '',
+			'ses-ru' => Loc::getMessage(code: 'SIGN_B2E_PROVIDER_SES_NAME', language: $language) ?? '',
+			'ses-com' => Loc::getMessage(code: 'SIGN_B2E_PROVIDER_SES_COM_NAME', language: $language) ?? '',
+			'ses-ru-express' => Loc::getMessage(code: 'SIGN_B2E_PROVIDER_SES_RU_EXPRESS_NAME', language: $language) ?? '',
+			'external' => Loc::getMessage(code: 'SIGN_B2E_PROVIDER_EXTERNAL_NAME', language: $language) ?? '',
+			default => '',
+		};
+	}
+}

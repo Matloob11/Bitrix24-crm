@@ -1,0 +1,27 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_COPY"] = "Permisos insuficientes para copiar el panel de control. Póngase en contacto con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_DELETE"] = "Permisos insuficientes para eliminar el panel de control. Póngase en contacto con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EDIT"] = "Permisos insuficientes para editar el panel de control. Comuníquese con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EXPORT"] = "Permisos insuficientes para exportar el panel de control. Póngase en contacto con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_SHARE"] = "Permisos insuficientes para compartir el panel de control. Póngase en contacto con su supervisor o con el administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_TAG_MODIFY"] = "Permisos insuficientes para editar las etiquetas del panel de control. Comuníquese con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_VIEW"] = "Permisos insuficientes para ver el panel de control. Póngase en contacto con su supervisor o administrador de Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPIED_DASHBOARD_TITLE"] = "#DASHBOARD_TITLE# (copia)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPY_ERROR"] = "Error al copiar el panel de control. Intente de nuevo.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR"] = "No se puede eliminar el panel de control. Intente de nuevo.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_COPIED"] = "Elimine todas las copias de este panel de control antes de eliminarlo.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_HAS_RELATED_ENTITIES"] = "No se puede eliminar el panel de control que se instaló desde el Market porque los gráficos y conjuntos de datos del panel de control están siendo utilizados por otros paneles de control en su Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_SYSTEM"] = "No se puede eliminar el panel de control integrado.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DISCUSSION_CHAT_OPEN_ERROR"] = "No se pudo abrir el chat del panel de control. Intente de nuevo.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EMPTY_DASHBOARD_NAME"] = "Nuevo panel de control";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ERROR_NOT_FOUND"] = "No se encontró el panel de control.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD"] = "#DATE_FROM# - #DATE_TO#";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_DEFAULT"] = "Predeterminado";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_INCLUDE_LAST_FILTER_DATE"] = "#DATE_FROM# - #DATE_TO# (incluida la fecha de finalización)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_ERROR"] = "No se puede exportar el panel de control. Intente de nuevo.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_EMPTY"] = "Se requiere el nombre del panel de control";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_FOUND"] = "Este panel de control ya no existe. Actualice la página";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_READY"] = "El panel de control aún se está instalando. Espere a que se complete la instalación e intente de nuevo";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_ONLY_CUSTOM_MSGVER_1"] = "No se puede cambiar el nombre de los paneles de control integrados o del Market. Cree una copia de este panel de control y cámbiele el nombre";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_UNHANDLED"] = "No se puede cambiar el nombre del panel de control, intente de nuevo.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_UNAVAILABLE"] = "No se puede cambiar el nombre del panel de control, intente de nuevo más tarde";

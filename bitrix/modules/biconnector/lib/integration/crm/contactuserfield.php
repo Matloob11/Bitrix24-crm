@@ -1,0 +1,155 @@
+<?php
+namespace Bitrix\BIConnector\Integration\Crm;
+
+
+class ContactUserField
+{
+	/**
+	 * Event handler for onBIConnectorDataSources event.
+	 * Adds a key crm_contact_uf to the second event parameter.
+	 * Fills it with data to retrieve information from b_uts_crm_contact table.
+	 *
+	 * @param \Bitrix\Main\Event $event Event data.
+	 *
+	 * @return void
+	 */
+	public static function onBIConnectorDataSources(\Bitrix\Main\Event $event)
+	{
+		global $USER_FIELD_MANAGER;
+
+		if (!\Bitrix\Main\Loader::includeModule('crm'))
+		{
+			return;
+		}
+
+		$params = $event->getParameters();
+		//$manager = $params[0];
+		$result = &$params[1];
+		$languageId = $params[2];
+
+		$eventTableName = $params[3];
+		if (!empty($eventTableName) && $eventTableName !== 'crm_contact_uf')
+		{
+			return;
+		}
+
+		$userFields = $USER_FIELD_MANAGER->getUserFields(\CCrmContact::$sUFEntityID, 0, $languageId);
+		if (!$userFields)
+		{
+			return;
+		}
+
+		$result['crm_contact_uf'] = [
+			'TABLE_NAME' => 'b_uts_crm_contact',
+			'TABLE_ALIAS' => 'CUF',
+			'FIELDS' => [
+				'CONTACT_ID' => [
+					'IS_PRIMARY' => 'Y',
+					'IS_METRIC' => 'N',
+					'FIELD_NAME' => 'CUF.VALUE_ID',
+					'FIELD_TYPE' => 'int',
+				],
+				//b_crm_contact.DATE_CREATE DATETIME NULL,
+				'DATE_CREATE' => [
+					'IS_METRIC' => 'N', // 'Y'
+					'FIELD_NAME' => 'C.DATE_CREATE',
+					'FIELD_TYPE' => 'datetime',
+					'TABLE_ALIAS' => 'C',
+					'JOIN' => 'INNER JOIN b_crm_contact C ON C.ID = CUF.VALUE_ID',
+					'LEFT_JOIN' => 'LEFT JOIN b_crm_contact C ON C.ID = CUF.VALUE_ID',
+				],
+			],
+		];
+		foreach ($userFields as $userField)
+		{
+			$result['crm_contact_uf']['FIELDS'][$userField['FIELD_NAME']] = [
+				'FIELD_DESCRIPTION' => $userField['EDIT_FORM_LABEL'],
+				'IS_METRIC' => 'N',
+				'FIELD_NAME' => 'CUF.' . $userField['FIELD_NAME'],
+				'FIELD_TYPE' => (
+					$userField['MULTIPLE'] === 'N'
+					&& \Bitrix\BIConnector\Superset\Config\DatasetSettings::isTypingEnabled()
+				) ? $userField['USER_TYPE_ID'] : 'string',
+				'CALLBACK' => function($value, $dateFormats) use($userField)
+				{
+					global $USER_FIELD_MANAGER;
+
+					if (in_array($userField['USER_TYPE_ID'], ['date', 'datetime'], true))
+					{
+						if ($value === null || $value === '')
+						{
+							return null;
+						}
+
+						$format =
+							$userField['USER_TYPE_ID'] === 'date'
+								? $dateFormats['date_format_php']
+								: $dateFormats['datetime_format_php']
+						;
+
+						return \Bitrix\BIConnector\PrettyPrinter::formatUserFieldAsDate($userField, $value, $format);
+					}
+
+					if (
+						$userField['USER_TYPE_ID'] === \Bitrix\Main\UserField\Types\BooleanType::USER_TYPE_ID
+						&& \Bitrix\BIConnector\Superset\Config\DatasetSettings::isTypingEnabled()
+					)
+					{
+						return (bool)$value;
+					}
+
+					$cacheKey = serialize($value);
+					$cachedResult = \Bitrix\BIConnector\MemoryCache::get($userField['ID'], $cacheKey);
+					if (isset($cachedResult))
+					{
+						return $cachedResult;
+					}
+					else
+					{
+						if ($userField['MULTIPLE'] == 'Y')
+						{
+							$result = $USER_FIELD_MANAGER->onAfterFetch(
+								$userField,
+								unserialize($value, ['allowed_classes' => \Bitrix\BIConnector\PrettyPrinter::$allowedUnserializeClassesList])
+							);
+						}
+						else
+						{
+							$result = [$USER_FIELD_MANAGER->onAfterFetch($userField, $value)];
+						}
+
+						$localUF = $userField;
+						$localUF['VALUE'] = $result;
+
+						$returnResult = \Bitrix\BIConnector\UserField\ProxyUserFieldManager::getText($localUF);
+						\Bitrix\BIConnector\MemoryCache::set($userField['ID'], $cacheKey, $returnResult);
+
+						return $returnResult;
+					}
+				}
+			];
+		}
+
+		$messages = \Bitrix\Main\Localization\Loc::loadLanguageFile(__FILE__, $languageId);
+		$result['crm_contact_uf']['TABLE_DESCRIPTION'] = $messages['CRM_BIC_CONTACT_UF_TABLE'] ?: 'crm_contact_uf';
+		$result['crm_contact_uf']['TABLE_DESCRIPTION_FULL'] = $messages['CRM_BIC_CONTACT_UF_TABLE_DESCRIPTION_FULL'] ?? '';
+		foreach ($result['crm_contact_uf']['FIELDS'] as $fieldCode => &$fieldInfo)
+		{
+			if (isset($messages['CRM_BIC_CONTACT_UF_FIELD_' . $fieldCode]))
+			{
+				$fieldInfo['FIELD_DESCRIPTION'] = $messages['CRM_BIC_CONTACT_UF_FIELD_' . $fieldCode];
+			}
+
+			if (!$fieldInfo['FIELD_DESCRIPTION'])
+			{
+				$fieldInfo['FIELD_DESCRIPTION'] = $fieldCode;
+			}
+
+			if (isset($messages['CRM_BIC_CONTACT_UF_FIELD_' . $fieldCode . '_FULL']))
+			{
+				$fieldInfo['FIELD_DESCRIPTION_FULL'] = !empty($messages['CRM_BIC_CONTACT_UF_FIELD_' . $fieldCode . '_FULL']) ? $messages['CRM_BIC_CONTACT_UF_FIELD_' . $fieldCode . '_FULL'] : '';
+			}
+		}
+		unset($fieldInfo);
+	}
+}

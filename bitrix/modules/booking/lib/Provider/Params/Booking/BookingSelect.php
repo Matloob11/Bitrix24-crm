@@ -1,0 +1,70 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Booking\Provider\Params\Booking;
+
+use Bitrix\Booking\Provider\Params\SelectInterface;
+
+class BookingSelect implements SelectInterface
+{
+	protected array $select;
+
+	public function __construct(array $select = [])
+	{
+		$this->select = $select;
+	}
+
+	public function prepareSelect(): array
+	{
+		$result = [];
+
+		if (in_array('RESOURCES', $this->select, true))
+		{
+			$result[] = 'RESOURCES';
+			$result[] = 'RESOURCES.IS_PRIMARY';
+			$result[] = 'RESOURCES.RESOURCE';
+			$result[] = 'RESOURCES.RESOURCE.DATA';
+			$result[] = 'RESOURCES.RESOURCE.TYPE';
+			$result[] = 'RESOURCES.RESOURCE.TYPE.NOTIFICATION_SETTINGS';
+			$result[] = 'RESOURCES.RESOURCE.SETTINGS';
+			$result[] = 'RESOURCES.RESOURCE.NOTIFICATION_SETTINGS';
+			$result[] = 'RESOURCES.RESOURCE.ENTITIES';
+			$result[] = 'RESOURCES.RESOURCE.SKUS';
+		}
+
+		if (in_array('CLIENTS', $this->select, true))
+		{
+			$result[] = 'CLIENTS';
+			$result[] = 'CLIENTS.IS_RETURNING';
+			$result[] = 'CLIENTS.CLIENT_TYPE';
+		}
+
+		if (in_array('SKUS', $this->select, true))
+		{
+			$result[] = 'SKUS';
+		}
+
+		if (in_array('EXTERNAL_DATA', $this->select, true))
+		{
+			$result[] = 'EXTERNAL_DATA';
+		}
+
+		if (in_array('NOTE', $this->select, true))
+		{
+			$result[] = 'NOTE';
+		}
+
+		if (in_array('CLIENT_NOTE', $this->select, true))
+		{
+			$result[] = 'CLIENT_NOTE';
+		}
+
+		if (in_array('PAYMENT', $this->select, true))
+		{
+			$result[] = 'PAYMENT';
+		}
+
+		return $result;
+	}
+}

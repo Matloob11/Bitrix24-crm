@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "Dashboard non trovata.";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Nuova dashboard";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Nuova dashboard (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Seleziona un gruppo per cui creare una dashboard.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "La dashboard deve essere aggiunta ad almeno un gruppo.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "Il nome della dashboard è obbligatorio.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "Impossibile creare la dashboard. Riprova.";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Aiuto";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "La dashboard include immagini non valide. Aggiorna la pagina e riprova.";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "L'intervallo di date non è corretto.";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "È possibile modificare solo le dashboard personalizzate.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Autorizzazioni insufficienti per creare la dashboard.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "Autorizzazioni insufficienti per utilizzare Generatore BI.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "Generatore BI non è disponibile.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Autorizzazioni insufficienti per modificare la dashboard.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "Impossibile salvare la descrizione della dashboard. Riprova.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "Impossibile salvare la galleria della dashboard. Riprova.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "Impossibile creare i parametri della dashboard. Apri le proprietà della dashboard e riprova.";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Nuova dashboard";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "Il nome della dashboard non deve superare i 128 caratteri.";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "Impossibile aggiornare la dashboard. Riprova.";

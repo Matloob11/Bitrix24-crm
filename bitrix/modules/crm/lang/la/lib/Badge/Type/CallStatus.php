@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_BADGE_CALL_STATUS_FIELD_NAME"] = "Estado de la llamada";
+$MESS["CRM_BADGE_CALL_STATUS_MISSED_CALL_VALUE"] = "Perdido";

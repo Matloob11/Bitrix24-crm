@@ -1,0 +1,17 @@
+<?php
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_CURRENCY"] = "Valuta oggetto inventario di vendita";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DATE_CREATE"] = "Data di creazione";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DATE_DEDUCTED"] = "Data di spedizione";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DATE_UPDATE"] = "Data di modifica";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DEDUCTED"] = "Spunta di spedizione";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DEDUCTED_FULL"] = "Prodotto spedito, Y/N (Sì/No)";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_DELIVERY_NAME"] = "Nome servizio di consegna";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_ID"] = "ID univoco";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_PRICE_DELIVERY"] = "Prezzo di consegna";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_RESPONSIBLE"] = "ID e nome responsabile";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_RESPONSIBLE_ID"] = "ID responsabile";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_RESPONSIBLE_NAME"] = "Nome responsabile";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_WAS_CANCELLED"] = "Oggetto inventario di vendita annullato";
+$MESS["SALE_DOCUMENT_SALEORDER_FIELD_WAS_CANCELLED_FULL"] = "Oggetto inventario di vendita annullato, Y/N (Sì/No)";
+$MESS["SALE_DOCUMENT_SALEORDER_TABLE"] = "Oggetti inventario di vendita";
+$MESS["SALE_DOCUMENT_SALEORDER_TABLE_DESCRIPTION_FULL"] = "Contiene informazioni sugli oggetti inventario di vendita.";

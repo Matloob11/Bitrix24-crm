@@ -1,0 +1,42 @@
+<?php
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_DEFAULT_1"] = "Bot d'élaboration de tests";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_DEFAULT_2"] = "Bot intervieweur";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_DESCRIPTION_1"] = "Cet agent vous aidera à tester les connaissances de votre équipe et à gagner du temps lors de l'examen des résultats. Tout ce que vous avez à faire est d'indiquer à l'agent le type de test souhaité. L'agent élaborera les questions du test et enverra le test aux employés. L'employé passera le test en communiquant avec l'agent dans le chat. L'agent posera les questions, vérifiera les réponses et enverra un rapport au supérieur de l'employé.";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_MESSAGE_1"] = "Bonjour ! Je suis prêt à vous aider à évaluer les connaissances des employés. Veuillez me préciser le sujet ou le domaine de compétence à évaluer. Je créerai les questions pour le test.";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_MESSAGE_2"] = "Vous avez un nouveau test à passer de la part de {=A4769_8071_8996_8194:SenderId > bbcode} sur {=A6421_3735_9929_4202:topic}. Veuillez me faire savoir quand vous pourrez commencer le test.";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_MESSAGE_3"] = "L'employé a terminé le test. {=A9654_3504_4807_2932:SenderId > friendly}
+Résultat :
+{=A5313_1512_1381_4864:results_of_test}";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_MESSAGE_4"] = "Erreur lors du traitement de la demande. Veuillez réessayer plus tard.";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_MESSAGE_5"] = "Aucun test actif n'est actuellement disponible.";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_1"] = "Agent d'évaluation des connaissances des employés";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_2"] = "Nom du chatbot qui créera les tests";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_3"] = "Afficher cet agent aux utilisateurs";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_4"] = "Nom du chatbot qui testera les employés";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_5"] = "Code symbolique de l'enregistrement";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_6"] = "Nom du test";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_7"] = "Résultat du traitement IA";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_8"] = "Erreur de traitement IA";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_9"] = "Aucune erreur MCP détectée";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_10"] = "Questions du test";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_NAME_11"] = "Auteur du test";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_STORAGETITLE_1"] = "Stockage des tests";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TEXT_1"] = "Il y aura deux chatbots. Le premier agira en tant qu'auteur de test ; vous discuterez et préparerez les tests avec lui. Donnez-lui un nom significatif (exemple : \"Auteur de test du service commercial\").";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TEXT_2"] = "Paramètres du bot intervieweur";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TEXT_3"] = "Ce bot interrogera et évaluera les employés.";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_1"] = "Processus d'entreprise basé sur les nœuds";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_2"] = "Le chatbot a reçu un message";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_3"] = "Envoyer un message de chatbot";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_4"] = "Commencer l'agent IA";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_5"] = "Enregistrer le bot de création de test";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_6"] = "Enregistrer les paramètres du chatbot";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_7"] = "Enregistrer le bot d'entretien";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_9"] = "Écrire les données";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_10"] = "Lire les données. Test réel.";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_11"] = "Lire les données";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_12"] = "Supprimer les données";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_13"] = "Modifier les paramètres du modèle de processus d'entreprise";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_14"] = "Condition";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_15"] = "Agent IA";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_16"] = "Itérateur";
+$MESS["BIZPROC_NODES_BITRIX_AI_COACH_TITLE_17"] = "Créer un espace de stockage";

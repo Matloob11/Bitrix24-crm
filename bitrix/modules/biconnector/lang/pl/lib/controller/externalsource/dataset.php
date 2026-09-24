@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_EXTERNAL_SOURCE_DATASET_ACCESS_ERROR"] = "Niewystarczające uprawnienia do korzystania z zestawu danych. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_EXTERNAL_SOURCE_DATASET_ACCESS_ERROR_MSGVER_1"] = "Niewystarczające uprawnienia do korzystania z tabeli. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ADD_ERROR"] = "Błąd podczas tworzenia zestawu danych";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ADD_ERROR_MSGVER_1"] = "Błąd podczas tworzenia tabeli";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ALREADY_EXIST_ERROR"] = "Zestaw danych o takiej nazwie już istnieje.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_ALREADY_EXIST_ERROR_MSGVER_1"] = "Tabela o takiej nazwie już istnieje.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_DELETE_ERROR"] = "Błąd podczas usuwania zestawu danych";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_DELETE_ERROR_MSGVER_1"] = "Błąd podczas usuwania tabeli.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_MAX_ROWS"] = "Nie można zaimportować pliku zawierającego więcej niż 300 000 wierszy.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_NOT_FOUND_ERROR"] = "Nie znaleziono zestawu danych.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_NOT_FOUND_ERROR_MSGVER_1"] = "Nie znaleziono tabeli.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UNKNOWN_DATASET_TYPE"] = "Nieznany typ zestawu danych";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UNKNOWN_DATASET_TYPE_MSGVER_1"] = "Nieznany typ tabeli";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UPDATE_ERROR"] = "Błąd podczas aktualizowania zestawu danych";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DATASET_UPDATE_ERROR_MSGVER_1"] = "Błąd podczas aktualizowania tabeli.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DIFFERENT_COUNT_FIELDS_ERROR"] = "Liczba kolumn w pliku nie zgadza się z liczbą kolumn w zestawie danych. Spróbuj zmienić ustawienia lub wybierz inny plik.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_DIFFERENT_COUNT_FIELDS_ERROR_MSGVER_1"] = "Liczba kolumn w pliku nie zgadza się z liczbą kolumn w tabeli. Spróbuj zmienić ustawienia lub wybierz inny plik.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_DATA_ERROR"] = "Nie można odczytać pliku";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_DATA_ERROR_1C"] = "Tabela jest pusta.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_FIELDS"] = "Nieskonfigurowane pola";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_EMPTY_SETTINGS"] = "Nie podano formatu danych";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_IMPORT_ERROR"] = "Spróbuj zmienić dane w pliku lub wybierz inny plik.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_SYNC_FIELDS_ERROR"] = "Nie można zsynchronizować kolumn źródłowych.";

@@ -1,0 +1,5 @@
+<?php
+$MESS["TASKS_GRID_TASK_ROW_CONTENT_MARK_MSGVER_1"] = "Avaliação: ";
+$MESS["TASKS_GRID_TASK_ROW_CONTENT_MARK_NONE_MSGVER_1"] = "Avaliação: não avaliado";
+$MESS["TASKS_GRID_TASK_ROW_CONTENT_MARK_N_MSGVER_1"] = "Avaliação: negativa";
+$MESS["TASKS_GRID_TASK_ROW_CONTENT_MARK_P_MSGVER_1"] = "Avaliação: positiva";

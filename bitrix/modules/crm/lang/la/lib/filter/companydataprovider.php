@@ -1,0 +1,10 @@
+<?php
+$MESS["CRM_COMPANY_FILTER_ACTIVITY_COUNTER"] = "Actividades";
+$MESS["CRM_COMPANY_FILTER_ACTIVITY_RESPONSIBLE_IDS"] = "Persona responsable de la actividad";
+$MESS["CRM_COMPANY_FILTER_ALL"] = "(todo)";
+$MESS["CRM_COMPANY_FILTER_COMMUNICATION_TYPE"] = "Comunicacion";
+$MESS["CRM_COMPANY_FILTER_EMAIL"] = "Correo electrónico";
+$MESS["CRM_COMPANY_FILTER_IM"] = "Mensajero";
+$MESS["CRM_COMPANY_FILTER_LAST_ACTIVITY_TIME"] = "Última actualización";
+$MESS["CRM_COMPANY_FILTER_PHONE"] = "Teléfono";
+$MESS["CRM_COMPANY_FILTER_WEB"] = "Sitio web";

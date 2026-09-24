@@ -1,0 +1,25 @@
+<?php
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_AUTHOR_NOT_FOUND"] = "Usuário selecionado no campo \"Adicionar registro como\" não foi encontrado.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_FIELD"] = "Criar novo campo";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_STORAGE"] = "Criar novo armazenamento";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_ADD_FIELD"] = "Adicionar campo";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_NOT_EXIST"] = "Pelo menos um campo é obrigatório.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_COLLAPSED_TEXT"] = "Filtro aplicado, clique em Expandir para visualizar.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_PROPERTY"] = "Filtro de campo";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_ITEM_NOT_FOUND"] = "O ID do registro #ITEM_ID# não foi encontrado no armazenamento.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_MERGE_FIELDS"] = "Anexar novos dados";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NEW_ITEM"] = "Criar novo registro";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NOT_EXIST"] = "O parâmetro obrigatório \"#PROPERTY#\" está vazio.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_OPEN_STORAGE_LIST"] = "Dados do armazenamento";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_AUTHOR"] = "Adicionar registro como";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_MODE"] = "Modo de escrita";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_NAME"] = "Nome";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_SORT"] = "Ordem de classificação";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_REWRITE_FIELDS"] = "Substituir registro";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_SELECT_STORAGE"] = "Selecionar armazenamento";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_NOT_FOUND"] = "Não foi possível encontrar o armazenamento.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_TAB_TITLE"] = "Armazenamentos";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_UNKNOWN_MODE"] = "Modo de escrita desconhecido: \"#MODE#\".";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_FIELD_VALUE"] = "Dados incorretos selecionados para gravação no armazenamento.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_ITEM_ID"] = "O ID do registro de armazenamento deve ser um número positivo.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_STORAGE_ID"] = "O ID do armazenamento deve ser um número positivo.";

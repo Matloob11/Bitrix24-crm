@@ -1,0 +1,21 @@
+<?php
+$MESS["VI_DOCS_BODY"] = "In alcuni Paesi, si richiede per legge che un provider di telefonia verifichi il tuo stato residenziale per poter concedere i numeri di telefono noleggiati.<br>A tal fine, potresti dover inviare i documenti corrispondenti per noleggiare un numero di telefono per l'intera durata del contratto di leasing.";
+$MESS["VI_DOCS_BODY_2"] = "In alcuni Paesi, è previsto per legge che una compagnia telefonica richieda la documentazione legale prima di consentire l'uso dei numeri noleggiati.<br>Questo è un requisito se si desidera conservare e utilizzare i numeri durante il periodo di leasing. Non potrai utilizzare i numeri fino a quando non caricherai la documentazione richiesta e la stessa non sarà approvata.";
+$MESS["VI_DOCS_COUNTRY_RU"] = "Russia";
+$MESS["VI_DOCS_SERVICE_ERROR"] = "Errore durante l'invio della richiesta al servizio di caricamento del documento";
+$MESS["VI_DOCS_SERVICE_UPLOAD"] = "Carica";
+$MESS["VI_DOCS_STATUS"] = "Stato:";
+$MESS["VI_DOCS_TABLE_COMMENT"] = "Commento";
+$MESS["VI_DOCS_TABLE_LINK"] = "Cronologia caricamenti documento";
+$MESS["VI_DOCS_TABLE_OWNER"] = "Proprietario";
+$MESS["VI_DOCS_TABLE_STATUS"] = "Controlla stato";
+$MESS["VI_DOCS_TABLE_TYPE"] = "Entità legale";
+$MESS["VI_DOCS_TABLE_UPLOAD"] = "Caricato il";
+$MESS["VI_DOCS_TITLE"] = "Carica la documentazione per noleggiare i numeri di telefono";
+$MESS["VI_DOCS_UNTIL_DATE"] = "Devi caricare la documentazione entro il #DATE#";
+$MESS["VI_DOCS_UNTIL_DATE_NOTICE"] = "Dopo la data indicata, i numeri riservati saranno disconnessi e i fondi restituiti al tuo account.<br><br>I numeri noleggiati saranno attivi fino al termine del leasing.";
+$MESS["VI_DOCS_UPDATE_BTN"] = "Carica nuovi documenti";
+$MESS["VI_DOCS_UPLOAD_BTN"] = "Carica documenti";
+$MESS["VI_DOCS_UPLOAD_NOTICE"] = "Tieni presente che i documenti che stai per inviare saranno caricati direttamente su Voximplant, Inc. e saranno trattati in base alla legislazione del Paese corrispondente. Bitrix24 non raccoglierà, memorizzerà o elaborerà alcun dato associato a questi documenti.";
+$MESS["VI_DOCS_UPLOAD_WHILE_RENT"] = "Se la tua documentazione deve essere verificata per noleggiare un numero di telefono, l'interfaccia utente di noleggio del numero mostrerà il modulo di caricamento della documentazione";
+$MESS["VI_DOCS_WAIT"] = "Caricamento... Attendi";

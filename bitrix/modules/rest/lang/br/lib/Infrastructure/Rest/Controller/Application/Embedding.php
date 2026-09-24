@@ -1,0 +1,4 @@
+<?php
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_EMBEDDING_ADDACTION_TITLE"] = "Adiciona uma nova área de incorporação do aplicativo";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_EMBEDDING_DELETEACTION_TITLE"] = "Exclui uma área de incorporação existente";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_EMBEDDING_LISTACTION_TITLE"] = "Retorna uma lista de áreas de incorporação do aplicativo";

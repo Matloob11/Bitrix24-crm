@@ -1,0 +1,3 @@
+<?php
+$MESS["MOBILE_LAYOUT_UI_FIELDS_IMAGE_SELECT_CAMERA"] = "Prendre une photo";
+$MESS["MOBILE_LAYOUT_UI_FIELDS_IMAGE_SELECT_MEDIATEKA"] = "Choisissez parmi la galerie";

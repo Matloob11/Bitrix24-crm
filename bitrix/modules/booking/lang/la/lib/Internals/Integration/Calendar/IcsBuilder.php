@@ -1,0 +1,3 @@
+<?php
+$MESS["BOOKING_INTEGRATION_CALENDAR_ICS_DESCRIPTION_TPL"] = "Creado en las reservas online de Bitrix24 Booking. Más información: #URL#";
+$MESS["BOOKING_INTEGRATION_CALENDAR_ICS_NAME_TPL"] = "Su reserva online: #RESOURCE_TYPE# #RESOURCE_NAME# (#COMPANY_NAME#)";

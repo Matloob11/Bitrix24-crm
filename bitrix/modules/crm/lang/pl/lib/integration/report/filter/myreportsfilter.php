@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_REPORT_FILTER_MY_REPORTS_PERIOD"] = "Okres sprawozdawczy";
+$MESS["CRM_REPORT_FILTER_MY_REPORTS_RESPONSIBLE"] = "Odpowiedzialny";
+?>

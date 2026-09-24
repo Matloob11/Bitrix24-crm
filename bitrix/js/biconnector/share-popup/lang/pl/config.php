@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Kopiuj link";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Link ważny do:";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "Data i godzina muszą przypadać w przyszłości.";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Wybierz datę";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "Data jest wymagana.";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Dopóki pulpit nawigacyjny nie zostanie udostępniony, goście nie mogą go wyświetlać, nawet jeśli mają link i hasło.";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Każdy z linkiem i hasłem może wyświetlić ten pulpit nawigacyjny.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "Nie można skopiować linku.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "Nie można udostępnić pulpitu nawigacyjnego.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "Nie można cofnąć udostępniania pulpitu nawigacyjnego.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "Nie można zaktualizować linku.";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "Filtry struktury firmy, workflowu i przepływu nie są dostępne podczas wyświetlania udostępnionego pulpitu nawigacyjnego.";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Generuj hasło";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "Skopiowano link.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "Utworzono hasło.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Hasło:";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Utwórz hasło";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "Hasło jest wymagane.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "Hasło nie może zawierać więcej niż 32 znaki.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "Hasło musi zawierać co najmniej 8 znaków.";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Udostępnij pulpit nawigacyjny";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "Data i godzina muszą przypadać w przyszłości.";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "Udostępnij pulpit nawigacyjny „#NAME#”";

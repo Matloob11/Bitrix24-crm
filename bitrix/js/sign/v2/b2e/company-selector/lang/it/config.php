@@ -1,0 +1,26 @@
+<?php
+$MESS["SIGN_B2E_ADD_COMPANY"] = "Aggiungi azienda";
+$MESS["SIGN_B2E_COMPANIES_CHANGE_INN_1"] = "Specifica";
+$MESS["SIGN_B2E_COMPANIES_EDIT"] = "Modifica";
+$MESS["SIGN_B2E_COMPANIES_NOT_CHANGED"] = "Azienda non selezionata.";
+$MESS["SIGN_B2E_COMPANIES_SELECT_BUTTON"] = "Seleziona";
+$MESS["SIGN_B2E_COMPANIES_TAB"] = "Aziende";
+$MESS["SIGN_B2E_COMPANIES_UNSET_PROVIDER_MORE"] = "[helpdesklink]Scopri di più[/helpdesklink]";
+$MESS["SIGN_B2E_COMPANIES_UNSET_PROVIDER_PARAGRAPH_1"] = "Seleziona un provider idoneo da usare con Firma elettronica per HR.";
+$MESS["SIGN_B2E_COMPANIES_UNSET_PROVIDER_PARAGRAPH_2"] = "A seconda delle leggi vigenti, potrebbe essere necessario utilizzare firme elettroniche avanzate o qualificate per documenti di tipo specifico. È tua responsabilità determinare se Firma elettronica per HR è conforme alle leggi vigenti.";
+$MESS["SIGN_B2E_COMPANY_CREATE"] = "Nuova azienda";
+$MESS["SIGN_B2E_COMPANY_EDIT"] = "Modifica azienda";
+$MESS["SIGN_B2E_COMPANY_NOT_CONNECTED_PROVIDER_STATUS"] = "Provider non connesso.";
+$MESS["SIGN_B2E_COMPANY_NOT_SET_PROVIDER_STATUS"] = "Provider non selezionato.";
+$MESS["SIGN_B2E_COMPANY_SES_COM_INFO"] = "Firma elettronica per HR consente di firmare vari documenti HR con la firma elettronica semplice (FES). [helpdesklink]Scopri di più[/helpdesklink]<br><br>Consulta [link]le Condizioni[/link] per comprendere cosa implica l'utilizzo di Firma elettronica per HR nel tuo caso specifico.";
+$MESS["SIGN_B2E_NO_REGISTER_URL"] = "Connessione non disponibile.";
+$MESS["SIGN_B2E_PROVIDERS_TAB"] = "Provider";
+$MESS["SIGN_B2E_PROVIDER_CONNECT"] = "Connetti";
+$MESS["SIGN_B2E_PROVIDER_CONNECT_SELECTOR"] = "Connetti provider";
+$MESS["SIGN_B2E_PROVIDER_DISCONNECT"] = "Disconnetti";
+$MESS["SIGN_B2E_PROVIDER_SES_COM_NAME"] = "Firma elettronica per HR";
+$MESS["SIGN_B2E_PROVIDER_SES_NAME"] = "Firma elettronica per HR";
+$MESS["SIGN_B2E_SELECT_COMPANY"] = "Seleziona azienda";
+$MESS["SIGN_B2E_SELECT_PROVIDER_WITHOUT_INN"] = "Connessa il giorno #DATE#";
+$MESS["SIGN_B2E_SELECT_PROVIDER_WITHOUT_INN_DATE"] = "Connessa";
+$MESS["SIGN_V2_B2E_COMPANY_SELECTOR_SAVE_AND_EDIT_REQUIRE_CRM_PERMISSION"] = "È necessario disporre dell'autorizzazione di accesso al CRM per creare nuove aziende o modificare i dettagli dell'azienda. Se non disponi delle autorizzazioni appropriate, contatta l'amministratore di Bitrix24.";

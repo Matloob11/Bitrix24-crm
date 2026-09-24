@@ -1,0 +1,2 @@
+<?php
+$MESS["IMCONNECTOR_MESSAGESERVICE_WHATSAPP_EDNA_DEFAULT_MESSAGE"] = "Bonjour ! J'ai une question.";

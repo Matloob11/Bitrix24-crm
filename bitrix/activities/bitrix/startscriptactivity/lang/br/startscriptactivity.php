@@ -1,0 +1,19 @@
+<?php
+$MESS["BP_SSA_ACTIVITY_EMPTY_DOCUMENT_ID"] = "O ID do item está faltando.";
+$MESS["BP_SSA_ACTIVITY_EMPTY_START_BY"] = "O campo \"Executar como usuário\" é obrigatório.";
+$MESS["BP_SSA_ACTIVITY_INCORRECT_TEMPLATE_ID"] = "ID de modelo incorreto.";
+$MESS["BP_SSA_ACTIVITY_LIMIT_DOCUMENT_IDS"] = "Número máximo de inicializações de script inteligente excedido.";
+$MESS["BP_SSA_ACTIVITY_LIMIT_QUEUE"] = "Este script inteligente ainda está em execução. Você não pode iniciá-lo novamente.";
+$MESS["BP_SSA_ACTIVITY_LOOPING_ERROR"] = "Script inteligente bloqueado porque ele chama a si mesmo recursivamente.";
+$MESS["BP_SSA_ACTIVITY_MAP_DOCUMENT_ID"] = "ID do item";
+$MESS["BP_SSA_ACTIVITY_MAP_PARAMETERS"] = "Parâmetros de início do script inteligente";
+$MESS["BP_SSA_ACTIVITY_MAP_PARAMETERS_HIDDEN"] = "Permissão insuficiente para editar os parâmetros do script inteligente atual.";
+$MESS["BP_SSA_ACTIVITY_MAP_START_BY"] = "Executar como usuário";
+$MESS["BP_SSA_ACTIVITY_MAP_TEMPLATE_ID"] = "Script inteligente";
+$MESS["BP_SSA_ACTIVITY_NOT_FOUND_DOCUMENT"] = "Não é possível encontrar item com este ID.";
+$MESS["BP_SSA_ACTIVITY_NOT_FOUND_TEMPLATE"] = "Script inteligente não encontrado ou inativo.";
+$MESS["BP_SSA_ACTIVITY_NOT_MATCH_DOCUMENT_TYPE"] = "O tipo de ID do item selecionado não é suportado por scripts inteligentes.";
+$MESS["BP_SSA_ACTIVITY_TEMPLATE_PARAMETERS_ERROR"] = "O parâmetro obrigatório está vazio: #NAME#.";
+$MESS["BP_SSA_ACTIVITY_VALIDATE_EMPTY_DOCUMENT_ID"] = "O campo \"ID do item\" é obrigatório.";
+$MESS["BP_SSA_ACTIVITY_VALIDATE_EMPTY_START_BY"] = "O campo \"Executar como usuário\" é obrigatório.";
+$MESS["BP_SSA_ACTIVITY_VALIDATE_EMPTY_TEMPLATE_ID"] = "O campo \"Script Inteligente\" é obrigatório.";

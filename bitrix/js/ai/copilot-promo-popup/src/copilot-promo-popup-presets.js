@@ -1,0 +1,58 @@
+import { Extension, Loc } from 'main.core';
+
+type CopilotPromoPopupPresetConfig = {
+	videoSrc: {
+		ru: string;
+		en: string;
+	};
+	videoContainerMinHeight?: number;
+	title: string;
+	text: string;
+}
+
+export type CopilotPromoPopupPresets = {
+	[presetId: string]: CopilotPromoPopupPresetConfig;
+}
+
+export const CopilotPromoPopupPresetData: CopilotPromoPopupPresets = Object.freeze({
+	task: {
+		videoSrc: {
+			en: '/bitrix/js/ai/copilot-promo-popup/videos/en/tasks.webm',
+			ru: '/bitrix/js/ai/copilot-promo-popup/videos/ru/tasks.webm',
+		},
+		title: getCopilotName(),
+		text: getTextWithReplaceAccent('COPILOT_PROMO_POPUP_TASKS_TEXT_MSGVER_1'),
+	},
+	liveFeedEditor: {
+		videoSrc: {
+			en: '/bitrix/js/ai/copilot-promo-popup/videos/en/liveFeedEditor.webm',
+			ru: '/bitrix/js/ai/copilot-promo-popup/videos/ru/liveFeedEditor.webm',
+		},
+		videoContainerMinHeight: 213,
+		title: 'CoPilot',
+		text: getTextWithReplaceAccent('COPILOT_PROMO_POPUP_LIVEFEED_EDITOR_TEXT_MSGVER_1'),
+	},
+	siteWithCopilot: {
+		videoSrc: {
+			en: '/bitrix/js/ai/copilot-promo-popup/videos/en/siteWithCopilot.webm',
+			ru: '/bitrix/js/ai/copilot-promo-popup/videos/ru/siteWithCopilot.webm',
+		},
+		videoContainerMinHeight: 226,
+		title: getCopilotName(),
+		text: getTextWithReplaceAccent('COPILOT_PROMO_POPUP_SITE_WITH_COPILOT_TEXT_MSGVER_1'),
+	},
+});
+
+function getTextWithReplaceAccent(messageCode: string): string
+{
+	return Loc.getMessage(messageCode, {
+		'#COPILOT_NAME#': getCopilotName(),
+		'#ACCENT#': '<span style="color: var(--ui-color-copilot-primary);">',
+		'#/ACCENT#': '</span>',
+	});
+}
+
+function getCopilotName(): string
+{
+	return Extension.getSettings('ai.copilot-promo-popup').copilotName;
+}

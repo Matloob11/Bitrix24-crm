@@ -1,0 +1,974 @@
+import { Extension, Loc } from 'main.core';
+import { EventEmitter } from 'main.core.events';
+import { BIcon, Outline } from 'ui.icon-set.api.vue';
+import {
+	Button as UiButton,
+	AirButtonStyle,
+	ButtonSize,
+} from 'ui.vue3.components.button';
+import { BLine } from 'ui.system.skeleton.vue';
+
+import { WorkTimeReport, ReportMode } from 'timeman.work-time-report';
+
+import { ButtonTextDropdown as UIButtonTextDropdown } from './button-split/button-split';
+import { Clock } from './clock/clock';
+import { isStartState, START_STATE_DURATION_MS } from '../lib/start-state';
+import './app.css';
+
+const settings = Extension.getSettings('timeman.work-status-control-panel');
+
+// @vue/component
+export const App = {
+	name: 'WorkStatusControlPanel',
+	components: {
+		UiButton,
+		UIButtonTextDropdown,
+		BIcon,
+		Clock,
+		BLine,
+	},
+	provide(): Object
+	{
+		return {};
+	},
+	props: {
+		hideOpenPanelButton: {
+			type: Boolean,
+			default: false,
+		},
+		hideOpener: {
+			type: Boolean,
+			default: false,
+		},
+		isReportsEnabled: {
+			type: Boolean,
+			default: false,
+		},
+		hasAiReportAccess: {
+			type: Boolean,
+			default: false,
+		},
+	},
+	setup(): Object
+	{
+		return {
+			ButtonSize,
+			Outline,
+			Loc,
+		};
+	},
+	data(): Object
+	{
+		return {
+			dataId: '',
+			workStatus: '',
+			reportReq: '',
+			canOpen: '',
+			canOpenAndRelaunch: '',
+			canEdit: '',
+			reportOpening: false,
+			planOpening: false,
+			reportPopupOpen: false,
+			planPopupOpen: false,
+			timerWorkingDayValue: 0,
+			timerPauseValue: 0,
+			lastProcessedHour: -1,
+			currentTimestamp: Date.now(),
+		};
+	},
+	computed: {
+		isClosed(): boolean
+		{
+			return this.workStatus === 'CLOSED';
+		},
+
+		isCanOpen(): boolean
+		{
+			return this.canOpen === 'OPEN';
+		},
+
+		isStartState(): boolean
+		{
+			// ALG-01 decision lives in the pure helper; this getter only
+			// wires the reactive component state into it.
+			return isStartState(this.workStatus, this.getDateStart(), this.currentTimestamp, START_STATE_DURATION_MS);
+		},
+
+		isStartStateActive(): boolean
+		{
+			return this.isStartState && this.isReportsEnabled;
+		},
+
+		copilotName(): string
+		{
+			return settings.get('copilotName') ?? 'BitrixGPT';
+		},
+
+		statusModifierClass(): ?string
+		{
+			if (this.isStartStateActive && !this.hideOpener)
+			{
+				return '--start';
+			}
+
+			if (this.isClosed && !this.isCanOpen && this.isReportsEnabled)
+			{
+				return '--closed';
+			}
+
+			return null;
+		},
+
+		reportStyleModifierClass(): ?string
+		{
+			if (this.statusModifierClass !== '--closed' && this.statusModifierClass !== '--start')
+			{
+				return null;
+			}
+
+			return this.hasAiReportAccess ? null : '--auto';
+		},
+
+		summaryInfoClass(): string
+		{
+			return this.hasAiReportAccess ? '--gpt-info' : '--auto-info';
+		},
+
+		summaryInfoText(): string
+		{
+			const key = this.hasAiReportAccess
+				? 'TIMEMAN_WORK_STATUS_CONTROL_GPT_INFO'
+				: 'TIMEMAN_WORK_STATUS_CONTROL_AUTO_INFO';
+
+			return Loc.getMessage(key, { '#COPILOT_NAME#': this.copilotName });
+		},
+
+		startTeaserInfoClass(): string
+		{
+			return this.hasAiReportAccess ? '--gpt-info' : '--auto-info';
+		},
+
+		startTeaserText(): string
+		{
+			const key = this.hasAiReportAccess
+				? 'TIMEMAN_WORK_STATUS_CONTROL_PANEL_START_STATE_TEASER'
+				: 'TIMEMAN_WORK_STATUS_CONTROL_PANEL_START_STATE_TEASER_AUTO';
+
+			return Loc.getMessage(key, { '#COPILOT_NAME#': this.copilotName });
+		},
+
+		titleText(): string
+		{
+			if (this.workStatus === 'PAUSED')
+			{
+				return Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_STATUS_PAUSED');
+			}
+
+			if (this.isClosed)
+			{
+				return this.isCanOpen
+					? Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_STATUS_NOT_STARTED')
+					: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_STATUS_CLOSED');
+			}
+
+			if (this.workStatus === 'EXPIRED')
+			{
+				return Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_STATUS_NOT_CLOSED');
+			}
+
+			return Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_STATUS_STARTED');
+		},
+
+		isEditingAvailable(): boolean
+		{
+			return (this.dataId && this.canEdit === 'Y' && !(this.workStatus === 'EXPIRED' && this.reportReq !== 'A'));
+		},
+
+		isCustomTimeAvailable(): boolean
+		{
+			return this.canEdit && this.workStatus !== 'PAUSED';
+		},
+
+		styleForTimerProps(): string
+		{
+			if (this.workStatus === 'PAUSED')
+			{
+				return {
+					icon: null,
+					status: 'paused',
+				};
+			}
+
+			if (this.workStatus === 'EXPIRED')
+			{
+				return {
+					icon: Outline.ALERT,
+					status: 'expired',
+				};
+			}
+
+			return null;
+		},
+
+		buttonStartProps(): any
+		{
+			const buttonId = 'buttonStartDropdownAnchor';
+			const buttonText = Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_START');
+			const buttonIcon = Outline.PLAY_L;
+
+			const buttonStartPropsSingle = {
+				id: buttonId,
+				text: buttonText,
+				icon: buttonIcon,
+				dataset: { testid: 'timeman-work-status-panel-start-btn' },
+				onClick: async (): void => {
+					this.openDay(event);
+				},
+			};
+
+			const buttonStartPropsMulti = {
+				id: buttonId,
+				text: buttonText,
+				icon: buttonIcon,
+				dataset: { testid: 'timeman-work-status-panel-start-btn' },
+				menuOptions: {
+					id: 'timeman-start-button-context-menu',
+					items: [
+						{
+							title: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_START_SAME'),
+							icon: Outline.PLAY_L,
+							onClick: () => {
+								this.openDay(event);
+							},
+						},
+						{
+							title: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_START_DIFFERENT'),
+							icon: Outline.EDIT_L,
+							onClick: () => {
+								const buttonElement = document.getElementById(buttonId);
+
+								if (window.BXTIMEMAN?.WND?.CLOCKWND)
+								{
+									window.BXTIMEMAN.WND.CLOCKWND.Clear();
+									window.BXTIMEMAN.WND.CLOCKWND = null;
+								}
+
+								window.BXTIMEMAN.WND.DATA.STATE = 'CLOSED';
+
+								// one for button text, another for popup positioning
+								window.BXTIMEMAN.WND.PARENT.MAIN_BUTTON = buttonElement;
+								window.BXTIMEMAN.WND.MAIN_BUTTON = buttonElement;
+
+								window.BXTIMEMAN.WND.ShowClock();
+							},
+						},
+					],
+				},
+				onClick: async (): void => {
+					this.openDay(event);
+				},
+			};
+
+			return this.isCustomTimeAvailable ? buttonStartPropsMulti : buttonStartPropsSingle;
+		},
+
+		buttonPauseProps(): any
+		{
+			return {
+				text: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_PAUSE'),
+				icon: Outline.PAUSE_L,
+				style: AirButtonStyle.OUTLINE_ACCENT_2,
+				dataset: { testid: 'timeman-work-status-panel-pause-btn' },
+				onClick: async (): void => {
+					window.BXTIMEMAN.WND.ACTIONS.PAUSE(event);
+				},
+			};
+		},
+
+		buttonContinueProps(): any
+		{
+			return {
+				text: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_CONTINUE'),
+				icon: Outline.PLAY_L,
+				dataset: { testid: 'timeman-work-status-panel-continue-btn' },
+				onClick: async (): void => {
+					window.BXTIMEMAN.WND.ACTIONS.REOPEN(event);
+				},
+			};
+		},
+
+		buttonStopProps(): any
+		{
+			const buttonId = 'buttonStop';
+			const buttonStopStyle = (this.workStatus === 'OPENED')
+				? AirButtonStyle.FILLED
+				: AirButtonStyle.OUTLINE_ACCENT_2;
+			const buttonText = Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_STOP');
+			const buttonIcon = Outline.POWER;
+
+			const buttonStopPropsSingle = {
+				id: buttonId,
+				style: buttonStopStyle,
+				text: buttonText,
+				icon: buttonIcon,
+				dataset: { testid: 'timeman-work-status-panel-stop-btn' },
+				onClick: async (): void => {
+					this.closeDay(event);
+				},
+			};
+
+			const buttonStopPropsMulti = {
+				id: buttonId,
+				text: buttonText,
+				iconLeft: buttonIcon,
+				style: buttonStopStyle,
+				dataset: { testid: 'timeman-work-status-panel-stop-btn' },
+				menuOptions: {
+					id: 'timeman-stop-button-context-menu',
+					items: [
+						{
+							title: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_STOP_SAME'),
+							icon: Outline.POWER,
+							onClick: () => {
+								this.closeDay(event);
+							},
+						},
+						{
+							title: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_STOP_DIFFERENT'),
+							icon: Outline.EDIT_L,
+							onClick: () => {
+								if (window.BXTIMEMAN?.WND?.CLOCKWND)
+								{
+									window.BXTIMEMAN.WND.CLOCKWND.Clear();
+									window.BXTIMEMAN.WND.CLOCKWND = null;
+								}
+
+								const buttonElement = this.$el?.querySelector?.(`#${buttonId}`)
+									?? window.document.getElementById(buttonId);
+								// one for button text, another for popup positioning
+								window.BXTIMEMAN.WND.PARENT.MAIN_BUTTON = buttonElement;
+								window.BXTIMEMAN.WND.MAIN_BUTTON = buttonElement;
+
+								window.BXTIMEMAN.WND.ShowClock();
+							},
+						},
+					],
+				},
+				onClick: async (): void => {
+					this.closeDay(event);
+				},
+			};
+
+			return this.isCustomTimeAvailable ? buttonStopPropsMulti : buttonStopPropsSingle;
+		},
+
+		buttonRestartProps(): any
+		{
+			return {
+				text: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_RESTART'),
+				icon: Outline.REFRESH,
+				style: AirButtonStyle.OUTLINE_ACCENT_2,
+				dataset: { testid: 'timeman-work-status-panel-restart-btn' },
+				onClick: async (): void => {
+					window.BXTIMEMAN.WND.ACTIONS.REOPEN(event);
+				},
+			};
+		},
+
+		buttonOpenPanelProps(): any
+		{
+			return {
+				text: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_VIEW_RESULTS'),
+				id: 'buttonOpenPanel',
+				style: this.hasAiReportAccess ? AirButtonStyle.FILLED_BITRIX_GPT : AirButtonStyle.FILLED,
+				dataset: { testid: 'timeman-work-status-panel-view-results-btn' },
+				onClick: (): void => {
+					this.handleClickTimemanOpener();
+				},
+			};
+		},
+
+		buttonViewPlanProps(): any
+		{
+			return {
+				id: 'buttonViewPlan',
+				text: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_VIEW_PLAN'),
+				style: this.hasAiReportAccess ? AirButtonStyle.FILLED_BITRIX_GPT : AirButtonStyle.FILLED,
+				dataset: { testid: 'timeman-work-status-panel-view-plan-btn' },
+				onClick: (): void => {
+					this.handleClickViewPlan();
+				},
+			};
+		},
+
+		buttonFinishExpiredProps(): any
+		{
+			const buttonId = 'buttonFinishExpired';
+
+			return {
+				id: buttonId,
+				text: Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ACTION_FINISH_EXPIRED'),
+				icon: Outline.ALERT_ACCENT,
+				style: AirButtonStyle.TINTED_ALERT,
+				onClick: async (): void => {
+					if (window.BXTIMEMAN?.WND?.CLOCKWND)
+					{
+						window.BXTIMEMAN.WND.CLOCKWND.Clear();
+						window.BXTIMEMAN.WND.CLOCKWND = null;
+					}
+
+					const buttonElement = window.document.getElementById(buttonId);
+					// one for button text, another for popup positioning
+					window.BXTIMEMAN.WND.PARENT.MAIN_BUTTON = buttonElement;
+					window.BXTIMEMAN.WND.MAIN_BUTTON = buttonElement;
+
+					window.BXTIMEMAN.WND.ACTIONS.CLOSE(event);
+				},
+			};
+		},
+
+		// control buttons end
+
+		actions(): any[]
+		{
+			const actionItems = [];
+
+			if (this.isStartStateActive && !this.hideOpener)
+			{
+				actionItems.push(this.buttonPauseProps, this.buttonViewPlanProps);
+			}
+			else if (this.workStatus === 'OPENED')
+			{
+				actionItems.push(this.buttonPauseProps);
+				actionItems.push(this.buttonStopProps);
+			}
+
+			if (this.workStatus === 'PAUSED')
+			{
+				actionItems.push(this.buttonContinueProps);
+				actionItems.push(this.buttonStopProps);
+			}
+
+			if (this.isClosed)
+			{
+				if (this.isCanOpen)
+				{
+					actionItems.push(this.buttonStartProps);
+				}
+				else
+				{
+					actionItems.push(this.buttonRestartProps);
+
+					if (this.isReportsEnabled && !this.hideOpenPanelButton)
+					{
+						actionItems.push(this.buttonOpenPanelProps);
+					}
+				}
+			}
+
+			if (this.workStatus === 'EXPIRED')
+			{
+				actionItems.push(this.buttonFinishExpiredProps);
+			}
+
+			return actionItems;
+		},
+	},
+	created(): void
+	{
+		// non-reactive references to popup initiators for focus restoration
+		this.reportOpenerInitiator = null;
+		this.planOpenerInitiator = null;
+	},
+	watch: {
+		isStartStateActive(): void
+		{
+			// the "View plan" button is a disclosure control; expose its
+			// popup semantics as soon as it is rendered
+			this.$nextTick(() => {
+				this.setPlanButtonExpanded(this.planPopupOpen);
+			});
+		},
+	},
+	mounted(): void
+	{
+		// prevent timeman init without bindOptions for new users on OpenDay event
+		this.checkBindOptions();
+		this.updateDayState();
+		this.updateWorkingDayTimer();
+		this.$nextTick(() => {
+			this.setPlanButtonExpanded(this.planPopupOpen);
+		});
+		setInterval(() => {
+			this.updateWorkingDayTimer();
+		}, 1000);
+
+		EventEmitter.subscribe('onTimeManDataRecieved', this.handleTimemanDataRecieved);
+		EventEmitter.subscribe('onPlannerDataRecieved', this.handleTimemanDataRecieved);
+		EventEmitter.subscribe('onTimeManNeedRebuild', this.handleTimemanDataRecieved);
+		EventEmitter.subscribe('onTopPanelCollapse', this.handleTimemanDataRecieved);
+		EventEmitter.subscribe('onTimeManWindowBuild', this.handleTimemanDataRecieved);
+		EventEmitter.subscribe('onTimemanInit', this.handleTimemanDataRecieved);
+	},
+	beforeUnmount(): void
+	{},
+	unmounted(): void
+	{},
+	methods: {
+		convertMillisecondsToHrMinSec(time: number): any
+		{
+			const timeFullSeconds = Math.ceil(time / 1000);
+			const hours = Math.floor(timeFullSeconds / 3600);
+			const minutes = Math.floor(timeFullSeconds / 60) - (hours * 60);
+			const seconds = timeFullSeconds - (minutes * 60) - (hours * 3600);
+
+			return {
+				hours,
+				minutes,
+				seconds,
+			};
+		},
+
+		timeNumToDoubleDigitString(num): string
+		{
+			return num > 9 ? String(num) : ('00' + num).slice(-2);
+		},
+
+		getDataId(): any
+		{
+			return window.BXTIMEMAN.DATA.ID || '';
+		},
+
+		getWorkStatus(): any
+		{
+			return window.BXTIMEMAN.DATA.STATE || '';
+		},
+
+		getReportReq(): any
+		{
+			return window.BXTIMEMAN.DATA.REPORT_REQ || '';
+		},
+
+		getCanOpen(): any
+		{
+			return window.BXTIMEMAN.DATA.CAN_OPEN || '';
+		},
+
+		getCanOpenAndRelaunch(): any
+		{
+			return window.BXTIMEMAN.DATA.CAN_OPEN_AND_RELAUNCH || '';
+		},
+
+		getCanEdit(): any
+		{
+			return window.BXTIMEMAN.DATA.CAN_EDIT || '';
+		},
+
+		getDateStart(): number
+		{
+			return parseInt(window.BXTIMEMAN?.DATA?.INFO?.DATE_START, 10) * 1000 || 0;
+		},
+
+		setBindOptions(): any
+		{
+			window.BXTIMEMAN.setBindOptions({
+				node: this.$refs.reportOpener,
+				mode: 'popup',
+				popupOptions: {
+					autoHide: true,
+					angle: false,
+					offsetTop: -40,
+					closeByEsc: true,
+					bindOptions: {
+						forceBindPosition: true,
+						forceTop: true,
+						forceLeft: false,
+					},
+					events: {
+						onShow: () => {
+							this.reportOpening = false;
+							this.reportPopupOpen = true;
+						},
+						onClose: () => {
+							this.reportPopupOpen = false;
+							this.restoreFocusToReportOpener();
+						},
+						onDestroy: () => {},
+					},
+					fixed: true,
+				},
+			});
+		},
+
+		checkBindOptions(): any
+		{
+			if (window.BXTIMEMAN.WND.bindOptions.mode !== 'popup')
+			{
+				this.setBindOptions();
+			}
+		},
+
+		updateDayState(): any
+		{
+			this.dataId = this.getDataId();
+			this.workStatus = this.getWorkStatus();
+			this.reportReq = this.getReportReq();
+			this.canOpen = this.getCanOpen();
+			this.canOpenAndRelaunch = this.getCanOpenAndRelaunch();
+			this.canEdit = this.getCanEdit();
+		},
+
+		updateDayStateIfNewHour(): void
+		{
+			const currentHour = new Date().getHours();
+
+			if (currentHour !== this.lastProcessedHour)
+			{
+				window.BXTIMEMAN.Update();
+
+				this.lastProcessedHour = currentHour;
+			}
+		},
+
+		updateWorkingDayTimer()
+		{
+			const dateNow = Date.now();
+			this.currentTimestamp = dateNow;
+			const timerInfo = { ...window.BXTIMEMAN.DATA.INFO };
+			const dateStart = this.getDateStart();
+			const dateWorkingDayStopped = parseInt(timerInfo.DATE_FINISH) * 1000;
+			const timeTimeLeaks = parseInt(timerInfo.TIME_LEAKS) * 1000;
+			const delta = dateNow - dateStart;
+			const deltaPast = dateWorkingDayStopped - dateStart;
+			const deltaPause = dateNow - dateWorkingDayStopped;
+
+			this.updateDayStateIfNewHour();
+
+			if (this.isClosed)
+			{
+				if (this.isCanOpen)
+				{
+					this.timerWorkingDayValue = 0;
+					this.timerPauseValue = 0;
+				}
+				else if (this.canOpen === 'REOPEN')
+				{
+					this.timerWorkingDayValue = deltaPast - timeTimeLeaks;
+					this.timerPauseValue = timeTimeLeaks;
+				}
+			}
+			else if (this.workStatus === 'OPENED')
+			{
+				this.timerWorkingDayValue = delta - timeTimeLeaks;
+				this.timerPauseValue = timeTimeLeaks;
+			}
+			else if (this.workStatus === 'PAUSED')
+			{
+				this.timerWorkingDayValue = deltaPast - timeTimeLeaks;
+				this.timerPauseValue = deltaPause + timeTimeLeaks;
+			}
+			else if (this.workStatus === 'EXPIRED')
+			{
+				this.timerWorkingDayValue = delta - timeTimeLeaks;
+				this.timerPauseValue = timeTimeLeaks;
+			}
+		},
+
+		openDay(event): any
+		{
+			window.BXTIMEMAN.WND.ACTIONS.OPEN(event);
+		},
+
+		closeDay(event): any
+		{
+			window.BXTIMEMAN.WND.ACTIONS.CLOSE(event);
+		},
+
+		// handlers
+
+		handleTimemanDataRecieved(): any
+		{
+			this.updateDayState();
+			this.updateWorkingDayTimer();
+		},
+
+		handleClickTimerEditorOpener(): any
+		{
+			window.BXTIMEMAN.WND.ShowEditVue(event.target);
+		},
+
+		handleClickTimemanOpener(): void
+		{
+			if (this.reportOpening)
+			{
+				return;
+			}
+
+			if (window.BXTIMEMAN?.WND?.isShown())
+			{
+				window.BXTIMEMAN.WND.Hide();
+				// keep aria-expanded in sync immediately; do not rely solely on the onClose event
+				this.reportPopupOpen = false;
+
+				return;
+			}
+
+			// remember initiator to restore focus when the popup closes
+			this.reportOpenerInitiator = this.$refs.reportOpener ?? null;
+			this.reportOpening = true;
+			this.reportPopupOpen = true;
+
+			if (!this.isReportsEnabled)
+			{
+				const chevron = this.$refs.reportOpener;
+				if (chevron && window.BXTIMEMAN?.WND)
+				{
+					window.BXTIMEMAN.WND.MAIN_BUTTON = chevron;
+					if (window.BXTIMEMAN.WND.PARENT)
+					{
+						window.BXTIMEMAN.WND.PARENT.MAIN_BUTTON = chevron;
+					}
+				}
+				window.BXTIMEMAN.Open();
+				this.reportOpening = false;
+
+				return;
+			}
+
+			(new WorkTimeReport()).open(ReportMode.DAILY, {
+				recordId: Number(window.BXTIMEMAN?.DATA?.ID ?? 0),
+				bindElement: document.querySelector('[data-id="bx-avatar-widget"]'),
+				width: 390,
+				offsetTop: -50,
+				offsetLeft: 0,
+				fixed: true,
+				closeIcon: false,
+				autoHide: true,
+				inProgress: !this.isClosed,
+				onClose: () => {
+					this.reportOpening = false;
+					this.reportPopupOpen = false;
+					this.restoreFocusToReportOpener();
+				},
+			});
+		},
+
+		handleClickViewPlan(): void
+		{
+			if (this.planOpening)
+			{
+				return;
+			}
+
+			// remember initiator to restore focus when the popup closes
+			this.planOpenerInitiator = document.getElementById('buttonViewPlan');
+			this.planOpening = true;
+			this.planPopupOpen = true;
+			this.setPlanButtonExpanded(true);
+
+			(new WorkTimeReport()).open(ReportMode.PLAN, {
+				bindElement: document.querySelector('[data-id="bx-avatar-widget"]'),
+				width: 390,
+				offsetTop: -50,
+				offsetLeft: 0,
+				fixed: true,
+				closeIcon: false,
+				autoHide: true,
+				onClose: () => {
+					this.planOpening = false;
+					this.planPopupOpen = false;
+					this.setPlanButtonExpanded(false);
+					this.restoreFocusToPlanButton();
+				},
+			});
+		},
+
+		restoreFocusToReportOpener(): void
+		{
+			const initiator = this.reportOpenerInitiator ?? this.$refs.reportOpener;
+			if (initiator && typeof initiator.focus === 'function')
+			{
+				initiator.focus();
+			}
+			this.reportOpenerInitiator = null;
+		},
+
+		restoreFocusToPlanButton(): void
+		{
+			const initiator = this.planOpenerInitiator ?? document.getElementById('buttonViewPlan');
+			if (initiator && typeof initiator.focus === 'function')
+			{
+				initiator.focus();
+			}
+			this.planOpenerInitiator = null;
+		},
+
+		// UiButton renders the native button imperatively and does not forward
+		// aria-* props, so disclosure attributes are set on the DOM node directly
+		setPlanButtonExpanded(isExpanded: boolean): void
+		{
+			const button = document.getElementById('buttonViewPlan');
+			if (!button)
+			{
+				return;
+			}
+
+			button.setAttribute('aria-haspopup', 'dialog');
+			button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+		},
+
+		// handlers end
+
+		getControlButtonComponent(action): Object
+		{
+			const isButtonSplit = Boolean(action.menuOptions);
+			const ControlButtonComponent = isButtonSplit ? UIButtonTextDropdown : UiButton;
+
+			return ControlButtonComponent;
+		},
+
+	},
+	template: `
+		<div :class="['tm-control-panel', this.statusModifierClass, this.reportStyleModifierClass]">
+			<div class="tm-control-panel__info">
+				<div
+					:class="[
+						'tm-control-panel__timer',
+						'tm-timer',
+						this.styleForTimerProps?.status ? ('tm-timer_' + this.styleForTimerProps.status) : null,
+					]"
+				>
+					<div
+						v-if="this.styleForTimerProps?.icon"
+						class="tm-timer__visual"
+					>
+						<BIcon
+							class="tm-timer__visual-img"
+							:name="this.styleForTimerProps.icon"
+						/>
+					</div>
+					<p class="tm-timer__title">{{ this.titleText }}</p>
+					<Clock
+						:time="timerWorkingDayValue"
+					/>
+					<button
+						v-if="isEditingAvailable && (!this.isStartStateActive || this.hideOpener)"
+						type="button"
+						class="tm-timer__editor-opener"
+						data-testid="timeman-work-status-panel-edit-time-btn"
+						:aria-label="Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ARIA_EDIT_TIME')"
+						@click="handleClickTimerEditorOpener"
+					>
+						<BIcon
+							class="tm-timer__editor-opener-img"
+							:size="16"
+							:name="Outline.EDIT_L"
+							aria-hidden="true"
+						/>
+					</button>
+					<button
+						v-if="this.isStartStateActive && !this.hideOpener"
+						ref="reportOpener"
+						type="button"
+						class="tm-control-panel__widget-opener tm-control-panel__more-opener"
+						:class="{'tm-control-panel__widget-opener_loading': reportOpening}"
+						data-testid="timeman-work-status-panel-report-opener"
+						:aria-label="Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ARIA_OPEN_REPORT')"
+						aria-haspopup="dialog"
+						:aria-expanded="this.reportPopupOpen ? 'true' : 'false'"
+						@click="this.handleClickTimemanOpener"
+					>
+						<BIcon
+							class="tm-control-panel__widget-opener-img"
+							:size="22"
+							:name="Outline.MORE_M"
+							aria-hidden="true"
+						/>
+					</button>
+				</div>
+				<div
+					v-if="(!this.isReportsEnabled || !this.isClosed) && !this.hideOpener && !this.isStartStateActive"
+					class="tm-control-panel__widget-opener-container"
+				>
+					<button
+						ref="reportOpener"
+						type="button"
+						class="tm-control-panel__widget-opener"
+						:class="{'tm-control-panel__widget-opener_loading': reportOpening}"
+						data-testid="timeman-work-status-panel-report-opener"
+						:aria-label="Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_ARIA_OPEN_DETAILS')"
+						aria-haspopup="dialog"
+						:aria-expanded="this.reportPopupOpen ? 'true' : 'false'"
+						@click="this.handleClickTimemanOpener"
+					>
+						<BIcon
+							class="tm-control-panel__widget-opener-img"
+							:size="22"
+							:name="Outline.CHEVRON_RIGHT_L"
+							aria-hidden="true"
+						/>
+					</button>
+				</div>
+			</div>
+			<div
+				v-if="this.isStartStateActive && !this.hideOpener"
+				:class="['tm-control-panel__info', this.startTeaserInfoClass]"
+				role="status"
+				aria-live="polite"
+				v-html="this.startTeaserText"
+			></div>
+			<div
+				v-if="this.isClosed && !this.isCanOpen && this.isReportsEnabled"
+				:class="['tm-control-panel__info', this.summaryInfoClass]"
+				v-html="this.summaryInfoText"
+			></div>
+			<div
+				v-if="Boolean(this.timerPauseValue)"
+				class="tm-control-panel__info tm-control-panel__info_pause"
+			>
+				<div
+					:class="[
+						'tm-control-panel__timer',
+						'tm-control-panel__timer_pause',
+						'tm-timer',
+						this.styleForTimerProps?.status ? ('tm-timer_' + this.styleForTimerProps.status) : null,
+					]"
+				>
+					<p class="tm-timer__title">{{ Loc.getMessage('TIMEMAN_WORK_STATUS_CONTROL_PANEL_NOTE_PAUSE_LENGTH') }}</p>
+					<Clock
+						:time="timerPauseValue"
+					/>
+				</div>
+			</div>
+			<ul class="tm-control-panel__actions-list">
+				<li
+					v-for="action in this.actions"
+					:key="action.text"
+					class="tm-control-panel__actions-item"
+				>
+					<component
+						:is="getControlButtonComponent(action)"
+						:key="
+							action.style
+							+ action.iconLeft
+							+ action.icon
+							+ action.text
+							+ action.id
+						"
+						class="tm-control-panel__action"
+						:size="ButtonSize.MEDIUM"
+						:wide="true"
+						:id="action.id"
+						:text="action.text"
+						:style="action.style"
+						:style-name="action.style"
+						:icon-left="action.iconLeft"
+						:left-icon="action.icon"
+						:menuOptions="action.menuOptions"
+						@click="action.onClick"
+					/>
+				</li>
+			</ul>
+		</div>
+	`,
+};

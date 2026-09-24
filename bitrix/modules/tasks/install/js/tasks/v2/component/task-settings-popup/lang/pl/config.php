@@ -1,0 +1,23 @@
+<?php
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_AUTO_COMPLETE_SUBTASKS_LABEL"] = "Automatycznie zakończ zadanie, gdy wszystkie podzadania będą zakończone, i na odwrót";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_CANCEL"] = "Anuluj";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_SAVE"] = "OK";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_HINT"] = "Gdy tylko odpowiedzialny oznaczy zadanie jako zakończone, zostanie ono przesłane do Ciebie do sprawdzenia. Możesz zaakceptować zadanie (co spowoduje jego zamknięcie) lub zwrócić je do poprawy.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_LABEL"] = "Wymagaj zatwierdzenia po zakończeniu";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINES_LABEL"] = "Odpowiedzialny może zmienić termin";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_BEFORE"] = "Najpóźniejszy możliwy termin: [date/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LABEL"] = "Ustaw domyślny termin dla wszystkich nowych zadań na:";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_COUNT"] = "według liczby zmian";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_DATE"] = "według daty";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_LABEL"] = "Ogranicz zmianę terminu";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_NOT_GREATER_THAN"] = "Maks. liczba zmian: [count/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_DAY"] = "dni";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_HOUR"] = "godziny";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_MONTH"] = "miesiące";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_WEEK"] = "tygodnie";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_HINT"] = "Odpowiedzialny będzie musiał dodać komentarz wyjaśniający, dlaczego zamierza zmienić termin.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_LABEL"] = "Poproś o podanie powodu zmiany";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE"] = "Ustawienia zadania";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE_HINT"] = "Dotyczy wszystkich zadań, które tworzysz.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_HINT"] = "Jeżeli planowane daty zadania obejmują weekendy lub święta, termin zadania zostanie przedłużony o dni wolne.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_LABEL"] = "Pomiń weekendy";

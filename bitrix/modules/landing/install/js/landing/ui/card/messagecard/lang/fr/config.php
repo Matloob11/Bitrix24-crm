@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_MESSAGE_CARD_HIDE_MSGVER_1"] = "Ne plus afficher";
+$MESS["LANDING_MESSAGE_CARD_READ_MORE"] = "Détails";

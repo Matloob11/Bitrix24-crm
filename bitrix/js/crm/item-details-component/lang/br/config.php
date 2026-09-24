@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_ITEM_DETAIL_CREATE_RECURRING_ITEM_ERROR"] = "Não foi possível criar SPA recorrente. Tente novamente mais tarde.";
+$MESS["CRM_ITEM_DETAIL_CREATE_RECURRING_ITEM_NOT_SUPPORTED"] = "Itens recorrentes não são suportados.";
+$MESS["CRM_ITEM_DETAIL_STAGEFLOW_FINAL_STAGE_NAME"] = "Concluir";
+$MESS["CRM_ITEM_DETAIL_STAGEFLOW_FINAL_STAGE_POPUP"] = "Selecionar resultado";
+$MESS["CRM_ITEM_DETAIL_STAGEFLOW_FINAL_STAGE_POPUP_FAIL"] = "Mal sucedido";
+$MESS["CRM_ITEM_DETAIL_STAGEFLOW_FINAL_STAGE_SELECTOR"] = "Concluir";

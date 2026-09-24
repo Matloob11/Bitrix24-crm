@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Copiar enlace";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Enlace válido hasta:";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "El día y la hora deben ser en el futuro.";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Seleccionar fecha y hora";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "La fecha y la hora son obligatorias.";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Hasta que se comparta el panel de control, los invitados no podrán verlo, incluso si tienen un enlace y una contraseña.";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Cualquier persona que tenga un enlace y una contraseña puede ver este panel de control.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "No se pudo copiar el enlace.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "No se pudo compartir el panel de control.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "No se pudo dejar de compartir el panel de control.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "No se pudo actualizar el enlace.";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "Los filtros estructura de la empresa, flujo de trabajo y flujo no están disponibles cuando se ve un panel de control compartido.";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Generar contraseña";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "El enlace se copió.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "Se creó la contraseña.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Contraseña:";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Crear contraseña";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "La contraseña es obligatoria.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "La contraseña no debe incluir más de 32 caracteres.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "La contraseña debe incluir por lo menos 8 caracteres.";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Compartir panel de control";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "El día y la hora deben ser en el futuro.";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "Compartir el panel de control \"#NAME#\"";

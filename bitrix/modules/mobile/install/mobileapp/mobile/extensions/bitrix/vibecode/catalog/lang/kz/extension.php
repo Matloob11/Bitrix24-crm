@@ -1,0 +1,29 @@
+<?php
+
+$MESS['MOBILE_VIBECODE_CATALOG_TITLE_TEXT'] = 'Битрикс24.Вайбкод';
+$MESS['MOBILE_VIBECODE_CATALOG_LOAD_ERROR_TITLE'] = 'Тізімді жүктеу мүмкін болмады';
+$MESS['MOBILE_VIBECODE_CATALOG_LOAD_ERROR_DESCRIPTION'] = 'Интернетке қосылымды тексеріп, қайталап көріңіз';
+$MESS['MOBILE_VIBECODE_CATALOG_UNAVAILABLE_TITLE'] = 'Бөлім қолжетімсіз';
+$MESS['MOBILE_VIBECODE_CATALOG_RETRY'] = 'Жаңарту';
+$MESS['MOBILE_VIBECODE_CATALOG_EMPTY_TITLE'] = 'Bitrix24-те өз қосымшаңыз [COLOR=#COLOR#]VibeCode[/COLOR]';
+$MESS['MOBILE_VIBECODE_CATALOG_EMPTY_DESCRIPTION'] = 'Идеяңызды сипаттаңыз. AI оны бірнеше минутта қосымшаға айналдырып, Bitrix24-іңізде іске қосады';
+$MESS['MOBILE_VIBECODE_CATALOG_EMPTY_ACTION'] = 'Бастау';
+$MESS['MOBILE_VIBECODE_CATALOG_SEARCH_EMPTY_TITLE'] = 'Ештеңе табылмады';
+$MESS['MOBILE_VIBECODE_CATALOG_SEARCH_EMPTY_DESCRIPTION'] = 'Сұрауды өзгертіп көріңіз';
+$MESS['MOBILE_VIBECODE_CATALOG_HIDDEN_EMPTY_TITLE'] = 'Жасырылған қосымшалар жоқ';
+$MESS['MOBILE_VIBECODE_CATALOG_STATE_ACTIVE'] = 'Белсенді';
+$MESS['MOBILE_VIBECODE_CATALOG_STATE_HIDDEN'] = 'Жасырылған';
+$MESS['MOBILE_VIBECODE_CATALOG_STATE_ALL'] = 'Барлығы';
+$MESS['MOBILE_VIBECODE_CATALOG_MENU_OPEN'] = 'Ашу';
+$MESS['MOBILE_VIBECODE_CATALOG_MENU_PIN'] = 'Бекіту';
+$MESS['MOBILE_VIBECODE_CATALOG_MENU_UNPIN'] = 'Бекітуден алу';
+$MESS['MOBILE_VIBECODE_CATALOG_MENU_HIDE'] = 'Жасыру';
+$MESS['MOBILE_VIBECODE_CATALOG_MENU_UNHIDE'] = 'Қалпына келтіру';
+$MESS['MOBILE_VIBECODE_CATALOG_HIDE_SUCCESS'] = 'Қосымша жасырылды';
+$MESS['MOBILE_VIBECODE_CATALOG_HIDE_UNDO'] = 'Болдырмау';
+$MESS['MOBILE_VIBECODE_CATALOG_HIDE_ERROR'] = 'Қосымшаны жасыру мүмкін болмады';
+$MESS['MOBILE_VIBECODE_CATALOG_UNHIDE_ERROR'] = 'Қосымшаны қалпына келтіру мүмкін болмады';
+$MESS['MOBILE_VIBECODE_CATALOG_PIN_ERROR'] = 'Бекіту күйін өзгерту мүмкін болмады';
+$MESS['MOBILE_VIBECODE_CATALOG_MARKETPLACE_TAB'] = 'Маркетплейс';
+$MESS['MOBILE_VIBECODE_CATALOG_MARKETPLACE_PLACEHOLDER_TITLE'] = 'Маркетплейс';
+$MESS['MOBILE_VIBECODE_CATALOG_MARKETPLACE_PLACEHOLDER_DESCRIPTION'] = 'Бұл бөлім кейінірек қолжетімді болады';

@@ -1,0 +1,4 @@
+<?php
+$MESS["ABSENCE_TARIFF_RESTRICTION_TITLE"] = "La Tabla de ausencias y otras herramientas útiles están disponibles en los planes comerciales seleccionados.";
+$MESS["TARIFF_RESTRICTION_TEXT"] = "El cuadro de ausencias proporciona una presentación visual rápida de la ubicación de una persona y el motivo de su ausencia: licencia de trabajo, por enfermedad o por maternidad. El cuadro también será útil cuando planee vacaciones, ya que todas las hojas simultáneas no deseadas de varias personas se pueden ver a la vez. Es fácil de usar: las hojas pueden ser agregadas por un empleado o gerente de recursos humanos. El sistema también puede agregar hojas automáticamente en función de los flujos de trabajo de aprobación de solicitud de licencia. <a href=\"javascript:void(0)\" onclick='top.BX.Helper.show(\"redirect=detail&code=5349195\");'>Detalles</a>";
+$MESS["TITLE"] = "Gráfico de ausencias";

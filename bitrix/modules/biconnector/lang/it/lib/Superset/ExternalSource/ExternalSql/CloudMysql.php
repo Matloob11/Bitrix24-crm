@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_CLOUD_MYSQL_DESCRIPTION"] = "Installa l'applicazione per connettere il database esterno MySQL.";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_CLOUD_MYSQL_TITLE"] = "MySQL";

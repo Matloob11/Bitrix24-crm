@@ -1,0 +1,27 @@
+<?php
+$MESS["CALL_MEETING_TYPE_BOARD_OF_DIRECTORS_MEETING"] = "Reunião do conselho de administração";
+$MESS["CALL_MEETING_TYPE_BRAINSTORMING_SESSION"] = "Brainstorming";
+$MESS["CALL_MEETING_TYPE_BUSINESS_PARTNER_MEETING"] = "Reunião com parceiro comercial";
+$MESS["CALL_MEETING_TYPE_CLIENT_MEETING_POST_SALE"] = "Suporte ao cliente pós-venda";
+$MESS["CALL_MEETING_TYPE_CLIENT_MEETING_SALES"] = "Reunião com o cliente";
+$MESS["CALL_MEETING_TYPE_CONTRACTOR_MEETING"] = "Reunião com contratante";
+$MESS["CALL_MEETING_TYPE_DAILY"] = "Diária";
+$MESS["CALL_MEETING_TYPE_DECISION_MAKING_MEETING"] = "Reunião de tomada de decisões";
+$MESS["CALL_MEETING_TYPE_DEMO"] = "Demo";
+$MESS["CALL_MEETING_TYPE_INTRODUCTORY_MEETING"] = "Integração";
+$MESS["CALL_MEETING_TYPE_JOB_INTERVIEW"] = "Entrevista de emprego";
+$MESS["CALL_MEETING_TYPE_LONG_TERM_PLANNING_MEETING"] = "Planejamento de longo prazo";
+$MESS["CALL_MEETING_TYPE_ONE_ON_ONE_MEETING"] = "Reunião um a um";
+$MESS["CALL_MEETING_TYPE_OPERATIONAL_MEETING"] = "Reunião operacional";
+$MESS["CALL_MEETING_TYPE_PRESENTATION_TALK"] = "Apresentação";
+$MESS["CALL_MEETING_TYPE_PROBLEM_SOLVING_MEETING"] = "Reunião de resolução de problemas";
+$MESS["CALL_MEETING_TYPE_PROJECT_KICK_OFF_MEETING"] = "Reunião de início do projeto";
+$MESS["CALL_MEETING_TYPE_RETROSPECTIVE_MEETING"] = "Reunião retrospectiva";
+$MESS["CALL_MEETING_TYPE_SHAREHOLDERS_MEETING"] = "Reunião de acionistas";
+$MESS["CALL_MEETING_TYPE_SPRINT_PLANNING"] = "Planejamento de sprint";
+$MESS["CALL_MEETING_TYPE_STATUS_MEETING"] = "Reunião de status";
+$MESS["CALL_MEETING_TYPE_STRATEGIC_MANAGEMENT_MEETING"] = "Reunião de gestão estratégica";
+$MESS["CALL_MEETING_TYPE_TEAM_STANDUP"] = "Briefing";
+$MESS["CALL_MEETING_TYPE_TRAINING"] = "Treinamento";
+$MESS["CALL_MEETING_TYPE_UNDEFINED"] = "Indefinido";
+$MESS["CALL_MEETING_TYPE_USER_INTERVIEW"] = "Entrevista com usuário";

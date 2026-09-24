@@ -1,0 +1,27 @@
+<?php
+$MESS["NOTIFY_BANNER_INFO_ALL_EMPLOYEE_BLOCK"] = "Alle Daten in Ihrem Bitrix24 sind gefährdet, wenn auch nur eine einzige Person in Ihrem Unternehmen die Zwei-Faktor-Authentifizierung nicht verwendet. Ihr Unternehmen kann mit Folgendem konfrontiert sein:";
+$MESS["NOTIFY_BANNER_INFO_CONFIRM_WITHOUT_TITLE"] = "Aktivieren Sie die <span class=\"intranet-otp-motivating-popup__title--accent\">neue Zwei-Faktor-Authentifizierung,</span> um Ihren Login ohne Eingabe eines Codes zu bestätigen.";
+$MESS["NOTIFY_BANNER_INFO_CONFIRM_WITHOUT_TITLE_MSGVER_1"] = "Aktivieren Sie die [SPAN]neue Zwei-Faktor-Authentifizierung[/SPAN], um Ihren Login zu bestätigen, ohne einen Code eingeben zu müssen.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE"] = "Aktivieren Sie die <span class=\"intranet-otp-motivating-popup__title--accent\">Zwei-Faktor-Authentifizierung,</span> um die Daten Ihres Unternehmens zu schützen.";
+$MESS["NOTIFY_BANNER_INFO_DEF_COMPANY_DATA_TITLE_MSGVER_1"] = "Aktivieren Sie die <span class=\"\"intranet-otp-motivating-popup__title--accent\"\">Zwei-Faktor-Authentifizierung</span>, um Ihren Account zu schützen.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE"] = "Schützen Sie Ihre Daten. Aktivieren Sie die <span class=\"intranet-otp-motivating-popup__title--accent\">Zwei-Faktor-Authentifizierung</span> für alle.";
+$MESS["NOTIFY_BANNER_INFO_DEF_TITLE_MSGVER_1"] = "Schützen Sie Ihre Unternehmensdaten. Aktivieren Sie die <span class=\"\"intranet-otp-motivating-popup__title--accent\"\">Zwei-Faktor-Authentifizierung</span> für alle.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK"] = "Die Zwei-Faktor-Authentifizierung verhindert, dass Angreifer auf Ihren Account zugreifen, selbst wenn Ihr Passwort bekannt wurde. Auf diese Weise sind Ihre persönlichen und geschäftlichen Daten geschützt.";
+$MESS["NOTIFY_BANNER_INFO_DESC_BLOCK_MSGVER_1"] = "Die Zwei-Faktor-Authentifizierung verhindert, dass Angreifer auf Ihren Account zugreifen, selbst wenn Ihr Passwort bekannt wurde. Dadurch bleiben Ihre persönlichen und geschäftlichen Daten sicher.";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_ALL_BTN"] = "Für alle aktivieren";
+$MESS["NOTIFY_BANNER_INFO_ENABLE_BTN"] = "Aktivieren";
+$MESS["NOTIFY_BANNER_INFO_EXIST_BLOCK"] = "Ihr Account ist bereits geschützt.";
+$MESS["NOTIFY_BANNER_INFO_EXIST_BLOCK_MSGVER_1"] = "Jetzt ist es noch einfacher, Ihr Bitrix24 zu schützen. Sie brauchen keinen Code mehr einzugeben, stattdessen können Sie Ihren Login in der mobilen App bestätigen.";
+$MESS["NOTIFY_BANNER_INFO_FIN_OPT"] = "Finanzieller und Reputationsschaden";
+$MESS["NOTIFY_BANNER_INFO_IS_PROJECT_BLOCK"] = "Die Zwei-Faktor-Authentifizierung ist Teil der Initiative <b>zur Sicherheit personenbezogener Daten,</b> die eine breite Palette von Lösungen zum Schutz von Informationen implementiert.";
+$MESS["NOTIFY_BANNER_INFO_LATER_BTN"] = "Später erinnern";
+$MESS["NOTIFY_BANNER_INFO_LEAK_OPT"] = "Lecks vertraulicher Informationen";
+$MESS["NOTIFY_BANNER_INFO_LEGAL_OPT"] = "Rechtliche Folgen";
+$MESS["NOTIFY_BANNER_INFO_MORE_BTN"] = "Mehr erfahren";
+$MESS["NOTIFY_BANNER_INFO_NEW_OTP_BLOCK"] = "Der Schutz Ihres Bitrix24 ist jetzt noch einfacher. Sie müssen den Code nicht mehr eingeben. Bestätigen Sie stattdessen Ihre Anmeldung in der mobilen App.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK"] = "Ihr Bitrix24 Administrator hat die Sicherheitsparameter geändert. Ab dem <b>#END_DATE#</b> können Sie sich nur noch mit einem zweiten Authentifizierungsfaktor in Ihren Account einloggen, indem Sie Ihre Anmeldung in der mobilen App bestätigen.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE"] = "Ab dem <b>#END_DATE#</b> können Sie sich nur dann in Ihren Account einloggen, wenn Sie den Login in der mobilen App bestätigen.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_HIGH_PROMOTE_MSGVER_1"] = "Ab dem <b>#END_DATE#</b> können Sie sich in Ihren Account nur noch einloggen, wenn Sie Ihren Login in der mobilen App bestätigen.";
+$MESS["NOTIFY_BANNER_INFO_REQ_BLOCK_MSGVER_1"] = "Ihr Bitrix24 Administrator hat die Sicherheitsparameter geändert. Ab <b>#END_DATE#</b> können Sie sich nur noch mit einem zweiten Authentifizierungsfaktor in Ihren Account einloggen, wenn Sie Ihren Login in der mobilen App bestätigen.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK"] = "Cyberangriffe auf Unternehmen nehmen zu. Informationslecks führen unweigerlich zu finanziellen und Reputationsschäden.";
+$MESS["NOTIFY_BANNER_INFO_WARNING_BLOCK_MSGVER_1"] = "Cyberangriffe auf Unternehmen nehmen zu. Informationslecks führen zwangsläufig zu finanziellen und reputationsbezogenen Schäden.";

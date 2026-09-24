@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_70_4_NAME"] = "Kafelki z tytułem, tekstem i paskiem koloru po lewej, wszystko w zaokrąglonej ramce";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD"] = "Kafelek";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_LINE"] = "Pasek koloru kafelka";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_LINK"] = "Link";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_TEXT"] = "Tekst kafelka";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CARD_TITLE"] = "Tytuł kafelka";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_CONTAINER"] = "Kontener";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_TEXT"] = "Tekst";
+$MESS["LANDING_BLOCK_WIDGET_70_4_NODE_TITLE"] = "Tytuł";

@@ -1,0 +1,25 @@
+<?php
+$MESS["BI_GROUP_ADD_DASHBOARD"] = "Aggiungi dashboard";
+$MESS["BI_GROUP_DASHBOARD_SCOPES_EMPTY"] = "Seleziona ambito";
+$MESS["BI_GROUP_EMPTY_SUBTITLE"] = "Fai clic su \"Aggiungi dashboard\" per aggiungere dashboard a questo gruppo.";
+$MESS["BI_GROUP_EMPTY_TITLE"] = "Non ci sono dashboard in questo gruppo";
+$MESS["BI_GROUP_NAME_NEW"] = "Nuovo gruppo";
+$MESS["BI_GROUP_SAVE"] = "Salva";
+$MESS["BI_GROUP_SAVE_CANCEL_MSGVER_1"] = "Annulla";
+$MESS["BI_GROUP_SAVE_WARN_DONT_SHOW"] = "Non mostrare più";
+$MESS["BI_GROUP_SAVE_WARN_NO"] = "No";
+$MESS["BI_GROUP_SAVE_WARN_TEXT_MSGVER_1"] = "Rimuovere la dashboard da questo gruppo? Potresti perdere l'accesso alla dashboard.";
+$MESS["BI_GROUP_SAVE_WARN_TITLE"] = "Rimuovi dashboard dal gruppo";
+$MESS["BI_GROUP_SAVE_WARN_YES"] = "Sì";
+$MESS["BI_GROUP_SCOPES_DASHBOARD"] = "#FIRST_SCOPES# [hint]e altri #NUMBER#[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_EMPTY_MSGVER_1"] = "[title]Ambito dashboard:[/title] seleziona";
+$MESS["BI_GROUP_SCOPES_GROUP_MANY_MSGVER_1"] = "[title]Ambito dashboard:[/title] #FIRST_SCOPES# [hint]e #NUMBER# in più[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_MSGVER_1"] = "[title]Ambito dashboard:[/title] #SCOPE#";
+$MESS["BI_GROUP_SCOPE_HINT_MSGVER_1"] = "Gli ambiti selezionati verranno applicati a tutte le dashboard del gruppo. [link]Scopri di più[/link]";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_0"] = "#COUNT# dashboard";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_1"] = "#COUNT# dashboard";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_2"] = "#COUNT# dashboard";
+$MESS["BI_GROUP_SYSTEM_NAME_HINT"] = "Impossibile rinominare un gruppo di sistema.";
+$MESS["BI_GROUP_SYSTEM_SCOPES_HINT"] = "Impossibile modificare l'ambito di un gruppo di sistema.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE"] = "Per eliminare l'ambito di questa dashboard, <br>rimuovi la dashboard dal gruppo \"#GROUP_NAME#\".";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE_MANY"] = "Per eliminare l'ambito di questa dashboard, <br>rimuovi la dashboard da questi gruppi:";

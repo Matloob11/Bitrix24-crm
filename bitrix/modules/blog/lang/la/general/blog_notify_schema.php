@@ -1,0 +1,20 @@
+<?php
+$MESS["BLG_NS"] = "Conversaciones (publicaciones en Noticias)";
+$MESS["BLG_NS_BROADCAST_COMMENT"] = "Agregar mensaje en el formulario de comentarios para todos los usuarios";
+$MESS["BLG_NS_BROADCAST_POST_MSGVER_2"] = "Nueva publicación de difusión agregada";
+$MESS["BLG_NS_COMMENT_MSGVER_1"] = "Alguien comentó su publicación";
+$MESS["BLG_NS_GRAT_MSGVER_1"] = "Reconocimiento recibido";
+$MESS["BLG_NS_IM_ANSWER_ERROR"] = "Error al publicar comentario";
+$MESS["BLG_NS_IM_ANSWER_SUCCESS"] = "El comentario ha sido publicado";
+$MESS["BLG_NS_MENTION"] = "Lo mencionaron en una publicación";
+$MESS["BLG_NS_MENTION_COMMENT"] = "Lo mencionaron en un comentario";
+$MESS["BLG_NS_MODERATE_COMMENT"] = "Nuevo comentario no moderado";
+$MESS["BLG_NS_MODERATE_POST"] = "Nueva publicación no moderada";
+$MESS["BLG_NS_MSGVER_2"] = "Publicaciones en el Feed";
+$MESS["BLG_NS_POST_MAIL"] = "Su mensaje fue publicado en Noticias.";
+$MESS["BLG_NS_POST_MAIL_MSGVER_2"] = "Su mensaje de correo electrónico publicado en el Feed";
+$MESS["BLG_NS_POST_MSGVER_1"] = "Se le especificó como destinatario de una publicación reciente";
+$MESS["BLG_NS_PUBLISHED_COMMENT"] = "Su comentario fue publicado por el moderador";
+$MESS["BLG_NS_PUBLISHED_POST"] = "Su publicación fue publicada por el moderador";
+$MESS["BLG_NS_SHARE2USERS_MSGVER_1"] = "Alguien compartió una publicación con usted";
+$MESS["BLG_NS_SHARE_MSGVER_1"] = "Su publicación fue compartida con alguien";

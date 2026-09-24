@@ -1,0 +1,19 @@
+<?php
+$MESS["M_DISK_FILE_ACTIONS_COPY"] = "Kopiuj";
+$MESS["M_DISK_FILE_ACTIONS_DOWNLOAD"] = "Pobierz";
+$MESS["M_DISK_FILE_ACTIONS_DOWNLOAD_ERROR_DESCRIPTION"] = "Nie można pobrać pliku.";
+$MESS["M_DISK_FILE_ACTIONS_DOWNLOAD_ERROR_TITLE"] = "Błąd";
+$MESS["M_DISK_FILE_ACTIONS_MOVE"] = "Przenieś";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE"] = "Usuń";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_CONFIRM_ACCEPT"] = "Usuń";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FILE_CONFIRM_DESCRIPTION"] = "Plik będzie przechowywany w Koszu przez 30 dni.";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FILE_CONFIRM_TITLE"] = "Czy na pewno chcesz usunąć ten plik?";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FOLDER_CONFIRM_DESCRIPTION"] = "Folder będzie przechowywany w Koszu przez 30 dni.";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FOLDER_CONFIRM_TITLE"] = "Czy chcesz usunąć ten folder?";
+$MESS["M_DISK_FILE_ACTIONS_RENAME"] = "Zmień nazwę";
+$MESS["M_DISK_FILE_ACTIONS_SEND_TO_CHAT"] = "Wyślij na czat";
+$MESS["M_DISK_FILE_ACTIONS_SHARE"] = "Udostępnij";
+$MESS["M_DISK_FILE_ACTIONS_SHARE_ERROR_DESCRIPTION"] = "Nie można udostępnić pliku.";
+$MESS["M_DISK_FILE_ACTIONS_SHARE_ERROR_TITLE"] = "Coś poszło nie tak";
+$MESS["M_DISK_FILE_ACTIONS_SHARE_LINK"] = "Link publiczny";
+$MESS["M_DISK_FILE_ACTIONS_SHOW_IN_FOLDER"] = "Otwórz folder zawierający";

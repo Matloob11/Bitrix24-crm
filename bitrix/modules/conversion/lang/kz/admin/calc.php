@@ -1,0 +1,20 @@
+<?php
+$MESS["CONVERSION_CALC_ADVERT_BUDGET"] = "Жарнамалық бюджет";
+$MESS["CONVERSION_CALC_AVERAGE_BILL"] = "Орташа чек";
+$MESS["CONVERSION_CALC_CLICK_PRICE"] = "Өту бағасы";
+$MESS["CONVERSION_CALC_CONVERSION"] = "Конверсия";
+$MESS["CONVERSION_CALC_COST"] = "Өзіндік құны";
+$MESS["CONVERSION_CALC_CPA"] = "Тапсырыс бағасы (CPA)";
+$MESS["CONVERSION_CALC_DENOMINATOR"] = "Өтулер";
+$MESS["CONVERSION_CALC_FORECAST"] = "Болжам";
+$MESS["CONVERSION_CALC_FUNNEL"] = "Иірім";
+$MESS["CONVERSION_CALC_GROSS_INCOME"] = "Жалпы табыс";
+$MESS["CONVERSION_CALC_INDICATORS"] = "Рентабельдік көрсеткіштері";
+$MESS["CONVERSION_CALC_MARGIN"] = "Үстеме";
+$MESS["CONVERSION_CALC_NUMERATOR"] = "Тапсырыстар саны";
+$MESS["CONVERSION_CALC_OTHER_EXPENSES"] = "Басқа шығыстар";
+$MESS["CONVERSION_CALC_PROFIT"] = "Барлығы";
+$MESS["CONVERSION_CALC_PROFITABILITY"] = "Рентабельділік моделі";
+$MESS["CONVERSION_CALC_ROI"] = "Өтелімділік (ROI)";
+$MESS["CONVERSION_CALC_TITLE"] = "Интернет-дүкеннің өтелімділік моделі";
+$MESS["CONVERSION_CALC_TITLE2"] = "Дүкеннің рентабельділігі";

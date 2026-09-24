@@ -1,0 +1,4 @@
+<?php
+$MESS["SONET_LIVEFEED_TIMEMAN_ENTRY_PINNED_DESCRIPTION"] = "La conferma è obbligatoria";
+$MESS["SONET_LIVEFEED_TIMEMAN_ENTRY_PINNED_DESCRIPTION2"] = "Confermato";
+$MESS["SONET_LIVEFEED_TIMEMAN_ENTRY_TITLE"] = "Il giorno lavorativo #DATE# di #USER_NAME# è stato modificato";

@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_HOOK_DETAIL_HELP"] = "Plus";
+$MESS["LANDING_HOOK_GTM_PLACEHOLDER"] = "Saisissez l'ID";

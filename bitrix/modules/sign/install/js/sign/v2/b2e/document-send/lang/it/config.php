@@ -1,0 +1,27 @@
+<?php
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_EMAIL"] = "usa anche e-mail";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_HINT"] = "Il link al documento verrà inviato su Bitrix24 Messenger.";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_IDLE"] = "Chat Bitrix24";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_NOT_SET"] = "Seleziona un altro canale";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_CHANEL_SMS"] = "usa anche SMS";
+$MESS["SIGN_DOCUMENT_SEND_COMMUNICATION_TITLE_MSGVER_1"] = "Invia il link del documento a";
+$MESS["SIGN_DOCUMENT_SEND_DATETIME_LIMIT_SELECTOR_HINT"] = "Tutte le parti dovranno firmare il documento entro questa data.";
+$MESS["SIGN_DOCUMENT_SEND_FIRST_PARTY"] = "Mittente";
+$MESS["SIGN_DOCUMENT_SEND_FIRST_PARTY_TEMPLATE"] = "Firmatario per conto dell'azienda (rappresentante)";
+$MESS["SIGN_DOCUMENT_SEND_HEADER_1"] = "Controlla dati del documento";
+$MESS["SIGN_DOCUMENT_SEND_LANG_SELECTOR_HINT"] = "Il certificato di firma verrà creato nella lingua selezionata.";
+$MESS["SIGN_DOCUMENT_SEND_REMINDER_TYPE_SELECTOR_HINT"] = "Il bot HR invierà al responsabile un promemoria sul nuovo documento per tre giorni.";
+$MESS["SIGN_DOCUMENT_SEND_SECOND_PARTY"] = "Destinatario";
+$MESS["SIGN_DOCUMENT_SUMMARY_TEMPLATE_TITLE"] = "Modello";
+$MESS["SIGN_DOCUMENT_SUMMARY_TITLE"] = "Documento da firmare";
+$MESS["SIGN_SEND_CLOSE_BTN"] = "Chiudi questa pagina";
+$MESS["SIGN_SEND_CLOSE_DESCRIPTION"] = "L'operazione potrebbe richiedere qualche istante. Se chiudi la pagina, l'invio continuerà in background.";
+$MESS["SIGN_SEND_PROGRESS_TITLE"] = "Invio dei documenti";
+$MESS["SIGN_SEND_SIGNING_COMPANY"] = "La tua azienda";
+$MESS["SIGN_SEND_SIGNING_EMPLOYEES"] = "Dipendenti";
+$MESS["SIGN_SEND_SIGNING_REPRESENTATIVE"] = "Rappresentante";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_EDITOR"] = "Compila i campi";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_REVIEWER"] = "Approva";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_HEAD_REVIEWER_TEMPLATE"] = "Approvatore";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_TITLE_EDITOR"] = "Completa le informazioni del dipendente";
+$MESS["SIGN_SEND_SIGNING_VALIDATION_TITLE_REVIEWER_MSGVER_1"] = "Il documento verrà approvato da";

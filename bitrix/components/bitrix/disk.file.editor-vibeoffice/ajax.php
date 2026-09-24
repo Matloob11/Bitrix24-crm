@@ -1,0 +1,223 @@
+<?php
+
+use Bitrix\Disk;
+use Bitrix\Disk\Document\Online\UserInfoToken;
+use Bitrix\Disk\Document\OnlyOffice\Editor\ConfigBuilder;
+use Bitrix\Disk\Document\OnlyOffice\Filters\DocumentSessionCheck;
+use Bitrix\Disk\Document\Vibeoffice\VibeofficeHandler;
+use Bitrix\Disk\User;
+use Bitrix\Main\HttpResponse;
+use Bitrix\Main\Engine;
+use Bitrix\Main\Error;
+use Bitrix\Main\Engine\Action;
+use Bitrix\Main\Engine\ActionFilter;
+use Bitrix\Main\Loader;
+
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+Loader::requireModule('disk');
+
+/**
+ * Component AJAX controller for the vibeoffice editor shell.
+ *
+ * Parallel to {@see DiskFileEditorOnlyOfficeController}: the backend
+ * {@see \Bitrix\Disk\Controller\Vibeoffice} redirects into the editor shell through
+ * `getSliderContent`/`showNotFound` here (carrying only the DocumentSession id/hash),
+ * and this controller renders the `bitrix:disk.file.editor-vibeoffice` component inside
+ * the ui.sidepanel wrapper. The DocumentSession rights re-check reuses the generic
+ * {@see DocumentSessionCheck} filter (it is session-based, not OnlyOffice-config-based).
+ */
+class DiskFileEditorVibeofficeController extends Engine\Controller
+{
+	protected function processBeforeAction(Action $action): bool
+	{
+		if (!VibeofficeHandler::isEnabled())
+		{
+			$this->addError(new Error('Vibeoffice handler is not configured.'));
+
+			return false;
+		}
+
+		return parent::processBeforeAction($action);
+	}
+
+	protected function shouldDecodePostData(Action $action): bool
+	{
+		return false;
+	}
+
+	public function configureActions()
+	{
+		return [
+			'showNotFound' => [
+				'-prefilters' => [
+					ActionFilter\Csrf::class,
+				],
+			],
+			'getSliderContent' => [
+				'+prefilters' => [
+					(new DocumentSessionCheck())
+						->enableHashCheck(function(){
+							return Bitrix\Main\Context::getCurrent()->getRequest()->get('documentSessionHash');
+						})
+						->enableOwnerCheck()
+						->enableStrictCheckRight()
+					,
+				],
+				'-prefilters' => [
+					ActionFilter\Csrf::class,
+				],
+			],
+			// Resolve the display name of the author of a concurrent change for the live
+			// "document was modified" view toast. Token-gated exactly like the OnlyOffice
+			// shell ({@see DiskFileEditorOnlyOfficeController::configureActions} 'getUserInfo').
+			'getUserInfo' => [
+				'+prefilters' => [
+					new Bitrix\Main\Engine\ActionFilter\CloseSession(),
+					new ActionFilter\ContentType([ActionFilter\ContentType::JSON]),
+					(new DocumentSessionCheck())
+						->enableOwnerCheck()
+						->enableHashCheck(function(){
+							return (new Engine\JsonPayload())->getData()['documentSessionHash'];
+						})
+					,
+				],
+				'-prefilters' => [
+					ActionFilter\Authentication::class,
+				],
+			],
+			// keep-alive ping from the helper wrapper (install/js/disk/editor-vibeoffice/src/vibeoffice.js
+			// #trackWork): refreshes the document session so it is not garbage-collected while the
+			// user keeps editing. Mirrors {@see DiskFileEditorOnlyOfficeController::configureActions}.
+			'markAsStillWorkingSession' => [
+				'+prefilters' => [
+					new Bitrix\Main\Engine\ActionFilter\CloseSession(),
+					new ActionFilter\ContentType([ActionFilter\ContentType::JSON]),
+					(new DocumentSessionCheck())
+						->enableOwnerCheck()
+						->enableHashCheck(function(){
+							return (new Engine\JsonPayload())->getData()['documentSessionHash'];
+						})
+					,
+				],
+			],
+		];
+	}
+
+	public function markAsStillWorkingSessionAction(Disk\Document\Models\DocumentSession $documentSession): ?array
+	{
+		if ($documentSession->isView())
+		{
+			$this->addError(new Error("Could not update info by view session: {$documentSession->getId()}."));
+
+			return null;
+		}
+		$documentInfo = $documentSession->getInfo();
+		if (!$documentInfo)
+		{
+			$this->addError(new Error("Could not get info by session: {$documentSession->getId()}."));
+
+			return null;
+		}
+
+		$documentInfo->actualizeUpdateTime();
+
+		return [
+			'documentInfo' => [
+				'updateTime' => $documentInfo->getUpdateTime(),
+			],
+		];
+	}
+
+	public function getUserInfoAction(int $userId, string $infoToken, Disk\Document\Models\DocumentSession $documentSession): ?array
+	{
+		// This action runs with Authentication removed (anonymously reachable), and the object
+		// may have been deleted, so getObject() can return null — guard before dereferencing it
+		// to answer with a clean error instead of a fatal (M5).
+		$object = $documentSession->getObject();
+		if (!$object)
+		{
+			$this->addError(new Error("Could not find the object for the document session."));
+
+			return null;
+		}
+
+		$validToken = UserInfoToken::checkTimeLimitedToken($infoToken, $userId, $object->getRealObjectId());
+		if (!$validToken)
+		{
+			$this->addError(new Error("Invalid infoToken to get information about user {$userId}."));
+
+			return null;
+		}
+
+		$userModel = User::getById($userId);
+		if (!$userModel)
+		{
+			$this->addError(new Error("Could find user by id: {$userId}."));
+
+			return null;
+		}
+
+		return [
+			'user' => [
+				'id' => $userId,
+				'name' => $userModel->getFormattedName(),
+				'avatar' => $userModel->getAvatarSrc(),
+			],
+		];
+	}
+
+	public function getSliderContentAction(Disk\Document\Models\DocumentSession $documentSession, int $editorMode = ConfigBuilder::VISUAL_MODE_USUAL): HttpResponse
+	{
+		$content = $GLOBALS['APPLICATION']->includeComponent(
+			'bitrix:ui.sidepanel.wrapper',
+			'',
+			[
+				'RETURN_CONTENT' => true,
+				'POPUP_COMPONENT_NAME' => 'bitrix:disk.file.editor-vibeoffice',
+				'POPUP_COMPONENT_TEMPLATE_NAME' => '',
+				'POPUP_COMPONENT_PARAMS' => [
+					'DOCUMENT_SESSION' => $documentSession,
+					'EDITOR_MODE' => $editorMode,
+				],
+				'PLAIN_VIEW' => true,
+				'IFRAME_MODE' => true,
+				'PREVENT_LOADING_WITHOUT_IFRAME' => false,
+				'USE_PADDING' => false,
+			]
+		);
+
+		$response = new HttpResponse();
+		$response->setContent($content);
+
+		return $response;
+	}
+
+	public function showNotFoundAction(): HttpResponse
+	{
+		$content = $GLOBALS['APPLICATION']->includeComponent(
+			'bitrix:ui.sidepanel.wrapper',
+			'',
+			[
+				'RETURN_CONTENT' => true,
+				'POPUP_COMPONENT_NAME' => 'bitrix:disk.file.editor-vibeoffice',
+				'POPUP_COMPONENT_TEMPLATE_NAME' => '',
+				'POPUP_COMPONENT_PARAMS' => [
+					'TEMPLATE' => 'not-found',
+				],
+				'PLAIN_VIEW' => true,
+				'IFRAME_MODE' => true,
+				'PREVENT_LOADING_WITHOUT_IFRAME' => false,
+				'USE_PADDING' => false,
+			]
+		);
+
+		$response = new HttpResponse();
+		$response->setContent($content);
+
+		return $response;
+	}
+}

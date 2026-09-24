@@ -1,0 +1,30 @@
+<?php
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_TITLE'] = 'Новый чекин';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_DESCRIPTION_PLACEHOLDER'] = 'Сообщение к чекину';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_CHAT_SELECTOR_TITLE'] = 'Выберите чат';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_BUTTON'] = 'Добавить';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_ERROR'] = 'Не удалось выполнить действие. Попробуйте ещё раз немного позже';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_MESSENGER_BUTTON_PLACEHOLDER'] = 'Чат';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_FILE_BUTTON_PLACEHOLDER_MSGVER_1'] = 'Фото';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_FILES_BUTTON_MSGVER_1'] = 'Фото: #COUNT#';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_GEO_PERMISSION_CANCEL_BUTTON'] = 'Отмена';
+
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_TITLE'] = 'Завершить предыдущий день?';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_DESCRIPTION'] = 'Чтобы начать новый рабочий день, нужно завершить предыдущий';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_ACTION'] = 'Завершить предыдущий день';
+
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_TITLE'] = 'Начать рабочий день?';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_DESCRIPTION'] = 'Сегодня у вас выходной. Вы можете добавить чекин, но не начинать рабочий день';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_ACTION'] = 'Да, начать';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_CANCEL'] = 'Не начинать';
+
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_CANCEL_TITLE'] = 'Выйти из чекина?';
+
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_TITLE'] = 'Чекин отключён';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_DESCRIPTION'] = 'Включите его для вашего Битрикс24 — так сотрудники смогут отмечать своё местоположение';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_BUTTON_TEXT'] = 'Включить';
+
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_DESCRIPTION'] = 'Обратитесь к руководителю или администратору вашего Битрикс24';
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_BUTTON_TEXT'] = 'Написать руководителю';
+
+$MESS['M_STAFFTRACK_ADD_CHECK_IN_SUCCESS_TOAST'] = 'Хорошего дня!';

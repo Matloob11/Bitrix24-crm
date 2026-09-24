@@ -1,0 +1,4 @@
+<?php
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_DISABLED_MANUALLY"] = "BI Құрастырушыны сіздің Битрикс24-тің әкімшісі өшірген";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_PERMISSION_ERROR"] = "BI Құрастырушымен жұмыс істеуге құқық жеткіліксіз";
+$MESS["BICONNECTOR_SUPERSET_DASHBOARD_CONTROLLER_TITLE"] = "BI Құрастырушы";

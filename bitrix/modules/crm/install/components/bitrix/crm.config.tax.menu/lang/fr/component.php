@@ -1,0 +1,19 @@
+<?php
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Le module CRM n'est pas installé.";
+$MESS["CRM_PERMISSION_DENIED"] = "Accès refusé";
+$MESS["CRM_SALE_MODULE_NOT_INSTALLED"] = "Le module Boutique en ligne n'est pas installé.";
+$MESS["CRM_TAX_ADD"] = "Ajouter une taxe";
+$MESS["CRM_TAX_ADD_TITLE"] = "Créer une nouvelle taxe";
+$MESS["CRM_TAX_DELETE"] = "Eliminer la taxe";
+$MESS["CRM_TAX_DELETE_DLG_BTNTITLE"] = "Eliminer la taxe";
+$MESS["CRM_TAX_DELETE_DLG_MESSAGE"] = "Êtes-vous sûr de vouloir supprimer cette taxe ?";
+$MESS["CRM_TAX_DELETE_DLG_TITLE"] = "Eliminer la taxe";
+$MESS["CRM_TAX_DELETE_TITLE"] = "Eliminer la taxe";
+$MESS["CRM_TAX_EDIT"] = "Éditer";
+$MESS["CRM_TAX_EDIT_TITLE"] = "Modifier la taxe";
+$MESS["CRM_TAX_LIST"] = "Taxes";
+$MESS["CRM_TAX_LIST_TITLE"] = "Voir toutes les taxes";
+$MESS["CRM_TAX_SETTINGS"] = "Paramètres";
+$MESS["CRM_TAX_SETTINGS_TITLE"] = "Régler le système des taxes";
+$MESS["CRM_TAX_SHOW"] = "Affichage";
+$MESS["CRM_TAX_SHOW_TITLE"] = "Passage à l'examen de la taxe";

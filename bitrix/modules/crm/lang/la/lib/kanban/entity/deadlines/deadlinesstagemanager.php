@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_DEADLINES_STAGE_LATER"] = "Más de dos semanas";
+$MESS["CRM_DEADLINES_STAGE_NEXT_WEEK"] = "Semana siguiente";
+$MESS["CRM_DEADLINES_STAGE_OVERDUE"] = "Atrasado";
+$MESS["CRM_DEADLINES_STAGE_THIS_WEEK"] = "Esta semana";
+$MESS["CRM_DEADLINES_STAGE_TODAY"] = "Hoy";

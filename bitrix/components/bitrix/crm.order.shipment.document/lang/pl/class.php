@@ -1,0 +1,8 @@
+<?
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Moduł CRM nie jest zainstalowany.";
+$MESS["CRM_ORDER_SHIPMENT_DOCUMENT_SUBTITLE"] = "Informacje o wysyłce";
+$MESS["CRM_ORDER_SHIPMENT_DOCUMENT_TITLE"] = "Dokumenty przewozowe";
+$MESS["CRM_ORDER_SHIPMENT_FIELD_DELIVERY_DOC_DATE"] = "Data dokumentu przewozowego";
+$MESS["CRM_ORDER_SHIPMENT_FIELD_DELIVERY_DOC_NUM"] = "Dokument przewozowy #";
+$MESS["CRM_ORDER_SHIPMENT_FIELD_TRACKING_NUMBER"] = "Numer śledzenia";
+?>

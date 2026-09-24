@@ -1,0 +1,8 @@
+<?php
+$MESS["CLO_STORAGE_S3_EDIT_ACCESS_KEY"] = "Clave de acceso";
+$MESS["CLO_STORAGE_S3_EDIT_SECRET_KEY"] = "Clave secreta";
+$MESS["CLO_STORAGE_S3_EDIT_USE_HTTPS"] = "Conectarse utilizando HTTPS";
+$MESS["CLO_STORAGE_S3_EMPTY_ACCESS_KEY"] = "La clave de acceso no está especificada.";
+$MESS["CLO_STORAGE_S3_EMPTY_SECRET_KEY"] = "La clave secreta no está especificada.";
+$MESS["CLO_STORAGE_S3_XML_ERROR"] = "error del servicio: #errmsg#";
+$MESS["CLO_STORAGE_S3_XML_PARSE_ERROR"] = "respuesta de un servicio no reconocido (error ##errno#)";

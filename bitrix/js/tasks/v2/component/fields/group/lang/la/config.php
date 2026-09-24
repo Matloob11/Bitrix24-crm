@@ -1,0 +1,26 @@
+<?php
+$MESS["TASKS_V2_GROUP_ABOUT"] = "Abrir proyecto";
+$MESS["TASKS_V2_GROUP_ABOUT_COLLAB"] = "Abrir collab";
+$MESS["TASKS_V2_GROUP_ABOUT_SCRUM"] = "Abrir scrum";
+$MESS["TASKS_V2_GROUP_CANT_CHANGE_FLOW"] = "No se puede cambiar el proyecto para las tareas asociadas con un flujo. Elimine la tarea del flujo antes de cambiar el proyecto.";
+$MESS["TASKS_V2_GROUP_CHANGE"] = "Cambiar";
+$MESS["TASKS_V2_GROUP_CHOOSE_EPIC"] = "Seleccionar epic";
+$MESS["TASKS_V2_GROUP_CLEAR"] = "Desvincular";
+$MESS["TASKS_V2_GROUP_COUNT_MEMBERS_PLURAL_0"] = "#COUNT# miembro";
+$MESS["TASKS_V2_GROUP_COUNT_MEMBERS_PLURAL_1"] = "#COUNT# miembros";
+$MESS["TASKS_V2_GROUP_COUNT_MEMBERS_PLURAL_2"] = "#COUNT# miembros";
+$MESS["TASKS_V2_GROUP_DATE_CREATE"] = "Creado el";
+$MESS["TASKS_V2_GROUP_EPIC_EMPTY"] = "No seleccionado";
+$MESS["TASKS_V2_GROUP_EPIC_HINT"] = "Epic";
+$MESS["TASKS_V2_GROUP_EPIC_TITLE"] = "Epic:";
+$MESS["TASKS_V2_GROUP_HIDDEN"] = "Proyecto oculto";
+$MESS["TASKS_V2_GROUP_OWNER"] = "Propietario";
+$MESS["TASKS_V2_GROUP_STAGE_HINT"] = "Seleccionar etapa";
+$MESS["TASKS_V2_GROUP_STAGE_TITLE"] = "Etapa:";
+$MESS["TASKS_V2_GROUP_STORY_POINTS_HINT"] = "Puntos de la historia";
+$MESS["TASKS_V2_GROUP_STORY_POINTS_TITLE"] = "Puntos de historia:";
+$MESS["TASKS_V2_GROUP_SUBJECT"] = "Asunto";
+$MESS["TASKS_V2_GROUP_TITLE"] = "Proyecto:";
+$MESS["TASKS_V2_GROUP_TITLE_CHIP"] = "Proyecto";
+$MESS["TASKS_V2_GROUP_TITLE_COLLAB"] = "Collab";
+$MESS["TASKS_V2_GROUP_TITLE_SCRUM"] = "Scrum";

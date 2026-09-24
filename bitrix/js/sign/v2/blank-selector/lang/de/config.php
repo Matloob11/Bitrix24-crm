@@ -1,0 +1,25 @@
+<?php
+$MESS["SIGN_BLANK_SELECTOR_CLEAR_ALL"] = "Alles löschen";
+$MESS["SIGN_BLANK_SELECTOR_CREATED_MYSELF"] = "Sie";
+$MESS["SIGN_BLANK_SELECTOR_CREATE_NEW_PIC"] = "Bild";
+$MESS["SIGN_BLANK_SELECTOR_DRAG_AREA"] = "Verschieben Sie Ihre Dateien hierher";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_MIXED"] = "Dokumente oder Bilder mit [highlight]editierbaren Feldern[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_DROP_ZONE_PLACEHOLDERS"] = "Dokumente oder Formulare mit [highlight]editierbaren symbolischen Feldern[/highlight].";
+$MESS["SIGN_BLANK_SELECTOR_FIELD_ADD_BUTTON_LABEL"] = "Dokumentvorlage auswählen";
+$MESS["SIGN_BLANK_SELECTOR_LOAD_MORE"] = "Mehr anzeigen";
+$MESS["SIGN_BLANK_SELECTOR_MIXED"] = "Dokumente oder Bilder mit editierbaren Feldern";
+$MESS["SIGN_BLANK_SELECTOR_NEW_BADGE"] = "Neu";
+$MESS["SIGN_BLANK_SELECTOR_NEW_DOC"] = "Microsoft Word";
+$MESS["SIGN_BLANK_SELECTOR_NEW_PDF"] = "PDF-Dokument";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX"] = "Dokument mit symbolischen Feldern";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_DOCX_MSGVER_1"] = "Dokumente oder Formulare mit editierbaren symbolischen Feldern";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK"] = "Symbolische Felder";
+$MESS["SIGN_BLANK_SELECTOR_PLACEHOLDERS_LINK_MSGVER_1"] = "Symbolische Felder";
+$MESS["SIGN_BLANK_SELECTOR_RECENT_TEMPLATES_TITLE"] = "Zuletzt verwendete Dokumente";
+$MESS["SIGN_BLANK_SELECTOR_SLIDER_SELECT_BLANK_BUTTON_LABEL"] = "Auswählen";
+$MESS["SIGN_BLANK_SELECTOR_UPLOADER_ERROR_INCOMPLETE"] = "Die Datei konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_HINT"] = "Sie können jeweils ein PDF-, DOC-, DOCX-, RTF- oder ODT-Dokument zur Unterzeichnung senden, oder bis zu %imageCountLimit% JPG- / PNG-Bildern.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_GROUP_HINT"] = "Jede der Bilddateien darf 10 MB nicht überschreiten.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_IMAGE_SIZE_HINT"] = "Bilddateigröße darf 10 MB nicht überschreiten.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_LIMIT_HINT"] = "Die Vorlage kann nur ein Dokument haben. Um das hochgeladene Dokument zu ersetzen oder zu löschen, nutzen Sie das Dokumentmenü oberhalb.";
+$MESS["SIGN_BLANK_SELECTOR_UPLOAD_PLACEHOLDERS_HINT"] = "Nur DOCX-Dateien mit editierbaren symbolischen Feldern werden unterstützt.";

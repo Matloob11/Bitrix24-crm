@@ -1,0 +1,6 @@
+<?
+$MESS["SPP_SALESCENTER_JS_POPUP_CLOSE"] = "Fechar";
+$MESS["SPP_SALESCENTER_SMSPROVIDER_OTHER_SUB_TITLE"] = "Outros provedores de SMS";
+$MESS["SPP_SALESCENTER_SMSPROVIDER_RECOMMENDATION_SUB_TITLE"] = "Provedores de SMS recomendados";
+$MESS["SPP_SALESCENTER_TITLE"] = "Selecionar o provedor de SMS";
+?>

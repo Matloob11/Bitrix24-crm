@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_CALL_TRACKER_DIRECTION_INCOMING"] = "Llamada entrante";
+$MESS["CRM_CALL_TRACKER_DIRECTION_OUTGOING"] = "Llamada saliente";

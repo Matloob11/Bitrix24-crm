@@ -1,0 +1,3 @@
+<?php
+$MESS["BIZPROC_SCRIPT_MANAGER_NEW_DESCRIPTION"] = "Descrizione dello script";
+$MESS["BIZPROC_SCRIPT_MANAGER_NEW_SCRIPT"] = "Nuovo script";

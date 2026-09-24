@@ -1,0 +1,20 @@
+<?php
+$MESS["iblock_dep_act"] = "Dział jest aktywny";
+$MESS["iblock_dep_addit"] = "Dodatkowe";
+$MESS["iblock_dep_changed"] = "Zmodyfikowany";
+$MESS["iblock_dep_chief"] = "Kierownik";
+$MESS["iblock_dep_code"] = "Kod symboliczny";
+$MESS["iblock_dep_created"] = "Utworzony";
+$MESS["iblock_dep_dep"] = "Dział";
+$MESS["iblock_dep_desc"] = "Opis";
+$MESS["iblock_dep_det_pict"] = "Szczegółowy obraz";
+$MESS["iblock_dep_name"] = "Nazwa działu";
+$MESS["iblock_dep_name1"] = "Moja firma";
+$MESS["iblock_dep_name2"] = "Dział księgowości";
+$MESS["iblock_dep_name3"] = "Dział sprzedaży";
+$MESS["iblock_dep_name5"] = "Dział marketingu";
+$MESS["iblock_dep_parent"] = "Dział na najwyższym poziomie";
+$MESS["iblock_dep_pict"] = "Obraz";
+$MESS["iblock_dep_sort"] = "Porządek sortowania";
+$MESS["iblock_dep_userprop"] = "Właściwość użytkownika";
+$MESS["iblock_dep_userprop_add"] = "Dodaj właściwość użytkownika";

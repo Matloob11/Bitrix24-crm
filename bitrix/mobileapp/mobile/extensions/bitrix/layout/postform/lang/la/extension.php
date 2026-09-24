@@ -1,0 +1,20 @@
+<?php
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_ATTACHMENTS_DIALOG_TITLE"] = "Archivos en la publicación: #NUM#";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_BACKGROUNDS_DIALOG_TITLE"] = "Seleccionar el fondo";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_BACKGROUND_CONFIRM_MESSAGE"] = "Va a cambiar el tipo de publicación. Se restablecerá el fondo de la publicación";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_BUTTON_CANCEL"] = "Cancelar";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_BUTTON_OK"] = "OK";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_TITLE"] = "Advertencia";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_IMPORTANT_CONFIRM_MESSAGE"] = "Va a cambiar el tipo de publicación. Se perderán los datos de prioridad posterior";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_MEDAL_CONFIRM_MESSAGE"] = "Va a cambiar el tipo de publicación. Se perderán los datos de la recompensa";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_VOTE_CONFIRM_MESSAGE"] = "Va a cambiar el tipo de publicación. Se perderán los datos de la encuesta relacionados con la publicación";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_BUTTON_CANCEL"] = "Cancelar";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_BUTTON_OK"] = "OK";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_MESSAGE"] = "Su mensaje se perderá si cierra el formulario. ¿Desea continuar?";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_TITLE"] = "Advertencia";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_DESTINATIONS_EMPTY"] = "Seleccione al menos un destinatario";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_DIALOG_MENTION_TITLE"] = "Mencionar";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_GRATITUDE_EMPLOYEE_EMPTY"] = "No hay ningún empleado seleccionado para recibir un reconocimiento.";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_PANEL_ITEM_SELECTOR_VALUE_ALL"] = "Para todos los empleados";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_TEXT_EMPTY"] = "Introduzca el texto de la publicación del Feed";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_TITLE_PLACEHOLDER_MSGVER_1"] = "Escriba aquí el título de la publicación";

@@ -1,0 +1,4 @@
+<?php
+$MESS["IMMOBILE_FOLDER_CREATE_ERROR_LIMIT"] = "Сіз 20-дан артық бума жасай алмайсыз";
+$MESS["IMMOBILE_FOLDER_CREATE_NAV_TITLE"] = "Жаңа бума";
+$MESS["IMMOBILE_FOLDER_CREATE_SUBMIT_BUTTON"] = "Жасау";

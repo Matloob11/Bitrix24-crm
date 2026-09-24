@@ -1,0 +1,10 @@
+<?php
+$MESS["GD_LOG_ENTITY_MORE"] = "Aktualności grupy";
+$MESS["GD_LOG_ENTITY_TITLE"] = "Aktualności";
+$MESS["GD_UPDATES_ENTITY_BLOG"] = "Raporty";
+$MESS["GD_UPDATES_ENTITY_CALENDAR"] = "Kalendarze";
+$MESS["GD_UPDATES_ENTITY_FILES"] = "Pliki";
+$MESS["GD_UPDATES_ENTITY_FORUM"] = "Forum";
+$MESS["GD_UPDATES_ENTITY_PHOTO"] = "Galeria";
+$MESS["GD_UPDATES_ENTITY_SYSTEM"] = "system";
+$MESS["GD_UPDATES_ENTITY_TASKS"] = "Zadania";

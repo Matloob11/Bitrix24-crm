@@ -1,0 +1,100 @@
+.editor-chart-node-settings-rule-construction {
+	border-radius: 8px;
+	margin-bottom: 18px;
+	padding: 18px;
+}
+
+.editor-chart-node-settings-rule-construction:last-of-type {
+	margin-bottom: 0;
+}
+
+.editor-chart-node-settings-rule-construction.--action {
+	border: 1px solid var(--ui-color-designer-bp-rules-green-stroke);
+	background: var(--ui-color-designer-bp-rules-green-bg);
+}
+
+.editor-chart-node-settings-rule-construction.--action .editor-chart-node-settings-rule-construction__top {
+	border-color: var(--ui-color-designer-bp-rules-green-stroke);
+}
+
+.editor-chart-node-settings-rule-construction.--output {
+	border: 1px solid var(--ui-color-palette-gray-30);
+	background: var(--ui-color-palette-gray-02);
+}
+
+.editor-chart-node-settings-rule-construction.--output .editor-chart-node-settings-rule-construction__top {
+	border-color: var(--ui-color-palette-gray-30);
+}
+
+.editor-chart-node-settings-rule-construction.--filter {
+	border: 1px solid var(--ui-color-accent-main-warning);
+	background: var(--ui-color-accent-soft-orange-3);
+}
+
+.editor-chart-node-settings-rule-construction.--filter .editor-chart-node-settings-rule-construction__top {
+	border-color: var(--ui-color-accent-main-warning);
+}
+
+.editor-chart-node-settings-rule-construction.--condition {
+	border: 1px solid var(--ui-color-designer-bp-rules-blue-stroke);
+	background: var(--ui-color-designer-bp-rules-blue-bg);
+}
+
+.editor-chart-node-settings-rule-construction.--condition .editor-chart-node-settings-rule-construction__top {
+	border-color: var(--ui-color-designer-bp-rules-blue-stroke);
+}
+
+.editor-chart-node-settings-rule-construction__operator_label {
+	font-size: 13px;
+	line-height: 17px;
+	font-weight: var(--ui-font-weight-medium);
+	padding: 4px 8px;
+	border-radius: 6px;
+	color: var(--ui-color-palette-white-base);
+}
+
+.editor-chart-node-settings-rule-construction.--condition .editor-chart-node-settings-rule-construction__operator_label {
+	background: var(--ui-color-blue-55);
+}
+
+.editor-chart-node-settings-rule-construction.--action .editor-chart-node-settings-rule-construction__operator_label {
+	background: var(--ui-color-green-50);
+}
+
+.editor-chart-node-settings-rule-construction.--output .editor-chart-node-settings-rule-construction__operator_label {
+	background: var(--ui-color-palette-gray-50);
+}
+
+.editor-chart-node-settings-rule-construction__top {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border-bottom: 1px solid;
+	padding-bottom: 18px;
+}
+
+.editor-chart-node-settings-rule-construction__dnd-icon {
+	cursor: grab;
+}
+
+.editor-chart-node-settings-rule-construction__dnd-icon:active {
+	cursor: grabbing;
+}
+
+.editor-chart-node-settings-rule-construction__close-icon {
+	margin-left: auto;
+}
+
+.editor-chart-node-settings-rule-construction__description {
+	font-size: 13px;
+	line-height: 17px;
+	color: var(--ui-color-base-4);
+}
+
+.editor-chart-node-settings-rule-construction .editor-chart-node-settings-delete-construction {
+	margin-left: auto;
+}
+
+.editor-chart-node-settings-rule-construction__expression-form {
+	margin-top: 18px;
+}

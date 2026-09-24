@@ -1,0 +1,4 @@
+<?php
+$MESS["SOCIALNETWORK_PROJECT_LIST_ACTION_ADD_TO_ARCHIVE"] = "Projekt został zarchiwizowany.";
+$MESS["SOCIALNETWORK_PROJECT_LIST_ACTION_REMOVE_FROM_ARCHIVE"] = "Projekt został przywrócony z archiwum.";
+$MESS["SOCIALNETWORK_PROJECT_LIST_TITLE"] = "Projekty";

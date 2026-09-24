@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_0"] = "giorno";
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_1"] = "giorni";
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_2"] = "giorni";
+$MESS["CRM_WAIT_ACTIVITY_DESCRIPTION_TYPE_AFTER"] = "Attendi #DURATION# o qualsiasi input dal cliente";
+$MESS["CRM_WAIT_ACTIVITY_DESCRIPTION_TYPE_BEFORE"] = "Attendi #DURATION# fino al \"#TARGET_DATE#\" o qualsiasi input dal cliente";
+$MESS["CRM_WAIT_ACTIVITY_ERROR_WAIT_DURATION"] = "Il timeout non è specificato";
+$MESS["CRM_WAIT_ACTIVITY_ERROR_WAIT_TARGET"] = "La data di fine attesa non è specificata";
+$MESS["CRM_WAIT_ACTIVITY_ERROR_WAIT_TYPE"] = "Il tipo attesa non è specificato";
+$MESS["CRM_WAIT_ACTIVITY_EXECUTE_ERROR_WAIT_BEFORE"] = "La data di fine attesa deve essere successiva alla data corrente. La data che hai inserito potrebbe essere passata o troppo lontano nel futuro.";
+$MESS["CRM_WAIT_ACTIVITY_EXECUTE_ERROR_WAIT_TARGET_1"] = "Il campo dell'elemento di destinazione non è stato trovato";
+$MESS["CRM_WAIT_ACTIVITY_EXECUTE_ERROR_WAIT_TARGET_TIME_1"] = "Impossibile ottenere il valore della data dal campo dell'elemento";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_AFTER"] = "Attendi il numero di giorni specificato";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_BEFORE"] = "Attendi il numero di giorni specificato fino al giorno selezionato";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_DESCRIPTION"] = "Commento o istruzioni";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_DURATION"] = "Intervallo di timeout, giorni";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_TARGET"] = "Fino alla data specificata";
+$MESS["CRM_WAIT_ACTIVITY_WAIT_TYPE"] = "Tipo attesa";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_0"] = "settimana";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_1"] = "settimane";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_2"] = "settimane";

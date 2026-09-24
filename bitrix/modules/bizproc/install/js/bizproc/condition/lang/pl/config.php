@@ -1,0 +1,17 @@
+<?php
+$MESS["BIZPROC_JS_CONDITION"] = "Warunek:";
+$MESS["BIZPROC_JS_CONDITION_BETWEEN"] = "w zakresie";
+$MESS["BIZPROC_JS_CONDITION_CONTAIN"] = "zawiera";
+$MESS["BIZPROC_JS_CONDITION_EMPTY"] = "pusty";
+$MESS["BIZPROC_JS_CONDITION_EQ"] = "równe";
+$MESS["BIZPROC_JS_CONDITION_GT"] = "więcej niż";
+$MESS["BIZPROC_JS_CONDITION_GTE"] = "nie mniejsze niż";
+$MESS["BIZPROC_JS_CONDITION_IN"] = "zawarte w";
+$MESS["BIZPROC_JS_CONDITION_LT"] = "mniejsze niż";
+$MESS["BIZPROC_JS_CONDITION_LTE"] = "nie więcej niż";
+$MESS["BIZPROC_JS_CONDITION_MODIFIED"] = "zmodyfikowano";
+$MESS["BIZPROC_JS_CONDITION_NE"] = "nierówne";
+$MESS["BIZPROC_JS_CONDITION_NOT_CONTAIN"] = "nie zawiera";
+$MESS["BIZPROC_JS_CONDITION_NOT_EMPTY"] = "niepusty";
+$MESS["BIZPROC_JS_CONDITION_NOT_IN"] = "nie jest częścią";
+$MESS["BIZPROC_JS_CONDITION_VALUE"] = "Wartość:";

@@ -1,0 +1,25 @@
+<?php
+$MESS["BX24_CLOSE_BUTTON"] = "Chiudi";
+$MESS["BX24_INVITE_BUTTON"] = "Invita";
+$MESS["BX24_INVITE_DIALOG_EMAIL_ERROR"] = "Gli indirizzi e-mail non sono corretti:<br/>";
+$MESS["BX24_INVITE_DIALOG_EMAIL_LIMIT_EXCEEDED"] = "Superato il numero massimo di indirizzi e-mail nell'invito.";
+$MESS["BX24_INVITE_DIALOG_ERROR_EMPTY_EMAIL"] = "L'indirizzo e-mail non è stato specificato.";
+$MESS["BX24_INVITE_DIALOG_ERROR_EMPTY_EMAIL_LIST"] = "Gli indirizzi e-mail non sono stati specificati.";
+$MESS["BX24_INVITE_DIALOG_ERROR_EMPTY_LAST_NAME"] = "Il cognome è obbligatorio.";
+$MESS["BX24_INVITE_DIALOG_ERROR_EMPTY_PASSWORD"] = "La password non è specificata.";
+$MESS["BX24_INVITE_DIALOG_ERROR_EMPTY_PHONE_LIST"] = "Nessun numero di telefono indicato.";
+$MESS["BX24_INVITE_DIALOG_ERROR_USER_TRANSFER"] = "Impossibile convertire l'utente e-mail.";
+$MESS["BX24_INVITE_DIALOG_ERROR_WRONG_PASSWORD_CONFIRM"] = "La password non corrisponde alla password di conferma.";
+$MESS["BX24_INVITE_DIALOG_ERROR_WRONG_USER"] = "Utente e-mail non corretto specificato.";
+$MESS["BX24_INVITE_DIALOG_INVITE_MESSAGE_TEXT_1"] = "Unisciti a noi nel nostro account Bitrix24. Questo è il posto dove ognuno può comunicare, collaborare agli incarichi e ai progetti, gestire i clienti e fare molto altro.";
+$MESS["BX24_INVITE_DIALOG_MAX_COUNT_ERROR"] = "Il numero di invitati supera i termini della tua licenza.";
+$MESS["BX24_INVITE_DIALOG_PHONE_ERROR"] = "Questi numeri di telefono non sono corretti:<br/>";
+$MESS["BX24_INVITE_DIALOG_PHONE_LIMIT_EXCEEDED"] = "Troppi numeri di telefono aggiunti all'invito.";
+$MESS["BX24_INVITE_DIALOG_USER_EXIST_ERROR1"] = "Un utente con l'e-mail #EMAIL# esiste già.";
+$MESS["BX24_INVITE_DIALOG_USER_EXIST_ERROR2"] = "Gli utenti con e-mail #EMAIL_LIST# esistono già.";
+$MESS["BX24_INVITE_DIALOG_USER_ID_NO_EXIST_ERROR"] = "L'ID utente non è corretto.";
+$MESS["BX24_INVITE_DIALOG_USER_PHONE_EXIST_ERROR1"] = "L'utente con il numero di telefono #PHONE# esiste già.";
+$MESS["BX24_INVITE_DIALOG_USER_PHONE_EXIST_ERROR2"] = "L'utente con i numeri di telefono #PHONE_LIST# esiste già.";
+$MESS["BX24_INVITE_TITLE_ADD"] = "Aggiungi dipendente";
+$MESS["BX24_INVITE_TITLE_INVITE"] = "Invita dipendenti";
+$MESS["BX24_LOADING"] = "Caricamento...";

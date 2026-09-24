@@ -1,0 +1,28 @@
+<?php
+$MESS["CRM_DOCUMENT_LIST_ACTION_CANCEL_TEXT_2"] = "Annuler le traitement";
+$MESS["CRM_DOCUMENT_LIST_ACTION_CONDUCT_TEXT_2"] = "Traiter";
+$MESS["CRM_DOCUMENT_LIST_ACTION_DELETE_TEXT"] = "Supprimer";
+$MESS["CRM_DOCUMENT_LIST_ACTION_OPEN_TEXT"] = "Ouvrir";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_2"] = "Créer";
+$MESS["CRM_DOCUMENT_LIST_ADD_DOCUMENT_BUTTON_DISABLE_HINT_MSGVER_1"] = "Autorisations insuffisantes pour créer un objet d'inventaire.";
+$MESS["CRM_DOCUMENT_LIST_CANCEL_GROUP_ACTION"] = "Annuler le traitement";
+$MESS["CRM_DOCUMENT_LIST_CONDUCT_GROUP_ACTION"] = "Traiter";
+$MESS["CRM_DOCUMENT_LIST_DOC_TYPE_W"] = "Ordre de vente";
+$MESS["CRM_DOCUMENT_LIST_EMPTY_STORE_TITLE"] = "Sans titre";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED"] = "Droits insuffisants pour voir l'espace Ordres de vente.";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_BOX"] = "Vous n'avez pas les droits pour accéder à la gestion de l'inventaire. Veuillez contacter votre administrateur Bitrix24 pour obtenir cet accès. <a href=\"https://training.bitrix24.com/support/training/course/index.php?COURSE_ID=178&LESSON_ID=25118\" target=\"_blank\">En savoir plus</a>";
+$MESS["CRM_DOCUMENT_LIST_ERR_ACCESS_DENIED_CLOUD"] = "Vous n'avez pas les droits pour accéder à la gestion de l'inventaire. Veuillez contacter votre administrateur Bitrix24 pour obtenir cet accès. L'administrateur devra vous attribuer le rôle de Responsable dans les paramètres du CRM. <a onclick=\"top.BX.Helper.show('redirect=detail&code=15955386')\" style=\"cursor: pointer; \">En savoir plus</a>";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_COMPANY"] = "Entreprise masquée";
+$MESS["CRM_DOCUMENT_LIST_HIDDEN_CONTACT"] = "Contact masqué";
+$MESS["CRM_DOCUMENT_LIST_SELECT_GROUP_ACTION"] = "Sélectionner une action";
+$MESS["CRM_DOCUMENT_LIST_STATUS_CANCELLED"] = "Annulé";
+$MESS["CRM_DOCUMENT_LIST_STATUS_N"] = "Brouillon";
+$MESS["CRM_DOCUMENT_LIST_STATUS_Y"] = "Traité";
+$MESS["CRM_DOCUMENT_LIST_STUB_DESCRIPTION_SHIPMENT"] = "Vous avez vendu un article ? Ajoutez une entrée dans la gestion des stocks. Un suivi précis des stocks aidera votre équipe commerciale à traiter les commandes plus rapidement.";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_LOSSES"] = "Comment puis-je suivre les pertes ?";
+$MESS["CRM_DOCUMENT_LIST_STUB_LINK_SHIPMENT"] = "Comment puis-je inscrire des ventes ?";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_DESCRIPTION"] = "Essayez de réinitialiser le filtre ou de modifier l'expression de recherche.";
+$MESS["CRM_DOCUMENT_LIST_STUB_NO_DATA_TITLE"] = "Votre recherche n'a donné aucun résultat.";
+$MESS["CRM_DOCUMENT_LIST_STUB_TITLE_SHIPMENT"] = "Ajoutez votre première vente";
+$MESS["CRM_DOCUMENT_LIST_TITLE"] = "Ordre de vente ##DOCUMENT_ID#";
+$MESS["CRM_DOCUMENT_LIST_TITLE_DOCUMENT_DATE"] = "du #DATE#";

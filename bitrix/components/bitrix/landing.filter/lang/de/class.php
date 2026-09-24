@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_FILTER_EMPTY_PAGE_TITLE"] = "Leere Seite";
+$MESS["LANDING_FILTER_EMPTY_SITE_TITLE"] = "Leere Vorlage";

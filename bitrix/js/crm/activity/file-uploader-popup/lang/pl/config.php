@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_FILE_UPLOADER_POPUP_CANCEL"] = "Anuluj (Esc)";
+$MESS["CRM_FILE_UPLOADER_POPUP_TITLE_2"] = "Pliki";

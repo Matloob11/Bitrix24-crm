@@ -1,0 +1,10 @@
+<?php
+$MESS["EC_CALENDAR_ICAL_INVITATION_DOWNLOAD_INVITATION"] = "Ajouter au calendrier";
+$MESS["EC_CALENDAR_PUB_EVENT_ALL_ATTACHMENTS_TITLE"] = "Tous les fichiers";
+$MESS["EC_CALENDAR_PUB_EVENT_ALL_ATTENDEES_TITLE"] = "Tous les participants";
+$MESS["EC_CALENDAR_PUB_EVENT_ATTACHMENTS_TITLE"] = "fichiers";
+$MESS["EC_CALENDAR_PUB_EVENT_ATTENDEES_TITLE"] = "participants";
+$MESS["EC_CALENDAR_PUB_EVENT_DECISION_NO"] = "Vous avez refusé de participer à cet événement";
+$MESS["EC_CALENDAR_PUB_EVENT_DECISION_YES"] = "Vous participez à cet événement";
+$MESS["EC_CALENDAR_PUB_EVENT_DESCRIPTION_TITLE"] = "description";
+$MESS["EC_CALENDAR_PUB_EVENT_LOCATION_TITLE"] = "lieu";

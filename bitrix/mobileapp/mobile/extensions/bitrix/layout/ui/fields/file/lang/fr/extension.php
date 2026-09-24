@@ -1,0 +1,19 @@
+<?php
+$MESS["FIELDS_FILE_ADD_FILE"] = "Ajouter un fichier";
+$MESS["FIELDS_FILE_ADD_FILES"] = "Ajouter les fichiers";
+$MESS["FIELDS_FILE_ADD_IMAGE"] = "Ajouter une image";
+$MESS["FIELDS_FILE_ADD_VIDEO"] = "Ajouter une vidéo";
+$MESS["FIELDS_FILE_ATTACHMENTS_NAVIGATION_TITLE"] = "Fichiers  (#NUM#)";
+$MESS["FIELDS_FILE_CAMERA"] = "Prendre une photo";
+$MESS["FIELDS_FILE_EDIT"] = "Modifier";
+$MESS["FIELDS_FILE_EDIT_FILE"] = "Modifier le fichier";
+$MESS["FIELDS_FILE_EDIT_IMAGE"] = "Modifier l'image";
+$MESS["FIELDS_FILE_EDIT_VIDEO"] = "Modifier la vidéo";
+$MESS["FIELDS_FILE_MEDIATEKA"] = "Sélectionner dans la galerie";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_CONFIRM"] = "Ok";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_DESCR"] = "Essayez de télécharger un autre fichier.";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_TITLE"] = "Type de fichier non valide";
+$MESS["FIELDS_FILE_OPEN_GALLERY"] = "Afficher";
+$MESS["FIELDS_FILE_UPLOAD_ALERT_DESCR"] = "Veuillez réessayer. \nSi le problème persiste, contactez votre administrateur Bitrix24.";
+$MESS["FIELDS_FILE_UPLOAD_ALERT_TITLE"] = "Erreur de téléchargement du fichier";
+$MESS["FIELDS_FILE_VALIDATION_ERROR"] = "Supprimez le fichier et essayez de le télécharger à nouveau.";

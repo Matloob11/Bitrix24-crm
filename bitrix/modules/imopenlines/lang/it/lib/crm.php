@@ -1,0 +1,22 @@
+<?php
+$MESS["IMOL_CRM_BUTTON_CANCEL"] = "Annulla";
+$MESS["IMOL_CRM_BUTTON_CHANGE"] = "Modifica";
+$MESS["IMOL_CRM_COMPANY_EXTEND"] = "Informazioni di contatto salvate nell'azienda";
+$MESS["IMOL_CRM_CONTACT_EXTEND"] = "Informazioni di contatto salvate nel contatto";
+$MESS["IMOL_CRM_CREATE_ACTIVITY_2"] = "Chat Canale aperto: \"#LEAD_NAME#\" (#CONNECTOR_NAME#)";
+$MESS["IMOL_CRM_CREATE_LEAD_COMMENTS_NEW"] = "Il lead è stato creato in base alla richiesta del cliente a \"#LINE_NAME#\" tramite \"#CONNECTOR_NAME#\"";
+$MESS["IMOL_CRM_ERROR_CREATING_LEAD"] = "Errore durante la creazione del lead";
+$MESS["IMOL_CRM_ERROR_NOT_LOAD_CRM"] = "Errore durante il caricamento del CRM";
+$MESS["IMOL_CRM_ERROR_NOT_LOAD_IM"] = "Errore durante il caricamento dell'IM";
+$MESS["IMOL_CRM_ERROR_NO_CRM_BINDINGS"] = "Nessuna associazione di attività disponibile trovata";
+$MESS["IMOL_CRM_ERROR_NO_ID_ACTIVITY"] = "ID attività non specificato";
+$MESS["IMOL_CRM_ERROR_NO_REQUIRED_PARAMETERS"] = "Non tutti i parametri obbligatori sono stati inviati";
+$MESS["IMOL_CRM_ERROR_NO_SESSION"] = "Nessuna sessione Canale aperto trovata";
+$MESS["IMOL_CRM_LEAD_ADD"] = "È stato creato un nuovo lead utilizzando le informazioni di contatto";
+$MESS["IMOL_CRM_LEAD_EXTEND"] = "Informazioni di contatto salvate nel lead";
+$MESS["IMOL_CRM_LINE_TYPE_FACEBOOK"] = "Facebook";
+$MESS["IMOL_CRM_LINE_TYPE_LIVECHAT"] = "Live chat";
+$MESS["IMOL_CRM_LINE_TYPE_NETWORK"] = "Bitrix24.Network";
+$MESS["IMOL_CRM_LINE_TYPE_SKYPEBOT"] = "Skype";
+$MESS["IMOL_CRM_LINE_TYPE_TELEGRAMBOT"] = "Telegram";
+$MESS["IMOL_CRM_LINE_TYPE_VKGROUP"] = "VK";

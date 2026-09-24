@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_WIDGET_KB_PARAM_COLOR_BUTTON_NAME"] = "Color del botón";
+$MESS["LANDING_WIDGET_KB_PARAM_COLOR_HEADERS_NAME"] = "Color del título";
+$MESS["LANDING_WIDGET_KB_PARAM_SORT_DATE_MODIFY_TO_HIGH"] = "Fecha de modificación, ascendente";
+$MESS["LANDING_WIDGET_KB_PARAM_SORT_DATE_MODIFY_TO_LOW"] = "Ficha de modificación, descendente";
+$MESS["LANDING_WIDGET_KB_PARAM_SORT_NAME"] = "Orden de clasificación";
+$MESS["LANDING_WIDGET_KB_PARAM_SORT_VIEWS_TO_HIGH"] = "Vistas, ascendente";
+$MESS["LANDING_WIDGET_KB_PARAM_SORT_VIEWS_TO_LOW"] = "Vistas, descendente";
+$MESS["LANDING_WIDGET_KB_PARAM_TITLE_NAME"] = "Título";
+$MESS["LANDING_WIDGET_KB_TITLE_DEFAULT_VALUE"] = "Bases de conocimientos";

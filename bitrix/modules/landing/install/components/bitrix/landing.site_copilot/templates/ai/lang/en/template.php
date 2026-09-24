@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_COPILOT_AI_CHAT_TOGGLE_CLOSE"] = "Close chat";
+$MESS["LANDING_COPILOT_AI_CHAT_TOGGLE_OPEN"] = "Open chat";
+$MESS["LANDING_COPILOT_AI_SITE_INITIAL_PLACEHOLDER"] = "Create your site with #COPILOT_NAME#.";
+$MESS["LANDING_COPILOT_AI_SITE_PLACEHOLDER"] = "Creating your site now. It may take a while.";
+$MESS["LANDING_COPILOT_AI_SITE_PLACEHOLDER_1"] = "You can now close this page.";
+$MESS["LANDING_COPILOT_AI_SITE_PLACEHOLDER_2"] = "It will not take long.";
+$MESS["LANDING_COPILOT_AI_TOP_PANEL_SITE_NAME"] = "New site";
+$MESS["LANDING_COPILOT_AI_TOP_PANEL_TITLE"] = "AI-assisted sites";
+$MESS["LANDING_SITE_PAGE_TITLE"] = "#COPILOT_NAME#-assisted site";

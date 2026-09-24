@@ -1,0 +1,12 @@
+<?php
+$MESS["MOBILE_PROJECT_NO_PROJECT_ERROR"] = "Le groupe de travail est introuvable ou son accès est refusé";
+$MESS["MOBILE_PROJECT_TAB_CALENDAR"] = "Calendrier";
+$MESS["MOBILE_PROJECT_TAB_CALENDAR_QR_TITLE"] = "Calendrier";
+$MESS["MOBILE_PROJECT_TAB_DRIVE_MSGVER_1"] = "Fichiers";
+$MESS["MOBILE_PROJECT_TAB_MEMBERS_0"] = "#NUM# membre";
+$MESS["MOBILE_PROJECT_TAB_MEMBERS_1"] = "#NUM# membres";
+$MESS["MOBILE_PROJECT_TAB_MEMBERS_2"] = "#NUM# membres";
+$MESS["MOBILE_PROJECT_TAB_NEWS"] = "Actualités";
+$MESS["MOBILE_PROJECT_TAB_NEWS2"] = "Actualités";
+$MESS["MOBILE_PROJECT_TAB_TASKS"] = "Tâches";
+$MESS["MOBILE_PROJECT_TAB_TASKS_INPUT_PANEL_PLACEHOLDER"] = "Nouvelle tâche";

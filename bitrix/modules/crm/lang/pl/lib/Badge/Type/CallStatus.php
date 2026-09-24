@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_BADGE_CALL_STATUS_FIELD_NAME"] = "Status połączenia";
+$MESS["CRM_BADGE_CALL_STATUS_MISSED_CALL_VALUE"] = "Nieodebrane";

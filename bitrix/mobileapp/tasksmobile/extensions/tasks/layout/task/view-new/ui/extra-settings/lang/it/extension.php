@@ -1,0 +1,19 @@
+<?php
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE"] = "Il responsabile può modificare la scadenza";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_SUBTITLE"] = "Il responsabile può modificare la scadenza dell'incarico in qualsiasi momento.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE"] = "Scadenza modificabile da responsabile";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE_MSGVER_1"] = "Il responsabile può modificare la scadenza";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL"] = "Richiedi revisione dell'incarico alla chiusura";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE"] = "L'incarico può essere chiuso solo dal suo creatore, dopo la verifica del risultato.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE_MSGVER_1"] = "L'incarico completato sarà inviato al proprietario dell'incarico per la revisione. Il proprietario potrà accettare e chiudere l'incarico oppure respingerlo per la revisione.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_TITLE"] = "Richiedi approvazione al completamento";
+$MESS["M_TASKS_EXTRA_SETTINGS_DEADLINE_AUTO_CHANGED"] = "La data di scadenza dell'incarico è stata adattata in base ai fine settimana.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME"] = "Sposta la scadenza se nel fine settimana";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE"] = "La scadenza verrà adattata, se ricade durante un weekend.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE_MSGVER_1"] = "La data di scadenza dell'incarico sarà prorogata se cade in un fine settimana o in un giorno festivo.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_TITLE"] = "Salta fine settimana";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED"] = "Non chiudere l'incarico senza il riepilogo stato";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE"] = "Il responsabile deve fornire un riepilogo stato alla chiusura dell'incarico.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE_MSGVER_1"] = "Il responsabile dovrà aggiungere un riepilogo stato per contrassegnare l'incarico come completato.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE"] = "Richiedi riepilogo stato incarico";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE_MSGVER_1"] = "Richiedi riepilogo stato dell'incarico";

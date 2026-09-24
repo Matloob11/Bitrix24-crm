@@ -1,0 +1,67 @@
+.crm-kanban-item-badges {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+
+.main-grid-wrapper .crm-kanban-item-badges {
+	padding-bottom: 0;
+}
+
+.main-grid-cell-content:has(.crm-client-summary-wrapper) .crm-kanban-item-badges {
+	margin-left: 60px;
+}
+
+.crm-kanban-item-badges-item {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-bottom: 8px;
+}
+
+.main-grid-wrapper .crm-kanban-item-badges-item {
+	margin-top: 6px;
+}
+
+.crm-kanban-item-badges-item:last-child {
+	margin-bottom: 0;
+}
+
+.crm-kanban-item-badges-item-title {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-family: var(--ui-font-family-primary, var(--ui-font-family-helvetica));
+	font-size: var(--ui-font-size-xs);
+	color: var(--ui-color-palette-gray-50);
+	margin-bottom: 3px;
+}
+
+.main-grid-wrapper .crm-kanban-item-badges-item-title {
+	margin-top: 10px;
+	margin-left: 1px;
+	margin-bottom: 0;
+}
+
+.crm-kanban-item-badges-item-title-text {
+	display: inline;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.crm-kanban-item-badges-item-value {
+	margin-top: 2px;
+}
+
+.main-grid-wrapper .crm-kanban-item-badges-item-value {
+	margin-top: 6px;
+}
+
+.crm-kanban-item-badges-item-value.--hint,
+.crm-kanban-item-badges-item-value[data-badgehint] {
+	cursor: help;
+}

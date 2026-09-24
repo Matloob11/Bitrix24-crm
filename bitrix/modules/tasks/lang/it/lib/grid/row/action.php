@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_GRID_ROW_ACTION_ACCEPT"] = "Accetta incarico";
+$MESS["TASKS_GRID_ROW_ACTION_ADD_SUB_TASK"] = "Crea incarico secondario";
+$MESS["TASKS_GRID_ROW_ACTION_ADD_TO_FAVORITES"] = "Aggiungi ai Preferiti";
+$MESS["TASKS_GRID_ROW_ACTION_ADD_TO_TIMEMAN"] = "Aggiungi a piano giornaliero";
+$MESS["TASKS_GRID_ROW_ACTION_APPROVE"] = "Accetta come completato";
+$MESS["TASKS_GRID_ROW_ACTION_COMPLETE"] = "Completa";
+$MESS["TASKS_GRID_ROW_ACTION_COPY"] = "Copia";
+$MESS["TASKS_GRID_ROW_ACTION_DEFER"] = "Posponi";
+$MESS["TASKS_GRID_ROW_ACTION_EDIT"] = "Modifica";
+$MESS["TASKS_GRID_ROW_ACTION_MUTE"] = "Disattiva audio";
+$MESS["TASKS_GRID_ROW_ACTION_PAUSE"] = "Pausa";
+$MESS["TASKS_GRID_ROW_ACTION_PIN"] = "Aggiungi";
+$MESS["TASKS_GRID_ROW_ACTION_REMOVE"] = "Elimina";
+$MESS["TASKS_GRID_ROW_ACTION_REMOVE_FROM_FAVORITES"] = "Rimuovi dai Preferiti";
+$MESS["TASKS_GRID_ROW_ACTION_RENEW"] = "Riprendi";
+$MESS["TASKS_GRID_ROW_ACTION_START"] = "Avvia incarico";
+$MESS["TASKS_GRID_ROW_ACTION_UNMUTE"] = "Riattiva audio";
+$MESS["TASKS_GRID_ROW_ACTION_UNPIN"] = "Rimuovi";
+$MESS["TASKS_GRID_ROW_ACTION_VIEW"] = "Visualizzazione";

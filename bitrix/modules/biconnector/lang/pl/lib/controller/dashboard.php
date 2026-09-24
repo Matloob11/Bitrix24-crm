@@ -1,0 +1,27 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_COPY"] = "Niewystarczające uprawnienia do skopiowania pulpitu nawigacyjnego. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_DELETE"] = "Niewystarczające uprawnienia do usunięcia pulpitu nawigacyjnego. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EDIT"] = "Niewystarczające uprawnienia do edycji pulpitu nawigacyjnego. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_EXPORT"] = "Niewystarczające uprawnienia do eksportu pulpitu nawigacyjnego. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_SHARE"] = "Niewystarczające uprawnienia do udostępnienia pulpitu nawigacyjnego. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_TAG_MODIFY"] = "Niewystarczające uprawnienia do edycji tagów pulpitu nawigacyjnego. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ACCESS_ERROR_VIEW"] = "Niewystarczające uprawnienia do wyświetlenia pulpitu nawigacyjnego. Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPIED_DASHBOARD_TITLE"] = "#DASHBOARD_TITLE# (kopia)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_COPY_ERROR"] = "Błąd podczas kopiowania pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR"] = "Nie można usunąć pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_COPIED"] = "Przed usunięciem usuń wszystkie kopie tego pulpitu nawigacyjnego.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_HAS_RELATED_ENTITIES"] = "Nie można usunąć pulpitu nawigacyjnego zainstalowanego z Marketu, ponieważ wykresy i zestawy danych tego pulpitu nawigacyjnego są używane przez inne pulpity nawigacyjne w Twoim Bitrix24.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DELETE_ERROR_SYSTEM"] = "Nie można usunąć wbudowanego pulpitu nawigacyjnego.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_DISCUSSION_CHAT_OPEN_ERROR"] = "Nie można otworzyć czatu pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EMPTY_DASHBOARD_NAME"] = "Nowy pulpit nawigacyjny";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_ERROR_NOT_FOUND"] = "Nie znaleziono pulpitu nawigacyjnego.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD"] = "#DATE_FROM# – #DATE_TO#";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_DEFAULT"] = "Domyślny";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_DATA_PERIOD_INCLUDE_LAST_FILTER_DATE"] = "#DATE_FROM# – #DATE_TO# (włącznie z dniem zakończenia)";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_EXPORT_ERROR"] = "Nie można wyeksportować pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_EMPTY"] = "Wymagana nazwa pulpitu nawigacyjnego";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_FOUND"] = "Ten pulpit nawigacyjny już nie istnieje. Odśwież stronę";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_NOT_READY"] = "Ten pulpit nawigacyjny jest nadal instalowany. Poczekaj na zakończenie instalacji i spróbuj ponownie";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_ONLY_CUSTOM_MSGVER_1"] = "Nie można zmieniać nazw wbudowanych pulpitów nawigacyjnych ani pulpitów z Marketu. Utwórz kopię tego pulpitu nawigacyjnego i zmień jego nazwę";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_CANNOT_EDIT_TITLE_UNHANDLED"] = "Nie można zmienić nazwy pulpitu nawigacyjnego. Spróbuj ponownie.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_RENAME_ERROR_UNAVAILABLE"] = "Nie można zmienić nazwy pulpitu nawigacyjnego. Spróbuj ponownie później";

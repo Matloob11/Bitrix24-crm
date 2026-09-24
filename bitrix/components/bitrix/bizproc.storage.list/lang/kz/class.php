@@ -1,0 +1,7 @@
+<?php
+$MESS["BIZPROC_STORAGE_LIST_ACTION_PANEL_DELETE"] = "Жою";
+$MESS["BIZPROC_STORAGE_LIST_ACTION_PANEL_PLACEHOLDER"] = "Әрекетті таңдаңыз";
+$MESS["BIZPROC_STORAGE_LIST_DELETE_CONFIRM"] = "Таңдалған қоймаларды жою керек пе?";
+$MESS["BIZPROC_STORAGE_LIST_DELETE_CONFIRM_OK"] = "Иә, жою";
+$MESS["BIZPROC_STORAGE_LIST_MODULE_NOT_INSTALLED"] = "«Бизнес-процестер» модулі орнатылмаған";
+$MESS["BIZPROC_STORAGE_LIST_TITLE"] = "Қойма";

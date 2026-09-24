@@ -1,0 +1,288 @@
+/**
+ * @module ui-system/layout/dialog-footer
+ */
+jn.define('ui-system/layout/dialog-footer', (require, exports, module) => {
+	const { Feature } = require('feature');
+	const { PropTypes } = require('utils/validation');
+	const { Component, Indent } = require('tokens');
+	const { isEmpty, isFunction, isObjectLike, merge } = require('utils/object');
+	const { Button, ButtonSize } = require('ui-system/form/buttons/button');
+
+	const IS_IOS = Application.getPlatform() === 'ios';
+	const SAFE_AREA_HEIGHT = 18;
+
+	/**
+	 * @class DialogFooter
+	 */
+	class DialogFooter extends LayoutComponent
+	{
+		constructor(props)
+		{
+			super(props);
+
+			this.#initialKeyboardHandlers();
+
+			this.state = {
+				footerHeight: 0,
+				isKeyboardShown: props.isKeyboardShown ?? props.isShowKeyboard ?? false,
+			};
+		}
+
+		#initialKeyboardHandlers()
+		{
+			Keyboard.on(Keyboard.Event.WillHide, () => {
+				this.updateKeyboardState(false);
+			});
+
+			Keyboard.on(Keyboard.Event.WillShow, () => {
+				this.updateKeyboardState(true);
+			});
+		}
+
+		updateKeyboardState(isKeyboardShown)
+		{
+			const { isKeyboardShownCurrent } = this.state;
+
+			if (isKeyboardShownCurrent !== isKeyboardShown)
+			{
+				this.setState({ isKeyboardShown });
+			}
+		}
+
+		render()
+		{
+			const { testId } = this.props;
+			const footerContent = this.renderFooterContent();
+
+			if (!footerContent)
+			{
+				return View();
+			}
+
+			return View(
+				{
+					testId,
+					safeArea: {
+						bottom: this.isSafeArea(),
+					},
+					style: {
+						position: 'absolute',
+						left: 0,
+						right: 0,
+						bottom: 0,
+						paddingBottom: this.isSafeArea() ? 0 : this.#getPaddingBottom(),
+						...this.getStyle(),
+					},
+				},
+				footerContent,
+			);
+		}
+
+		getStyle()
+		{
+			const { style = {} } = this.props;
+
+			return style || {};
+		}
+
+		renderKeyboardButton()
+		{
+			const { keyboardButton } = this.props;
+			const keyboardButtonParams = this.getKeyboardButtonParams();
+
+			if (isFunction(keyboardButton))
+			{
+				return keyboardButton(keyboardButtonParams);
+			}
+
+			if (isEmpty(keyboardButtonParams))
+			{
+				return null;
+			}
+
+			return Button(keyboardButtonParams);
+		}
+
+		/**
+		 * @returns {ButtonProps|{}}
+		 */
+		getKeyboardButtonParams()
+		{
+			const { keyboardButton } = this.props;
+
+			const baseParams = {
+				testId: 'KEYBOARD_FOOTER_BUTTON',
+				size: ButtonSize.XL,
+				stretched: true,
+				borderRadius: 0,
+				onLayout: this.#handleOnLayoutFooter,
+			};
+
+			if (isFunction(keyboardButton))
+			{
+				return baseParams;
+			}
+
+			if (!isObjectLike(keyboardButton))
+			{
+				return {};
+			}
+
+			return { ...keyboardButton, ...baseParams };
+		}
+
+		renderFooterContent()
+		{
+			if (this.#isKeyboardShown())
+			{
+				if (!this.#hasKeyboardButton())
+				{
+					this.#handleOnLayoutFooter({ height: 0, width: 0 });
+
+					return null;
+				}
+
+				return View(
+					{
+						onLayout: this.#handleOnLayoutFooter,
+					},
+					// workaround extra view is needed to change the layout structure
+					View(
+						{},
+						this.renderKeyboardButton(),
+					),
+				);
+			}
+
+			const footerContent = this.#getChildren();
+			if (!footerContent)
+			{
+				return null;
+			}
+
+			return View(
+				{
+					style: {
+						paddingVertical: Indent.XL.toNumber(),
+						paddingHorizontal: Component.paddingLrMore.toNumber(),
+					},
+					onLayout: this.#handleOnLayoutFooter,
+				},
+				...footerContent,
+			);
+		}
+
+		#getChildren()
+		{
+			const { children } = this.props;
+
+			if (!Array.isArray(children) || isEmpty(children))
+			{
+				return null;
+			}
+
+			const childrenValue = children
+				.flatMap((child) => (isFunction(child) ? child() : child))
+				.filter(Boolean);
+
+			if (isEmpty(childrenValue))
+			{
+				return null;
+			}
+
+			return childrenValue;
+		}
+
+		#handleOnLayoutFooter = ({ height, width }) => {
+			const { footerHeight: stateFooterHeight } = this.state;
+			if (stateFooterHeight === height)
+			{
+				return;
+			}
+
+			this.setState({ footerHeight: height });
+			this.onLayoutFooterHeight({ height, width });
+		};
+
+		onLayoutFooterHeight(params)
+		{
+			const { onLayoutFooterHeight } = this.props;
+
+			onLayoutFooterHeight?.(params);
+		}
+
+		/**
+		 * @returns {number}
+		 */
+		#getPaddingBottom()
+		{
+			const { safeArea = true } = this.props;
+			const { isKeyboardShown } = this.state;
+			const isButtonNavigation = !device.isGestureNavigation;
+
+			if (isButtonNavigation || isKeyboardShown || IS_IOS || !safeArea)
+			{
+				return 0;
+			}
+
+			return SAFE_AREA_HEIGHT;
+		}
+
+		isSafeArea()
+		{
+			const { safeArea = true } = this.props;
+
+			return IS_IOS ? Boolean(safeArea) : (Boolean(safeArea) && Feature.isSafeAreaSupportedOnAndroid());
+		}
+
+		#isKeyboardShown()
+		{
+			const { isKeyboardShown } = this.state;
+
+			return Boolean(isKeyboardShown);
+		}
+
+		#hasKeyboardButton()
+		{
+			const { keyboardButton } = this.props;
+
+			return Boolean(keyboardButton);
+		}
+	}
+
+	DialogFooter.defaultProps = {
+		safeArea: true,
+		isKeyboardShown: false,
+	};
+
+	DialogFooter.propTypes = {
+		testId: PropTypes.string.isRequired,
+		safeArea: PropTypes.bool,
+		keyboardButton: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+		onLayoutFooterHeight: PropTypes.func,
+		isKeyboardShown: PropTypes.bool,
+		children: PropTypes.arrayOf(
+			PropTypes.oneOfType([
+				PropTypes.bool,
+				PropTypes.object,
+				PropTypes.func,
+			]),
+		),
+		style: PropTypes.object,
+	};
+
+	module.exports = {
+		/**
+		 * @param {DialogFooterProps} props
+		 * @param {...*} [children]
+		 * @returns {DialogFooter}
+		 */
+		DialogFooter: (props, ...children) => new DialogFooter({ ...props, children }),
+		/**
+		 * @param {BoxFooterProps} props
+		 * @param {...*} [children]
+		 * @returns {function(*): DialogFooter}
+		 */
+		BoxFooter: (props, ...children) => (boxProps) => new DialogFooter({ ...merge(props, boxProps), children }),
+	};
+});

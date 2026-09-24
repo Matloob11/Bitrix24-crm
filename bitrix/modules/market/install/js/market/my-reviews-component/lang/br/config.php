@@ -1,0 +1,20 @@
+<?php
+$MESS["MARKET_DONT_HAVE_REVIEWS"] = "Você não tem nenhum comentário.";
+$MESS["MARKET_DONT_HAVE_REVIEWS_FILTER"] = "Nenhum comentário encontrado.";
+$MESS["MARKET_MY_REVIEWS"] = "Meus comentários";
+$MESS["MARKET_NO_REVIEW_APPS"] = "Você não avaliou nenhum aplicativo.";
+$MESS["MARKET_NO_REVIEW_APPS_FILTER"] = "Nenhum dos seus comentários corresponde aos filtros especificados.";
+$MESS["MARKET_REVIEWS_DEVELOPER"] = "Desenvolvedor";
+$MESS["MARKET_REVIEWS_MENU_ITEM_EDITING"] = "Editar comentário";
+$MESS["MARKET_REVIEW_ANSWER"] = "Resposta do desenvolvedor";
+$MESS["MARKET_REVIEW_EDITING_CANCEL"] = "Cancelar";
+$MESS["MARKET_REVIEW_EDITING_RE_MODERATION_TITLE"] = "Seu comentário será enviado para moderação.";
+$MESS["MARKET_REVIEW_EDITING_SAVE"] = "Salvar";
+$MESS["MARKET_REVIEW_EDITING_TITLE"] = "Editar comentário";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_ERROR"] = "Erro ao atualizar comentário.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_NOT_ALLOWED"] = "Não é possível editar comentário.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_SUCCESS"] = "Seu comentário foi atualizado com sucesso.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_TEXT_ERROR"] = "O texto do comentário é necessário.";
+$MESS["MARKET_REVIEW_NO_PUBLISHED"] = "Não publicado";
+$MESS["MARKET_REVIEW_PUBLISHED"] = "Publicado";
+$MESS["MARKET_REVIEW_SENT_TO_DEVELOPER"] = "Enviado ao desenvolvedor";

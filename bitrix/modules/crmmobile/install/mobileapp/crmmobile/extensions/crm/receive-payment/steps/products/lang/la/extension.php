@@ -1,0 +1,4 @@
+<?php
+$MESS["RECEIVE_PAYMENT_PRODUCT_STEP_NEXT"] = "Continuar";
+$MESS["RECEIVE_PAYMENT_PRODUCT_STEP_PROGRESS_BAR_TITLE"] = "Elementos de la negociación";
+$MESS["RECEIVE_PAYMENT_PRODUCT_STEP_TITLE"] = "Recibir un pago";

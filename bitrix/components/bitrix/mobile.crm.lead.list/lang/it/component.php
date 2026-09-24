@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_PERMISSION_DENIED"] = "Accesso negato";
+$MESS["M_CRM_LEAD_LIST_ADD_DEAL"] = "Aggiungi attività";
+$MESS["M_CRM_LEAD_LIST_CALL"] = "Effettua una chiamata";
+$MESS["M_CRM_LEAD_LIST_CREATE_BASE"] = "Crea da origine";
+$MESS["M_CRM_LEAD_LIST_CREATE_DEAL"] = "Affare";
+$MESS["M_CRM_LEAD_LIST_DECLINE"] = "Rifiuta";
+$MESS["M_CRM_LEAD_LIST_DELETE"] = "Elimina";
+$MESS["M_CRM_LEAD_LIST_EDIT"] = "Modifica";
+$MESS["M_CRM_LEAD_LIST_FILTER_CUSTOM"] = "Risultati di ricerca";
+$MESS["M_CRM_LEAD_LIST_FILTER_NONE"] = "Tutti i lead";
+$MESS["M_CRM_LEAD_LIST_JUNK"] = "Indesiderato";
+$MESS["M_CRM_LEAD_LIST_MAIL"] = "Invia messaggio";
+$MESS["M_CRM_LEAD_LIST_MEETING"] = "Configura una riunione";
+$MESS["M_CRM_LEAD_LIST_MORE"] = "Altro";
+$MESS["M_CRM_LEAD_LIST_NO_FILTER"] = "Tutti i lead";
+$MESS["M_CRM_LEAD_LIST_PRESET_MY"] = "Miei lead";
+$MESS["M_CRM_LEAD_LIST_PRESET_NEW"] = "Nuovi lead";
+$MESS["M_CRM_LEAD_LIST_PRESET_USER"] = "Filtro personalizzato";

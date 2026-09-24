@@ -1,0 +1,22 @@
+<?php
+$MESS["MARKET_TOOLBAR_JS_CATALOG_TITLE"] = "Catalogue";
+$MESS["MARKET_TOOLBAR_JS_DETAILED"] = "En savoir plus";
+$MESS["MARKET_TOOLBAR_JS_DIDNT_FIND_SUITABLE_SOLUTION"] = "Vous ne trouvez pas l'application dont vous avez besoin ?";
+$MESS["MARKET_TOOLBAR_JS_FAVORITES_TITLE"] = "Favoris";
+$MESS["MARKET_TOOLBAR_JS_LOOKING_RIGHT_APPS"] = "Les résultats de votre recherche s'afficheront ici";
+$MESS["MARKET_TOOLBAR_JS_MAKE_OR_PUBLISH_YOUR_INTEGRATION"] = "Créez et publiez votre propre solution.";
+$MESS["MARKET_TOOLBAR_JS_MARKET_PLUS_TITLE"] = "Bitrix24.Market";
+$MESS["MARKET_TOOLBAR_JS_MARKET_PLUS_TITLE_MSGVER_1"] = "Bitrix24 Market";
+$MESS["MARKET_TOOLBAR_JS_MARKET_TITLE"] = "Bitrix24.Market";
+$MESS["MARKET_TOOLBAR_JS_MARKET_TITLE_MSGVER_1"] = "Bitrix24 Market";
+$MESS["MARKET_TOOLBAR_JS_MARKET_TOTAL_APPS"] = "Plus de #TOTAL_APPS# applications";
+$MESS["MARKET_TOOLBAR_JS_MORE"] = "Plus";
+$MESS["MARKET_TOOLBAR_JS_NO_SEARCH_RESULT"] = "Votre recherche n'a renvoyé aucun résultat.";
+$MESS["MARKET_TOOLBAR_JS_NO_SEARCH_RESULT_DESCRIPTION"] = "Essayez une autre phrase de recherche.";
+$MESS["MARKET_TOOLBAR_JS_NO_SEARCH_RESULT_TITLE"] = "Aucune entrée n'a été trouvée.";
+$MESS["MARKET_TOOLBAR_JS_SEARCH_PLACEHOLDER"] = "Rechercher sur Bitrix24.Market ?";
+$MESS["MARKET_TOOLBAR_JS_SEARCH_PLACEHOLDER_MSGVER_1"] = "Rechercher sur Bitrix24 Market";
+$MESS["MARKET_TOOLBAR_JS_SEARCH_PLACEHOLDER_MSGVER_2"] = "Rechercher sur Bitrix24 Market";
+$MESS["MARKET_TOOLBAR_JS_SEARCH_PLACEHOLDER_MSGVER_2_V2"] = "Rechercher sur Bitrix24 Market";
+$MESS["MARKET_TOOLBAR_JS_SEARCH_PLACEHOLDER_V2"] = "Rechercher sur Bitrix24 Market";
+$MESS["MARKET_TOOLBAR_JS_SEARCH_RESULT_COUNT"] = "#RESULT_COUNT# résultats trouvés";

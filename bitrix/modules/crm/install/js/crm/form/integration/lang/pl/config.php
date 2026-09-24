@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_FORM_INTEGRATION_JS_FIELD_MAP"] = "Wybierz pola CRM, w których chcesz zapisać przesłane dane";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM"] = "Formularz";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM_CHOOSE"] = "Wybierz formularz, z którego przesłane dane zostaną zapisane w CRM";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM_EMPTY"] = "Brak dostępnych formularzy. Utwórz formularz na koncie %name%.";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_BTN"] = "Podłącz";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_DESC"] = "Otrzymuj przesyłane formularze bezpośrednio w CRM.";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_TITLE"] = "Podłącz formularz od %providerName%!";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGOUT_BTN"] = "Odłącz";
+$MESS["CRM_FORM_INTEGRATION_JS_NEW_INTEGRATION"] = "Nowa integracja z %providerName% jest już dostępna!";
+$MESS["CRM_FORM_INTEGRATION_JS_NEW_INTEGRATION_BTN"] = "Otwórz nową wersję";
+$MESS["CRM_FORM_INTEGRATION_JS_NOT_SELECTED"] = "Nie wybrano";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CHOOSE"] = "Aby przejść do formularzy, wybierz stronę";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CONNECT_BTN"] = "Podłącz";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CONNECT_INFO"] = "Aby wyświetlić formularze, podłącz grupę";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_DISCONNECT_BTN"] = "Odłącz grupę";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_EMPTY"] = "Brak dostępnych stron. Utwórz stronę i formularz na koncie %providerName%.";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_FACEBOOK"] = "Strona";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_VKONTAKTE"] = "Grupa";
+$MESS["CRM_FORM_INTEGRATION_JS_PROVIDER_FACEBOOK"] = "Facebook";

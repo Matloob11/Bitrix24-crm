@@ -1,0 +1,4 @@
+<?php
+$MESS["IMCONNECTORMOBILE_QR_BUTTON"] = "Pokaż kod QR";
+$MESS["IMCONNECTORMOBILE_QR_BUTTON_VIEW_BUTTON"] = "Gotowe";
+$MESS["IMCONNECTORMOBILE_QR_BUTTON_VIEW_CONTENT"] = "Poproś klienta o zeskanowanie kodu QR smartfonem";

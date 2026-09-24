@@ -1,0 +1,23 @@
+<?php
+$MESS["MP_ADD_APP_CLIENT_ID"] = "ID applicazione";
+$MESS["MP_ADD_APP_CLIENT_SECRET"] = "Chiave applicazione";
+$MESS["MP_ADD_APP_TITLE"] = "Nuova applicazione";
+$MESS["MP_APP_ADD_SUCCESS"] = "L'applicazione è stata aggiunta correttamente";
+$MESS["MP_APP_API"] = "Disponibile solo come script";
+$MESS["MP_APP_API_DESC"] = "(app di servizio senza interfaccia)";
+$MESS["MP_APP_DOC"] = "<a target=_blank href=\"http://www.bitrixsoft.com/rest_help/\">Linee guida per la progettazione di applicazioni Bitrix24</a>";
+$MESS["MP_APP_EDIT_SUCCESS"] = "L'applicazione è stata aggiornata correttamente.";
+$MESS["MP_APP_INFO"] = "Una volta salvato, puoi accedere all'ID dell'applicazione e alla chiave OAuth 2.0 che l'applicazione può utilizzare<br/>";
+$MESS["MP_APP_MENU_NAME"] = "Titolo per il menu Bitrix24";
+$MESS["MP_APP_MENU_NAME_EN"] = "Titolo per il menu Bitrix24 (inglese)";
+$MESS["MP_APP_MOBILE"] = "Supporta BitrixMobile";
+$MESS["MP_APP_NAME"] = "Nome applicazione";
+$MESS["MP_APP_OR"] = "o";
+$MESS["MP_APP_SAVE"] = "Salva";
+$MESS["MP_APP_SCOPE"] = "Autorizzazioni di accesso";
+$MESS["MP_APP_SCOPE_DESC"] = "Seleziona le autorizzazioni di accesso ai dati dell'utente<br/>richieste dalla tua applicazione";
+$MESS["MP_APP_UPLOAD"] = "Carica un file ZIP contenente la tua applicazione";
+$MESS["MP_APP_URL"] = "Specifica URL";
+$MESS["MP_APP_URL_DESC"] = "Specifica l'URL della tua applicazione <br/>se è ospitata su un server di terze parti o è esterna";
+$MESS["MP_APP_URL_INSTALL"] = "Specifica l'URL di installazione iniziale<br/>(facoltativo)";
+$MESS["MP_APP_URL_INSTALL_API"] = "Aggiungi un URL di callback per un evento di installazione (facoltativo)";

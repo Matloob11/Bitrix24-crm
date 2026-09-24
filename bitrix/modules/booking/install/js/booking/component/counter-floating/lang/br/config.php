@@ -1,0 +1,10 @@
+<?php
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_SUBTITLE"] = "Navegue pelo calendário para localizar o agendamento que você está procurando.";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_TITLE_PLURAL_0"] = "#COUNT# agendamento encontrado";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_TITLE_PLURAL_1"] = "#COUNT# agendamentos encontrados";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_TITLE_PLURAL_2"] = "#COUNT# agendamentos encontrados";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_COUNT_PLURAL_0"] = "#COUNT# agendamento encontrado";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_COUNT_PLURAL_1"] = "#COUNT# agendamentos encontrados";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_COUNT_PLURAL_2"] = "#COUNT# agendamentos encontrados";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_LIMIT_POPUP_SUBTITLE"] = "Altere o intervalo de datas e/ou filtros para encontrar mais agendamentos.";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_LIMIT_POPUP_TITLE"] = "Fim dos resultados da pesquisa atingido";

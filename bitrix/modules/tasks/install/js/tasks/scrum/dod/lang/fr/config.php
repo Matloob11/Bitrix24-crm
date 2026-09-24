@@ -1,0 +1,27 @@
+<?php
+$MESS["TASKS_SCRUM_BUTTON_TEXT_REMOVE"] = "Supprimer";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE"] = "Voulez-vous vraiment supprimer le type ?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_NEW"] = "Voulez-vous vraiment supprimer la liste de contrôle <b>#name#<b> ?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_TITLE"] = "Supprimer la liste de contrôle";
+$MESS["TASKS_SCRUM_CREATE_TYPE"] = "Créer un type";
+$MESS["TASKS_SCRUM_CREATE_TYPE_PROMPT"] = "Créer un nouveau type de tâche";
+$MESS["TASKS_SCRUM_DOD_BTN_CREATE_TYPE"] = "Ajouter";
+$MESS["TASKS_SCRUM_DOD_BTN_EDIT_TYPE"] = "Renommer";
+$MESS["TASKS_SCRUM_DOD_BTN_REMOVE_TYPE"] = "Supprimer";
+$MESS["TASKS_SCRUM_DOD_BTN_SAVE"] = "Enregistrer";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_COMPLETE_BUTTON_TEXT"] = "Fermer la tâche";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_SAVE_BUTTON_TEXT"] = "Enregistrer";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_TEXT_COMPLETE"] = "Voulez-vous fermer la tâche comme étant terminée ou enregistrer la Définition du Fini ?";
+$MESS["TASKS_SCRUM_DOD_INFO_TEXT"] = "Tous les éléments de la Définition du Fini doivent être terminés pour que la tâche soit achevée";
+$MESS["TASKS_SCRUM_DOD_LABEL_EMPTY"] = "Définition du Fini doit être <span>configurée</span> ";
+$MESS["TASKS_SCRUM_DOD_LABEL_TYPES"] = "Type de tâche";
+$MESS["TASKS_SCRUM_DOD_LABEL_USER_SELECTOR"] = "Demander un DDF :";
+$MESS["TASKS_SCRUM_DOD_OPTIONS_REQUIRED_LABEL"] = "Ces éléments doivent être terminés";
+$MESS["TASKS_SCRUM_DOD_POPUP_EMPTY_NAME"] = "Saisissez un nom";
+$MESS["TASKS_SCRUM_DOD_POPUP_INPUT_PLACEHOLDER"] = "Nom";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_CREATE"] = "Créer une liste de contrôle";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_EDIT"] = "Renommer une liste de contrôle";
+$MESS["TASKS_SCRUM_DOD_SAVE_SETTINGS_NOTIFY"] = "Les paramètres ont été enregistrés.";
+$MESS["TASKS_SCRUM_DOD_TITLE"] = "Définition du Fini";
+$MESS["TASKS_SCRUM_DOD_TOOLBAR_SETTINGS"] = "Configurer";
+$MESS["TSD_ERROR_POPUP_TITLE"] = "C’est une erreur.";

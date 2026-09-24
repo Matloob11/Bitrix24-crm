@@ -1,0 +1,186 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bitrix\Tasks\V2\Public\Provider\Relation;
+
+use Bitrix\Main\Type\Collection;
+use Bitrix\Tasks\Provider\TaskList;
+use Bitrix\Tasks\V2\Internal\Access\Service\TaskRightService;
+use Bitrix\Tasks\V2\Internal\Access\Task\ActionDictionary;
+use Bitrix\Tasks\V2\Internal\Entity\Task\Gantt\LinkType;
+use Bitrix\Tasks\V2\Internal\Entity\TaskCollection;
+use Bitrix\Tasks\V2\Internal\Repository\GanttLinkRepositoryInterface;
+use Bitrix\Tasks\V2\Internal\Repository\GroupRepositoryInterface;
+use Bitrix\Tasks\V2\Internal\Repository\Mapper\GanttRelationTaskMapper;
+use Bitrix\Tasks\V2\Internal\Repository\Mapper\TaskStatusMapper;
+use Bitrix\Tasks\V2\Internal\Repository\UserRepositoryInterface;
+use Bitrix\Tasks\V2\Public\Provider\Params\Relation\RelationTaskParams;
+use Bitrix\Tasks\V2\Public\Provider\Params\Relation\RelationTaskByIdsParams;
+
+class GanttDependenceProvider extends AbstractRelationTaskProvider
+{
+	public function __construct(
+		protected readonly TaskRightService $taskRightService,
+		protected readonly TaskList $taskList,
+		protected readonly GanttRelationTaskMapper $ganttRelationTaskMapper,
+		protected readonly UserRepositoryInterface $userRepository,
+		protected readonly GroupRepositoryInterface $groupRepository,
+		protected readonly GanttLinkRepositoryInterface $ganttLinkRepository,
+		protected readonly TaskStatusMapper $taskStatusMapper,
+	)
+	{
+
+	}
+
+	public function getTasks(RelationTaskParams $relationTaskParams): TaskCollection
+	{
+		if (!$this->checkRoot($relationTaskParams))
+		{
+			return new TaskCollection();
+		}
+
+		if (!$this->checkRootAccess($relationTaskParams))
+		{
+			return new TaskCollection();
+		}
+
+		$select = $relationTaskParams->getSelect() ?? $this->getDefaultSelect();
+
+		$tasks = $this->fetchTasks(
+			select: $select,
+			filter: $this->getFilter($relationTaskParams),
+			userId: $relationTaskParams->userId,
+			offset: $relationTaskParams->getOffset(),
+			limit: $relationTaskParams->getLimit(),
+		);
+
+		if (empty($tasks))
+		{
+			return new TaskCollection();
+		}
+
+		$taskIds = array_column($tasks, 'ID');
+		Collection::normalizeArrayValuesByInt($taskIds, false);
+
+		$tasksGanttLinks = $this->ganttLinkRepository->getLinkTypes($relationTaskParams->taskId, $taskIds);
+		$rights = $this->getRelationRights($taskIds, $relationTaskParams->taskId, $relationTaskParams->userId);
+		$groups = $this->getGroups($tasks);
+
+		return $this->ganttRelationTaskMapper->mapToCollection(
+			tasks: $tasks,
+			rights: $rights,
+			tasksGanttLinks: $tasksGanttLinks,
+			groups: $groups,
+		);
+	}
+
+	public function getTasksByIds(RelationTaskByIdsParams $params): TaskCollection
+	{
+		$ids = $params->taskIds;
+
+		Collection::normalizeArrayValuesByInt($ids, false);
+
+		if (empty($ids))
+		{
+			return new TaskCollection();
+		}
+
+		$tasks = $this->fetchTasks(
+			select: $this->getDefaultSelect(),
+			filter: $this->getIdsFilter($ids),
+			userId: $params->userId,
+		);
+
+		if (empty($tasks))
+		{
+			return new TaskCollection();
+		}
+
+		$taskIds = array_column($tasks, 'ID');
+		Collection::normalizeArrayValuesByInt($taskIds, false);
+
+		$tasksGanttLinks = [];
+		foreach ($taskIds as $taskId)
+		{
+			$tasksGanttLinks[$taskId][0] = LinkType::FinishStart;
+		}
+
+		$rights = $this->getRelationRights($taskIds, 0, $params->userId);
+		$groups = $this->getGroups($tasks);
+
+		return $this->ganttRelationTaskMapper->mapToCollection(
+			tasks: $tasks,
+			rights: $rights,
+			tasksGanttLinks: $tasksGanttLinks,
+			groups: $groups,
+		);
+	}
+
+	public function getDefaultSelect(): array
+	{
+		return [
+			'id',
+			'title',
+			'status',
+			'group',
+			'activityDate',
+			'changedDate',
+		];
+	}
+
+	protected function getFilter(RelationTaskParams $relationTaskParams): array
+	{
+		return ['=GANTT_ANCESTOR_ID' => $relationTaskParams->taskId];
+	}
+
+	protected function getFilterForIds(RelationTaskParams $relationTaskParams): array
+	{
+		return $this->getFilter($relationTaskParams);
+	}
+
+	protected function translateSelect(array $select): array
+	{
+		$map = [
+			'id' => 'ID',
+			'title' => 'TITLE',
+			'status' => 'STATUS',
+			'group' => 'GROUP_ID',
+			'activityDate' => 'ACTIVITY_DATE',
+			'changedDate' => 'CHANGED_DATE',
+		];
+
+		$result = [];
+		foreach ($select as $field)
+		{
+			if (!is_string($field))
+			{
+				continue;
+			}
+
+			if (isset($map[$field]))
+			{
+				$result[] = $map[$field];
+			}
+		}
+
+		return $result;
+	}
+
+	protected function getRelationRights(array $taskIds, int $rootId, int $userId): array
+	{
+		if (empty($taskIds))
+		{
+			return [];
+		}
+
+		$params['changeDependence'] = ['dependentId' => $rootId];
+
+		return $this->taskRightService->getTaskRightsBatch(
+			userId: $userId,
+			taskIds: $taskIds,
+			rules: ActionDictionary::GANTT_TASK_ACTIONS,
+			params: $params,
+		);
+	}
+}

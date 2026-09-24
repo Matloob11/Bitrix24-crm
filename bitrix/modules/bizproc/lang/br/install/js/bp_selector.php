@@ -1,0 +1,17 @@
+<?php
+$MESS["BIZPROC_JS_BP_SELECTOR_ACTIVITIES"] = "Resultados adicionais";
+$MESS["BIZPROC_JS_BP_SELECTOR_CONSTANTS"] = "Constantes";
+$MESS["BIZPROC_JS_BP_SELECTOR_DATE"] = "Data atual";
+$MESS["BIZPROC_JS_BP_SELECTOR_DOCUMENT"] = "Documento";
+$MESS["BIZPROC_JS_BP_SELECTOR_EMPTY_LIST"] = "Não foram encontradas entradas.";
+$MESS["BIZPROC_JS_BP_SELECTOR_EOL"] = "Caractere de fim de linha";
+$MESS["BIZPROC_JS_BP_SELECTOR_FUNCTIONS"] = "Funções";
+$MESS["BIZPROC_JS_BP_SELECTOR_HOST_URL"] = "URL do site";
+$MESS["BIZPROC_JS_BP_SELECTOR_NOW"] = "Horário do servidor";
+$MESS["BIZPROC_JS_BP_SELECTOR_NOW_LOCAL"] = "Horário local";
+$MESS["BIZPROC_JS_BP_SELECTOR_PARAMETERS"] = "Parâmetros";
+$MESS["BIZPROC_JS_BP_SELECTOR_SYSTEM"] = "Sistema";
+$MESS["BIZPROC_JS_BP_SELECTOR_TARGET_USER"] = "Fluxo de trabalho iniciado por";
+$MESS["BIZPROC_JS_BP_SELECTOR_USER_ID"] = "Usuário atual";
+$MESS["BIZPROC_JS_BP_SELECTOR_VARIABLES"] = "Variáveis";
+$MESS["BIZPROC_JS_BP_SELECTOR_WORKFLOW_ID"] = "ID do fluxo de trabalho";

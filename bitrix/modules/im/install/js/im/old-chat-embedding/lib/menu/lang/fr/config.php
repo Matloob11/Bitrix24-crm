@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_RECENT_CONTEXT_MENU_CALL"] = "Appel vidéo HD";
+$MESS["IM_RECENT_CONTEXT_MENU_HIDE"] = "Cacher le chat";
+$MESS["IM_RECENT_CONTEXT_MENU_HISTORY"] = "Afficher le journal des messages";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL"] = "Annuler l'invitation";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL_CONFIRM"] = "Voulez-vous vraiment annuler l'invitation ?";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_CANCEL_DONE"] = "L'invitation a été annulée.";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_RESEND"] = "Réinviter";
+$MESS["IM_RECENT_CONTEXT_MENU_INVITE_RESEND_DONE"] = "L'invitation a bien été envoyée.";
+$MESS["IM_RECENT_CONTEXT_MENU_LEAVE"] = "Quitter le chat";
+$MESS["IM_RECENT_CONTEXT_MENU_LOADING"] = "Chargement du menu...";
+$MESS["IM_RECENT_CONTEXT_MENU_MUTE"] = "Désactiver les notifications";
+$MESS["IM_RECENT_CONTEXT_MENU_PIN"] = "Épingler la conversation";
+$MESS["IM_RECENT_CONTEXT_MENU_PROFILE"] = "Afficher le profil";
+$MESS["IM_RECENT_CONTEXT_MENU_READ"] = "Marquer comme lu";
+$MESS["IM_RECENT_CONTEXT_MENU_UNMUTE"] = "Activer les notifications";
+$MESS["IM_RECENT_CONTEXT_MENU_UNPIN"] = "Détacher la conversation";
+$MESS["IM_RECENT_CONTEXT_MENU_UNREAD"] = "Marquer comme non lu";
+$MESS["IM_RECENT_CONTEXT_MENU_WRITE"] = "Écrire un message";

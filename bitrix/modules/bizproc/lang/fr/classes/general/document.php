@@ -1,0 +1,34 @@
+<?php
+$MESS["BPCGDOC_ADD"] = "Ajouter";
+$MESS["BPCGDOC_AUTO_EXECUTE_CREATE"] = "Ajouter";
+$MESS["BPCGDOC_AUTO_EXECUTE_DELETE"] = "Supprimer";
+$MESS["BPCGDOC_AUTO_EXECUTE_EDIT"] = "Mettre à jour";
+$MESS["BPCGDOC_AUTO_EXECUTE_NONE"] = "Non";
+$MESS["BPCGDOC_DELEGATE_LOG_MSGVER_1"] = "L'utilisateur #FROM# a délégué l'affectation \"#NAME#\" à #TO#";
+$MESS["BPCGDOC_DELEGATE_LOG_TITLE"] = "Délégué";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_DEFAULT"] = "#AUTHOR# vous a délégué l'assignation du processus d'entreprise.";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_MSGVER_1"] = "Une affectation du processus d'entreprise vous a été déléguée : [URL=#TASK_URL#]#TASK_NAME#[/URL]";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_SIMPLE"] = "vous a délégué l'assignation \"#TASK_NAME#\", processus d'entreprise : \"#PROCESS_NAME#\".";
+$MESS["BPCGDOC_EMPTY_WD_ID_MSGVER_1"] = "L'ID du modèle du processus d'entreprise est manquant";
+$MESS["BPCGDOC_ERROR_ACTION_MSGVER_1"] = "Affectation #NAME# : #ERROR#";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_MSGVER_1"] = "L'affectation \"#NAME#\" ne peut pas être déléguée, car l'employé sélectionné n'est pas votre subordonné.";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_SINGLE_MSGVER_1"] = "L'employé sélectionné n'est pas votre subordonné.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_MSGVER_1"] = "L'affectation \"#NAME#\" ne peut pas être déléguée, car l'utilisateur sélectionné ne travaille pas pour cette société.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_SINGLE_MSGVER_1"] = "L'utilisateur sélectionné n'est pas un employé de l'entreprise.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_MSGVER_1"] = "L'affectation \"#NAME#\" ne peut pas être déléguée, car la délégation est interdite dans les préférences de l'affectation.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_SINGLE_MSGVER_1"] = "L'affectation ne peut pas être déléguée, car elle est interdite dans les paramètres de l'affectation.";
+$MESS["BPCGDOC_ERROR_DELEGATE_MSGVER_1"] = "L'affectation \"#NAME#\" ne peut être déléguée, car l'employé sélectionné est déjà assigné à l'affectation.";
+$MESS["BPCGDOC_ERROR_DELEGATE_SINGLE_MSGVER_1"] = "L'employé sélectionné participe déjà.";
+$MESS["BPCGDOC_ERROR_TASK_IS_NOT_INLINE_MSGVER_1"] = "L'affectation \"#NAME#\" ne peut pas être effectuée de cette façon.";
+$MESS["BPCGDOC_INVALID_TYPE"] = "Le type de paramètre n'a pas été défini.";
+$MESS["BPCGDOC_INVALID_WF_ID_MSGVER_1"] = "Impossible de trouver un modèle pour le processus d'entreprise #ID#";
+$MESS["BPCGDOC_INVALID_WF_MSGVER_1"] = "Le processus d'entreprise s'exécute sur un élément différent";
+$MESS["BPCGDOC_NO"] = "Non";
+$MESS["BPCGDOC_WAIT"] = "attendez...";
+$MESS["BPCGDOC_WI_B24_LIMITS_MESSAGE"] = "Certaines des entités sur votre portail exécutent simultanément plus de deux processus d'entreprise. Une restriction d'un maximum de deux processus d'entreprise simultanés par entité sera bientôt introduite. Il est recommandé de modifier la logique de vos processus d'entreprise. [URL=https://helpdesk.bitrix24.fr/open/10806416/]En savoir plus[/URL]";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE"] = "Certains processus d'entreprise que vous avez démarrés (#CNT#) ont renvoyé une erreur ou se sont terminés incorrectement.
+[URL=#PATH#]Afficher ces processus d'entreprise[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT"] = "Certains des processus d'entreprise que vous avez démarrés (#CNT#) se sont terminés incorrectement. [URL=#PATH#]Voir les processus d'entreprise[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT_TITLE"] = "Processus d'entreprise";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_TITLE_MSGVER_1"] = "Notification du système";
+$MESS["BPCGDOC_YES"] = "Oui";

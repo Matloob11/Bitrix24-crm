@@ -1,0 +1,22 @@
+<?php
+$MESS["AUTH_AUTH"] = "Autorización";
+$MESS["AUTH_CAPTCHA_PROMT"] = "Tipee el texto de la imagen";
+$MESS["AUTH_CHANGE"] = "Cambio de contraseña";
+$MESS["AUTH_CHANGE_PASSWORD"] = "Cambio de contraseña";
+$MESS["AUTH_CHECKWORD"] = "Palabra clave";
+$MESS["AUTH_CHECKWORD_MSGVER_1"] = "Palabra clave";
+$MESS["AUTH_LOGIN"] = "Usuario";
+$MESS["AUTH_NEW_PASSWORD"] = "Nueva Contraseña";
+$MESS["AUTH_NEW_PASSWORD_CONFIRM"] = "Confirmar Contraseña";
+$MESS["AUTH_NEW_PASSWORD_REQ"] = "Nueva contraseña";
+$MESS["AUTH_NONSECURE_NOTE"] = "La contraseña será enviada en un formulario abierto. Habilite en su navegador web el JavaScript para habilitar el encriptamiento de la contraseña.";
+$MESS["AUTH_REQ"] = "Campos requeridos";
+$MESS["AUTH_SECURE_NOTE"] = "La contraseña será encriptada antes de ser enviada. Esto prevendrá que la contraseña aparezca de forma abierta sobre los canales de transmisión de datos.";
+$MESS["INTRANET_CHANGE_PASS_AUTH_LINK"] = "Iniciar sesión";
+$MESS["INTRANET_CHANGE_PASS_BUTTON"] = "Siguiente";
+$MESS["INTRANET_CHANGE_PASS_CAPTCHA_PROMT"] = "Introduzca el texto";
+$MESS["INTRANET_CHANGE_PASS_CONFIRM"] = "Confirmar la contraseña";
+$MESS["INTRANET_CHANGE_PASS_CREATE_TITLE"] = "Crear una contraseña";
+$MESS["INTRANET_CHANGE_PASS_CURRENT_PASS"] = "Contraseña actual";
+$MESS["INTRANET_CHANGE_PASS_NEW_PASS"] = "Nueva contraseña";
+$MESS["INTRANET_CHANGE_PASS_TITLE"] = "Recuperar la contraseña";

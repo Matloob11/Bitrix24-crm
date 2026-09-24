@@ -1,0 +1,4 @@
+<?php
+$MESS["LISTS_LOCK_STATUS_GREEN_MSGVER_1"] = "#ELEMENT# - disponible para edición";
+$MESS["LISTS_LOCK_STATUS_RED_MSGVER_1"] = "#ELEMENT# - bloqueado por [LOCKED_BY]#LOCKED_BY_USERNAME#[\LOCKED_BY]";
+$MESS["LISTS_LOCK_STATUS_YELLOW_MSGVER_1"] = "#ELEMENT# - bloqueado por usted";

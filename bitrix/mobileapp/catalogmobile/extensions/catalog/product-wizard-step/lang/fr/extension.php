@@ -1,0 +1,19 @@
+<?php
+$MESS["WIZARD_FIELD_ACCESS_DENIED"] = "Droits insuffisants";
+$MESS["WIZARD_FIELD_MEASURE_CODE"] = "Unité de mesure";
+$MESS["WIZARD_FIELD_PRODUCT_AMOUNT"] = "Quantité arrivée";
+$MESS["WIZARD_FIELD_PRODUCT_BARCODE"] = "Code-barres";
+$MESS["WIZARD_FIELD_PRODUCT_BASE_PRICE"] = "Prix de vente";
+$MESS["WIZARD_FIELD_PRODUCT_CURRENCY"] = "Devise";
+$MESS["WIZARD_FIELD_PRODUCT_NAME"] = "Nom du produit";
+$MESS["WIZARD_FIELD_PRODUCT_NEW_NAME"] = "Nouveau produit";
+$MESS["WIZARD_FIELD_PRODUCT_PHOTO"] = "Images des produits";
+$MESS["WIZARD_FIELD_PRODUCT_PURCHASING_PRICE"] = "Prix d'achat";
+$MESS["WIZARD_FIELD_PRODUCT_STORE"] = "Entrepôt";
+$MESS["WIZARD_FIELD_PRODUCT_STORE_FROM"] = "Entrepôt source";
+$MESS["WIZARD_FIELD_PRODUCT_STORE_TO"] = "Entrepôt de destinataire";
+$MESS["WIZARD_STEP_FOOTER_ADD_STORE"] = "Ajouter un entrepôt";
+$MESS["WIZARD_STEP_FOOTER_BIND_TO_SECTION"] = "Lier à la section";
+$MESS["WIZARD_STEP_FOOTER_SECTION_BINDINGS"] = "Section sélectionnée : #SECTIONS#";
+$MESS["WIZARD_STEP_FOOTER_TEXT_PRICE"] = "Saisissez le prix d'achat et la devise comme indiqués dans le document";
+$MESS["WIZARD_STEP_FOOTER_TEXT_PRODUCT"] = "Saisissez le nom du produit tel qu'il apparaît dans l'objet d'inventaire";

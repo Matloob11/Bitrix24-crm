@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_COMPLETED"] = "Mostrar tarefas concluídas";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTASKS"] = "Incluir subtarefas";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTEMPLATES"] = "Incluir modelos de subtarefas";

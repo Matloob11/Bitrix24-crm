@@ -1,0 +1,166 @@
+<?php
+namespace Bitrix\BIConnector\Integration\Crm;
+
+
+class DealUserField
+{
+	/**
+	 * Event handler for onBIConnectorDataSources event.
+	 * Adds a key crm_deal_uf to the second event parameter.
+	 * Fills it with data to retrieve information from b_uts_crm_deal table.
+	 *
+	 * @param \Bitrix\Main\Event $event Event data.
+	 *
+	 * @return void
+	 */
+	public static function onBIConnectorDataSources(\Bitrix\Main\Event $event)
+	{
+		global $USER_FIELD_MANAGER;
+
+		if (!\Bitrix\Main\Loader::includeModule('crm'))
+		{
+			return;
+		}
+
+		$params = $event->getParameters();
+		//$manager = $params[0];
+		$result = &$params[1];
+		$languageId = $params[2];
+
+		$eventTableName = $params[3];
+		if (!empty($eventTableName) && $eventTableName !== 'crm_deal_uf')
+		{
+			return;
+		}
+
+		$userFields = $USER_FIELD_MANAGER->getUserFields(\CCrmDeal::$sUFEntityID, 0, $languageId);
+		if (!$userFields)
+		{
+			return;
+		}
+
+		$result['crm_deal_uf'] = [
+			'TABLE_NAME' => 'b_uts_crm_deal',
+			'TABLE_ALIAS' => 'DUF',
+			'FIELDS' => [
+				'DEAL_ID' => [
+					'IS_PRIMARY' => 'Y',
+					'IS_METRIC' => 'N',
+					'FIELD_NAME' => 'DUF.VALUE_ID',
+					'FIELD_TYPE' => 'int',
+				],
+				//b_crm_deal.DATE_CREATE DATETIME NULL,
+				'DATE_CREATE' => [
+					'IS_METRIC' => 'N', // 'Y'
+					'FIELD_NAME' => 'D.DATE_CREATE',
+					'FIELD_TYPE' => 'datetime',
+					'TABLE_ALIAS' => 'D',
+					'JOIN' => 'INNER JOIN b_crm_deal D ON D.ID = DUF.VALUE_ID',
+					'LEFT_JOIN' => 'LEFT JOIN b_crm_deal D ON D.ID = DUF.VALUE_ID',
+				],
+				//b_crm_deal.CLOSEDATE DATETIME DEFAULT NULL,
+				'CLOSEDATE' => [
+					'IS_METRIC' => 'N', // 'Y'
+					'FIELD_NAME' => 'D.CLOSEDATE',
+					'FIELD_TYPE' => 'datetime',
+					'TABLE_ALIAS' => 'D',
+					'JOIN' => 'INNER JOIN b_crm_deal D ON D.ID = DUF.VALUE_ID',
+					'LEFT_JOIN' => 'LEFT JOIN b_crm_deal D ON D.ID = DUF.VALUE_ID',
+				],
+			],
+		];
+		foreach ($userFields as $userField)
+		{
+			$result['crm_deal_uf']['FIELDS'][$userField['FIELD_NAME']] = [
+				'FIELD_DESCRIPTION' => $userField['EDIT_FORM_LABEL'],
+				'IS_METRIC' => 'N',
+				'FIELD_NAME' => 'DUF.' . $userField['FIELD_NAME'],
+				'FIELD_TYPE' => (
+					$userField['MULTIPLE'] === 'N'
+					&& \Bitrix\BIConnector\Superset\Config\DatasetSettings::isTypingEnabled()
+				) ? $userField['USER_TYPE_ID'] : 'string',
+				'CALLBACK' => function($value, $dateFormats) use($userField)
+				{
+					global $USER_FIELD_MANAGER;
+
+					if (in_array($userField['USER_TYPE_ID'], ['date', 'datetime'], true))
+					{
+						if ($value === null || $value === '')
+						{
+							return null;
+						}
+
+						$format =
+							$userField['USER_TYPE_ID'] === 'date'
+								? $dateFormats['date_format_php']
+								: $dateFormats['datetime_format_php']
+						;
+
+						return \Bitrix\BIConnector\PrettyPrinter::formatUserFieldAsDate($userField, $value, $format);
+					}
+
+					if (
+						$userField['USER_TYPE_ID'] === \Bitrix\Main\UserField\Types\BooleanType::USER_TYPE_ID
+						&& \Bitrix\BIConnector\Superset\Config\DatasetSettings::isTypingEnabled()
+					)
+					{
+						return (bool)$value;
+					}
+
+					$cacheKey = serialize($value);
+					$cachedResult = \Bitrix\BIConnector\MemoryCache::get($userField['ID'], $cacheKey);
+					if (isset($cachedResult))
+					{
+						return $cachedResult;
+					}
+					else
+					{
+						if ($userField['MULTIPLE'] == 'Y')
+						{
+							$result = $USER_FIELD_MANAGER->onAfterFetch(
+								$userField,
+								$value !== null
+									? unserialize($value, ['allowed_classes' => \Bitrix\BIConnector\PrettyPrinter::$allowedUnserializeClassesList])
+									: false
+							);
+						}
+						else
+						{
+							$result = [$USER_FIELD_MANAGER->onAfterFetch($userField, $value)];
+						}
+
+						$localUF = $userField;
+						$localUF['VALUE'] = $result;
+
+						$returnResult = \Bitrix\BIConnector\UserField\ProxyUserFieldManager::getText($localUF);
+						\Bitrix\BIConnector\MemoryCache::set($userField['ID'], $cacheKey, $returnResult);
+
+						return $returnResult;
+					}
+				}
+			];
+		}
+
+		$messages = \Bitrix\Main\Localization\Loc::loadLanguageFile(__FILE__, $languageId);
+		$result['crm_deal_uf']['TABLE_DESCRIPTION'] = $messages['CRM_BIC_DEAL_UF_TABLE'] ?: 'crm_deal_uf';
+		$result['crm_deal_uf']['TABLE_DESCRIPTION_FULL'] = $messages['CRM_BIC_DEAL_UF_TABLE_DESCRIPTION_FULL'] ?? '';
+		foreach ($result['crm_deal_uf']['FIELDS'] as $fieldCode => &$fieldInfo)
+		{
+			if (isset($messages['CRM_BIC_DEAL_UF_FIELD_' . $fieldCode]))
+			{
+				$fieldInfo['FIELD_DESCRIPTION'] = $messages['CRM_BIC_DEAL_UF_FIELD_' . $fieldCode];
+			}
+
+			if (!$fieldInfo['FIELD_DESCRIPTION'])
+			{
+				$fieldInfo['FIELD_DESCRIPTION'] = $fieldCode;
+			}
+
+			if (isset($messages['CRM_BIC_DEAL_UF_FIELD_' . $fieldCode . '_FULL']))
+			{
+				$fieldInfo['FIELD_DESCRIPTION_FULL'] = !empty($messages['CRM_BIC_DEAL_UF_FIELD_' . $fieldCode . '_FULL']) ? $messages['CRM_BIC_DEAL_UF_FIELD_' . $fieldCode . '_FULL'] : '';
+			}
+		}
+		unset($fieldInfo);
+	}
+}

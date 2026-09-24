@@ -1,0 +1,24 @@
+<?php
+$MESS["BPAR_PD_TASK_BUTTON_CANCEL_MESSAGE_MSGVER_1"] = "Texte pour le bouton \"Refuser\" dans l'affectation";
+$MESS["BPRIA_PD_CANCEL_TYPE"] = "Peut être refusé par";
+$MESS["BPRIA_PD_CANCEL_TYPE_ALL"] = "Tous les employés";
+$MESS["BPRIA_PD_CANCEL_TYPE_ANY"] = "N'importe quel employé";
+$MESS["BPRIA_PD_SAVE_VARIABLES"] = "Enregistrer les valeurs en cas d'échec";
+$MESS["BPRIOA_ACT_APPROVE_TRACK"] = "L'utilisateur #PERSON# a fourni des informations supplémentaires #COMMENT#";
+$MESS["BPRIOA_ACT_BUTTON1"] = "Enregistrer";
+$MESS["BPRIOA_ACT_BUTTON2"] = "Refuser";
+$MESS["BPRIOA_ACT_CANCEL_TRACK"] = "L'utilisateur #PERSON# a annulé les informations supplémentaires #COMMENT#";
+$MESS["BPRIOA_ACT_COMMENT"] = "Commentaire";
+$MESS["BPRIOA_ACT_COMMENT_ERROR"] = "Le champ '#COMMENT_LABEL#'  est obligatoire.";
+$MESS["BPRIOA_ACT_INFO"] = "En attente d'informations supplémentaires";
+$MESS["BPRIOA_ACT_PROP_EMPTY1"] = "La propriété 'Utilisateurs' n'est pas indiquée.";
+$MESS["BPRIOA_ACT_PROP_EMPTY2"] = "Au moins un champ est obligatoire.";
+$MESS["BPRIOA_ACT_PROP_EMPTY4"] = "La propriété 'Nom' n'est pas spécifiée.";
+$MESS["BPRIOA_ACT_TRACK1"] = "#VAL# doit fournir des informations supplémentaires";
+$MESS["BPRIOA_ARGUMENT_NULL"] = "Valeur obligatoire '#PARAM#' non renseignée.";
+$MESS["BPRIOA_LOG_COMMENTS"] = "Commentaire";
+$MESS["BPSFA_COMMENT_REQUIRED_YA_1"] = "Lors de l'approbation";
+$MESS["BPSFA_COMMENT_REQUIRED_YR_1"] = "Los du refus";
+$MESS["BPSFA_PD_CANCEL"] = "Annuler";
+$MESS["BPSFA_PD_NO"] = "Non";
+$MESS["BPSFA_PD_YES"] = "Oui";

@@ -1,0 +1,3 @@
+<?php
+$MESS["MARKET_PRICE_POLICY_FREE"] = "Gratis";
+$MESS["MARKET_PRICE_POLICY_SUBSCRIPTION"] = "Abbonamento";

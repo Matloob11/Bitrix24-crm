@@ -1,0 +1,563 @@
+<?php
+
+namespace Bitrix\Mobile\Tab;
+
+use Bitrix\Intranet\CurrentUser;
+use Bitrix\Intranet\UI\LeftMenu\Preset;
+use Bitrix\Main\Application;
+use Bitrix\Main\ArgumentException;
+use Bitrix\Main\ArgumentNullException;
+use Bitrix\Main\ArgumentOutOfRangeException;
+use Bitrix\Main\Config\Option;
+use Bitrix\Main\IO\Directory;
+use Bitrix\Main\IO\FileNotFoundException;
+use Bitrix\Main\IO\FileSystemEntry;
+use Bitrix\Main\Loader;
+use Bitrix\Main\LoaderException;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\SystemException;
+use Bitrix\Main\Type\Date;
+use Bitrix\Main\Web\Json;
+use Bitrix\Mobile\Context;
+
+class Manager
+{
+	public const tabDirectoryPath = "/bitrix/modules/mobile/tabs/";
+	public const configPath = "/bitrix/modules/mobile/.tab_config.php";
+	public const maxCount = 5;
+	public const maxSortValue = 1000;
+
+
+	private array $tabList;
+	private Context $context;
+	private array $config;
+
+	/**
+	 * Manager constructor.
+	 * @param {Context} $options
+	 * @throws FileNotFoundException
+	 * @throws LoaderException
+	 * @throws SystemException
+	 */
+	public function __construct($context = null)
+	{
+		Loader::includeModule("mobileapp");
+		if ($context == null)
+		{
+			$this->context = new Context();
+		}
+		else
+		{
+			$this->context = $context;
+		}
+
+		$this->tabList = [];
+
+		$this->config = include(Application::getDocumentRoot() . self::configPath);
+		Loc::loadLanguageFile(Application::getDocumentRoot() . self::tabDirectoryPath . "/tabs.php");
+		$tabDirectory = new Directory(Application::getDocumentRoot() . self::tabDirectoryPath);
+		$tabsFiles = $tabDirectory->getChildren();
+		/**
+		 * @var FileSystemEntry $tab
+		 */
+		foreach ($tabsFiles as $tab)
+		{
+			if ($tab->isFile() && $tab->getExtension() == "php")
+			{
+				require_once($tab->getPath());
+			}
+		}
+
+		$tabsDescription = $this->config["tabs"];
+		foreach ($tabsDescription as $tabData)
+		{
+			$class = $tabData["class"] ?? null;
+			$file = $tabData["file"] ?? null;
+
+			if ($file)
+			{
+				require_once(Application::getDocumentRoot() . $file);
+			}
+
+			if (class_exists($class))
+			{
+				$interfaces = class_implements($class);
+				if (!$this->isTabable($interfaces) && !$this->isFactoryTabable($interfaces))
+				{
+					throw new SystemException(
+						"Tab class '{$class}' not implements \\Bitrix\\Mobile\\Tab\\Tabable or \\Bitrix\\Mobile\\Tab\\FactoryTabable",
+					);
+				}
+			}
+			else
+			{
+				continue;
+			}
+
+			$instance = new $class();
+			$instance->setContext($this->context);
+
+			if ($this->isFactoryTabable($interfaces))
+			{
+				$this->tabList = array_merge($this->tabList, $instance->getTabsList());
+			}
+			else
+			{
+				$this->tabList[$tabData['code']] = $instance;
+			}
+		}
+
+		if ($savedConfig = $this->getUserPresetConfig())
+		{
+			$this->config["presets"]["manual"] = $savedConfig;
+		}
+		else
+		{
+			$this->config["presets"]["manual"] = $this->getActiveTabs();
+		}
+
+		$this->migratePresetsByVersion();
+	}
+
+	/**
+	 * Return data of active tabs
+	 * @param array $ids
+	 * @return array
+	 * @throws ArgumentNullException
+	 * @throws ArgumentOutOfRangeException
+	 */
+	public function getActiveTabsData(array $ids = [])
+	{
+		$tabList = [];
+		$tabConfig = null;
+		if (empty($ids))
+		{
+			$ids = array_keys($this->getActiveTabs());
+			$tabConfig = $this->getActiveTabs();
+		}
+
+		/**
+		 * @var FileSystemEntry $tab
+		 * @var Tabable $tab
+		 */
+
+		foreach ($ids as $tabId)
+		{
+			if ($this->getTabAvailabilityState($tabId))
+			{
+				$tabInstance = $this->getTabInstance($tabId);
+				$tab = array_merge([
+					'id' => $tabInstance->getId(),
+					'title' => $tabInstance->getShortTitle(),
+				], $tabInstance->getData());
+				if ($tabConfig != null && array_key_exists($tabId, $tabConfig))
+				{
+					$tab['sort'] = $tabConfig[$tabId];
+				}
+				$tabList[] = $tab;
+			}
+		}
+
+		return $tabList;
+	}
+
+	/**
+	 * Return instance of tab class
+	 * @param string $id
+	 * @return Tabable
+	 */
+	public function getTabInstance($id = null)
+	{
+		return $this->tabList[$id] ?? null;
+	}
+
+	/**
+	 * Return list of active tabs
+	 * @return array
+	 * @throws ArgumentNullException
+	 * @throws ArgumentOutOfRangeException
+	 */
+	public function getActiveTabs()
+	{
+		$permanentTabs = $this->getRequiredTabs();
+		$presetConfig = $this->getPresetConfig();
+		if (empty($presetConfig))
+		{
+			$presetConfig = $this->setDefaultUserPreset();
+		}
+
+		return $this->resolveTabs($presetConfig, $permanentTabs);
+	}
+
+	public function getAllTabIDs($includeUnavailable = false)
+	{
+		return array_filter(array_keys($this->tabList), function ($tabId) use ($includeUnavailable) {
+			return $this->getTabInstance($tabId)->isAvailable() || $includeUnavailable;
+		});
+	}
+
+	/**
+	 * Set up custom preset of tab list
+	 * @param array $config
+	 * @param boolean $isManually
+	 * @return array|SystemException
+	 * @throws ArgumentException
+	 * @throws ArgumentOutOfRangeException
+	 */
+	public function setCustomConfig(array $config = [], bool $isManually = false)
+	{
+		global $CACHE_MANAGER;
+
+		if (!is_array($config))
+		{
+			return new  SystemException("Tab config must be array", 400);
+		}
+
+		$config = array_map(function ($value) {
+			if ($value >= self::maxSortValue)
+			{
+				$value = self::maxSortValue - 1;
+			}
+
+			return (int)$value;
+
+		}, $config);
+		Option::set("mobile", "tabs_{$this->context->userId}", Json::encode($config), $this->context->siteId);//set custom config
+		Option::set("mobile", "tabs_preset_{$this->context->userId}", "manual", $this->context->siteId);//set reset preset
+		$this->config["presets"]["manual"] = $config;
+		$CACHE_MANAGER->ClearByTag('mobile_custom_menu' . $this->context->userId);
+
+		if ($isManually)
+		{
+			$this->setPresetManuallySet();
+		}
+
+		return $this->getActiveTabs();
+	}
+
+	public function defaultConfig()
+	{
+		return $this->config["presets"]["default"];
+	}
+
+	public function getPresetIdByWebPreset(?string $siteId): string
+	{
+		if (!Loader::includeModule('intranet'))
+		{
+			return '';
+		}
+
+		$map = [
+			Preset\Boards::CODE => 'task',
+			Preset\Collab::CODE => '',
+			Preset\Crm::CODE => 'crm',
+			Preset\CrmStore::CODE => 'crm',
+			Preset\Shop::CODE => 'collaboration',
+			Preset\Sites::CODE => 'collaboration',
+			Preset\Social::CODE => 'collaboration',
+			Preset\Tasks::CODE => 'task',
+		];
+		$webPreset = Preset\Manager::getPreset(null, $siteId);
+
+		return $map[$webPreset->getCode()] ?? 'collaboration';
+	}
+
+	public function isPresetManuallySet(): bool
+	{
+		$optionValue = \CUserOptions::GetOption(
+			'mobile',
+			'tabs_preset_manually_set',
+			'N',
+			$this->context->userId,
+		);
+
+		return $optionValue === 'Y';
+	}
+
+	public function canSyncWithWebPresetForUser(): bool
+	{
+		if (!Loader::includeModule('intranet'))
+		{
+			return false;
+		}
+
+		$userDateRegister = CurrentUser::get()->getDateRegister()?->getTimestamp();
+		$minDateRegisterToSync = (new Date('06.11.2025', 'd.m.Y'))->getTimestamp();
+
+		return $userDateRegister && $userDateRegister > $minDateRegisterToSync;
+	}
+
+	/**
+	 * Set up preset by name
+	 * @param string $name
+	 * @param boolean $isManually
+	 * @return array|null
+	 * @throws ArgumentOutOfRangeException
+	 * @throws ArgumentNullException
+	 */
+	public function setPresetName($name = "default", bool $isManually = false)
+	{
+		global $CACHE_MANAGER;
+
+		if (array_key_exists($name, $this->config["presets"]))
+		{
+			Option::set("mobile", "tabs_preset_{$this->context->userId}", $name, $this->context->siteId);//set preset name
+			Option::set("mobile", "tabs_{$this->context->userId}", "", $this->context->siteId);//reset custom config
+			$CACHE_MANAGER->ClearByTag('mobile_custom_menu' . $this->context->userId);
+
+			if ($isManually)
+			{
+				$this->setPresetManuallySet();
+			}
+
+			return $this->getActiveTabs();
+		}
+
+		return null;
+	}
+
+	/**
+	 * Return name of current preset
+	 * @return string
+	 * @throws ArgumentOutOfRangeException
+	 * @throws ArgumentNullException
+	 */
+	public function getPresetName()
+	{
+		if (!($preset = Option::get("mobile", "tabs_preset_{$this->context->userId}", false, $this->context->siteId)))
+		{
+			$preset = "default";
+		}
+
+		return $preset;
+	}
+
+	/**
+	 * Return configuration of current preset
+	 * @return array|null
+	 * @throws ArgumentNullException
+	 * @throws ArgumentOutOfRangeException
+	 */
+	public function getPresetConfig()
+	{
+		if ($this->context->isGuest)
+		{
+			return $this->config['defaultGuestPreset'];
+		}
+
+		if ($this->context->isCollaber)
+		{
+			return $this->config['defaultCollaberPreset'];
+		}
+
+		$preset = $this->getPresetName();
+		if (isset($this->config["presets"][$preset]) && is_array($this->config["presets"][$preset]))
+		{
+			return $this->config["presets"][$preset];
+		}
+
+		$this->setCustomConfig($this->config["defaultUserPreset"]);
+
+		return $this->config["defaultUserPreset"];
+	}
+
+	/**
+	 * Return list of required tabs, which must be always active
+	 * @return mixed
+	 */
+	public function getRequiredTabs()
+	{
+		return array_reduce(array_keys($this->tabList),
+			function ($result, $tabId) {
+				/**
+				 * @type Tabable $tab
+				 */
+				$tab = $this->tabList[$tabId];
+				if ($tab->canBeRemoved() === false && $tab->isAvailable())
+				{
+					$result[$tabId] = $tab->defaultSortValue();
+				}
+
+				return $result;
+			}, []);
+	}
+
+	/**
+	 * Return available state by tab identifier
+	 * @param null $tabId
+	 * @return bool
+	 */
+	public function getTabAvailabilityState($tabId = null): bool
+	{
+		return $this->tabList[$tabId] && $this->tabList[$tabId]->isAvailable($this->context);
+	}
+
+	/**
+	 * Return list of available presets
+	 * @return array
+	 */
+	public function getPresetList(): array
+	{
+		$result = [];
+		$presets = $this->config["presets"];
+		$presetsOptions = $this->config["presetsOptions"] ?? [];
+		$requiredTabs = $this->config["presetRequiredTabs"] ?? [];
+
+		foreach ($presets as $presetId => $tabs)
+		{
+			$tabsIDs = array_keys($tabs);
+			if (empty($tabsIDs))
+			{
+				continue;
+			}
+
+			$presetRequired = $requiredTabs[$presetId] ?? $tabsIDs;
+			$available = true;
+			foreach ($presetRequired as $tabId)
+			{
+				if ($this->getTabInstance($tabId) === null || !$this->getTabInstance($tabId)->isAvailable())
+				{
+					$available = false;
+
+					break;
+				}
+			}
+
+			if ($available)
+			{
+				$tabs = array_filter($tabs, function ($sort, $id) {
+					return $this->getTabInstance($id) !== null && $this->getTabInstance($id)->isAvailable();
+				}, ARRAY_FILTER_USE_BOTH);
+
+				$presetOption = $presetsOptions[$presetId];
+				$result[$presetId] = [
+					'tabs' => $tabs,
+					'sort' => $presetOption['sort'],
+					'title' => Loc::getMessage($presetOption['messageCode']),
+					'tabsDescription' => $this->getTabsDescription($presetId, array_keys($tabs)),
+				];
+			}
+		}
+
+		return $result;
+	}
+
+	private function setPresetManuallySet(): void
+	{
+		\CUserOptions::SetOption(
+			'mobile',
+			'tabs_preset_manually_set',
+			'Y',
+			false,
+			$this->context->userId,
+		);
+	}
+
+	private function isTabable(array $interfaces): bool
+	{
+		return in_array('Bitrix\\Mobile\\Tab\\Tabable', $interfaces, true);
+	}
+
+	private function isFactoryTabable(array $interfaces): bool
+	{
+		return in_array('Bitrix\\Mobile\\Tab\\FactoryTabable', $interfaces, true);
+	}
+
+	/**
+	 * Resolve and return final configuration
+	 *
+	 * @param $config
+	 * @param array $required
+	 * @return array
+	 */
+	private function resolveTabs($config, array $required = []): array
+	{
+		$result = array_keys($required);
+		$unchangeable = is_array($this->config["unchangeable"]) ? $this->config["unchangeable"] : [];
+		$configKeys = array_diff(array_keys($config), $result);
+		$sorts = array_merge($required, $config, $unchangeable);
+
+		$tabs = array_reduce($configKeys, function ($result, $tabId) {
+			if (count($result) < Manager::maxCount && $this->getTabAvailabilityState($tabId))
+			{
+				$result[] = $tabId;
+			}
+
+			return $result;
+		}, $result);
+
+		$result = array_filter($sorts, function ($tabId) use ($tabs) {
+			return in_array($tabId, $tabs) && $this->getTabAvailabilityState($tabId);
+		}, ARRAY_FILTER_USE_KEY);
+
+		asort($result);
+
+		return $result;
+	}
+
+	/**
+	 * Return configuration of custom preset
+	 * @return bool|mixed
+	 * @throws ArgumentException
+	 * @throws ArgumentNullException
+	 * @throws ArgumentOutOfRangeException
+	 */
+	private function getUserPresetConfig(): mixed
+	{
+		$option = Option::get("mobile", "tabs_{$this->context->userId}", false, $this->context->siteId);
+		$result = false;
+		if ($option)
+		{
+			$result = Json::decode($option);
+		}
+
+		return $result;
+	}
+
+	private function getTabsDescription(string $presetId, array $tabs): array
+	{
+		return array_filter(
+			array_combine(
+				$tabs,
+				array_map(fn($tabId) => Loc::getMessage(mb_strtoupper("{$presetId}_{$tabId}_DESCRIPTION")), $tabs),
+			),
+		);
+	}
+
+	private function setDefaultUserPreset()
+	{
+		$defaultTabs = $this->config["defaultUserPreset"];
+		$this->setCustomConfig($defaultTabs);
+
+		return $defaultTabs;
+	}
+
+	private function migratePresetsByVersion(): void
+	{
+		$currentVersion = $this->config['presetLegacy']['currentVersion'];
+		$migrationVersion = \CUserOptions::GetOption(
+			'mobile',
+			'tabs_presets_migration_version',
+			0,
+			$this->context->userId,
+		);
+
+		if ($currentVersion > $migrationVersion)
+		{
+			$currentPresetName = $this->getPresetName();
+
+			if ($this->config['presetLegacy'][$currentPresetName])
+			{
+				$this->setCustomConfig($this->config['presetLegacy'][$currentPresetName]);
+			}
+
+			\CUserOptions::SetOption(
+				'mobile',
+				'tabs_presets_migration_version',
+				$currentVersion,
+				false,
+				$this->context->userId,
+			);
+		}
+	}
+}

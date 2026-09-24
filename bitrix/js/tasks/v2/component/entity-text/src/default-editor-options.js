@@ -1,0 +1,56 @@
+import { EntitySelectorEntity } from 'tasks.v2.const';
+import type { TextEditorOptions } from 'ui.text-editor';
+
+import { CHECK_LIST_BUTTON } from './editor-plugins/check-list-plugin';
+
+export const DefaultEditorOptions: TextEditorOptions = Object.freeze({
+	toolbar: [],
+	floatingToolbar: [
+		'bold', 'italic', 'underline', 'strikethrough', '|',
+		'numbered-list', 'bulleted-list', '|',
+		'link', 'spoiler', 'quote', 'code', 'copilot',
+	],
+	removePlugins: ['BlockToolbar'],
+	visualOptions: {
+		borderWidth: 0,
+		blockSpaceInline: 0,
+		colorBackground: 'transparent',
+	},
+	mention: {
+		dialogOptions: {
+			entities: [
+				{
+					id: EntitySelectorEntity.User,
+					options: {
+						emailUsers: true,
+						inviteEmployeeLink: false,
+					},
+					itemOptions: {
+						default: {
+							link: '',
+							linkTitle: '',
+						},
+					},
+				},
+				{
+					id: EntitySelectorEntity.StructureNode,
+					options: {
+						selectMode: 'usersOnly',
+						allowFlatDepartments: false,
+					},
+				},
+			],
+		},
+	},
+	copilot: {},
+	paragraphPlaceholder: 'auto',
+});
+
+export const ExtendedEditorOptions: TextEditorOptions = Object.freeze({
+	...DefaultEditorOptions,
+	floatingToolbar: [
+		'bold', 'italic', 'underline', 'strikethrough', '|',
+		'numbered-list', 'bulleted-list', '|',
+		CHECK_LIST_BUTTON, 'link', 'spoiler', 'quote', 'code', 'copilot',
+	],
+});

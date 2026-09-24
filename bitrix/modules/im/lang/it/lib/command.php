@@ -1,0 +1,19 @@
+<?php
+$MESS["COMMAND_BOT_ANSWER"] = "Chat bot #BOT_NAME#";
+$MESS["COMMAND_DEF_CATEGORY_CHAT"] = "Chat";
+$MESS["COMMAND_DEF_CATEGORY_DEBUG"] = "Debug";
+$MESS["COMMAND_DEF_CATEGORY_DIALOG"] = "Conversazione";
+$MESS["COMMAND_DEF_DIALOGID_TITLE"] = "Ottieni ID chat esterna (dialogId)";
+$MESS["COMMAND_DEF_LOUD_PARAMS"] = "testo";
+$MESS["COMMAND_DEF_LOUD_TITLE"] = "Applica stile grassetto";
+$MESS["COMMAND_DEF_ME_PARAMS"] = "testo";
+$MESS["COMMAND_DEF_ME_TITLE"] = "Applica stile corsivo";
+$MESS["COMMAND_DEF_QUOTE_PARAMS"] = "testo";
+$MESS["COMMAND_DEF_QUOTE_TITLE"] = "Rende il testo come citazione";
+$MESS["COMMAND_DEF_RENAME_PARAMS"] = "nuovo titolo";
+$MESS["COMMAND_DEF_RENAME_TITLE"] = "Modifica titolo chat";
+$MESS["COMMAND_DEF_SPTS_TITLE"] = "Disattiva monitoraggio stato \"online\"";
+$MESS["COMMAND_DEF_STTS_TITLE"] = "Attiva monitoraggio stato \"online\"";
+$MESS["COMMAND_DEF_WD_TITLE"] = "Attiva modalità di debug in videochiamata";
+$MESS["COMMAND_IM_CATEGORY"] = "Messaggistica immediata";
+$MESS["COMMAND_SYSTEM_ANSWER"] = "Rispondi al comando #COMMAND#";

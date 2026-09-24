@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_ON_TASK_DISAPPROVED_TITLE"] = "Tarea devuelta para revisión";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_2"] = "Pendiente";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_3"] = "En progreso";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_4"] = "Revisión pendiente";
+$MESS["TASKS_ON_TASK_STATUS_CHANGED_STATUS_5"] = "Completada";

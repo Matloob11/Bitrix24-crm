@@ -1,0 +1,176 @@
+import {
+	BuilderModel,
+	type GetterTree,
+	type ActionTree,
+	type MutationTree,
+	type Store,
+} from 'ui.vue3.vuex';
+
+import { Communication, Model } from 'booking.const';
+import {
+	type ResourceModel,
+	type ResourcesState,
+	type SlotRange,
+	type Skus,
+	type ResourceSkuRelationsModel,
+} from './types';
+
+export class Resources extends BuilderModel
+{
+	getName(): string
+	{
+		return Model.Resources;
+	}
+
+	getState(): ResourcesState
+	{
+		return {
+			collection: {},
+			resourcesSkuRelations: [],
+		};
+	}
+
+	getElementState(): ResourceModel
+	{
+		return {
+			id: 0,
+			type: '',
+			name: '',
+			description: '',
+			avatar: null,
+			linkedResources: [],
+			slotRanges: [],
+			workLoad: null,
+			counter: null,
+			isMain: false,
+			isPrimary: false,
+			isDeleted: false,
+			isConfirmationNotificationOn: true,
+			isFeedbackNotificationOn: true,
+			isInfoNotificationOn: false,
+			isDelayedNotificationOn: false,
+			isReminderNotificationOn: false,
+			templateTypeConfirmation: '',
+			templateTypeFeedback: '',
+			templateTypeInfo: '',
+			templateTypeDelayed: '',
+			templateTypeReminder: '',
+			createdBy: 0,
+			createdAt: 0,
+			updatedAt: 0,
+			deletedAt: 0,
+			senderCode: Communication.Bitrix24,
+			entities: [],
+			skus: [],
+			skusYandex: [],
+		};
+	}
+
+	getGetters(): GetterTree
+	{
+		return {
+			/** @function resources/get */
+			get: (state: ResourcesState, getters, rootState, rootGetters): ResourceModel[] => {
+				const deletingResources = rootGetters[`${Model.Interface}/deletingResources`];
+
+				return Object.values(state.collection).filter(({ id }) => !deletingResources[id]);
+			},
+			/** @function resources/getById */
+			getById: (state: ResourcesState) => (id: number): ResourceModel => state.collection[id],
+			/** @function resources/isDeleted */
+			isDeleted: (state: ResourcesState) => (id: ?number): boolean => {
+				if (!id)
+				{
+					return false;
+				}
+
+				return state.collection[id]?.isDeleted ?? false;
+			},
+			/** @function resources/getByIds */
+			getByIds: (state: ResourcesState) => (ids: number[]): ResourceModel[] => {
+				return ids.map((id: number): ResourceModel => state.collection[id]);
+			},
+			/** @function resources/getBySkuIds */
+			getBySkuIds: (state: ResourcesState) => (ids: number[]): ResourceModel[] => {
+				return Object.values(state.collection).filter(
+					(resource: ResourceModel) => resource.skus.some(
+						(sku: Skus) => ids.includes(sku.id),
+					),
+				);
+			},
+			/** @function resources/resourcesSkuRelations */
+			resourcesSkuRelations: (state): ResourceSkuRelationsModel => state.resourcesSkuRelations,
+		};
+	}
+
+	getActions(): ActionTree
+	{
+		return {
+			/** @function resources/insertMany */
+			insertMany: (store: Store, resources: ResourceModel[]): void => {
+				resources.forEach((resource: ResourceModel) => store.commit('insert', resource));
+			},
+			/** @function resources/upsert */
+			upsert: (store: Store, resource: ResourceModel): void => {
+				store.commit('upsert', resource);
+			},
+			/** @function resources/upsertMany */
+			upsertMany: (store: Store, resources: ResourceModel[]): void => {
+				resources.forEach((resource: ResourceModel) => store.commit('upsert', resource));
+			},
+			/** @function resources/delete */
+			delete: (store: Store, resourceId: number): void => {
+				store.commit('delete', resourceId);
+			},
+			/** @function resources/setResourcesSkuRelations */
+			setResourcesSkuRelations: (store, resourcesSkuRelations: ResourceSkuRelationsModel) => {
+				store.commit('setResourcesSkuRelations', resourcesSkuRelations);
+			},
+			/** @function resources/setSenderCodeForAll */
+			setSenderCodeForAll: (store: Store, senderCode: string): void => {
+				store.commit('setSenderCodeForAll', senderCode);
+			},
+		};
+	}
+
+	getMutations(): MutationTree
+	{
+		return {
+			insert: (state: ResourcesState, resource: ResourceModel): void => {
+				resource.slotRanges = this.#updateSlotRangesTimezone(resource.slotRanges);
+				state.collection[resource.id] ??= resource;
+			},
+			upsert: (state: ResourcesState, resource: ResourceModel): void => {
+				resource.slotRanges = this.#updateSlotRangesTimezone(resource.slotRanges);
+				state.collection[resource.id] ??= resource;
+				Object.assign(state.collection[resource.id], resource);
+			},
+			delete: (state: ResourcesState, resourceId: number): void => {
+				delete state.collection[resourceId];
+			},
+			setResourcesSkuRelations: (state, resourcesSkuRelations: ResourceSkuRelationsModel) => {
+				state.resourcesSkuRelations = resourcesSkuRelations;
+			},
+			setSenderCodeForAll: (state: ResourcesState, senderCode: string): void => {
+				for (const resource of Object.values(state.collection))
+				{
+					resource.senderCode = senderCode;
+				}
+			},
+		};
+	}
+
+	#updateSlotRangesTimezone(slotRanges: SlotRange[]): SlotRange[]
+	{
+		return slotRanges.map((slotRange: SlotRange) => {
+			return {
+				...slotRange,
+				timezone: (
+					slotRange.timezone === ''
+						? Intl.DateTimeFormat().resolvedOptions().timeZone
+						: slotRange.timezone
+				),
+			};
+		});
+	}
+}

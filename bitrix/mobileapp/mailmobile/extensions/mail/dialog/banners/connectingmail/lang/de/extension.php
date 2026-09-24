@@ -1,0 +1,21 @@
+<?php
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CHATS"] = "Erstellen Sie Aufgaben aus den E-Mails, oder besprechen Sie die E-Mails im Chat.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CRM"] = "Speichern Sie die Kunden-E-Mails im CRM.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_MOBILE"] = "Nutzen Sie die E-Mail Ihres Unternehmens, auch wenn Sie außerhalb des Büros arbeiten.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_1"] = "Verbinden";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_CONNECT"] = "Mailbox verbinden";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_REQUEST"] = "Tippen Sie hier, wenn Sie Hilfe benötigen";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_DESCRIPTION"] = "Direkt in Ihrem Bitrix24 können Sie E-Mail lesen und beantworten. Speichern Sie E-Mails im CRM und bleiben Sie in Kontakt.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_1"] = "Mailbox mit Bitrix24 verbinden";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_PROMO"] = "Mailbox mit Bitrix24 verbinden";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_DESCRIPTION"] = "Ihr Bitrix24 Administrator bekommt Ihre Anfrage und verbindet Ihre Mailbox.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_NETWORK_ERROR"] = "Ihre Anfrage kann nicht gesendet werden. Bitte versuchen Sie es später erneut.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_PLACEHOLDER"] = "Zusätzliche Informationen";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUBMIT"] = "Senden";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_CLOSE"] = "Schließen";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_DESC"] = "Der Administrator bekommt  Ihre Anfrage und verbindet Ihre Mailbox.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_TITLE"] = "Ihre Anfrage wurde gesendet";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_TITLE"] = "Anfrage wegen Verbindung";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_CLOSE"] = "Schließen";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_DESC"] = "Bitte wenden Sie sich direkt an Ihren Bitrix24 Administrator, wenn Sie glauben, Ihre Anfrage ist verlorengegangen.";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_TITLE"] = "Ihre Anfrage wurde gesendet";

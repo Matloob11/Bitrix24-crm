@@ -1,0 +1,6 @@
+<?php
+$MESS["IM_VIEW_POPUP_CONTENT_GROUP_CHAT"] = "Chat privado";
+$MESS["IM_VIEW_POPUP_CONTENT_NO_ACCESS"] = "Acceso denegado.";
+$MESS["IM_VIEW_POPUP_CONTENT_OPEN_CHAT"] = "Abrir chat";
+$MESS["IM_VIEW_POPUP_CONTENT_OPEN_HISTORY"] = "Historial";
+$MESS["IM_VIEW_POPUP_USER_OPEN_CHAT"] = "Enviar mensaje";

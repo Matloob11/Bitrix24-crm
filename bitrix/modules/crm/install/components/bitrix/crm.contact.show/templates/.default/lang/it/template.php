@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_CONTACT_COMMENT"] = "Commento";
+$MESS["CRM_CONTACT_COMPANY"] = "Azienda";
+$MESS["CRM_CONTACT_CREATOR"] = "Creato da";
+$MESS["CRM_CONTACT_EDIT_DLG_BTN_CANCEL"] = "Annulla";
+$MESS["CRM_CONTACT_EDIT_DLG_BTN_SAVE"] = "Salva";
+$MESS["CRM_CONTACT_EDIT_DLG_FIELD_LAST_NAME"] = "Cognome";
+$MESS["CRM_CONTACT_EMAIL"] = "E-mail";
+$MESS["CRM_CONTACT_PHONE"] = "Telefono";
+$MESS["CRM_CONTACT_POST"] = "Posizione";
+$MESS["CRM_CONTACT_RESPONSIBLE"] = "Responsabile";
+$MESS["CRM_CONTACT_SOURCE"] = "Origine";
+$MESS["CRM_CONTACT_TYPE"] = "Tipo";
+$MESS["CRM_TAB_1"] = "Contatto";
+$MESS["CRM_TAB_2"] = "Lead";
+$MESS["CRM_TAB_4"] = "Affari";
+$MESS["CRM_TAB_6"] = "Attività";
+$MESS["CRM_TAB_8"] = "Fatture";
+$MESS["CRM_TAB_9"] = "Preventivi";
+$MESS["CRM_TAB_TREE"] = "Dipendenze";

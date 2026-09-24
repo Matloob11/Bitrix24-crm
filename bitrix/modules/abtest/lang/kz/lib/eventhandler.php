@@ -1,0 +1,10 @@
+<?php
+$MESS["ABTEST_CONVATTR_TEST_NAME"] = "A/B-тест";
+$MESS["ABTEST_CONVATTR_TEST_SECTION_NAME"] = "A/B-тест тобы";
+$MESS["ABTEST_CONV_TEST_SECTION_A_NAME"] = "A тобы";
+$MESS["ABTEST_CONV_TEST_SECTION_B_NAME"] = "B тобы";
+$MESS["ABTEST_CONV_TEST_TITLE"] = "##ID# A/B-тест";
+$MESS["ABTEST_PANEL_MENU_BTN"] = "##ID# A/B-тест";
+$MESS["ABTEST_PANEL_MENU_MODE_A"] = "A тобы";
+$MESS["ABTEST_PANEL_MENU_MODE_B"] = "B тобы";
+$MESS["ABTEST_PANEL_MENU_RESET"] = "Қалпына келтіру";

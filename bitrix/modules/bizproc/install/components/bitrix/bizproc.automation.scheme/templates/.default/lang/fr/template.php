@@ -1,0 +1,25 @@
+<?php
+$MESS["BIZPROC_AUTOMATION_SCHEME_CATEGORIES_NOT_EXISTS_MSGVER_1"] = "L'entité que vous avez sélectionnée n'a pas de pipeline";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DESTINATION_SCOPE_ERROR_ACTION_COPY"] = "Sélectionner la destination de la copie";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DESTINATION_SCOPE_ERROR_ACTION_COPY_ROBOTS_AND_TRIGGERS"] = "La destination de la copie pour les règles d'automatisation sélectionnées et les déclencheurs n'est pas sélectionnée.";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DESTINATION_SCOPE_ERROR_ACTION_COPY_TRIGGERS"] = "La destination de la copie pour les déclencheurs sélectionnés n'est pas sélectionnée.";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DESTINATION_SCOPE_ERROR_ACTION_MOVE"] = "Sélectionner la destination du déplacement";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DESTINATION_SCOPE_ERROR_ACTION_MOVE_ROBOTS_AND_TRIGGERS"] = "La destination du déplacement pour les règles d'automatisation sélectionnées et les déclencheurs n'est pas sélectionnée.";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DESTINATION_SCOPE_ERROR_ACTION_MOVE_TRIGGERS"] = "La destination du déplacement pour les déclencheurs sélectionnés n'est pas sélectionnée.";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DROPDOWN_PLACEHOLDER"] = "Sélectionner";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_CATEGORY"] = "Pipeline de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_STAGE"] = "Étape de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_TYPE_ACTION_COPY"] = "Copier les règles d'automatisation dans";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_TYPE_ACTION_COPY_1_MSGVER_1"] = "Entité de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_TYPE_ACTION_COPY_ROBOTS_AND_TRIGGERS_MSGVER_1"] = "Entité de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_TYPE_ACTION_COPY_TRIGGERS_MSGVER_1"] = "Entité de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_TYPE_ACTION_MOVE_MSGVER_1"] = "Entité de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_TYPE_ACTION_MOVE_ROBOTS_AND_TRIGGERS_MSGVER_1"] = "Entité de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_DST_TYPE_ACTION_MOVE_TRIGGERS_MSGVER_1"] = "Entité de destination";
+$MESS["BIZPROC_AUTOMATION_SCHEME_EXECUTE_BUTTON"] = "Exécuter";
+$MESS["BIZPROC_AUTOMATION_SCHEME_HELP_BUTTON"] = "aide";
+$MESS["BIZPROC_AUTOMATION_SCHEME_TITLE_ACTION_COPY_1"] = "Copier";
+$MESS["BIZPROC_AUTOMATION_SCHEME_TITLE_ACTION_MOVE"] = "Déplacer les règles d'automatisation";
+$MESS["BIZPROC_AUTOMATION_SCHEME_TITLE_ACTION_MOVE_1"] = "Déplacer";
+$MESS["BIZPROC_AUTOMATION_SCHEME_TITLE_ACTION_MOVE_ROBOTS_AND_TRIGGERS"] = "Déplacer les règles d'automatisation ou les déclencheurs";
+$MESS["BIZPROC_AUTOMATION_SCHEME_TITLE_ACTION_MOVE_TRIGGERS"] = "Déplacer les déclencheurs";

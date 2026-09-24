@@ -1,0 +1,84 @@
+.bizproc-setuptemplateactivity-edit-constant-popup {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content {
+	border-radius: var(--ui-border-radius-sm);
+	background-color: var(--ui-color-bg-content-secondary);
+	border: 1px solid var(--ui-color-divider-vibrant-accent);
+	box-sizing: border-box;
+	margin: 3px 6px;
+	padding: 16px;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .ui-ctl-top {
+	margin-left: 2px;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .ui-ctl-element[type="radio"] {
+	min-width: auto !important;
+	width: auto !important;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .ui-ctl-radio {
+	margin-bottom: 0;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__block {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__footer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__footer .ui-btn.--air .ui-btn-text-inner {
+	color: var(--ui-color-base-8) !important;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__footer .ui-btn.--air.--style-outline .ui-btn-text-inner {
+	color: var(--ui-color-base-0) !important;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .bizproc-setuptemplateactivity-edit-constant-popup__block .ui-ctl-element[disabled] {
+	color: #a9adb2;
+	border-color: var(--ui-field-color-disabled-secondary) !important;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .bizproc-setuptemplateactivity-edit-constant-popup__block .ui-ctl-element[disabled]:hover {
+	border-color: var(--ui-field-color-disabled-secondary) !important;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .ui-ctl-checkbox .ui-ctl-element {
+	min-width: auto;
+	width: auto !important;
+	margin-right: 12px;
+	flex: none;
+	appearance: checkbox;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .ui-ctl-checkbox + .ui-ctl-checkbox {
+	margin-left: 0;
+}
+
+.bizproc-setuptemplateactivity-edit-constant-popup__content .ui-ctl-checkbox {
+	color: var(--ui-color-base-90);
+	font-size: var(--ui-font-size-lg);
+}
+

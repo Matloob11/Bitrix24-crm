@@ -1,0 +1,23 @@
+<?php
+$MESS["DISK_VOLUME_CRM_COUNT"] = "Attività CRM";
+$MESS["DISK_VOLUME_EXTERNAL_LINK_COUNT"] = "Riferimenti esterni";
+$MESS["DISK_VOLUME_IM_AUTHOR"] = "Creato da";
+$MESS["DISK_VOLUME_IM_CALL"] = "Chiamata telefonica";
+$MESS["DISK_VOLUME_IM_CHAT"] = "Chat di gruppo";
+$MESS["DISK_VOLUME_IM_CHAT_2"] = "Chat privata";
+$MESS["DISK_VOLUME_IM_CHAT_OWNER"] = "Chat creata da";
+$MESS["DISK_VOLUME_IM_LINES"] = "Canale aperto";
+$MESS["DISK_VOLUME_IM_LIVECHAT"] = "Canale aperto";
+$MESS["DISK_VOLUME_IM_OPEN"] = "Chat pubblica";
+$MESS["DISK_VOLUME_IM_PRIVATE"] = "Chat a due";
+$MESS["DISK_VOLUME_MORE"] = "Dettagli";
+$MESS["DISK_VOLUME_OPEN"] = "Apri";
+$MESS["DISK_VOLUME_PAGE_TITLE"] = "Pulizia drive";
+$MESS["DISK_VOLUME_PARENT_FOLDER"] = "Cartella padre";
+$MESS["DISK_VOLUME_ROOT_FILES"] = "File nella cartella radice";
+$MESS["DISK_VOLUME_SHARING_COUNT"] = "File condiviso";
+$MESS["DISK_VOLUME_USING_CHAT"] = "Messaggio chat";
+$MESS["DISK_VOLUME_USING_COUNT_END1"] = "posizione";
+$MESS["DISK_VOLUME_USING_COUNT_END2"] = "posizioni";
+$MESS["DISK_VOLUME_USING_COUNT_END3"] = "posizioni";
+$MESS["DISK_VOLUME_USING_COUNT_NONE"] = "Nessuno";

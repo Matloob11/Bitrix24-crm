@@ -1,0 +1,19 @@
+<?php
+$MESS["ERROR_TASKS_GUID_NON_UNIQUE"] = "O valor GUID deve ser único";
+$MESS["TASKS_BAD_ASSIGNEE_EX"] = "O usuário especificado como responsável não foi encontrado.";
+$MESS["TASKS_BAD_ASSIGNEE_ID"] = "O responsável não foi especificado.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_COLLAB"] = "O responsável pela tarefa não é membro da collab selecionada.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_GROUP"] = "O responsável pela tarefa não é membro do projeto selecionado.";
+$MESS["TASKS_BAD_CREATED_BY"] = "O criador da tarefa não foi definido.";
+$MESS["TASKS_BAD_DURATION"] = "O período de duração da tarefa planejada é muito longo";
+$MESS["TASKS_BAD_GROUP"] = "Nenhum projeto está associado a essa tarefa.";
+$MESS["TASKS_BAD_PARENT_ID"] = "A tarefa especificada no campo &quot;Subtarefa&quot; não foi encontrada.";
+$MESS["TASKS_BAD_PLAN_DATES"] = "A data planejada para o final é antes da data de início.";
+$MESS["TASKS_BAD_TITLE"] = "O nome da tarefa não foi especificado.";
+$MESS["TASKS_DEADLINE_OUT_OF_PROJECT_RANGE"] = "A data do prazo da tarefa está fora do intervalo de datas do projeto";
+$MESS["TASKS_DEPENDS_ON_SELF"] = "A tarefa não pode depender dela mesma.";
+$MESS["TASKS_INCORRECT_STATUS"] = "Status incorreto";
+$MESS["TASKS_IS_LINKED_END_DATE_PLAN_REMOVE"] = "Não é possível excluir o tempo de conclusão da tarefa porque a tarefa tem dependências";
+$MESS["TASKS_IS_LINKED_SET_PARENT"] = "Não é possível atribuir uma tarefa primária porque a tarefa depende da tarefa atual";
+$MESS["TASKS_PLAN_DATE_END_OUT_OF_PROJECT_RANGE"] = "A data planejada de término da tarefa está fora do intervalo de datas do projeto";
+$MESS["TASKS_PLAN_DATE_START_OUT_OF_PROJECT_RANGE"] = "A data planejada de início da tarefa está fora do intervalo de datas do projeto";

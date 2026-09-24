@@ -1,0 +1,16 @@
+.b24-settings-label {
+	display: grid;
+	place-items: center;
+	width: 28px;
+	height: 28px;
+	background: var(--ui-color-accent-soft-blue-3);
+	border-radius: var(--ui-border-radius-lg);
+	cursor: pointer;
+	padding-inline: 3px;
+	--ui-icon-set__icon-size: 22px;
+	--ui-icon-set__icon-color: var(--ui-color-accent-main-primary);
+}
+
+.b24-settings-label.element-highlight {
+	--border-radius: var(--ui-border-radius-circle);
+}

@@ -1,0 +1,6 @@
+<?php
+$MESS["MARKET_RATING_JS_NO_PUBLISHED"] = "Non publié";
+$MESS["MARKET_RATING_JS_PUBLISHED"] = "Publié";
+$MESS["MARKET_RATING_JS_REVIEW_ANSWER"] = "Réponse du développeur";
+$MESS["MARKET_RATING_JS_REVIEW_MORE"] = "plus";
+$MESS["MARKET_RATING_JS_SENT_TO_DEVELOPER"] = "Envoyé au développeur";

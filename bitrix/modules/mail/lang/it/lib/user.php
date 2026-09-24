@@ -1,0 +1,2 @@
+<?php
+$MESS["MAIL_USER_MESSAGE_FAILED_TITLE"] = "E-mail";

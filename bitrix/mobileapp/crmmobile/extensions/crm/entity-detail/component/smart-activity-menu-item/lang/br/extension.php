@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_ACTION_SMART_ACTIVITY2"] = "Atividades inteligentes";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_DISABLED_NOTIFY_TEXT"] = "O CRM proativo não irá sugerir criar uma atividade quando você fechar o painel de visualização";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_DISABLED_NOTIFY_TEXT_DEAL"] = "O CRM proativo não irá sugerir que você crie uma atividade quando você fechar a visualização do negócio";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_DISABLED_NOTIFY_TEXT_LEAD"] = "O CRM proativo não irá sugerir que você crie uma atividade quando você fechar a visualização do lead";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_DISABLED_NOTIFY_TITLE"] = "Atividades inteligentes desativadas";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_ENABLED_NOTIFY_TEXT"] = "O CRM proativo irá sugerir criar uma atividade quando você fechar o painel de visualização";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_ENABLED_NOTIFY_TEXT_DEAL"] = "O CRM proativo irá sugerir que você crie uma atividade quando você fechar a visualização do negócio";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_ENABLED_NOTIFY_TEXT_LEAD"] = "O CRM proativo irá sugerir que você crie uma atividade quando você fechar a visualização do lead";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_ENABLED_NOTIFY_TITLE"] = "Atividades inteligentes ativadas";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_DAY"] = "Hoje";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_FOREVER"] = "Nunca";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_MONTH"] = "Este mês";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_TITLE"] = "Não sugerir novamente";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_TITLE_COMPANY"] = "Não sugerir novamente (para todas as empresas)";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_TITLE_CONTACT"] = "Não sugerir novamente (para todos os contatos)";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_TITLE_DEAL"] = "Não sugerir novamente (para todos os negócios em andamento)";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_TITLE_LEAD"] = "Não sugerir novamente (para todos os leads)";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_TITLE_QUOTE"] = "Não sugerir novamente (para todas as cotações)";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_TITLE_SMART_INVOICE"] = "Não sugerir novamente (para todas as faturas)";
+$MESS["M_CRM_ACTION_SMART_ACTIVITY_SKIP_WEEK"] = "Esta semana";

@@ -1,0 +1,4 @@
+<?php
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_COMPLETED"] = "Pokaż zakończone zadania";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTASKS"] = "Uwzględnij podzadania";
+$MESS["TASKS_V2_RELATION_TASKS_MENU_SHOW_WITH_SUBTEMPLATES"] = "Uwzględnij szablony podzadań";

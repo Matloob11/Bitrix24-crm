@@ -1,0 +1,3 @@
+<?php
+$MESS["MAIL_MAILBOX_LIST_CONNECTION_REQUEST_PENDING"] = "Pendente";
+$MESS["MAIL_MAILBOX_LIST_ROW_FIELDS_COUNTER_HINT"] = "Contagem de e-mails não lidos.";

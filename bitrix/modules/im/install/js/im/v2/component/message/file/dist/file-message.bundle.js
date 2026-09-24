@@ -1,0 +1,978 @@
+/* eslint-disable */
+this.BX = this.BX || {};
+this.BX.Messenger = this.BX.Messenger || {};
+this.BX.Messenger.v2 = this.BX.Messenger.v2 || {};
+this.BX.Messenger.v2.Component = this.BX.Messenger.v2.Component || {};
+(function (exports, main_core, im_v2_component_message_unsupported, im_v2_const, im_v2_provider_service_uploading, im_v2_component_message_base, im_v2_component_message_elements, im_v2_provider_service_disk, im_v2_lib_menu, im_v2_lib_utils, im_v2_lib_notifier, im_v2_component_elements_mediaGallery, im_v2_component_elements_progressbar, im_v2_component_elements_player) {
+	'use strict';
+
+	// @vue/component
+	const AudioMessage = {
+		name: 'AudioMessage',
+		components: {
+			BaseMessage: im_v2_component_message_base.BaseMessage,
+			MessageHeader: im_v2_component_message_elements.MessageHeader,
+			MessageFooter: im_v2_component_message_elements.MessageFooter,
+			DefaultMessageContent: im_v2_component_message_elements.DefaultMessageContent,
+			AudioItem: im_v2_component_message_elements.AudioItem,
+			Reply: im_v2_component_message_elements.Reply
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: false
+			}
+		},
+		emits: ['cancelClick'],
+		computed: {
+			FileType: () => im_v2_const.FileType,
+			message() {
+				return this.item;
+			},
+			messageFile() {
+				const firstFileId = this.message.files[0];
+				return this.$store.getters['files/get'](firstFileId, true);
+			},
+			canSetReactions() {
+				return main_core.Type.isNumber(this.message.id);
+			},
+			isReply() {
+				return this.message.replyId !== 0;
+			},
+			isForward() {
+				return this.$store.getters['messages/isForward'](this.message.id);
+			}
+		},
+		methods: {
+			onCancel(event) {
+				this.$emit('cancelClick', event);
+			}
+		},
+		template: `
+		<BaseMessage :item="item" :dialogId="dialogId">
+			<div class="bx-im-message-audio__container">
+				<MessageHeader :withTitle="withTitle" :item="item" class="bx-im-message-audio__header"/>
+				<Reply v-if="isReply" :dialogId="dialogId" :replyId="message.replyId" :isForward="isForward" />
+				<AudioItem
+					:key="messageFile.id"
+					:item="messageFile"
+					:messageId="message.id"
+					@cancelClick="onCancel"
+				/>
+			</div>
+			<div class="bx-im-message-audio__default-message-container">
+				<DefaultMessageContent :item="item" :dialogId="dialogId" :withReply="false" />
+			</div>
+			<MessageFooter :item="item" :dialogId="dialogId" />
+		</BaseMessage>
+	`
+	};
+
+	class BaseFileContextMenu extends im_v2_lib_menu.BaseMenu {
+		id = im_v2_const.PopupType.messageBaseFileMenu;
+		constructor() {
+			super();
+			this.id = 'bx-im-message-file-context-menu';
+			this.diskService = new im_v2_provider_service_disk.DiskService();
+		}
+		getMenuItems() {
+			return [this.getDownloadFileItem(), this.getSaveToDiskItem()];
+		}
+		getDownloadFileItem() {
+			const file = this.#getMessageFile();
+			if (!file) {
+				return null;
+			}
+			return {
+				title: main_core.Loc.getMessage('IM_MESSAGE_FILE_MENU_DOWNLOAD_FILE'),
+				onClick: function () {
+					im_v2_lib_utils.Utils.file.downloadFiles([file]);
+					this.menuInstance.close();
+				}.bind(this)
+			};
+		}
+		getSaveToDiskItem() {
+			const file = this.#getMessageFile();
+			if (!file) {
+				return null;
+			}
+			return {
+				title: main_core.Loc.getMessage('IM_MESSAGE_FILE_MENU_SAVE_ON_DISK_MSGVER_1'),
+				onClick: async function () {
+					this.menuInstance.close();
+					await this.diskService.save(this.context.files);
+					im_v2_lib_notifier.Notifier.file.onDiskSaveComplete();
+				}.bind(this)
+			};
+		}
+		#getMessageFile() {
+			if (!this.context.fileId) {
+				return null;
+			}
+			return this.store.getters['files/get'](this.context.fileId);
+		}
+	}
+
+	// @vue/component
+	const BaseFileMessage = {
+		name: 'BaseFileMessage',
+		components: {
+			BaseMessage: im_v2_component_message_base.BaseMessage,
+			DefaultMessageContent: im_v2_component_message_elements.DefaultMessageContent,
+			BaseFileItem: im_v2_component_message_elements.BaseFileItem,
+			MessageHeader: im_v2_component_message_elements.MessageHeader,
+			MessageFooter: im_v2_component_message_elements.MessageFooter,
+			Reply: im_v2_component_message_elements.Reply
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: true
+			}
+		},
+		emits: ['cancelClick'],
+		computed: {
+			FileType: () => im_v2_const.FileType,
+			message() {
+				return this.item;
+			},
+			messageFile() {
+				const firstFileId = this.message.files[0];
+				return this.$store.getters['files/get'](firstFileId, true);
+			},
+			isReply() {
+				return this.message.replyId !== 0;
+			},
+			isForward() {
+				return this.$store.getters['messages/isForward'](this.message.id);
+			}
+		},
+		created() {
+			this.contextMenu = new BaseFileContextMenu();
+		},
+		beforeUnmount() {
+			this.contextMenu.destroy();
+		},
+		methods: {
+			onOpenContextMenu({
+				event,
+				fileId
+			}) {
+				const context = {
+					dialogId: this.dialogId,
+					fileId,
+					...this.message
+				};
+				this.contextMenu.openMenu(context, event.target);
+			},
+			onCancel(event) {
+				this.$emit('cancelClick', event);
+			}
+		},
+		template: `
+		<BaseMessage :item="item" :dialogId="dialogId">
+			<template v-if="isReply && !isForward" #before-message>
+				<Reply :dialogId="dialogId" :replyId="message.replyId" :isForward="isForward" />
+			</template>
+			<div class="bx-im-message-base-file__container">
+				<MessageHeader :withTitle="withTitle" :item="item" class="bx-im-message-base-file__author-title" />
+				<Reply v-if="isReply && isForward" :dialogId="dialogId" :replyId="message.replyId" :isForward="isForward" />
+				<BaseFileItem
+					:key="messageFile.id"
+					:id="messageFile.id"
+					:messageId="message.id"
+					@openContextMenu="onOpenContextMenu"
+					@cancelClick="onCancel"
+				/>
+				<DefaultMessageContent :item="item" :dialogId="dialogId" :withReply="false" />
+			</div>
+			<MessageFooter :item="item" :dialogId="dialogId" />
+		</BaseMessage>
+	`
+	};
+
+	const FILES_LIMIT = 10;
+
+	// @vue/component
+	const FileCollectionMessage = {
+		name: 'FileCollectionMessage',
+		components: {
+			BaseMessage: im_v2_component_message_base.BaseMessage,
+			DefaultMessageContent: im_v2_component_message_elements.DefaultMessageContent,
+			BaseFileItem: im_v2_component_message_elements.BaseFileItem,
+			MessageHeader: im_v2_component_message_elements.MessageHeader,
+			MessageFooter: im_v2_component_message_elements.MessageFooter,
+			Reply: im_v2_component_message_elements.Reply
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: true
+			}
+		},
+		emits: ['cancelClick'],
+		computed: {
+			FileType: () => im_v2_const.FileType,
+			message() {
+				return this.item;
+			},
+			messageId() {
+				return this.message.id;
+			},
+			fileIds() {
+				return this.message.files.slice(0, FILES_LIMIT);
+			},
+			isReply() {
+				return this.message.replyId !== 0;
+			},
+			isForward() {
+				return this.$store.getters['messages/isForward'](this.message.id);
+			}
+		},
+		created() {
+			this.contextMenu = new BaseFileContextMenu();
+		},
+		beforeUnmount() {
+			this.contextMenu.destroy();
+		},
+		methods: {
+			onOpenContextMenu({
+				event,
+				fileId
+			}) {
+				const context = {
+					dialogId: this.dialogId,
+					fileId,
+					...this.message
+				};
+				this.contextMenu.openMenu(context, event.target);
+			},
+			onCancel(event) {
+				this.$emit('cancelClick', event);
+			}
+		},
+		template: `
+		<BaseMessage :item="item" :dialogId="dialogId">
+			<template v-if="isReply && !isForward" #before-message>
+				<Reply :dialogId="dialogId" :replyId="message.replyId" :isForward="isForward" />
+			</template>
+			<div class="bx-im-message-file-collection__container">
+				<MessageHeader :withTitle="withTitle" :item="item" class="bx-im-message-file-collection__author-title" />
+				<Reply v-if="isReply && isForward" :dialogId="dialogId" :replyId="message.replyId" :isForward="isForward" />
+				<div class="bx-im-message-file-collection__items">
+					<BaseFileItem
+						v-for="fileId in fileIds"
+						:key="fileId"
+						:id="fileId"
+						:messageId="messageId"
+						@openContextMenu="onOpenContextMenu"
+						@cancelClick="onCancel"
+					/>
+				</div>
+				<DefaultMessageContent
+					:item="item"
+					:dialogId="dialogId"
+					:withReply="false"
+					class="bx-im-message-file-collection__default-content"
+				/>
+			</div>
+			<MessageFooter :item="item" :dialogId="dialogId" />
+		</BaseMessage>
+	`
+	};
+
+	const SINGLE_IMAGE_CONTAINER_MAX_SIZE = {
+		maxWidth: 460,
+		maxHeight: 590
+	};
+	const SINGLE_IMAGE_CONTAINER_MIN_SIZE = {
+		minWidth: 120,
+		minHeight: 120
+	};
+	const SINGLE_IMAGE_WITH_TEXT_CONTAINER_MAX_SIZE = {
+		maxWidth: 460,
+		maxHeight: 590
+	};
+	const SINGLE_IMAGE_WITH_TEXT_CONTAINER_MIN_SIZE = {
+		minWidth: 460,
+		minHeight: 260
+	};
+	const GALLERY_MAX_WIDTH = 460;
+
+	// @vue/component
+	const MediaContent = {
+		name: 'MediaContent',
+		components: {
+			VideoItem: im_v2_component_message_elements.VideoItem,
+			MessageStatus: im_v2_component_message_elements.MessageStatus,
+			MediaGallery: im_v2_component_elements_mediaGallery.MediaGallery,
+			MediaGalleryItem: im_v2_component_elements_mediaGallery.MediaGalleryItem
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			containerHeight: {
+				type: [Number, null],
+				default: null
+			}
+		},
+		emits: ['cancelClick'],
+		computed: {
+			message() {
+				return this.item;
+			},
+			files() {
+				return this.message.files.map(fileId => {
+					return this.$store.getters['files/get'](fileId);
+				});
+			},
+			filesCount() {
+				return this.files.length;
+			},
+			firstFile() {
+				return this.files[0];
+			},
+			firstFileId() {
+				return this.firstFile?.id;
+			},
+			hasText() {
+				return this.message.text.length > 0;
+			},
+			hasAttach() {
+				return this.message.attach.length > 0;
+			},
+			onlyMedia() {
+				return !this.hasText && !this.hasAttach;
+			},
+			isSingleVideo() {
+				return this.filesCount === 1 && this.firstFile.type === im_v2_const.FileType.video;
+			},
+			isSingleImage() {
+				return this.filesCount === 1 && this.firstFile.type === im_v2_const.FileType.image;
+			},
+			singleImageMaxSize() {
+				if (main_core.Type.isNumber(this.containerHeight)) {
+					const {
+						maxWidth,
+						maxHeight
+					} = SINGLE_IMAGE_CONTAINER_MAX_SIZE;
+					const maxAllowedPreviewHeight = Math.min(maxHeight, this.containerHeight * 0.9);
+					return {
+						maxWidth,
+						maxHeight: maxAllowedPreviewHeight
+					};
+				}
+				return SINGLE_IMAGE_CONTAINER_MAX_SIZE;
+			},
+			imageWithTextMaxSize() {
+				if (main_core.Type.isNumber(this.containerHeight)) {
+					const {
+						maxWidth,
+						maxHeight
+					} = SINGLE_IMAGE_WITH_TEXT_CONTAINER_MAX_SIZE;
+					const maxAllowedPreviewHeight = Math.min(maxHeight, this.containerHeight * 0.9);
+					return {
+						maxWidth,
+						maxHeight: maxAllowedPreviewHeight
+					};
+				}
+				return SINGLE_IMAGE_WITH_TEXT_CONTAINER_MAX_SIZE;
+			},
+			singleImageSize() {
+				if (this.onlyMedia) {
+					return this.calcPreviewSize({
+						...this.firstFile.image,
+						...SINGLE_IMAGE_CONTAINER_MIN_SIZE,
+						...this.singleImageMaxSize
+					});
+				}
+				return this.calcPreviewSize({
+					...this.firstFile.image,
+					...SINGLE_IMAGE_WITH_TEXT_CONTAINER_MIN_SIZE,
+					...this.imageWithTextMaxSize
+				});
+			}
+		},
+		methods: {
+			onCancel(event) {
+				this.$emit('cancelClick', event);
+			},
+			calcPreviewSize(options) {
+				const {
+					width,
+					height,
+					minWidth,
+					minHeight,
+					maxWidth,
+					maxHeight
+				} = options;
+				const adjustedWidth = Math.min(Math.max(width, minWidth), maxWidth);
+				const adjustedHeight = Math.min(Math.max(height, minHeight), maxHeight);
+				if (adjustedWidth === width && adjustedHeight === height) {
+					return {
+						width,
+						height
+					};
+				}
+				const scale = Math.min(maxWidth / width, maxHeight / height, adjustedWidth / width, adjustedHeight / height);
+				return {
+					width: Math.max(Math.min(width * scale, maxWidth), minWidth),
+					height: Math.max(Math.min(height * scale, maxHeight), minHeight)
+				};
+			},
+			getGalleryMaxWidth() {
+				return GALLERY_MAX_WIDTH;
+			}
+		},
+		template: `
+		<div class="bx-im-message-media-content__container">
+			<div v-if="isSingleImage" class="bx-im-message-media-content__single-image">
+				<MediaGalleryItem
+					:file="firstFile"
+					:size="singleImageSize"
+					:handleLoading="true"
+					@cancelClick="onCancel"
+				/>
+			</div>
+			<div v-else-if="isSingleVideo" class="bx-im-message-media-content__single-video">
+				<VideoItem
+					:id="firstFileId"
+					:message="message"
+					@cancelClick="onCancel"
+				/>
+			</div>
+			<div v-else class="bx-im-message-media-content__gallery">
+				<MediaGallery
+					:files="files"
+					:width="getGalleryMaxWidth()"
+					:handleLoading="true"
+					@cancelClick="onCancel"
+				/>
+			</div>
+			<div v-if="onlyMedia" class="bx-im-message-media-content__status-container">
+				<MessageStatus :item="message" :isOverlay="true" />
+			</div>
+		</div>
+	`
+	};
+
+	const MAX_GALLERY_WIDTH = 460;
+	const MAX_SINGLE_MEDIA_WIDTH = 460;
+
+	// @vue/component
+	const MediaMessage = {
+		name: 'MediaMessage',
+		components: {
+			ReactionList: im_v2_component_message_elements.ReactionList,
+			BaseMessage: im_v2_component_message_base.BaseMessage,
+			MessageStatus: im_v2_component_message_elements.MessageStatus,
+			DefaultMessageContent: im_v2_component_message_elements.DefaultMessageContent,
+			MessageHeader: im_v2_component_message_elements.MessageHeader,
+			MessageFooter: im_v2_component_message_elements.MessageFooter,
+			MediaContent,
+			Reply: im_v2_component_message_elements.Reply
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: true
+			},
+			containerHeight: {
+				type: [Number, null],
+				default: 0
+			}
+		},
+		emits: ['cancelClick'],
+		computed: {
+			message() {
+				return this.item;
+			},
+			fileIds() {
+				return this.message.files;
+			},
+			dialog() {
+				return this.$store.getters['chats/get'](this.dialogId);
+			},
+			hasText() {
+				return this.message.text.length > 0;
+			},
+			hasAttach() {
+				return this.message.attach.length > 0;
+			},
+			hasReply() {
+				return this.message.replyId !== 0;
+			},
+			hasError() {
+				return this.message.error;
+			},
+			showContextMenu() {
+				return this.onlyImage;
+			},
+			showBottomContainer() {
+				return this.hasText || this.hasAttach;
+			},
+			isForward() {
+				return main_core.Type.isStringFilled(this.message.forward.id);
+			},
+			needBackground() {
+				// A reply with media (image/gallery) renders without the common bubble — like a sticker reply:
+				// the quote is a self-contained chip above the media, the media sits below with no background.
+				// The bubble is still needed for a caption/attach (showBottomContainer), a channel post or a forward.
+				return this.showBottomContainer || this.isChannelPost || this.isForward;
+			},
+			isChannelPost() {
+				return [im_v2_const.ChatType.channel, im_v2_const.ChatType.openChannel].includes(this.dialog.type);
+			},
+			imageContainerStyles() {
+				let maxWidth = MAX_SINGLE_MEDIA_WIDTH;
+				if (this.fileIds.length > 1 || this.hasText) {
+					maxWidth = MAX_GALLERY_WIDTH;
+				}
+				return {
+					'max-width': `${maxWidth}px`
+				};
+			}
+		},
+		methods: {
+			onCancel(event) {
+				this.$emit('cancelClick', event);
+			}
+		},
+		template: `
+		<BaseMessage
+			:item="item"
+			:dialogId="dialogId"
+			:withBackground="needBackground"
+		>
+			<template v-if="hasReply && !isForward" #before-message>
+				<Reply
+					class="bx-im-message-image__quote"
+					:dialogId="dialogId"
+					:replyId="message.replyId"
+					:isForward="isForward"
+				/>
+			</template>
+			<div
+				class="bx-im-message-image__container"
+				:class="{
+					'--has-text': hasText,
+				}"
+				:style="imageContainerStyles"
+			>
+				<MessageHeader :withTitle="false" :item="item" class="bx-im-message-image__header" />
+				<Reply v-if="hasReply && isForward" :dialogId="dialogId" :replyId="message.replyId" :isForward="isForward" />
+				<MediaContent
+					:item="message"
+					:containerHeight="containerHeight"
+					@cancelClick="onCancel"
+				/>
+				<div v-if="showBottomContainer" class="bx-im-message-image__bottom-container">
+					<DefaultMessageContent
+						:item="item"
+						:dialogId="dialogId"
+						:withText="hasText"
+						:withAttach="hasAttach"
+						:withReply="false"
+					/>
+				</div>
+				<MessageFooter :item="item" :dialogId="dialogId" />
+			</div>
+			<template #after-message>
+				<div v-if="!showBottomContainer" class="bx-im-message-image__reaction-list-container">
+					<ReactionList :messageId="message.id" />
+				</div>
+			</template>
+		</BaseMessage>
+	`
+	};
+
+	// @vue/component
+	const VideoNote = {
+		name: 'VideoNote',
+		components: {
+			ProgressBar: im_v2_component_elements_progressbar.ProgressBar,
+			RoundVideoPlayer: im_v2_component_elements_player.RoundVideoPlayer,
+			BaseMessage: im_v2_component_message_base.BaseMessage,
+			ReactionList: im_v2_component_message_elements.ReactionList,
+			MessageStatus: im_v2_component_message_elements.MessageStatus,
+			MessageHeader: im_v2_component_message_elements.MessageHeader,
+			CompactCommentsPanel: im_v2_component_message_elements.CompactCommentsPanel
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			fileId: {
+				type: [String, Number],
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: true
+			},
+			startWithSound: {
+				type: Boolean,
+				default: false
+			}
+		},
+		emits: ['cancelClick', 'openTranscription'],
+		computed: {
+			file() {
+				return this.$store.getters['files/get'](this.fileId, true);
+			},
+			message() {
+				return this.item;
+			}
+		},
+		template: `
+		<BaseMessage :item="message" :dialogId="dialogId" :withBackground="false">
+			<template #before-message>
+				<div class="bx-im-video-note__header_container">
+					<MessageHeader :item="message" :isOverlay="true" />
+				</div>
+			</template>
+			<div class="bx-im-video-note__container">
+				<ProgressBar
+					:item="file"
+					@cancelClick="$emit('cancelClick')"
+				/>
+				<RoundVideoPlayer 
+					:item="file" 
+					:message="message"
+					:startWithSound="startWithSound"
+					@openTranscription="$emit('openTranscription')"
+				/>
+			</div>
+			<div class="bx-im-video-note__comments-panel">
+				<CompactCommentsPanel :item="message" :dialogId="dialogId" />
+			</div>
+			<div class="bx-im-video-note__status_container">
+				<MessageStatus :item="message" :isOverlay="true" />
+			</div>
+			<template #after-message>
+				<div class="bx-im-video-note__reaction-list-container">
+					<ReactionList :messageId="message.id" :contextDialogId="dialogId" />
+				</div>
+			</template>
+		</BaseMessage>
+	`
+	};
+
+	// @vue/component
+	const TranscribedVideoNote = {
+		name: 'TranscribedVideoNote',
+		components: {
+			BaseMessage: im_v2_component_message_base.BaseMessage,
+			DefaultMessageContent: im_v2_component_message_elements.DefaultMessageContent,
+			MessageHeader: im_v2_component_message_elements.MessageHeader,
+			MessageFooter: im_v2_component_message_elements.MessageFooter,
+			TranscribedVideoPlayer: im_v2_component_elements_player.TranscribedVideoPlayer
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			fileId: {
+				type: [String, Number],
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: true
+			}
+		},
+		computed: {
+			file() {
+				return this.$store.getters['files/get'](this.fileId, true);
+			},
+			message() {
+				return this.item;
+			}
+		},
+		template: `
+		<BaseMessage :item="item" :dialogId="dialogId">
+			<div class="bx-im-transcribed-video-note-note__container">
+				<MessageHeader 
+					:withTitle="withTitle" 
+					:item="message" 
+					class="bx-im-transcribed-video-note__header" 
+				/>
+				<TranscribedVideoPlayer
+					:item="file"
+					:message="message"
+					@closeTranscription="$emit('closeTranscription')"
+					@clickPlay="$emit('clickPlay')"
+				/>
+			</div>
+			<div class="bx-im-transcribed-video-note__default-message-container">
+				<DefaultMessageContent :item="message" :dialogId="dialogId" :withText="false" />
+			</div>
+			<MessageFooter :item="message" :dialogId="dialogId" />
+		</BaseMessage>
+	`
+	};
+
+	// @vue/component
+	const VideoNoteMessage = {
+		name: 'VideoNoteMessage',
+		components: {
+			VideoNote,
+			TranscribedVideoNote
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: true
+			}
+		},
+		emits: ['cancelClick'],
+		data() {
+			return {
+				isTranscriptionOpened: false,
+				startWithSound: false
+			};
+		},
+		computed: {
+			message() {
+				return this.item;
+			},
+			firstFileId() {
+				return this.message.files[0];
+			}
+		},
+		methods: {
+			onTranscribedVideoPlayClick() {
+				this.isTranscriptionOpened = false;
+				this.startWithSound = true;
+			},
+			onOpenTranscription() {
+				this.isTranscriptionOpened = true;
+				this.startWithSound = false;
+			}
+		},
+		template: `
+		<transition name="fade" mode="out-in">
+			<TranscribedVideoNote
+				v-if="isTranscriptionOpened"
+				:fileId="firstFileId"
+				:dialogId="dialogId"
+				:item="item"
+				:withTitle="withTitle"
+				@closeTranscription="isTranscriptionOpened = false"
+				@clickPlay="onTranscribedVideoPlayClick"
+				@cancelClick="$emit('cancelClick', $event)"
+			/>
+			<VideoNote 
+				v-else
+				:startWithSound="startWithSound"
+				:fileId="firstFileId"
+				:dialogId="dialogId"
+				:item="item"
+				:withTitle="withTitle"
+				@openTranscription="onOpenTranscription"
+				@cancelClick="$emit('cancelClick', $event)"
+			/>
+		</transition>
+	`
+	};
+
+	const FileMessageType = Object.freeze({
+		media: 'MediaMessage',
+		audio: 'AudioMessage',
+		base: 'BaseFileMessage',
+		collection: 'FileCollectionMessage',
+		videoNote: 'VideoNoteMessage'
+	});
+
+	// @vue/component
+	const FileMessage = {
+		name: 'FileMessage',
+		components: {
+			BaseFileMessage,
+			MediaMessage,
+			AudioMessage,
+			UnsupportedMessage: im_v2_component_message_unsupported.UnsupportedMessage,
+			FileCollectionMessage,
+			VideoNoteMessage
+		},
+		props: {
+			item: {
+				type: Object,
+				required: true
+			},
+			dialogId: {
+				type: String,
+				required: true
+			},
+			withTitle: {
+				type: Boolean,
+				default: true
+			},
+			containerHeight: {
+				type: [Number, null],
+				default: null
+			}
+		},
+		computed: {
+			FileType: () => im_v2_const.FileType,
+			message() {
+				return this.$store.getters['messages/getById'](this.item.id);
+			},
+			messageFiles() {
+				const files = [];
+				if (this.message.files.length === 0) {
+					return files;
+				}
+				this.message.files.forEach(fileId => {
+					const file = this.$store.getters['files/get'](fileId, true);
+					files.push(file);
+				});
+				return files;
+			},
+			isGallery() {
+				const allowedGalleryTypes = new Set([im_v2_const.FileType.image, im_v2_const.FileType.video]);
+				const isMediaOnly = this.messageFiles.every(file => {
+					return allowedGalleryTypes.has(file.type);
+				});
+				const hasImageProp = this.messageFiles.some(file => {
+					return file.image !== false;
+				});
+				return isMediaOnly && hasImageProp;
+			},
+			componentName() {
+				if (this.messageFiles.length > 1) {
+					return this.isGallery ? FileMessageType.media : FileMessageType.collection;
+				}
+				const file = this.messageFiles[0];
+				const hasPreview = Boolean(file.image);
+				if (file.isVideoNote) {
+					return FileMessageType.videoNote;
+				}
+				if (file.type === im_v2_const.FileType.image && hasPreview) {
+					return FileMessageType.media;
+				}
+				if (file.type === im_v2_const.FileType.audio) {
+					return FileMessageType.audio;
+				}
+				if (file.type === im_v2_const.FileType.video && hasPreview) {
+					return FileMessageType.media;
+				}
+				return FileMessageType.base;
+			},
+			isRealMessage() {
+				return this.$store.getters['messages/isRealMessage'](this.message.id);
+			}
+		},
+		methods: {
+			onCancel(event) {
+				const canceledFileId = event.file.id;
+				const uploadingService = im_v2_provider_service_uploading.UploadingService.getInstance();
+				const uploaderId = uploadingService.getUploaderIdByFileId(canceledFileId);
+				uploadingService.removeFileFromUploader({
+					uploaderId,
+					filesIds: [canceledFileId],
+					restartUploading: true
+				});
+				const uploaderFiles = uploadingService.getFiles(uploaderId);
+				if (main_core.Type.isArrayFilled(uploaderFiles)) {
+					const actualMessageFiles = uploaderFiles.map(file => {
+						return file.getId();
+					});
+					void this.$store.dispatch('messages/update', {
+						id: this.message.id,
+						fields: {
+							files: actualMessageFiles
+						}
+					});
+				} else {
+					const chatId = this.message.chatId;
+					void this.$store.dispatch('messages/delete', {
+						id: this.message.id
+					});
+					const chat = this.$store.getters['chats/getByChatId'](chatId);
+					const lastMessageId = this.$store.getters['messages/findLastChatMessageId'](chatId);
+					if (main_core.Type.isString(lastMessageId) || main_core.Type.isNumber(lastMessageId)) {
+						void this.$store.dispatch('recent/update', {
+							dialogId: chat.dialogId,
+							fields: {
+								messageId: lastMessageId
+							}
+						});
+					} else {
+						void this.$store.dispatch('recent/hide', {
+							dialogId: chat.dialogId
+						});
+					}
+				}
+			}
+		},
+		template: `
+		<component 
+			:is="componentName" 
+			:item="message" 
+			:dialogId="dialogId"
+			:withTitle="withTitle" 
+			:containerHeight="containerHeight"
+			:withContextMenu="isRealMessage"
+			@cancelClick="onCancel"
+		/>
+	`
+	};
+
+	exports.FileMessage = FileMessage;
+	exports.MediaContent = MediaContent;
+
+})(this.BX.Messenger.v2.Component.Message = this.BX.Messenger.v2.Component.Message || {}, BX, BX.Messenger.v2.Component.Message, BX.Messenger.v2.Const, BX.Messenger.v2.Service, BX.Messenger.v2.Component.Message, BX.Messenger.v2.Component.Message, BX.Messenger.v2.Service, BX.Messenger.v2.Lib, BX.Messenger.v2.Lib, BX.Messenger.v2.Lib, BX.Messenger.v2.Component.Elements, BX.Messenger.v2.Component.Elements, BX.Messenger.v2.Component.Elements);
+//# sourceMappingURL=file-message.bundle.js.map

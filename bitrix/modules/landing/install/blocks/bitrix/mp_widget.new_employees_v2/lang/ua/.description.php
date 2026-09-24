@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_NEW_EMPLOYEES_V2_NAME"] = "Нові співробітники: корпоративний вайб";
+$MESS["LANDING_BLOCK_WIDGET_NEW_EMPLOYEES_V2_NAME_NEW"] = "Нові співробітники: корпоративний шаблон";

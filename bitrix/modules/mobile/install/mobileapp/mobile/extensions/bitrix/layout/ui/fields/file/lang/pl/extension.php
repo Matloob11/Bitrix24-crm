@@ -1,0 +1,19 @@
+<?php
+$MESS["FIELDS_FILE_ADD_FILE"] = "Dodaj plik";
+$MESS["FIELDS_FILE_ADD_FILES"] = "Wszystkie pliki";
+$MESS["FIELDS_FILE_ADD_IMAGE"] = "Dodaj obraz";
+$MESS["FIELDS_FILE_ADD_VIDEO"] = "Dodaj wideo";
+$MESS["FIELDS_FILE_ATTACHMENTS_NAVIGATION_TITLE"] = "Pliki (#NUM#)";
+$MESS["FIELDS_FILE_CAMERA"] = "Zrób zdjęcie";
+$MESS["FIELDS_FILE_EDIT"] = "Edytuj";
+$MESS["FIELDS_FILE_EDIT_FILE"] = "Zmień plik";
+$MESS["FIELDS_FILE_EDIT_IMAGE"] = "Zmień obraz";
+$MESS["FIELDS_FILE_EDIT_VIDEO"] = "Zmień wideo";
+$MESS["FIELDS_FILE_MEDIATEKA"] = "Wybierz z galerii";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_CONFIRM"] = "OK";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_DESCR"] = "Spróbuj przesłać inny plik.";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_TITLE"] = "Nieprawidłowy typ pliku";
+$MESS["FIELDS_FILE_OPEN_GALLERY"] = "Wyświetl";
+$MESS["FIELDS_FILE_UPLOAD_ALERT_DESCR"] = "Spróbuj ponownie. \nJeśli problem będzie się powtarzał, skontaktuj się z administratorem Bitrix24.";
+$MESS["FIELDS_FILE_UPLOAD_ALERT_TITLE"] = "Błąd podczas ładowania pliku";
+$MESS["FIELDS_FILE_VALIDATION_ERROR"] = "Usuń plik i spróbuj przesłać go ponownie.";

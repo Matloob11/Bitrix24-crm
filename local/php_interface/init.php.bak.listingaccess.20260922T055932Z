@@ -1,0 +1,59 @@
+<?php
+// A7 local bootstrap.
+//
+// IMPORTANT: when /local/php_interface/init.php exists, Bitrix loads ONLY this file and
+// skips /bitrix/php_interface/init.php (see getLocalPath() in main/tools.php).
+// All A7 hooks (Call Intelligence, 3CX click-to-call, deals call buttons, phone mask,
+// inline audio player, voximplant onCallEnd, ...) live in /bitrix/php_interface/init.php,
+// so it must be loaded from here explicitly.
+$a7BitrixInit = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? ''), '/\\') . '/bitrix/php_interface/init.php';
+if (is_readable($a7BitrixInit)) {
+    require_once $a7BitrixInit;
+}
+
+// Durable A7 lead reminder hook. Survives overwrites of bitrix/php_interface/init.php.
+// Skipped when /bitrix/php_interface/init.php already registered it (A7_LEAD_REMINDER_HOOKED).
+if (!defined('A7_LEAD_REMINDER_LIB')) {
+    define('A7_LEAD_REMINDER_LIB', true);
+}
+$a7LeadReminderLib = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? ''), '/\\')
+    . '/bitrix/php_interface/include/a7_lead_reminder_notify.php';
+if (!defined('A7_LEAD_REMINDER_HOOKED') && is_readable($a7LeadReminderLib)) {
+    define('A7_LEAD_REMINDER_HOOKED', true);
+    require_once $a7LeadReminderLib;
+    if (function_exists('AddEventHandler') && function_exists('a7_lead_reminder_on_activity_saved')) {
+        AddEventHandler('crm', 'OnAfterCrmActivityAdd', 'a7_lead_reminder_on_activity_saved');
+        AddEventHandler('crm', 'OnAfterCrmActivityUpdate', 'a7_lead_reminder_on_activity_saved');
+    }
+    if (function_exists('a7_lead_reminder_ensure_agent')) {
+        a7_lead_reminder_ensure_agent();
+    }
+    if (function_exists('AddEventHandler')) {
+        AddEventHandler('main', 'OnProlog', static function () {
+            if (function_exists('a7_lead_reminder_on_prolog')) {
+                a7_lead_reminder_on_prolog();
+            }
+        });
+    }
+}
+
+$a7HrStageRemove = __DIR__ . '/include/a7_hr_stage_remove.php';
+if (is_readable($a7HrStageRemove)) {
+    require_once $a7HrStageRemove;
+}
+
+
+$a7HrCvRoute = __DIR__ . '/include/a7_hr_cv_route.php';
+if (is_readable($a7HrCvRoute)) {
+    require_once $a7HrCvRoute;
+}
+
+$a7HrAppliedBadge = __DIR__ . '/include/a7_hr_applied_badge.php';
+if (is_readable($a7HrAppliedBadge)) {
+    require_once $a7HrAppliedBadge;
+}
+
+$a7HrFieldLabels = __DIR__ . '/include/a7_hr_field_labels.php';
+if (is_readable($a7HrFieldLabels)) {
+    require_once $a7HrFieldLabels;
+}

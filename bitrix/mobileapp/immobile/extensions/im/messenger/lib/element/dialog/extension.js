@@ -1,0 +1,92 @@
+/**
+ * @module im/messenger/lib/element/dialog
+ */
+jn.define('im/messenger/lib/element/dialog', (require, exports, module) => {
+	const {
+		Message,
+		MessageAlign,
+		MessageTextAlign,
+	} = require('im/messenger/lib/element/dialog/message/base');
+	const { TextMessage } = require('im/messenger/lib/element/dialog/message/text');
+	const { EmojiOnlyMessage } = require('im/messenger/lib/element/dialog/message/emoji-only');
+	const { DeletedMessage } = require('im/messenger/lib/element/dialog/message/deleted');
+	const { ImageMessage } = require('im/messenger/lib/element/dialog/message/image');
+	const { MediaGalleryMessage } = require('im/messenger/lib/element/dialog/message/media-gallery');
+	const { AudioMessage } = require('im/messenger/lib/element/dialog/message/audio');
+	const { VideoMessage } = require('im/messenger/lib/element/dialog/message/video');
+	const { VideoNoteMessage } = require('im/messenger/lib/element/dialog/message/video-note');
+	const { VideoNoteTextMessage } = require('im/messenger/lib/element/dialog/message/video-note-text');
+	const { FileMessage } = require('im/messenger/lib/element/dialog/message/file');
+	const { FileGalleryMessage } = require('im/messenger/lib/element/dialog/message/file-gallery');
+	const { SystemTextMessage } = require('im/messenger/lib/element/dialog/message/system-text');
+	const { StatusField } = require('im/messenger/lib/element/dialog/message/status');
+	const { UnsupportedMessage } = require('im/messenger/lib/element/dialog/message/unsupported');
+	const { DateSeparatorMessage } = require('im/messenger/lib/element/dialog/message/date-separator');
+	const { UnreadSeparatorMessage } = require('im/messenger/lib/element/dialog/message/unread-separator');
+	const { MarkedSeparatorMessage } = require('im/messenger/lib/element/dialog/message/marked-separator');
+	const { CopilotMessage } = require('im/messenger/lib/element/dialog/message/copilot');
+	const { CopilotPromptMessage } = require('im/messenger/lib/element/dialog/message/copilot-prompt');
+	const { ErrorMessage } = require('im/messenger/lib/element/dialog/message/error');
+	const { CheckInMessageFactory } = require('im/messenger/lib/element/dialog/message/check-in/factory');
+	const { CheckInMessageHandler } = require('im/messenger/lib/element/dialog/message/check-in/handler');
+	const { GalleryMessageFactory } = require('im/messenger/lib/element/dialog/message/gallery/factory');
+	const { GalleryMessageHandler } = require('im/messenger/lib/element/dialog/message/gallery/handler');
+	const { CreateBannerFactory } = require('im/messenger/lib/element/dialog/message/banner/factory');
+	const { BannerMessageHandler } = require('im/messenger/lib/element/dialog/message/banner/handler');
+	const { CallMessageFactory } = require('im/messenger/lib/element/dialog/message/call/factory');
+	const { CallMessageHandler } = require('im/messenger/lib/element/dialog/message/call/handler');
+	const { VoteMessageFactory } = require('im/messenger/lib/element/dialog/message/vote/factory');
+	const { VoteMessageHandler } = require('im/messenger/lib/element/dialog/message/vote/handler');
+	const { AiAssistantMessage } = require('im/messenger/lib/element/dialog/message/ai-assistant');
+	const { StickerMessage } = require('im/messenger/lib/element/dialog/message/sticker');
+	const { EmptyMessage } = require('im/messenger/lib/element/dialog/message/empty');
+	const { DeletedStickerMessage } = require('im/messenger/lib/element/dialog/message/deleted-sticker');
+	const { AiBizprocMessage } = require('im/messenger/lib/element/dialog/message/ai-bizproc/message');
+	const { AiBizprocMessageHandler } = require('im/messenger/lib/element/dialog/message/ai-bizproc/handler');
+	const { BlockMessageFactory } = require('im/messenger/lib/element/dialog/message/block/factory');
+	const { BlockMessageHandler } = require('im/messenger/lib/element/dialog/message/block/handler');
+
+	module.exports = {
+		Message,
+		TextMessage,
+		EmojiOnlyMessage,
+		DeletedMessage,
+		ImageMessage,
+		MediaGalleryMessage,
+		AudioMessage,
+		VideoMessage,
+		VideoNoteMessage,
+		VideoNoteTextMessage,
+		FileMessage,
+		FileGalleryMessage,
+		SystemTextMessage,
+		StatusField,
+		UnsupportedMessage,
+		DateSeparatorMessage,
+		UnreadSeparatorMessage,
+		MarkedSeparatorMessage,
+		CopilotMessage,
+		CopilotPromptMessage,
+		ErrorMessage,
+		CheckInMessageFactory,
+		CheckInMessageHandler,
+		GalleryMessageFactory,
+		GalleryMessageHandler,
+		CreateBannerFactory,
+		BannerMessageHandler,
+		MessageAlign,
+		MessageTextAlign,
+		CallMessageFactory,
+		CallMessageHandler,
+		VoteMessageFactory,
+		VoteMessageHandler,
+		AiAssistantMessage,
+		StickerMessage,
+		DeletedStickerMessage,
+		AiBizprocMessage,
+		AiBizprocMessageHandler,
+		BlockMessageFactory,
+		BlockMessageHandler,
+		EmptyMessage,
+	};
+});

@@ -1,0 +1,14 @@
+<?php
+$MESS["UI_TIMELINE_ACTION_DELETE"] = "Eliminar";
+$MESS["UI_TIMELINE_ACTION_MODIFY"] = "Editar";
+$MESS["UI_TIMELINE_COLLAPSE_SM"] = "contraer";
+$MESS["UI_TIMELINE_COMMENT_DELETE_CONFIRM"] = "¿Usted está seguro que quiere eliminar este comentario?";
+$MESS["UI_TIMELINE_EDITOR_COMMENT"] = "Comentario";
+$MESS["UI_TIMELINE_EDITOR_COMMENT_CANCEL"] = "Cancelar";
+$MESS["UI_TIMELINE_EDITOR_COMMENT_SEND"] = "Enviar";
+$MESS["UI_TIMELINE_EDITOR_COMMENT_TEXTAREA"] = "Deje un comentario";
+$MESS["UI_TIMELINE_EMPTY_COMMENT_NOTIFICATION"] = "El texto del mensaje está vacío.";
+$MESS["UI_TIMELINE_EXPAND_SM"] = "expandir";
+$MESS["UI_TIMELINE_FIELDS_CHANGE_SUBTITLE"] = "Campos completados";
+$MESS["UI_TIMELINE_STAGE_CHANGE_SUBTITLE"] = "Etapa cambiada";
+$MESS["UI_TIMELINE_TASKS_TITLE"] = "Planeado";

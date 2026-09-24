@@ -1,0 +1,22 @@
+<?php
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_ALWAYS_ADD_DEAL"] = "Siempre cree una nueva negociación incluso si existe un prospecto o negociación activa";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_ALWAYS_ADD_HINT"] = "Si la casilla no está marcada, el sistema verificará si un contacto o compañía <br> tiene un prospecto o negociación activa";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_ALWAYS_ADD_LEAD"] = "Siempre cree un nuevo prospecto incluso si existe un prospecto o negociación activa";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_ASSIGNED_BY"] = "Asignar a";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_ASSIGNED_BY_HINT"] = "Seleccione empleados <br>para procesar los prospectos creados.";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_CHECK_WORK_TIME"] = "Utilice sólo los empleados que se hayan registrado y no esten en descanso";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_CHECK_WORK_TIME_HINT"] = "Si la cola solo consta de usuarios que no iniciaron el día o están en pausa, se usará la primera en cola.";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_COMMENT"] = "Descripción";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_COMMENT_HINT"] = "Introduzca una descripción de la asignación que <br>una persona responsable debe cumplir <br>mientras procesa prospectos y negociaciones repetidos.";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_CREATE_FROM_PREVIOUS"] = "Crear pedido a partir de la negociación anterior";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_DEAL_CATEGORY_ID"] = "Pipeline de la negociación";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_DEAL_CATEGORY_ID_LAST"] = "Utilizar el último pipeline de la negociación";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_DEAL_DAYS_AGO"] = "Antigüedad del pedido, días";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_LINK_DEAL_WITH_RESPONSIBLE"] = "La persona responsable es la misma que se asignó previamente al cliente";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_LINK_LEAD_WITH_RESPONSIBLE"] = "La persona responsable es la misma que se asignó previamente al cliente";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_TITLE_DEAL"] = "Nuevo Nombre de la negociación";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_TITLE_DEAL_DEF"] = "Negociación de %date%";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_TITLE_LEAD"] = "Nuevo Nombre del Prospecto";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_CONFIG_TITLE_LEAD_DEF"] = "Prospecto repetido %date%";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_NAME_DEAL"] = "Negociaciones repetidas";
+$MESS["SENDER_INTEGRATION_CRM_RC_MESSAGE_NAME_LEAD"] = "Prospectos repetidos";

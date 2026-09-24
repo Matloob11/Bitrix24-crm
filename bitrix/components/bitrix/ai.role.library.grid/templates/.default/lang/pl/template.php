@@ -1,0 +1,23 @@
+<?php
+$MESS["ROLE_LIBRARY_GRID_ACTION_OPEN_EDIT_MASTER_ERROR"] = "Nie można otworzyć edytora ról. Spróbuj ponownie.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ACTIVATE"] = "Rola „#NAME#” jest aktywna.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_DEACTIVATE"] = "Rola „#NAME#” nie jest aktywna.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_ADD"] = "Rola „#NAME#” została dodana do Ulubionych.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_REMOVE"] = "Rola „#NAME#” została usunięta z Ulubionych.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE"] = "Rola „#NAME#” nie jest widoczna w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE_MSGVER_1"] = "Rola „#NAME#” nie jest widoczna w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTION_DEFAULT"] = "Zakończono działanie.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTIVATE"] = "Role aktywne.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_DEACTIVATE"] = "Role nieaktywne.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE"] = "Role niewidoczne w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE_MSGVER_1"] = "Role niewidoczne w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW"] = "Role widoczne w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW_MSGVER_1"] = "Role widoczne w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_MASTER_OPEN_ERROR"] = "Nie można otworzyć edytora ról. Spróbuj ponownie.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_SAVE_SUCCESS"] = "Zapisano rolę „#NAME#”.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW"] = "Rola „#NAME#” jest widoczna w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_MSGVER_1"] = "Rola „#NAME#” jest widoczna w menu Moje role.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_ROLE_USERS_ERROR"] = "Nie można załadować listy użytkowników. Spróbuj ponownie.";
+$MESS["ROLE_LIBRARY_GRID_TOUR_DESCRIPTION"] = "Twórz role i udostępniaj je współpracownikom.";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE"] = "Dodaj swoją rolę do CoPilota";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE_MSGVER_1"] = "Dodaj swoją rolę do #COPILOT_NAME#a";

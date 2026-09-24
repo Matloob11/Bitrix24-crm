@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_EC_ERROR_ACCESS_DENIED"] = "Accès refusé.";
+$MESS["TASKS_EC_ERROR_COULD_NOT_DELETE_EPIC"] = "Impossible de supprimer l'épique.";
+$MESS["TASKS_EC_ERROR_COULD_NOT_READ_EPIC"] = "Épique introuvable.";
+$MESS["TASKS_EC_ERROR_INCLUDE_MODULE_ERROR"] = "Impossible de connecter les modules requis.";
+$MESS["TASKS_SCRUM_EPIC_GRID_ACTION_EDIT"] = "Éditer";
+$MESS["TASKS_SCRUM_EPIC_GRID_ACTION_REMOVE"] = "Supprimer";
+$MESS["TASKS_SCRUM_EPIC_GRID_ACTION_VIEW"] = "Voir";
+$MESS["TASKS_SCRUM_EPIC_GRID_NAME"] = "Nom de l'épique";
+$MESS["TASKS_SCRUM_EPIC_GRID_NAME_ERROR"] = "Le nom de l'épique n'est pas spécifié";
+$MESS["TASKS_SCRUM_EPIC_GRID_NAME_SHORT"] = "Nom";
+$MESS["TASKS_SCRUM_EPIC_GRID_TAGS"] = "Balises";
+$MESS["TASKS_SCRUM_EPIC_GRID_TASKS_COMPLETED"] = "Tâches accomplies";
+$MESS["TASKS_SCRUM_EPIC_GRID_TASKS_TOTAL"] = "Total des tâches";
+$MESS["TASKS_SCRUM_EPIC_GRID_USER"] = "Créée par";
+$MESS["TASKS_SCRUM_EPIC_GRID_USER_SHORT"] = "Créé";
+$MESS["TASKS_SCRUM_TASKS_GRID_ASSIGNEE"] = "Responsable";
+$MESS["TASKS_SCRUM_TASKS_GRID_NAME"] = "Nom";
+$MESS["TASKS_SCRUM_TASKS_GRID_STORY_POINTS"] = "Points d'histoire";

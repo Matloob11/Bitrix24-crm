@@ -1,0 +1,20 @@
+<?php
+$MESS["MARKET_DONT_HAVE_REVIEWS"] = "Nie masz żadnych opinii.";
+$MESS["MARKET_DONT_HAVE_REVIEWS_FILTER"] = "Nie znaleziono opinii.";
+$MESS["MARKET_MY_REVIEWS"] = "Moje opinie";
+$MESS["MARKET_NO_REVIEW_APPS"] = "Nie oceniłeś(aś) żadnych aplikacji.";
+$MESS["MARKET_NO_REVIEW_APPS_FILTER"] = "Żadna z Twoich opinii nie pasuje do określonych filtrów.";
+$MESS["MARKET_REVIEWS_DEVELOPER"] = "Twórca";
+$MESS["MARKET_REVIEWS_MENU_ITEM_EDITING"] = "Edytuj opinię";
+$MESS["MARKET_REVIEW_ANSWER"] = "Odpowiedź twórcy";
+$MESS["MARKET_REVIEW_EDITING_CANCEL"] = "Anuluj";
+$MESS["MARKET_REVIEW_EDITING_RE_MODERATION_TITLE"] = "Twoja zaktualizowana opinia zostanie przesłana do moderacji.";
+$MESS["MARKET_REVIEW_EDITING_SAVE"] = "Zapisz";
+$MESS["MARKET_REVIEW_EDITING_TITLE"] = "Edycja opinii";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_ERROR"] = "Błąd podczas aktualizacji opinii.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_NOT_ALLOWED"] = "Nie można edytować opinii.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_SUCCESS"] = "Zaktualizowano opinię.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_TEXT_ERROR"] = "Tekst opinii jest wymagany.";
+$MESS["MARKET_REVIEW_NO_PUBLISHED"] = "Nie opublikowano";
+$MESS["MARKET_REVIEW_PUBLISHED"] = "Opublikowano";
+$MESS["MARKET_REVIEW_SENT_TO_DEVELOPER"] = "Wysłano do twórcy";

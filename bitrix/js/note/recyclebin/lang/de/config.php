@@ -1,0 +1,26 @@
+<?php
+$MESS["NOTE_RECYCLEBIN_BREADCRUMB_ROOT"] = "Papierkorb";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_ORPHAN_HINT"] = "Es gibt Artikel (#COUNT#), deren ursprüngliches Space gelöscht wurde. Wählen Sie ein neues übergeordnetes Space für diese Artikel aus.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TEXT"] = "Alle #COUNT# Artikel werden aus dem Papierkorb wiederhergestellt.";
+$MESS["NOTE_RECYCLEBIN_BULK_POPUP_TITLE"] = "Artikel wiederherstellen";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_PLACEHOLDER"] = "Geben Sie den Space-Namen ein";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TEXT"] = "Das ursprüngliche Space des Artikels \"#DOCUMENT#\" existiert nicht mehr. Wählen Sie ein anderes übergeordnetes Space für diesen Artikel aus.";
+$MESS["NOTE_RECYCLEBIN_ORPHAN_POPUP_TITLE"] = "Artikel wiederherstellen";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_CANCEL"] = "Abbrechen";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_EMPTY"] = "Alle Artikel im Papierkorb werden auf Dauer gelöscht. Fiese Aktion kann nicht rückgängig gemacht werden. Möchten Sie wirklich fortfahren?";
+$MESS["NOTE_RECYCLEBIN_PAGE_CONFIRM_RESTORE_ALL"] = "Möchten Sie alle Artikel aus dem Papierkorb wiederherstellen?";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION"] = "Papierkorb leeren";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_CONFIRM"] = "Ja";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_ACTION_TITLE"] = "Papierkorb leeren";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_HINT"] = "Der Papierkorb ist leer.";
+$MESS["NOTE_RECYCLEBIN_PAGE_EMPTY_SUCCESS"] = "Der Papierkorb wurde geleert. Artikel gelöscht: #COUNT#.";
+$MESS["NOTE_RECYCLEBIN_PAGE_ERROR_GENERIC"] = "Die Aktion kann nicht angeschlossen werden.";
+$MESS["NOTE_RECYCLEBIN_PAGE_HARD_DELETE_SUCCESS"] = "Dieser Artikel wurde auf Dauer gelöscht.";
+$MESS["NOTE_RECYCLEBIN_PAGE_MORE_LABEL"] = "Aktionen";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE"] = "Wiederherstellen";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL"] = "Alles wiederherstellen";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS"] = "Artikel wiederhergestellt: #COUNT#";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_ALL_SUCCESS_WITH_SKIPPED"] = "Artikel wiederhergestellt: #COUNT#. #SKIPPED# Artikel übersprungen, weil sie ein neues Space benötigen.";
+$MESS["NOTE_RECYCLEBIN_PAGE_RESTORE_SUCCESS"] = "Der Artikel wurde wiederhergestellt.";
+$MESS["NOTE_RECYCLEBIN_PAGE_SUBTITLE"] = "Die Artikel werden im Papierkorb 30 Tage lang aufbewahrt. Nach Ablauf von diesen 30 Tagen werden sie auf Dauer gelöscht.";
+$MESS["NOTE_RECYCLEBIN_PAGE_TITLE"] = "Papierkorb";

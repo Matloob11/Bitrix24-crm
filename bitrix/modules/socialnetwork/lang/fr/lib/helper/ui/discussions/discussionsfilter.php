@@ -1,0 +1,23 @@
+<?php
+$MESS["SONET_FILTER_CREATED_BY"] = "Auteur";
+$MESS["SONET_FILTER_CREATED_BY_COMMENTS"] = "Rechercher l'auteur dans les commentaires";
+$MESS["SONET_FILTER_DATE_CREATE"] = "Date";
+$MESS["SONET_FILTER_EVENT_ID"] = "Type";
+$MESS["SONET_FILTER_EVENT_ID_BLOG_POST"] = "Publications";
+$MESS["SONET_FILTER_EVENT_ID_BLOG_POST_GRAT"] = "Appréciations";
+$MESS["SONET_FILTER_EVENT_ID_BLOG_POST_IMPORTANT"] = "Annonces";
+$MESS["SONET_FILTER_EVENT_ID_BLOG_POST_VOTE"] = "Sondages";
+$MESS["SONET_FILTER_EVENT_ID_BP"] = "Processus d'entreprise";
+$MESS["SONET_FILTER_EVENT_ID_CALENDAR"] = "Calendrier";
+$MESS["SONET_FILTER_EVENT_ID_DATA"] = "Données de sources externes";
+$MESS["SONET_FILTER_EVENT_ID_FORUM"] = "Discussions";
+$MESS["SONET_FILTER_EVENT_ID_PHOTO"] = "Galerie de photos";
+$MESS["SONET_FILTER_EVENT_ID_REPORT"] = "Rapports d'activité";
+$MESS["SONET_FILTER_EVENT_ID_TASK"] = "Tâches";
+$MESS["SONET_FILTER_EVENT_ID_TIMEMAN_ENTRY"] = "Gestion du temps de travail";
+$MESS["SONET_FILTER_EVENT_ID_WIKI"] = "Wiki";
+$MESS["SONET_FILTER_EXTRANET"] = "Extranet";
+$MESS["SONET_FILTER_FAVORITES"] = "Favoris";
+$MESS["SONET_FILTER_LIST_YES"] = "Oui";
+$MESS["SONET_FILTER_TAG"] = "Balise";
+$MESS["SONET_FILTER_TO"] = "À";

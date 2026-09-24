@@ -1,0 +1,20 @@
+<?php
+$MESS["BIZPROC_USER_PARAMS_SAVE_ERROR"] = "Una o più attività nella barra \"Mie attività\" sono troppo grandi. Le modifiche non saranno salvate.";
+$MESS["BIZPROC_WFEDIT_CATEGORY_CONSTR_1"] = "Controllo del flusso";
+$MESS["BIZPROC_WFEDIT_CATEGORY_DOC_1"] = "Elaborazione elemento";
+$MESS["BIZPROC_WFEDIT_CATEGORY_INTER"] = "Impostazioni interattive";
+$MESS["BIZPROC_WFEDIT_CATEGORY_MAIN"] = "Principale";
+$MESS["BIZPROC_WFEDIT_CATEGORY_OTHER"] = "Altro";
+$MESS["BIZPROC_WFEDIT_CATEGORY_REST_1"] = "Attività applicazione";
+$MESS["BIZPROC_WFEDIT_CATEGORY_TASKS_1"] = "Assegnazioni";
+$MESS["BIZPROC_WFEDIT_CONSTANTS_SAVE_ERROR_MSGVER_1"] = "Impossibile salvare il modello perché le costanti sono troppo lunghe.";
+$MESS["BIZPROC_WFEDIT_DEFAULT_TITLE"] = "Modello processo aziendale";
+$MESS["BIZPROC_WFEDIT_ERROR_COMPLEX_TYPE"] = "Il modello non è associato a questo tipo di elemento.";
+$MESS["BIZPROC_WFEDIT_ERROR_TYPE_MSGVER_1"] = "Il tipo elemento del flusso di lavoro è obbligatorio.";
+$MESS["BIZPROC_WFEDIT_IMPORT_ERROR"] = "Errore durante l'importazione del modello di processo aziendale.";
+$MESS["BIZPROC_WFEDIT_PARAMETERS_SAVE_ERROR_MSGVER_1"] = "Impossibile salvare il modello perché i parametri sono troppo lunghi.";
+$MESS["BIZPROC_WFEDIT_SAVE_ERROR"] = "Si è verificato un errore durante il salvataggio di un oggetto:";
+$MESS["BIZPROC_WFEDIT_SAVE_ERROR_CAUSE_FILTER"] = "Errore nel salvataggio del modello: i dati hanno attivato il filtro di sicurezza.";
+$MESS["BIZPROC_WFEDIT_TITLE_ADD"] = "Nuovo modello processo aziendale";
+$MESS["BIZPROC_WFEDIT_TITLE_EDIT"] = "Modifica modello processo aziendale";
+$MESS["BIZPROC_WFEDIT_VARIABLES_SAVE_ERROR_MSGVER_1"] = "Impossibile salvare il modello perché le variabili sono troppo lunghe.";

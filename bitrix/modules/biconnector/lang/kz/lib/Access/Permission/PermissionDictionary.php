@@ -1,0 +1,24 @@
+<?php
+$MESS["BIC_ACCESS_HINT_MSGVER_1"] = "Егер қызметкерде BI Құрастырушыға қолжетімділік болмаса, ол бұл бөлімге кіре алмайды. Бұл құқық көріу аймақтарынан есептерді ашу және өңдеу мүмкіндігіне әсер етпейді";
+$MESS["BIC_ACCESS_MSGVER_1"] = "BI Құрастырушыға қолжетімділік";
+$MESS["BIC_DASHBOARD_ACCESS_ALL"] = "Барлығы";
+$MESS["BIC_DASHBOARD_COPY"] = "Көшіру";
+$MESS["BIC_DASHBOARD_DELETE"] = "Жою";
+$MESS["BIC_DASHBOARD_EDIT_MSGVER_1"] = "Жасау және өңдеу";
+$MESS["BIC_DASHBOARD_EXPORT"] = "Экспорт";
+$MESS["BIC_DASHBOARD_GROUP_SUBTITLE_PLURAL_0"] = "#COUNT# есеп";
+$MESS["BIC_DASHBOARD_GROUP_SUBTITLE_PLURAL_1"] = "#COUNT# есеп";
+$MESS["BIC_DASHBOARD_GROUP_SUBTITLE_PLURAL_2"] = "#COUNT# есеп";
+$MESS["BIC_DASHBOARD_GROUP_TITLE"] = "Жаңа топ";
+$MESS["BIC_DASHBOARD_NO_ACCESS"] = "Қолжетімсіз";
+$MESS["BIC_DASHBOARD_SHARE"] = "Есептерге сыртқы сілтемелер жасау";
+$MESS["BIC_DASHBOARD_TAG_MODIFY"] = "Есептер үшін тегтерді құру және өзгерту";
+$MESS["BIC_DASHBOARD_VIEW"] = "Қарау";
+$MESS["BIC_DELETE_ALL_UNUSED_ELEMENTS_MSGVER_2"] = "Пайдаланылмаған элементтерді жою";
+$MESS["BIC_EXTERNAL_DASHBOARD_CONFIG"] = "Талдаушының жұмыс орнына қолжетімділік";
+$MESS["BIC_GROUP_VARIABLES_HINT"] = "Қол жеткізу құқықтары топ ішіндегі есептерге әсер етеді";
+$MESS["BIC_SETTINGS_ACCESS"] = "Жалпы баптаулар";
+$MESS["BIC_SETTINGS_EDIT_RIGHTS_MSGVER_2"] = "Құқықтар мен есеп топтарын басқару";
+$MESS["HINT_BIC_DASHBOARD_DELETE_MSGVER_1"] = "Тек пайдаланушы есептері мен Маркетплейстен есептерді жоюға болады";
+$MESS["HINT_BIC_DASHBOARD_EDIT_MSGVER_2"] = "Тек пайдаланушы есептерін редакциялауға болады";
+$MESS["HINT_BIC_DASHBOARD_EXPORT_MSGVER_2"] = "Тек пайдаланушы есептерін экспорттауға болады";

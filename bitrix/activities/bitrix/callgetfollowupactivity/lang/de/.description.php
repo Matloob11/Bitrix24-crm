@@ -1,0 +1,6 @@
+<?php
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_DESCRIPTION"] = "Findet und ruft ab die Follow-up-Zusammenfassung der Besprechung.";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_NAME"] = "Follow-up-Zusammenfassung einer Besprechung abrufen";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_RETURN_ERROR_MESSAGE"] = "Text des Ausführungsfehlers";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_RETURN_FOLLOWUPS"] = "JSON-Daten des Follow-Up";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_RETURN_FOLLOWUP_COUNT"] = "Anzahl der Follow-Up-Elemente";

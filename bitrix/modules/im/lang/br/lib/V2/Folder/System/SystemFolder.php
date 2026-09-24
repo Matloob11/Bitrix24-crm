@@ -1,0 +1,8 @@
+<?php
+$MESS["IM_FOLDER_SYSTEM_COLLABS"] = "Collabs";
+$MESS["IM_FOLDER_SYSTEM_COPILOT"] = "CoPilot";
+$MESS["IM_FOLDER_SYSTEM_DEFAULT"] = "Bate-papos";
+$MESS["IM_FOLDER_SYSTEM_OPENLINES"] = "Canais Abertos";
+$MESS["IM_FOLDER_SYSTEM_OPEN_CHANNEL"] = "Canais";
+$MESS["IM_FOLDER_SYSTEM_PROJECTS"] = "Projetos";
+$MESS["IM_FOLDER_SYSTEM_TASKS"] = "Bate-papos de tarefas";

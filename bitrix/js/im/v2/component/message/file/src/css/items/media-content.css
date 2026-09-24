@@ -1,0 +1,25 @@
+.bx-im-message-media-content__container {
+	position: relative;
+}
+
+.bx-im-message-media-content__single-video {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	border-radius: 6px;
+}
+
+.bx-im-message-media-content__single-image {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+.bx-im-message-media-content__status-container {
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	z-index: 20;
+}

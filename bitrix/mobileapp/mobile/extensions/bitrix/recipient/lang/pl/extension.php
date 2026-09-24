@@ -1,0 +1,7 @@
+<?
+$MESS["RECIPIENT_ALL"] = "Wszyscy pracownicy";
+$MESS["RECIPIENT_SCOPE_DEPARTMENTS"] = "Działy";
+$MESS["RECIPIENT_SCOPE_GROUPS"] = "Grupy";
+$MESS["RECIPIENT_SCOPE_USERS"] = "Ludzie";
+$MESS["RECIPIENT_TITLE"] = "Odbiorcy";
+?>

@@ -1,0 +1,7 @@
+<?
+$MESS["RPA_TIMELINE_TITLE_COMMENT"] = "Comentário";
+$MESS["RPA_TIMELINE_TITLE_FIELDS_CHANGE"] = "Campos alterados";
+$MESS["RPA_TIMELINE_TITLE_ITEM_CREATE"] = "Item adicionado";
+$MESS["RPA_TIMELINE_TITLE_STAGE_CHANGE"] = "Etapa alterada";
+$MESS["RPA_TIMELINE_TITLE_TASK_COMPLETE"] = "Atribuição concluída";
+?>

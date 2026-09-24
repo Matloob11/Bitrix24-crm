@@ -1,0 +1,25 @@
+<?php
+$MESS["LANDING_TPL_ACTION_ADD"] = "Nuevo";
+$MESS["LANDING_TPL_ACTION_SELECT"] = "Seleccionar";
+$MESS["LANDING_TPL_ACTION_VIEW"] = "Editar";
+$MESS["LANDING_TPL_CREATE_EMPTY"] = "Plantilla vacía";
+$MESS["LANDING_TPL_EMPTY_REPO_EXPIRED"] = "Su licencia ha expirado.";
+$MESS["LANDING_TPL_EMPTY_REPO_EXPIRED_LINK"] = "Por favor, #LINK1#renueve su licencia#LINK2#";
+$MESS["LANDING_TPL_EMPTY_REPO_SERVICE"] = "El servicio de plantilla de demostración no está disponible temporalmente. Vuelva a intentarlo más tarde o póngase en contacto con el servicio de asistencia.";
+$MESS["LANDING_TPL_FEEDBACK_MESSAGE_2"] = "¡Díganos qué tipo de plantilla le interesa!";
+$MESS["LANDING_TPL_FEEDBACK_SEND"] = "Enviar un mensaje";
+$MESS["LANDING_TPL_FEEDBACK_TITLE"] = "¿No puede encontrar la plantilla que desea?";
+$MESS["LANDING_TPL_LABEL_FREE"] = "Gratuito";
+$MESS["LANDING_TPL_LABEL_NEW"] = "nuevo";
+$MESS["LANDING_TPL_LABEL_SUBSCRIPTION"] = "De pago";
+$MESS["LANDING_TPL_LIMIT_REACHED_TITLE"] = "Límite excedido";
+$MESS["LANDING_TPL_LOAD_APP_TEMPLATE_2_MSGVER_1"] = "<span>Descargar</span> plantilla del Market";
+$MESS["LANDING_TPL_MARKET_DISABLE_MSGVER_1"] = "Las plantillas no están disponibles temporalmente.";
+$MESS["LANDING_TPL_NOT_FOUND_BUTTON"] = "Enviar mensaje";
+$MESS["LANDING_TPL_NOT_FOUND_TITLE"] = "¿No encuentra la plantilla que necesita?";
+$MESS["LANDING_TPL_PAGE_LIMIT_REACHED_TEXT"] = "<p>Su plan actual restringe la cantidad de páginas que puede crear. Tiene que actualizar para crear más páginas.</p><p> Con los <a href=\"/settings/license_all.php\" target=\"_blank\">planes comerciales seleccionados</a>, puede crear tantas páginas como quiera.</p>";
+$MESS["LANDING_TPL_TITLE"] = "Seleccione una plantilla";
+$MESS["LANDING_TPL_TITLE_GROUP"] = "Seleccione una plantilla de base de conocimientos";
+$MESS["LANDING_TPL_TITLE_KNOWLEDGE"] = "Seleccione una plantilla de base de conocimientos";
+$MESS["LANDING_TPL_TITLE_PAGE"] = "Seleccione una plantilla de sitio";
+$MESS["LANDING_TPL_TITLE_STORE"] = "Seleccione una plantilla de tienda online";

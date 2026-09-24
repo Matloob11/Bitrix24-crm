@@ -1,0 +1,11 @@
+<?php
+$MESS["AUTH_CHECKWORD"] = "Palavra de verificação";
+$MESS["AUTH_CHECKWORD_MSGVER_1"] = "Palavra de verificação";
+$MESS["INTRANET_CHANGE_PASS_AUTH_LINK"] = "Fazer login";
+$MESS["INTRANET_CHANGE_PASS_BUTTON"] = "Próximo";
+$MESS["INTRANET_CHANGE_PASS_CAPTCHA_PROMT"] = "Insira o texto";
+$MESS["INTRANET_CHANGE_PASS_CONFIRM"] = "Confirmar senha";
+$MESS["INTRANET_CHANGE_PASS_CREATE_TITLE"] = "Criar senha";
+$MESS["INTRANET_CHANGE_PASS_CURRENT_PASS"] = "Senha atual";
+$MESS["INTRANET_CHANGE_PASS_NEW_PASS"] = "Nova senha";
+$MESS["INTRANET_CHANGE_PASS_TITLE"] = "Recuperar a senha";

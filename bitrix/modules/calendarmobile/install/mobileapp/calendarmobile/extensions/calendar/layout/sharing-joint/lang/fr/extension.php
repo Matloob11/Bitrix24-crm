@@ -1,0 +1,16 @@
+<?php
+$MESS["CALENDARMOBILE_SHARING_COPY_LINK"] = "Copier le lien";
+$MESS["CALENDARMOBILE_SHARING_CREATED"] = "Créé le";
+$MESS["CALENDARMOBILE_SHARING_DELETE_LINK"] = "Supprimer un lien";
+$MESS["CALENDARMOBILE_SHARING_DELETE_LINK_ALERT"] = "Le lien deviendra invalide et personne ne pourra plus l'utiliser";
+$MESS["CALENDARMOBILE_SHARING_DELETE_LINK_ALERT_TITLE"] = "Supprimer le lien du créneau ?";
+$MESS["CALENDARMOBILE_SHARING_DELETE_LINK_CONFIRM"] = "Supprimer";
+$MESS["CALENDARMOBILE_SHARING_JOINT_LIST_EMPTY_TITLE"] = "Cet écran affichera des liens vers des créneaux partagés";
+$MESS["CALENDARMOBILE_SHARING_JOINT_TITLE"] = "Créneaux partagés";
+$MESS["CALENDARMOBILE_SHARING_LINK_COPIED"] = "Lien copié";
+$MESS["CALENDARMOBILE_SHARING_LINK_CREATED_AT_DATE"] = "Lien créé le #DATE#";
+$MESS["CALENDARMOBILE_SHARING_LINK_DELETED"] = "Lien supprimé";
+$MESS["CALENDARMOBILE_SHARING_SEND"] = "Envoyer";
+$MESS["CALENDARMOBILE_SHARING_SEND_SLOTS"] = "Partager les créneaux horaires";
+$MESS["CALENDARMOBILE_SHARING_SORT_BY_DATE"] = "Par date de création";
+$MESS["CALENDARMOBILE_SHARING_SORT_BY_FREQUENT_USE"] = "Par dernière utilisation";

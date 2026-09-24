@@ -1,0 +1,24 @@
+<?php
+$MESS["BPAA_ACT_APPROVE"] = "El elemento fue aprobado";
+$MESS["BPAA_ACT_APPROVERS_NONE"] = "ninguno";
+$MESS["BPAA_ACT_APPROVE_TRACK"] = "El usuario #PERSON# aprobó el elemento #COMMENT#";
+$MESS["BPAA_ACT_BUTTON1"] = "Aceptar";
+$MESS["BPAA_ACT_BUTTON2_MSGVER_1"] = "Rechazar";
+$MESS["BPAA_ACT_COMMENT_1"] = "Notas";
+$MESS["BPAA_ACT_COMMENT_ERROR"] = "El campo '#COMMENT_LABEL#' es requerido.";
+$MESS["BPAA_ACT_COMMENT_REQUIRED_TO_APPROVE"] = "Obligatorio al aprobar un elemento del flujo de trabajo";
+$MESS["BPAA_ACT_COMMENT_REQUIRED_TO_REJECT"] = "Obligatorio al rechazar un elemento del flujo de trabajo";
+$MESS["BPAA_ACT_INFO"] = "Participó el #PERC#% (#REV# para #TOT#)";
+$MESS["BPAA_ACT_NONAPPROVE"] = "El elemento no fue aprobado";
+$MESS["BPAA_ACT_NONAPPROVE_TRACK"] = "El usuario #PERSON# no aprobó el elemento #COMMENT#";
+$MESS["BPAA_ACT_NO_ACTION"] = "Sin acción especificada.";
+$MESS["BPAA_ACT_PROP_EMPTY1"] = "La propiedad 'Usuario' no está especificada.";
+$MESS["BPAA_ACT_PROP_EMPTY2"] = "La propiedad 'Tipo de aprobación' no está especificada.";
+$MESS["BPAA_ACT_PROP_EMPTY3"] = "El valor de la propiedad 'Tipo de aprobación' es inválida.";
+$MESS["BPAA_ACT_PROP_EMPTY4"] = "La propiedad 'Nombre' no fue encontrada.";
+$MESS["BPAA_ACT_TRACK1"] = "El elemento debe ser aprobado por cualquiera de los #VAL#";
+$MESS["BPAA_ACT_TRACK2"] = "El elemento debe ser aprobado por todos los #VAL#";
+$MESS["BPAA_ACT_TRACK3"] = "El elemento debe ser aprobado por cualquiera de los #VAL#";
+$MESS["BPAA_LOG_COMMENTS_1"] = "Notas";
+$MESS["BPAA_LOG_N_MSGVER_1"] = "Rechazado";
+$MESS["BPAA_LOG_Y"] = "Aprobado";

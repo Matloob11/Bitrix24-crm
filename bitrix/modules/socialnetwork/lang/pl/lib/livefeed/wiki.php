@@ -1,0 +1,3 @@
+<?php
+$MESS["SONET_LIVEFEED_WIKI_DELETED_PINNED_TITLE"] = "Strona Wiki: „#TITLE#” została usunięta";
+$MESS["SONET_LIVEFEED_WIKI_PINNED_TITLE"] = "Strona Wiki: #TITLE#";

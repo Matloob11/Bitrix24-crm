@@ -1,0 +1,12 @@
+<?php
+$MESS["NUMERATOR_EDIT_BTN_CANCEL"] = "Cancelar";
+$MESS["NUMERATOR_EDIT_BTN_SAVE"] = "Salvar";
+$MESS["NUMERATOR_EDIT_CREATE_PAGE_TITLE"] = "Novo modelo de numeração automática";
+$MESS["NUMERATOR_EDIT_FORM_EMPTY_FIELD_ERROR"] = "Este campo não pode estar vazio";
+$MESS["NUMERATOR_EDIT_FORM_PAD_STRING_HINT"] = "Adiciona caracteres de preenchimento à esquerda do número até que a largura especificada seja atingida";
+$MESS["NUMERATOR_EDIT_TIMEZONE_LINK"] = "Fuso horário";
+$MESS["NUMERATOR_EDIT_TITLE_BITRIX_MAIN_SEQUENTNUMBERGENERATOR_NEW_NEXT_NUMBER"] = "Novo número atual";
+$MESS["NUMERATOR_EDIT_TITLE_BITRIX_MAIN_SEQUENTNUMBERGENERATOR_NEXT_NUMBER"] = "Número atual";
+$MESS["NUMERATOR_EDIT_TITLE_BITRIX_MAIN_SEQUENTNUMBERGENERATOR_SET_NUMBER_TOGGLE"] = "Editar número atual";
+$MESS["NUMERATOR_EDIT_TITLE_BITRIX_MAIN_SEQUENTNUMBERGENERATOR_SET_NUMBER_TOGGLE_S"] = "Editar números atuais";
+$MESS["NUMERATOR_EDIT_UPDATE_PAGE_TITLE"] = "Editar modelo de numeração automática";

@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_RESERVATION_INVENTORY_MANAGEMENT_ERROR"] = "Impossibile concludere l'offerta perché alcuni prodotti non sono disponibili a magazzino o hai selezionato il magazzino sbagliato. Ciò fa sì che l'ordine di vendita non venga registrato in Gestione inventario. Rimuovi dall'offerta i prodotti che non puoi consegnare o seleziona un magazzino diverso con rimanenza a magazzino sufficiente.";

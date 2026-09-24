@@ -1,0 +1,5 @@
+<?
+$MESS["LANDING_MENU_APPLY_BUTTON_LABEL"] = "Zastosuj";
+$MESS["LANDING_MENU_CLOSE_BUTTON_LABEL"] = "Ukryj pole";
+$MESS["LANDING_MENU_CREATE_NEW_PAGE"] = "Nowa strona";
+?>

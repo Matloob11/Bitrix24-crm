@@ -1,0 +1,4 @@
+<?php
+$MESS["IM_BIZPROC_MESSAGE_PLAIN_TEMPLATE_ERROR_EMPTY_FIELD"] = "El campo \"#FIELD_NAME#\" es obligatorio.";
+$MESS["IM_BIZPROC_MESSAGE_PLAIN_TEMPLATE_FIELD_NAME_MESSAGE_TEXT"] = "Texto del mensaje";
+$MESS["IM_BIZPROC_MESSAGE_PLAIN_TEMPLATE_SENT_BY_ROBOT"] = "Enviado por regla de automatización";

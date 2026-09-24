@@ -1,0 +1,26 @@
+<?php
+$MESS["SIGN_MEMBER_ACTION_APPROVE"] = "Approva";
+$MESS["SIGN_MEMBER_ACTION_DOWNLOAD"] = "Scarica";
+$MESS["SIGN_MEMBER_ACTION_EDIT"] = "Compila campi";
+$MESS["SIGN_MEMBER_ACTION_SIGN"] = "Firma";
+$MESS["SIGN_MEMBER_ACTION_SIGN_WITH_YOU"] = "Firmato da te";
+$MESS["SIGN_MEMBER_ACTION_VIEW"] = "Visualizza";
+$MESS["SIGN_MEMBER_APPROVED"] = "Approvato";
+$MESS["SIGN_MEMBER_APPROVED_WITH_YOU"] = "Approvato da te";
+$MESS["SIGN_MEMBER_APPROVED_WITH_YOU_MSGVER_1"] = "Approvato da me";
+$MESS["SIGN_MEMBER_APPROVES"] = "Approvatore";
+$MESS["SIGN_MEMBER_EDIT"] = "Editor di campi";
+$MESS["SIGN_MEMBER_EDITED"] = "Compilato";
+$MESS["SIGN_MEMBER_EDITED_WITH_YOU"] = "Compilato da te";
+$MESS["SIGN_MEMBER_EDITED_WITH_YOU_MSGVER_1"] = "Compilato da me";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_ASSIGNEE"] = "Firma come rappresentante aziendale";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_EDITOR"] = "Editor di campi";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_REVIEWER"] = "Approvatore";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_SIGNER_B2E"] = "Firma come dipendente";
+$MESS["SIGN_MEMBER_ROLE_IN_PROCESS_SIGNER_E2B"] = "Mittente";
+$MESS["SIGN_MEMBER_SIGNED"] = "Firmato";
+$MESS["SIGN_MEMBER_SIGNED_WITH_YOU_MSGVER_1"] = "Firmato da me";
+$MESS["SIGN_MEMBER_SIGNS"] = "Firmatario";
+$MESS["SIGN_MEMBER_STOPPED"] = "Rifiutato";
+$MESS["SIGN_MEMBER_STOPPED_WITH_YOU"] = "Rifiutato da te";
+$MESS["SIGN_MEMBER_STOPPED_WITH_YOU_MSGVER_1"] = "Rifiutato da me";

@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_DASHBOARD_GRID_SOURCE_TYPE_MARKET"] = "Descargado desde el Market";
+$MESS["BICONNECTOR_DASHBOARD_GRID_SOURCE_TYPE_SYSTEM"] = "Panel de control integrado";

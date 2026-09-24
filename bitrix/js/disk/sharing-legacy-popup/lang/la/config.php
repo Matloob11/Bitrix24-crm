@@ -1,0 +1,11 @@
+<?php
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_LABEL_NAME_ADD_RIGHTS_USER"] = "Agregar más";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_LABEL_NAME_RIGHTS"] = "Permisos de acceso";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_LABEL_NAME_RIGHTS_USER"] = "Usuarios";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_LABEL_OWNER"] = "Propietario";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_OK_BOARD_SHARE_MODIFIED"] = "Se modificaron los permisos de acceso para el tablero \"#FILE#\".";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_OK_FILE_SHARE_MODIFIED"] = "Se cambiaron los permisos para el archivo compartido #FILE#";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_SHARING_LABEL_NAME_RIGHTS"] = "Permisos y uso compartido";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_TITLE_MODAL_2"] = "Compartiendo";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_TITLE_MODAL_3"] = "Compartir con otros usuarios";
+$MESS["JS_DISK_SHARING_LEGACY_POPUP_UNIFIED_RIGHT_USERS"] = "Cualquier persona que tenga el enlace";

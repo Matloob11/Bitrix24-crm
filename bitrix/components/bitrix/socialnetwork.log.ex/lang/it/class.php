@@ -1,0 +1,6 @@
+<?php
+$MESS["SONET_LOG_LIST_NAV"] = "Record";
+$MESS["SONET_LOG_LIST_PAGE_TITLE"] = "Feed";
+$MESS["SONET_LOG_LIST_PAGE_TITLE2"] = "Feed";
+$MESS["SONET_LOG_LIST_PAGE_TITLE3"] = "Feed";
+$MESS["SONET_LOG_LIST_SONET_MODULE_NOT_INSTALLED"] = "Il modulo Social Network non è installato.";

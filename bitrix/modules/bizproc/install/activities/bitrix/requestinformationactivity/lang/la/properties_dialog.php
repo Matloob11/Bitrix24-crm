@@ -1,0 +1,26 @@
+<?php
+$MESS["BPSFA_PD_CANCEL"] = "Cancelar";
+$MESS["BPSFA_PD_CANCEL_HINT"] = "Salir sin guardar";
+$MESS["BPSFA_PD_DELETE"] = "Eliminar";
+$MESS["BPSFA_PD_EMPTY_NAME"] = "El código del campo no fue encontrado";
+$MESS["BPSFA_PD_EMPTY_TITLE"] = "El nombre del campo no fue encontrado";
+$MESS["BPSFA_PD_FIELD"] = "Campo";
+$MESS["BPSFA_PD_FIELDS"] = "Campos";
+$MESS["BPSFA_PD_F_ADD"] = "Agregar campo...";
+$MESS["BPSFA_PD_F_DEF"] = "Valores por defecto";
+$MESS["BPSFA_PD_F_DESCR"] = "Descripción";
+$MESS["BPSFA_PD_F_MULT"] = "Múltiple";
+$MESS["BPSFA_PD_F_NAME"] = "ID";
+$MESS["BPSFA_PD_F_REQ"] = "Requerido";
+$MESS["BPSFA_PD_F_TITLE"] = "Nombre";
+$MESS["BPSFA_PD_F_TYPE"] = "Tipo";
+$MESS["BPSFA_PD_F_VLIST"] = "Valores";
+$MESS["BPSFA_PD_F_VLIST_HINT"] = "(un valor por línea, si un valor variante y el nombre son diferentes, especifique la variante entre corchetes a la derecha del nombre, por ejemplo: [v1] Variante 1)";
+$MESS["BPSFA_PD_NO"] = "No";
+$MESS["BPSFA_PD_SAVE"] = "Guardar";
+$MESS["BPSFA_PD_SAVE_HINT"] = "Guardar campo";
+$MESS["BPSFA_PD_TIMEOUT_LIMIT"] = "Tiempo mínimo de aprobación";
+$MESS["BPSFA_PD_WRONG_NAME"] = "Un código de campo sólo puede incluir letras y números latinos, y no puede empezar por un dígito.";
+$MESS["BPSFA_PD_YES"] = "Si";
+$MESS["BP_WF_DOWN"] = "Bajar";
+$MESS["BP_WF_UP"] = "Subir";

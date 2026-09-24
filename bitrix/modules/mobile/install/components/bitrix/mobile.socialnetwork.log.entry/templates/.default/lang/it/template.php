@@ -1,0 +1,32 @@
+<?
+$MESS["MOBILE_LOG_COMMENTS"] = "Commenti";
+$MESS["MOBILE_LOG_COMMENTS_2"] = "Commenti:";
+$MESS["MOBILE_LOG_COMMENT_ACTION"] = "Commento";
+$MESS["MOBILE_LOG_COMMENT_ADD_BUTTON_SEND"] = "Invia";
+$MESS["MOBILE_LOG_COMMENT_ADD_TITLE"] = "Invia messaggio...";
+$MESS["MOBILE_LOG_COMMENT_BUTTON_MORE"] = "Mostra commenti <i>-</i> #COMMENTS#";
+$MESS["MOBILE_LOG_COMMENT_DELETE"] = "Elimina";
+$MESS["MOBILE_LOG_COMMENT_EDIT"] = "Modifica";
+$MESS["MOBILE_LOG_COMMENT_LIKES_LIST"] = "Mi piace";
+$MESS["MOBILE_LOG_COMMENT_REPLY"] = "Rispondi";
+$MESS["MOBILE_LOG_DESTINATION_MORE_0"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_1"] = "e #COUNT# altro destinatario";
+$MESS["MOBILE_LOG_DESTINATION_MORE_2"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_3"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_4"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_5"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_6"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_7"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_8"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_DESTINATION_MORE_9"] = "e #COUNT# altri destinatari";
+$MESS["MOBILE_LOG_EXPAND"] = "Altro";
+$MESS["MOBILE_LOG_LIKE2_ACTION"] = "Mi piace:";
+$MESS["MOBILE_LOG_LIKE2_ACTION_PATTERN"] = "#LIKE#:";
+$MESS["MOBILE_LOG_LIKE_ACTION"] = "Mi piace";
+$MESS["MOBILE_LOG_LIKE_COUNT_USERS"] = "#COUNT# #USERS#";
+$MESS["MOBILE_LOG_LIKE_ME"] = "Te";
+$MESS["MOBILE_LOG_LIKE_OTHERS"] = "#COUNT_USERS# hanno messo mi piace.";
+$MESS["MOBILE_LOG_LIKE_YOU"] = "Piace a #YOU#.";
+$MESS["MOBILE_LOG_LIKE_YOU_OTHERS"] = "Piace a #YOU# e #COUNT_USERS#.";
+$MESS["MOBILE_LOG_MORE"] = "Altro";
+?>

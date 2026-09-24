@@ -1,0 +1,21 @@
+<?php
+$MESS["SIGN_SETTINGS_B2B_LOAD_DOCUMENT"] = "Dokument";
+$MESS["SIGN_SETTINGS_B2B_PREPARING_DOCUMENT"] = "Przygotowywanie";
+$MESS["SIGN_SETTINGS_B2B_TITLE_SUB"] = "Trzy proste kroki, aby przesłać dokument do podpisu";
+$MESS["SIGN_SETTINGS_B2E_COMPANY"] = "Firma";
+$MESS["SIGN_SETTINGS_B2E_EMPLOYEES"] = "Pracownicy";
+$MESS["SIGN_SETTINGS_B2E_ROUTES"] = "Ścieżki";
+$MESS["SIGN_SETTINGS_B2E_TITLE_SUB"] = "Tylko kilka kroków, aby przesłać dokument do podpisu";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT"] = "Dokument wysłany do podpisu.";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT_GROUP"] = "Dokumenty zostały wysłane do podpisu.";
+$MESS["SIGN_SETTINGS_CREATE_TEMPLATE"] = "Zapisz";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT"] = "Wyślij";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT_CREATE"] = "Utwórz";
+$MESS["SIGN_SETTINGS_SEND_FOR_SIGN"] = "Prześlij do podpisu";
+$MESS["SIGN_SETTINGS_TEMPLATES_LIST"] = "Wszystkie szablony";
+$MESS["SIGN_SETTINGS_TEMPLATE_CHANGED"] = "Szablon został zaktualizowany";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED"] = "Szablon został utworzony";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED_INFO"] = "Edytuj szablony i ścieżki w obszarze e-Podpis w HR.";
+$MESS["SIGN_SETTINGS_TITLE"] = "Nowy dokument";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE"] = "Utwórz szablon";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE_EDIT"] = "Edytuj szablon";

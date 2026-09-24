@@ -1,0 +1,4 @@
+<?php
+$MESS["AI_IMAGE_ENGINE_FORMAT_LANDSCAPE"] = "Układ poziomy(16:9)";
+$MESS["AI_IMAGE_ENGINE_FORMAT_PORTRAIT"] = "Układ pionowy (9:16)";
+$MESS["AI_IMAGE_ENGINE_FORMAT_SQUARE"] = "Kwadrat (1:1)";

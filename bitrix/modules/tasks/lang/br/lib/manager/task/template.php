@@ -1,0 +1,4 @@
+<?
+$MESS["TASKS_MANAGER_TASK_TEMPLATE_CONVERSION_ERROR"] = "Erro ao converter tarefa";
+$MESS["TASKS_MANAGER_TASK_TEMPLATE_UNKNOWN_ERROR"] = "Erro desconhecido";
+?>

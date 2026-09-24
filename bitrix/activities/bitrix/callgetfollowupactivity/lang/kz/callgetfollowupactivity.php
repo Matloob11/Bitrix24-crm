@@ -1,0 +1,11 @@
+<?php
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DATE_END_BEFORE_DATE_START"] = "Аяқталу күні іріктеудің басталу күнінен кеш болуы керек";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_PROPERTY_CALL_IDS_NAME"] = "Қоңырау идентификаторлары";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_PROPERTY_DATE_END_NAME"] = "Іріктеу кезеңінің аяқталу күні";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_PROPERTY_DATE_START_NAME"] = "Іріктеу кезеңінің басталу күні";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_PROPERTY_LIMIT_NAME"] = "Қоңыраулар санының шегі";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_DESCRIPTION_PROPERTY_USER_NAME"] = "Пайдаланушы";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_LIMIT_INCORRECT"] = "Шектеу 1-ден #MAX_LIMIT# аралығындағы сан болуы керек";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_NO_DATE_START"] = "Кезеңнің басталу күні белгіленбеген";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_NO_MODULE_ERROR"] = "#MODULE# модулі орнатылмаған";
+$MESS["CALL_GET_FOLLOWUP_ACTIVITY_NO_USER"] = "Пайдаланушы орнатылмаған";

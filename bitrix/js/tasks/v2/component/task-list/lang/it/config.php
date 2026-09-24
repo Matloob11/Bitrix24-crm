@@ -1,0 +1,27 @@
+<?php
+$MESS["TASKS_V2_TASK_LINE_COMPLETE_ACTION"] = "Completa";
+$MESS["TASKS_V2_TASK_LINE_COPY_LINK_ACTION"] = "Copia link";
+$MESS["TASKS_V2_TASK_LINE_COPY_LINK_NOTIFICATION"] = "Link copiato negli Appunti.";
+$MESS["TASKS_V2_TASK_LINE_DEFER_ACTION"] = "Posticipa";
+$MESS["TASKS_V2_TASK_LINE_DELETE_TASK_ACTION"] = "Elimina incarico";
+$MESS["TASKS_V2_TASK_LINE_DELETE_TEMPLATE_ACTION"] = "Elimina modello";
+$MESS["TASKS_V2_TASK_LINE_GROUP_COLLAPSE"] = "Comprimi";
+$MESS["TASKS_V2_TASK_LINE_PAUSE_ACTION"] = "Pausa";
+$MESS["TASKS_V2_TASK_LINE_REMOVE_ACTION"] = "Rimuovi";
+$MESS["TASKS_V2_TASK_LINE_RENEW_ACTION"] = "Riprendi incarico";
+$MESS["TASKS_V2_TASK_LINE_RESUME_ACTION"] = "Riprendi";
+$MESS["TASKS_V2_TASK_LINE_START_ACTION"] = "Avvia incarico";
+$MESS["TASKS_V2_TASK_LINE_SUBTASK_CREATE_ACTION"] = "Crea incarico secondario";
+$MESS["TASKS_V2_TASK_LINE_SUBTASK_PLURAL_0"] = "#NUM# incarico secondario";
+$MESS["TASKS_V2_TASK_LINE_SUBTASK_PLURAL_1"] = "#NUM# incarichi secondari";
+$MESS["TASKS_V2_TASK_LINE_SUBTASK_PLURAL_2"] = "#NUM# incarichi secondari";
+$MESS["TASKS_V2_TASK_LINE_SUBTEMPLATE_PLURAL_0"] = "#NUM# modello di incarico secondario";
+$MESS["TASKS_V2_TASK_LINE_SUBTEMPLATE_PLURAL_1"] = "#NUM# modelli di incarico secondario";
+$MESS["TASKS_V2_TASK_LINE_SUBTEMPLATE_PLURAL_2"] = "#NUM# modelli di incarico secondario";
+$MESS["TASKS_V2_TASK_LINE_TEMPLATE_SUBTASK_CREATE_ACTION"] = "Crea incarico secondario per modello";
+$MESS["TASKS_V2_TASK_LIST_DEADLINE_AUTO"] = "Impostazione automatica";
+$MESS["TASKS_V2_TASK_LIST_DEADLINE_EMPTY"] = "Nessuna scadenza";
+$MESS["TASKS_V2_TASK_LIST_DEADLINE_EXPIRED"] = "#DURATION# di ritardo";
+$MESS["TASKS_V2_TASK_LIST_MORE_PLURAL_0"] = "#COUNT# altro incarico";
+$MESS["TASKS_V2_TASK_LIST_MORE_PLURAL_1"] = "Altri #COUNT# incarichi";
+$MESS["TASKS_V2_TASK_LIST_MORE_PLURAL_2"] = "Altri #COUNT# incarichi";

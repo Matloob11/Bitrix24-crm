@@ -1,0 +1,24 @@
+<?php
+$MESS["BPAR_PD_TASK_BUTTON_CANCEL_MESSAGE_MSGVER_1"] = "Texto do botão \"Recusar\" na atribuição";
+$MESS["BPRIA_PD_CANCEL_TYPE"] = "Pode ser recusado por";
+$MESS["BPRIA_PD_CANCEL_TYPE_ALL"] = "Todos os colaboradores";
+$MESS["BPRIA_PD_CANCEL_TYPE_ANY"] = "Qualquer сolaborador";
+$MESS["BPRIA_PD_SAVE_VARIABLES"] = "Salvar valores em caso de falha";
+$MESS["BPRIOA_ACT_APPROVE_TRACK"] = "O usuário #PERSON# forneceu informações adicionais #COMMENT#";
+$MESS["BPRIOA_ACT_BUTTON1"] = "Salvar";
+$MESS["BPRIOA_ACT_BUTTON2"] = "Recusar";
+$MESS["BPRIOA_ACT_CANCEL_TRACK"] = "O usuário #PERSON# cancelou informações adicionais #COMMENT#";
+$MESS["BPRIOA_ACT_COMMENT"] = "Comentário";
+$MESS["BPRIOA_ACT_COMMENT_ERROR"] = "O campo '#COMMENT_LABEL#' é obrigatório.";
+$MESS["BPRIOA_ACT_INFO"] = "Aguardando informações adicionais";
+$MESS["BPRIOA_ACT_PROP_EMPTY1"] = "A propriedade 'Usuários' não está especificada.";
+$MESS["BPRIOA_ACT_PROP_EMPTY2"] = "Pelo menos um campo é obrigatório.";
+$MESS["BPRIOA_ACT_PROP_EMPTY4"] = "A propriedade 'Nome' está faltando.";
+$MESS["BPRIOA_ACT_TRACK1"] = "Informações adicionais serão fornecidas por #VAL#";
+$MESS["BPRIOA_ARGUMENT_NULL"] = "O valor '#PARAM#' obrigatório está faltando.";
+$MESS["BPRIOA_LOG_COMMENTS"] = "Comentário";
+$MESS["BPSFA_COMMENT_REQUIRED_YA_1"] = "Quanto aprovar";
+$MESS["BPSFA_COMMENT_REQUIRED_YR_1"] = "Quando recusar";
+$MESS["BPSFA_PD_CANCEL"] = "Cancelar";
+$MESS["BPSFA_PD_NO"] = "Não";
+$MESS["BPSFA_PD_YES"] = "Sim";

@@ -1,0 +1,122 @@
+import { Loc } from 'main.core';
+import {Sharing} from './fields/sharing';
+import {ExternalLink} from './fields/externallink';
+import Toolbar from './toolbar';
+import GridList from './grid/list';
+import GridTile from './grid/tile';
+import {Options as GridOptions, Options} from './options';
+import {Ears} from 'ui.ears';
+import {EventEmitter} from 'main.core.events';
+import Backend from './backend';
+import BoardsGuide from './boards-guide';
+import { Switcher as GridSwitcher } from './grid/switcher';
+
+function showShared(objectId, node) {
+	new Sharing(objectId, node);
+}
+
+function showExternalLink(objectId, node) {
+	new ExternalLink(objectId, node);
+}
+
+const TileGridEmptyBlockGenerator = GridTile.generateEmptyBlock;
+export {
+	showExternalLink,
+	showShared,
+	Toolbar,
+	Options,
+	TileGridEmptyBlockGenerator,
+	Backend,
+	BoardsGuide,
+	GridSwitcher,
+};
+
+//Template things
+BX.ready(() => {
+	const analytics = window.BX_ANALYTICS || null;
+
+	if (BX.Main.gridManager && BX.Main.gridManager
+		.getInstanceById(GridOptions.getGridId()))
+	{
+		new GridList(analytics);
+	}
+	else if (BX.Main.tileGridManager && BX.Main.tileGridManager
+		.getInstanceById(GridOptions.getGridId()))
+	{
+		new GridTile(analytics);
+	}
+	else
+	{
+		EventEmitter.subscribeOnce(EventEmitter.GLOBAL_TARGET, 'Grid::ready', ({compatData: [instance]}) => {
+			if (instance && instance.getId() === GridOptions.getGridId())
+			{
+				new GridList(analytics);
+			}
+		});
+		EventEmitter.subscribeOnce(EventEmitter.GLOBAL_TARGET, 'BX.TileGrid.Grid:initialized', ({compatData: [instance]}) => {
+			if (instance && instance.getId() === GridOptions.getGridId())
+			{
+				new GridTile(analytics);
+			}
+		});
+	}
+
+	if (document.querySelector('#disk-documents-control-panel'))
+	{
+		const ears = new Ears({
+			container: document.querySelector('#disk-documents-control-panel'),
+			noScrollbar: false,
+			className: 'disk-documents-ears'
+		});
+		ears.init();
+	}
+
+	const func = (id, uploader) => {
+		uploader.limits["uploadFileExt"] = Options.getEditableExt().join(',');
+		uploader.limits["uploadFile"] = '.' + Options.getEditableExt().join(',.');
+		if (uploader.fileInput)
+		{
+			uploader.fileInput.accept = uploader.limits["uploadFile"];
+		}
+	}
+	if (BX.UploaderManager && BX.UploaderManager.getById('DiskDocuments'))
+	{
+		func('DiskDocuments', BX.UploaderManager.getById('DiskDocuments'));
+	}
+	else
+	{
+		const listener = ({compatData: [id, uploader]}) => {
+			setTimeout(() => {
+				func(id, uploader)
+			}, 200);
+			EventEmitter.unsubscribe(EventEmitter.GLOBAL_TARGET, 'onUploaderIsInited', listener);
+		};
+		EventEmitter.subscribe(EventEmitter.GLOBAL_TARGET, 'onUploaderIsInited', listener);
+	}
+
+	if (window.location.search)
+	{
+		const searchParams = new URLSearchParams(window.location.search);
+		const newSearchParams = new URLSearchParams();
+
+		searchParams.delete('c_section');
+
+		for (const param of searchParams)
+		{
+			if (param[0].startsWith('st[')) continue;
+
+			newSearchParams.append(param[0], param[1]);
+		}
+
+		let newState = null;
+		if (newSearchParams.size > 0)
+		{
+			newState = `?${newSearchParams.toString()}`;
+		}
+		else
+		{
+			newState = window.location.pathname;
+		}
+		window.history.replaceState(null, '', newState);
+	}
+});

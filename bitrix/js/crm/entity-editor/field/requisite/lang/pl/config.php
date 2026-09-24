@@ -1,0 +1,16 @@
+<?php
+$MESS["CLIENT_REQUISITES_ADDRESS_SHOW_ADDRESS"] = "Pokaż adres";
+$MESS["REQUISITE_LABEL_DETAILS_SELECT"] = "wybierz z listy";
+$MESS["REQUISITE_LABEL_DETAILS_TEXT"] = "szczegóły";
+$MESS["REQUISITE_LIST_EMPTY_PRESET_LIST"] = "Nie znaleziono szablonu danych";
+$MESS["REQUISITE_LIST_ITEM_DELETE_CONFIRMATION_CONTENT"] = "Czy na pewno chcesz usunąć te dane i wszystkie powiązane adresy?";
+$MESS["REQUISITE_LIST_ITEM_DELETE_CONFIRMATION_TITLE"] = "Usuń szczegóły";
+$MESS["REQUISITE_LIST_ITEM_ERROR_CAPTION"] = "Błąd";
+$MESS["REQUISITE_LIST_ITEM_HIDE_CONFIRMATION_CONTENT"] = "Czy na pewno chcesz usunąć pola danych?";
+$MESS["REQUISITE_LIST_ITEM_HIDE_CONFIRMATION_TITLE"] = "Wyczyść pola danych";
+$MESS["REQUISITE_TOOLTIP_ADD"] = "Dodaj szczegóły";
+$MESS["REQUISITE_TOOLTIP_ADD_BANK_DETAILS"] = "dodaj dane bankowe";
+$MESS["REQUISITE_TOOLTIP_BANK_DETAILS_TITLE"] = "Dane bankowe";
+$MESS["REQUISITE_TOOLTIP_DELETE"] = "usuń";
+$MESS["REQUISITE_TOOLTIP_EDIT"] = "zmień";
+$MESS["REQUISITE_TOOLTIP_SHOW_DETAILS"] = "szczegóły";

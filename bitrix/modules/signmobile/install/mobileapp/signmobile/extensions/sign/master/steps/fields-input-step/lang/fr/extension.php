@@ -1,0 +1,5 @@
+<?php
+$MESS["SIGN_MOBILE_MASTER_FIELDS_INPUT_STEP_NEXT_STEP_BUTTON_TEXT"] = "Signer maintenant";
+$MESS["SIGN_MOBILE_MASTER_FIELDS_INPUT_STEP_TITLE"] = "Document à signer";
+$MESS["SIGN_MOBILE_MASTER_INPUT_STEP_EMPTY_STATE_DESCRIPTION"] = "\"#SELECTED_TEMPLATE_TITLE#\" a été créé. Vous pouvez maintenant procéder à la signature électronique.";
+$MESS["SIGN_MOBILE_MASTER_INPUT_STEP_EMPTY_STATE_TITLE"] = "Prêt pour l'envoi";

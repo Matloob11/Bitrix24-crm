@@ -1,0 +1,44 @@
+<?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+return [
+	'css' => 'dist/registry.bundle.css',
+	'js' => 'dist/registry.bundle.js',
+	'rel' => [
+		'call.component.call-button',
+		'im.v2.application.core',
+		'im.v2.component.animation',
+		'im.v2.component.dialog.chat',
+		'im.v2.component.elements.avatar',
+		'im.v2.component.elements.button',
+		'im.v2.component.elements.chat-title',
+		'im.v2.component.elements.loader',
+		'im.v2.component.entity-selector',
+		'im.v2.component.sidebar',
+		'im.v2.component.textarea',
+		'im.v2.const',
+		'im.v2.lib.analytics',
+		'im.v2.lib.confirm',
+		'im.v2.lib.copilot',
+		'im.v2.lib.feature',
+		'im.v2.lib.helpdesk',
+		'im.v2.lib.permission',
+		'im.v2.lib.textarea',
+		'im.v2.lib.theme',
+		'im.v2.lib.utils',
+		'im.v2.provider.service.chat',
+		'im.v2.provider.service.message',
+		'im.v2.provider.service.uploading',
+		'main.core',
+		'main.core.events',
+		'ui.icon-set.api.vue',
+		'ui.uploader.core',
+		'ui.vue3',
+		'ui.vue3.components.rich-loc',
+		'ui.vue3.directives.hint',
+	],
+	'skip_core' => false,
+];

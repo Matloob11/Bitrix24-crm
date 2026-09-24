@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_FILE_EDITOR_TEMPLATES_SUBTITLE"] = "Szablony stockowe";
+$MESS["DISK_FILE_EDITOR_TEMPLATES_TITLE"] = "Wybierz szablon";

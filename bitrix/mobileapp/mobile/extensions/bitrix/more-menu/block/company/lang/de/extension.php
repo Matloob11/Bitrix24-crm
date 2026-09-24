@@ -1,0 +1,7 @@
+<?php
+$MESS["MORE_MENU_COMPANY_DEMO_BUTTON"] = "Starten";
+$MESS["MORE_MENU_COMPANY_DEMO_DESCRIPTION"] = "Kostenlose Testversion starten";
+$MESS["MORE_MENU_COMPANY_DEMO_TILL_DATE"] = "bis #TIME#";
+$MESS["MORE_MENU_COMPANY_DEMO_TITLE"] = "15-Tage-Testversion";
+$MESS["MORE_MENU_COMPANY_TITLE"] = "Ihr Bitrix24";
+$MESS["MORE_MENU_COMPANY_WHATS_NEW"] = "Was gibt es Neues";

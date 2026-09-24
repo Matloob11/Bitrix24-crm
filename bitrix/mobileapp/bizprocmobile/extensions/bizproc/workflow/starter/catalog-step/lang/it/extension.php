@@ -1,0 +1,4 @@
+<?php
+$MESS["M_BP_WORKFLOW_STARTER_CATALOG_STEP_EMPTY_STATE_DESCRIPTION"] = "Non sono presenti flussi di lavoro da avviare.";
+$MESS["M_BP_WORKFLOW_STARTER_CATALOG_STEP_NEXT_STEP_BUTTON_TEXT"] = "Continua";
+$MESS["M_BP_WORKFLOW_STARTER_CATALOG_STEP_TITLE"] = "Seleziona flusso di lavoro";

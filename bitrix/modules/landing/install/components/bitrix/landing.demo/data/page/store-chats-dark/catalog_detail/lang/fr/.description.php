@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_DEMO_STORE_CHATS_DETAIL-BACK"] = "Retour";
+$MESS["LANDING_DEMO_STORE_CHATS_DETAIL-NAME"] = "Page des détails du produit";

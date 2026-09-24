@@ -1,0 +1,22 @@
+<?php
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_ATTACH_BUTTON_CONFIRM"] = "Иә, қосу";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_ATTACH_DESCRIPTION"] = "Чаттың барлық қатысушылары жобаға қол жеткізе алады және чаттың өзі тек жоба ішінде көрсетіледі";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_ATTACH_TITLE"] = "Жобаға чат қосу керек пе?";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_BUTTON_CANCEL"] = "Болдырмау";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_DETACH_BUTTON_CONFIRM"] = "Иә, алып тастау";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_DETACH_DESCRIPTION"] = "Чат енді жобада көрсетілмейді және чаттардың жалпы тізімінде пайда болады";
+$MESS["IMMOBILE_ATTACH_CHAT_CONFIRM_DETACH_TITLE"] = "Жобадан чатты алып тастайсыз ба?";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_CHATS_SEARCH_EMPTY_DESCRIPTION"] = "Сұрауды өзгертуге тырысыңыз";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_CHATS_SEARCH_EMPTY_TITLE"] = "Ештеңе табылмады";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_CHATS_TITLE"] = "Чатты таңдау";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_LOADING"] = "Жүктеу...";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_PROJECTS_SEARCH_EMPTY_DESCRIPTION"] = "Сұрауды өзгертуге тырысыңыз";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_PROJECTS_SEARCH_EMPTY_TITLE"] = "Ештеңе табылмады";
+$MESS["IMMOBILE_ATTACH_CHAT_SELECTOR_PROJECTS_TITLE"] = "Жобаны таңдаңыз";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ATTACH_SUCCESS"] = "\"#CHAT#\" чаты \"#PROJECT#\" жобасына қосылды";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_DETACH_SUCCESS"] = "\"#CHAT#\" чаты \"#PROJECT#\" жобасынан алынып тасталды";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_ACCESS_DENIED"] = "Чатты байланыстыруға құқығыңыз жеткіліксіз";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_ALREADY_HAS_PARENT"] = "Бұл чат қазірдің өзінде жобаға байланыстырылған";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_GENERIC"] = "Операцияны орындау мүмкін болмады. Қайталап көріңіз";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_NO_PARENT"] = "Чат енді жобаға байланыстырылмаған";
+$MESS["IMMOBILE_ATTACH_CHAT_TOAST_ERROR_WRONG_PARENT"] = "Бұл жоба енді қолжетімсіз";

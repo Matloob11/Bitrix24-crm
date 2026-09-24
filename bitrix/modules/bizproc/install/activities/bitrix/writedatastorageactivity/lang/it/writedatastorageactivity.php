@@ -1,0 +1,25 @@
+<?php
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_AUTHOR_NOT_FOUND"] = "L'utente selezionato nel campo \"Aggiungi record come\" non è stato trovato.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_FIELD"] = "Crea nuovo campo";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_STORAGE"] = "Crea nuova memoria";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_ADD_FIELD"] = "Aggiungi campo";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_NOT_EXIST"] = "Almeno un campo è obbligatorio.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_COLLAPSED_TEXT"] = "Filtro applicato, fai clic su Espandi per visualizzarlo.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_PROPERTY"] = "Filtro dei campi";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_ITEM_NOT_FOUND"] = "L'ID del record #ITEM_ID# non è stato trovato nella memoria.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_MERGE_FIELDS"] = "Aggiungi nuovi dati";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NEW_ITEM"] = "Crea nuovo record";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NOT_EXIST"] = "Il parametro obbligatorio \"#PROPERTY#\" è vuoto.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_OPEN_STORAGE_LIST"] = "Dati della memoria";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_AUTHOR"] = "Aggiungi record come";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_MODE"] = "Modalità di scrittura";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_NAME"] = "Nome";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_SORT"] = "Ordine";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_REWRITE_FIELDS"] = "Sostituisci record";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_SELECT_STORAGE"] = "Seleziona memoria";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_NOT_FOUND"] = "Impossibile trovare la memoria.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_TAB_TITLE"] = "Memorie";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_UNKNOWN_MODE"] = "Modalità di scrittura sconosciuta: \"#MODE#\".";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_FIELD_VALUE"] = "Dati non corretti selezionati per la scrittura nella memoria.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_ITEM_ID"] = "L'ID del record in memoria deve essere un numero positivo.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_STORAGE_ID"] = "L'ID della memoria deve essere un numero positivo.";

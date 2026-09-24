@@ -1,0 +1,4 @@
+<?php
+$MESS["DISK_VOLUME_MODULE_SOCIALNETWORK"] = "Feed e gruppi di lavoro";
+$MESS["DISK_VOLUME_MODULE_SONET_FIRED_F"] = "#USER_NAME# (rimosso)";
+$MESS["DISK_VOLUME_MODULE_SONET_FIRED_M"] = "#USER_NAME# (rimosso)";

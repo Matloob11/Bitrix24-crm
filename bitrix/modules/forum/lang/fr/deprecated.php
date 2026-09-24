@@ -1,0 +1,20 @@
+<?php
+$MESS['FDATE_LAST_MESSAGE'] = "date de dernier message";
+$MESS['FMESSAGE_TOPIC'] = "Sujet du message";
+$MESS['FNUM_ANSWERS'] = "nombre de réponses";
+$MESS['FNUM_VIEWS'] = "nombre d'affichages";
+$MESS['FSTART_DATE'] = "Date de début du sujet";
+$MESS['FAUTHOR_TOPIC'] = "Auteur du sujet";
+$MESS['FASC'] = "en ordre ascendant";
+$MESS['FDESC'] = "par ordre descendant";
+$MESS['FNO_ACCESS'] = "pas d'accès";
+$MESS['FREAD_ACCESS'] = "lecture";
+$MESS['FANSWER_ACCESS'] = "répondre";
+$MESS['FNEW_MESSAGE_ACCESS'] = "créer un nouveau sujet";
+$MESS['FMODERATE_ACCESS'] = "modéré";
+$MESS['FEDIT_ACCESS'] = "diter";
+$MESS['FFULL_ACCESS'] = "accès complet";
+$MESS['FSUBSC_NO_SPERMS'] = "Vous ne disposez pas de suffisamment d'autorisations pour supprimer cet abonnement";
+$MESS['FORUM_NO_MODULE'] = "Le module 'Forum' n'a pas été installé";
+$MESS['FR_VIDEO'] = "Intégrer la vidéo";
+$MESS['FR_VIDEO_P'] = "Chemin vers le fichier vidéo";

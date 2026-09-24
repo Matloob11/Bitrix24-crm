@@ -1,0 +1,19 @@
+<?php
+$MESS["BLOG_BLOG_BLOG_FRIENDS_ONLY"] = "Autorizzazioni insufficienti per leggere le conversazioni.";
+$MESS["BLOG_BLOG_BLOG_MES_DELED"] = "La conversazione è stata eliminata correttamente.";
+$MESS["BLOG_BLOG_BLOG_MES_DEL_ERROR"] = "Errore durante l'eliminazione della conversazione.";
+$MESS["BLOG_BLOG_BLOG_MES_DEL_NO_RIGHTS"] = "Non disponi dell'autorizzazione per eliminare questa conversazione.";
+$MESS["BLOG_BLOG_BLOG_MES_PUB"] = "La conversazione è stata pubblicata.";
+$MESS["BLOG_BLOG_BLOG_MES_PUB_ERROR"] = "Errore durante la pubblicazione della conversazione.";
+$MESS["BLOG_BLOG_BLOG_MES_PUB_NO_RIGHTS"] = "Non disponi dell'autorizzazione per pubblicare questa conversazione.";
+$MESS["BLOG_BLOG_SESSID_WRONG"] = "La tua sessione è scaduta. Riprova.";
+$MESS["BLOG_MODULE_NOT_INSTALL"] = "Il modulo Blog non è installato.";
+$MESS["BLOG_MOD_DELETE"] = "Elimina";
+$MESS["BLOG_MOD_DELETE_CONFIRM"] = "Eliminare la conversazione?";
+$MESS["BLOG_MOD_EMPTY_SOCNET_USER"] = "Profilo utente non specificato";
+$MESS["BLOG_MOD_NO_RIGHTS"] = "Non disponi dell'autorizzazione per moderare le conversazioni in questo gruppo.";
+$MESS["BLOG_MOD_NO_SOCNET_GROUP"] = "Nessun gruppo di social network specificato.";
+$MESS["BLOG_MOD_NO_SOCNET_USER"] = "Non disponi dell'autorizzazione per visualizzare gli invii di moderazione";
+$MESS["BLOG_MOD_PUB"] = "Pubblica";
+$MESS["BLOG_SONET_MODULE_NOT_AVAIBLE"] = "Le conversazioni non sono disponibili per questo gruppo di utenti.";
+$MESS["MESSAGE_COUNT"] = "Conversazioni";

@@ -1,0 +1,22 @@
+<?php
+$MESS["DASHBOARD_EDIT_FORM_DASHBOARD_NOT_FOUND"] = "Звіт не знайдено.";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE"] = "Новий звіт";
+$MESS["DASHBOARD_EDIT_FORM_DEFAULT_TITLE_NUMBER"] = "Новий звіт (#NUMBER#)";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_CREATE_DASHBOARD_GROUP_ERROR"] = "Виберіть групу для створення звіту.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_DASHBOARD_GROUP_ERROR"] = "Не можна видалити звіт з усіх груп.";
+$MESS["DASHBOARD_EDIT_FORM_EMPTY_TITLE_ERROR"] = "Додайте назву звіту.";
+$MESS["DASHBOARD_EDIT_FORM_ERROR"] = "Не вдалося створити звіт. Спробуйте ще раз.";
+$MESS["DASHBOARD_EDIT_FORM_HELP"] = "Допомога";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_IMAGE_ERROR"] = "Некоректні зображення звіту. Оновіть сторінку й спробуйте ще раз.";
+$MESS["DASHBOARD_EDIT_FORM_INVALID_RANGE_ERROR"] = "Неправильне значення інтервалу.";
+$MESS["DASHBOARD_EDIT_FORM_ONLY_CUSTOM_EDIT_ERROR"] = "Редагувати можна лише користувацький звіт.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_ACCESS_ERROR"] = "Недостатньо прав для створення звіту.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_ACCESS_ERROR"] = "Недостатньо прав для роботи з BI-конструктором.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_BIC_UNAVAILABLE_ERROR"] = "Функціонал BI-конструктора недоступний.";
+$MESS["DASHBOARD_EDIT_FORM_OPEN_EDIT_ACCESS_ERROR"] = "Недостатньо прав для редагування звіту.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_DESCRIPTION_ERROR"] = "Не вдалося зберегти опис звіту. Спробуйте ще раз.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_GALLERY_ERROR"] = "Не вдалося зберегти галерею звіту. Спробуйте ще раз.";
+$MESS["DASHBOARD_EDIT_FORM_SAVE_PARAMS_ERROR"] = "Не вдалося створити параметри звіту. Відкрийте налаштування звіту та спробуйте ще раз.";
+$MESS["DASHBOARD_EDIT_FORM_TITLE"] = "Створення звіту";
+$MESS["DASHBOARD_EDIT_FORM_TITLE_TOO_LONG_ERROR"] = "Назва звіту не повинна перевищувати 128 символів.";
+$MESS["DASHBOARD_EDIT_FORM_UPDATE_ERROR"] = "Не вдалося оновити звіт. Спробуйте ще раз.";

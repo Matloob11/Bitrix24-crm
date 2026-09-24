@@ -1,0 +1,23 @@
+<?php
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_ADD_USERS"] = "Dodaj";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BROADCAST_MODE"] = "Tryb rozgłaszania";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BROADCAST_MODE_HINT"] = "W trybie rozgłaszania możesz zezwolić tylko wybranym mówcom na nadawanie obrazu i dźwięku. Inni uczestnicy mogą oglądać transmisję i komunikować się na czacie.";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_CANCEL"] = "Anuluj";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_CLOSE"] = "Zamknij";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_OPEN_CHAT"] = "Otwórz czat";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_SAVE"] = "Zapisz i skopiuj link";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_BUTTON_START"] = "Rozpocznij konferencję";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_COPY_CONFIRMATION"] = "Odnośnik skopiowany";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_HEADER_TITLE"] = "Utwórz konferencję";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LABEL_LINK"] = "Odnośnik";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LABEL_TITLE"] = "Nazwa konferencji";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LABEL_USERS"] = "Zaproś uczestników";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_LINK_LOADING"] = "Tworzenie linka...";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_NETWORK_ERROR"] = "Nie mogliśmy połączyć się z Twoim Bitrix24, prawdopodobnie z powodu słabego połączenia z Internetem. Spróbuj ponownie później.";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PLACEHOLDER_TITLE"] = "wprowadź nazwę";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PLACEHOLDER_TITLE_2"] = "Wideokonferencja";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PRESENTERS"] = "Mówcy";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_PUSH_ERROR"] = "Do korzystania z konferencji zaktualizuj serwer Push";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_SUCCESS"] = "Konferencja została utworzona!";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_USERS_LOADING"] = "Ładowanie...";
+$MESS["BX_IM_COMPONENT_CONFERENCE_CREATE_VOXIMPLANT_ERROR_WITH_LINK"] = "Aby korzystać z funkcji konferencji, musisz skonfigurować środowisko. <a onclick=\"top.BX.Helper.show('redirect=detail&code=11392174')\"> Dowiedz się więcej</a>";

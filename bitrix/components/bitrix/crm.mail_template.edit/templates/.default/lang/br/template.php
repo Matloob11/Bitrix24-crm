@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_MAIL_TEMPLATE_ENTITY_FIELD_SELECTOR"] = "Selecione os campos";
+$MESS["CRM_MAIL_TEMPLATE_ENTITY_FIELD_SELECTOR_ADD_BTN"] = "Adicionar";
+$MESS["CRM_MAIL_TEMPLATE_ENTITY_FIELD_SELECTOR_OWNER_ADD_ERROR"] = "Não é possível compartilhar o modelo com o proprietário.";
+$MESS["CRM_MAIL_TEMPLATE_TAB_1"] = "Modelo de Email";
+$MESS["CRM_MAIL_TEMPLATE_TAB_1_TITLE"] = "Parâmetros Modelo de Email";

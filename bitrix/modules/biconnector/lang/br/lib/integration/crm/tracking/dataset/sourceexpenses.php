@@ -1,0 +1,26 @@
+<?php
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_ACTIONS"] = "Ações";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_AD_ID"] = "ID do anúncio";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_AD_NAME"] = "Nome do anúncio";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CAMPAIGN_ID"] = "ID da campanha publicitária";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CAMPAIGN_NAME"] = "Nome da campanha publicitária";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CLICKS"] = "Cliques";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CPC"] = "Custo por clique";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CPM"] = "Custo por milhar";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CURRENCY"] = "Moeda";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_DATE"] = "Data";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_EXPENSES"] = "Custo por dia";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_GROUP_ID"] = "ID do grupo de anúncios";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_GROUP_NAME"] = "Nome do grupo de anúncios";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_IMPRESSIONS"] = "Impressões";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_SOURCE_ID"] = "ID da fonte";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CAMPAIGN"] = "ID da campanha publicitária";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CAMPAIGN_FULL"] = "Identifica a campanha publicitária cujos dados serão analisados.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CONTENT"] = "ID do item de conteúdo";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CONTENT_FULL"] = "Use este parâmetro para identificar a versão específica do conteúdo ou anúncio de uma campanha publicitária.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_MEDIUM"] = "ID da mídia";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_MEDIUM_FULL"] = "Identifica os meios pelos quais o visitante foi direcionado ao seu site.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_SOURCE"] = "ID da fonte";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_SOURCE_FULL"] = "Identifica a fonte (site, canal etc.) de onde o visitante se originou.";
+$MESS["TRACKING_SOURCE_EXPENSES_TABLE"] = "Custos do anúncio";
+$MESS["TRACKING_SOURCE_EXPENSES_TABLE_DESCRIPTION_FULL"] = "Isso fornece estatísticas diárias de custo de anúncios, incluindo moeda, número de cliques, impressões e ações.";

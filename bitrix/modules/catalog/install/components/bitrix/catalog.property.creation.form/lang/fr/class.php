@@ -1,0 +1,3 @@
+<?php
+$MESS["CATALOG_CREATE_VARIATION_PROPERTY_TITLE_MSGVER_1"] = "Nouvelle propriété d'UGS";
+$MESS["CATALOG_EDIT_VARIATION_PROPERTY_TITLE"] = "Modifier la propriété";

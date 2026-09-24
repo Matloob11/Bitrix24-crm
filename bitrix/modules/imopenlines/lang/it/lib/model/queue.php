@@ -1,0 +1,11 @@
+<?
+$MESS["QUEUE_ENTITY_CONFIG_ID_FIELD"] = "ID configurazione";
+$MESS["QUEUE_ENTITY_ID_FIELD"] = "ID";
+$MESS["QUEUE_ENTITY_LAST_ACTIVITY_DATE_EXACT_FIELD"] = "Ora della reazione più recente, ms";
+$MESS["QUEUE_ENTITY_LAST_ACTIVITY_DATE_FIELD"] = "Ora ultima attività";
+$MESS["QUEUE_ENTITY_USER_AVATAR_FIELD"] = "Link immagine utente";
+$MESS["QUEUE_ENTITY_USER_AVATAR_FILE_ID_FIELD"] = "ID file immagine utente";
+$MESS["QUEUE_ENTITY_USER_ID_FIELD"] = "ID utente";
+$MESS["QUEUE_ENTITY_USER_NAME_FIELD"] = "Responsabile";
+$MESS["QUEUE_ENTITY_USER_WORK_POSITION_FIELD"] = "Posizione";
+?>

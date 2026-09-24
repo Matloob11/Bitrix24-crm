@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_AUTOMATION_TRIGGER_FIELD_CHANGED_DESCRIPTION"] = "Modifica la fase quando uno o più valori del campo dell'elemento cambia.";
+$MESS["CRM_AUTOMATION_TRIGGER_FIELD_CHANGED_NAME"] = "Modifica campo";
+$MESS["CRM_AUTOMATION_TRIGGER_FIELD_CHANGED_NAME_1"] = "Monitora variazione valore campo";
+$MESS["CRM_AUTOMATION_TRIGGER_FIELD_CHANGED_PROPERTY_FIELDS"] = "Monitora campi";
+$MESS["CRM_AUTOMATION_TRIGGER_FIELD_CHANGED_PROPERTY_FIELDS_CHOOSE"] = "Seleziona campi";

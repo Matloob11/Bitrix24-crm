@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY"] = "Responsabile";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_DEPARTMENT"] = "Reparto del responsabile";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_DEPARTMENT_FULL"] = "Percorso nella struttura azienda";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_FULL"] = "L'ID e il nome dell'utente assegnato come responsabile dell'affare";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_ID"] = "ID responsabile";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_ID_FULL"] = "L'ID dell'utente assegnato come responsabile dell'affare";
+$MESS["CRM_BIC_DSH_FIELD_ASSIGNED_BY_NAME"] = "Responsabile";
+$MESS["CRM_BIC_DSH_FIELD_DATE_CREATE"] = "Creato il";
+$MESS["CRM_BIC_DSH_FIELD_DEAL_ID"] = "ID affare";
+$MESS["CRM_BIC_DSH_FIELD_END_DATE"] = "Data di fine";
+$MESS["CRM_BIC_DSH_FIELD_ID"] = "Chiave univoca";
+$MESS["CRM_BIC_DSH_FIELD_STAGE"] = "Fase";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_ID"] = "ID fase";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_NAME"] = "Nome fase";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_SEMANTIC"] = "Tipo fase";
+$MESS["CRM_BIC_DSH_FIELD_STAGE_SEMANTIC_ID"] = "ID tipo fase";
+$MESS["CRM_BIC_DSH_FIELD_START_DATE"] = "Data di inizio";
+$MESS["CRM_BIC_DSH_FIELD_TYPE_ID"] = "Tipo record";
+$MESS["CRM_BIC_DSH_TABLE"] = "Affare: cronologia fasi";
+$MESS["CRM_BIC_DSH_TABLE_DESCRIPTION_FULL"] = "Contiene dati dei campi standard sull'avanzamento dell'affare: data, stato dell'affare, nome dei responsabili e altro.";

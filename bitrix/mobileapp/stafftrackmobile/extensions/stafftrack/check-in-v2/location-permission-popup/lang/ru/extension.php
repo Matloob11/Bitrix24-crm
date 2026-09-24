@@ -1,0 +1,14 @@
+<?php
+
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_TITLE'] = 'В вашем отделе включены авточекины';
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_ITEM_1'] = 'Автоматически собирают маршруты передвижений';
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_ITEM_2'] = 'Фиксируются только в рабочие часы';
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_AUTO_ITEM_3'] = 'Работают, когда открыто приложение';
+
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_TITLE'] = 'В вашем отделе включены чекины в начале дня';
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_ITEM_1'] = 'Помогают быстро начать рабочий день';
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_ITEM_2'] = 'Показывают, откуда начинается работа';
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_TIMEMAN_ITEM_3'] = 'Используют актуальную геопозицию';
+
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_BUTTON'] = 'Разрешить доступ к геопозиции';
+$MESS['STAFFTRACKMOBILE_LOCATION_PERMISSION_POPUP_BUTTON_UNDERSTOOD'] = 'Хорошо, продолжить';

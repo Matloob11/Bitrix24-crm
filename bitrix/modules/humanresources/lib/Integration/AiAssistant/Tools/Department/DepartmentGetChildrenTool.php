@@ -1,0 +1,23 @@
+<?php
+
+namespace Bitrix\HumanResources\Integration\AiAssistant\Tools\Department;
+
+use Bitrix\HumanResources\Access\Permission\PermissionDictionary;
+use Bitrix\HumanResources\Integration\AiAssistant\Tools\Node\NodeGetChildrenTool;
+use Bitrix\HumanResources\Type\NodeEntityType;
+
+class DepartmentGetChildrenTool extends NodeGetChildrenTool
+{
+	protected NodeEntityType $type = NodeEntityType::DEPARTMENT;
+	protected string $permissionId = PermissionDictionary::HUMAN_RESOURCES_STRUCTURE_VIEW;
+
+	public function getName(): string
+	{
+		return 'department_get_children';
+	}
+
+	public function getDescription(): string
+	{
+		return 'Get direct children (departments and teams) of the given department.';
+	}
+}

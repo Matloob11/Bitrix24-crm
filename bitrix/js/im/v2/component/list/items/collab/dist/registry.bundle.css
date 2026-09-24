@@ -1,0 +1,5 @@
+.bx-im-collab-nested-list__fixed-items_container.bx-im-list-base__fixed_container {
+	--im-list-base-fixed__background-color_container: var(--ui-color-collab-bg-content-1);
+	--im-list-base-fixed__background-color_container_hover: var(--ui-color-bg-state-hover-default);
+	--im-list-base-fixed__background-color_border: var(--ui-color-collab-bg-content-1);
+}

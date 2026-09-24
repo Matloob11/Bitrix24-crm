@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_DEAL_WGT_DEAL_IN_WORK"] = "Affari in corso";
+$MESS["CRM_DEAL_WGT_DEMO_CONTENT"] = "Se non disponi di affari, aggiungi il tuo <a href=\"#URL#\" class=\"#CLASS_NAME#\">primo affare</a> immediatamente!";
+$MESS["CRM_DEAL_WGT_DEMO_TITLE"] = "Questa è una dashboard demo; puoi nascondere i dati demo e utilizzare i dati del tuo affare.";
+$MESS["CRM_DEAL_WGT_EMPLOYEE_DEAL_IN_WORK"] = "Affari in corso (per dipendente)";
+$MESS["CRM_DEAL_WGT_FUNNEL"] = "Funnel di vendita per affari";
+$MESS["CRM_DEAL_WGT_PAYMENT_CONTROL"] = "Controllo pagamenti per affari conclusi";
+$MESS["CRM_DEAL_WGT_QTY_ACTIVITY"] = "Conteggio attività";
+$MESS["CRM_DEAL_WGT_QTY_CALL"] = "Numero di chiamate";
+$MESS["CRM_DEAL_WGT_QTY_DEAL_IDLE"] = "Numero di affari in attesa";
+$MESS["CRM_DEAL_WGT_QTY_DEAL_IN_WORK"] = "Numero di affari in corso";
+$MESS["CRM_DEAL_WGT_QTY_DEAL_WON"] = "Numero di affari conclusi";
+$MESS["CRM_DEAL_WGT_QTY_EMAIL"] = "Numero di e-mail";
+$MESS["CRM_DEAL_WGT_QTY_MEETING"] = "Numero di riunioni";
+$MESS["CRM_DEAL_WGT_RATING"] = "Classifica per affari conclusi";
+$MESS["CRM_DEAL_WGT_SUM_DEAL_IN_WORK"] = "Totale affari in corso";
+$MESS["CRM_DEAL_WGT_SUM_DEAL_OVERALL"] = "Valore totale degli affari";
+$MESS["CRM_DEAL_WGT_SUM_DEAL_WON"] = "Totale affari conclusi";
+$MESS["CRM_DEAL_WGT_SUM_INVOICE_OVERALL"] = "Totale vendite fatturate";
+$MESS["CRM_DEAL_WGT_SUM_INVOICE_OWED"] = "Totale vendite non fatturate";

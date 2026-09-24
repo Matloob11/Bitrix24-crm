@@ -1,0 +1,126 @@
+#popup-window-content-stafftrack-checkin-banner {
+	overflow: visible !important;
+}
+
+.stafftrack-checkin-banner {
+	display: flex;
+	min-width: 905px;
+	min-height: 525px;
+	box-sizing: border-box;
+	color: var(--ui-color-base-0, #FFF);
+	background: url("../../image/popup-bg.svg") no-repeat left;
+	background-size: 905px;
+}
+
+.stafftrack-checkin-banner__text-block {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	max-width: 435px;
+	padding: 47px 0 47px 45px ;
+	flex-shrink: 0;
+}
+
+.stafftrack-checkin-banner__text-item_text {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.stafftrack-checkin-banner__title {
+	font-size: var(--ui-font-size-5xl, 30px);
+	font-weight: var(--ui-font-weight-semi-bold, 600);
+	margin-left: 7px;
+}
+
+.stafftrack-checkin-banner__text-item {
+	display: flex;
+	gap: 6px;
+	align-items: flex-start;
+}
+
+.stafftrack-checkin-banner__text-item_text-title {
+	font-size: var(--ui-font-size-xl, 17px);
+	font-weight: var(--ui-font-weight-semi-bold, 600);
+	line-height: var(--ui-font-line-height-sm, 23px);
+}
+
+.stafftrack-checkin-banner__image-block {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	align-items: center;
+	width: 500px;
+	height: 525px;
+	background: url("../../image/Illustration-2.png") no-repeat;
+	padding: 28px 0;
+	background-size: 492px;
+	box-sizing: border-box;
+	background-position: 0 0;
+}
+
+.stafftrack-checkin-banner__image-block.--image-geo {
+	background-image: url("../../image/Illustration-geo.png");
+}
+
+.stafftrack-checkin-banner__image-block.--image-alt {
+	background-image: url("../../image/Illustration-alt.png");
+}
+
+.stafftrack-checkin-banner__image-block.--ai-unavailable .stafftrack-checkin-banner__image-block_text-element.--element-1 {
+	visibility: hidden;
+}
+
+.stafftrack-checkin-banner__text-item_text-description {
+	font-size: var(--ui-font-size-lg, 15px);
+	line-height: var(--ui-font-line-height-sm, 20px);
+}
+
+.stafftrack-checkin-banner__actions {
+	margin-top: auto;
+}
+
+.stafftrack-checkin-banner__activation-success {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--ui-color-base-0, #FFF);
+}
+
+.stafftrack-checkin-banner__activation-success-text {
+	font-size: var(--ui-font-size-lg, 15px);
+	font-weight: var(--ui-font-weight-semi-bold, 600);
+}
+
+.stafftrack-checkin-banner__image-block_text-element {
+	position: relative;
+	border-radius: var(--ui-border-radius-2xl, 16px);
+	border: 3px solid rgba(113, 192, 255, 0.20);
+	padding: 2px 10px;
+	color: var(--ui-color-base-0, #FFF);
+	font-size: var(--ui-border-radius-lg, 13px);
+	font-weight: var(--ui-font-weight-semi-bold, 600);
+	line-height: var(--ui-font-line-height-2xs);
+	background: rgba(113, 192, 255, 0.30);
+	box-shadow: var(--component-area-box-shadow-secondary-area-box-shadow-secondary-X, 0) var(--component-area-box-shadow-secondary-area-box-shadow-secondary-Y, 1px) var(--component-area-box-shadow-secondary-area-box-shadow-secondary-blur, 2px) var(--component-area-box-shadow-secondary-area-box-shadow-secondary-spread, 0) var(--component-area-box-shadow-secondary-area-box-shadow-secondary-color, rgba(0, 0, 0, 0.13));
+	user-select: none;
+}
+
+.stafftrack-checkin-banner__image-block_text-element.--element-1 {
+	left: 56px;
+}
+
+.stafftrack-checkin-banner__image-block_text-element.--element-2 {
+	left: -46px;
+	top: -5px;
+}
+
+.stafftrack-checkin-banner__image-block_text-element.--element-3 {
+	left: 14px;
+	top: 11px;
+}
+
+.stafftrack-checkin-banner-popup .popup-window-close-icon {
+	right: 14px;
+	top: 13px;
+}

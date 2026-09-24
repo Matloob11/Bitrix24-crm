@@ -1,0 +1,20 @@
+.bx-im-copilot-audio-input__container {
+	width: 24px;
+	height: 24px;
+	background-image: url('./images/mic.svg?v3');
+	background-size: cover;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.bx-im-copilot-audio-input__container:hover {
+	background-image: url('./images/mic-hover.svg?v3');
+}
+
+.bx-im-copilot-audio-input__container.--active {
+	background-image: url('./images/stop.svg?v3');
+}
+
+.bx-im-copilot-audio-input__container.--active:hover {
+	background-image: url('./images/stop-hover.svg?v3');
+}

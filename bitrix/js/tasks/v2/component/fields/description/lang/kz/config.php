@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_V2_CHANGE_DESCRIPTION"] = "Сипаттама";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_ATTACH_TITLE"] = "Тіркеу";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_CREATING"] = "Чек-парағын жасап жатырмын";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT"] = "BitrixGPT осы міндет үшін чек-парағын жасайды";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_HINT_MSGVER_1"] = "#COPILOT_NAME# осы тапсырма үшін чек-парағын жасайды";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_CHECK_LIST_TITLE"] = "Чек-парағы";
+$MESS["TASKS_V2_DESCRIPTION_ACTION_MENTION_TITLE"] = "Адамды атап өту";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_COLLAPSE"] = "орау";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_EXPAND"] = "Ашу";
+$MESS["TASKS_V2_DESCRIPTION_BUTTON_SAVE"] = "Сақтау";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_BUTTON_OK"] = "Менің нұсқамды сақтау";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_F"] = "Сипаттаманы өңдеп жатқанда, #NAME# оны өзгертті. Егер сіз өз нұсқаңызды сақтасаңыз, бұл өзгерістер жойылады";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_DESC_M"] = "Сипаттаманы өңдеп жатқанда, #NAME# оны өзгертті. Егер сіз өз нұсқаңызды сақтасаңыз, бұл өзгерістер жойылады";
+$MESS["TASKS_V2_DESCRIPTION_CHECKSUM_ERROR_TITLE"] = "Сипаттама нұсқасын сақтау керек пе?";
+$MESS["TASKS_V2_DESCRIPTION_FILES_COUNT"] = "#COUNT# файлдар";
+$MESS["TASKS_V2_DESCRIPTION_INLINE_EDITOR_PLACEHOLDER"] = "Сипаттама";
+$MESS["TASKS_V2_DESCRIPTION_PREVIEW_BUTTON_MORE"] = "тағы";
+$MESS["TASKS_V2_DESCRIPTION_TITLE"] = "Міндеттің сипаттамасы";

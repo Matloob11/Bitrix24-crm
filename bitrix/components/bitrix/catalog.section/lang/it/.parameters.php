@@ -1,0 +1,21 @@
+<?php
+$MESS["CP_BCS_ALLOW_SEO_DATA"] = "Imposta i valori dei tag SEO e il titolo della pagina";
+$MESS["CP_BCS_DISPLAY_COMPARE"] = "Attiva confronto sui prodotti";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE"] = "Prodotti non disponibili";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE_HIDE"] = "non mostrare";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE_LAST"] = "sposta in fondo";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE_OFFERS"] = "SKU non disponibili";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE_OFFERS_HIDE"] = "non mostrare";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE_OFFERS_SHOW"] = "mostra tutto";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE_OFFERS_SUBSCRIBE"] = "mostra come opzione di sottoscrizione";
+$MESS["CP_BCS_HIDE_NOT_AVAILABLE_SHOW"] = "mostra come al solito";
+$MESS["CP_BCS_USE_PRODUCT_QUANTITY"] = "Attiva il campo qualità prodotto";
+$MESS["IBLOCK_ELEMENT_SORT_FIELD"] = "Campo di ordinamento degli elementi";
+$MESS["IBLOCK_ELEMENT_SORT_ORDER"] = "Metodo di ordinamento per gli elementi";
+$MESS["IBLOCK_PRICE_CODE"] = "Tipo prezzo";
+$MESS["IBLOCK_SECTION_ID"] = "ID sezione";
+$MESS["IBLOCK_SHOW_PRICE_COUNT"] = "Mostra prezzo per quantità";
+$MESS["IBLOCK_SORT_ASC"] = "crescente";
+$MESS["IBLOCK_SORT_DESC"] = "decrescente";
+$MESS["IBLOCK_USE_PRICE_COUNT"] = "Mostra prezzi della gamma di quantità";
+$MESS["IBLOCK_VAT_INCLUDE"] = "Includi aliquota fiscale nel prezzo";

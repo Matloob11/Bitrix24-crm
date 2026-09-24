@@ -1,0 +1,9 @@
+<?php
+$MESS["DISK_BOARDS_HEADER_BTN_SHARING_EXT_LINK"] = "Obter link público";
+$MESS["DISK_BOARDS_HEADER_BTN_SHARING_EXT_LINK_MSGVER_1"] = "Obter link público";
+$MESS["DISK_BOARDS_HEADER_BTN_SHARING_SHARE"] = "Compartilhar com outros usuários";
+$MESS["DISK_BOARDS_HEADER_BTN_SHARING_SHARE_MSGVER_1"] = "Compartilhar com usuários";
+$MESS["DISK_FLIPCHART_EDITOR_ACCESS_RIGHTS"] = "Permissões e compartilhamento";
+$MESS["DISK_FLIPCHART_EDITOR_ACCESS_RIGHTS_MSGVER_1"] = "Compartilhar";
+$MESS["DISK_FLIPCHART_EDITOR_AUTOSAVE"] = "Autossalvamento";
+$MESS["DISK_FLIPCHART_EDITOR_HEADER_BOARDS"] = "Lousas";

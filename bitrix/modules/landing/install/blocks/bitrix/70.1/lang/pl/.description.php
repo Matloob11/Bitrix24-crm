@@ -1,0 +1,7 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_70_1_NAME"] = "Kafelki z tekstem, przyciskiem i obrazem tła";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_BUTTON"] = "Przycisk kafelka";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_CARD"] = "Kafelek";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_CARD_TITLE"] = "Tytuł kafelka";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_TEXT"] = "Tekst kafelka";
+$MESS["LANDING_BLOCK_WIDGET_70_1_NODE_TITLE"] = "Tytuł";

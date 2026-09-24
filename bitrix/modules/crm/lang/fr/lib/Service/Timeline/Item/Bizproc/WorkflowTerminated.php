@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_TIMELINE_BIZPROC_TERMINATED_TEXT"] = "Arrêté";
+$MESS["CRM_TIMELINE_BIZPROC_TERMINATED_TITLE"] = "Processus d'entreprise";

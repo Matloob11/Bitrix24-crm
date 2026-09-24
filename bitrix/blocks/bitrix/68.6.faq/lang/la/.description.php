@@ -1,0 +1,7 @@
+<?php
+$MESS["LANDING_BLOCK_FAQ_6"] = "Acordeón";
+$MESS["LANDING_BLOCK_FAQ_6_CARD"] = "Bloque";
+$MESS["LANDING_BLOCK_FAQ_6_ICON"] = "Ícono";
+$MESS["LANDING_BLOCK_FAQ_6_IMG"] = "Imagen";
+$MESS["LANDING_BLOCK_FAQ_6_TEXT"] = "Texto";
+$MESS["LANDING_BLOCK_FAQ_6_TITLE"] = "Título";

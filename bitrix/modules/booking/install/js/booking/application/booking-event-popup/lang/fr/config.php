@@ -1,0 +1,11 @@
+<?php
+$MESS["BOOKING_EVENT_POPUP_CALL_LABEL"] = "Appel";
+$MESS["BOOKING_EVENT_POPUP_CLIENT"] = "Client";
+$MESS["BOOKING_EVENT_POPUP_CLIENT_IS_UNAVAILABLE"] = "Client non sélectionné";
+$MESS["BOOKING_EVENT_POPUP_ENTITIES_MORE_MSGVER_2"] = "#RESOURCES# et [button]#COUNT# de plus[/button]";
+$MESS["BOOKING_EVENT_POPUP_NOTE_MORE_MSGVER_1"] = "#NOTE#... [button]plus[/button]";
+$MESS["BOOKING_EVENT_POPUP_NO_ACCESS"] = "Permissions insuffisantes.";
+$MESS["BOOKING_EVENT_POPUP_RESOURCES_TITLE"] = "Ressources";
+$MESS["BOOKING_EVENT_POPUP_SERVICES_TITLE"] = "Services";
+$MESS["BOOKING_EVENT_POPUP_SOON_HINT"] = "Bientôt disponible";
+$MESS["BOOKING_EVENT_POPUP_TITLE"] = "Réservation en ligne";

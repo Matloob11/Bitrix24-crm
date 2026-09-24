@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_CRM_ORDER_COMPLETED_NAME"] = "Confirmation de commande envoyée via WhatsApp";
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_CRM_ORDER_PAID_NAME"] = "Message de réussite du paiement envoyé via WhatsApp";
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_INCOMING"] = "Message WhatsApp reçu";
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_NAME"] = "Message WhatsApp";
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_OUTGOING"] = "Message WhatsApp envoyé";
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_SALESCENTER_DELIVERY_NAME_MSGVER_1"] = "Détails de livraison envoyés via WhatsApp";
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_SALESCENTER_PAYMENT_SENT_NAME_MSGVER_1"] = "Notification de paiement envoyée via WhatsApp";
+$MESS["CRM_ACTIVITY_PROVIDER_WHATSAPP_SALESCENTER_TERMINAL_PAYMENT_PAID_NAME"] = "Détails de paiement envoyés via WhatsApp";

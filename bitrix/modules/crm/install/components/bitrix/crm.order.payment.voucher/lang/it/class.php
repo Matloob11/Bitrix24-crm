@@ -1,0 +1,13 @@
+<?
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Il modulo CRM non è installato.";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_RETURN_COMMENT"] = "Commento";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_RETURN_DATE"] = "Data rimborso";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_RETURN_INNER_ACC"] = "Conto interno";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_RETURN_NUM"] = "Ricevuta di ritorno #";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_RETURN_TITLE"] = "Ricevuta di ritorno";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_RETURN_TO"] = "Restituisci i fondi a";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_VOUCHER_DATE"] = "Data pagamento";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_VOUCHER_NUM"] = "Documento di pagamento #";
+$MESS["CRM_ORDER_PAYMENT_FIELD_PAY_VOUCHER_TITLE"] = "Documento di pagamento";
+$MESS["CRM_ORDER_PAYMENT_VOUCHER_TITLE"] = "Documenti di pagamento";
+?>

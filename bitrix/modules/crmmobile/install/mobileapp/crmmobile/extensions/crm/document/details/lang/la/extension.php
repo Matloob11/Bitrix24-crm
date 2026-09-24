@@ -1,0 +1,13 @@
+<?php
+$MESS["M_CRM_DOCUMENT_DETAILS_DOCUMENT_TITLE_DATE_CREATE"] = "creado el #DATE#";
+$MESS["M_CRM_DOCUMENT_DETAILS_DOWNLOAD_DOCX"] = "Descargar DOCX";
+$MESS["M_CRM_DOCUMENT_DETAILS_DOWNLOAD_FILE"] = "Descargar archivo";
+$MESS["M_CRM_DOCUMENT_DETAILS_DOWNLOAD_IN_PROGRESS"] = "Subiendo el documento...";
+$MESS["M_CRM_DOCUMENT_DETAILS_PDF_ERROR_BODY"] = "Intente crear el documento de nuevo";
+$MESS["M_CRM_DOCUMENT_DETAILS_PDF_ERROR_TITLE"] = "No se puede mostrar el archivo PDF";
+$MESS["M_CRM_DOCUMENT_DETAILS_PDF_IN_PROGRESS"] = "Creando la vista previa del archivo PDF";
+$MESS["M_CRM_DOCUMENT_DETAILS_PDF_TRANSFORM_ERROR_BODY"] = "Intente de nuevo más tarde";
+$MESS["M_CRM_DOCUMENT_DETAILS_PDF_TRANSFORM_ERROR_TITLE"] = "No se puede crear el archivo PDF";
+$MESS["M_CRM_DOCUMENT_DETAILS_PDF_VIEWER_NOT_SUPPORTED_ERROR_BODY"] = "Actualice su aplicación Bitrix24";
+$MESS["M_CRM_DOCUMENT_DETAILS_PDF_VIEWER_NOT_SUPPORTED_ERROR_TITLE"] = "Su aplicación no admite archivos PDF";
+$MESS["M_CRM_DOCUMENT_DETAILS_SEND"] = "Enviar";

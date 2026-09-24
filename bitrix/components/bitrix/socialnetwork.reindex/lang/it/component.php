@@ -1,0 +1,35 @@
+<?
+$MESS["CC_BSR_BTN_CONTINUE"] = "Continua";
+$MESS["CC_BSR_BTN_PAUSE"] = "Pausa";
+$MESS["CC_BSR_BTN_START"] = "Inizio";
+$MESS["CC_BSR_MESS_DONE"] = "Reindicizzazione completata";
+$MESS["CC_BSR_MESS_PROGRESS"] = "Reindicizzati #cnt# oggetti.";
+$MESS["CC_BSR_STEP_FINISH"] = "Ultimo passaggio";
+$MESS["CC_BSR_STEP_GROUPS"] = "Gruppi di lavoro";
+$MESS["CC_BSR_STEP_GROUPS_BLOGS"] = "Blog gruppo di lavoro";
+$MESS["CC_BSR_STEP_GROUPS_CALENDARS"] = "Calendari gruppo di lavoro";
+$MESS["CC_BSR_STEP_GROUPS_FILES"] = "File gruppo di lavoro";
+$MESS["CC_BSR_STEP_GROUPS_FORUMS"] = "Forum gruppo di lavoro";
+$MESS["CC_BSR_STEP_GROUPS_PHOTOS"] = "Gallerie fotografiche gruppo di lavoro";
+$MESS["CC_BSR_STEP_GROUPS_TASKS"] = "Incarichi gruppo di lavoro";
+$MESS["CC_BSR_STEP_INIT"] = "Primo passaggio";
+$MESS["CC_BSR_STEP_USERS_BLOGS"] = "Blog degli utenti";
+$MESS["CC_BSR_STEP_USERS_FILES"] = "File degli utenti";
+$MESS["CC_BSR_STEP_USERS_FORUMS"] = "Forum degli utenti";
+$MESS["CC_BSR_STEP_USERS_PHOTOS"] = "Gallerie fotografiche degli utenti";
+$MESS["CC_BSR_STEP_USERS_TASKS"] = "Incarichi degli utenti";
+$MESS["CC_BSR_TITLE"] = "Reindicizzazione social network.";
+$MESS["CC_BSR_WARN_CALENDAR_GROUP_IBLOCK"] = "Il blocco di informazioni del calendario del gruppo di lavoro è sottoposto a indicizzazione dal modulo Ricerca. Disattiva l'indicizzazione nella <a href=\"#href#\">pagina dei parametri del blocco di informazioni</a>.";
+$MESS["CC_BSR_WARN_CALENDAR_USER_IBLOCK"] = "Il blocco di informazioni del calendario dell'utente è sottoposto a indicizzazione dal modulo Ricerca. Disattiva l'indicizzazione nella <a href=\"#href#\">pagina dei parametri del blocco di informazioni</a>.";
+$MESS["CC_BSR_WARN_FILES_FORUM"] = "Il forum di commenti sui file non è sottoposto a ricerca per indicizzazione dal modulo Ricerca. Devi attivare l'indicizzazione nella <a href=\"#href#\">pagina delle impostazioni del forum</a>.";
+$MESS["CC_BSR_WARN_FILE_GROUP_IBLOCK"] = "Il blocco di informazioni del file del gruppo di lavoro è sottoposto a indicizzazione dal modulo Ricerca. Disattiva l'indicizzazione nella <a href=\"#href#\">pagina dei parametri del blocco di informazioni</a>.";
+$MESS["CC_BSR_WARN_FILE_USER_IBLOCK"] = "Il blocco di informazioni del file dell'utente è sottoposto a indicizzazione dal modulo Ricerca. Disattiva l'indicizzazione nella <a href=\"#href#\">pagina dei parametri del blocco di informazioni</a>.";
+$MESS["CC_BSR_WARN_FORUM"] = "Il forum del social network non è aggiunto all'indice di ricerca. Devi attivare l'indicizzazione nella <a href=\"#href#\">pagina delle impostazioni del forum</a>.";
+$MESS["CC_BSR_WARN_PHOTO_FORUM"] = "Il forum di commenti sulle foto non è sottoposto a ricerca per indicizzazione dal modulo Ricerca. Devi attivare l'indicizzazione nella <a href=\"#href#\">pagina delle impostazioni del forum</a>.";
+$MESS["CC_BSR_WARN_PHOTO_GROUP_IBLOCK"] = "Il blocco di informazioni della galleria fotografia del gruppo di lavoro è sottoposto a indicizzazione dal modulo Ricerca. Disattiva l'indicizzazione nella <a href=\"#href#\">pagina dei parametri del blocco di informazioni</a>.";
+$MESS["CC_BSR_WARN_PHOTO_USER_IBLOCK"] = "Il blocco di informazioni della galleria fotografia dell'utente è sottoposto a indicizzazione dal modulo Ricerca. Disattiva l'indicizzazione nella <a href=\"#href#\">pagina dei parametri del blocco di informazioni</a>.";
+$MESS["CC_BSR_WARN_REINDEX"] = "Dopo avere eseguito la configurazione, ricorda di <a href=\"#href#\">reindicizzare il sito nel modulo Ricerca</a>.";
+$MESS["CC_BSR_WARN_TASK_FORUM"] = "Il forum di commenti sugli incarichi non è sottoposto a ricerca per indicizzazione dal modulo Ricerca. Devi attivare l'indicizzazione nella <a href=\"#href#\">pagina delle impostazioni del forum</a>.";
+$MESS["CC_BSR_WARN_TASK_IBLOCK"] = "Il blocco di informazioni dell'incarico è sottoposto a indicizzazione dal modulo Ricerca. Disattiva l'indicizzazione nella <a href=\"#href#\">pagina dei parametri del blocco di informazioni</a>.";
+$MESS["CC_BSR_WRONG_RIGHTS"] = "Non disponi di autorizzazioni sufficienti per la reindicizzazione dei social network.";
+?>

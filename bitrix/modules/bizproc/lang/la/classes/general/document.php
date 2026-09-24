@@ -1,0 +1,34 @@
+<?php
+$MESS["BPCGDOC_ADD"] = "Agregar";
+$MESS["BPCGDOC_AUTO_EXECUTE_CREATE"] = "Crear";
+$MESS["BPCGDOC_AUTO_EXECUTE_DELETE"] = "Eliminar";
+$MESS["BPCGDOC_AUTO_EXECUTE_EDIT"] = "Actualizar";
+$MESS["BPCGDOC_AUTO_EXECUTE_NONE"] = "No";
+$MESS["BPCGDOC_DELEGATE_LOG_MSGVER_1"] = "El usuario #FROM# delegó la asignación \"#NAME#\" a #TO#";
+$MESS["BPCGDOC_DELEGATE_LOG_TITLE"] = "Delegada";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_DEFAULT"] = "#AUTHOR# le delegó una asignación del flujo de trabajo.";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_MSGVER_1"] = "Le delegaron una asignación del flujo de trabajo: [URL=#TASK_URL#]#TASK_NAME#[/URL]";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_SIMPLE"] = "le delegó la asignación \"#TASK_NAME#\", flujo de trabajo: \"#PROCESS_NAME#\".";
+$MESS["BPCGDOC_EMPTY_WD_ID_MSGVER_1"] = "Falta el ID de la plantilla del flujo de trabajo";
+$MESS["BPCGDOC_ERROR_ACTION_MSGVER_1"] = "Asignación \"#NAME#\": #ERROR#";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_MSGVER_1"] = "La asignación \"#NAME#\" no se puede delegar porque el empleado seleccionado no es su subordinado.";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_SINGLE_MSGVER_1"] = "El empleado seleccionado no es su subordinado.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_MSGVER_1"] = "La asignación \"#NAME#\" no se puede delegar porque el usuario seleccionado no trabaja para esta compañía.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_SINGLE_MSGVER_1"] = "El usuario seleccionado no es un empleado de la empresa.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_MSGVER_1"] = "La asignación \"#NAME#\" no se puede delegar porque está prohibida en las preferencias de la asignación.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_SINGLE_MSGVER_1"] = "La asignación no se puede delegar porque la delegación está prohibida en la configuración de la asignación.";
+$MESS["BPCGDOC_ERROR_DELEGATE_MSGVER_1"] = "La asignación \"#NAME#\" no se puede delegar porque el empleado seleccionado ya está asignado a ella.";
+$MESS["BPCGDOC_ERROR_DELEGATE_SINGLE_MSGVER_1"] = "El empleado seleccionado ya es un participante.";
+$MESS["BPCGDOC_ERROR_TASK_IS_NOT_INLINE_MSGVER_1"] = "La asignación \"#NAME#\" no se puede completar de esta manera.";
+$MESS["BPCGDOC_INVALID_TYPE"] = "El tipo de parámetro esta indefinido";
+$MESS["BPCGDOC_INVALID_WF_ID_MSGVER_1"] = "No se pudo encontrar una plantilla para el flujo de trabajo #ID#";
+$MESS["BPCGDOC_INVALID_WF_MSGVER_1"] = "El flujo de trabajo se está ejecutando en un elemento diferente";
+$MESS["BPCGDOC_NO"] = "No";
+$MESS["BPCGDOC_WAIT"] = "espere...";
+$MESS["BPCGDOC_WI_B24_LIMITS_MESSAGE"] = "Algunas de las entidades de su portal ejecutan más de dos flujos de trabajo simultáneos. Pronto se introducirá una restricción de dos flujos de trabajo simultáneos por entidad. Se recomienda modificar la lógica de los flujos de trabajo. [URL=https://helpdesk.bitrix24.com/open/4838471/]Learn more[/URL]";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE"] = "Algunos de los flujos de trabajo que ha comenzado (#CNT#) estan errados o terminados de forma incorrectamente.
+[URL=#PATH#]Ver flujos de trabajo[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT"] = "Algunos de los flujos de trabajo que inició (#CNT#) se completaron incorrectamente. [URL=#PATH#]Ver estos flujos de trabajo[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT_TITLE"] = "Flujos de trabajo";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_TITLE_MSGVER_1"] = "Notificación del sistema";
+$MESS["BPCGDOC_YES"] = "Si";

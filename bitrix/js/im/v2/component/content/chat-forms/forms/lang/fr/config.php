@@ -1,0 +1,25 @@
+<?php
+$MESS["IM_CREATE_CHANNEL_CONFIRM"] = "Créer une chaîne";
+$MESS["IM_CREATE_CHANNEL_DESCRIPTION_PLACEHOLDER_V3"] = "Saisissez la description de la chaîne";
+$MESS["IM_CREATE_CHANNEL_DESCRIPTION_TITLE"] = "Description de la chaîne";
+$MESS["IM_CREATE_CHANNEL_MEMBERS_HINT"] = "Ajoutez des utilisateurs ou des départements à la chaîne. Si vous ajoutez un département, les nouveaux employés du département seront automatiquement abonnés.";
+$MESS["IM_CREATE_CHANNEL_MEMBERS_TITLE"] = "Abonnés #SUBTITLE_START#(ajoutez une personne ou un département)#SUBTITLE_END#";
+$MESS["IM_CREATE_CHANNEL_TITLE_PLACEHOLDER_V2"] = "Nom de la chaîne";
+$MESS["IM_CREATE_CHANNEL_USER_SELECTOR_ADD_MEMBERS"] = "Ajouter des abonnés";
+$MESS["IM_CREATE_CHAT_CONFIRM"] = "Créer une conversation";
+$MESS["IM_CREATE_CHAT_MEMBERS_TITLE"] = "Membres #SUBTITLE_START#(ajoutez une personne ou un département)#SUBTITLE_END#";
+$MESS["IM_CREATE_CHAT_TITLE_PLACEHOLDER"] = "Saisissez le nom de la conversation";
+$MESS["IM_CREATE_COLLAB_BANNER_TEXT_1"] = "Créez une collab pour obtenir des résultats spectaculaires. Tout ce dont vous avez besoin : chat, appels, fichiers, tâches et calendrier. Tous les historiques de communication sont stockés dans le compte Birix24 de votre entreprise.";
+$MESS["IM_CREATE_COLLAB_BANNER_TEXT_2"] = "Vous pouvez inviter d'autres utilisateurs après avoir créé votre collab. [learn-more]En savoir plus[/learn-more]";
+$MESS["IM_CREATE_COLLAB_BANNER_TITLE"] = "Les [learn-more]collabs[/learn-more] sont des espaces de travail collaboratif permettant la collaboration avec des clients et invités externes.";
+$MESS["IM_CREATE_COLLAB_CHAT_BANNER_TEXT_MSGVER_1"] = "Un chat de projet n'est visible et accessible qu'aux utilisateurs ajoutés au chat.#BR#L'ajout d'un utilisateur au chat de projet l'ajoutera également au projet.";
+$MESS["IM_CREATE_COLLAB_CHAT_BANNER_TITLE"] = "Chats de projet";
+$MESS["IM_CREATE_COLLAB_CONFIRM"] = "Créer une collab";
+$MESS["IM_CREATE_COLLAB_DESCRIPTION_PLACEHOLDER"] = "Indiquez aux autres utilisateurs le thème de cette collab.";
+$MESS["IM_CREATE_COLLAB_DESCRIPTION_TITLE"] = "Description de la collab";
+$MESS["IM_CREATE_COLLAB_TITLE_PLACEHOLDER"] = "Nom de la collab";
+$MESS["IM_CREATE_CONFERENCE_CONFIRM"] = "Créer une conférence";
+$MESS["IM_CREATE_CONFERENCE_TITLE_PLACEHOLDER"] = "Saisissez le nom de la vidéoconférence";
+$MESS["IM_UPDATE_CHANNEL_COLLAPSED_ELEMENT"] = "Abonnés (#COUNT#)";
+$MESS["IM_UPDATE_CONFIRM"] = "Enregistrer les modifications";
+$MESS["IM_UPDATE_GROUP_CHAT_COLLAPSED_ELEMENT"] = "Membres de la conversation (#COUNT#)";

@@ -1,0 +1,6 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_BUTTON_CLOSE"] = "Fermer";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_BUTTON_SAVE_TITLE"] = "Télécharger";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_DESCRIPTION"] = "[COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]#DOCUMENT_TITLE#[/COLOR] a été refusé. Vous pouvez télécharger la version que vous avez signée.";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_SAVE_FILE_ERROR_TEXT"] = "Impossible de terminer l'action. Redémarrez l'application et réessayez.";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BY_ASSIGNEE_TITLE"] = "Document refusé";

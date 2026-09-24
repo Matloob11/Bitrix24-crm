@@ -1,0 +1,20 @@
+<?php
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE"] = "Archivo";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE_DISK"] = "Buscar archivo en Bitrix24";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_ADD_FILE_UPLOAD"] = "Subir archivo";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_ADD"] = "Agregar";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_CANCEL"] = "Cancelar";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_NO_CHANNELS"] = "Conectar proveedores de mensajería";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_BUTTON_SEND"] = "Enviar";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_COUNTER"] = "[color]#COUNT#[/color] / #MAX#";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_FROM"] = "El mensaje se enviará desde #FROM#";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_GENERIC_ERROR"] = "No se puede completar la acción. Intente de nuevo.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_RECEIVER"] = "El destinatario no está especificado";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_TEMPLATE_BODY"] = "Registre su plantilla en su canal de comunicación para enviar mensajes.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_NO_TEMPLATE_TITLE"] = "Crear plantilla de mensaje";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PLACEHOLDER"] = "Introduzca el texto del mensaje";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PLACEHOLDER_FILLED_LATER_HINT"] = "Algunos de los datos del mensaje se completarán después de que se envíe el mensaje.";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_PREVIEW"] = "Vista previa del mensaje como cliente";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_SUGGEST_TEMPLATE"] = "Sugerir una plantilla";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_TEMPLATES"] = "Plantillas";
+$MESS["MESSAGESERVICE_MESSAGE_EDITOR_TEMPLATE_MESSAGE"] = "Mensaje basado en una plantilla";

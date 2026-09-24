@@ -1,0 +1,25 @@
+<?php
+$MESS["BI_GROUP_ADD_DASHBOARD"] = "Agregar paneles";
+$MESS["BI_GROUP_DASHBOARD_SCOPES_EMPTY"] = "Seleccionar el alcance";
+$MESS["BI_GROUP_EMPTY_SUBTITLE"] = "Haga clic en \"Agregar paneles\" para agregar paneles de control a este grupo.";
+$MESS["BI_GROUP_EMPTY_TITLE"] = "No hay paneles de control en este grupo";
+$MESS["BI_GROUP_NAME_NEW"] = "Nuevo grupo";
+$MESS["BI_GROUP_SAVE"] = "Guardar";
+$MESS["BI_GROUP_SAVE_CANCEL_MSGVER_1"] = "Cancelar";
+$MESS["BI_GROUP_SAVE_WARN_DONT_SHOW"] = "No mostrar de nuevo";
+$MESS["BI_GROUP_SAVE_WARN_NO"] = "No";
+$MESS["BI_GROUP_SAVE_WARN_TEXT_MSGVER_1"] = "¿Seguro que desea eliminar el panel de este grupo? Puede perder el acceso al panel.";
+$MESS["BI_GROUP_SAVE_WARN_TITLE"] = "Eliminar el panel del grupo";
+$MESS["BI_GROUP_SAVE_WARN_YES"] = "Sí";
+$MESS["BI_GROUP_SCOPES_DASHBOARD"] = "#FIRST_SCOPES# [hint]y #NUMBER# más[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_EMPTY_MSGVER_1"] = "[title]Alcance del panel de control:[/title] seleccionar";
+$MESS["BI_GROUP_SCOPES_GROUP_MANY_MSGVER_1"] = "[title]Alcance del panel de control:[/title] #FIRST_SCOPES# [hint]y #NUMBER# más[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_MSGVER_1"] = "[title]Alcance del panel de control:[/title] #SCOPE#";
+$MESS["BI_GROUP_SCOPE_HINT_MSGVER_1"] = "Los alcances seleccionados se aplicarán a todos los paneles del grupo. [link]Más información[/link]";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_0"] = "#COUNT# panel de control";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_1"] = "#COUNT# paneles de control";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_2"] = "#COUNT# paneles de control";
+$MESS["BI_GROUP_SYSTEM_NAME_HINT"] = "No se puede cambiar el nombre de un grupo del sistema.";
+$MESS["BI_GROUP_SYSTEM_SCOPES_HINT"] = "No se puede cambiar el alcance de un grupo del sistema.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE"] = "Para eliminar el alcance de este panel de control, <br>elimine el panel de control del grupo \"#GROUP_NAME#\".";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE_MANY"] = "Para eliminar el alcance de este panel de control, <br>elimine el panel de control de estos grupos:";

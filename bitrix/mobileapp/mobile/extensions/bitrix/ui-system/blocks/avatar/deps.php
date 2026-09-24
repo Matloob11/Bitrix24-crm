@@ -1,0 +1,36 @@
+<?php
+
+return [
+	'extensions' => [
+		'apptheme/extended',
+		'asset-manager',
+		'assets/icons',
+		'feature',
+		'layout/pure-component',
+		'layout/ui/safe-image',
+		'layout/ui/user/empty-avatar',
+		'layout/ui/user/enums',
+		'statemanager/redux/connect',
+		'statemanager/redux/store',
+		'statemanager/redux/slices/users',
+		'tokens',
+		'type',
+		'utils/object',
+		'utils/type',
+		'utils/url',
+		'utils/validation',
+		'utils/enums/base',
+	],
+	'bundle' => [
+		'./src/elements/avatar-view',
+		'./src/enums/accent-gradient',
+		'./src/enums/accent-type',
+		'./src/enums/element-type',
+		'./src/enums/empty-avatar',
+		'./src/enums/entity-type',
+		'./src/enums/native-placeholder-type',
+		'./src/enums/shape',
+		'./src/providers/redux',
+		'./src/providers/selector',
+	],
+];

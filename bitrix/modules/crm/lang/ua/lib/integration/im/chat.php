@@ -1,0 +1,18 @@
+<?php
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_COMPANY_TITLE"] = "Компанія";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_EMAIL"] = "Email";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_FULL_NAME"] = "Ім'я";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_PHONE"] = "Телефон";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_POST"] = "Посада";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE"] = "Створено чат для обговорення елемента смартпроцесу:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_COMPANY"] = "Створено чат для обговорення компанії:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_CONTACT"] = "Створено чат для обговорення контакту:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_DEAL"] = "Створено чат для обговорення угоди:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_LEAD"] = "Створено чат для обговорення ліду:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_SMART_DOCUMENT"] = "Створено чат для обговорення документа:";
+$MESS["CRM_INTEGRATION_IM_CHAT_CARD_TITLE_SMART_INVOICE"] = "Створено чат для обговорення рахунку:";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE"] = "#ENTITY_DESCRIPTION#: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_COMPANY"] = "Компанія: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_CONTACT"] = "Контакт: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_DEAL"] = "Угода: #TITLE#";
+$MESS["CRM_INTEGRATION_IM_CHAT_TITLE_LEAD"] = "Лід: #TITLE#";

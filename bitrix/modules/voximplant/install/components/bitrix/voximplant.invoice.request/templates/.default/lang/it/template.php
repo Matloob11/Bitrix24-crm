@@ -1,0 +1,22 @@
+<?php
+$MESS["VOX_CLOSING_DOCS_CANCEL"] = "Annulla";
+$MESS["VOX_CLOSING_DOCS_EMAIL"] = "Indirizzo e-mail di contatto:";
+$MESS["VOX_CLOSING_DOCS_MONTH_01"] = "Gennaio";
+$MESS["VOX_CLOSING_DOCS_MONTH_02"] = "Febbraio";
+$MESS["VOX_CLOSING_DOCS_MONTH_03"] = "Marzo";
+$MESS["VOX_CLOSING_DOCS_MONTH_04"] = "Aprile";
+$MESS["VOX_CLOSING_DOCS_MONTH_05"] = "Maggio";
+$MESS["VOX_CLOSING_DOCS_MONTH_06"] = "Giugno";
+$MESS["VOX_CLOSING_DOCS_MONTH_07"] = "Luglio";
+$MESS["VOX_CLOSING_DOCS_MONTH_08"] = "Agosto";
+$MESS["VOX_CLOSING_DOCS_MONTH_09"] = "Settembre";
+$MESS["VOX_CLOSING_DOCS_MONTH_10"] = "Ottobre";
+$MESS["VOX_CLOSING_DOCS_MONTH_11"] = "Novembre";
+$MESS["VOX_CLOSING_DOCS_MONTH_12"] = "Dicembre";
+$MESS["VOX_CLOSING_DOCS_PERIOD"] = "Richiedi fattura per:";
+$MESS["VOX_CLOSING_DOCS_PLACEHOLDER_ADDRESS"] = "Indirizzo";
+$MESS["VOX_CLOSING_DOCS_PLACEHOLDER_INDEX"] = "Codice postale";
+$MESS["VOX_CLOSING_DOCS_REQUEST"] = "Richiesta";
+$MESS["VOX_CLOSING_DOCS_REQUEST_SENT"] = "La richiesta è stata inviata correttamente";
+$MESS["VOX_CLOSING_DOCS_REQUEST_TITLE"] = "Richiesta di fatture di telefonia";
+$MESS["VOX_CLOSING_DOCS_YOUR_ADDRESS"] = "Il tuo indirizzo:";

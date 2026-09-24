@@ -1,0 +1,23 @@
+<?php
+$MESS["VOX_LINES_ACTION_ADD_TO_GROUP"] = "Aggiungi a pool di numeri";
+$MESS["VOX_LINES_ACTION_CONFIGURE"] = "Configura";
+$MESS["VOX_LINES_ACTION_DELETE"] = "Elimina";
+$MESS["VOX_LINES_ACTION_PROLONG_CALLER_ID"] = "Estendi numero connesso";
+$MESS["VOX_LINES_ACTION_REMOVE_FROM_GROUP"] = "Rimuovi da pool di numeri";
+$MESS["VOX_LINES_ACTION_UNGROUP"] = "Elimina pool di numeri";
+$MESS["VOX_LINES_ACTION_VERIFY_CALLER_ID"] = "Conferma numero";
+$MESS["VOX_LINES_CANCEL_NUMBER_DISCONNECT"] = "Riconnetti numero disconnesso";
+$MESS["VOX_LINES_DESCRIPTION_GROUP"] = "Pagamento mensile totale #PRICE#";
+$MESS["VOX_LINES_DISCONNECT_NUMBER"] = "Disconnetti ​​numero";
+$MESS["VOX_LINES_HEADER_DESCRIPTION"] = "Descrizione";
+$MESS["VOX_LINES_HEADER_ID"] = "ID";
+$MESS["VOX_LINES_HEADER_NAME"] = "Nome";
+$MESS["VOX_LINES_HEADER_STATE"] = "Stato connessione";
+$MESS["VOX_LINES_HEADER_TYPE"] = "Tipo";
+$MESS["VOX_LINES_MODE_GROUP"] = "Pool di numeri";
+$MESS["VOX_LINES_MODE_LINK"] = "Connesso";
+$MESS["VOX_LINES_MODE_RENT"] = "Noleggiato";
+$MESS["VOX_LINES_MODE_SIP"] = "Connessione SIP";
+$MESS["VOX_LINES_REMOVE_CONNECTION"] = "Elimina connessione";
+$MESS["VOX_LINES_SIP_STATUS_FAIL"] = "Errore";
+$MESS["VOX_LINES_SIP_STATUS_RECOVERED"] = "Connesso";

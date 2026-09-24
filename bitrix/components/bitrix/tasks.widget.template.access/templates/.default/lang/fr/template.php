@@ -1,0 +1,9 @@
+<?php
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL"] = "Droit d'accès";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_10"] = "Lecture";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_20"] = "Écriture";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_30"] = "Suppression";
+$MESS["TASKS_TWR_TEMPLATE_ACCESS_LEVEL_40"] = "Modifier les droits d’accès";
+$MESS["TASKS_TWR_TEMPLATE_FEATURE_ACCESS_RESTRICTED"] = "Les droits d'accès sont disponibles avec les offres majeures.";
+$MESS["TASKS_TWR_TEMPLATE_FEATURE_ACCESS_RESTRICTED_MORE"] = "Détails";
+$MESS["TASKS_TWR_TEMPLATE_USER"] = "Utilisateur";

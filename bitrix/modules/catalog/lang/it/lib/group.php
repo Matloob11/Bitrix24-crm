@@ -1,0 +1,3 @@
+<?php
+$MESS["GROUP_ENTITY_ID_FIELD"] = "ID tipo prezzo";
+$MESS["GROUP_ENTITY_NAME_FIELD"] = "ID";

@@ -1,0 +1,26 @@
+<?php
+$MESS["IM_CHANNEL_AVATAR_CHANGE_F"] = "#USER_NAME# zmieniła ikonę kanału.";
+$MESS["IM_CHANNEL_AVATAR_CHANGE_M"] = "#USER_NAME# zmienił ikonę kanału.";
+$MESS["IM_CHANNEL_JOIN_F"] = "#USER_1_NAME# zaprosiła #USER_2_NAME# do kanału.";
+$MESS["IM_CHANNEL_JOIN_M"] = "#USER_1_NAME# zaprosił #USER_2_NAME# do kanału.";
+$MESS["IM_CHAT_AVATAR_CHANGE_F"] = "#USER_NAME# zmieniła ikonę czatu.";
+$MESS["IM_CHAT_AVATAR_CHANGE_M"] = "#USER_NAME# zmienił ikonę czatu.";
+$MESS["IM_CHAT_CAN_POST_ALL_MSGVER_1"] = "Wszyscy uczestnicy";
+$MESS["IM_CHAT_CAN_POST_MANAGERS_MSGVER_1"] = "Właściciel i administratorzy";
+$MESS["IM_CHAT_CAN_POST_NONE"] = "Nikt";
+$MESS["IM_CHAT_CAN_POST_OWNER_MSGVER_1"] = "Właściciel";
+$MESS["IM_CHAT_JOIN_F"] = "#USER_1_NAME# zaprosił #USER_2_NAME# do czatu.";
+$MESS["IM_CHAT_JOIN_M"] = "#USER_1_NAME# zaprosił #USER_2_NAME# do czatu.";
+$MESS["IM_CHAT_KICK_F_MSGVER_1"] = "[USER=#CURRENT_USER_ID#][/USER] usunęła [USER=#DELETED_USER_ID#][/USER] z czatu.";
+$MESS["IM_CHAT_KICK_M_MSGVER_1"] = "[USER=#CURRENT_USER_ID#][/USER] usunął [USER=#DELETED_USER_ID#][/USER] z czatu.";
+$MESS["IM_CHAT_KICK_NOTIFICATION_F"] = "#USER_NAME# usunęła Cię z czatu.";
+$MESS["IM_CHAT_KICK_NOTIFICATION_M"] = "#USER_NAME# usunął Cię z czatu.";
+$MESS["IM_CHAT_LEAVE_F_MSGVER_1"] = "[USER=#USER_ID#][/USER] opuściła czat.";
+$MESS["IM_CHAT_LEAVE_M_MSGVER_1"] = "[USER=#USER_ID#][/USER] opuścił czat.";
+$MESS["IM_CHAT_NAME_FORMAT"] = "#COLOR# Czat ##NUMBER#";
+$MESS["IM_CHAT_OVERFLOW_DELETE_MESSAGE"] = "Ten czat ma teraz ponad #USER_COUNT# członków. Powiadomienia o usunięciu użytkownika z czatu / opuszczeniu czatu zostały wyciszone, aby ograniczyć niechciane wiadomości.";
+$MESS["IM_CHAT_SELF_JOIN"] = "#USERS_NAME# dołączył do czatu.";
+$MESS["IM_CHAT_SELF_JOIN_F"] = "#USER_NAME# dołączyła do czatu.";
+$MESS["IM_CHAT_SELF_JOIN_M"] = "#USER_NAME# dołączył do czatu.";
+$MESS["IM_CHAT_SELF_JOIN_VIA_SHARING_LINK_F"] = "#INVITED_USER_NAME# została zaproszona przez #LINK_AUTHOR_NAME# i dołączyła do czatu.";
+$MESS["IM_CHAT_SELF_JOIN_VIA_SHARING_LINK_M"] = "#INVITED_USER_NAME# został zaproszony przez #LINK_AUTHOR_NAME# i dołączył do czatu.";

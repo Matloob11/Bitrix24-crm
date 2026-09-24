@@ -1,0 +1,20 @@
+<?php
+$MESS["M_CRM_COMMUNICATION_HIDDEN"] = "Nascosto";
+$MESS["M_CRM_COMMUNICATION_MENU_ADD_COMPANY"] = "Aggiungi azienda";
+$MESS["M_CRM_COMMUNICATION_MENU_ADD_CONTACT"] = "Aggiungi contatto";
+$MESS["M_CRM_COMMUNICATION_MENU_COMPANY"] = "Azienda";
+$MESS["M_CRM_COMMUNICATION_MENU_CONTACT"] = "Contatto";
+$MESS["M_CRM_COMMUNICATION_MENU_EMAIL_DESCRIPTION"] = "Invia e ricevi e-mail all'interno del CRM";
+$MESS["M_CRM_COMMUNICATION_MENU_EMAIL_STUB"] = "Aggiungi e-mail";
+$MESS["M_CRM_COMMUNICATION_MENU_INFO_DESCRIPTION"] = "Aggiungi un cliente da chiamare, al quale inviare un'e-mail o un messaggio di chat";
+$MESS["M_CRM_COMMUNICATION_MENU_INFO_TITLE"] = "Attualmente qui non c'è nessun cliente";
+$MESS["M_CRM_COMMUNICATION_MENU_INFO_TITLE_DEAL"] = "L'affare non ha attualmente clienti";
+$MESS["M_CRM_COMMUNICATION_MENU_INFO_TITLE_LEAD"] = "Il lead non ha attualmente clienti";
+$MESS["M_CRM_COMMUNICATION_MENU_INFO_TITLE_QUOTE"] = "Il preventivo non ha attualmente clienti";
+$MESS["M_CRM_COMMUNICATION_MENU_INFO_TITLE_SMART_INVOICE"] = "La fattura non ha attualmente clienti";
+$MESS["M_CRM_COMMUNICATION_MENU_LEAD"] = "Lead";
+$MESS["M_CRM_COMMUNICATION_MENU_OPENLINE"] = "Canale aperto";
+$MESS["M_CRM_COMMUNICATION_MENU_PHONE_DESCRIPTION"] = "Chiama senza uscire dal CRM, invia messaggi e condividi documenti in SMS e messenger";
+$MESS["M_CRM_COMMUNICATION_MENU_PHONE_STUB"] = "Aggiungi telefono";
+$MESS["M_CRM_COMMUNICATION_MENU_PHONE_TITLE"] = "Chiama senza uscire dal CRM, invia messaggi e condividi documenti in SMS e messenger";
+$MESS["M_CRM_COMMUNICATION_MENU_TITLE"] = "Canali di comunicazione";

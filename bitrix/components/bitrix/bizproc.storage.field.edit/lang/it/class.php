@@ -1,0 +1,6 @@
+<?php
+$MESS["BIZPROC_STORAGE_EDIT_FIELD_NOT_FOUND_STORAGE"] = "Memoria non trovata.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_NOT_INSTALLED"] = "Il modulo \"Processi aziendali\" non è installato.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_STORAGE_NOT_FOUND_ERROR"] = "Campo non trovato.";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_TITLE_ADD"] = "Nuovo campo";
+$MESS["BIZPROC_STORAGE_FIELD_EDIT_TITLE_EDIT"] = "Modifica campo";

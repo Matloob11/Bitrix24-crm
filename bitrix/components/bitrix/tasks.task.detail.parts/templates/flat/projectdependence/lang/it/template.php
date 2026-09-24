@@ -1,0 +1,12 @@
+<?
+$MESS["TASKS_TTDP_LICENSE_BODY"] = "I link agli incarichi sono disponibili sui piani estesi.";
+$MESS["TASKS_TTDP_LICENSE_TITLE"] = "Collega incarichi";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_ADD"] = "Aggiungi incarico precedente";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_COL_RELATED"] = "Incarichi precedenti";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_COL_REL_TYPE"] = "Azione";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_CURRENT_TASK"] = "Incarico corrente";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_DELETE"] = "Elimina";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_WHEN"] = "quando";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_WHEN_END"] = "finirà";
+$MESS["TASKS_TTDP_TEMPLATE_PROJDEP_WHEN_START"] = "inizierà";
+?>

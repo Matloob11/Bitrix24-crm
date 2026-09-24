@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_GRID_STUB_DESCRIPTION"] = "Ten widok pokazuje zadania, za które Ty i/lub Twoi pracownicy jesteście odpowiedzialni.";
+$MESS["TASKS_GRID_STUB_DESCRIPTION_COLLAB"] = "Obecnie nie masz żadnych zadań.";
+$MESS["TASKS_GRID_STUB_NO_DATA_DESCRIPTION"] = "Spróbuj zresetować filtr lub zmień wyszukiwaną frazę.";
+$MESS["TASKS_GRID_STUB_NO_DATA_TITLE"] = "Brak wyników wyszukiwania";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_COLLAB"] = "Ten widok pokazuje zadania collaba";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_COLLAB_SUBTITLE"] = "Twórz zadania w ramach tego widoku lub bezpośrednio z wiadomości czatu i dodawaj uczestników zadań. [helpdesklink]Dowiedz się więcej[/helpdesklink]";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_PROJECT"] = "Nie ma tu jeszcze zadań projektowych";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_TASK"] = "Utworzyć zadanie";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_TASK_SUBTITLE"] = "Ten widok pokazuje zadania, za które Ty i/lub Twoi pracownicy jesteście odpowiedzialni. Utwórz swoje pierwsze zadanie i zobacz je na tej stronie.";
+$MESS["TASKS_GRID_STUB_PROJECT_PROJECT_CREATED"] = "Utworzono projekt";
+$MESS["TASKS_GRID_STUB_TITLE"] = "Utworzyć zadanie";
+$MESS["TASKS_GROUP_ACTION_COMPLETE_SCRUM_TASK"] = "Niestety nie mogliśmy zrealizować wybranych zadań, ponieważ należą one do zespołu Scrum.";
+$MESS["TASKS_GROUP_ACTION_DAYS_NUM_INVALID_TEXT"] = "To pole może zawierać tylko liczby.";
+$MESS["TASKS_GROUP_ACTION_DAYS_NUM_INVALID_TITLE"] = "Nieprawidłowy wpis";
+$MESS["TASKS_GROUP_ACTION_ERROR_MESSAGE"] = "\"#MESSAGE#\" w zadaniach: #TASK_IDS#";
+$MESS["TASKS_GROUP_ACTION_ERROR_TITLE"] = "Wystąpiły błędy podczas wykonywania aktualizacji zbiorczych";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_COME_BACK_LATER"] = "Wróć później";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_TEXT"] = "Aktualizujemy tagi, aby były bardziej kompleksowe. Nadal można korzystać z innych obszarów Bitrix24. To zajmie tylko chwilę.";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_TITLE"] = "Poczekaj, tagi będą wkrótce dostępne";
+$MESS["TASKS_TL_ACCESS_TO_COLLAB_DENIED"] = "Nie masz uprawnień do wyświetlenia zadań w tym collabie.";
+$MESS["TASKS_TL_ACCESS_TO_COLLAB_DENIED_V2"] = "Niewystarczające uprawnienia do wyświetlenia zadań w tym projekcie.";
+$MESS["TASKS_TL_ACCESS_TO_GROUP_DENIED"] = "Nie można wyświetlić listy zadań dla tej grupy.";
+$MESS["TASKS_TL_FORUM_MODULE_NOT_INSTALLED"] = "Moduł Forum nie jest zainstalowany.";
+$MESS["TASKS_TL_SOCIALNETWORK_MODULE_NOT_INSTALLED"] = "Moduł \"Sieć społecznościowa\" nie jest zainstalowany.";

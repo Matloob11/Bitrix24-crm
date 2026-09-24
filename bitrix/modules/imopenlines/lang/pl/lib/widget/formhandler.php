@@ -1,0 +1,22 @@
+<?php
+$MESS["IMOL_LCC_ERROR_ACCESS_DENIED"] = "Nie masz wystarczających uprawnień, aby uzyskać dostęp do tej rozmowy.";
+$MESS["IMOL_LCC_ERROR_CHAT_ID"] = "ID czatu jest nieprawidłowe.";
+$MESS["IMOL_LCC_ERROR_CHAT_TYPE"] = "Ten czat nie jest Otwartym kanałem";
+$MESS["IMOL_LCC_ERROR_FORM_ID"] = "Brak identyfikatora formularza";
+$MESS["IMOL_LCC_ERROR_IM_LOAD"] = "Błąd podczas inicjowania modułu Komunikatora.";
+$MESS["IMOL_LCC_ERROR_PULL_LOAD"] = "Błąd podczas inicjowania modułu Push & Pull.";
+$MESS["IMOL_LCC_ERROR_USER_ID"] = "ID użytkownika jest nieprawidłowe.";
+$MESS["IMOL_LCC_FILL_FORM"] = "Wypełnij formularz:";
+$MESS["IMOL_LCC_FORM_ACTIVITY_LINK"] = "Wyświetl dane z formularza w CRM";
+$MESS["IMOL_LCC_FORM_EMAIL"] = "E-mail";
+$MESS["IMOL_LCC_FORM_HISTORY"] = "Klient zażądał dziennika rozmowy ##LINK#";
+$MESS["IMOL_LCC_FORM_HISTORY_2"] = "Historia rozmowy ##LINK# została wysłana do klienta zgodnie z jego żądaniem";
+$MESS["IMOL_LCC_FORM_LAST_NAME"] = "Nazwisko";
+$MESS["IMOL_LCC_FORM_NAME"] = "Imię";
+$MESS["IMOL_LCC_FORM_NONE"] = "nie określono";
+$MESS["IMOL_LCC_FORM_PHONE"] = "Telefon";
+$MESS["IMOL_LCC_FORM_SENT"] = "Wysłano link do formularza:";
+$MESS["IMOL_LCC_FORM_SUBMIT"] = "Wypełniono formularz:";
+$MESS["IMOL_LCC_GUEST_NAME"] = "Gość";
+$MESS["IMOL_TRACKER_BUTTON_CANCEL"] = "Anuluj";
+$MESS["IMOL_TRACKER_BUTTON_CHANGE"] = "Zmień";

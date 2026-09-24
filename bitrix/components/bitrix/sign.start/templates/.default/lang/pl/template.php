@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_COMMON_ACTION_CREATE_36"] = "Podpisz";
+$MESS["SIGN_CMP_START_TPL_DOCS_TITLE"] = "Dokumenty do podpisu";
+$MESS["SIGN_CMP_START_TPL_MENU_CONTACTS"] = "Kontakty";
+$MESS["SIGN_CMP_START_TPL_MENU_INDEX"] = "Dokumenty";
+$MESS["SIGN_CMP_START_TPL_MENU_MYSAFE"] = "Mój sejf";

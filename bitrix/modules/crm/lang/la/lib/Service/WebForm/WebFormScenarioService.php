@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_SERVICE_FORM_CATEGORY_BOOKING"] = "Reserva";
+$MESS["CRM_SERVICE_FORM_CATEGORY_CRM"] = "Interacciones con el cliente";
+$MESS["CRM_SERVICE_FORM_CATEGORY_CRM_AUTOMATION"] = "Llenar previamente los campos del formulario";
+$MESS["CRM_SERVICE_FORM_CATEGORY_CRM_FILLING"] = "Agregar datos al CRM";
+$MESS["CRM_SERVICE_FORM_CATEGORY_DELIVERY"] = "Entrega de pedidos";
+$MESS["CRM_SERVICE_FORM_CATEGORY_DEPENDENCY_FIELD"] = "Formularios con campos condicionales";
+$MESS["CRM_SERVICE_FORM_CATEGORY_EVENTS"] = "Registro al evento";
+$MESS["CRM_SERVICE_FORM_CATEGORY_OTHER"] = "Otro";
+$MESS["CRM_SERVICE_FORM_CATEGORY_PREPARE_FORM"] = "Insertar formulario";
+$MESS["CRM_SERVICE_FORM_CATEGORY_PRODUCTS"] = "Ventas";
+$MESS["CRM_SERVICE_FORM_CATEGORY_SOCIAL"] = "Pedidos en las redes sociales";
+$MESS["CRM_SERVICE_FORM_SCENARIO_CODE_ON_SITE_TEXT"] = "Haga clic en este botón para obtener el HTML de su sitio o agregue el formulario a un widget";
+$MESS["CRM_SERVICE_FORM_SCENARIO_CODE_ON_SITE_TITLE"] = "Obtener HTML";
+$MESS["CRM_SERVICE_FORM_SCENARIO_PARTICIPATION_FORMAT"] = "Formato del evento";
+$MESS["CRM_SERVICE_FORM_SCENARIO_PARTICIPATION_FORMAT_LIVE"] = "Presencial";
+$MESS["CRM_SERVICE_FORM_SCENARIO_PARTICIPATION_FORMAT_ONLINE"] = "Virtual (en línea)";
+$MESS["CRM_SERVICE_FORM_SCENARIO_PARTICIPATION_FORMAT_RECORD"] = "Veré la transmisión grabada";
+$MESS["CRM_SERVICE_FORM_SCENARIO_PRODUCT2"] = "Selector de productos con pago instantáneo";
+$MESS["CRM_WEBFORM_COMMENTS_DELIVERY_DATE"] = "Fecha y hora de entrega deseada";

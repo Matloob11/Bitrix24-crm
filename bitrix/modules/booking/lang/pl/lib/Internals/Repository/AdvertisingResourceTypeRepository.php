@@ -1,0 +1,16 @@
+<?php
+$MESS["ADVERTISING_TYPE_DESCRIPTION_CAR_RENT"] = "Samochody, motocykle, ciężarówki i inne pojazdy.";
+$MESS["ADVERTISING_TYPE_DESCRIPTION_EQUIPMENT_RENT"] = "Wszelkiego rodzaju sprzęt, który można wynająć lub wydzierżawić.";
+$MESS["ADVERTISING_TYPE_DESCRIPTION_EXPERT_SERVICES"] = "Fachowcy, kosmetyczki, instruktorzy fitnessu itp.";
+$MESS["ADVERTISING_TYPE_DESCRIPTION_MEDICAL_SERVICES"] = "Lekarze, licencjonowany personel medyczny.";
+$MESS["ADVERTISING_TYPE_DESCRIPTION_ROOM_RENT"] = "Mieszkania, domy, hale i inne nieruchomości.";
+$MESS["ADVERTISING_TYPE_NAME_CAR_RENT"] = "Wynajem pojazdów";
+$MESS["ADVERTISING_TYPE_NAME_EQUIPMENT_RENT"] = "Wynajem sprzętu";
+$MESS["ADVERTISING_TYPE_NAME_EXPERT_SERVICES"] = "Usługi eksperckie";
+$MESS["ADVERTISING_TYPE_NAME_MEDICAL_SERVICES"] = "Lekarze";
+$MESS["ADVERTISING_TYPE_NAME_ROOM_RENT"] = "Wynajem nieruchomości";
+$MESS["ADVERTISING_TYPE_RESOURCE_TYPE_NAME_CAR"] = "Pojazd";
+$MESS["ADVERTISING_TYPE_RESOURCE_TYPE_NAME_DOCTOR"] = "Lekarz";
+$MESS["ADVERTISING_TYPE_RESOURCE_TYPE_NAME_EQUIPMENT"] = "Sprzęt";
+$MESS["ADVERTISING_TYPE_RESOURCE_TYPE_NAME_EXPERT"] = "Ekspert";
+$MESS["ADVERTISING_TYPE_RESOURCE_TYPE_NAME_ROOM"] = "Nieruchomość";

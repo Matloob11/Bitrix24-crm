@@ -1,0 +1,4 @@
+<?
+$MESS["CRM_TRACKING_INTERNALS_SITE_ERROR_UNIQUE_HOST"] = "Un site avec cette URL a déjà été ajouté.";
+$MESS["CRM_TRACKING_INTERNALS_SITE_TITLE_ADDRESS"] = "URL du site";
+?>

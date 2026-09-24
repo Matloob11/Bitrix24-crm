@@ -1,0 +1,21 @@
+<?
+$MESS["SENDER_CONTACT_LIST_BTN_ADD"] = "Aggiungi a elenco";
+$MESS["SENDER_CONTACT_LIST_BTN_ADD_TO_BL"] = "Aggiungi a elenco esclusi";
+$MESS["SENDER_CONTACT_LIST_BTN_ADD_TO_BL_TITLE"] = "Aggiungi a elenco esclusi";
+$MESS["SENDER_CONTACT_LIST_BTN_EDIT"] = "Modifica";
+$MESS["SENDER_CONTACT_LIST_BTN_EDIT_TITLE"] = "Modifica";
+$MESS["SENDER_CONTACT_LIST_BTN_RECIPIENT"] = "Newsletter";
+$MESS["SENDER_CONTACT_LIST_BTN_RECIPIENT_STAT"] = "newsletter";
+$MESS["SENDER_CONTACT_LIST_BTN_RECIPIENT_TITLE"] = "Trova campagne con questo destinatario";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE"] = "Rimuovi";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE_FROM_BL"] = "Rimuovi da elenco esclusi";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE_FROM_BL_TITLE"] = "Rimuovi da elenco esclusi";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE_FROM_L"] = "Rimuovi da elenco";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE_FROM_LIST"] = "Rimuovi";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE_FROM_LIST_TITLE"] = "Rimuovi da elenco corrente";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE_FROM_L_TITLE"] = "Rimuovi da elenco";
+$MESS["SENDER_CONTACT_LIST_BTN_REMOVE_TITLE"] = "Rimuovi da elenco corrente";
+$MESS["SENDER_CONTACT_LIST_BTN_SET_LIST"] = "Elenchi destinatari personalizzati";
+$MESS["SENDER_CONTACT_LIST_BTN_VIEW"] = "Visualizza";
+$MESS["SENDER_CONTACT_LIST_BTN_VIEW_TITLE"] = "Visualizza";
+?>

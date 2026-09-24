@@ -1,0 +1,21 @@
+<?php
+$MESS["SIGN_SETTINGS_B2B_LOAD_DOCUMENT"] = "Documento";
+$MESS["SIGN_SETTINGS_B2B_PREPARING_DOCUMENT"] = "Preparar";
+$MESS["SIGN_SETTINGS_B2B_TITLE_SUB"] = "Tres pasos simples para enviar un documento para firma";
+$MESS["SIGN_SETTINGS_B2E_COMPANY"] = "Empresa";
+$MESS["SIGN_SETTINGS_B2E_EMPLOYEES"] = "Empleados";
+$MESS["SIGN_SETTINGS_B2E_ROUTES"] = "Rutas";
+$MESS["SIGN_SETTINGS_B2E_TITLE_SUB"] = "Solo se requieren algunos pasos para enviar el documento para firma";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT"] = "Documento enviado para firma.";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT_GROUP"] = "Los documentos se enviaron para firma.";
+$MESS["SIGN_SETTINGS_CREATE_TEMPLATE"] = "Guardar";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT"] = "Enviar";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT_CREATE"] = "Crear";
+$MESS["SIGN_SETTINGS_SEND_FOR_SIGN"] = "Enviar para firma";
+$MESS["SIGN_SETTINGS_TEMPLATES_LIST"] = "Todas las plantillas";
+$MESS["SIGN_SETTINGS_TEMPLATE_CHANGED"] = "Plantilla actualizada";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED"] = "Plantilla creada";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED_INFO"] = "Edite plantillas y rutas en el área de Firma electrónica para RR. HH.";
+$MESS["SIGN_SETTINGS_TITLE"] = "Nuevo documento";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE"] = "Crear plantilla";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE_EDIT"] = "Editar plantilla";

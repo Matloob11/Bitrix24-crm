@@ -1,0 +1,5 @@
+<?
+$MESS["JS_CORE_TC_CONFIRM_CLOSE"] = "Chiudi";
+$MESS["JS_CORE_TC_DIALOG_CLOSE"] = "chiudi";
+$MESS["JS_CORE_TC_SEND_FORM"] = "Salva";
+?>

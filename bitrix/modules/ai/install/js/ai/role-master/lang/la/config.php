@@ -1,0 +1,26 @@
+<?php
+$MESS["ROLE_MASTER_ABOUT_ROLE_MASTER_LINK"] = "Más información";
+$MESS["ROLE_MASTER_BACK_TO_EDITOR_BTN"] = "Volver al editor";
+$MESS["ROLE_MASTER_CLOSE_BTN"] = "Cerrar";
+$MESS["ROLE_MASTER_EDIT_WARNING_TEXT"] = "Esto actualizará el rol para todos los que lo utilicen.";
+$MESS["ROLE_MASTER_FILE_DROPAREA_TEXT"] = "Suelte sus archivos aquí";
+$MESS["ROLE_MASTER_LOADER_TEXT"] = "Guardando el rol...";
+$MESS["ROLE_MASTER_NEXT_BUTTON"] = "Siguiente";
+$MESS["ROLE_MASTER_POPUP_TITLE"] = "Nuevo rol";
+$MESS["ROLE_MASTER_POPUP_TITLE_EDIT_MODE"] = "Editar rol";
+$MESS["ROLE_MASTER_PREV_BUTTON"] = "Volver";
+$MESS["ROLE_MASTER_REPEAT_REQUEST_BTN"] = "Intentar de nuevo";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD"] = "Nombre e icono";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD_PLACEHOLDER"] = "Máx. 70 caracteres";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD"] = "Descripción";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD_PLACEHOLDER"] = "Analizaré los datos, mejoraré el concepto y crearé un resumen del proyecto";
+$MESS["ROLE_MASTER_ROLE_MAIN_STEP_TITLE"] = "Nombre y permisos";
+$MESS["ROLE_MASTER_ROLE_TEXT_FIELD_PLACEHOLDER"] = "Introduzca el prompt para este rol. Por ejemplo, para Arquitecto, el texto podría ser el siguiente. Actúa como un arquitecto experto. Tu trabajo es ayudarme a analizar datos del mundo real como las condiciones geográficas y topográficas.";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE"] = "Agregar un prompt para este rol";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE_HINT"] = "Defina el rol y describa la tarea";
+$MESS["ROLE_MASTER_ROLE_USERS_WITH_ACCESS_FIELD"] = "Hacer disponible para";
+$MESS["ROLE_MASTER_SAVE_BUTTON"] = "Guardar";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_SHORT_TEXT"] = "No se pudo guardar el rol.";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_TEXT"] = "Si el problema persiste, vuelva al editor de avisos y copie el texto del aviso para asegurarse de que no se pierda.";
+$MESS["ROLE_MASTER_SAVING_DONE"] = "Listo";
+$MESS["ROLE_MASTER_USER_SELECTOR_ADD_BTN"] = "Editar";

@@ -1,0 +1,14 @@
+<?php
+$MESS["FACEBOOK_CONVERSION_ERROR_ACCESS_DENIED"] = "Acesso negado.";
+$MESS["FACEBOOK_CONVERSION_ERROR_EVENT_NAME"] = "O evento não foi encontrado.";
+$MESS["FACEBOOK_CONVERSION_ERROR_MODULE_SALE"] = "O módulo e-Store não está instalado.";
+$MESS["FACEBOOK_CONVERSION_EVENT_TITLE_ADD_PAYMENT_INFO"] = "Enviar evento \"Informação de pagamento adicionada\"";
+$MESS["FACEBOOK_CONVERSION_EVENT_TITLE_CONTACT"] = "Enviar evento \"Cliente contatou sua empresa\"";
+$MESS["FACEBOOK_CONVERSION_EVENT_TITLE_CUSTOMIZE_PRODUCT"] = "Enviar evento \"Detalhes do produto atualizados\"";
+$MESS["FACEBOOK_CONVERSION_LABEL_CONTACT_SEND_EMAIL"] = "Enviar e-mail";
+$MESS["FACEBOOK_CONVERSION_LABEL_CONTACT_SEND_SOCIAL_NETWORK"] = "Enviar nome da rede social";
+$MESS["FACEBOOK_CONVERSION_LABEL_CUSTOMIZE_PRODUCT_SEND_NAME_AND_PROPERTIES"] = "Enviar nome e propriedades do produto";
+$MESS["FACEBOOK_CONVERSION_LABEL_INITIATE_CHECKOUT_SEND_ORDER_POSITIONS_QUANTITY"] = "Fornecer o número de itens no pedido";
+$MESS["FACEBOOK_CONVERSION_LABEL_INITIATE_CHECKOUT_SEND_ORDER_PRICE"] = "Fornecer total e moeda do pedido";
+$MESS["FACEBOOK_CONVERSION_LABEL_INITIATE_CHECKOUT_SEND_PRODUCTS_GROUP_AND_QUANTITY"] = "Fornecer quantidade e grupo para cada produto";
+$MESS["FACEBOOK_CONVERSION_LABEL_SEND_ID"] = "Enviar ID do produto";

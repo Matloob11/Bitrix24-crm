@@ -1,0 +1,24 @@
+<?php
+$MESS["MP_ERROR_INCORRECT_URL_INSTALL"] = "URL de instalación incorrecta.";
+$MESS["PAYMENT_MESSAGE_D_N_Y"] = "Algunas funciones de la aplicación no están disponibles. Comuníquese con su administrador para instalar la versión completa.";
+$MESS["PAYMENT_MESSAGE_D_N_Y_A"] = "Algunas funciones de la aplicación no están disponibles. Compre la versión completa.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y"] = "Su suscripción a la aplicación expiró. Algunas funciones de la aplicación no están disponibles. Comuníquese con su administrador para instalar la versión completa.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y_A"] = "Su suscripción a la aplicación expiró. Algunas funciones de la aplicación no están disponibles.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD"] = "Esta aplicación fue bloqueada por exceso de cargas. Comuníquese con el administrador de Bitrix24.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD_A"] = "Esta aplicación fue bloqueada por exceso de cargas. Comuníquese con el servicio de asistencia para solucionar el problema.";
+$MESS["PAYMENT_MESSAGE_P_N_Y"] = "La suscripción de su aplicación vencerá en <b>#DAYS#</b> días. Comuníquese con su administrador para renovar la suscripción.";
+$MESS["PAYMENT_MESSAGE_P_N_Y_A"] = "La suscripción de su aplicación vencerá en <b>#DAYS#</b> días.";
+$MESS["PAYMENT_MESSAGE_P_Y_N"] = "La aplicación ya no está disponible porque su suscripción expiró. Comuníquese con su administrador para renovar la suscripción.";
+$MESS["PAYMENT_MESSAGE_P_Y_N_A"] = "La aplicación ya no está disponible porque su suscripción expiró.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y"] = "Su suscripción a la aplicación expiró. Comuníquese con su administrador para instalar la versión completa.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y_A"] = "Su suscripción a la aplicación expiró.";
+$MESS["PAYMENT_MESSAGE_S_N_Y"] = "Quedan <b>#DAYS#</b> días antes de que expire la suscripción de su aplicación. Comuníquese con el administrador para renovar la suscripción.";
+$MESS["PAYMENT_MESSAGE_S_N_Y_A"] = "Quedan <b>#DAYS#</b> días antes de que expire la suscripción de su aplicación.";
+$MESS["PAYMENT_MESSAGE_S_Y_N"] = "La aplicación fue bloqueada porque su suscripción expiró. Comuníquese con el administrador para renovar la suscripción.";
+$MESS["PAYMENT_MESSAGE_S_Y_N_A"] = "La aplicación fue bloqueada porque su suscripción expiró.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y"] = "Su suscripción a la aplicación expiró. Comuníquese con el administrador para renovar la suscripción.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y_A"] = "Su suscripción a la aplicación expiró.";
+$MESS["PAYMENT_MESSAGE_T_N_Y"] = "El periodo de prueba expirará en <b>#DAYS#</b> días. Comuníquese con su administrador para instalar la versión completa.";
+$MESS["PAYMENT_MESSAGE_T_N_Y_A"] = "El periodo de prueba expirará en <b>#DAYS#</b> días.";
+$MESS["PAYMENT_MESSAGE_T_Y_N"] = "El periodo de prueba expiró. Comuníquese con su administrador para instalar la versión completa.";
+$MESS["PAYMENT_MESSAGE_T_Y_N_A"] = "El periodo de prueba expiró. Compre la versión completa.";

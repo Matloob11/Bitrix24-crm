@@ -1,0 +1,22 @@
+<?php
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_NEGATIVE_DURATION"] = "La duración de la jornada laboral no puede ser negativa";
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_SHIFT_DURATION_EXCEEDS_DAY"] = "La duración de la jornada laboral no debe exceder de 24 horas.";
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_STOP_GREATER_THAN_NOW"] = "La hora de salida no debe ser posterior a la hora actual.";
+$MESS["TM_BASE_SERVICE_RESULT_ERROR_STOP_LESS_THAN_START"] = "La hora de salida no debe ser anterior a la hora de entrada.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_END_FEMALE"] = "#USER_NAME# registró su hora de salida antes de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_END_MALE"] = "#USER_NAME# registró su hora de salida antes de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_START_FEMALE"] = "#USER_NAME# registró su hora de entrada antes de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EARLY_START_MALE"] = "#USER_NAME# registró su hora de entrada antes de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EDIT_WITH_URL_FEMALE"] = "#USER_NAME# cambió su horario de trabajo para el #DATE#. <a href=\"#URL#\">Se requiere confirmación</a>";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_EDIT_WITH_URL_MALE"] = "#USER_NAME# cambió su horario de trabajo para el #DATE#. <a href=\"#URL#\">Se requiere confirmación</a>";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_FORBIDDEN_DEVICE_B24TIME"] = "Lo sentimos, no puede utilizar Bitrix24.Time para administrar sus horas de trabajo.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_FORBIDDEN_DEVICE_BROWSER"] = "Lo sentimos, no puede utilizar el navegador para administrar sus horas de trabajo.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_FORBIDDEN_DEVICE_MOBILE"] = "Lo sentimos, no puede utilizar dispositivos móviles para administrar sus horas de trabajo.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_END_FEMALE"] = "#USER_NAME# registró su hora de salida después de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_END_MALE"] = "#USER_NAME# registró su hora de salida después de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_SHIFT_START_FEMALE"] = "#USER_NAME# comenzó su turno después de lo programado";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_SHIFT_START_MALE"] = "#USER_NAME# comenzó su turno después de lo programado";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_START_FEMALE"] = "#USER_NAME# registró su hora de entrada después de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_LATE_START_MALE"] = "#USER_NAME# registró su hora de entrada después de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_MIN_DAY_DURATION_FEMALE"] = "Las horas de trabajo de #USER_NAME# son menos de lo programado.";
+$MESS["TM_VIOLATION_WORKTIME_MANAGER_MIN_DAY_DURATION_MALE"] = "Las horas de trabajo de #USER_NAME# son menos de lo programado.";

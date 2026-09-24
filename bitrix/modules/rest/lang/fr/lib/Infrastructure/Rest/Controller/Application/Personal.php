@@ -1,0 +1,3 @@
+<?php
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_PERSONAL_INSTALLACTION_TITLE"] = "Installe une application locale personnelle";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_PERSONAL_UNINSTALLACTION_TITLE"] = "Désinstalle une application locale personnelle existante";

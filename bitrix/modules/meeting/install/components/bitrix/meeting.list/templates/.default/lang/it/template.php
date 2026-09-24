@@ -1,0 +1,32 @@
+<?
+$MESS["ME_ADD"] = "Nuova riunione";
+$MESS["ME_COPY"] = "Crea prossima riunione";
+$MESS["ME_COPY_EX"] = "Crea una nuova riunione in base ai risultati di quella corrente";
+$MESS["ME_CURRENT_STATE"] = "Fase";
+$MESS["ME_DATE_START"] = "Data";
+$MESS["ME_DELETE"] = "Elimina riunione";
+$MESS["ME_DELETE_CONFIRM"] = "Eliminare questa riunione?";
+$MESS["ME_DELETE_EX"] = "Elimina riunione";
+$MESS["ME_DETAIL"] = "Visualizza riunione";
+$MESS["ME_DETAIL_EX"] = "Visualizza e modifica riunione";
+$MESS["ME_EDIT"] = "Modifica riunione";
+$MESS["ME_EDIT_EX"] = "Visualizza e modifica riunione";
+$MESS["ME_ERR_NO_MEETINGS"] = "Nessuna riunione pianificata";
+$MESS["ME_FILTER"] = "Filtro";
+$MESS["ME_FILTER_CANCEL"] = "Annulla";
+$MESS["ME_FILTER_CURRENT_STATE"] = "Fase";
+$MESS["ME_FILTER_CURRENT_STATE_ALL"] = "(tutto)";
+$MESS["ME_FILTER_GROUP"] = "Progetto";
+$MESS["ME_FILTER_HEAD"] = "Solo mie riunioni";
+$MESS["ME_FILTER_MEMBER"] = "Partecipante";
+$MESS["ME_FILTER_OWNER"] = "Proprietario";
+$MESS["ME_FILTER_OWNER_CHOOSE"] = "Seleziona";
+$MESS["ME_FILTER_SUBMIT"] = "Ricerca";
+$MESS["ME_FILTER_TITLE"] = "Nome";
+$MESS["ME_OWNER"] = "Proprietario";
+$MESS["ME_PLACE"] = "Sede";
+$MESS["ME_STATE_A"] = "In corso";
+$MESS["ME_STATE_C"] = "Terminata";
+$MESS["ME_STATE_P"] = "Non iniziata";
+$MESS["ME_TITLE"] = "Argomento";
+?>

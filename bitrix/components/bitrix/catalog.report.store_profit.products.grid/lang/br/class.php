@@ -1,0 +1,20 @@
+<?php
+$MESS["STORE_SALE_PRODUCTS_FILTER_STORES_TITLE"] = "Depósitos";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN"] = "Quantidade vendida, itens";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN_HINT"] = "Quantidade total de mercadorias vendidas no período reportado, conforme relatado por objetos do inventário de vendas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN"] = "Custo do produto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_COST_PRICE_COLUMN_HINT"] = "Custo médio por unidade das mercadorias no período reportado, conforme relatado pelos objetos do inventário de vendas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_NO_PRODUCTS"] = "Nenhuma transação encontrada no período selecionado.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PRODUCT_COLUMN_MSGVER_1"] = "Produto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN"] = "Margem bruta";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFITABILITY_COLUMN_HINT"] = "A margem bruta é o lucro bruto dividido pela receita de vendas e expresso como uma porcentagem.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN"] = "Lucro bruto";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_PROFIT_COLUMN_HINT"] = "Lucro bruto no período reportado, conforme relatado pelos objetos do inventário de vendas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN"] = "Quantidade recebida";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN_HINT"] = "Quantidade total de mercadorias recebidas no(s) depósito(s) como resultado das operações de recebimento de estoque, ajuste de estoque e transferência de estoque.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN"] = "Saldo inicial do estoque";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN_HINT"] = "Saldo do estoque registrado no início do período reportado.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN"] = "Custo total";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_COST_PRICE_COLUMN_HINT"] = "Custo total das mercadorias no período reportado, conforme relatado pelos objetos do inventário de vendas.";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN"] = "Receita de vendas";
+$MESS["STORE_SALE_PRODUCTS_REPORT_GRID_TOTAL_SOLD_COLUMN_HINT"] = "Valor total ganho com a venda das mercadorias no período reportado, conforme relatado pelos objetos do inventário de vendas.";

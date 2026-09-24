@@ -1,0 +1,46 @@
+.tasks-task-list {
+	position: relative;
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr repeat(var(--fields-count), auto) auto;
+	gap: 0 var(--ui-space-inline-sm);
+	padding: 0 var(--ui-space-inline-sm2) var(--ui-space-stack-sm);
+	border-radius: 0 0 var(--ui-border-radius-md) var(--ui-border-radius-md);
+	background: var(--ui-color-base-8);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.tasks-task-list-more {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--ui-space-inset-xs) var(--ui-space-inset-md);
+	cursor: pointer;
+}
+
+.tasks-task-list-more.--readonly {
+	cursor: default;
+}
+
+.tasks-task-list-more-text {
+	font-size: var(--ui-font-size-sm);
+	color: var(--ui-color-base-4);
+}
+
+.tasks-task-list-icon {
+	margin-left: auto;
+	--ui-icon-set__icon-size: 20px;
+	--ui-icon-set__icon-color: var(--ui-color-base-4);
+	cursor: pointer;
+}
+
+.tasks-task-line-separator {
+	grid-column: 1 / -1;
+	height: 1px;
+	margin: var(--ui-space-stack-sm) var(--ui-space-inline-md2-neg);
+	background: var(--ui-color-divider-default);
+}
+
+.tasks-task-line-separator:first-child {
+	margin-top: 0;
+}

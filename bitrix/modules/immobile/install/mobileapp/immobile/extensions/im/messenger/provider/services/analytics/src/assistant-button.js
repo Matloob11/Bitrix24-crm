@@ -1,0 +1,139 @@
+/**
+ * @module im/messenger/provider/services/analytics/src/assistant-button
+ */
+jn.define('im/messenger/provider/services/analytics/src/assistant-button', (require, exports, module) => {
+	const { Type } = require('type');
+	const { AnalyticsEvent } = require('analytics');
+	const { Analytics } = require('im/messenger/const');
+	const { serviceLocator } = require('im/messenger/lib/di/service-locator');
+	const { DialogHelper } = require('im/messenger/lib/helper');
+	const { MessengerParams } = require('im/messenger/lib/params');
+	const { AnalyticsHelper } = require('im/messenger/provider/services/analytics/helper');
+
+	/**
+	 * @class AssistantButtonAnalytics
+	 */
+	class AssistantButtonAnalytics
+	{
+		constructor()
+		{
+			this.store = serviceLocator.get('core').getStore();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {boolean} isActive
+		 */
+		sendToggleReasoning({ dialogId, isActive })
+		{
+			/** @type {DialoguesModelState} */
+			const dialogModel = DialogHelper.createByDialogId(dialogId)?.dialogModel;
+
+			const event = isActive ? Analytics.Event.modeOn : Analytics.Event.modeOff;
+			const analytics = new AnalyticsEvent()
+				.setTool(Analytics.Tool.im)
+				.setCategory(Analytics.Category.copilot)
+				.setEvent(event)
+				.setType(Analytics.Type.think)
+				.setSection(AnalyticsHelper.getSectionCode())
+			;
+
+			const copilotMainRole = this.store.getters['dialoguesModel/copilotModel/getMainRoleByDialogId'](dialogId);
+			if (copilotMainRole)
+			{
+				analytics.setP4(AnalyticsHelper.getCopilotRole(copilotMainRole.code));
+			}
+
+			const copilotModel = this.store.getters['dialoguesModel/copilotModel/getByDialogId'](dialogId);
+			if (copilotModel)
+			{
+				const engineCode = copilotModel.engine.code;
+				const engine = MessengerParams.getCopilotAvailableEngines().find((item) => item.code === engineCode);
+				if (Type.isStringFilled(engine?.name))
+				{
+					analytics.setP2(`provider_${engine.name}`);
+				}
+			}
+
+			if (dialogModel?.chatId)
+			{
+				analytics
+					.setP1(AnalyticsHelper.getP1ByDialog(dialogModel))
+					.setP5(AnalyticsHelper.getFormattedChatId(dialogModel.chatId))
+				;
+			}
+
+			analytics.send();
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} mode - one of Analytics.ChatMode
+		 * @param {ModesState} [modesState] - state BEFORE the change
+		 */
+		sendModeChange({ dialogId, mode, modesState })
+		{
+			this.#sendModeChangeEvent({ dialogId, mode, modesState });
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {ModesState} [modesState] - state BEFORE the role change
+		 */
+		sendRoleChange({ dialogId, modesState })
+		{
+			this.#sendModeChangeEvent({
+				dialogId,
+				mode: Analytics.ChatMode.roleChange,
+				modesState,
+			});
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 * @param {string} mode - one of Analytics.ChatMode
+		 * @param {ModesState} [modesState] - state BEFORE the change
+		 */
+		#sendModeChangeEvent({ dialogId, mode, modesState })
+		{
+			const dialogHelper = DialogHelper.createByDialogId(dialogId);
+			if (!dialogHelper)
+			{
+				return;
+			}
+
+			new AnalyticsEvent()
+				.setTool(Analytics.Tool.ai)
+				.setCategory(Analytics.Category.chatOperations)
+				.setEvent(Analytics.Event.modeChange)
+				.setSection(AnalyticsHelper.getSectionCode())
+				.setP1(mode)
+				.setP4(AnalyticsHelper.buildAssistantSettingsP4({ dialogHelper, modesState }))
+				.setP5(AnalyticsHelper.getFormattedChatId(dialogHelper.chatId))
+				.send()
+			;
+		}
+
+		/**
+		 * @param {DialogId} dialogId
+		 */
+		sendClickMCPIntegrations(dialogId)
+		{
+			/** @type {DialoguesModelState} */
+			const dialogModel = DialogHelper.createByDialogId(dialogId)?.dialogModel;
+
+			new AnalyticsEvent()
+				.setTool(Analytics.Tool.im)
+				.setCategory(Analytics.Category.chat)
+				.setEvent(Analytics.Event.clickMCPIntegrations)
+				.setSection(Analytics.Section.chatTextarea)
+				.setP1(AnalyticsHelper.getP1ByDialog(dialogModel))
+				.send()
+			;
+		}
+	}
+
+	module.exports = {
+		AssistantButtonAnalytics,
+	};
+});

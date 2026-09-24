@@ -1,0 +1,98 @@
+<?php
+/**
+ * Property Listing New is only for a fixed Bitrix user list.
+ * Hides the left-menu item from everyone else on each page load if needed.
+ */
+declare(strict_types=1);
+
+const A7_LISTING_NEW_ITEM_ID = '4259460310';
+const A7_LISTING_NEW_ALLOWED = [1, 2191, 2265, 2311, 2558, 2567];
+
+function a7_listing_new_allowed(int $userId): bool
+{
+    return in_array($userId, A7_LISTING_NEW_ALLOWED, true);
+}
+
+function a7_listing_new_in_list(array $list, string $itemId): bool
+{
+    foreach ($list as $id) {
+        if ((string)$id === $itemId) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function a7_listing_new_fix_sorted(array $sorted, bool $allow): array
+{
+    if (!isset($sorted['show']) || !is_array($sorted['show'])) {
+        $sorted['show'] = [];
+    }
+    if (!isset($sorted['hide']) || !is_array($sorted['hide'])) {
+        $sorted['hide'] = [];
+    }
+    $show = [];
+    foreach ($sorted['show'] as $id) {
+        if ((string)$id !== A7_LISTING_NEW_ITEM_ID) {
+            $show[] = $id;
+        }
+    }
+    $hide = [];
+    foreach ($sorted['hide'] as $id) {
+        if ((string)$id !== A7_LISTING_NEW_ITEM_ID) {
+            $hide[] = $id;
+        }
+    }
+    if ($allow) {
+        array_unshift($show, A7_LISTING_NEW_ITEM_ID);
+    } else {
+        $hide[] = A7_LISTING_NEW_ITEM_ID;
+    }
+    $sorted['show'] = array_values($show);
+    $sorted['hide'] = array_values($hide);
+    return $sorted;
+}
+
+function a7_listing_new_sorted_ok(array $sorted, bool $allow): bool
+{
+    $show = isset($sorted['show']) && is_array($sorted['show']) ? $sorted['show'] : [];
+    $hide = isset($sorted['hide']) && is_array($sorted['hide']) ? $sorted['hide'] : [];
+    $inShow = a7_listing_new_in_list($show, A7_LISTING_NEW_ITEM_ID);
+    $inHide = a7_listing_new_in_list($hide, A7_LISTING_NEW_ITEM_ID);
+    if ($allow) {
+        $first = $inShow && (string)reset($show) === A7_LISTING_NEW_ITEM_ID;
+        return $first && !$inHide;
+    }
+    return !$inShow && $inHide;
+}
+
+function a7_listing_new_on_prolog(): void
+{
+    global $USER;
+    if (!is_object($USER) || !$USER->IsAuthorized()) {
+        return;
+    }
+    $uid = (int)$USER->GetID();
+    if ($uid <= 0) {
+        return;
+    }
+    $allow = a7_listing_new_allowed($uid);
+    $key = 'left_menu_sorted_items_s1';
+    $sorted = \CUserOptions::GetOption('intranet', $key, false, $uid);
+    if (!is_array($sorted)) {
+        if (!$allow) {
+            return;
+        }
+        $presetRaw = \Bitrix\Main\Config\Option::get('intranet', 'left_menu_custom_preset_sort', '', 's1');
+        $preset = @unserialize($presetRaw, ['allowed_classes' => false]);
+        $sorted = is_array($preset) ? $preset : ['show' => [], 'hide' => []];
+    }
+    if (a7_listing_new_sorted_ok($sorted, $allow)) {
+        return;
+    }
+    \CUserOptions::SetOption('intranet', $key, a7_listing_new_fix_sorted($sorted, $allow), false, $uid);
+}
+
+if (function_exists('AddEventHandler')) {
+    AddEventHandler('main', 'OnProlog', 'a7_listing_new_on_prolog');
+}

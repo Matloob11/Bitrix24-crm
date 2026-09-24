@@ -1,0 +1,503 @@
+<?php
+if (!empty($_GET['_gen']))
+{
+	return;
+}
+
+$encryptedScopeData = $_GET['_esd'] ?? null;
+if (!empty($encryptedScopeData))
+{
+	$encryptedScopeData = strtr(
+		string: $encryptedScopeData,
+		from: '-_',
+		to: '+/',
+	);
+}
+
+$encryptedFileData = $_GET['_efd'] ?? null;
+if (!empty($encryptedFileData))
+{
+	$encryptedFileData = strtr(
+		string: $encryptedFileData,
+		from: '-_',
+		to: '+/',
+	);
+}
+
+if (empty($encryptedScopeData) && empty($encryptedFileData))
+{
+	return;
+}
+
+if (str_starts_with($_SERVER['SCRIPT_NAME'], '/mobile/ajax.php'))
+{
+	return;
+}
+
+function readConfig(): ?array
+{
+	return readJsonConfig() ?? readPhpConfig();
+}
+
+function readPhpConfig(): ?array
+{
+	$settingsPath = $_SERVER['DOCUMENT_ROOT'] . '/bitrix/.settings.php';
+	$settingsExtraPath = $_SERVER['DOCUMENT_ROOT'] . '/bitrix/.settings_extra.php';
+
+	$settings = include($settingsPath);
+	if (empty($settings) || (is_array($settings) === false))
+	{
+		$settings = [];
+	}
+
+	if (file_exists($settingsExtraPath))
+	{
+		$settingsExtra = include($settingsExtraPath);
+		if (is_array($settingsExtra) && !empty($settingsExtra))
+		{
+			foreach ($settingsExtra as $k => $v)
+			{
+				$settings[$k] = $v;
+			}
+		}
+	}
+
+	/** @see \Bitrix\Disk\QuickAccess\Config\ConfigInterface::CONFIG_KEY*/
+	/** @see \Bitrix\Disk\QuickAccess\Config\ConfigInterface::CONFIG_STORAGE */
+	if (empty($settings['main.token_service']['value']['storage']))
+	{
+		return null;
+	}
+
+	if (!is_array($settings['main.token_service']['value']['storage']))
+	{
+		return null;
+	}
+
+	if (empty($settings['main.token_service']['value']['key']))
+	{
+		return null;
+	}
+
+	return $settings['main.token_service']['value'];
+}
+
+function readJsonConfig(): ?array
+{
+	/** @see \Bitrix\Disk\QuickAccess\Config\JsonConfig::PATH_TO_CONFIG */
+	$filePath = $_SERVER['DOCUMENT_ROOT'] . '/bitrix/quick-access-config.php';
+
+	if (!file_exists($filePath))
+	{
+		return null;
+	}
+
+	$fileContent = file_get_contents($filePath);
+
+	if ($fileContent === false)
+	{
+		return null;
+	}
+
+	try
+	{
+		$config = json_decode($fileContent, true, 3, JSON_THROW_ON_ERROR);
+	}
+	catch (\JsonException)
+	{
+		return null;
+	}
+
+	/** @see \Bitrix\Disk\QuickAccess\Config\ConfigInterface::CONFIG_KEY*/
+	/** @see \Bitrix\Disk\QuickAccess\Config\ConfigInterface::CONFIG_STORAGE */
+	if (empty($config['storage']))
+	{
+		return null;
+	}
+
+	if (!is_array($config['storage']))
+	{
+		return null;
+	}
+
+	if (empty($config['key']))
+	{
+		return null;
+	}
+
+	return $config;
+}
+
+$config = readConfig();
+if (!$config)
+{
+	return null;
+}
+
+function parseSignedUserToken(string $signedUserToken): ?array
+{
+	$parts = explode('.', $signedUserToken, 2);
+
+	if (count($parts) !== 2)
+	{
+		return null;
+	}
+
+	return $parts;
+}
+
+function isValidSign(string $key, string $signedUserToken): bool
+{
+	$parts = parseSignedUserToken($signedUserToken);
+
+	if ($parts === null)
+	{
+		return false;
+	}
+
+	[$message, $signature] = $parts;
+
+	if (empty($message) || empty($signature))
+	{
+		return false;
+	}
+
+	$key = hash('sha512', $key);
+	$expectedSignature = bin2hex(hash_hmac('sha256', $message, $key, true));
+
+	return hash_equals($expectedSignature, $signature);
+}
+
+function getMemcacheStorage(array $config): ?\Memcache
+{
+	if (!extension_loaded('memcache'))
+	{
+		return null;
+	}
+
+	$connection = new \Memcache();
+	$result = $connection->pconnect($config['host'], $config['port'], 3);
+
+	return $result ? $connection : null;
+}
+
+function getRedisStorage(array $config): ?\Redis
+{
+	if (!extension_loaded('redis'))
+	{
+		return null;
+	}
+
+	$connection = new \Redis();
+
+	$params = [
+		$config['host'],
+		$config['port'],
+		$config['timeout'] ?? 0,
+		null,
+		0,
+		$config['readTimeout'] ?? 0,
+	];
+
+	$persistent = (bool)($config['persistent'] ?? false);
+	if ($persistent)
+	{
+		$result = $connection->pconnect(...$params);
+	}
+	else
+	{
+		$result = $connection->connect(...$params);
+	}
+
+	if ($result)
+	{
+		if (defined('\Redis::OPT_SERIALIZER') && defined('\Redis::SERIALIZER_NONE'))
+		{
+			$connection->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_NONE);
+		}
+
+		if (defined('\Redis::OPT_COMPRESSION') && defined('\Redis::COMPRESSION_NONE'))
+		{
+			$connection->setOption(\Redis::OPT_COMPRESSION, \Redis::COMPRESSION_NONE);
+		}
+	}
+
+	return $result ? $connection : null;
+}
+
+function getStorage(array $config): \Memcache|\Redis|null
+{
+	if ($config['type'] === 'redis')
+	{
+		return getRedisStorage($config);
+	}
+
+	if ($config['type'] === 'memcache')
+	{
+		return getMemcacheStorage($config);
+	}
+
+	return null;
+}
+
+/**
+ * @see \Bitrix\Disk\QuickAccess\Storage\RedisScopeStorage::hasScope
+ * @see \Bitrix\Disk\QuickAccess\Storage\ScopeStorage::hasScope
+ */
+function hasScope(
+	string $prefix,
+	string $userToken,
+	string $scope,
+	\Redis|\Memcache $storage
+): bool
+{
+	if (empty($scope))
+	{
+		return false;
+	}
+	$key = "{$prefix}userScopes:{$userToken}";
+	if ($storage instanceof \Redis)
+	{
+		$expirationTime = $storage->zScore($key, $scope);
+		if (!$expirationTime)
+		{
+			return false;
+		}
+
+		if ($expirationTime <= time())
+		{
+			return false;
+		}
+
+		return true;
+	}
+	else
+	{
+		$storedScopes = $storage->get($key);
+		if (empty($storedScopes) || !is_string($storedScopes))
+		{
+			return false;
+		}
+		$storedScopes = decodeJson($storedScopes);
+		if ($storedScopes[$scope] < time())
+		{
+			return false;
+		}
+
+		return true;
+	}
+}
+
+function decodeJson(string $data): array
+{
+	return json_decode($data, true, 64) ?: [];
+}
+
+function decryptData(string $data, string $key): ?array
+{
+	$data = base64_decode($data, true);
+	if ($data === false)
+	{
+		return null;
+	}
+
+	$cipherAlgorithm = 'aes-256-ctr';
+	$hashAlgorithm = 'sha256';
+
+	$ivLength = openssl_cipher_iv_length($cipherAlgorithm);
+	$iv = substr($data, 0, $ivLength);
+	$raw = substr($data, $ivLength);
+
+	$keyHash = openssl_digest($iv . $key, $hashAlgorithm, true);
+	$decrypted = openssl_decrypt($raw, $cipherAlgorithm, $keyHash, OPENSSL_RAW_DATA, $iv);
+
+	if ($decrypted === false)
+	{
+		return null;
+	}
+
+	$hashPart = substr($decrypted, 0, strlen($keyHash));
+	$result = substr($decrypted, strlen($keyHash));
+	$checkHash = openssl_digest($result, $hashAlgorithm, true);
+
+	if ($hashPart !== $checkHash)
+	{
+		return null;
+	}
+
+	return decodeJson($result);
+}
+
+$cookiePrefix = $config['cookiePrefix'] ?? 'BITRIX_SM';
+
+/** @see \Bitrix\Disk\QuickAccess\UserQuickAccessTokenManager::COOKIE_NAME */
+$signedUserToken = $_COOKIE["{$cookiePrefix}_DTOKEN"] ?? null;
+if (empty($signedUserToken))
+{
+	return;
+}
+
+$key = $config['key'];
+
+if (isValidSign($key, $signedUserToken) === false)
+{
+	return;
+}
+
+if ($encryptedScopeData)
+{
+	$decryptedData = decryptData($encryptedScopeData, $key);
+	if (empty($decryptedData))
+	{
+		return;
+	}
+
+	$storage = getStorage($config['storage']);
+	if (!$storage)
+	{
+		return;
+	}
+
+	$userToken = explode('.', $signedUserToken, 2)[0];
+
+	if (!hasScope($config['storage']['keyPrefix'], $userToken, $decryptedData['scope'], $storage))
+	{
+		return;
+	}
+
+	/** @see \Bitrix\Disk\QuickAccess\Storage\ScopeStorage::getFileKey */
+	$fileInfoKey = "{$config['storage']['keyPrefix']}file:{$decryptedData['fileId']}";
+	$storedData = $storage->get($fileInfoKey);
+
+	if (empty($storedData))
+	{
+		return;
+	}
+
+	try
+	{
+		$storedData = json_decode($storedData, true, 3, JSON_THROW_ON_ERROR);
+	}
+	catch (\JsonException $e)
+	{
+		return;
+	}
+}
+else // then it should be encrypted file data
+{
+	$parsedSignedUserToken = parseSignedUserToken($signedUserToken);
+
+	if (empty($parsedSignedUserToken))
+	{
+		return;
+	}
+
+	$userToken = $parsedSignedUserToken[0];
+
+	/** @see \Bitrix\Disk\QuickAccess\FileDataParameterService::encryptFileData */
+	$keyForUser = hash_hmac('sha256', $userToken, $key, true);
+	$decryptedFileData = decryptData($encryptedFileData, $keyForUser);
+	if (empty($decryptedFileData))
+	{
+		return;
+	}
+
+	$storedData = $decryptedFileData;
+}
+
+/** @see \Bitrix\Disk\Public\TypeFileMap */
+$typeFile = $storedData['typeFile'] ?? '';
+$isRequestFromBxViewer = !empty($_GET['ts']) && $_GET['ts'] === 'bxviewer';
+if ($isRequestFromBxViewer && $typeFile !== 'image')
+{
+	return;
+}
+
+$previewActions = [
+	'disk.api.file.showPreview',
+	'ui.fileuploader.preview',
+];
+$isPreview = isset($_GET['action']) && in_array($_GET['action'], $previewActions, true);
+if ($isPreview && isset($storedData['preview']))
+{
+	$storedData = $storedData['preview'];
+}
+
+$accelRedirectPath = rawurldecode($storedData['path']);
+$contentType = $storedData['contentType'];
+$expirationTime = $storedData['expirationTime'];
+$dir = $storedData['dir'];
+$bFileId = $storedData['id'];
+$fileName = $storedData['filename'];
+$attachmentName = $decryptedData['l'] ?? $decryptedFileData['l'] ?? null;
+
+if (time() > $expirationTime)
+{
+	return;
+}
+
+$requestedWidth = isset($_GET['width']) ? (int)$_GET['width'] : 0;
+$requestedHeight = isset($_GET['height']) ? (int)$_GET['height'] : 0;
+if ($isPreview)
+{
+	$defaultWidth = 300;
+	$defaultHeight = 300;
+	$requestedWidth = $requestedWidth > 0 ? $requestedWidth : $defaultWidth;
+	$requestedHeight = $requestedHeight > 0 ? $requestedHeight : $defaultHeight;
+}
+$originalWidth = (int)$storedData['width'] ?: 0;
+$originalHeight = (int)$storedData['height'] ?: 0;
+
+// Resize the image only if a smaller version than the original is needed.
+if (
+	$requestedWidth > 0 && $requestedHeight > 0
+	&& ($requestedWidth < $originalWidth || $requestedHeight < $originalHeight)
+)
+{
+	$exact = (isset($_GET['exact']) && $_GET['exact'] === 'Y' ? 2 : 1);
+
+	if (empty($storedData['handlerId']))
+	{
+		$resizeDir = "{$requestedWidth}_{$requestedHeight}_{$exact}";
+		$accelRedirectPath = "/upload/resize_cache/x/{$dir}/{$resizeDir}/{$fileName}";
+	}
+	else
+	{
+		$delimiterPosition = strpos($accelRedirectPath, $dir);
+		if ($delimiterPosition === false)
+		{
+			return;
+		}
+
+		$partBeforeDir = substr($accelRedirectPath, 0, $delimiterPosition);
+		$dirAndRest = substr($accelRedirectPath, $delimiterPosition);
+		$defaultResizeFilter = [
+			['width' => $requestedWidth, 'height' => $requestedHeight],
+			$exact,
+			[],
+			false,
+			[0 => ['name' => 'sharpen', 'precision' => 15]],
+			true,
+		];
+		$resizeDir = md5(serialize($defaultResizeFilter));
+
+		$accelRedirectPath = "{$partBeforeDir}resize_cache/{$bFileId}/{$resizeDir}/{$dirAndRest}";
+		$accelRedirectPath = "/upload/resize_cache/c{$accelRedirectPath}";
+	}
+}
+
+/** @see \Bitrix\Main\UI\Viewer\PreviewManager::GET_KEY_TO_SHOW_IMAGE */
+$useInlineDisposition = !empty($_GET['ibxShowImage']) && $_GET['ibxShowImage'] === '1';
+$contentDisposition = $useInlineDisposition ? "inline" : "attachment";
+
+header('X-Accel-Buffering: no');
+header('X-Accel-Redirect: ' . rawurlencode($accelRedirectPath));
+header('Content-Type: ' . $contentType);
+if ($attachmentName)
+{
+	$urlEncodedName = rawurlencode($attachmentName);
+	header("X-CD-Info: {$contentDisposition}; filename*=utf-8''{$urlEncodedName}");
+}
+header('X-Gen-Src: ' . $_SERVER['REQUEST_URI'] . '&_gen=1');
+
+die;

@@ -1,0 +1,4 @@
+<?
+$MESS["IMOPENLINES_REPORT_PAGE_LIMITATION_POPUP_TEXT_1"] = "Accedi alle funzionalità avanzate di Bitrix24";
+$MESS["IMOPENLINES_REPORT_PAGE_LIMITATION_POPUP_TEXT_2_NEW"] = "I rapporti sui Canali aperti sono progettati per aiutarti a migliorare il servizio clienti e l'esperienza del cliente. I nostri dashboard presentano tutte le informazioni critiche in un unico posto: quali agenti sono più efficienti, quali canali di comunicazione sono più richiesti, quanto sono soddisfatti i clienti, il tempo di risposta medio, l'ora di punta e così via. Puoi anche selezionare diversi tipi di rapporto: numeri assoluti, grafici, diagrammi, istogrammi e altro.";
+?>

@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_DESCRIPTION"] = "Chiedi qualcosa a CoPilot o parlagli di qualche idea. Le sue risposte saranno visibili a tutti i membri della chat.";
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_HIDE"] = "Non mostrare più";
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_TITLE"] = "Aggiungi utenti alla chat di CoPilot";
+$MESS["IM_CONTENT_COPILOT_CONTEXT_MENU_FEEDBACK"] = "Feedback";
+$MESS["IM_CONTENT_COPILOT_DIALOG_STATUS_TYPING"] = "CoPilot sta digitando una risposta...";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_ASK_QUESTION"] = "Fai una domanda";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_ERROR_CREATING_CHAT"] = "Impossibile creare la chat, riprova più tardi.";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_MESSAGE"] = "Ciao! Sono CoPilot, un'intelligenza artificiale.#BR#Sono qui per suggerirti soluzioni creative,#BR#creare un nuovo testo o migliorare quello che hai scritto.#BR#Posso anche discutere di qualsiasi tua idea.";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_MESSAGE_MSGVER_1"] = "Sono l'intelligenza artificiale CoPilot.#BR#Posso discutere con te di idee, creare un testo o correggerlo.#BR##BR#Seleziona un ruolo per me,#BR#così potrò parlare come un esperto del settore.";
+$MESS["IM_CONTENT_COPILOT_HEADER_OPEN_INVITE_POPUP_TITLE"] = "Aggiungi membri";
+$MESS["IM_CONTENT_COPILOT_HEADER_OPEN_MEMBERS_TITLE"] = "Fai clic per visualizzare i membri della chat";
+$MESS["IM_CONTENT_COPILOT_HEADER_RENAME_ERROR"] = "Impossibile rinominare la chat, riprova più tardi.";
+$MESS["IM_CONTENT_COPILOT_HEADER_SUBTITLE"] = "online";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_0"] = "#COUNT# membro";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_1"] = "#COUNT# membri";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_2"] = "#COUNT# membri";
+$MESS["IM_CONTENT_COPILOT_TEXTAREA_AUDIO_INPUT_ERROR"] = "Riconoscimento vocale fallito. Riprova più tardi.";
+$MESS["IM_CONTENT_COPILOT_TEXTAREA_PLACEHOLDER"] = "Scrivi la tua domanda";

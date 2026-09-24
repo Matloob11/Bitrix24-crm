@@ -1,0 +1,22 @@
+<?php
+$MESS["STAT_ADD_TO_STOPLIST_TITLE"] = "IP мекенжайын тоқтату тізіміне қосу.";
+$MESS["STAT_DATE"] = "Күні";
+$MESS["STAT_FL_DATE"] = "Күні";
+$MESS["STAT_FL_ID"] = "Іздеу жүйесінің ID-і";
+$MESS["STAT_FL_IP"] = "IP-мекенжай";
+$MESS["STAT_FL_LOGIC"] = "Логика";
+$MESS["STAT_FL_PAGE"] = "Парақша";
+$MESS["STAT_FL_UA"] = "Пайдаланушы агенті";
+$MESS["STAT_F_ID"] = "ID:";
+$MESS["STAT_F_IP"] = "IP-мекенжай:";
+$MESS["STAT_F_PAGE"] = "Парақша:";
+$MESS["STAT_F_SEARCH_SYSTEM"] = "Іздеу жүйесі:";
+$MESS["STAT_F_USER_AGENT"] = "UserAgent:";
+$MESS["STAT_HIT_PAGES"] = "Хиттер";
+$MESS["STAT_IP"] = "IP-мекенжай";
+$MESS["STAT_LINK_OPEN"] = "Сілтемені ашу";
+$MESS["STAT_PAGE"] = "Парақша";
+$MESS["STAT_RECORDS_LIST"] = "Соңғы #STATISTIC_DAYS# күндегі іздеу жүйелерінің хиттері";
+$MESS["STAT_SEARCHER"] = "Іздеу жүйесі";
+$MESS["STAT_SRCH_LIST"] = "Іздеу жүйелерінің тізіміне өту";
+$MESS["STAT_USER_AGENT"] = "UserAgent";

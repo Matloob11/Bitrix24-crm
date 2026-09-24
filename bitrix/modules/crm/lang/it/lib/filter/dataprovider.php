@@ -1,0 +1,6 @@
+<?
+$MESS["CRM_FILTER_DATA_PROVIDER_SEARCH"] = "Ricerca";
+$MESS["CRM_FILTER_DATA_PROVIDER_SEARCH_LAST"] = "Elementi recenti";
+$MESS["CRM_FILTER_DATA_PROVIDER_SEARCH_NO_RESULT"] = "Nessuna voce è stata trovata.";
+$MESS["CRM_FILTER_DATA_PROVIDER_SELECT"] = "Seleziona";
+?>

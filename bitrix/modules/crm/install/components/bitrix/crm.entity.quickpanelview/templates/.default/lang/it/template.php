@@ -1,0 +1,23 @@
+<?php
+$MESS["CRM_ENTITY_QPV_COMPANY_HEADER"] = "Azienda";
+$MESS["CRM_ENTITY_QPV_COMPANY_NOT_SELECTED"] = "Nessuna azienda selezionata";
+$MESS["CRM_ENTITY_QPV_CONTACT_HEADER"] = "Contatto";
+$MESS["CRM_ENTITY_QPV_CONTACT_NOT_SELECTED"] = "Nessun contatto selezionato";
+$MESS["CRM_ENTITY_QPV_CONTROL_FIELD_DATA_NOT_SAVED"] = "Il valore di \"#FIELD#\" non è stato salvato.";
+$MESS["CRM_ENTITY_QPV_DD_BIN_PROMPTING"] = "Per nascondere un campo, trascinalo nel <a id=\"#DEMO_BTN_ID#\" href=\"#\">cestino a destra del modulo</a> oppure clicca sull'icona accanto al nome del campo per aprire un menu di scelta rapida. <a id=\"#CLOSE_BTN_ID#\" href=\"#\">Chiudi</a>";
+$MESS["CRM_ENTITY_QPV_DELETE_CONTEXT_MENU_ITEM"] = "Elimina";
+$MESS["CRM_ENTITY_QPV_DELETION_CONFIRMATION"] = "Nascondere questo campo?";
+$MESS["CRM_ENTITY_QPV_DRAG_DROP_ERROR_FIELD_ALREADY_EXISTS"] = "Questo campo è già contenuto in una colonna.";
+$MESS["CRM_ENTITY_QPV_DRAG_DROP_ERROR_FIELD_NOT_SUPPORTED"] = "Spiacenti, lo spostamento di questo campo nel pannello superiore non è ancora supportato.";
+$MESS["CRM_ENTITY_QPV_DRAG_DROP_ERROR_TITLE"] = "Errore durante lo spostamento del campo";
+$MESS["CRM_ENTITY_QPV_EDIT_CONTEXT_MENU_ITEM"] = "Modifica";
+$MESS["CRM_ENTITY_QPV_INFO_DLG_BTN_CONTINUE"] = "Continua";
+$MESS["CRM_ENTITY_QPV_NOT_SELECTED"] = "nessuno selezionato";
+$MESS["CRM_ENTITY_QPV_RESET_FOR_ALL_MENU_ITEM"] = "Ripristina le preferenze per tutti gli utenti";
+$MESS["CRM_ENTITY_QPV_RESET_MENU_ITEM"] = "Ripristina impostazioni";
+$MESS["CRM_ENTITY_QPV_RESPONSIBLE_CHANGE"] = "modifica";
+$MESS["CRM_ENTITY_QPV_SAVE_FOR_ALL_MENU_ITEM"] = "Salva preferenze per tutti gli utenti";
+$MESS["CRM_ENTITY_QPV_SIP_MGR_ENABLE_CALL_RECORDING"] = "Registra conversazione";
+$MESS["CRM_ENTITY_QPV_SIP_MGR_UNKNOWN_RECIPIENT"] = "Numero non riconosciuto";
+$MESS["CRM_ENTITY_QPV_SUM_HEADER"] = "Totale";
+$MESS["CRM_ENTITY_QPV__SIP_MGR_MAKE_CALL"] = "Chiama";

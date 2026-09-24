@@ -1,0 +1,10 @@
+<?php
+$MESS["HUMAN_RESOURCES_ROLE_ADMIN"] = "Administrador";
+$MESS["HUMAN_RESOURCES_ROLE_DEPUTY"] = "Supervisor adjunto";
+$MESS["HUMAN_RESOURCES_ROLE_DIRECTOR"] = "Supervisor";
+$MESS["HUMAN_RESOURCES_ROLE_EMPLOYEE"] = "Colaborador";
+$MESS["HUMAN_RESOURCES_ROLE_HR"] = "RH";
+$MESS["HUMAN_RESOURCES_ROLE_STRUCTURE_ADMIN"] = "Administrador da estrutura da empresa";
+$MESS["HUMAN_RESOURCES_ROLE_TEAM_DEPUTY"] = "Sublíder de equipe";
+$MESS["HUMAN_RESOURCES_ROLE_TEAM_DIRECTOR"] = "Líder de equipe";
+$MESS["HUMAN_RESOURCES_ROLE_TEAM_EMPLOYEE"] = "Membro da equipe";

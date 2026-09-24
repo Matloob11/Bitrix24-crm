@@ -1,0 +1,6 @@
+<?php
+$MESS["MOBILE_LAYOUT_PROJECT_EDIT_CANCEL"] = "Cancelar";
+$MESS["MOBILE_LAYOUT_PROJECT_EDIT_ERROR_AVATAR_IS_UPLOADING"] = "Ainda carregando o ícone do projeto";
+$MESS["MOBILE_LAYOUT_PROJECT_EDIT_ERROR_NO_TITLE"] = "O nome do projeto não está especificado";
+$MESS["MOBILE_LAYOUT_PROJECT_EDIT_HEADER_TITLE"] = "Editar projeto";
+$MESS["MOBILE_LAYOUT_PROJECT_EDIT_SAVE"] = "Salvar";

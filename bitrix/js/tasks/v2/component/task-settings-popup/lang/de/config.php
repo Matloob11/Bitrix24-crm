@@ -1,0 +1,23 @@
+<?php
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_AUTO_COMPLETE_SUBTASKS_LABEL"] = "Aufgabe automatisch abschließen, wenn alle Teilaufgaben abgeschlossen sind und umgekehrt";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_CANCEL"] = "Abbrechen";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_BTN_SAVE"] = "OK";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_HINT"] = "Sobald die verantwortliche Person die Aufgabe als abgeschlossen markiert, wird sie zur Kontrolle an Sie gesendet. Sie können die Aufgabe akzeptieren (wodurch sie geschlossen wird) oder die Aufgabe zur Nachbesserung zurückschicken.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_CONTROL_LABEL"] = "Aufgabe muss nach Abschluss kontrolliert werden";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINES_LABEL"] = "Verantwortliche Person kann Frist ändern";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_BEFORE"] = "Spätest mögliche Frist: [date/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LABEL"] = "Für alle neuen Aufgaben Standardfrist setzen:";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_COUNT"] = "nach Zahl";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_BY_DATE"] = "nach Datum";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_LIMIT_LABEL"] = "Friständerung einschränken";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_NOT_GREATER_THAN"] = "Max. Änderungszahl: [count/]";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_DAY"] = "Tage";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_HOUR"] = "Stunden";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_MONTH"] = "Monate";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_PERIOD_WEEK"] = "Wochen";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_HINT"] = "Die verantwortliche Person muss in einem Kommentar erklären, warum sie die Frist ändern will.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_DEADLINE_REASON_LABEL"] = "Nach dem Grund für Friständerung fragen";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE"] = "Aufgabenparameter";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_TITLE_HINT"] = "Angewendet auf alle Aufgaben, die Sie erstellen.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_HINT"] = "Wenn die Daten der Aufgabe auf Wochenenden oder Feiertage fallen, wird die Aufgabenfrist verlängert, um die freien Tage zu berücksichtigen.";
+$MESS["TASKS_V2_TASK_SETTINGS_POPUP_WORK_TIME_LABEL"] = "Wochenenden überspringen";

@@ -1,0 +1,21 @@
+<?php
+$MESS["SIGN_SETTINGS_B2B_LOAD_DOCUMENT"] = "Document";
+$MESS["SIGN_SETTINGS_B2B_PREPARING_DOCUMENT"] = "Préparer";
+$MESS["SIGN_SETTINGS_B2B_TITLE_SUB"] = "Trois étapes simples pour envoyer un document pour signature";
+$MESS["SIGN_SETTINGS_B2E_COMPANY"] = "Entreprise";
+$MESS["SIGN_SETTINGS_B2E_EMPLOYEES"] = "Employés";
+$MESS["SIGN_SETTINGS_B2E_ROUTES"] = "Parcours";
+$MESS["SIGN_SETTINGS_B2E_TITLE_SUB"] = "Plus que quelques étapes pour envoyer le document à signer";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT"] = "Document envoyé pour signature.";
+$MESS["SIGN_SETTINGS_COMPLETE_NOTIFICATION_TEXT_GROUP"] = "Les documents ont été envoyés pour signature.";
+$MESS["SIGN_SETTINGS_CREATE_TEMPLATE"] = "Enregistrer";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT"] = "Envoyer";
+$MESS["SIGN_SETTINGS_SEND_DOCUMENT_CREATE"] = "Créer";
+$MESS["SIGN_SETTINGS_SEND_FOR_SIGN"] = "Envoyer pour signature";
+$MESS["SIGN_SETTINGS_TEMPLATES_LIST"] = "Tous les modèles";
+$MESS["SIGN_SETTINGS_TEMPLATE_CHANGED"] = "Modèle mis à jour";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED"] = "Modèle créé";
+$MESS["SIGN_SETTINGS_TEMPLATE_CREATED_INFO"] = "Modifiez les modèles et les parcours dans la zone de signature électronique pour les RH.";
+$MESS["SIGN_SETTINGS_TITLE"] = "Nouveau document";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE"] = "Créer un modèle";
+$MESS["SIGN_SETTINGS_TITLE_TEMPLATE_EDIT"] = "Modifier le modèle";

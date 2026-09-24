@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_ACTIVITY_PROVIDER_BIZPROC_COMMENT_NAME_MSGVER_1"] = "Comentario en el flujo de trabajo";
+$MESS["CRM_ACTIVITY_PROVIDER_BIZPROC_COMMENT_SUBJECT"] = "Nuevos comentarios";

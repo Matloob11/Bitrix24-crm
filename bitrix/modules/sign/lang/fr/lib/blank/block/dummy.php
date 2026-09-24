@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_CORE_BLOCK_DATE_HINT"] = "Utilisez ce champ pour saisir des valeurs de date (par exemple, la date du contrat, etc.)";
+$MESS["SIGN_CORE_BLOCK_DATE_TITLE"] = "Date";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_HINT"] = "Ce champ contient les coordonnées de votre entreprise.";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_TITLE"] = "Détails";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_BLOCK_HINT"] = "Champ contenant votre signature";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_TITLE"] = "Signature";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_ERROR_EMPTY"] = "Le bloc de cachet de l'entreprise a été ajouté, mais aucune image de cachet n'existe dans les détails de l'entreprise.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_HINT"] = "Le cachet de votre entreprise.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_TITLE"] = "Cachet";
+$MESS["SIGN_CORE_BLOCK_NUMBER_HINT"] = "Utilisez ce champ pour fournir le numéro du document. Vous pouvez saisir le numéro comme valeur statique ou utiliser la fonction de numérotation automatique.";
+$MESS["SIGN_CORE_BLOCK_NUMBER_TITLE"] = "Numéro";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_BLOCK_HINT"] = "Ce champ sera rempli avec les données trouvées dans votre CRM. Si votre CRM n'a pas d'informations pertinentes et que le champ reste vide, il peut être rempli par n'importe laquelle des parties signataires, auquel cas ces nouvelles informations seront enregistrées dans votre CRM.";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_TITLE"] = "Champ CRM";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_ERROR_EMPTY"] = "Le bloc \"champ CRM\" n'est pas configuré.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_HINT"] = "Ce champ contient les détails du destinataire.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_TITLE"] = "Détails";
+$MESS["SIGN_CORE_BLOCK_SIGN_BLOCK_HINT"] = "Champ contenant la signature d'une autre partie signataire";
+$MESS["SIGN_CORE_BLOCK_SIGN_TITLE"] = "Signature";
+$MESS["SIGN_CORE_BLOCK_STAMP_HINT"] = "Ce champ contient le cachet du destinataire.";
+$MESS["SIGN_CORE_BLOCK_STAMP_TITLE"] = "Cachet";
+$MESS["SIGN_CORE_BLOCK_TEXT_HINT"] = "Ce champ peut recevoir n'importe quelle information textuelle.";
+$MESS["SIGN_CORE_BLOCK_TEXT_TITLE"] = "Texte";

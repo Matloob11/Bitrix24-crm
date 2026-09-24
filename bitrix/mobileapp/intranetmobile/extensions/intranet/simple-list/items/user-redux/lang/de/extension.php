@@ -1,0 +1,23 @@
+<?php
+$MESS["M_INTRANET_PERSONAL_MOBILE_IS_NOT_FILLED"] = "Nutzer hat keine Telefonnummer angegeben";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_BUTTON_TEXT"] = "Zum Administrator ernennen";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_DESCRIPTION"] = "Administratoren haben vollen Zugriff auf personenbezogene Informationen über Nutzer und Kunden. Sie können Nutzer und Mitarbeiter einladen bzw. deaktivieren sowie Zugriffsrechte der Nutzer und Bitrix24 Einstellungen ändern. Möchten Sie diesen Nutzer zu einem Administrator ernennen?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_TITLE"] = "Nutzer zum Administrator ernennen?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_BUTTON_TEXT"] = "Benachrichtigung senden";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_DESCRIPTION"] = "In Bitrix24 können Nutzer ihren Account mit einem zweiten Authentifizierungsfaktor schützen. Senden Sie dem Nutzer eine Benachrichtigung mit dem Vorschlag, 2FA zu aktivieren.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_TITLE"] = "Schlagen Sie dem Nutzer vor, seinen Account mit der Zwei-Faktor-Authentifizierung zu schützen (2FA)";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_ALREADY_INSTALLED"] = "Desktop-App ist bereits installiert";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_BUTTON_TEXT"] = "Vorschlagen";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_DESCRIPTION"] = "Sie sollten lediglich auf ein Icon auf dem Schreibtisch klicken, statt den Browser zu öffnen. Außerdem kann die Desktop-App die Videoanrufe aufzeichnen und bei den eingehenden Anrufen klingeln.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_IS_NOT_INSTALLED"] = "Desktop-App ist noch nicht installiert";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_TITLE"] = "Schlagen Sie dem Nutzer vor, die Bitrix24 Desktop-App zu installieren";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_ALREADY_INSTALLED"] = "Mobile App ist bereits installiert";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_IS_NOT_INSTALLED"] = "Mobile App ist nicht installiert";
+$MESS["M_INTRANET_USER_STATUS_ADMIN"] = "Administrator";
+$MESS["M_INTRANET_USER_STATUS_DESKTOP_INSTALLED"] = "Computer";
+$MESS["M_INTRANET_USER_STATUS_EXTRANET"] = "Extranet";
+$MESS["M_INTRANET_USER_STATUS_GUEST"] = "Gast";
+$MESS["M_INTRANET_USER_STATUS_INVITED"] = "Einladung ausstehend";
+$MESS["M_INTRANET_USER_STATUS_INVITE_IS_SENDED"] = "Einladung erneut gesendet";
+$MESS["M_INTRANET_USER_STATUS_MOBILE_APP_INSTALLED"] = "Telefon";
+$MESS["M_INTRANET_USER_STATUS_PENDING"] = "Login-Bestätigung ausstehend";

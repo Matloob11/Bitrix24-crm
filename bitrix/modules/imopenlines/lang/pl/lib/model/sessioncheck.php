@@ -1,0 +1,6 @@
+<?php
+$MESS["SESSION_CHECK_ENTITY_DATE_CLOSE_FIELD"] = "Data zakończenia";
+$MESS["SESSION_CHECK_ENTITY_DATE_MAIL_FIELD"] = "Wysłano wiadomość e-mail";
+$MESS["SESSION_CHECK_ENTITY_DATE_NO_ANSWER_FIELD"] = "Wiadomość oznaczono jako nieaktywną";
+$MESS["SESSION_CHECK_ENTITY_DATE_QUEUE_FIELD"] = "Zakolejkowany";
+$MESS["SESSION_CHECK_ENTITY_SESSION_ID_FIELD"] = "ID Sesji";

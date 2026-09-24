@@ -1,0 +1,30 @@
+<?
+$MESS["ECLF_DESTINATION"] = "Membri";
+$MESS["ECLF_EVENT_ALL_DAY"] = "Tutto il giorno";
+$MESS["ECLF_EVENT_DESCRIPTION"] = "Descrizione";
+$MESS["ECLF_EVENT_FROM"] = "Data di inizio";
+$MESS["ECLF_EVENT_FROM_DATE_TIME"] = "L'evento inizierà il";
+$MESS["ECLF_EVENT_LOCATION"] = "Sede dell'evento";
+$MESS["ECLF_EVENT_NAME"] = "Nome evento";
+$MESS["ECLF_EVENT_REMIND"] = "Imposta promemoria";
+$MESS["ECLF_EVENT_REMIND_FOR"] = "Imposta promemoria";
+$MESS["ECLF_EVENT_TO"] = "Data di fine";
+$MESS["ECLF_EVENT_TO_DATE_TIME"] = "L'evento terminerà il";
+$MESS["ECLF_HIDE_ADD_SECT"] = "Nascondi parametri extra";
+$MESS["ECLF_LHE_CREATE_LINK"] = "Link";
+$MESS["ECLF_LHE_SHOW_PANEL"] = "Editor visuale";
+$MESS["ECLF_LHE_UPLOAD_FILE"] = "Carica file";
+$MESS["ECLF_LHE_VIDEO"] = "Aggiungi video";
+$MESS["ECLF_PLANNER_FULL_FORM"] = "Dettagli";
+$MESS["ECLF_PLANNER_PROPOSE_TIME"] = "Seleziona ora";
+$MESS["ECLF_PLANNER_TITLE"] = "Pianificazione";
+$MESS["ECLF_REM_DAY"] = "giorni";
+$MESS["ECLF_REM_HOUR"] = "ore";
+$MESS["ECLF_REM_MIN"] = "minuti";
+$MESS["ECLF_SHOW_ADD_SECT"] = "Altro";
+$MESS["ECLF_TIME_FROM"] = "Seleziona data e ora di inizio";
+$MESS["ECLF_TIME_TO"] = "Seleziona data e ora di fine";
+$MESS["ECL_T_ACCESS_DENIED"] = "Accesso negato";
+$MESS["ECL_T_INACTIVE_FEATURE"] = "Il calendario eventi dell'utente non è disponibile.";
+$MESS["ECL_T_NO_ITEMS"] = "Nessun evento più vicino.";
+?>

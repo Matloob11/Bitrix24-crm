@@ -1,0 +1,19 @@
+<?php
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_CURRENCY"] = "Валюта документа";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_CREATE"] = "Дата створення";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_MODIFY"] = "Дата зміни";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE"] = "Тип документа";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE_CODE"] = "Код типу документа";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_ID"] = "Унікальний ідентифікатор документа";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE"] = "ID та ім'я відповідального";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_ID"] = "ID відповідального";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_NAME"] = "Ім'я відповідального";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS"] = "Статус документа";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE"] = "Код статусу документа";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE_FULL"] = "Чи проведено документ: Y — проведений, N — чернетка";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TITLE"] = "Назва документа";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TOTAL"] = "Загальна вартість товарів за документом";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED"] = "Документ скасовано";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED_FULL"] = "Чи скасовано документ: Y — так, N — ні";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE"] = "Складські документи";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE_DESCRIPTION_FULL"] = "Набір містить дані про складські документи, які фіксують рух товарів.";

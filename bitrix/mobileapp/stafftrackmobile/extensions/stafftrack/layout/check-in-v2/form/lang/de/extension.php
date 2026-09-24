@@ -1,0 +1,26 @@
+<?php
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_BUTTON"] = "Meldung hinzufügen";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CANCEL_TITLE"] = "Meldung abbrechen";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_CHAT_SELECTOR_TITLE"] = "Wählen Sie einen Chat aus";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_DESCRIPTION_PLACEHOLDER"] = "Einen Kommentar hinzufügen";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_ERROR"] = "Die Aktion kann nicht ausgeführt werden. Bitte versuchen Sie es später erneut.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_ACTION"] = "Ja";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_DESCRIPTION"] = "Sie müssen den Arbeitstag beenden, bevor Sie einen neuen starten. Arbeitstag jetzt beenden?";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_EXPIRED_WORKDAY_CONFIRM_TITLE"] = "Beenden";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILES_BUTTON"] = "Dateien: #COUNT#";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILES_BUTTON_MSGVER_1"] = "Bilder: #COUNT#";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILE_BUTTON_PLACEHOLDER"] = "Dateien";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_FILE_BUTTON_PLACEHOLDER_MSGVER_1"] = "Bild";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_GEO_PERMISSION_CANCEL_BUTTON"] = "Abbrechen";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_MESSENGER_BUTTON_PLACEHOLDER"] = "Chat";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_ACTION"] = "Fortfahren";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_CANCEL"] = "Überspringen";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_DESCRIPTION"] = "Sie haben heute einen freien Tag. Wenn Sie fortfahren, melden Sie sich an; das Starten des Arbeitstags ist optional.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_START_WORKDAY_CONFIRM_TITLE"] = "Warnung über das Wochenende";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_SUCCESS_TOAST"] = "Meldung war erfolgreich";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TITLE"] = "Neue Meldung";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_BUTTON_TEXT"] = "Aktivieren";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_DESCRIPTION"] = "Aktivieren Sie es, wenn Sie möchten, dass sich Ihre Nutzer von ihrem Standort melden.";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_ADMIN_TITLE"] = "Sich melden deaktiviert";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_BUTTON_TEXT"] = "Eine Nachricht an den Vorgesetzten senden";
+$MESS["M_STAFFTRACK_ADD_CHECK_IN_TURN_OFF_EMPLOYEE_DESCRIPTION"] = "Bitte wenden Sie sich an Ihren Vorgesetzten oder Bitrix24 Administrator.";

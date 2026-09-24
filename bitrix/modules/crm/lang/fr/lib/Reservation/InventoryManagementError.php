@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_RESERVATION_INVENTORY_MANAGEMENT_ERROR"] = "Impossible de conclure la transaction parce que certains des produits ne sont pas disponibles dans l'entrepôt ou que vous avez sélectionné un mauvais entrepôt. La commande client n'est donc pas enregistrée dans la gestion des stocks. Veuillez retirer de la transaction les produits que vous ne pouvez pas livrer ou sélectionner un autre entrepôt avec un stock suffisant.";

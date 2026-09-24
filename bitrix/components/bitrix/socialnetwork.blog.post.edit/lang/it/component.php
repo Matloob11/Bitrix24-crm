@@ -1,0 +1,27 @@
+<?php
+$MESS["BLG_GRP_NAME"] = "Iniziato in";
+$MESS["BLOG_BLOG_BLOG_MES_DEL_ERROR"] = "Errore durante l'eliminazione del messaggio";
+$MESS["BLOG_BLOG_BLOG_MES_DEL_NO_RIGHTS"] = "Non disponi dell'autorizzazione per eliminare questo messaggio";
+$MESS["BLOG_BLOG_BLOG_MES_DEL_OK"] = "Il messaggio è stato eliminato";
+$MESS["BLOG_BLOG_SESSID_WRONG"] = "La tua sessione è scaduta. Riprova.";
+$MESS["BLOG_EMPTY_TITLE_PLACEHOLDER"] = "Immagine";
+$MESS["BLOG_EMPTY_TITLE_PLACEHOLDER2"] = "File";
+$MESS["BLOG_EMPTY_TITLE_VOTE_PLACEHOLDER"] = "Sondaggio";
+$MESS["BLOG_ERR_NO_RIGHTS"] = "Errore: autorizzazioni insufficienti per scrivere il messaggio";
+$MESS["BLOG_MODULE_NOT_INSTALL"] = "Il modulo Blog non è installato.";
+$MESS["BLOG_NEW_MESSAGE"] = "Nuova conversazione";
+$MESS["BLOG_POST_EDIT"] = "Modifica post";
+$MESS["BLOG_P_INSERT"] = "Clicca per inserire un'immagine";
+$MESS["BLOG_SONET_GROUP_MODULE_NOT_AVAIBLE"] = "Le conversazioni non sono disponibili per questo gruppo di utenti.";
+$MESS["BLOG_SONET_MODULE_NOT_AVAIBLE"] = "Le conversazioni non sono disponibili per questo utente.";
+$MESS["BPE_COPY_DELETE_ERROR"] = "Errore durante il tentativo di eliminare il post originale.<br />";
+$MESS["BPE_HIDDEN_POSTED"] = "Il tuo post è stato aggiunto correttamente. I post in questa conversazione sono premoderati; il tuo post diventerà visibile non appena sarà approvato dal moderatore.";
+$MESS["BPE_SESS"] = "La tua sessione è scaduta. Pubblica nuovamente il tuo messaggio.";
+$MESS["B_B_HIDDEN_DEPARTMENT"] = "Reparto nascosto";
+$MESS["B_B_HIDDEN_GROUP"] = "Gruppo nascosto";
+$MESS["B_B_HIDDEN_USER"] = "Utente nascosto";
+$MESS["B_B_MES_NO_BLOG"] = "Il messaggio non è stato trovato";
+$MESS["B_B_MES_NO_GROUP"] = "Il gruppo social network non è stato trovato.";
+$MESS["B_B_MES_NO_GROUP_ACTIVE"] = "Questa funzione non è disponibile per il gruppo di social network.";
+$MESS["B_B_MES_NO_GROUP_RIGHTS"] = "Autorizzazione insufficiente per creare un post nel gruppo di social network.";
+$MESS["B_B_PC_DUPLICATE_POST"] = "Hai già aggiunto il tuo post";

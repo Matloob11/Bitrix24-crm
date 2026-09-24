@@ -1,0 +1,38 @@
+<?php
+
+return [
+	'extensions' => [
+		'communication/email-menu',
+		'communication/phone-menu',
+		'intranet:enum',
+		'intranet:simple-list/items/user-redux/action-menu',
+		'intranet:simple-list/items/user-redux/src/actions',
+		'intranet:statemanager/redux/slices/employees',
+		'intranet:statemanager/redux/slices/employees/selector',
+		'layout/pure-component',
+		'layout/ui/context-menu',
+		'layout/ui/simple-list/items/base',
+		'layout/ui/user/user-name',
+		'loc',
+		'statemanager/redux/connect',
+		'statemanager/redux/slices/users',
+		'statemanager/redux/store',
+		'toast',
+		'tokens',
+		'ui-system/blocks/avatar',
+		'ui-system/blocks/badges/counter',
+		'ui-system/blocks/chips/chip-button',
+		'ui-system/blocks/chips/chip-status',
+		'ui-system/blocks/icon',
+		'ui-system/typography/heading',
+		'ui-system/typography/text',
+		'utils/date',
+		'utils/function',
+	],
+	'bundle' => [
+		'./src/action-menu',
+		'./src/actions',
+		'./src/user-content',
+		'./src/user-view',
+	],
+];

@@ -1,0 +1,25 @@
+<?php
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_ACTIVITY"] = "L'incarico \"#TASK_NAME#\" è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un'attività nel Feed#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_COMPANY"] = "L'incarico \"#TASK_NAME#\" è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un'azienda nel Feed#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_CONTACT"] = "L'incarico \"#TASK_NAME#\" è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un lead nel Feed#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_DEAL"] = "L'incarico \"#TASK_NAME#\" è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un affare nel Feed#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_INVOICE"] = "L'incarico \"#TASK_NAME#\" è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di una fattura nel Feed#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_COMMENT_CRM_ENTITY_COMMENT_LEAD"] = "L'incarico \"#TASK_NAME#\" è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un lead nel Feed#A_END#.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_ACTIVITY"] = "L'incarico \"#TASK_NAME#\" è stato creato da una notifica di creazione/aggiornamento di un'attività nel Feed.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_INVOICE"] = "L'incarico \"#TASK_NAME#\" è stato creato da una notifica di creazione/aggiornamento di una fattura nel Feed.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_COMPANY"] = "L'incarico \"#TASK_NAME#\" è stato creato da una notifica di creazione/aggiornamento di un'azienda nel Feed.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_CONTACT"] = "L'incarico \"#TASK_NAME#\" è stato creato da una notifica di creazione/aggiornamento di un contatto nel Feed.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_DEAL"] = "L'incarico \"#TASK_NAME#\" è stato creato da una notifica di creazione/aggiornamento di un affare nel Feed.";
+$MESS["SONET_COMMENTAUX_CREATETASK_POST_CRM_LOG_LEAD"] = "L'incarico \"#TASK_NAME#\" è stato creato da una notifica di creazione/aggiornamento di un lead nel Feed.";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ACTIVITY"] = "L'incarico è stato creato da una #A_BEGIN#notifica di creazione/aggiornamento di un'attività nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_ACTIVITY"] = "L'incarico è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un'attività nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_COMPANY"] = "L'incarico è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un'azienda nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_CONTACT"] = "L'incarico è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un contatto nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_DEAL"] = "L'incarico è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un affare nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_INVOICE"] = "L'incarico è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di una fattura nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_ENTITY_COMMENT_LEAD"] = "L'incarico è stato creato da un #A_BEGIN#commento lasciato in una notifica di creazione/aggiornamento di un lead nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_INVOICE"] = "L'incarico è stato creato da una #A_BEGIN#notifica di creazione/aggiornamento di una fattura nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_COMPANY"] = "L'incarico è stato creato da una #A_BEGIN#notifica di creazione/aggiornamento di un'azienda nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_CONTACT"] = "L'incarico è stato creato da una #A_BEGIN#notifica di creazione/aggiornamento di un contatto nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_DEAL"] = "L'incarico è stato creato da una #A_BEGIN#notifica di creazione/aggiornamento di un lead nel Feed#A_END#";
+$MESS["SONET_EXT_COMMENTAUX_CREATE_TASK_CRM_LOG_LEAD"] = "L'incarico è stato creato da una #A_BEGIN#notifica di creazione/aggiornamento di un lead nel Feed#A_END#";

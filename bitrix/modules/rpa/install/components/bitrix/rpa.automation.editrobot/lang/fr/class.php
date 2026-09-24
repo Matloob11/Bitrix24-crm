@@ -1,0 +1,5 @@
+<?
+$MESS["RPA_AUTOMATION_EDITROBOT_SCENARIO"] = "Type";
+$MESS["RPA_AUTOMATION_EDITROBOT_TITLE"] = "Ajouter l'affectation";
+$MESS["RPA_AUTOMATION_EDITROBOT_TITLE_EDIT"] = "Configurer l'affectation";
+?>

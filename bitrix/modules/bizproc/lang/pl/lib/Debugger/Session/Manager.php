@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_DEBUGGER_SESSION_MANAGER_ERROR_INCORRECT_MODE"] = "Określono nieprawidłowy tryb testowy";
+$MESS["BIZPROC_DEBUGGER_SESSION_MANAGER_ERROR_SESSION_NOT_FOUND"] = "Nie znaleziono dziennika testowego";
+$MESS["BIZPROC_DEBUGGER_SESSION_MANAGER_ERROR_SESSION_STILL_ACTIVE"] = "Tryb testowy nadal aktywny";

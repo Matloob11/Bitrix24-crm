@@ -1,0 +1,9 @@
+<?php
+$MESS["CT_BCSF_DEL_FILTER"] = "Wyczyść";
+$MESS["CT_BCSF_FILTER_ALL"] = "Wszystko";
+$MESS["CT_BCSF_FILTER_COUNT"] = "Wybrane: #ELEMENT_COUNT#";
+$MESS["CT_BCSF_FILTER_FROM"] = "Od";
+$MESS["CT_BCSF_FILTER_SHOW"] = "Pokaż";
+$MESS["CT_BCSF_FILTER_TITLE"] = "Kryteria:";
+$MESS["CT_BCSF_FILTER_TO"] = "Do";
+$MESS["CT_BCSF_SET_FILTER"] = "Pokaż";

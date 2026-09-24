@@ -1,0 +1,22 @@
+<?php
+$MESS["BITRIX24_THEME_CREATE_YOUR_OWN_THEME"] = "Crea tema personalizzato";
+$MESS["BITRIX24_THEME_DEFAULT_THEME"] = "Predefinito";
+$MESS["BITRIX24_THEME_DEFAULT_THEME_FOR_ALL"] = "Tema predefinito per tutti gli utenti";
+$MESS["BITRIX24_THEME_DIALOG_CANCEL_BUTTON"] = "Annulla";
+$MESS["BITRIX24_THEME_DIALOG_CREATE_BUTTON"] = "Crea";
+$MESS["BITRIX24_THEME_DIALOG_NEW_THEME"] = "Tema personalizzato";
+$MESS["BITRIX24_THEME_DIALOG_SAVE_BUTTON"] = "Salva";
+$MESS["BITRIX24_THEME_DRAG_BG_IMAGE"] = "o trascina un'immagine qui";
+$MESS["BITRIX24_THEME_EMPTY_FORM_DATA"] = "Seleziona un'immagine o un colore di sfondo.";
+$MESS["BITRIX24_THEME_FILE_SIZE_EXCEEDED"] = "Dimensione max. del file superata (#LIMIT#).";
+$MESS["BITRIX24_THEME_NEW_THEME"] = "Nuovo";
+$MESS["BITRIX24_THEME_REMOVE_THEME"] = "Elimina tema";
+$MESS["BITRIX24_THEME_THEME_BG_COLOR"] = "Colore di sfondo";
+$MESS["BITRIX24_THEME_THEME_BG_IMAGE"] = "Immagine di sfondo";
+$MESS["BITRIX24_THEME_THEME_DARK_COLOR"] = "Scuro";
+$MESS["BITRIX24_THEME_THEME_LIGHT_COLOR"] = "Chiaro";
+$MESS["BITRIX24_THEME_THEME_TEXT_COLOR"] = "Colore testo";
+$MESS["BITRIX24_THEME_UNKNOWN_ERROR"] = "Impossibile completare l'azione. Riprova.";
+$MESS["BITRIX24_THEME_UPLOAD_BG_IMAGE"] = "Carica immagine di sfondo";
+$MESS["BITRIX24_THEME_WRONG_BG_COLOR"] = "Colore di sfondo non corretto.";
+$MESS["BITRIX24_THEME_WRONG_FILE_TYPE"] = "Il file non è un'immagine.";

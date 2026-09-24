@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_COPILOT_CALL_ASSESSMENT_DETAILS_ACCESS_DENIED"] = "Odmowa dostępu.";
+$MESS["CRM_COPILOT_CALL_ASSESSMENT_DETAILS_ACCESS_DENIED_DESCRIPTION"] = "Skontaktuj się z przełożonym lub administratorem Bitrix24.";
+$MESS["CRM_COPILOT_CALL_ASSESSMENT_DETAILS_ACCESS_DENIED_MSGVER_1"] = "Niewystarczające uprawnienia do edycji skryptu";
+$MESS["CRM_COPILOT_CALL_ASSESSMENT_DETAILS_NOT_FOUND"] = "Nie znaleziono skryptu.";
+$MESS["CRM_COPILOT_CALL_ASSESSMENT_DETAILS_TITLE"] = "Nowy skrypt";

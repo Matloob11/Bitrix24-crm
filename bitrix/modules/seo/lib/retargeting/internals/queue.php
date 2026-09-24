@@ -1,0 +1,454 @@
+<?php
+/**
+ * Bitrix Framework
+ * @package bitrix
+ * @subpackage seo
+ * @copyright 2001-2013 Bitrix
+ */
+namespace Bitrix\Seo\Retargeting\Internals;
+
+use Bitrix\Main\Application;
+use \Bitrix\Main\Entity;
+use \Bitrix\Main\Localization\Loc;
+use \Bitrix\Main\Type\DateTime;
+use Bitrix\Seo\Retargeting\Service;
+
+Loc::loadMessages(__FILE__);
+
+/**
+ * Class QueueTable
+ *
+ * DO NOT WRITE ANYTHING BELOW THIS
+ *
+ * <<< ORMENTITYANNOTATION
+ * @method static EO_Queue_Query query()
+ * @method static EO_Queue_Result getByPrimary($primary, array $parameters = array())
+ * @method static EO_Queue_Result getById($id)
+ * @method static EO_Queue_Result getList(array $parameters = array())
+ * @method static EO_Queue_Entity getEntity()
+ * @method static \Bitrix\Seo\Retargeting\Internals\EO_Queue createObject($setDefaultValues = true)
+ * @method static \Bitrix\Seo\Retargeting\Internals\EO_Queue_Collection createCollection()
+ * @method static \Bitrix\Seo\Retargeting\Internals\EO_Queue wakeUpObject($row)
+ * @method static \Bitrix\Seo\Retargeting\Internals\EO_Queue_Collection wakeUpCollection($rows)
+ */
+class QueueTable extends Entity\DataManager
+{
+	const MODULE_ID = 'seo';
+	const PORTION_QUANTITY = 50;
+	const ACTION_IMPORT = 'IMP';
+	const ACTION_IMPORT_AND_AUTO_REMOVE = 'IAR';
+	const ACTION_REMOVE = 'REM';
+	const ACTION_AUTO_REMOVE = 'ARM';
+
+	protected static $isAgentAdded = array();
+
+	public static function getTableName()
+	{
+		return 'b_seo_service_rtg_queue';
+	}
+
+	public static function getMap()
+	{
+		$fieldsMap = array(
+			'ID' => array(
+				'data_type' => 'integer',
+				'primary' => true,
+				'autocomplete' => true,
+			),
+			'DATE_INSERT' => array(
+				'data_type' => 'datetime',
+				'default_value' => new DateTime()
+			),
+			'TYPE' => array(
+				'data_type' => 'string',
+				'required' => true,
+			),
+			'CLIENT_ID' => array(
+				'data_type' => 'string',
+			),
+			'ACCOUNT_ID' => array(
+				'data_type' => 'string',
+			),
+			'AUDIENCE_ID' => array(
+				'data_type' => 'string',
+				'required' => true,
+			),
+			'PARENT_ID' => array(
+				'data_type' => 'string',
+			),
+			'CONTACT_TYPE' => array(
+				'data_type' => 'string',
+				'required' => true,
+			),
+			'VALUE' => array(
+				'data_type' => 'string',
+				'required' => true,
+			),
+			'ACTION' => array(
+				'data_type' => 'enum',
+				'values' => array(
+					self::ACTION_IMPORT,
+					self::ACTION_REMOVE,
+					self::ACTION_IMPORT_AND_AUTO_REMOVE,
+					self::ACTION_AUTO_REMOVE,
+				),
+				'default_value' => self::ACTION_IMPORT_AND_AUTO_REMOVE,
+				'required' => true,
+			),
+			'DATE_AUTO_REMOVE' => array(
+				'data_type' => 'datetime',
+			)
+		);
+
+		return $fieldsMap;
+	}
+
+	protected static function processQueueAutoRemoveAgentName()
+	{
+		return __CLASS__ . '::processQueueAutoRemoveAgent();';
+	}
+
+	protected static function getProcessQueueAgentName($type)
+	{
+		return __CLASS__ . '::processQueueAgent("' . $type . '");';
+	}
+
+	public static function processQueueAutoRemoveAgent()
+	{
+		$queueDb = static::getList(array(
+			'select' => array('ID'),
+			'filter' => array('=ACTION' => self::ACTION_AUTO_REMOVE),
+			'limit' => 1
+		));
+		if ($queueDb->fetch())
+		{
+			$connection = Application::getConnection();
+			$sql = "UPDATE " . self::getTableName() . " " .
+				"SET ACTION='" . self::ACTION_REMOVE . "' " .
+				"WHERE ACTION='" . self::ACTION_AUTO_REMOVE . "' " .
+				"AND DATE_AUTO_REMOVE <= " . $connection->getSqlHelper()->getCurrentDateTimeFunction();
+			$connection->query($sql);
+			if ($connection->getAffectedRowsCount() > 0)
+			{
+				$types = Service::getTypes();
+				foreach ($types as $type)
+				{
+					static::addQueueAgent($type);
+				}
+			}
+
+			return static::processQueueAutoRemoveAgentName();
+		}
+		else
+		{
+			return '';
+		}
+	}
+
+	public static function processQueueAgent($type)
+	{
+		try
+		{
+			$hasQueue = static::processQueue($type);
+		}
+		catch(\Exception $e)
+		{
+			$hasQueue = false;
+		}
+
+		if (!$hasQueue)
+		{
+			return '';
+		}
+		else
+		{
+			return static::getProcessQueueAgentName($type);
+		}
+	}
+
+	protected static function processQueue($type)
+	{
+		$hasQueue = false;
+		$queryData = [];
+
+		$audience = Service::getAudience($type);
+
+		// Yandex requires all contacts to be sent at once, so we need to wait for the queue to be fully collected
+		if ($type === Service::TYPE_YANDEX && static::isQueueStillCollecting($type))
+		{
+			return true;
+		}
+
+		$maxQuantity = $audience::getMaxContactsPerPacket();
+		$maxQuantity = min($maxQuantity, 1000);
+
+		$filter = [
+			'=TYPE' => $type,
+			'=ACTION' => [
+				self::ACTION_IMPORT,
+				self::ACTION_REMOVE,
+				self::ACTION_IMPORT_AND_AUTO_REMOVE,
+			],
+		];
+		$listParams = ['filter' => $filter];
+
+		if ($maxQuantity > 0)
+		{
+			$listParams['limit'] = $maxQuantity;
+		}
+
+		$queueDb = static::getList($listParams);
+		while ($queueItem = $queueDb->fetch())
+		{
+			$hasQueue = true;
+
+			$isRemove = $queueItem['ACTION'] == self::ACTION_REMOVE ? 'Y' : 'N';
+			$queryId = $queueItem['TYPE'];
+			$queryId .= '_' . $queueItem['PARENT_ID'];
+			$queryId .= '_' . $queueItem['CLIENT_ID'];
+			$queryId .= '_' . $queueItem['ACCOUNT_ID'];
+			$queryId .= '_' . $queueItem['AUDIENCE_ID'];
+			$queryId .= '_' . $isRemove;
+
+			if (!isset($queryData[$queryId]))
+			{
+				$queryData[$queryId] = array(
+					'CLIENT_ID' => $queueItem['CLIENT_ID'],
+					'ACCOUNT_ID' => $queueItem['ACCOUNT_ID'],
+					'AUDIENCE_ID' => $queueItem['AUDIENCE_ID'],
+					'PARENT_ID' => $queueItem['PARENT_ID'],
+					'IS_REMOVE' => $isRemove,
+					'CONTACTS' => array(),
+					'DELETE_ID_LIST' => array(),
+					'AUTO_REMOVE_ID_LIST' => array(),
+				);
+			}
+			$contactType = $queueItem['CONTACT_TYPE'];
+			if (!isset($queryData[$queryId]['CONTACTS'][$contactType]))
+			{
+				$queryData[$queryId]['CONTACTS'][$contactType] = array();
+			}
+
+			$queryData[$queryId]['CONTACTS'][$contactType][] = $queueItem['VALUE'];
+
+			if ($queueItem['ACTION'] == self::ACTION_IMPORT_AND_AUTO_REMOVE)
+			{
+				$queryData[$queryId]['AUTO_REMOVE_ID_LIST'][] = $queueItem['ID'];
+			}
+			else
+			{
+				$queryData[$queryId]['DELETE_ID_LIST'][] = $queueItem['ID'];
+			}
+		}
+
+		$lastClientId = null;
+		$service = null;
+		$authAdapter = Service::getAuthAdapter($type);
+		foreach ($queryData as $queryId => $query)
+		{
+			foreach ($query['CONTACTS'] as $contactType => $contacts)
+			{
+				$query['CONTACTS'][$contactType] = array_unique($contacts);
+			}
+
+			if ($lastClientId != $query['CLIENT_ID'] || !$service || !$authAdapter)
+			{
+				$lastClientId = $query['CLIENT_ID'];
+
+				$service = new Service();
+				$service->setClientId($lastClientId);
+				$authAdapter->setService($service);
+			}
+
+			$audience->setService($service);
+			$audience->getRequest()->setAuthAdapter($authAdapter);
+
+			$audience->disableQueueMode();
+			$audience->setAccountId($query['ACCOUNT_ID']);
+
+			$contactTypes = $audience->isSupportMultiTypeContacts() ? array('') : array_keys($query['CONTACTS']);
+			foreach ($contactTypes as $contactType)
+			{
+				if ($query['IS_REMOVE'] != 'Y')
+				{
+					$audienceImportResult = $audience->addContacts(
+						$query['AUDIENCE_ID'],
+						$query['CONTACTS'],
+						array(
+							'type' => $contactType
+						)
+					);
+				}
+				else
+				{
+					$audienceImportResult = $audience->deleteContacts(
+						$query['AUDIENCE_ID'],
+						$query['CONTACTS'],
+						array(
+							'type' => $contactType
+						)
+					);
+				}
+
+				if ($audienceImportResult->isSuccess())
+				{
+					if (!empty($query['DELETE_ID_LIST']))
+					{
+						$portions = self::divideListIntoPortions($query['DELETE_ID_LIST']);
+						foreach ($portions as $portion)
+						{
+							Application::getConnection()->query(
+								"DELETE FROM " . self::getTableName() . " WHERE ID IN (" . implode(',', $portion) . ")"
+							);
+						}
+					}
+
+					if (!empty($query['AUTO_REMOVE_ID_LIST']))
+					{
+						$portions = self::divideListIntoPortions($query['AUTO_REMOVE_ID_LIST']);
+						foreach ($portions as $portion)
+						{
+							Application::getConnection()->query(
+								"UPDATE " . self::getTableName() . " SET ACTION='" . self::ACTION_AUTO_REMOVE . "'" .
+								"WHERE ID IN (" . implode(',', $portion) . ")"
+							);
+						}
+						static::addQueueAutoRemoveAgent();
+					}
+				}
+				else
+				{
+					Application::getConnection()->query(
+						"DELETE FROM " . self::getTableName() .
+						" WHERE TYPE = '" . Application::getConnection()->getSqlHelper()->forSql($type) . "'" .
+						" AND ACTION in ('" . implode("', '", [self::ACTION_IMPORT, self::ACTION_IMPORT_AND_AUTO_REMOVE, self::ACTION_REMOVE]) . "')" .
+						" AND DATE_INSERT < '" . (new DateTime())->add('-1 day')->format("Y-m-d H:i:s") . "'"
+					);
+				}
+			}
+		}
+
+		return $hasQueue;
+	}
+
+	protected static function divideListIntoPortions($list)
+	{
+		$portions = array();
+
+		$deleteCount = count($list);
+		$portionCount = ceil($deleteCount / self::PORTION_QUANTITY);
+		$deleteNum = 0;
+		for ($portionNum = 0; $portionNum < $portionCount; $portionNum++)
+		{
+			$deleteList = array();
+			$deletePortionCount = ($portionNum + 1) * self::PORTION_QUANTITY;
+			for (; $deleteNum < $deletePortionCount; $deleteNum++)
+			{
+				if ($deleteNum >= $deleteCount)
+				{
+					break;
+				}
+				$deleteList[] = (int) $list[$deleteNum];
+			}
+
+			$portions[] = $deleteList;
+		}
+
+		return $portions;
+	}
+
+	/**
+	 * Checks if queue is still being collected (new records were added recently).
+	 * Used for Yandex to ensure all contacts are collected before sending.
+	 */
+	protected static function isQueueStillCollecting(string $type): bool
+	{
+		$threshold = \ConvertTimeStamp(time() + \CTimeZone::GetOffset() - 300, 'FULL');
+
+		$recentRecord = static::getList([
+			'select' => ['ID'],
+			'filter' => [
+				'=TYPE' => $type,
+				'=ACTION' => [
+					self::ACTION_IMPORT,
+					self::ACTION_REMOVE,
+					self::ACTION_IMPORT_AND_AUTO_REMOVE,
+				],
+				'>DATE_INSERT' => $threshold,
+			],
+			'limit' => 1,
+		])->fetch();
+
+		return (bool)$recentRecord;
+	}
+
+	protected static function addQueueAutoRemoveAgent()
+	{
+		if (isset(static::$isAgentAdded['sys.auto_remove']))
+		{
+			return;
+		}
+
+		$agentName = static::processQueueAutoRemoveAgentName();
+		$agent = new \CAgent();
+		$agentsDb = $agent->GetList(array("ID" => "DESC"), array(
+			"MODULE_ID" => self::MODULE_ID,
+			"NAME" => $agentName,
+		));
+		if (!$agentsDb->Fetch())
+		{
+			$agent->AddAgent($agentName, self::MODULE_ID, "N", 86400, null, "Y", "");
+		}
+	}
+
+	protected static function addQueueAgent($type)
+	{
+		if (isset(static::$isAgentAdded[$type]))
+		{
+			return;
+		}
+
+		$agent = new \CAgent();
+		if ($type)
+		{
+			$agentName = static::getProcessQueueAgentName($type);
+			$agentsDb = $agent::GetList(
+				[
+					"ID" => "DESC",
+				],
+				[
+					"MODULE_ID" => self::MODULE_ID,
+					"NAME" => $agentName,
+				],
+			);
+
+			if (!$agentsDb->Fetch())
+			{
+				// Yandex requires all contacts to be sent at once, so delay first execution to allow queue to be fully collected
+				$timePeriod = 900;
+				$interval = ($type === Service::TYPE_YANDEX ? $timePeriod : 30);
+				$nextExec = '';
+				if ($type === Service::TYPE_YANDEX)
+				{
+					$nextExec = \ConvertTimeStamp(time() + \CTimeZone::GetOffset() + $timePeriod, 'FULL');
+				}
+
+				$agent::AddAgent(
+					name: $agentName,
+					module: self::MODULE_ID,
+					interval: $interval,
+					next_exec: $nextExec,
+				);
+			}
+		}
+
+		static::$isAgentAdded[$type] = true;
+	}
+
+	public static function onAfterAdd(Entity\Event $event)
+	{
+		$fields = $event->getParameter('fields');
+		$type = $fields['TYPE'];
+		static::addQueueAgent($type);
+	}
+}

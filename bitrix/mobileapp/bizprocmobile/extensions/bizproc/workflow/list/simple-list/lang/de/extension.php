@@ -1,0 +1,4 @@
+<?php
+$MESS["BPMOBILE_WORKFLOW_SIMPLE_LIST_NETWORK_ERROR"] = "Überprüfen Sie Ihre Internetverbindung.";
+$MESS["BPMOBILE_WORKFLOW_SIMPLE_LIST_STATUS"] = "Status";
+$MESS["BPMOBILE_WORKFLOW_SIMPLE_LIST_TASK_TOUCHED"] = "Aufgabe #TASK_NAME# wurde fertiggestellt";

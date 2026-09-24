@@ -1,0 +1,2 @@
+<?php
+$MESS["IMCONNECTORMOBILE_SETTING_STEP_STEP"] = "Étape #NUMBER#. ";

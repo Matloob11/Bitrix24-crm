@@ -1,0 +1,17 @@
+<?
+$MESS["M_CRM_PRODUCT_ROW_DELIVERY"] = "Consegna";
+$MESS["M_CRM_PRODUCT_ROW_DISCOUNT"] = "Sconto";
+$MESS["M_CRM_PRODUCT_ROW_LIST_DOWN_TEXT"] = "Rilascia per aggiornare...";
+$MESS["M_CRM_PRODUCT_ROW_LIST_LEGEND"] = "(Prodotti)";
+$MESS["M_CRM_PRODUCT_ROW_LIST_LOAD_TEXT"] = "Aggiornamento...";
+$MESS["M_CRM_PRODUCT_ROW_LIST_NOTHING_FOUND"] = "Nessun prodotto";
+$MESS["M_CRM_PRODUCT_ROW_LIST_PRICE"] = "Prezzo";
+$MESS["M_CRM_PRODUCT_ROW_LIST_PULL_TEXT"] = "Trascina verso il basso per aggiornare...";
+$MESS["M_CRM_PRODUCT_ROW_LIST_QTY"] = "Quantità";
+$MESS["M_CRM_PRODUCT_ROW_LIST_SUM_TOTAL"] = "Importo totale";
+$MESS["M_CRM_PRODUCT_ROW_LIST_SUM_TOTAL_2"] = "Totale";
+$MESS["M_CRM_PRODUCT_ROW_LIST_VAT"] = "(Aliquota fiscale: #VAT_RATE#%)";
+$MESS["M_CRM_PRODUCT_ROW_LIST_VAT_INCLUDED"] = "inclusa #TAX_NAME#";
+$MESS["M_CRM_PRODUCT_ROW_LIST_VAT_INCLUDED_PERCENTS"] = "inclusa #TAX_NAME# (#TAX_RATE#%)";
+$MESS["M_CRM_PRODUCT_ROW_LIST_VAT_INCLUDED_SUM"] = "Imposta";
+?>

@@ -1,0 +1,22 @@
+<?php
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ANALYZE_COMMUNICATION_ENGINE_TITLE"] = "Fournisseur d'activité et de filtre anti-spam :";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ANALYZE_COMMUNICATION_HEADER"] = "#COPILOT_NAME# détectera la nature de l'appel et créera une activité s'il s'agit d'un appel client pertinent.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_CALL_ASSESSMENT_ENGINE_TITLE"] = "Fournisseur d'évaluation des appels téléphoniques :";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_CALL_ASSESSMENT_HEADER"] = "#COPILOT_NAME# analysera l'appel téléphonique pour le comparer au script d'exemple et vous fournira des conseils utiles.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ENGINE_AUDIO_TITLE"] = "Fournisseur de transcription des appels :";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_ENGINE_TEXT_TITLE"] = "Fournisseur de saisie et de résumé du champ :";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_ITEM_FROM_CALL_HEADER"] = "#COPILOT_NAME# transcrira l'appel téléphonique, créera un résumé de l'appel et remplira les champs CRM.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_ITEM_FROM_CALL_TITLE"] = "Utiliser #COPILOT_NAME# pour remplir les champs du CRM";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_TODO_TEXT_HEADER"] = "#COPILOT_NAME# vous aidera à créer des textes ou à améliorer votre rédaction.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_FILL_TODO_TEXT_TITLE"] = "Activités et commentaires du CRM";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_GROUP_DESCRIPTION"] = "#COPILOT_NAME# sera l'aide dont vous avez besoin pour gérer vos clients.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_GROUP_TITLE"] = "CRM";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_MESSAGESENDER_EDITOR_HEADER"] = "#COPILOT_NAME# vous aidera à améliorer ou à créer un message pour votre client.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_MESSAGESENDER_EDITOR_TITLE"] = "Messages clients dans le CRM";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_REPEAT_SALE_ENGINE_TITLE"] = "Fournisseur de script de ventes répétées :";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_REPEAT_SALE_HEADER"] = "#COPILOT_NAME# analysera l'historique d'achat du client et fournira des recommandations aux agents des ventes.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTINGS_SUMMARIZE_HEADER"] = "#COPILOT_NAME# créera un résumé de l'appel ou de la session de chat du client.";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_ANALYZE_COMMUNICATION_TITLE"] = "Utiliser #COPILOT_NAME# pour créer des activités et filtrer le spam";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_CALL_ASSESSMENT_TITLE"] = "Utiliser #COPILOT_NAME# pour évaluer les appels téléphoniques";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_REPEAT_SALE_TITLE"] = "Utiliser #COPILOT_NAME# avec les scripts de ventes répétées";
+$MESS["CRM_INTEGRATION_AI_EVENTHANDLER_SETTING_SUMMARIZE_TITLE"] = "Utiliser #COPILOT_NAME# pour créer un résumé d'appel ou de chat";

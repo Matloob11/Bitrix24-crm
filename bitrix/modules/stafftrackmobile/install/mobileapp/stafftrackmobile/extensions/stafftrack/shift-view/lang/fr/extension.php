@@ -1,0 +1,5 @@
+<?php
+$MESS["M_STAFFTRACK_SHIFT_VIEW_CANCEL_DAY"] = "Annuler le check-in au travail";
+$MESS["M_STAFFTRACK_SHIFT_VIEW_NOT_WORKING_DAY"] = "Jour de congé";
+$MESS["M_STAFFTRACK_SHIFT_VIEW_START_DAY"] = "Check-in au travail";
+$MESS["M_STAFFTRACK_SHIFT_VIEW_USER_AT_TIME"] = "#USER# à #TIME#";

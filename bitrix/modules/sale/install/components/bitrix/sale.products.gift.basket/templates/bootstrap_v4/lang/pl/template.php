@@ -1,0 +1,27 @@
+<?php
+$MESS["ADD_TO_BASKET_OK"] = "Dodano do koszyka";
+$MESS["CT_SPGB_CATALOG_BASKET_UNKNOWN_ERROR"] = "Nieznany błąd przy dodawaniu pozycji do koszyka";
+$MESS["CT_SPGB_CATALOG_BTN_MESSAGE_BASKET_REDIRECT"] = "Wyświetl koszyk";
+$MESS["CT_SPGB_CATALOG_BTN_MESSAGE_CLOSE"] = "Zamknij";
+$MESS["CT_SPGB_CATALOG_BTN_MESSAGE_CLOSE_POPUP"] = "Kontynuuj zakupy";
+$MESS["CT_SPGB_CATALOG_BTN_MESSAGE_COMPARE_REDIRECT"] = "Porównaj produkty";
+$MESS["CT_SPGB_CATALOG_BTN_MESSAGE_LAZY_LOAD_WAITER"] = "Ładowanie";
+$MESS["CT_SPGB_CATALOG_BTN_MESSAGE_SEND_PROPS"] = "Wybierz";
+$MESS["CT_SPGB_CATALOG_MESS_COMPARE_OK"] = "Produkt został dodany do tabeli porównawczej";
+$MESS["CT_SPGB_CATALOG_MESS_COMPARE_TITLE"] = "Porównanie produktów";
+$MESS["CT_SPGB_CATALOG_MESS_COMPARE_UNKNOWN_ERROR"] = "Błąd podczas dodawania produktu do tabeli porównawczej";
+$MESS["CT_SPGB_CATALOG_PRICE_TOTAL_PREFIX"] = "łącznie";
+$MESS["CT_SPGB_CATALOG_RELATIVE_QUANTITY_FEW"] = "pozostało tylko kilka sztuk";
+$MESS["CT_SPGB_CATALOG_RELATIVE_QUANTITY_MANY"] = "w magazynie";
+$MESS["CT_SPGB_CATALOG_SHOW_MAX_QUANTITY"] = "Asortyment";
+$MESS["CT_SPGB_CATALOG_TITLE_BASKET_PROPS"] = "Właściwości pozycji do przekazania do koszyka";
+$MESS["CT_SPGB_CATALOG_TITLE_ERROR"] = "Błąd";
+$MESS["CT_SPGB_TPL_ELEMENT_DELETE_CONFIRM"] = "Spowoduje to usunięcie wszystkich informacji związanych z tym rekordem! Kontynuować?";
+$MESS["CT_SPGB_TPL_MESS_BTN_ADD_TO_BASKET"] = "Dodaj do koszyka";
+$MESS["CT_SPGB_TPL_MESS_BTN_BUY"] = "Kup";
+$MESS["CT_SPGB_TPL_MESS_BTN_CHOOSE"] = "Wybierz";
+$MESS["CT_SPGB_TPL_MESS_BTN_COMPARE"] = "Porównaj";
+$MESS["CT_SPGB_TPL_MESS_BTN_DETAIL"] = "Szczegóły";
+$MESS["CT_SPGB_TPL_MESS_BTN_SUBSCRIBE"] = "Subskrybuj";
+$MESS["CT_SPGB_TPL_MESS_PRODUCT_NOT_AVAILABLE"] = "Niedostępne";
+$MESS["CT_SPGB_TPL_TEXT_LABEL_GIFT_DEFAULT"] = "Prezent";

@@ -1,0 +1,10 @@
+<?php
+$MESS["ADV_CAMPAIGN_ENTITY_ENGINE_ID_FIELD"] = "Провайдер ID";
+$MESS["ADV_CAMPAIGN_ENTITY_ID_FIELD"] = "ID";
+$MESS["ADV_CAMPAIGN_ENTITY_LAST_UPDATE_FIELD"] = "Соңғы жаңарту күні";
+$MESS["ADV_CAMPAIGN_ENTITY_NAME_FIELD"] = "Атауы";
+$MESS["ADV_CAMPAIGN_ENTITY_OWNER_ID_FIELD"] = "Иесінің ID";
+
+$MESS["ADV_CAMPAIGN_ENTITY_OWNER_NAME_FIELD"] = "Иесінің аты";
+$MESS["ADV_CAMPAIGN_ENTITY_SETTINGS_FIELD"] = "Баптаулар";
+$MESS["ADV_CAMPAIGN_ENTITY_XML_ID_FIELD"] = "Сыртқы ID";

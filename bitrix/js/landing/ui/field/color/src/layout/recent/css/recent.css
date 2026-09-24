@@ -1,0 +1,43 @@
+.landing-ui-field-color-popup-head {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(151,151,151,.29);
+}
+
+.landing-ui-field-color-recent {
+	--tile-size: 37px;
+	--gap: 4px;
+
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(6, minmax(0, var(--tile-size)));
+	gap: var(--gap);
+	width: 100%;
+}
+
+.landing-ui-field-color-recent-item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1 / 1;
+	width: 100%;
+	border-radius: var(--ui-border-radius-xs);
+    user-select: none;
+    cursor: pointer;
+	border: 1px solid var(--ui-color-base-10);
+	box-sizing: border-box;
+}
+
+.landing-ui-field-color-recent-item.active:before {
+	content: '';
+	position: absolute;
+	right: -6px;
+	top: -5px;
+	width: 14px;
+	height: 14px;
+	border-radius: var(--ui-border-radius-circle);
+	background-image: url(../images/landing-badge-success.svg);
+}

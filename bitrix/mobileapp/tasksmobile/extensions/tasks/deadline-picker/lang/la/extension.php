@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_DESCRIPTION"] = "¿Quiere mover la fecha límite para el día laboral más próximo?";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_NO_TODAY"] = "Establecer para hoy de todas maneras";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_NO_TOMORROW"] = "Establecer para mañana de todas maneras";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_TITLE_TODAY"] = "Hoy no es un día laboral";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_TITLE_TOMORROW"] = "Mañana no es un día laboral";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_CONFIRM_YES"] = "Mover al día laboral más próximo";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_DEADLINE_CHANGE_REASON_BUTTON"] = "Guardar";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_DEADLINE_CHANGE_REASON_DESCRIPTION"] = "El propietario de la tarea solicita que proporcione un motivo para cambiar la fecha límite. El texto que envíe aquí será visible en el chat de la tarea.";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_DEADLINE_CHANGE_REASON_TITLE"] = "Motivo del cambio de la fecha límite";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_CUSTOM_DATE"] = "Fecha personalizada";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_NEXT_WEEK_END"] = "A finales de la próxima semana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_NEXT_WEEK_START"] = "A principios de la próxima semana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_NO_DEADLINE"] = "Sin fecha límite";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_THIS_WEEK"] = "Esta semana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_TODAY"] = "Hoy";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_TOMORROW"] = "Mañana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_ITEM_WEEK_END"] = "A finales de esta semana";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_RESTRICTED_BY_DATE"] = "La fecha límite no puede ser posterior al #DATE#.";
+$MESS["TASKSMOBILE_DEADLINE_PICKER_TITLE"] = "Fecha límite";

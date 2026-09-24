@@ -1,0 +1,4 @@
+<?php
+$MESS["M_STAFFTRACK_CLUSTER_EMPLOYEES_EMPTY_SEARCH"] = "Nessuna corrispondenza trovata.";
+$MESS["M_STAFFTRACK_CLUSTER_EMPLOYEES_SEARCH_PLACEHOLDER"] = "Ricerca";
+$MESS["M_STAFFTRACK_CLUSTER_EMPLOYEES_TITLE"] = "Dipendenti in questa posizione";

@@ -1,0 +1,22 @@
+<?php
+$MESS["CRM_LEAD_LIST_BATCH_CONVERSION_AUTOCREATION_DISABLED_MSGVER_1"] = "La conversione di massa richiede che l'opzione \"Crea automaticamente contatti, aziende, affari, fatture e preventivi\" sia attivata nella pagina delle impostazioni del CRM (Impostazioni > Altre impostazioni > Generale > Entità generate automaticamente).";
+$MESS["CRM_LEAD_LIST_BATCH_CONVERSION_CONFIG_IS_NOT_SUPPORTED"] = "Impossibile convertire i lead con le impostazioni selezionate.";
+$MESS["CRM_LEAD_LIST_DELETION_ACCESS_ERROR"] = "L'operazione di eliminazione è stata interrotta a causa di autorizzazioni insufficienti.";
+$MESS["CRM_LEAD_LIST_DELETION_COMPLETED_SUMMARY"] = "I lead sono stati eliminati. Lead elaborati: #PROCESSED_ITEMS#.";
+$MESS["CRM_LEAD_LIST_DELETION_FILTER_NOT_FOUND_ERROR"] = "L'operazione di eliminazione è stata interrotta poiché non sono state trovate preferenze di filtro. Aggiorna la pagina e riprova.";
+$MESS["CRM_LEAD_LIST_DELETION_FILTER_OUTDATED_ERROR"] = "L'operazione di eliminazione è stata interrotta poiché le preferenze di filtro sono obsolete. Aggiorna la pagina e riprova.";
+$MESS["CRM_LEAD_LIST_DELETION_PARAM_ERROR"] = "L'operazione di eliminazione è stata interrotta a causa di parametri non validi.";
+$MESS["CRM_LEAD_LIST_DELETION_PROGRESS_SUMMARY"] = "Lead eliminati: #PROCESSED_ITEMS# di #TOTAL_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_DUPLICATE_INDEX_COMPLETED_SUMMARY"] = "I duplicati dei lead sono stati reindicizzati. Elementi elaborati: #PROCESSED_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_DUPLICATE_INDEX_NOT_REQUIRED_SUMMARY"] = "Non è necessario ricreare l'indice duplicati dei lead.";
+$MESS["CRM_LEAD_LIST_REBUILD_DUPLICATE_INDEX_PROGRESS_SUMMARY"] = "Lead elaborati: #PROCESSED_ITEMS# di #TOTAL_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_SEARCH_CONTENT_COMPLETED_SUMMARY"] = "L'indice di ricerca lead è stato ricreato. Lead elaborati: #PROCESSED_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_SEARCH_CONTENT_NOT_REQUIRED_SUMMARY"] = "Non è necessario ricreare l'indice di ricerca dei lead.";
+$MESS["CRM_LEAD_LIST_REBUILD_SEARCH_CONTENT_PROGRESS_SUMMARY"] = "Lead elaborati: #PROCESSED_ITEMS# di #TOTAL_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_SEMANTICS_COMPLETED_SUMMARY"] = "Aggiornamento dei campi di servizio lead eseguito. Lead elaborati: #PROCESSED_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_SEMANTICS_NOT_REQUIRED_SUMMARY"] = "I campi di servizio lead non richiedono aggiornamento.";
+$MESS["CRM_LEAD_LIST_REBUILD_SEMANTICS_PROGRESS_SUMMARY"] = "Lead elaborati: #PROCESSED_ITEMS# di #TOTAL_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_STATISTICS_COMPLETED_SUMMARY"] = "Elaborazione dati statistici per lead eseguita. Lead elaborati: #PROCESSED_ITEMS#.";
+$MESS["CRM_LEAD_LIST_REBUILD_STATISTICS_NOT_REQUIRED_SUMMARY"] = "I dati statistici per i lead sono aggiornati.";
+$MESS["CRM_LEAD_LIST_REBUILD_STATISTICS_PROGRESS_SUMMARY"] = "Lead elaborati: #PROCESSED_ITEMS# di #TOTAL_ITEMS#.";
+$MESS["CRM_LEAD_LIST_ROW_COUNT"] = "Totale: #ROW_COUNT#";

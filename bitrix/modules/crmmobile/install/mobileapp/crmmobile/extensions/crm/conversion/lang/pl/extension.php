@@ -1,0 +1,6 @@
+<?php
+$MESS["MCRM_CONVERSION_MENU_CATEGORY_TITLE"] = "Wybierz lejek";
+$MESS["MCRM_CONVERSION_MENU_ITEM_CUSTOM"] = "Wybierz z listy";
+$MESS["MCRM_CONVERSION_MENU_SELECTOR_TITLE"] = "Wybierz kontakt i firmę";
+$MESS["MCRM_CONVERSION_MENU_TITLE_DEAL"] = "Utwórz z deala";
+$MESS["MCRM_CONVERSION_MENU_TITLE_LEAD"] = "Utwórz z leada";

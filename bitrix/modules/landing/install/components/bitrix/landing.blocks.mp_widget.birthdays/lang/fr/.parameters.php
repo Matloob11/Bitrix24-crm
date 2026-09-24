@@ -1,0 +1,8 @@
+<?php
+$MESS["LANDING_WIDGET_BIRTHDAYS_BG"] = "Arrière-plan";
+$MESS["LANDING_WIDGET_BIRTHDAYS_DATE"] = "Couleur de la date de naissance";
+$MESS["LANDING_WIDGET_BIRTHDAYS_NAME"] = "Couleur du nom d'utilisateur";
+$MESS["LANDING_WIDGET_BIRTHDAYS_TITLE"] = "Titre";
+$MESS["LANDING_WIDGET_BIRTHDAYS_TITLE_DEFAULT_VALUE"] = "Anniversaires";
+$MESS["LANDING_WIDGET_BIRTHDAYS_USER_BORDER"] = "Couleur de bordure";
+$MESS["LANDING_WIDGET_BIRTHDAYS_WORK_POSITION"] = "Couleur du poste";

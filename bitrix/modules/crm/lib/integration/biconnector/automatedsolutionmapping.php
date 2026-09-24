@@ -1,0 +1,88 @@
+<?php
+
+namespace Bitrix\Crm\Integration\BiConnector;
+//need created at + index
+use Bitrix\Crm\AutomatedSolution\Entity\AutomatedSolutionTable;
+
+class AutomatedSolutionMapping
+{
+	public static function getMapping(string $languageId, ?string $tableName = null): array
+	{
+		$solutions = AutomatedSolutionTable::query()->setSelect(['ID', 'TITLE'])->fetchCollection();
+
+		$result = [];
+		foreach ($solutions as $solution)
+		{
+			if (!empty($tableName) && 'crm_automated_solution_' . $solution->getId() !== $tableName)
+			{
+				continue;
+			}
+
+			$titleReplace = ['#TITLE#' => $solution->getTitle()];
+
+			$result['crm_automated_solution_' . $solution->getId()] = [
+				'TABLE_NAME' => 'b_crm_dynamic_type',
+				'TABLE_DESCRIPTION' => Localization::getMessage('CRM_AUTOMATED_SOLUTION_TABLE', $languageId, $titleReplace) ?? $solution->getTitle(),
+				'TABLE_DESCRIPTION_FULL' => Localization::getMessage('CRM_AUTOMATED_SOLUTION_TABLE_DESCRIPTION_FULL', $languageId, $titleReplace) ?? '',
+				'TABLE_ALIAS' => 'DT',
+				'FILTER' => [
+					'=CUSTOM_SECTION_ID' => $solution->getId(),
+				],
+				'FIELDS' => [
+					//  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+					//  `ENTITY_TYPE_ID` int NOT NULL,
+					'ENTITY_TYPE_ID' => [
+						'IS_METRIC' => 'N', // 'Y'
+						'FIELD_NAME' => 'DT.ENTITY_TYPE_ID',
+						'FIELD_TYPE' => 'int',
+						'FIELD_DESCRIPTION' => Localization::getMessage('CRM_SMART_PROC_FIELD_ENTITY_TYPE_ID', $languageId),
+					],
+					//  `CODE` varchar(255) DEFAULT NULL,
+					//  `NAME` varchar(255) NOT NULL,
+					//  `TITLE` varchar(255) NOT NULL,
+					'TITLE' => [
+						'IS_METRIC' => 'N', // 'Y'
+						'FIELD_NAME' => 'DT.TITLE',
+						'FIELD_TYPE' => 'string',
+						'FIELD_DESCRIPTION' => Localization::getMessage('CRM_SMART_PROC_FIELD_TITLE', $languageId),
+					],
+					//  `TABLE_NAME` varchar(64) NOT NULL,
+					'DATASET_NAME' => [
+						'IS_METRIC' => 'N', // 'Y'
+						'FIELD_NAME' => 'RIGHT(DT.TABLE_NAME, LENGTH(DT.TABLE_NAME) - 2)',
+						'FIELD_TYPE' => 'string',
+						'FIELD_DESCRIPTION' => Localization::getMessage('CRM_SMART_PROC_FIELD_DATASET_NAME', $languageId),
+					],
+					'AUTOMATED_SOLUTION_DATASET_NAME' => [
+						'IS_METRIC' => 'N', // 'Y'
+						'FIELD_NAME' => 'CASE WHEN DT.CUSTOM_SECTION_ID is null THEN \'crm_smart_proc\' ELSE concat_ws(\'\', \'crm_automated_solution_\', DT.CUSTOM_SECTION_ID) END',
+						'FIELD_TYPE' => 'string',
+						'FIELD_DESCRIPTION' => Localization::getMessage('CRM_SMART_PROC_FIELD_AUTOMATED_SOLUTION_DATASET_NAME', $languageId),
+					],
+					'CUSTOM_SECTION_ID' => [
+						'IS_METRIC' => 'N', // 'Y'
+						'FIELD_NAME' => 'DT.CUSTOM_SECTION_ID',
+						'FIELD_TYPE' => 'int',
+						'FIELD_DESCRIPTION' => Localization::getMessage('CRM_SMART_PROC_FIELD_CUSTOM_SECTION_ID', $languageId),
+					],
+					'CUSTOM_SECTION_TITLE' => [
+						'IS_METRIC' => 'N', // 'Y'
+						'FIELD_NAME' => 'CASE WHEN DT.CUSTOM_SECTION_ID is null THEN \'CRM\' ELSE CS.TITLE END',
+						'FIELD_TYPE' => 'string',
+						'TABLE_ALIAS' => 'CS',
+						'LEFT_JOIN' => 'LEFT JOIN b_crm_automated_solution CS ON CS.ID = DT.CUSTOM_SECTION_ID',
+						'FIELD_DESCRIPTION' => Localization::getMessage('CRM_SMART_PROC_FIELD_CUSTOM_SECTION_TITLE', $languageId),
+					],
+					'CREATED_AT' => [
+						'IS_METRIC' => 'N', // 'Y'
+						'FIELD_NAME' => 'DT.CREATED_TIME',
+						'FIELD_TYPE' => 'datetime',
+						'FIELD_DESCRIPTION' => Localization::getMessage('CRM_SMART_PROC_FIELD_CREATED_AT', $languageId),
+					],
+				],
+			];
+		}
+
+		return $result;
+	}
+}

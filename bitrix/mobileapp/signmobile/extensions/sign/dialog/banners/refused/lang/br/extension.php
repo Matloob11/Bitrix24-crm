@@ -1,0 +1,4 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_BUTTON_CLOSE_TITLE"] = "Fechar";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_DESCRIPTION"] = "O documento [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]#DOCUMENT_TITLE#[/COLOR] não está mais disponível para assinatura.";
+$MESS["SIGN_MOBILE_DIALOG_REFUSED_TITLE"] = "Assinatura cancelada";

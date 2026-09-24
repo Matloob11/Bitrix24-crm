@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_FORM_INTEGRATION_JS_FIELD_MAP"] = "Selecione os campos do CRM para salvar os dados enviados";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM"] = "Formulário";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM_CHOOSE"] = "Selecione um formulário cujos dados enviados serão salvos no CRM";
+$MESS["CRM_FORM_INTEGRATION_JS_FORM_EMPTY"] = "Não há formulários disponíveis. Crie um formulário na sua conta %name%.";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_BTN"] = "Conectar";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_DESC"] = "Obtenha os formulários enviados diretamente para o seu CRM.";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGIN_TITLE"] = "Conectar formulário de %providerName%!";
+$MESS["CRM_FORM_INTEGRATION_JS_LOGOUT_BTN"] = "Desconectar";
+$MESS["CRM_FORM_INTEGRATION_JS_NEW_INTEGRATION"] = "Nova integração com %providerName% agora disponível!";
+$MESS["CRM_FORM_INTEGRATION_JS_NEW_INTEGRATION_BTN"] = "Abra a nova versão";
+$MESS["CRM_FORM_INTEGRATION_JS_NOT_SELECTED"] = "Não selecionado";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CHOOSE"] = "Selecione uma página para prosseguir para os formulários";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CONNECT_BTN"] = "Conectar";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_CONNECT_INFO"] = "Conectar grupo para ver formulários";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_DISCONNECT_BTN"] = "Desconectar grupo";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_EMPTY"] = "Não há páginas disponíveis. Crie uma página e um formulário na sua conta %providerName%.";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_FACEBOOK"] = "Página";
+$MESS["CRM_FORM_INTEGRATION_JS_PAGE_VKONTAKTE"] = "Grupo";
+$MESS["CRM_FORM_INTEGRATION_JS_PROVIDER_FACEBOOK"] = "Facebook";

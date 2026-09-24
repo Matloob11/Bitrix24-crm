@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_71_3_NAME"] = "Blocco di testo: un titolo, un sottotitolo e 12 riquadri di testo";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_BADGE"] = "Scheda riquadro";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD"] = "Riquadro";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD_BADGE"] = "Scheda riquadro";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD_TEXT"] = "Testo riquadro";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_CARD_TITLE"] = "Titolo riquadro";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_ELEMENT"] = "Elemento";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_SUBTITLE"] = "Sottotitolo";
+$MESS["LANDING_BLOCK_WIDGET_71_3_NODE_TITLE"] = "Titolo";

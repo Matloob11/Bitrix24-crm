@@ -1,0 +1,32 @@
+declare type UserStoredData = {
+	id: number,
+	avatar: string,
+	bot: boolean,
+	botData: {
+		code?: string,
+		isHidden?: boolean,
+		isSupportOpenline?: boolean,
+		type?: string,
+	},
+	color: string,
+	connector: boolean,
+	departments: Array<string | number>,
+	externalAuthId: string,
+	extranet: boolean,
+	firstName: string,
+	gender: 'M' | 'F',
+	network: boolean,
+	isCompleteInfo: boolean,
+	lastActivityDate: Date,
+	lastName: string,
+	mobileLastDate: Date,
+	name: string,
+	phones: {
+		workPhone: string,
+		personalMobile: string,
+		personalPhone: string,
+		innerPhone: string,
+	},
+	status: string,
+	workPosition: string
+}

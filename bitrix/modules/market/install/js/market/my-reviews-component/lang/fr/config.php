@@ -1,0 +1,20 @@
+<?php
+$MESS["MARKET_DONT_HAVE_REVIEWS"] = "Vous n'avez aucune évaluation.";
+$MESS["MARKET_DONT_HAVE_REVIEWS_FILTER"] = "Aucune évaluation n'a été trouvée.";
+$MESS["MARKET_MY_REVIEWS"] = "Mes avis";
+$MESS["MARKET_NO_REVIEW_APPS"] = "Vous n'avez évalué aucune application.";
+$MESS["MARKET_NO_REVIEW_APPS_FILTER"] = "Aucune de vos évaluations ne correspond aux filtres spécifiés.";
+$MESS["MARKET_REVIEWS_DEVELOPER"] = "Développeur";
+$MESS["MARKET_REVIEWS_MENU_ITEM_EDITING"] = "Modifier l'évaluation";
+$MESS["MARKET_REVIEW_ANSWER"] = "Réponse du développeur";
+$MESS["MARKET_REVIEW_EDITING_CANCEL"] = "Annuler";
+$MESS["MARKET_REVIEW_EDITING_RE_MODERATION_TITLE"] = "Votre évaluation mise à jour sera soumise pour modération.";
+$MESS["MARKET_REVIEW_EDITING_SAVE"] = "Enregistrer";
+$MESS["MARKET_REVIEW_EDITING_TITLE"] = "Modifier l'évaluation";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_ERROR"] = "Erreur lors de la mise à jour de l'évaluation.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_NOT_ALLOWED"] = "Impossible de modifier l'évaluation.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_SUCCESS"] = "Votre évaluation a été mise à jour avec succès.";
+$MESS["MARKET_REVIEW_EDIT_REVIEW_TEXT_ERROR"] = "Le texte de l'évaluation est requis.";
+$MESS["MARKET_REVIEW_NO_PUBLISHED"] = "Non publié";
+$MESS["MARKET_REVIEW_PUBLISHED"] = "Publié";
+$MESS["MARKET_REVIEW_SENT_TO_DEVELOPER"] = "Envoyé au développeur";

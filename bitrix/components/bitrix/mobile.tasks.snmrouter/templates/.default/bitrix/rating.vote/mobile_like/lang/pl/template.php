@@ -1,0 +1,3 @@
+<?php
+$MESS["RATING_COMMENT_LIKE"] = "Lubię";
+$MESS["RATING_COMMENT_LIST_BACK"] = "Wstecz";

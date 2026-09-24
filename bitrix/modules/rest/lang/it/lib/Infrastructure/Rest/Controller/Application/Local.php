@@ -1,0 +1,3 @@
+<?php
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_LOCAL_INSTALLACTION_TITLE"] = "Installa un'applicazione condivisa locale";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_LOCAL_UNINSTALLACTION_TITLE"] = "Disinstalla un'applicazione condivisa locale esistente";

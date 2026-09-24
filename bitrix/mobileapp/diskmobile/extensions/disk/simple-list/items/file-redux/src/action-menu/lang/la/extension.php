@@ -1,0 +1,19 @@
+<?php
+$MESS["M_DISK_FILE_ACTIONS_COPY"] = "Copiar";
+$MESS["M_DISK_FILE_ACTIONS_DOWNLOAD"] = "Descargar";
+$MESS["M_DISK_FILE_ACTIONS_DOWNLOAD_ERROR_DESCRIPTION"] = "No se pudo descargar el archivo.";
+$MESS["M_DISK_FILE_ACTIONS_DOWNLOAD_ERROR_TITLE"] = "Error";
+$MESS["M_DISK_FILE_ACTIONS_MOVE"] = "Mover";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE"] = "Eliminar";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_CONFIRM_ACCEPT"] = "Eliminar";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FILE_CONFIRM_DESCRIPTION"] = "El archivo se mantendrá en la papelera de reciclaje durante 30 días.";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FILE_CONFIRM_TITLE"] = "¿Desea eliminar este archivo?";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FOLDER_CONFIRM_DESCRIPTION"] = "La carpeta se mantendrá en la papelera de reciclaje durante 30 días.";
+$MESS["M_DISK_FILE_ACTIONS_REMOVE_FOLDER_CONFIRM_TITLE"] = "¿Desea eliminar esta carpeta?";
+$MESS["M_DISK_FILE_ACTIONS_RENAME"] = "Renombrar";
+$MESS["M_DISK_FILE_ACTIONS_SEND_TO_CHAT"] = "Enviar al chat";
+$MESS["M_DISK_FILE_ACTIONS_SHARE"] = "Compartir";
+$MESS["M_DISK_FILE_ACTIONS_SHARE_ERROR_DESCRIPTION"] = "No se pudo compartir el archivo.";
+$MESS["M_DISK_FILE_ACTIONS_SHARE_ERROR_TITLE"] = "Algo salió mal";
+$MESS["M_DISK_FILE_ACTIONS_SHARE_LINK"] = "Enlace publico";
+$MESS["M_DISK_FILE_ACTIONS_SHOW_IN_FOLDER"] = "Abrir la carpeta contenedora";

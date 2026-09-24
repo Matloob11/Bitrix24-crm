@@ -1,0 +1,3 @@
+<?php
+$MESS["VOTE_ATTACHED_RESULT_COMPONENT_TITLE"] = "Wyniki ankiety";
+$MESS["VOTE_ATTACHED_RESULT_EXPORT"] = "Pobierz wyniki";

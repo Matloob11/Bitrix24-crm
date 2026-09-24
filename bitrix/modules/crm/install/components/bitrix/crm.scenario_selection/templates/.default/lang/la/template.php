@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_SCENARIO_SELECTION_ACTIVE_ORDERS"] = "Pedidos activos: #ORDER_COUNT#";
+$MESS["CRM_SCENARIO_SELECTION_CONVERT_ACTIVE_ORDERS"] = "Convierta los pedidos activos en negociaciones al cambiar el modo";
+$MESS["CRM_SCENARIO_SELECTION_DEALS"] = "Negociaciones";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION"] = "La mejor opción para las ventas personales";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_1"] = "Cualquier solicitud (de llamadas, chats, formularios del CRM, pedidos de la tienda online, etc.) se agregará a las negociaciones del CRM";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_2"] = "La comunicación con el cliente, el estado del pago y las etapas de la entrega se verán en el timeline de la negociación.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_3"] = "Los representantes de ventas se comunican con cada cliente personalmente";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_ONLY_WARNING"] = "El procesamiento de pedidos no estará disponible si elige manejar solamente negociaciones.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS"] = "Negociaciones y pedidos";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION"] = "Ideal para el procesamiento automatizado de pedidos";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_1"] = "Los pedidos de la tienda online solo se guardan en los pedidos del CRM, no se agregan a las negociaciones";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_2"] = "Las negociaciones se crean como entidades independientes (por ejemplo, para proporcionar servicios adicionales)";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_3"] = "Algunos de los representantes de ventas manejan las negociaciones, mientras que otros procesan los pedidos de la tienda online.";
+$MESS["CRM_SCENARIO_SELECTION_SAVE_ERROR"] = "Error al cambiar el modo";
+$MESS["CRM_SCENARIO_SELECTION_SELECT"] = "Seleccionar";
+$MESS["CRM_SCENARIO_SELECTION_SELECTED"] = "Seleccionado";
+$MESS["CRM_SCENARIO_SELECTION_TITLE"] = "Modo de manejo de los pedidos";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_CANCEL_BUTTON"] = "Cambiar al modo de negociaciones";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_OK_BUTTON"] = "Permanecer en el modo de Negociaciones y pedidos";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_1"] = "Los pedidos de su tienda online se convertirán en negociaciones en las que usted puede aceptar pagos, crear envíos y reservar existencias en los almacenes. No habrá ningún área independiente para \"Pedidos\".";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_2"] = "Tenga en cuenta que no podrá volver al modo Negociaciones y pedidos porque ya no es compatible.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_1"] = "Leer más";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_2"] = "Familiarícese con estos dos modos antes de comprometerse a usar cualquiera de ellos.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TITLE"] = "Está a punto de cambiar al modo de negociaciones";

@@ -1,0 +1,32 @@
+<?php
+
+return [
+	'extensions' => [
+		'alert',
+		'apptheme',
+		'collab/service/access',
+		'feature-flag',
+		'layout/socialnetwork/project/edit',
+		'layout/socialnetwork/project/fields/*',
+		'layout/socialnetwork/project/fields/tags',
+		'layout/socialnetwork/project-v2/create',
+		'layout/ui/buttons/cancel',
+		'layout/ui/buttons/primary',
+		'layout/ui/buttons/success',
+		'layout/ui/buttons-toolbar',
+		'layout/ui/context-menu',
+		'layout/ui/loading-screen',
+		'loc',
+		'notify',
+		'project/member-list',
+		'project/member.list',
+		'project/opener',
+		'qrauth',
+		'require-lazy',
+		'rest',
+		'tariff-plan-restriction',
+		'tokens',
+		'ui-system/blocks/icon',
+		'utils/url',
+	],
+];

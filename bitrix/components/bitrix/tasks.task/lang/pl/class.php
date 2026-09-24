@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_ACTION_RESULT_REQUIRED"] = "Twórca zadania wymaga dostarczenia raportu z zadania.<br> Zostaw komentarz do zadania i oznacz go jako podsumowanie statusu zadania.";
+$MESS["TASKS_TASK_FLOW_DEADLINE_LABEL"] = "Automatycznie ustawiany";
+$MESS["TASKS_TASK_FLOW_SECRET_PROJECT_LABEL"] = "Ukryty projekt";
+$MESS["TASKS_TASK_TAG_ACCESS_DENIED"] = "Niewystarczające uprawnienia.";
+$MESS["TASKS_TASK_TAG_ALREADY_EXISTS"] = "Taki tag już istnieje.";
+$MESS["TASKS_TASK_TAG_UNKNOWN_ERROR"] = "Nie można dodać tagu. Spróbuj ponownie.";
+$MESS["TASKS_TEMPLATE_CREATE_FORBIDDEN"] = "Nie można utworzyć szablonu ze względu na odmowę dostępu";
+$MESS["TASKS_TT_AUTO_CHANGE_ASSIGNEE"] = "Zmieniono odpowiedzialnego za to zadanie.";
+$MESS["TASKS_TT_AUTO_CHANGE_GROUP"] = "Zadanie zostało dołączone do bieżącego projektu";
+$MESS["TASKS_TT_AUTO_CHANGE_ORIGINATOR"] = "Twórca zadania został automatycznie zmieniony na bieżącego użytkownika";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT"] = "Zadanie zostało dołączone do zadania nadrzędnego";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT_GROUP"] = "Zadanie zostało dołączone do projektu zadania nadrzędnego";
+$MESS["TASKS_TT_COPY_READ_ERROR"] = "Błąd odczytu obiektu do skopiowania";
+$MESS["TASKS_TT_FORUM_MODULE_NOT_INSTALLED"] = "Moduł Forum nie jest zainstalowany.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE"] = "Nie znaleziono zadania lub odmowa dostępu.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE_COPY"] = "Nie znaleziono zadania do skopiowania lub odmowa dostępu.";
+$MESS["TASKS_TT_SAVE_AS_TEMPLATE_ERROR_MESSAGE_PREFIX"] = "Nie utworzono szablonu";
+$MESS["TASKS_TT_SOCIALNETWORK_MODULE_NOT_INSTALLED"] = "Moduł Sieci Społecznościowe nie jest zainstalowany.";
+$MESS["TASKS_TT_TASKS_MODULE_NOT_INSTALLED"] = "Moduł Zadania nie jest zainstalowany.";

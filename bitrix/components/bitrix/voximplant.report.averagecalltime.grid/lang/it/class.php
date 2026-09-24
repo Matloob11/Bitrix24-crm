@@ -1,0 +1,4 @@
+<?php
+$MESS["TELEPHONY_REPORT_AVG_CALL_TIME"] = "Durata chiamate media";
+$MESS["TELEPHONY_REPORT_AVG_CALL_TIME_DYNAMICS"] = "Statistiche chiamata";
+$MESS["TELEPHONY_REPORT_AVG_CALL_TIME_EMPLOYEE"] = "Dipendente";

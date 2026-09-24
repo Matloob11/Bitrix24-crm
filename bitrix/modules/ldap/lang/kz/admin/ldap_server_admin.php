@@ -1,0 +1,24 @@
+<?php
+$MESS["LDAP_ADMIN_ACT"] = "Бел.";
+$MESS["LDAP_ADMIN_ACTIONS"] = "Әрекеттер";
+$MESS["LDAP_ADMIN_CHANGE"] = "Сервер параметрлерін өзгерту";
+$MESS["LDAP_ADMIN_CHANGE_LINK"] = "Өзгерту";
+$MESS["LDAP_ADMIN_CODE"] = "Симв.код";
+$MESS["LDAP_ADMIN_DEL_ALT"] = "Серверді жою";
+$MESS["LDAP_ADMIN_DEL_CONF"] = "Сервер жойылады және сол арқылы тіркелген барлық пайдаланушылар авторлана алмайды. Жою керек пе?";
+$MESS["LDAP_ADMIN_DEL_ERR"] = "Серверді жою қатесі.";
+$MESS["LDAP_ADMIN_DEL_LINK"] = "Жою";
+$MESS["LDAP_ADMIN_EMPTY"] = "Тізім бос";
+$MESS["LDAP_ADMIN_F_ACT"] = "Белсенді";
+$MESS["LDAP_ADMIN_F_ACT_ANY"] = "(кез келген)";
+$MESS["LDAP_ADMIN_F_NAME"] = "Атауы";
+$MESS["LDAP_ADMIN_NAME"] = "Атауы";
+$MESS["LDAP_ADMIN_NAVSTRING"] = "Серверлер";
+$MESS["LDAP_ADMIN_SERV"] = "Сервер";
+$MESS["LDAP_ADMIN_SYNC"] = "Синхрондау";
+$MESS["LDAP_ADMIN_SYNC_LAST"] = "Соңғы синхрондау";
+$MESS["LDAP_ADMIN_SYNC_PERIOD"] = "Синхрондау кезеңі";
+$MESS["LDAP_ADMIN_TITLE"] = "Active Directory / LDAP серверлер";
+$MESS["LDAP_ADMIN_TOTAL"] = "Барлығы:";
+$MESS["LDAP_ADMIN_TSTAMP"] = "Өзгерту күні";
+$MESS["SAVE_ERROR"] = "# жазбасын өзгерту кезінде қате";

@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_B24_AGREEMENT_NOTIFY"] = "Vous devez accepter les Conditions pour envoyer une invitation via Bitrix24";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_EMAIL"] = "#CHANNEL# à partir de l'adresse #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CHANNEL_FROM_PHONE"] = "#CHANNEL# à partir du numéro #SENDER#";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_CONNECT"] = "Connecter";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_COPY_LINK"] = "Copier le lien";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_1"] = "Le client choisira le créneau horaire qu'il préfère";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_DESC_2"] = "La réunion sera ajoutée à vos activités";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_HOW_IT_WORKS"] = "Modifier les créneaux horaires";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_LINK_COPIED"] = "Lien copié";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_DESC"] = "Connectez un service SMS pour partager des liens vers vos créneaux horaires avec vos clients";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CHANNEL_SMS_WARNING_TITLE"] = "Le service SMS n'est pas connecté";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC"] = "Spécifiez dans la transaction le numéro de téléphone du client pour lui envoyer un lien vers les créneaux horaires disponibles";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_DESC_V2"] = "Fournissez le numéro de téléphone ou l'adresse e-mail du client à qui envoyer le lien.";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_NO_CONTACT_WARNING_TITLE"] = "Ajouter des contacts clients";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_OK"] = "OK";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_RECEIVER"] = "À";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SENDER"] = "Canal de communication";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SEND_LINK"] = "Partager le lien";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_SETTINGS"] = "Lier les paramètres de partage";
+$MESS["M_CRM_TIMELINE_SCHEDULER_SHARING_TITLE_TEXT"] = "Envoyer un lien au client pour programmer la réunion";

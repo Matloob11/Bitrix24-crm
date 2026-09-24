@@ -1,0 +1,8 @@
+<?php
+$MESS["CRM_TIMELINE_CONVERSION_TITLE"] = "Utworzone z innej pozycji";
+$MESS["CRM_TIMELINE_CONVERSION_TITLE_COMPANY"] = "Utworzone z firmy";
+$MESS["CRM_TIMELINE_CONVERSION_TITLE_CONTACT"] = "Utworzone z kontaktu";
+$MESS["CRM_TIMELINE_CONVERSION_TITLE_DEAL"] = "Utworzone z deala";
+$MESS["CRM_TIMELINE_CONVERSION_TITLE_INVOICE"] = "Utworzone z rachunku";
+$MESS["CRM_TIMELINE_CONVERSION_TITLE_LEAD"] = "Utworzone z leada";
+$MESS["CRM_TIMELINE_CONVERSION_TITLE_QUOTE_MSGVER_1"] = "Utworzone z oferty";

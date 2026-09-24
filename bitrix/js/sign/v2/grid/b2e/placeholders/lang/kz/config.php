@@ -1,0 +1,20 @@
+<?php
+$MESS["PLACEHOLDER_CREATE_LIST_DYNAMIC_MEMBER_ITEM"] = "Басқа деректер";
+$MESS["PLACEHOLDER_CREATE_LIST_HINT"] = "Мұнда сіз тек Битрикс24-ке өрістер жасай аласыз. 1С-дан деректері бар өрістер жасау үшін 1С-ға өтіңіз";
+$MESS["PLACEHOLDER_CREATE_LIST_PROFILE_ITEM"] = "Жеке деректер";
+$MESS["PLACEHOLDER_CREATE_LIST_TITLE"] = "Кодтары бар өрістер тізімі";
+$MESS["PLACEHOLDER_LIST_ADD_FIELD"] = "Жасау";
+$MESS["PLACEHOLDER_LIST_COMPANY_SELECTOR"] = "Компания";
+$MESS["PLACEHOLDER_LIST_COPIED_LABEL"] = "Көшірілді";
+$MESS["PLACEHOLDER_LIST_FIELDS_TITLE"] = "Кодтар тізімі";
+$MESS["PLACEHOLDER_LIST_FIELDS_TITLE_MSGVER_1"] = "Кодтары бар өрістер тізімі";
+$MESS["PLACEHOLDER_LIST_HCMLINK_COMPANY_SELECTOR"] = "Интеграция";
+$MESS["PLACEHOLDER_LIST_HELPDESK"] = "Символдық кодын көшіру үшін қажетті өрісті басыңыз. [helpdesklink]Толығырақ[/helpdesklink]";
+$MESS["PLACEHOLDER_LIST_NOTHING_CONFIGURED_DESCRIPTION"] = "Компания мен интеграцияны таңдаңыз";
+$MESS["PLACEHOLDER_LIST_NOTHING_CONFIGURED_TITLE"] = "Параметрлерді баптаңыз";
+$MESS["PLACEHOLDER_LIST_NOTHING_FOUND_DESCRIPTION"] = "Сұрауды өзгертуге тырысыңыз";
+$MESS["PLACEHOLDER_LIST_NOTHING_FOUND_TITLE"] = "Ештеңе табылған жоқ";
+$MESS["PLACEHOLDER_LIST_SEARCH_PLACEHOLDER"] = "Іздеу";
+$MESS["PLACEHOLDER_LIST_SEARCH_PLACEHOLDER_MSGVER_1"] = "Аты немесе коды бойынша табу";
+$MESS["PLACEHOLDER_LIST_TAB_1C"] = "1С-дан өрістер";
+$MESS["PLACEHOLDER_LIST_TAB_BITRIX24"] = "Битрикс24-тен өрістер";

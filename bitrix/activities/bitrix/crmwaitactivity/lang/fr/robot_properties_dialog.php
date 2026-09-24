@@ -1,0 +1,18 @@
+<?php
+$MESS["CRM_WAIT_ACTIVITY_AFTER_CUSTOM_DAYS"] = "Attendre un nombre spécifié de jours";
+$MESS["CRM_WAIT_ACTIVITY_BEFORE_CUSTOM_DATE"] = "Attendre un nombre spécifié de jours jusqu'au jour sélectionné";
+$MESS["CRM_WAIT_ACTIVITY_CONFIG_CHOOSE"] = "Sélectionner";
+$MESS["CRM_WAIT_ACTIVITY_CONFIG_PREFIX_TYPE_AFTER"] = "Terminer en";
+$MESS["CRM_WAIT_ACTIVITY_CONFIG_PREFIX_TYPE_BEFORE"] = "Terminer en";
+$MESS["CRM_WAIT_ACTIVITY_CUSTOM"] = "Personnalisé";
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_0"] = "jour";
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_1"] = "jours";
+$MESS["CRM_WAIT_ACTIVITY_DAY_PLURAL_2"] = "jours";
+$MESS["CRM_WAIT_ACTIVITY_DESCRIPTION_TYPE_AFTER"] = "Attendre #DURATION# ou une saisie du client";
+$MESS["CRM_WAIT_ACTIVITY_DESCRIPTION_TYPE_BEFORE"] = "Attendre #DURATION# jusqu'à \"#TARGET_DATE#\" ou une saisie du client";
+$MESS["CRM_WAIT_ACTIVITY_RPD_OR"] = "ou";
+$MESS["CRM_WAIT_ACTIVITY_RPD_OR_CLIENT_ACTIVITY"] = "une saisie du client";
+$MESS["CRM_WAIT_ACTIVITY_TARGET_PREFIX_TYPE_BEFORE"] = "avant";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_0"] = "semaine";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_1"] = "semaines";
+$MESS["CRM_WAIT_ACTIVITY_WEEK_PLURAL_2"] = "semaines";

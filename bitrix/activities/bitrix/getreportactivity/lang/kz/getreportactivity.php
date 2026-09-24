@@ -1,0 +1,5 @@
+<?php
+$MESS["TIMEMAN_GET_REPORT_NAME"] = "Get workday report";
+$MESS["TIMEMAN_GET_REPORT_PROP_REPORT_TYPE_AI"] = "AI-есеп";
+$MESS["TIMEMAN_GET_REPORT_PROP_REPORT_TYPE_RECORD"] = "Қызметкердің пікірі";
+$MESS["TIMEMAN_GET_REPORT_PROP_REPORT_TYPE_ROBOT"] = "Автоматты есеп";

@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_SEGMENT_ITEM_AI_APPROVE"] = "Klienci, którzy rok temu dokonali zakupu świątecznego. Obejmuje to wszystkie święta państwowe oraz inne daty z profilu klienta (urodziny, rocznica ślubu itp.). Aby zwiększyć prawdopodobieństwo udanego deala, przypomnij klientowi o zbliżającym się wydarzeniu.";
+$MESS["CRM_SEGMENT_ITEM_AI_SCREENING"] = "Klienci, którzy rok temu dokonali zakupu świątecznego. Obejmuje to wszystkie święta państwowe oraz inne daty z profilu klienta (urodziny, rocznica ślubu itp.). Aby zwiększyć prawdopodobieństwo udanego deala, przypomnij klientowi o zbliżającym się wydarzeniu.";
+$MESS["CRM_SEGMENT_ITEM_REMAINING"] = "Ten skrypt utworzy powtarzalne deale, jeśli nastąpiła pomyślna sprzedaż dla tego klienta, bez względu na jakiekolwiek inne warunki. Jedynym ograniczeniem jest brak deali w toku z tym klientem.";
+$MESS["CRM_SEGMENT_ITEM_SYSTEM_DEAL_EVERY_HALF_YEAR"] = "Skrypt dotyczy klientów, którzy dokonują zakupu co sześć miesięcy. System definiuje ich na podstawie udanych dealów w ciągu tego samego okresu w ostatnich latach.";
+$MESS["CRM_SEGMENT_ITEM_SYSTEM_DEAL_EVERY_MONTH"] = "Skrypt dotyczy klientów, którzy dokonują zakupu mniej więcej raz w miesiącu. System definiuje ich na podstawie udanych dealów w ciągu ostatnich 3 miesięcy, z wyłączeniem bieżącego.";
+$MESS["CRM_SEGMENT_ITEM_SYSTEM_DEAL_EVERY_YEAR"] = "Skrypt dotyczy klientów, którzy dokonują zakupu mniej więcej raz w roku. System definiuje ich na podstawie udanych dealów w ciągu ostatnich dwóch lat.";
+$MESS["CRM_SEGMENT_ITEM_SYSTEM_DEAL_LOST_MORE_12_MONTH"] = "Skrypt dotyczy klientów, którzy mają na koncie co najmniej dwa udane lub nieudane deale od momentu rozpoczęcia zakupów. Z tymi klientami nie ma żadnych aktywnych dealów.";
+$MESS["CRM_SEGMENT_ITEM_SYSTEM_LAST_ACTIVITY_LESS_12_MONTH"] = "Skrypt dotyczy klientów, którzy wyświetlali produkty lub usługi w ciągu ostatnich 12 miesięcy, ale nie zdecydowali się na zakup.";

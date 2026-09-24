@@ -1,0 +1,8 @@
+<?php
+$MESS["CRM_TODO_ENTITY_ACTIVITY_ALREADY_COMPLETED"] = "Impossibile modificare l'attività completata.";
+$MESS["CRM_TODO_ENTITY_ACTIVITY_DEFAULT_SUBJECT"] = "Contatta cliente";
+$MESS["CRM_TODO_ENTITY_ACTIVITY_DESCRIPTION_CONTACT_CLIENT"] = "Contatta il cliente";
+$MESS["CRM_TODO_ENTITY_ACTIVITY_DESCRIPTION_CONTACT_CLIENT_IN_DEAL"] = "Contatta il cliente";
+$MESS["CRM_TODO_ENTITY_ACTIVITY_FILES_TITLE"] = "File:";
+$MESS["CRM_TODO_ENTITY_ACTIVITY_PARENT_ACTIVITY_RESTRICT"] = "Impossibile pianificare un'attività figlia per un'attività completata.";
+$MESS["CRM_TODO_ENTITY_ACTIVITY_UPLOAD_FILE_BUTTON_HINT"] = "Aggiungi file";

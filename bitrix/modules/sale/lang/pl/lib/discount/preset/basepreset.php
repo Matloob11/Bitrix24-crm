@@ -1,0 +1,3 @@
+<?php
+$MESS["SALE_BASE_PRESET_CALENDAR_PERIOD_EMPTY"] = "Nieograniczone";
+$MESS["SALE_HANDLERS_DISCOUNTPRESET_ERROR_EMPTY_VALUE_MSGVER_1"] = "Nie określono wartości rabatu.";

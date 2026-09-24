@@ -1,0 +1,16 @@
+<?php
+$MESS["MENU_BITRIX24_SECTION_CHANGE_PORTAL"] = "Cambia account";
+$MESS["MENU_BITRIX24_SECTION_EXIT"] = "Disconnetti";
+$MESS["MENU_BITRIX24_SECTION_TITLE"] = "Il tuo Bitrix24";
+$MESS["MENU_SEARCH_EMPTY_SEARCH_TEXT"] = "Nessuna voce trovata";
+$MESS["MENU_SETTINGS_PANEL_TITLE"] = "Impostazioni";
+$MESS["MENU_SETTINGS_SECTION_BOTTOM_MENU"] = "Menu in basso";
+$MESS["MENU_SETTINGS_SECTION_GO_TO_WEB"] = "Apri versione web";
+$MESS["MENU_SETTINGS_SECTION_GO_TO_WEB_COMPONENT_HINT_TEXT"] = "La versione web include altre funzionalità. Usa il codice QR per accedere al tuo account Bitrix24 dal computer.";
+$MESS["MENU_SETTINGS_SECTION_GO_TO_WEB_COMPONENT_TITLE"] = "Apri versione web";
+$MESS["MENU_SETTINGS_SECTION_NOTIFICATIONS"] = "Notifiche";
+$MESS["MENU_SETTINGS_SECTION_SECURITY"] = "Sicurezza";
+$MESS["MENU_SETTINGS_SECTION_SETTINGS"] = "Generale";
+$MESS["MENU_SETTINGS_SECTION_SETTINGS_MSGVER_1"] = "Generali";
+$MESS["MENU_SETTINGS_SECTION_TITLE"] = "Impostazioni";
+$MESS["MENU_TOOLS_PANEL_TITLE"] = "Strumenti";

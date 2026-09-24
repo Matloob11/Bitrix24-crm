@@ -1,0 +1,10 @@
+<?php
+$MESS["LNDBLCK_STOREMENUV3_2_ITEM"] = "Pozycja menu";
+$MESS["LNDBLCK_STOREMENUV3_2_ITEMS_BOTTOM_MSGVER_1"] = "Dolne menu mobilne";
+$MESS["LNDBLCK_STOREMENUV3_2_ITEMS_TOP_MSGVER_1"] = "Górne menu mobilne";
+$MESS["LNDBLCK_STOREMENUV3_2_LINK"] = "Link";
+$MESS["LNDBLCK_STOREMENUV3_2_LINK_TEXT_2"] = "Tekst";
+$MESS["LNDBLCK_STOREMENUV3_2_NAME_2"] = "Menu dla szablonu CRM + Sklepu internetowego z nagłówkiem mobilnym";
+$MESS["LNDBLCK_STOREMENUV3_2_NAVBAR"] = "Menu";
+$MESS["LNDBLCK_STOREMENUV3_2_PHONE"] = "Telefon";
+$MESS["LNDBLCK_STOREMENUV3_2_TITLE"] = "Tytuł";

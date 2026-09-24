@@ -1,0 +1,25 @@
+<?php
+$MESS["MAIN_ALL"] = "(Tudo)";
+$MESS["MAIN_EVENTLOG_AUDIT_TYPE_ID"] = "Evento";
+$MESS["MAIN_EVENTLOG_DESCRIPTION"] = "Descrição";
+$MESS["MAIN_EVENTLOG_FORUM_MESSAGE"] = "Mensagem";
+$MESS["MAIN_EVENTLOG_FORUM_TOPIC"] = "Tópico";
+$MESS["MAIN_EVENTLOG_GUEST_ID"] = "Convidado";
+$MESS["MAIN_EVENTLOG_IBLOCK"] = "Bloco de informação";
+$MESS["MAIN_EVENTLOG_IBLOCK_DELETE"] = "Excluído";
+$MESS["MAIN_EVENTLOG_ID"] = "ID";
+$MESS["MAIN_EVENTLOG_ITEM_ID"] = "Objecto";
+$MESS["MAIN_EVENTLOG_LIST_PAGE"] = "Registros";
+$MESS["MAIN_EVENTLOG_MODULE_ID"] = "Fonte";
+$MESS["MAIN_EVENTLOG_PAGE_TITLE"] = "Registro de evento";
+$MESS["MAIN_EVENTLOG_REMOTE_ADDR"] = "IP";
+$MESS["MAIN_EVENTLOG_REQUEST_URI"] = "URL";
+$MESS["MAIN_EVENTLOG_SEARCH"] = "Procurar";
+$MESS["MAIN_EVENTLOG_SEVERITY"] = "Gravidade";
+$MESS["MAIN_EVENTLOG_SITE_ID"] = "site";
+$MESS["MAIN_EVENTLOG_STOP_LIST"] = "parar lista";
+$MESS["MAIN_EVENTLOG_TIMESTAMP_X"] = "Tempo";
+$MESS["MAIN_EVENTLOG_USER_AGENT"] = "Agente do usuário";
+$MESS["MAIN_EVENTLOG_USER_ID"] = "Usuário";
+$MESS["MAIN_EVENTLOG_WRONG_TIMESTAMP_X_FROM"] = "Digite o registro correto de data de início no filtro.";
+$MESS["MAIN_EVENTLOG_WRONG_TIMESTAMP_X_TO"] = "Digite o registro correto de data de término no filtro.";

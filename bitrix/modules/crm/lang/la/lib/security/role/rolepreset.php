@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_ROLE_ADMIN"] = "Administrador";
+$MESS["CRM_ROLE_DEPUTY"] = "Supervisor suplente";
+$MESS["CRM_ROLE_HEAD"] = "Supervisor";
+$MESS["CRM_ROLE_MANAGER"] = "Empleado";
+$MESS["CRM_ROLE_OBSERVER"] = "Observador";

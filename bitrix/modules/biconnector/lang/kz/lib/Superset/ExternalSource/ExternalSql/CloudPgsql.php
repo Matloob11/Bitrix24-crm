@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_CLOUD_PGSQL_DESCRIPTION"] = "PostgreSQL сыртқы қорын қосу үшін қосымшаны орнатыңыз";
+$MESS["BICONNECTOR_EXTERNAL_SOURCE_CLOUD_PGSQL_TITLE"] = "PostgreSQL";

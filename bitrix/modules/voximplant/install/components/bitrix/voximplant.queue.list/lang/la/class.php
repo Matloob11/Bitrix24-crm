@@ -1,0 +1,11 @@
+<?php
+$MESS["VOX_QUEUE_LIST_CREATE_GROUP"] = "Crear cola";
+$MESS["VOX_QUEUE_LIST_DELETE"] = "Eliminar";
+$MESS["VOX_QUEUE_LIST_EDIT"] = "Editar";
+$MESS["VOX_QUEUE_LIST_ID"] = "ID";
+$MESS["VOX_QUEUE_LIST_NAME"] = "Nombre";
+$MESS["VOX_QUEUE_LIST_PHONE_NUMBER"] = "Número de extensión";
+$MESS["VOX_QUEUE_LIST_TYPE"] = "Tipo";
+$MESS["VOX_QUEUE_LIST_TYPE_ALL"] = "A todos";
+$MESS["VOX_QUEUE_LIST_TYPE_EVENLY"] = "Igualmente";
+$MESS["VOX_QUEUE_LIST_TYPE_STRICTLY"] = "A todos";

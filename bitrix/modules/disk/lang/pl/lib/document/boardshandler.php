@@ -1,0 +1,3 @@
+<?php
+$MESS["DISK_BOARDS_HANDLER_NAME"] = "Tablice";
+$MESS["DISK_BOARDS_VIEWER_HANDLER_ERROR_METHOD_IS_NOT_SUPPORTED"] = "Działanie nieobsługiwane.";

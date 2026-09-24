@@ -1,0 +1,23 @@
+<?php
+$MESS["SONET_ERROR_SAME_GROUP_NAME_EXISTS"] = "Esiste già un gruppo di lavoro con questo nome.";
+$MESS["SONET_GB_EMPTY_DATE_ACTIVITY"] = "La data dell'ultima visita non è corretta.";
+$MESS["SONET_GB_EMPTY_DATE_CREATE"] = "La data di creazione non è corretta.";
+$MESS["SONET_GB_EMPTY_DATE_UPDATE"] = "La data di aggiornamento non è corretta.";
+$MESS["SONET_GB_EMPTY_NAME"] = "Il titolo non è specificato.";
+$MESS["SONET_GB_EMPTY_OWNER_ID"] = "Il proprietario non è specificato.";
+$MESS["SONET_GB_EMPTY_SUBJECT_ID"] = "Il topic non è specificato.";
+$MESS["SONET_GB_ERROR_NO_OWNER_ID"] = "L'ID proprietario non è corretto.";
+$MESS["SONET_GB_ERROR_NO_SUBJECT_ID"] = "Il topic non è corretto.";
+$MESS["SONET_GG_EMPTY_SITE_ID"] = "Il sito non è specificato.";
+$MESS["SONET_GG_ERROR_NO_SITE"] = "Il sito non è corretto.";
+$MESS["SONET_GP_ERROR_IMAGE_ID"] = "L'immagine non è valida.";
+$MESS["SONET_NO_GROUP"] = "Il record non è stato trovato.";
+$MESS["SONET_UG_EMPTY_INITIATE_PERMS"] = "L'autorizzazione di invito non è specificata.";
+$MESS["SONET_UG_EMPTY_SPAM_PERMS"] = "Le autorizzazioni per l'invio di messaggi al gruppo non sono impostate";
+$MESS["SONET_UG_ERROR_NO_INITIATE_PERMS"] = "L'autorizzazione di invito non è corretta.";
+$MESS["SONET_UG_ERROR_NO_SPAM_PERMS"] = "Le autorizzazioni per l'invio di messaggi al gruppo non sono corrette";
+$MESS["SONET_UR_EMPTY_FIELDS"] = "I parametri di gruppo non sono specificati.";
+$MESS["SONET_UR_EMPTY_OWNERID"] = "L'ID proprietario del gruppo non è specificato.";
+$MESS["SONET_UR_ERROR_CREATE_GROUP"] = "Errore durante la creazione di un gruppo.";
+$MESS["SONET_UR_ERROR_CREATE_U_GROUP"] = "Errore durante l'aggiunta di un utente a un gruppo.";
+$MESS["SONET_WRONG_PARAMETER_ID"] = "Un ID non corretto è stato trasmesso alla funzione.";

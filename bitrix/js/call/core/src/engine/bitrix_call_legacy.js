@@ -1,0 +1,3014 @@
+import {Type} from 'main.core';
+
+import {AbstractCall} from './abstract_call';
+import { EndpointDirection, UserState, Quality, UserMnemonic, CallEvent, CallState, CallType, Provider } from './types';
+import { getLegacy } from './engine-registry';
+import { CALL_STATE, MediaStreamsKinds } from '../call_api.js';
+import { CallLegacy } from '../call-api-legacy.js';
+import { MediaRenderer } from '../view/media-renderer';
+import {SimpleVAD} from './simple_vad'
+import {Hardware} from '../call_hardware';
+import Util from '../util'
+
+import {Event} from 'main.core';
+import { CallCommonRecordState } from '../call_common_record';
+import { CallStreamManager } from '../media-stream-manager';
+import { ReconnectTarget } from 'call.lib.reconnect-history';
+
+/**
+ * Implements Call interface
+ * Public methods:
+ * - inviteUsers
+ * - answer
+ * - decline
+ * - hangup
+ *
+ * Events:
+ * - onCallStateChanged //not sure about this.
+ * - onUserStateChanged
+ * - onStreamReceived
+ * - onStreamRemoved
+ * - onDestroy
+ */
+
+const ajaxActions = {
+	invite: 'call.CallManager.invite',
+	answer: 'call.CallManager.answer',
+	decline: 'call.CallManager.decline',
+	hangup: 'call.CallManager.hangup',
+	ping: 'call.CallManager.ping',
+	finish: 'call.CallManager.finish',
+};
+
+const pullEvents = {
+	ping: 'Call::ping',
+	answer: 'Call::answer',
+	hangup: 'Call::hangup',
+	userInviteTimeout: 'Call::userInviteTimeout',
+	repeatAnswer: 'Call::repeatAnswer',
+};
+
+const clientEvents = {
+	voiceStarted: 'Call::voiceStarted',
+	voiceStopped: 'Call::voiceStopped',
+	microphoneState: 'Call::microphoneState',
+	cameraState: 'Call::cameraState',
+	videoPaused: 'Call::videoPaused',
+	screenState: 'Call::screenState',
+	commonRecordState: 'Call::commonRecordState',
+	emotion: 'Call::emotion',
+	customMessage: 'Call::customMessage',
+	showUsers: 'Call::showUsers',
+	showAll: 'Call::showAll',
+	hideAll: 'Call::hideAll',
+};
+
+const scenarioEvents = {
+	viewerJoined: 'Call::viewerJoined',
+	viewerLeft: 'Call::viewerLeft',
+};
+
+const BitrixCallEvent = {
+	onCallConference: 'BitrixCall::onCallConference'
+};
+
+const pingPeriod = 5000;
+const backendPingPeriod = 25000;
+const reinvitePeriod = 5500;
+
+// const MAX_USERS_WITHOUT_SIMULCAST = 6;
+
+export class BitrixCallLegacy extends AbstractCall
+{
+	static Event = BitrixCallEvent
+	peers: { [key: number]: Peer }
+	localVAD: ?SimpleVAD
+
+	constructor(config)
+	{
+		super(config);
+
+		this.invitePeriod = config.invitePeriod > 0 ? config.invitePeriod : Util.getCallInvitePeriod();
+
+		this.videoQuality = Quality.VeryHigh; // initial video quality. will drop on new peers connecting
+
+		this.CallApi = null;
+
+		this.signaling = new Signaling({
+			call: this
+		});
+
+		this.peers = {};
+		this.peersWithBadConnection = new Set();
+		this.joinedElsewhere = false;
+		this.joinedAsViewer = false;
+		this.localVideoShown = false;
+		this._localUserState = UserState.Idle;
+		this.clientEventsBound = false;
+		this._screenShared = false;
+		this.videoAllowedFrom = UserMnemonic.all;
+		this.direction = EndpointDirection.SendRecv;
+		this.floorRequestActive = false;
+
+		this.vads = {};
+		this.getUserMediaFulfilled = {
+			video: true,
+			audio: true,
+		};
+
+		this.microphoneLevelInterval = null;
+
+		window.addEventListener("unload", this.#onWindowUnload);
+
+		this.initPeers();
+
+		this.pingUsersInterval = setInterval(this.pingUsers.bind(this), pingPeriod);
+		this.pingBackendInterval = setInterval(this.pingBackend.bind(this), backendPingPeriod);
+
+		this.lastPingReceivedTimeout = null;
+		this.lastSelfPingReceivedTimeout = null;
+
+		this.reinviteTimeout = null;
+
+		this._reconnectionEventCount = 0;
+
+		this.pullEventHandlers = {
+			'Call::answer': this.#onPullEventAnswer,
+			'Call::hangup': this.#onPullEventHangup,
+			'Call::usersJoined': this.#onPullEventUsersJoined,
+			'Call::usersInvited': this.#onPullEventUsersInvited,
+			'Call::userInviteTimeout': this.#onPullEventUserInviteTimeout,
+			'Call::ping': this.#onPullEventPing,
+			'Call::finish': this.#onPullEventFinish,
+			'Call::repeatAnswer': this.#onPullEventRepeatAnswer,
+			'Call::switchTrackRecordStatus': this.#onPullEventSwitchTrackRecordStatus,
+		};
+
+		this._isCopilotActive = config.isCopilotActive;
+		this._isCopilotFeaturesEnabled = true;
+		this._isRecordWhenCopilotActivePopupAlreadyShow = false;
+		this._isBoostExpired = false;
+	};
+
+	get provider()
+	{
+		return Provider.Bitrix;
+	}
+
+	get screenShared()
+	{
+		return this._screenShared;
+	}
+
+	get isCopilotActive()
+	{
+		return this._isCopilotActive;
+	}
+
+	set isCopilotActive(isCopilotActive)
+	{
+		if (isCopilotActive !== this._isCopilotActive)
+		{
+			this._isCopilotActive = isCopilotActive;
+		}
+	}
+
+	get isBoostExpired()
+	{
+		return this._isBoostExpired;
+	}
+
+	set isBoostExpired(isBoostExpired)
+	{
+		if (isBoostExpired !== this._isBoostExpired)
+		{
+			this._isBoostExpired = isBoostExpired;
+		}
+	}
+
+	get isCopilotFeaturesEnabled()
+	{
+		return this._isCopilotFeaturesEnabled;
+	}
+
+	set isCopilotFeaturesEnabled(isCopilotFeaturesEnabled)
+	{
+		if (isCopilotFeaturesEnabled !== this._isCopilotFeaturesEnabled)
+		{
+			this._isCopilotFeaturesEnabled = isCopilotFeaturesEnabled;
+		}
+	}
+
+	get isRecordWhenCopilotActivePopupAlreadyShow()
+	{
+		return this._isRecordWhenCopilotActivePopupAlreadyShow;
+	}
+
+	set isRecordWhenCopilotActivePopupAlreadyShow(isRecordWhenCopilotActivePopupAlreadyShow)
+	{
+		if (isRecordWhenCopilotActivePopupAlreadyShow !== this._isRecordWhenCopilotActivePopupAlreadyShow)
+		{
+			this._isRecordWhenCopilotActivePopupAlreadyShow = isRecordWhenCopilotActivePopupAlreadyShow;
+		}
+	}
+
+	set screenShared(screenShared)
+	{
+		if (screenShared !== this._screenShared)
+		{
+			this._screenShared = screenShared;
+			this.signaling.sendScreenState(this._screenShared);
+		}
+	}
+
+	get localUserState()
+	{
+		return this._localUserState
+	}
+
+	set localUserState(state)
+	{
+		if (state === this._localUserState)
+		{
+			return;
+		}
+		this.runCallback(CallEvent.onUserStateChanged, {
+			userId: this.userId,
+			state: state,
+			previousState: this._localUserState,
+			direction: this.direction,
+		});
+		this._localUserState = state;
+	}
+
+	get reconnectionEventCount()
+	{
+		return this._reconnectionEventCount;
+	}
+
+	set reconnectionEventCount(newValue)
+	{
+		if (this._reconnectionEventCount === 0 && newValue > 0)
+		{
+			this.runCallback(CallEvent.onReconnecting, {
+				reconnectionEventCount: newValue,
+			});
+		}
+		if (newValue === 0)
+		{
+			this.runCallback(CallEvent.onReconnected);
+		}
+		this._reconnectionEventCount = newValue;
+	}
+
+	initPeers()
+	{
+		this.users.forEach((userId) =>
+		{
+			userId = Number(userId);
+			this.peers[userId] = this.createPeer(userId);
+		});
+	};
+
+	reinitPeers()
+	{
+		for (let userId in this.peers)
+		{
+			if (this.peers.hasOwnProperty(userId) && this.peers[userId])
+			{
+				this.peers[userId].destroy();
+				this.peers[userId] = null;
+			}
+		}
+
+		this.initPeers();
+	};
+
+	pingUsers()
+	{
+		if (this.ready)
+		{
+			const users = this.users.concat(this.userId);
+			this.signaling.sendPingToUsers({userId: users}, true);
+		}
+	};
+
+	pingBackend()
+	{
+		if (this.ready)
+		{
+			this.signaling.sendPingToBackend();
+		}
+	};
+
+	createPeer(userId)
+	{
+		let incomingVideoAllowed;
+		if (this.videoAllowedFrom === UserMnemonic.all)
+		{
+			incomingVideoAllowed = true;
+		}
+		else if (this.videoAllowedFrom === UserMnemonic.none)
+		{
+			incomingVideoAllowed = false;
+		}
+		else if (Type.isArray(this.videoAllowedFrom))
+		{
+			incomingVideoAllowed = this.videoAllowedFrom.some(allowedUserId => allowedUserId == userId);
+		}
+		else
+		{
+			incomingVideoAllowed = true;
+		}
+
+		return new Peer({
+			call: this,
+			userId: userId,
+			ready: userId == this.initiatorId,
+			isIncomingVideoAllowed: incomingVideoAllowed,
+
+			onMediaReceived: (e) =>
+			{
+				this.runCallback(CallEvent.onRemoteMediaReceived, e);
+				if (e.kind === 'video')
+				{
+					this.runCallback(CallEvent.onUserVideoPaused, {
+						userId: userId,
+						videoPaused: false
+					});
+				}
+			},
+			onMediaRemoved: (e) =>
+			{
+				this.runCallback(CallEvent.onRemoteMediaStopped, e);
+			},
+			onStateChanged: this.#onPeerStateChanged,
+			onInviteTimeout: this.#onPeerInviteTimeout,
+
+		})
+	};
+
+	getUsers()
+	{
+		let result = {};
+		for (let userId in this.peers)
+		{
+			result[userId] = this.peers[userId].calculatedState;
+		}
+
+		return result;
+	};
+
+	getUserCount()
+	{
+		return Object.keys(this.peers).length;
+	};
+
+	canChangeMediaDevices()
+	{
+		return !this.CallApi?.isMediaMutedBySystem;
+	};
+
+	setMuted = (event) =>
+	{
+		if (this.muted === event.data.isMicrophoneMuted)
+		{
+			return;
+		}
+
+		this.muted = event.data.isMicrophoneMuted;
+
+		if (this.CallApi)
+		{
+			if (!event.data.calledProgrammatically)
+			{
+				this.signaling.sendMicrophoneState(!this.muted);
+			}
+
+			if (this.muted)
+			{
+				this.CallApi.disableAudio({ calledFrom: 'setMuted' });
+			}
+			else
+			{
+				if (!this.CallApi.isAudioPublished())
+				{
+					this.#setPublishingState(MediaStreamsKinds.Microphone, true);
+				}
+				this.CallApi.enableAudio({ calledFrom: 'setMuted' });
+			}
+		}
+	};
+
+	setVideoEnabled = (event) =>
+	{
+		if (this.videoEnabled === event.data.isCameraOn)
+		{
+			return;
+		}
+
+		this.videoEnabled = event.data.isCameraOn;
+
+		if (this.CallApi)
+		{
+			if (!event.data.calledProgrammatically)
+			{
+				this.signaling.sendCameraState(this.videoEnabled);
+			}
+
+			if (this.videoEnabled)
+			{
+				if (!this.CallApi.isVideoPublished())
+				{
+					this.#setPublishingState(MediaStreamsKinds.Camera, true);
+				}
+				this.localVideoShown = true;
+				this.CallApi.enableVideo();
+			}
+			else
+			{
+				if (this.localVideoShown)
+				{
+					this.localVideoShown = false;
+					this.CallApi.disableVideo();
+				}
+			}
+		}
+	};
+
+	setCameraId(cameraId)
+	{
+		if (this.cameraId === cameraId)
+		{
+			return;
+		}
+		this.cameraId = cameraId;
+
+		if (this.CallApi)
+		{
+			if (!cameraId)
+			{
+				this.#onBeforeLocalMediaRendererRemoved(MediaStreamsKinds.Camera);
+				return;
+			}
+
+			if (this.CallApi.isVideoPublished())
+			{
+				this.#setPublishingState(MediaStreamsKinds.Camera, true);
+			}
+
+			this.CallApi.switchActiveVideoDevice(this.cameraId)
+				.then(() => {
+					if (Hardware.isCameraOn)
+					{
+						this.runCallback('onUpdateLastUsedCameraId');
+
+						if (this.CallApi.isVideoPublished() && this.canChangeMediaDevices())
+						{
+							const track = CallStreamManager.getLocalStream(MediaStreamsKinds.Camera);
+							const kind = Util.MediaKind[MediaStreamsKinds.Camera];
+							const mediaRenderer = new MediaRenderer({ kind, track });
+
+							this.runCallback(CallEvent.onLocalMediaReceived, {
+								mediaRenderer,
+								tag: 'main',
+								stream: mediaRenderer.stream,
+							});
+
+							if (this.CallApi.isVideoPublished())
+							{
+								this.#setPublishingState(MediaStreamsKinds.Camera, false);
+							}
+						}
+						else if (!this.canChangeMediaDevices())
+						{
+							this.runCallback(CallEvent.onNeedResetMediaDevicesState);
+						}
+						else
+						{
+							this.#setPublishingState(MediaStreamsKinds.Camera, true);
+							this.localVideoShown = true;
+							this.CallApi.enableVideo({calledFrom: 'switchActiveVideoDevice', skipUnpause: true});
+						}
+					}
+					else
+					{
+						this.#setPublishingState(MediaStreamsKinds.Camera, false);
+					}
+				})
+				.catch((e) =>
+				{
+					this.log(e);
+					console.error(e);
+					this.#onBeforeLocalMediaRendererRemoved(MediaStreamsKinds.Camera);
+				});
+		}
+	};
+
+	setMicrophoneId(microphoneId)
+	{
+		if (this.microphoneId === microphoneId)
+		{
+			return;
+		}
+
+		this.microphoneId = microphoneId;
+
+		if (this.CallApi)
+		{
+			if (!microphoneId)
+			{
+				this.#onBeforeLocalMediaRendererRemoved(MediaStreamsKinds.Microphone);
+				return;
+			}
+
+			this.#setPublishingState(MediaStreamsKinds.Microphone, true);
+			this.#onEndpointVoiceEnd({ userId: this.userId });
+
+			this.CallApi.switchActiveAudioDevice(this.microphoneId)
+				.then(() => {
+					const track = CallStreamManager.getLocalStream(MediaStreamsKinds.Microphone);
+					this.#onMicAccessResult({
+						result: true,
+						stream: new MediaStream([track]),
+					});
+				})
+				.catch((error) => {
+					this.log(error);
+					console.error(error);
+					this.runCallback(CallEvent.onUserMicrophoneState, {
+						userId: this.userId,
+						microphoneState: false,
+					});
+				})
+				.finally(() => {
+					this.#setPublishingState(MediaStreamsKinds.Microphone, false);
+
+					if (Hardware.isMicrophoneMuted && !this.canChangeMediaDevices())
+					{
+						this.CallApi.disableAudio({ calledFrom: 'setMicrophoneId' });
+					}
+				});
+		}
+	};
+
+	#setPublishingState(deviceType, publishing)
+	{
+		if (deviceType === MediaStreamsKinds.Camera)
+		{
+			this.runCallback(CallEvent.onCameraPublishing, {
+				publishing
+			});
+		}
+		else if (deviceType === MediaStreamsKinds.Microphone)
+		{
+			this.runCallback(CallEvent.onMicrophonePublishing, {
+				publishing
+			});
+		}
+	}
+
+	setMainStream(users)
+	{
+		if (!this.CallApi)
+		{
+			return;
+		}
+
+		if (users.userId && users.userId !== this.userId)
+		{
+			const participant = this.peers[users.userId]?.participant;
+			const kind = participant?.screenSharingEnabled ? MediaStreamsKinds.Screen : MediaStreamsKinds.Camera;
+			this.CallApi.setMainStream(users, kind);
+		}
+		else
+		{
+			this.CallApi.resetMainStream(users);
+		}
+	}
+
+	requestFloor(requestActive)
+	{
+		if (this.floorRequestActive === requestActive)
+		{
+			return;
+		}
+		this.floorRequestActive = requestActive;
+		this.CallApi.raiseHand(requestActive);
+	};
+
+	turnOffAllParticipansStream(options)
+	{
+		this.CallApi.turnOffAllParticipansStream(options);
+	};
+
+	turnOffParticipantStream(options)
+	{
+		this.CallApi.turnOffParticipantStream(options);
+	};
+
+	allowSpeakPermission(options)
+	{
+		this.CallApi.allowSpeakPermission(options);
+	};
+
+	changeSettings(options)
+	{
+		this.CallApi.changeSettings(options);
+	};
+
+	sendLocalRecordState(commonRecordState, force = false)
+	{
+		if (!force && !this.updateCommonRecordState({ ...commonRecordState, senderId: this.userId }))
+		{
+			return;
+		}
+
+		this.signaling.sendLocalRecordState(this.userId, this.commonRecordState);
+	}
+
+	sendCustomMessage(message, repeatOnConnect)
+	{
+		this.signaling.sendCustomMessage(message, repeatOnConnect);
+	};
+
+	/**
+	 * Updates list of users,
+	 */
+	allowVideoFrom(userList: $Keys<typeof UserMnemonic> | number[])
+	{
+		if (this.videoAllowedFrom == userList)
+		{
+			return;
+		}
+		this.videoAllowedFrom = userList;
+
+		if (userList === UserMnemonic.all)
+		{
+			this.signaling.sendShowAll();
+			userList = Object.keys(this.peers);
+		}
+		else if (userList === UserMnemonic.none)
+		{
+			this.signaling.sendHideAll();
+			userList = [];
+		}
+		else if (Type.isArray(userList))
+		{
+			this.signaling.sendShowUsers(userList)
+		}
+		else
+		{
+			throw new Error("userList is in wrong format");
+		}
+
+		let users = {};
+		userList.forEach(userId => users[userId] = true);
+
+		for (let userId in this.peers)
+		{
+			if (!this.peers.hasOwnProperty(userId))
+			{
+				continue;
+			}
+			if (users[userId])
+			{
+				this.peers[userId].allowIncomingVideo(true);
+			}
+			else
+			{
+				this.peers[userId].allowIncomingVideo(false);
+			}
+		}
+	};
+
+	startScreenSharing()
+	{
+		if (!this.CallApi)
+		{
+			return;
+		}
+
+		this.waitingLocalScreenShare = true;
+		this.runCallback(CallEvent.onUserScreenState, {
+			userId: this.userId,
+			screenState: true,
+		});
+
+		this.CallApi.startScreenShare();
+	};
+
+	stopScreenSharing()
+	{
+		this.#onBeforeLocalMediaRendererRemoved(MediaStreamsKinds.Screen);
+	};
+
+	isScreenSharingStarted()
+	{
+		return this.screenShared || this.waitingLocalScreenShare;
+	};
+
+	isGetUserMediaFulfilled(kind: string): Boolean
+	{
+		return Boolean(this.getUserMediaFulfilled[kind]);
+	}
+
+	/**
+	 * Invites users to participate in the call.
+	 */
+	inviteUsers(config: { users: number[], show?: boolean } = {})
+	{
+		this.ready = true;
+		let users = Type.isArray(config.users) ? config.users : this.users;
+
+		this.attachToConference()
+			.then(() =>
+			{
+				this.signaling.sendPingToUsers({userId: users});
+
+				if (users.length > 0)
+				{
+					return this.signaling.inviteUsers({
+						userIds: users,
+						video: Hardware.isCameraOn ? 'Y' : 'N',
+						show: config.show === true ? 'Y' : 'N',
+					})
+				}
+			})
+			.then(() =>
+			{
+				this.state = CallState.Connected;
+				this.runCallback(CallEvent.onJoin, {
+					local: true
+				});
+				for (let i = 0; i < users.length; i++)
+				{
+					const userId = parseInt(users[i]);
+					if (!this.users.includes(userId))
+					{
+						this.users.push(userId);
+					}
+					if (!this.peers[userId])
+					{
+						this.peers[userId] = this.createPeer(userId);
+
+						if (this.type === CallType.Instant)
+						{
+							this.runCallback(CallEvent.onUserInvited, {
+								userId: userId
+							});
+						}
+					}
+					if (this.type === CallType.Instant)
+					{
+						this.peers[userId].onInvited();
+						this.scheduleRepeatInvite();
+					}
+				}
+			})
+			.catch((e) =>
+			{
+				this.#onFatalError(e)
+			})
+		;
+	};
+
+	scheduleRepeatInvite()
+	{
+		clearTimeout(this.reinviteTimeout);
+		this.reinviteTimeout = setTimeout(() => this.repeatInviteUsers(), reinvitePeriod)
+	};
+
+	repeatInviteUsers()
+	{
+		clearTimeout(this.reinviteTimeout);
+		if (!this.ready)
+		{
+			return;
+		}
+		let usersToRepeatInvite = [];
+		for (let userId in this.peers)
+		{
+			if (this.peers.hasOwnProperty(userId) && this.peers[userId].calculatedState === UserState.Calling)
+			{
+				usersToRepeatInvite.push(userId);
+			}
+		}
+
+		if (usersToRepeatInvite.length === 0)
+		{
+			return;
+		}
+		const inviteParams = {
+			userIds: usersToRepeatInvite,
+			video: Hardware.isCameraOn ? 'Y' : 'N',
+			repeated: 'Y',
+		}
+		this.signaling.inviteUsers(inviteParams).then(() => this.scheduleRepeatInvite());
+	};
+
+	/**
+	 * @param {Object} config
+	 * @param {bool?} [config.useVideo]
+	 * @param {bool?} [config.joinAsViewer]
+	 */
+	answer(config = {})
+	{
+		this.ready = true;
+		const joinAsViewer = config.joinAsViewer === true;
+		this.videoEnabled = Hardware.isCameraOn;
+		this.muted = Hardware.isMicrophoneMuted;
+
+		clearTimeout(this.lastSelfPingReceivedTimeout);
+
+		if (!joinAsViewer)
+		{
+			this._outgoingAnswer = this.signaling.sendAnswer();
+		}
+		this.attachToConference({joinAsViewer: joinAsViewer})
+			.then(() =>
+			{
+				this.log("Attached to conference");
+				this.state = CallState.Connected;
+				this.runCallback(CallEvent.onJoin, {
+					local: true
+				});
+			})
+			.catch((err) =>
+			{
+				this.#onFatalError(err);
+			})
+		;
+	};
+
+	decline(code)
+	{
+		this.ready = false;
+		const data = {
+			callId: this.id,
+			callInstanceId: this.instanceId,
+		};
+		if (code)
+		{
+			data.code = code
+		}
+
+		getLegacy().getRestClient().callMethod(ajaxActions.decline, data);
+	};
+
+	hangup(code, reason, finishCall = false)
+	{
+		if (!this.ready)
+		{
+			const error = new Error("Hangup in wrong state");
+			this.log(error);
+			return;
+		}
+
+		const tempError = new Error();
+		tempError.name = "Call stack:";
+		this.log("Hangup received \n" + tempError.stack);
+
+		if (this.localVAD)
+		{
+			this.localVAD.destroy();
+			this.localVAD = null;
+		}
+		clearInterval(this.microphoneLevelInterval);
+
+		let data = {};
+		this.ready = false;
+		if (typeof (code) != 'undefined')
+		{
+			data.code = code;
+		}
+		if (typeof (reason) != 'undefined')
+		{
+			data.reason = reason;
+		}
+		this.state = CallState.Proceeding;
+		this.runCallback(CallEvent.onLeave, {local: true});
+
+		//clone users and append current user id to send event to all participants of the call
+		data.userId = this.users.slice(0).concat(this.userId);
+		if (this._outgoingAnswer && !finishCall)
+		{
+			this._outgoingAnswer.then(() => this.signaling.sendHangup(data));
+		}
+		else if (finishCall)
+		{
+			this.signaling.sendFinish(data);
+		}
+		else if (reason !== 'SIGNALING_DUPLICATE_PARTICIPANT')
+		{
+			this.signaling.sendHangup(data)
+		}
+
+		if (reason !== 'SIGNALING_DUPLICATE_PARTICIPANT') {
+			// for future reconnections
+			this.reinitPeers();
+		}
+
+		if (this.CallApi)
+		{
+			this.CallApi._replaceVideoSharing = false;
+			this.CallApi.hangup();
+			this.CallApi = null;
+		}
+		else
+		{
+			this.log("Tried to hangup, but this.CallApi points nowhere");
+			console.error("Tried to hangup, but this.CallApi points nowhere");
+		}
+
+		this.screenShared = false;
+		this.localVideoShown = false;
+		this.floorRequestActive = false;
+	};
+
+	attachToConference(options: { joinAsViewer: ?boolean } = {})
+	{
+		const joinAsViewer = options.joinAsViewer === true;
+		if (this.CallApi && this.CallApi.getState() === CALL_STATE.CONNECTED)
+		{
+			if (this.joinedAsViewer === joinAsViewer)
+			{
+				return Promise.resolve();
+			}
+			else
+			{
+				return Promise.reject("Already joined call in another mode");
+			}
+		}
+
+		return new Promise((resolve, reject) =>
+		{
+			this.direction = joinAsViewer ? EndpointDirection.RecvOnly : EndpointDirection.SendRecv;
+			this.sendTelemetryEvent("call");
+
+			try
+			{
+				this.localUserState = UserState.Connecting;
+				this.CallApi = new CallLegacy(this.userId);
+
+				/*if (Hardware.isCameraOn) // transfered to #onCallConnected
+				{
+					this.localVideoShown = true;
+				}*/
+
+				this.joinedAsViewer = joinAsViewer;
+
+				if (!this.CallApi)
+				{
+					this.log("Error: could not create Bitrix call");
+					return reject({code: "BITRIX_NO_CALL"});
+				}
+
+				this.runCallback(BitrixCallEvent.onCallConference, {
+					call: this
+				});
+
+				this.bindCallEvents();
+				this.subscribeHardwareChanges();
+
+				this.CallApi.on('Connected', () => {
+					this.#onCallConnected();
+					resolve();
+				})
+				this.CallApi.on('Failed', (e) =>
+				{
+					this.#onCallFailed(e);
+					reject(e);
+				});
+
+				if (!this.ready)
+				{
+					// for rare cases with fast quit
+					return reject({code: "BITRIX_NO_CALL"});
+				}
+
+				this.CallApi.connect({
+					roomId: this.id,
+					userId: this.userId,
+					isLegacy: true,
+					endpoint: this.connectionData.endpoint,
+					jwt: this.connectionData.jwt,
+					videoBitrate: 1000000,
+					videoSimulcast: true,
+					audioDeviceId: this.microphoneId,
+					videoDeviceId: this.cameraId,
+				});
+			}
+			catch (e)
+			{
+				this.#onFatalError(e);
+			}
+		});
+	};
+
+	#onCallConnected()
+	{
+		this.reconnectionEventCount = 0;
+		this.log("Call connected");
+		this.sendTelemetryEvent("connect");
+		this.localUserState = UserState.Connected;
+
+		const MAX_USERS_WITH_VIDEO = Util.countDisableCameraNewJoinedUsersFeature();
+
+		if (Util.isDisableCameraNewJoinedUsersFeatureEnabled() && this.CallApi.remoteParticipantsCount >= MAX_USERS_WITH_VIDEO) // task-596223
+		{
+			Hardware.isCameraOn = false;
+		}
+
+		this.CallApi.on('Failed', this.#onCallDisconnected);
+
+		this.signaling.sendMicrophoneState(!Hardware.isMicrophoneMuted);
+		this.signaling.sendCameraState(Hardware.isCameraOn);
+
+		if (!this.CallApi.isAudioPublished())
+		{
+			this.#setPublishingState(MediaStreamsKinds.Microphone, true);
+		}
+		this.CallApi.enableAudio({ calledFrom: 'onCallConnected', disabled: Hardware.isMicrophoneMuted });
+
+		if (Hardware.isCameraOn)
+		{
+			this.localVideoShown = true;
+			if (!this.CallApi.isVideoPublished())
+			{
+				this.#setPublishingState(MediaStreamsKinds.Camera, true);
+			}
+			this.CallApi.enableVideo({ calledFrom: 'onCallConnected' });
+		}
+
+		if (this.videoAllowedFrom == UserMnemonic.none)
+		{
+			this.signaling.sendHideAll();
+		}
+		else if (Type.isArray(this.videoAllowedFrom))
+		{
+			this.signaling.sendShowUsers(this.videoAllowedFrom);
+		}
+	};
+
+	#onCallFailed(e)
+	{
+		this.log("Could not attach to conference", e);
+		this.sendTelemetryEvent("connect_failure");
+		this.localUserState = UserState.Failed;
+
+		this.CallApi.enableSilentLogging(false);
+		this.CallApi.setLoggerCallback(null);
+	};
+
+	bindCallEvents()
+	{
+		this.CallApi.on('PublishSucceed', this.#onLocalMediaRendererAdded);
+		this.CallApi.on('PublishPaused', this.#onLocalMediaRendererMuteToggled);
+		this.CallApi.on('MediaMutedBySystem', this.#onMediaMutedBySystem);
+		this.CallApi.on('PublishFailed', this.#onLocalMediaRendererEnded);
+		this.CallApi.on('PublishEnded', this.#onLocalMediaRendererEnded);
+		this.CallApi.on('GetUserMediaStarted', this.#onGetUserMediaStarted.bind(this));
+		this.CallApi.on('GetUserMediaEnded', this.#onGetUserMediaEnded);
+		this.CallApi.on('GetUserMediaSuccess', this.#onGetUserMediaSuccess.bind(this));
+		this.CallApi.on('GetUserMediaFailed', this.#onGetUserMediaFailed);
+		this.CallApi.on('RemoteMediaAvailable', this.#onRemoteMediaAvailable);
+		this.CallApi.on('RemoteMediaUnavailable', this.#onRemoteMediaUnavailable);
+		this.CallApi.on('RemoteMediaAdded', this.#onRemoteMediaAdded);
+		this.CallApi.on('RemoteMediaRemoved', this.#onRemoteMediaRemoved);
+		this.CallApi.on('RemoteMediaMuted', this.#onRemoteMediaMuteToggled);
+		this.CallApi.on('RemoteMediaUnmuted', this.#onRemoteMediaMuteToggled);
+		this.CallApi.on('ParticipantJoined', this.#onParticipantJoined);
+		this.CallApi.on('ParticipantStateUpdated', () => console.log('handleParticipantStateUpdated'));
+		this.CallApi.on('ParticipantLeaved', this.#onParticipantLeaved);
+		this.CallApi.on('MessageReceived', this.#onCallMessageReceived);
+		this.CallApi.on('HandRaised', this.#onCallHandRaised);
+		this.CallApi.on('VoiceStarted', this.#onEndpointVoiceStart);
+		this.CallApi.on('AllParticipantsAudioMuted', this.#onAllParticipantsAudioMuted);
+		this.CallApi.on('AllParticipantsVideoMuted', this.#onAllParticipantsVideoMuted);
+		this.CallApi.on('AllParticipantsScreenshareMuted', this.#onAllParticipantsScreenshareMuted);
+		this.CallApi.on('YouMuteAllParticipants', this.#onYouMuteAllParticipants);
+		this.CallApi.on('RoomSettingsChanged', this.#onRoomSettingsChanged);
+		this.CallApi.on('UserPermissionsChanged', this.#onUserPermissionsChanged);
+		this.CallApi.on('UserRoleChanged', this.#onUserRoleChanged);
+		this.CallApi.on('ParticipantMuted', this.#onParticipantMuted);
+		this.CallApi.on('VoiceEnded', this.#onEndpointVoiceEnd);
+		this.CallApi.on('Reconnecting', this.#onCallReconnecting);
+		this.CallApi.on('Reconnected', this.#onCallReconnected);
+		this.CallApi.on('Disconnected', this.#onCallDisconnected);
+		// if (Util.shouldCollectStats())
+		// {
+		this.CallApi.on('CallStatsReceived', this.#onCallStatsReceived);
+		// }
+		this.CallApi.on('UpdatePacketLoss', this.#onUpdatePacketLoss);
+		this.CallApi.on('ConnectionQualityChanged', this.#onConnectionQualityChanged);
+		this.CallApi.on('ToggleRemoteParticipantVideo', this.#onToggleRemoteParticipantVideo);
+		this.CallApi.on('TrackSubscriptionFailed', this.#onTrackSubscriptionFailed);
+	};
+
+	removeCallEvents()
+	{
+		if (this.CallApi)
+		{
+			this.CallApi.on('Failed', BX.DoNothing);
+			this.CallApi.on('PublishSucceed', BX.DoNothing);
+			this.CallApi.on('PublishFailed', BX.DoNothing);
+			this.CallApi.on('PublishEnded', BX.DoNothing);
+			this.CallApi.on('GetUserMediaEnded', BX.DoNothing);
+			this.CallApi.on('RemoteMediaAvailable',  BX.DoNothing);
+			this.CallApi.on('RemoteMediaUnavailable',  BX.DoNothing);
+			this.CallApi.on('RemoteMediaAdded', BX.DoNothing);
+			this.CallApi.on('RemoteMediaRemoved', BX.DoNothing);
+			this.CallApi.on('ParticipantJoined', BX.DoNothing);
+			this.CallApi.on('ParticipantStateUpdated', BX.DoNothing);
+			this.CallApi.on('ParticipantLeaved', BX.DoNothing);
+			this.CallApi.on('MessageReceived', BX.DoNothing);
+			this.CallApi.on('HandRaised', BX.DoNothing);
+			this.CallApi.on('AllParticipantsAudioMuted', BX.DoNothing);
+			this.CallApi.on('AllParticipantsVideoMuted', BX.DoNothing);
+			this.CallApi.on('AllParticipantsScreenshareMuted', BX.DoNothing);
+			this.CallApi.on('YouMuteAllParticipants', BX.DoNothing);
+			this.CallApi.on('RoomSettingsChanged', BX.DoNothing);
+			this.CallApi.on('UserPermissionsChanged', BX.DoNothing);
+			this.CallApi.on('ParticipantMuted', BX.DoNothing);
+			this.CallApi.on('VoiceStarted', BX.DoNothing);
+			this.CallApi.on('VoiceEnded', BX.DoNothing);
+			this.CallApi.on('Reconnecting', BX.DoNothing);
+			this.CallApi.on('Reconnected', BX.DoNothing);
+			this.CallApi.on('Disconnected', BX.DoNothing);
+			// if (Util.shouldCollectStats())
+			// {
+			this.CallApi.on('CallStatsReceived', BX.DoNothing);
+			// }
+			this.CallApi.on('UpdatePacketLoss', BX.DoNothing);
+			this.CallApi.on('ConnectionQualityChanged', BX.DoNothing);
+			this.CallApi.on('ToggleRemoteParticipantVideo', BX.DoNothing);
+			this.CallApi.on('TrackSubscriptionFailed', BX.DoNothing);
+		}
+	};
+
+	subscribeHardwareChanges()
+	{
+		Hardware.subscribe(Hardware.Events.onChangeMicrophoneMuted, this.setMuted);
+		Hardware.subscribe(Hardware.Events.onChangeCameraOn, this.setVideoEnabled);
+	};
+
+	unsubscribeHardwareChanges()
+	{
+		Hardware.unsubscribe(Hardware.Events.onChangeMicrophoneMuted, this.setMuted);
+		Hardware.unsubscribe(Hardware.Events.onChangeCameraOn, this.setVideoEnabled);
+	};
+
+	/**
+	 * Adds new users to call
+	 * @param {Number[]} users
+	 */
+	addJoinedUsers(users)
+	{
+		for (let i = 0; i < users.length; i++)
+		{
+			const userId = Number(users[i]);
+			if (userId == this.userId || this.peers[userId])
+			{
+				continue;
+			}
+			this.peers[userId] = this.createPeer(userId);
+			if (!this.users.includes(userId))
+			{
+				this.users.push(userId);
+			}
+			this.runCallback(CallEvent.onUserInvited, {
+				userId: userId
+			});
+		}
+	};
+
+	/**
+	 * Adds users, invited by you or someone else
+	 * @param {Number[]} users
+	 */
+	addInvitedUsers(users, show)
+	{
+		for (let i = 0; i < users.length; i++)
+		{
+			const userId = Number(users[i]);
+			if (userId == this.userId)
+			{
+				continue;
+			}
+
+			if (!this.peers[userId])
+			{
+				this.peers[userId] = this.createPeer(userId);
+				this.runCallback(CallEvent.onUserInvited, {
+					userId: userId
+				});
+			}
+
+			if (this.type === CallType.Instant && this.peers[userId].calculatedState !== UserState.Calling)
+			{
+				this.peers[userId].onInvited(show);
+			}
+
+			if (!this.users.includes(userId))
+			{
+				this.users.push(userId);
+			}
+		}
+	};
+
+	toggleRemoteParticipantVideo(participants, showVideo, isPaginateToggle = false)
+	{
+		if (this.CallApi)
+		{
+			this.CallApi.toggleRemoteParticipantVideo(participants, showVideo, isPaginateToggle);
+		}
+	}
+
+	isAnyoneParticipating()
+	{
+		for (let userId in this.peers)
+		{
+			if (this.peers[userId].isParticipating())
+			{
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	getParticipatingUsers()
+	{
+		let result = [];
+		for (let userId in this.peers)
+		{
+			if (this.peers[userId].isParticipating())
+			{
+				result.push(userId);
+			}
+		}
+		return result;
+	};
+
+	#onPeerStateChanged = (e) =>
+	{
+		this.runCallback(CallEvent.onUserStateChanged, e);
+
+		if (!this.ready)
+		{
+			return;
+		}
+		if (e.state === UserState.Failed || e.state === UserState.Unavailable || e.state === UserState.Declined || e.state === UserState.Idle)
+		{
+			if (this.type == CallType.Instant && !this.isAnyoneParticipating())
+			{
+				this.hangup();
+			}
+		}
+	};
+
+	#onPeerInviteTimeout = (e) =>
+	{
+		if (!this.ready)
+		{
+			return;
+		}
+		this.signaling.sendUserInviteTimeout({
+			userId: this.users,
+			failedUserId: e.userId
+		})
+	};
+
+	__onPullEvent(command, params, extra)
+	{
+		if (this.pullEventHandlers[command])
+		{
+			if (command !== 'Call::ping')
+			{
+				this.log("Signaling: " + command + "; Parameters: " + JSON.stringify(params));
+			}
+			this.pullEventHandlers[command].call(this, params);
+		}
+	};
+
+	#onPullEventAnswer = (params) =>
+	{
+		const senderId = Number(params.senderId);
+
+		if (senderId == this.userId)
+		{
+			return this.__onPullEventAnswerSelf(params);
+		}
+
+		if (!this.peers[senderId])
+		{
+			this.peers[senderId] = this.createPeer(senderId);
+			this.runCallback(CallEvent.onUserInvited, {
+				userId: senderId
+			});
+		}
+
+		if (!this.users.includes(senderId))
+		{
+			this.users.push(senderId);
+		}
+
+		this.peers[senderId].setReady(true);
+	};
+
+	__onPullEventAnswerSelf(params)
+	{
+		if (params.callInstanceId === this.instanceId)
+		{
+			return;
+		}
+
+		// call was answered elsewhere
+		this.joinedElsewhere = true;
+		this.runCallback(CallEvent.onJoin, {
+			local: false
+		});
+	};
+
+	#onPullEventHangup = (params) =>
+	{
+		const senderId = params.senderId;
+		if (this.userId === senderId && params.callInstanceId && this.instanceId !== params.callInstanceId)
+		{
+			// Call declined by the same user elsewhere
+			this.runCallback(CallEvent.onLeave, {local: false});
+			return;
+		}
+
+		if (!this.peers[senderId])
+		{
+			return;
+		}
+
+		Util.sendLog({'description': 'GOT A #onPullEventHangup from user', 'pullEvent': '#onPullEventHangup', params: params});
+
+		this.peers[senderId].participant = null;
+		this.peers[senderId].setReady(false);
+
+		if (params.code == 603)
+		{
+			this.peers[senderId].setDeclined(true);
+		}
+		else if (params.code == 486)
+		{
+			this.peers[senderId].setBusy(true);
+			console.error("user " + senderId + " is busy");
+		}
+
+		if (this.ready && this.type == CallType.Instant && !this.isAnyoneParticipating())
+		{
+			this.hangup();
+		}
+	};
+
+	#onPullEventUsersJoined = (params) =>
+	{
+		this.log('__onPullEventUsersJoined', params);
+		const users = params.users;
+
+		this.addJoinedUsers(users);
+	};
+
+	#onPullEventUsersInvited = (params) =>
+	{
+		this.log('__onPullEventUsersInvited', params);
+		const users = params.users;
+		const show = params.show;
+
+		if (this.type === CallType.Instant)
+		{
+			this.addInvitedUsers(users, show);
+		}
+	};
+
+	#onPullEventUserInviteTimeout = (params) =>
+	{
+		this.log('__onPullEventUserInviteTimeout', params);
+		const failedUserId = params.failedUserId;
+
+		if (this.peers[failedUserId])
+		{
+			this.peers[failedUserId].onInviteTimeout(false);
+		}
+	};
+
+	#onPullEventPing = (params) =>
+	{
+		if (params.callInstanceId === this.instanceId)
+		{
+			// ignore self ping
+			return;
+		}
+
+		const senderId = Number(params.senderId);
+
+		if (senderId == this.userId)
+		{
+			if (!this.joinedElsewhere)
+			{
+				this.runCallback(CallEvent.onJoin, {
+					local: false
+				});
+				this.joinedElsewhere = true;
+			}
+			clearTimeout(this.lastSelfPingReceivedTimeout);
+			this.lastSelfPingReceivedTimeout = setTimeout(this.#onNoSelfPingsReceived, pingPeriod * 2.1);
+		}
+		clearTimeout(this.lastPingReceivedTimeout);
+		this.lastPingReceivedTimeout = setTimeout(this.#onNoPingsReceived, pingPeriod * 2.1);
+		if (this.peers[senderId])
+		{
+			this.peers[senderId].setReady(true);
+		}
+	};
+
+	#onNoPingsReceived = () =>
+	{
+		if (!this.ready)
+		{
+			this.destroy();
+		}
+	};
+
+	#onNoSelfPingsReceived = () =>
+	{
+		this.runCallback(CallEvent.onLeave, {
+			local: false
+		});
+		this.joinedElsewhere = false;
+	};
+
+	#onPullEventFinish = () =>
+	{
+		this.destroy();
+	};
+
+	#onPullEventRepeatAnswer = () =>
+	{
+		if (this.ready)
+		{
+			this.signaling.sendAnswer({userId: this.userId}, true);
+		}
+	}
+
+	#onPullEventSwitchTrackRecordStatus = (e) =>
+	{
+		this.runCallback(CallEvent.onSwitchTrackRecordStatus, {
+			isTrackRecordOn: e.isTrackRecordOn,
+			errorCode: e.errorCode,
+		});
+	}
+
+	#onLocalMediaRendererAdded = (mediaStreamsKind) => {
+		const kind = Util.MediaKind[mediaStreamsKind];
+		if (!kind)
+		{
+			this.log(`Wrong kind for local mediaRenderer: ${mediaStreamsKind}`);
+
+			return;
+		}
+
+		this.log('__onLocalMediaRendererAdded', kind);
+
+		let track = null;
+		let mediaRenderer = null;
+
+		switch (mediaStreamsKind)
+		{
+			case MediaStreamsKinds.Camera:
+				if (!this.videoEnabled)
+				{
+					return;
+				}
+
+				track = CallStreamManager.getLocalStream(mediaStreamsKind);
+				mediaRenderer = new MediaRenderer({ kind, track });
+
+				this.runCallback(CallEvent.onLocalMediaReceived, {
+					mediaRenderer,
+					tag: 'main',
+					stream: mediaRenderer.stream,
+				});
+
+				break;
+
+			case MediaStreamsKinds.Screen:
+				this.log('Screen shared');
+				this.screenShared = true;
+				this.waitingLocalScreenShare = false;
+
+				track = CallStreamManager.getLocalStream(mediaStreamsKind);
+				mediaRenderer = new MediaRenderer({ kind, track });
+
+				this.runCallback(CallEvent.onLocalMediaReceived, {
+					mediaRenderer,
+					tag: 'screen',
+					stream: mediaRenderer.stream,
+				});
+				break;
+
+			case MediaStreamsKinds.Microphone:
+				this.signaling.sendMicrophoneState(true);
+				this.#setPublishingState(mediaStreamsKind, false);
+
+				track = CallStreamManager.getLocalStream(mediaStreamsKind);
+				this.#onMicAccessResult({
+					result: true,
+					stream: new MediaStream([track]),
+				});
+				break;
+
+			default:
+		}
+	};
+
+	#onLocalMediaRendererMuteToggled = (source, muted) => {
+		if (source === MediaStreamsKinds.Microphone)
+		{
+			this.#setPublishingState(MediaStreamsKinds.Microphone, false);
+			this.signaling.sendMicrophoneState(!muted);
+		}
+		else if (source === MediaStreamsKinds.Camera)
+		{
+			this.#setPublishingState(MediaStreamsKinds.Camera, false);
+		}
+	};
+
+	#onMediaMutedBySystem = (muted) =>
+	{
+		const microphoneState = muted ? false : !Hardware.isMicrophoneMuted;
+		const cameraState = muted ? false : Hardware.isCameraOn;
+		this.signaling.sendMicrophoneState(microphoneState);
+		this.signaling.sendCameraState(cameraState);
+	}
+
+	#onLocalMediaRendererEnded = (e, interrupted) =>
+	{
+		const kind = Util.MediaKind[e];
+		if (!kind)
+		{
+			this.log(`Wrong kind for mediaRenderer: ${e}`);
+			return;
+		}
+
+		if (!this.CallApi)
+		{
+			return;
+		}
+
+		switch (e)
+		{
+			case MediaStreamsKinds.Camera:
+			case MediaStreamsKinds.Microphone:
+				if (!interrupted)
+				{
+					this.#onBeforeLocalMediaRendererRemoved(e);
+				}
+				break;
+			case MediaStreamsKinds.Screen:
+				this.#onBeforeLocalMediaRendererRemoved(e);
+				break;
+		}
+	}
+
+	#onGetUserMediaStarted = (options) => {
+		if (options.video)
+		{
+			this.getUserMediaFulfilled.video = false;
+			this.signaling.sendCameraState(false);
+		}
+
+		if (options.audio)
+		{
+			this.getUserMediaFulfilled.audio = false;
+			this.signaling.sendMicrophoneState(false);
+		}
+	};
+
+	#onGetUserMediaSuccess = (options) => {
+		if (options.video && Hardware.isCameraOn)
+		{
+			this.getUserMediaFulfilled.video = false;
+			this.signaling.sendCameraState(true);
+		}
+
+		if (options.audio)
+		{
+			this.getUserMediaFulfilled.audio = false;
+			if (!Hardware.isMicrophoneMuted)
+			{
+				this.signaling.sendMicrophoneState(true);
+			}
+		}
+	};
+
+	#onGetUserMediaEnded = (options) => {
+		if (options.video)
+		{
+			this.#setPublishingState(MediaStreamsKinds.Camera, false);
+			this.getUserMediaFulfilled.video = true;
+		}
+
+		if (options.audio)
+		{
+			this.getUserMediaFulfilled.audio = true;
+		}
+	};
+
+	#onGetUserMediaFailed = (data: any): void => {
+		this.runCallback(CallEvent.onGetUserMediaFailed, data);
+		if (data.options.video)
+		{
+			this.getUserMediaFulfilled.video = true;
+		}
+
+		if (data.options.audio)
+		{
+			this.getUserMediaFulfilled.audio = true;
+		}
+	};
+
+	#onBeforeLocalMediaRendererRemoved = (e) =>
+	{
+		const kind = Util.MediaKind[e];
+		if (!kind)
+		{
+			this.log(`Wrong kind for mediaRenderer: ${e}`);
+			return;
+		}
+
+		if (!this.CallApi)
+		{
+			return;
+		}
+
+		this.log("__onBeforeLocalMediaRendererRemoved", kind);
+
+		const mediaRenderer = new MediaRenderer({
+			kind,
+		});
+
+		switch (e) {
+			case MediaStreamsKinds.Camera:
+				this.runCallback(CallEvent.onLocalMediaReceived, {
+					mediaRenderer,
+					tag: 'main',
+					stream: new MediaStream(),
+					removed: true,
+				});
+				break;
+			case MediaStreamsKinds.Microphone:
+				this.#setPublishingState(MediaStreamsKinds.Microphone, false);
+				this.signaling.sendMicrophoneState(false);
+				break;
+			case MediaStreamsKinds.Screen:
+				this.CallApi.stopScreenShare();
+				this.log("Screen is no longer shared");
+				this.runCallback(CallEvent.onUserScreenState, {
+					userId: this.userId,
+					screenState: false,
+				});
+				this.screenShared = false;
+				this.waitingLocalScreenShare = false;
+				this.runCallback(CallEvent.onLocalMediaReceived, {
+					mediaRenderer,
+					tag: 'screen',
+					stream: new MediaStream(),
+					removed: true,
+				});
+				break;
+		}
+	};
+
+	#onRemoteMediaAvailable = (p, t) =>
+	{
+		const kind = Util.MediaKind[t.source];
+		if (!kind)
+		{
+			this.log(`Wrong kind for mediaRenderer: ${t.source}`);
+			return;
+
+		}
+
+		this.runCallback(CallEvent.onRemoteMediaAvailable, {
+			userId: parseInt(p.userId),
+			kind: kind,
+			available: true,
+		});
+	}
+
+	#onRemoteMediaUnavailable = (p, t) =>
+	{
+		const kind = Util.MediaKind[t.source];
+		if (!kind)
+		{
+			this.log(`Wrong kind for mediaRenderer: ${t.source}`);
+			return;
+
+		}
+
+		this.runCallback(CallEvent.onRemoteMediaUnavailable, {
+			userId: parseInt(p.userId),
+			kind: kind,
+			available: false,
+		});
+	}
+
+	#onRemoteMediaAdded = (p, t) =>
+	{
+		const kind = Util.MediaKind[t.source];
+		if (!kind)
+		{
+			this.log(`Wrong kind for mediaRenderer: ${t.source}`);
+			return;
+		}
+
+		const e = {
+			mediaRenderer: new MediaRenderer({
+				kind,
+				track: t.track
+			})
+		};
+
+		const peer = this.peers[p.userId];
+		if (peer)
+		{
+
+			if (kind === 'audio')
+			{
+				if (this.vads[p.userId])
+				{
+					this.vads[p.userId].destroy();
+				}
+
+				this.vads[p.userId] = new SimpleVAD({
+					mediaStream: e.mediaRenderer.stream,
+					onVoiceStarted: () =>
+					{
+						this.#onEndpointVoiceStart({userId: p.userId});
+					},
+					onVoiceStopped: () =>
+					{
+						this.#onEndpointVoiceEnd({userId: p.userId});
+					},
+				});
+			}
+
+			// temporary solution to play new streams
+			// todo: need to find what cause the problem itself
+			if (!peer.participant)
+			{
+				peer.participant = p;
+				peer.updateCalculatedState();
+			}
+			peer.addMediaRenderer(e.mediaRenderer);
+		}
+
+		switch (t.source)
+		{
+			case MediaStreamsKinds.Camera:
+				this.runCallback(CallEvent.onUserCameraState, {
+					userId: p.userId,
+					cameraState: !p.isMutedVideo
+				});
+				break;
+
+			case MediaStreamsKinds.Microphone:
+				this.runCallback(CallEvent.onUserMicrophoneState, {
+					userId: p.userId,
+					microphoneState: !p.isMutedAudio
+				});
+				break;
+		}
+
+		console.log(`[RemoteMediaAdded]: UserId: ${p.userId}, source: ${kind}`)
+	};
+
+	#onRemoteMediaRemoved = (p, t) =>
+	{
+		const kind = Util.MediaKind[t.source];
+		if (!kind)
+		{
+			this.log(`Wrong kind for mediaRenderer: ${t.source}`);
+			return;
+		}
+
+		if (kind === 'audio')
+		{
+			if (this.vads[p.userId])
+			{
+				this.vads[p.userId].destroy();
+				delete this.vads[p.userId];
+			}
+		}
+
+		const e = {
+			mediaRenderer: new MediaRenderer({
+				kind,
+				track: t.track
+			})
+		};
+
+		const peer = this.peers[p.userId];
+		if (peer)
+		{
+			peer.removeMediaRenderer(e.mediaRenderer);
+		}
+
+		if (t.source === MediaStreamsKinds.Camera)
+		{
+			this.runCallback(CallEvent.onUserCameraState, {
+				userId: p.userId,
+				cameraState: false
+			});
+		}
+
+		console.log(`[RemoteMediaRemoved]: UserId: ${p.userId}, source: ${kind}`)
+	};
+
+	#onRemoteMediaMuteToggled = (p, t) =>
+	{
+		if (t.source === MediaStreamsKinds.Microphone)
+		{
+			const vad = this.vads[p.userId];
+			if (vad && p.isMutedAudio)
+			{
+				vad.pause();
+			}
+			else if (vad && !p.isMutedAudio)
+			{
+				vad.resume();
+			}
+
+			this.runCallback(CallEvent.onUserMicrophoneState, {
+				userId: p.userId,
+				microphoneState: !p.isMutedAudio
+			});
+		}
+	}
+
+	#onParticipantJoined = (p) =>
+	{
+		const peer = this.peers[p.userId];
+		if (peer)
+		{
+			if (!p.audioEnabled || p.isMutedAudio)
+			{
+				this.runCallback(CallEvent.onUserMicrophoneState, {
+					userId: p.userId,
+					microphoneState: false
+				});
+			}
+
+			if (!p.videoEnabled || p.isMutedVideo)
+			{
+				this.runCallback(CallEvent.onUserCameraState, {
+					userId: p.userId,
+					cameraState: false
+				});
+			}
+
+			if (p.isHandRaised)
+			{
+				this.runCallback(CallEvent.onUserFloorRequest, {
+					userId: p.userId,
+					requestActive: p.isHandRaised
+				})
+			}
+
+			peer.participant = p;
+			peer.setReady(true);
+
+			if (this.commonRecordState.state !== CallCommonRecordState.Stopped
+				&& this.commonRecordState.userId === this.userId)
+			{
+				this.signaling.sendLocalRecordState(this.userId, this.commonRecordState);
+			}
+		}
+	};
+
+	#onParticipantLeaved = (p) =>
+	{
+		const peer = this.peers[p.userId];
+		if (peer)
+		{
+			peer.participant = null;
+			for (let type in MediaStreamsKinds)
+			{
+				const source = MediaStreamsKinds[type];
+				const kind = Util.MediaKind[source];
+				const e = {
+					mediaRenderer: new MediaRenderer({
+						kind,
+					}),
+				};
+				peer.removeMediaRenderer(e.mediaRenderer);
+			}
+			peer.updateCalculatedState();
+		}
+	};
+
+	#onMicAccessResult = (e) =>
+	{
+		if (e.result)
+		{
+			if (e.stream.getAudioTracks().length > 0)
+			{
+				if (this.localVAD)
+				{
+					this.localVAD.destroy();
+				}
+				this.localVAD = new SimpleVAD({
+					mediaStream: e.stream,
+					onVoiceStarted: () =>
+					{
+						if (!Hardware.isMicrophoneMuted)
+						{
+							this.requestFloor(false);
+						}
+						this.#onEndpointVoiceStart({userId: this.userId});
+					},
+					onVoiceStopped: () =>
+					{
+						this.#onEndpointVoiceEnd({userId: this.userId});
+					},
+				});
+
+				clearInterval(this.microphoneLevelInterval);
+				this.microphoneLevelInterval = setInterval(
+					() =>this.microphoneLevel = this.localVAD.currentVolume,
+					200
+				);
+			}
+		}
+	};
+
+	#onCallReconnecting = (params): void => {
+		this.isReconnecting = true;
+
+		const data = Type.isObject(params) ? params : {};
+		this.reconnectHistory.startEntry(data.reconnectionReason ?? null, ReconnectTarget.Sdk);
+
+		if (this.reconnectionEventCount++)
+		{
+			return;
+		}
+
+		for (let userId in this.peers)
+		{
+			if (userId !== this.userId && this.peers.hasOwnProperty(userId) && this.peers[userId].calculatedState === UserState.Connected)
+			{
+				for (let type in MediaStreamsKinds)
+				{
+					const source = MediaStreamsKinds[type];
+					const kind = Util.MediaKind[source];
+					const e = {
+						mediaRenderer: new MediaRenderer({
+							kind,
+						}),
+					};
+					this.peers[userId].removeMediaRenderer(e.mediaRenderer);
+				}
+			}
+		}
+	}
+
+	#onCallReconnected = (): void => {
+		this.isReconnecting = false;
+		this.reconnectionEventCount = 0;
+		this.reconnectHistory.updateLastEntry(ReconnectTarget.Sdk, true);
+		this.log("Call reconnected");
+		this.sendTelemetryEvent("reconnect");
+		this.localUserState = UserState.Connected;
+
+		this.signaling.sendMicrophoneState(!Hardware.isMicrophoneMuted);
+		if (!this.CallApi.isAudioPublished())
+		{
+			this.#setPublishingState(MediaStreamsKinds.Microphone, true);
+		}
+		this.CallApi.enableAudio({ calledFrom: 'onCallReconnected', disabled: Hardware.isMicrophoneMuted });
+
+		this.signaling.sendCameraState(Hardware.isCameraOn);
+		if (Hardware.isCameraOn)
+		{
+			if (!this.CallApi.isVideoPublished())
+			{
+				this.#setPublishingState(MediaStreamsKinds.Camera, true);
+			}
+			this.CallApi.enableVideo();
+		}
+
+		if (this.screenShared || this.waitingLocalScreenShare)
+		{
+			this.CallApi.startScreenShare();
+		}
+
+		if (this.videoAllowedFrom == UserMnemonic.none)
+		{
+			this.signaling.sendHideAll();
+		}
+		else if (Type.isArray(this.videoAllowedFrom))
+		{
+			this.signaling.sendShowUsers(this.videoAllowedFrom);
+		}
+
+		if (this.recordState.userId === this.userId)
+		{
+			this.sendLocalRecordState({ action: this.commonRecordState.state, userId: this.userId }, true);
+		}
+
+		this.CallApi.raiseHand(this.floorRequestActive);
+	};
+
+	#onCallDisconnected = (e) =>
+	{
+		let logData = {};
+
+		const evt = e && typeof e === 'object' ? e : {}
+		const {headers, leaveInformation} = evt;
+
+		if (headers) {
+			logData = {
+				...logData,
+				headers,
+			}
+		}
+
+		if (leaveInformation) {
+			logData = {
+				...logData,
+				leaveInformation,
+			}
+		}
+
+		this.log("__onCallDisconnected", (Object.keys(logData).length ? logData : null));
+
+		if (this.ready && leaveInformation) {
+			this.hangup(leaveInformation.code, leaveInformation.reason)
+		}
+
+		this.sendTelemetryEvent("disconnect");
+
+		this.localUserState = UserState.Idle;
+
+		this.ready = false;
+		this.joinedAsViewer = false;
+		this.reinitPeers();
+
+		this.localVideoShown = false;
+		this.removeCallEvents();
+		this.unsubscribeHardwareChanges();
+
+		this.state = CallState.Proceeding;
+		this.runCallback(CallEvent.onLeave, {
+			local: true
+		});
+	};
+
+	#onWindowUnload = () =>
+	{
+		if (this.ready && this.CallApi)
+		{
+			this.signaling.sendHangup({
+				userId: this.users
+			});
+		}
+	};
+
+	#onFatalError = (error) =>
+	{
+		if (error && error.call)
+		{
+			delete error.call;
+		}
+		this.log("onFatalError", error);
+
+		this.ready = false;
+		this.localUserState = UserState.Failed;
+		this.reinitPeers();
+
+		this.localVideoShown = false;
+		if (this.CallApi)
+		{
+			this.removeCallEvents();
+			this.unsubscribeHardwareChanges();
+			try
+			{
+				this.CallApi.hangup({
+					'X-Reason': 'Fatal error',
+					'X-Error': typeof (error) === 'string' ? error : error.code || error.name
+				})
+			} catch (e)
+			{
+				this.log("Bitrix hangup error: ", e);
+				console.error("Bitrix hangup error: ", e);
+			}
+			this.CallApi = null;
+		}
+
+		if (typeof (error) === "string")
+		{
+			this.runCallback(CallEvent.onCallFailure, {
+				name: error
+			});
+		}
+		else if (error.name)
+		{
+			this.runCallback(CallEvent.onCallFailure, error);
+		}
+	};
+
+	#onTrackSubscriptionFailed = (params) =>
+	{
+		this.runCallback(CallEvent.onTrackSubscriptionFailed, params);
+	}
+
+	#onCallStatsReceived = (stats) =>
+	{
+		const usersToSendReports = {};
+		// to order local stats by track quality
+		const statsIndexByRid = { f: 2, h: 1, q: 0 };
+		const mediaServers = {};
+
+		stats.publisher?.forEach((report) =>
+		{
+			if (report.userId && (report.kind === 'video' || report.kind === 'audio'))
+			{
+				if (!usersToSendReports[report.userId])
+				{
+					usersToSendReports[report.userId] = {};
+				}
+
+				if (report.kind === 'video')
+				{
+					if (!usersToSendReports[report.userId][report.source])
+					{
+						usersToSendReports[report.userId][report.source] = [];
+					}
+
+					const index = statsIndexByRid[report.rid] || 0;
+					usersToSendReports[report.userId][report.source][index] = report;
+				}
+				else if (report.kind === 'audio')
+				{
+					usersToSendReports[report.userId][report.source] = report;
+				}
+				mediaServers[report.userId] = report.mediaServerId;
+			}
+		});
+
+		stats?.subscriber?.forEach((report) =>
+		{
+			if (report.userId && (report.kind === 'video' || report.kind === 'audio'))
+			{
+				if (!usersToSendReports[report.userId])
+				{
+					usersToSendReports[report.userId] = {};
+				}
+				usersToSendReports[report.userId][report.source] = report;
+				mediaServers[report.userId] = report.mediaServerId;
+			}
+		});
+
+		for (let userId in usersToSendReports)
+		{
+			this.runCallback(CallEvent.onUserStatsReceived, {
+				userId,
+				report: usersToSendReports[userId],
+				mediaServerId: mediaServers[userId],
+			});
+		}
+
+		// todo: need to correct stats format
+		// if (this.logger)
+		// {
+		// 	this.logger.sendStat(transformVoxStats(e.stats, this.CallApi));
+		// }
+	}
+
+	#onUpdatePacketLoss = (participants) =>
+	{
+		const prevPeersWithBadConnection = new Set([...this.peersWithBadConnection.values()]);
+		participants.forEach(userId =>
+		{
+			const peer = this.peers[userId];
+			if (peer)
+			{
+				if (!prevPeersWithBadConnection.has(userId))
+				{
+					this.peersWithBadConnection.add(userId);
+				}
+				else
+				{
+					prevPeersWithBadConnection.delete(userId);
+				}
+			}
+		});
+	}
+
+	#onConnectionQualityChanged = participants =>
+	{
+		Object.keys(participants).forEach(participantId => {
+			this.runCallback(
+				CallEvent.onConnectionQualityChanged,
+				{
+					userId: Number(participantId),
+					score: participants[participantId],
+				}
+			);
+		})
+	}
+
+	#onToggleRemoteParticipantVideo = isVideoShown =>
+	{
+		this.runCallback(
+			CallEvent.onToggleRemoteParticipantVideo,
+			{ isVideoShown }
+		);
+	}
+
+	#onCallMessageReceived = (event) =>
+	{
+		const message = event.content;
+		let peer;
+
+		const eventName = message.eventName;
+		if (eventName === clientEvents.cameraState)
+		{
+			this.runCallback(CallEvent.onUserCameraState, {
+				userId: message.senderId,
+				cameraState: message.cameraState === "Y"
+			});
+		}
+		else if (eventName === clientEvents.videoPaused)
+		{
+			if (message.senderId === this.userId)
+			{
+				return;
+			}
+			this.runCallback(CallEvent.onUserVideoPaused, {
+				userId: message.senderId,
+				videoPaused: message.videoPaused === "Y"
+			});
+		}
+		else if (eventName === clientEvents.screenState)
+		{
+			this.runCallback(CallEvent.onUserScreenState, {
+				userId: message.senderId,
+				screenState: message.screenState === "Y"
+			});
+		}
+		else if (eventName === clientEvents.commonRecordState)
+		{
+			this.runCallback(CallEvent.onUserCommonRecordState, {
+				userId: message.senderId,
+				commonRecordState: message.commonRecordState
+			});
+		}
+		else if (eventName === clientEvents.emotion)
+		{
+			this.runCallback(CallEvent.onUserEmotion, {
+				userId: message.senderId,
+				toUserId: message.toUserId,
+				emotion: message.emotion
+			})
+		}
+		else if (eventName === clientEvents.customMessage)
+		{
+			this.runCallback(CallEvent.onCustomMessage, {
+				message: message.message
+			})
+		}
+		else if (eventName === scenarioEvents.viewerJoined)
+		{
+			console.log("viewer " + message.senderId + " joined");
+			peer = this.peers[message.senderId];
+			if (peer)
+			{
+				peer.setDirection(EndpointDirection.RecvOnly);
+				peer.setReady(true);
+			}
+		}
+		else if (eventName === scenarioEvents.viewerLeft)
+		{
+			console.log("viewer " + message.senderId + " left");
+			peer = this.peers[message.senderId];
+			if (peer)
+			{
+				peer.setReady(false);
+			}
+		}
+		else
+		{
+			this.log("Unknown scenario event " + eventName);
+		}
+	};
+
+	#onCallHandRaised = (p) =>
+	{
+		this.runCallback(CallEvent.onUserFloorRequest, {
+			userId: p.userId,
+			requestActive: p.isHandRaised
+		})
+	}
+
+	#onAllParticipantsAudioMuted = (p) =>
+	{
+		this.runCallback(CallEvent.onAllParticipantsAudioMuted, {
+			userId: p.fromUserId,
+			reason: p.reason,
+		})
+	}
+
+	#onAllParticipantsVideoMuted = (p) =>
+	{
+		this.runCallback(CallEvent.onAllParticipantsVideoMuted, {
+			userId: p.fromUserId,
+			reason: p.reason,
+		})
+	}
+
+	#onAllParticipantsScreenshareMuted = (p) =>
+	{
+		this.runCallback(CallEvent.onAllParticipantsScreenshareMuted, {
+			userId: p.fromUserId,
+			reason: p.reason,
+		})
+	}
+
+	#onYouMuteAllParticipants = (p) =>
+	{
+		this.runCallback(CallEvent.onYouMuteAllParticipants, {
+			data: p
+		})
+	}
+
+	#onRoomSettingsChanged = (p) =>
+	{
+		this.runCallback(CallEvent.onRoomSettingsChanged, {
+			data: p
+		})
+	}
+
+	#onUserPermissionsChanged = (p) =>
+	{
+		this.runCallback(CallEvent.onUserPermissionsChanged, {
+			data: p
+		})
+	}
+
+	#onUserRoleChanged = (p) =>
+	{
+		this.runCallback(CallEvent.onUserRoleChanged, {
+			data: p
+		})
+	}
+
+	#onParticipantMuted = (p) =>
+	{
+		this.runCallback(CallEvent.onParticipantMuted, {
+			data: p
+		})
+	}
+
+	#onEndpointVoiceStart = (p) =>
+	{
+		// for local user we need to send extra signal to show unmute hint
+		if (p.userId === this.userId)
+		{
+			this.runCallback(CallEvent.onUserVoiceStarted, {
+				userId: p.userId,
+				local: true,
+			});
+
+			if (Hardware.isMicrophoneMuted)
+			{
+				return;
+			}
+		}
+
+		this.runCallback(CallEvent.onUserVoiceStarted, {
+			userId: p.userId,
+		});
+	};
+
+	#onEndpointVoiceEnd = (p) =>
+	{
+		this.runCallback(CallEvent.onUserVoiceStopped, {
+			userId: p.userId,
+		});
+	}
+
+	sendTelemetryEvent(eventName)
+	{
+		Util.sendTelemetryEvent({
+			call_id: this.id,
+			user_id: this.userId,
+			kind: "Bitrix",
+			event: eventName,
+		})
+	};
+
+	testReconnect(): void
+	{
+		if (!this.CallApi)
+		{
+			return;
+		}
+
+		this.CallApi.testReconnect();
+	}
+
+	destroy()
+	{
+		this.ready = false;
+		this.joinedAsViewer = false;
+		this.localVideoShown = false;
+		this.floorRequestActive = false;
+
+		if (this.localVAD)
+		{
+			this.localVAD.destroy();
+			this.localVAD = null;
+		}
+
+		for (let userId in this.vads)
+		{
+			if (this.vads[userId])
+			{
+				this.vads[userId].destroy();
+				delete this.vads[userId];
+			}
+		}
+
+		clearInterval(this.microphoneLevelInterval);
+		if (this.CallApi)
+		{
+			this.removeCallEvents();
+			this.unsubscribeHardwareChanges();
+			this.CallApi.hangup();
+			this.CallApi = null;
+		}
+
+		for (let userId in this.peers)
+		{
+			if (this.peers.hasOwnProperty(userId) && this.peers[userId])
+			{
+				this.peers[userId].destroy();
+			}
+		}
+
+		clearTimeout(this.lastPingReceivedTimeout);
+		clearTimeout(this.lastSelfPingReceivedTimeout);
+		clearInterval(this.pingUsersInterval);
+		clearInterval(this.pingBackendInterval);
+
+		window.removeEventListener("unload", this.#onWindowUnload);
+		return super.destroy();
+	};
+}
+
+class Signaling
+{
+	constructor(params)
+	{
+		this.call = params.call;
+	};
+
+	inviteUsers(data)
+	{
+		return this.#runRestAction(ajaxActions.invite, data);
+	};
+
+	sendAnswer(data, repeated)
+	{
+		if (repeated && getLegacy().getPullClient().isPublishingEnabled())
+		{
+			this.#sendPullEvent(pullEvents.answer, data);
+		}
+		else
+		{
+			return this.#runRestAction(ajaxActions.answer, data);
+		}
+	};
+
+	sendHangup(data)
+	{
+		if (getLegacy().getPullClient().isPublishingEnabled())
+		{
+			this.#sendPullEvent(pullEvents.hangup, data);
+			data.retransmit = false;
+			this.#runRestAction(ajaxActions.hangup, data);
+		}
+		else
+		{
+			data.retransmit = true;
+			this.#runRestAction(ajaxActions.hangup, data);
+		}
+	};
+
+	sendFinish(data)
+	{
+		if (getLegacy().getPullClient().isPublishingEnabled())
+		{
+			this.#sendPullEvent(pullEvents.hangup, data);
+			data.retransmit = false;
+			this.#runRestAction(ajaxActions.finish, data);
+		}
+		else
+		{
+			data.retransmit = true;
+			this.#runRestAction(ajaxActions.finish, data);
+		}
+	};
+
+	sendCameraState(cameraState)
+	{
+		return this.#sendMessage(clientEvents.cameraState, {
+			cameraState: cameraState ? "Y" : "N"
+		});
+	};
+
+	sendVideoPaused(videoPaused)
+	{
+		return this.#sendMessage(clientEvents.videoPaused, {
+			videoPaused: videoPaused ? "Y" : "N"
+		});
+	};
+
+	sendMicrophoneState(microphoneState)
+	{
+		return this.#sendMessage(clientEvents.microphoneState, {
+			microphoneState: microphoneState ? "Y" : "N"
+		});
+	};
+
+	sendScreenState(screenState)
+	{
+		return this.#sendMessage(clientEvents.screenState, {
+			screenState: screenState ? "Y" : "N"
+		});
+	};
+
+	sendLocalRecordState(userId, commonRecordState)
+	{
+		this.#sendMessage(clientEvents.commonRecordState, {
+			senderId: userId,
+			commonRecordState
+		});
+	};
+
+	sendCustomMessage(message, repeatOnConnect)
+	{
+		return this.#sendMessage(clientEvents.customMessage, {
+			message: message,
+			repeatOnConnect: !!repeatOnConnect
+		});
+	};
+
+	sendShowUsers(users)
+	{
+		return this.#sendMessage(clientEvents.showUsers, {
+			users: users
+		});
+	};
+
+	sendShowAll()
+	{
+		return this.#sendMessage(clientEvents.showAll, {});
+	};
+
+	sendHideAll()
+	{
+		return this.#sendMessage(clientEvents.hideAll, {});
+	};
+
+	sendPingToUsers(data)
+	{
+		if (getLegacy().getPullClient().isPublishingEnabled())
+		{
+			this.#sendPullEvent(pullEvents.ping, data, 0);
+		}
+	};
+
+	sendPingToBackend()
+	{
+		this.#runRestAction(ajaxActions.ping, {retransmit: false});
+	};
+
+	sendUserInviteTimeout(data)
+	{
+		if (getLegacy().getPullClient().isPublishingEnabled())
+		{
+			this.#sendPullEvent(pullEvents.userInviteTimeout, data, 0);
+		}
+	};
+
+	#sendPullEvent(eventName, data, expiry)
+	{
+		expiry = expiry || 5;
+		if (!data.userId)
+		{
+			throw new Error('userId is not found in data');
+		}
+
+		if (!Type.isArray(data.userId))
+		{
+			data.userId = [data.userId];
+		}
+		if (data.userId.length === 0)
+		{
+			// nobody to send, exit
+			return;
+		}
+
+		data.callInstanceId = this.call.instanceId;
+		data.senderId = this.call.userId;
+		data.callId = this.call.id;
+		data.requestId = Util.getUuidv4();
+
+		this.call.log('Sending p2p signaling event ' + eventName + '; ' + JSON.stringify(data));
+		getLegacy().getPullClient().sendMessage(data.userId, 'im', eventName, data, expiry);
+	};
+
+	#sendMessage(eventName, data)
+	{
+		if (!this.call.CallApi)
+		{
+			return;
+		}
+
+		if (!Type.isPlainObject(data))
+		{
+			data = {};
+		}
+		data.eventName = eventName;
+		data.requestId = Util.getUuidv4();
+		data.senderId = this.call.userId;
+
+		this.call.CallApi.sendMessage(JSON.stringify(data));
+	};
+
+	#runRestAction(signalName, data)
+	{
+		if (!Type.isPlainObject(data))
+		{
+			data = {};
+		}
+
+		data.callId = this.call.id;
+		data.callInstanceId = this.call.instanceId;
+		data.requestId = Util.getUuidv4();
+		return getLegacy().getRestClient().callMethod(signalName, data);
+	};
+}
+
+class Peer
+{
+	calculatedState: string
+
+	constructor(params)
+	{
+		this.userId = params.userId;
+		this.call = params.call;
+
+		this.ready = !!params.ready;
+		this.calling = false;
+		this.backgroundCalling = false;
+		this.declined = false;
+		this.busy = false;
+		this.inviteTimeout = false;
+		this.direction = params.direction || EndpointDirection.SendRecv;
+
+		this.stream = null;
+		this.mediaRenderers = [];
+
+		this.isIncomingVideoAllowed = params.isIncomingVideoAllowed !== false;
+
+		this.callingTimeout = 0;
+
+		this.callbacks = {
+			onStateChanged: Type.isFunction(params.onStateChanged) ? params.onStateChanged : BX.DoNothing,
+			onInviteTimeout: Type.isFunction(params.onInviteTimeout) ? params.onInviteTimeout : BX.DoNothing,
+			onMediaReceived: Type.isFunction(params.onMediaReceived) ? params.onMediaReceived : BX.DoNothing,
+			onMediaRemoved: Type.isFunction(params.onMediaRemoved) ? params.onMediaRemoved : BX.DoNothing,
+		};
+
+		this.calculatedState = this.calculateState();
+	};
+
+	setReady(ready)
+	{
+		ready = !!ready;
+		if (this.ready === ready)
+		{
+			return;
+		}
+		this.ready = ready;
+		if (this.calling || this.backgroundCalling)
+		{
+			clearTimeout(this.callingTimeout);
+			this.calling = false;
+			this.backgroundCalling = false;
+			this.inviteTimeout = false;
+		}
+		if (this.ready)
+		{
+			this.declined = false;
+			this.busy = false;
+		}
+
+		this.updateCalculatedState();
+	}
+
+	setDirection(direction)
+	{
+		if (this.direction === direction)
+		{
+			return;
+		}
+		this.direction = direction;
+	}
+
+	setDeclined(declined)
+	{
+		this.declined = declined;
+		if (this.calling || this.backgroundCalling)
+		{
+			clearTimeout(this.callingTimeout);
+			this.calling = false;
+			this.backgroundCalling = false;
+		}
+		if (this.declined)
+		{
+			this.ready = false;
+			this.busy = false;
+		}
+		this.updateCalculatedState();
+	}
+
+	setBusy(busy)
+	{
+		this.busy = busy;
+		if (this.calling || this.backgroundCalling)
+		{
+			clearTimeout(this.callingTimeout);
+			this.calling = false;
+			this.backgroundCalling = false;
+		}
+		if (this.busy)
+		{
+			this.ready = false;
+			this.declined = false;
+		}
+		this.updateCalculatedState();
+	}
+
+	allowIncomingVideo(isIncomingVideoAllowed)
+	{
+		if (this.isIncomingVideoAllowed == isIncomingVideoAllowed)
+		{
+			return;
+		}
+
+		this.isIncomingVideoAllowed = !!isIncomingVideoAllowed;
+	}
+
+	addMediaRenderer(mediaRenderer)
+	{
+		this.log('Adding media renderer for user' + this.userId, mediaRenderer);
+
+		this.mediaRenderers.push(mediaRenderer);
+
+		this.callbacks.onMediaReceived({
+			userId: this.userId,
+			kind: mediaRenderer.kind,
+			mediaRenderer: mediaRenderer
+		});
+		this.updateCalculatedState();
+	}
+
+	removeMediaRenderer(mediaRenderer)
+	{
+		this.log('Removing media renderer for user' + this.userId, mediaRenderer);
+
+		let i
+		this.mediaRenderers.forEach((el, index) => {
+			if (el.kind === mediaRenderer.kind) {
+				i = index;
+			}
+		})
+
+		if (i >= 0)
+		{
+			this.mediaRenderers.splice(i, 1);
+		}
+		this.callbacks.onMediaRemoved({
+			userId: this.userId,
+			kind: mediaRenderer.kind,
+			mediaRenderer: mediaRenderer
+		});
+		this.updateCalculatedState();
+	}
+
+	calculateState()
+	{
+		if (this.participant)
+		{
+			return UserState.Connected;
+		}
+
+		if (this.calling)
+		{
+			return UserState.Calling;
+		}
+
+		if (this.inviteTimeout)
+		{
+			return UserState.Unavailable;
+		}
+
+		if (this.declined)
+		{
+			return UserState.Declined;
+		}
+
+		if (this.busy)
+		{
+			return UserState.Busy;
+		}
+
+		if (this.ready)
+		{
+			return UserState.Ready;
+		}
+
+		return UserState.Idle;
+	}
+
+	updateCalculatedState()
+	{
+		const calculatedState = this.calculateState();
+
+		if (this.calculatedState !== calculatedState)
+		{
+			this.callbacks.onStateChanged({
+				userId: this.userId,
+				state: calculatedState,
+				previousState: this.calculatedState,
+				direction: this.direction,
+			});
+			this.calculatedState = calculatedState;
+		}
+	}
+
+	isParticipating()
+	{
+		return ((this.calling || this.backgroundCalling || this.ready || this.participant) && !this.declined);
+	}
+
+	onInvited(showUser = false)
+	{
+		this.ready = false;
+		this.inviteTimeout = false;
+		this.declined = false;
+		if (showUser)
+		{
+			this.calling = true;
+		}
+		else
+		{
+			this.backgroundCalling = true;
+		}
+
+		if (this.callingTimeout)
+		{
+			clearTimeout(this.callingTimeout);
+		}
+		this.callingTimeout = setTimeout(() => this.onInviteTimeout(true), this.call.invitePeriod);
+		this.updateCalculatedState();
+	}
+
+	onInviteTimeout(internal)
+	{
+		clearTimeout(this.callingTimeout);
+		if (!(this.calling || this.backgroundCalling))
+		{
+			return;
+		}
+		this.calling = false;
+		this.backgroundCalling = false;
+		this.inviteTimeout = true;
+		if (internal)
+		{
+			this.callbacks.onInviteTimeout({
+				userId: this.userId
+			});
+		}
+		this.updateCalculatedState();
+	}
+
+	log()
+	{
+		this.call.log.apply(this.call, arguments);
+	}
+
+	destroy()
+	{
+		if (this.stream)
+		{
+			Util.stopMediaStream(this.stream);
+			this.stream = null;
+		}
+
+		this.callbacks.onStateChanged = BX.DoNothing;
+		this.callbacks.onInviteTimeout = BX.DoNothing;
+		this.callbacks.onMediaReceived = BX.DoNothing;
+		this.callbacks.onMediaRemoved = BX.DoNothing;
+
+		clearTimeout(this.callingTimeout);
+		this.callingTimeout = null;
+	}
+}
+
+const transformVoxStats = function (s, CallApi)
+{
+	let result = {
+		connection: s.connection,
+		outboundAudio: [],
+		outboundVideo: [],
+		inboundAudio: [],
+		inboundVideo: [],
+	}
+
+	let endpoints = {};
+	if (CallApi.getEndpoints)
+	{
+		CallApi.getEndpoints().forEach(endpoint => endpoints[endpoint.id] = endpoint)
+	}
+
+	if (!result.connection.timestamp)
+	{
+		result.connection.timestamp = Date.now();
+	}
+	for (let trackId in s.outbound)
+	{
+		if (!s.outbound.hasOwnProperty(trackId))
+		{
+			continue;
+		}
+		const statGroup = s.outbound[trackId];
+		for (let i = 0; i < statGroup.length; i++)
+		{
+			let stat = statGroup[i];
+			stat.trackId = trackId;
+			if ('audioLevel' in stat)
+			{
+				result.outboundAudio.push(stat)
+			}
+			else
+			{
+				result.outboundVideo.push(stat)
+			}
+		}
+	}
+	for (let trackId in s.inbound)
+	{
+		if (!s.inbound.hasOwnProperty(trackId))
+		{
+			continue;
+		}
+		let stat = s.inbound[trackId];
+		if (!('endpoint' in stat))
+		{
+			continue;
+		}
+		stat.trackId = trackId;
+		if ('audioLevel' in stat)
+		{
+			result.inboundAudio.push(stat)
+		}
+		else
+		{
+			if (endpoints[stat.endpoint])
+			{
+				let videoRenderer = endpoints[stat.endpoint].mediaRenderers.find(r => r.id == stat.trackId)
+				if (videoRenderer && videoRenderer.element)
+				{
+					stat.actualHeight = videoRenderer.element.videoHeight;
+					stat.actualWidth = videoRenderer.element.videoWidth;
+				}
+			}
+
+			result.inboundVideo.push(stat)
+		}
+	}
+	return result;
+
+}

@@ -1,0 +1,35 @@
+<?
+$MESS["CRM_ENTITY_ADDRESS_1"] = "Via, edificio";
+$MESS["CRM_ENTITY_ADDRESS_2"] = "Suite / Appartamento";
+$MESS["CRM_ENTITY_ADDRESS_CHANGE_EVENT_EMPTY"] = "-Vuoto-";
+$MESS["CRM_ENTITY_ADDRESS_CITY"] = "Città";
+$MESS["CRM_ENTITY_ADDRESS_COUNTRY"] = "Paese";
+$MESS["CRM_ENTITY_ADDRESS_POSTAL_CODE"] = "CAP";
+$MESS["CRM_ENTITY_ADDRESS_PROVINCE"] = "Stato / Provincia";
+$MESS["CRM_ENTITY_ADDRESS_PRY"] = "Via e numero civico";
+$MESS["CRM_ENTITY_ADDRESS_REG"] = "Indirizzo legale";
+$MESS["CRM_ENTITY_ADDRESS_REGION"] = "Regione";
+$MESS["CRM_ENTITY_FULL_ADDRESS"] = "Indirizzo";
+$MESS["CRM_ENTITY_FULL_REG_ADDRESS"] = "Indirizzo di fatturazione";
+$MESS["CRM_ENTITY_REG_ADDRESS_1"] = "Via, edificio (fatturazione)";
+$MESS["CRM_ENTITY_REG_ADDRESS_2"] = "Suite / Appartamento (fatturazione)";
+$MESS["CRM_ENTITY_REG_ADDRESS_CITY"] = "Città (fatturazione)";
+$MESS["CRM_ENTITY_REG_ADDRESS_COUNTRY"] = "Paese (fatturazione)";
+$MESS["CRM_ENTITY_REG_ADDRESS_POSTAL_CODE"] = "CAP (fatturazione)";
+$MESS["CRM_ENTITY_REG_ADDRESS_PROVINCE"] = "Stato/Provincia (fatturazione)";
+$MESS["CRM_ENTITY_REG_ADDRESS_REGION"] = "Regione (fatturazione)";
+$MESS["CRM_ENTITY_SHORT_ADDRESS_1"] = "Via";
+$MESS["CRM_ENTITY_SHORT_ADDRESS_2"] = "Appartamento / Suite";
+$MESS["CRM_ENTITY_SHORT_ADDRESS_CITY"] = "Città";
+$MESS["CRM_ENTITY_SHORT_ADDRESS_COUNTRY"] = "Paese";
+$MESS["CRM_ENTITY_SHORT_ADDRESS_POSTAL_CODE"] = "CAP";
+$MESS["CRM_ENTITY_SHORT_ADDRESS_PROVINCE"] = "Stato / Provincia";
+$MESS["CRM_ENTITY_SHORT_ADDRESS_REGION"] = "Regione";
+$MESS["CRM_ENTITY_SHORT_REG_ADDRESS_1"] = "Via (fatturazione)";
+$MESS["CRM_ENTITY_SHORT_REG_ADDRESS_2"] = "Appartamento / Suite (fatturazione)";
+$MESS["CRM_ENTITY_SHORT_REG_ADDRESS_CITY"] = "Città (fatturazione)";
+$MESS["CRM_ENTITY_SHORT_REG_ADDRESS_COUNTRY"] = "Paese (fatturazione)";
+$MESS["CRM_ENTITY_SHORT_REG_ADDRESS_POSTAL_CODE"] = "CAP (fatturazione)";
+$MESS["CRM_ENTITY_SHORT_REG_ADDRESS_PROVINCE"] = "Stato/Provincia (fatturazione)";
+$MESS["CRM_ENTITY_SHORT_REG_ADDRESS_REGION"] = "Regione (fatturazione)";
+?>

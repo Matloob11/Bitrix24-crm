@@ -1,0 +1,12 @@
+.bx-im-list-navigator-nested-list__container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.bx-im-list-navigator-nested-list__container.--compact-mode {
+	width: calc(100% - 68px);
+}

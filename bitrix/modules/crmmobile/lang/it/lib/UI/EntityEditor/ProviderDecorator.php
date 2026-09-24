@@ -1,0 +1,7 @@
+<?php
+$MESS["MOBILE_UI_EDITOR_EMAIL_BUTTON"] = "Aggiungi e-mail";
+$MESS["MOBILE_UI_EDITOR_IM_BUTTON"] = "Aggiungi messenger";
+$MESS["MOBILE_UI_EDITOR_OPPORTUNITY_TITLE"] = "Importo";
+$MESS["MOBILE_UI_EDITOR_PHONE_BUTTON"] = "Aggiungi telefono";
+$MESS["MOBILE_UI_EDITOR_PROVIDER_TYPE"] = "Tipo";
+$MESS["MOBILE_UI_EDITOR_WEB_BUTTON"] = "Aggiungi sito";

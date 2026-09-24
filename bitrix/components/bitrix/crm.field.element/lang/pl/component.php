@@ -1,0 +1,24 @@
+<?php
+$MESS["CRM_ELEMENT_BUTTON_SELECT"] = "Wybierz";
+$MESS["CRM_ELEMENT_CANCEL"] = "Anuluj";
+$MESS["CRM_ELEMENT_CHANGE"] = "Edytuj";
+$MESS["CRM_ELEMENT_CHOISE"] = "Wybierz";
+$MESS["CRM_ELEMENT_CLOSE"] = "Zamknij";
+$MESS["CRM_ELEMENT_COMPANY"] = "Firmy";
+$MESS["CRM_ELEMENT_CONTACT"] = "Kontakty";
+$MESS["CRM_ELEMENT_CREATE"] = "Utwórz";
+$MESS["CRM_ELEMENT_CREATE_COMPANY"] = "Firma";
+$MESS["CRM_ELEMENT_CREATE_CONTACT"] = "Kontakt";
+$MESS["CRM_ELEMENT_CREATE_DEAL"] = "Deal";
+$MESS["CRM_ELEMENT_CREATE_LEAD"] = "Lead";
+$MESS["CRM_ELEMENT_DEAL"] = "Deale";
+$MESS["CRM_ELEMENT_HIDDEN_OR_DELETED"] = "Ukryto lub usunięto pozycję";
+$MESS["CRM_ELEMENT_LAST"] = "Ostatnio Wybrane";
+$MESS["CRM_ELEMENT_LEAD"] = "Leady";
+$MESS["CRM_ELEMENT_NO_RESULT"] = "Niestety wyszukiwanie twojego zapytania nie przyniosło rezultatów.";
+$MESS["CRM_ELEMENT_OK"] = "Wybierz";
+$MESS["CRM_ELEMENT_ORDER"] = "Zamówienia";
+$MESS["CRM_ELEMENT_PERMISSION_DENIED"] = "Odmowa dostępu";
+$MESS["CRM_ELEMENT_QUOTE_MSGVER_1"] = "Oferty";
+$MESS["CRM_ELEMENT_SEARCH"] = "Szukaj";
+$MESS["CRM_SFE_ENTITY_NOT_SELECTED"] = "Nie wybrano typu obiektu w parametrach pola";

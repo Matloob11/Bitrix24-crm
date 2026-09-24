@@ -1,0 +1,131 @@
+import { Communication } from 'booking.const';
+
+export type ResourcesState = {
+	collection: { [resourceId: string]: ResourceModel },
+	resourcesSkuRelations: ResourceSkuRelationsModel[],
+};
+
+export type ResourceModel = {
+	id: number | null,
+	typeId: number,
+	name: string,
+	description: string | null,
+	avatar: {
+		id: number | null,
+		url: string | null,
+	} | null,
+	slotRanges: SlotRange[],
+	counter: number | null,
+	isMain: false,
+	isPrimary: false,
+	isDeleted: false,
+	createdBy: number,
+	createdAt: number,
+	updatedAt: number | null,
+	deletedAt: number | null,
+
+	senderCode: $Values<typeof Communication>;
+
+	// info
+	isInfoNotificationOn: boolean,
+	templateTypeInfo: string,
+	infoNotificationDelay: number,
+
+	// confirmation
+	isConfirmationNotificationOn: boolean,
+	templateTypeConfirmation: string,
+	confirmationNotificationDelay: number,
+	confirmationNotificationRepetitions: number,
+	confirmationNotificationRepetitionsInterval: number,
+	confirmationCounterDelay: number,
+
+	// reminder
+	isReminderNotificationOn: boolean,
+	templateTypeReminder: string,
+	reminderNotificationDelay: number,
+
+	// delayed
+	isDelayedNotificationOn: boolean,
+	templateTypeDelayed: string,
+	delayedNotificationDelay: number,
+	delayedCounterDelay: number,
+
+	// cancellation
+	isCancellationNotificationOn: boolean,
+	cancellationNotificationDelay: number,
+
+	// feedback
+	isFeedbackNotificationOn: boolean,
+	templateTypeFeedback: string,
+
+	skus: Skus[];
+	skusYandex: Skus[];
+
+	// integrationCalendar
+	entities: IntegrationCalendarType[],
+};
+
+export type SlotRange = {
+	id: number | string | null,
+	from: number,
+	to: number,
+	weekDays: string[],
+	slotSize: number,
+	timezone: string,
+};
+
+export type IntegrationCalendarType = {
+	entityType: string;
+	entityId: number;
+	data: IntegrationCalendarDataType;
+}
+
+export type IntegrationCalendarDataType = {
+	userIds: number[];
+	locationId: number;
+	checkAvailability: boolean;
+	reminders: IntegrationCalendarReminder[];
+}
+
+export type IntegrationCalendarReminder = {
+	type: 'min';
+	count: number;
+}
+
+export type ResourceModelWithFile = ResourceModel & {
+	avatar: {
+		id: number | null,
+		url: string | null,
+		file: File | null,
+	} | null
+};
+
+export type Skus = {
+	id: number,
+	name: string,
+	permissions: {
+		read: boolean,
+	},
+};
+
+export type ResourceSkuRelationsModel = {
+	avatar: {
+		id: number | null,
+		url: string | null,
+		encodedFile: string | null,
+	} | null,
+	id: number,
+	name: string,
+	skus: SkuRelations[],
+	typeId: number,
+};
+
+export type SkuRelations = {
+	id: number,
+	name: string,
+	price: number,
+	currencyId: string,
+	permissions: {
+		read: boolean,
+	}
+};

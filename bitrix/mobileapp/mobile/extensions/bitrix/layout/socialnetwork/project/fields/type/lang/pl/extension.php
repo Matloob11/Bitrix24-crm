@@ -1,0 +1,9 @@
+<?php
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_MENU_TITLE"] = "Typ projektu";
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_PRIVATE_SUBTITLE"] = "Widoczny dla wszystkich. Dołączenie wymaga zaproszenia";
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_PRIVATE_TITLE"] = "Projekt prywatny";
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_PUBLIC_SUBTITLE"] = "Widoczny dla wszystkich. Każdy może wziąć udział";
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_PUBLIC_TITLE"] = "Projekt publiczny";
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_SECRET_SUBTITLE"] = "Wyłącznie zaproszone osoby mogą wyświetlać i uczestniczyć";
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_SECRET_TITLE"] = "Tajny projekt";
+$MESS["MOBILE_LAYOUT_PROJECT_FIELDS_TYPE_TITLE"] = "TYP PROJEKTU";

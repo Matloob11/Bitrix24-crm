@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE"] = "Le responsable peut modifier le planning";
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE_TEMPLATE"] = "Le responsable peut modifier la durée de la tâche et la date de début";
+$MESS["TASKS_V2_DATE_PLAN_BUTTON_SAVE"] = "Enregistrer";
+$MESS["TASKS_V2_DATE_PLAN_DAYS"] = "Jour(s)";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION"] = "Sélectionnez les dates de début et d'échéance prévues pour cette tâche. Comme alternative à la sélection de la date d'échéance, vous pouvez spécifier la durée prévue de la tâche.";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION_TEMPLATE"] = "Indiquez quand votre tâche commencera et sa durée prévue.";
+$MESS["TASKS_V2_DATE_PLAN_DURATION"] = "Durée :";
+$MESS["TASKS_V2_DATE_PLAN_END"] = "Date d'échéance :";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_END"] = "Date d'échéance :";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_START"] = "Date de début :";
+$MESS["TASKS_V2_DATE_PLAN_HOURS"] = "Heure(s)";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME"] = "Synchroniser avec les plannings des sous-tâches";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_HINT"] = "Le planning de cette tâche variera en fonction des plannings de ses sous-tâches.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_STATE"] = "Défini par les sous-tâches";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME"] = "Ignorer les week-ends";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT"] = "Le planning sera ajusté s'il tombe un week-end ou un jour férié.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT_TEMPLATE"] = "La date de début et la durée seront ajustées si elles tombent un week-end ou un jour férié.";
+$MESS["TASKS_V2_DATE_PLAN_MINUTES"] = "Minute(s)";
+$MESS["TASKS_V2_DATE_PLAN_NO_SUBTASKS_HINT"] = "Cette tâche n'a pas encore de sous-tâches. Une fois qu'elle en aura, le planning sera ajusté en conséquence.";
+$MESS["TASKS_V2_DATE_PLAN_START"] = "Date de début :";
+$MESS["TASKS_V2_DATE_PLAN_START_AFTER"] = "Démarrer la tâche dans :";
+$MESS["TASKS_V2_DATE_PLAN_TITLE"] = "Planning :";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_CHIP"] = "Planification de la tâche";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_SHEET"] = "Planification de la tâche";

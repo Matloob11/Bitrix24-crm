@@ -1,0 +1,21 @@
+<?php
+$MESS["LANDING_TPL_ACCEPT"] = "Accetto i Termini";
+$MESS["LANDING_TPL_ACCEPTED"] = "Hai già accettato i Termini";
+$MESS["LANDING_TPL_ADD_PAGE"] = "Nuova pagina";
+$MESS["LANDING_TPL_ADD_SITE_2"] = "Crea";
+$MESS["LANDING_TPL_AI_SETTING_TITLE"] = "Impostazioni IA";
+$MESS["LANDING_TPL_DEV_SITE"] = "Crea sito web di sviluppo";
+$MESS["LANDING_TPL_FOLDER_EDIT"] = "Impostazioni cartella";
+$MESS["LANDING_TPL_IMPORT_SITE_KNOWLEDGE"] = "Importa knowledge base";
+$MESS["LANDING_TPL_IMPORT_SITE_PAGE"] = "Importa sito";
+$MESS["LANDING_TPL_IMPORT_SITE_STORE"] = "Importa online store";
+$MESS["LANDING_TPL_JS_PAY_TARIFF"] = "Passa al piano commerciale";
+$MESS["LANDING_TPL_JS_PAY_TARIFF_TITLE"] = "Restrizioni piano";
+$MESS["LANDING_TPL_MENU_AGREEMENT"] = "Termini d'uso";
+$MESS["LANDING_TPL_MENU_FORMS"] = "Moduli CRM";
+$MESS["LANDING_TPL_MENU_MARKETING"] = "Marketing";
+$MESS["LANDING_TPL_MENU_RIGHTS"] = "Autorizzazioni di accesso";
+$MESS["LANDING_TPL_MENU_SITES"] = "Siti";
+$MESS["LANDING_TPL_MENU_SITES_KNOWLEDGE"] = "Knowledge base";
+$MESS["LANDING_TPL_MENU_TRACKING"] = "Sales Intelligence";
+$MESS["LANDING_TPL_SETTING"] = "Impostazioni";

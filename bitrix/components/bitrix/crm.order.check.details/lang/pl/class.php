@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_COLUMN_ORDER_CHECK_DATE_CREATE"] = "Data utworzenia";
+$MESS["CRM_COLUMN_ORDER_CHECK_ENTITY"] = "Identyfikator obiektu (#ENTITY_NAME#)";
+$MESS["CRM_COLUMN_ORDER_CHECK_ID"] = "ID";
+$MESS["CRM_COLUMN_ORDER_CHECK_LINK"] = "Link do pokwitowania";
+$MESS["CRM_COLUMN_ORDER_CHECK_ORDER_ID"] = "ID zamówienia";
+$MESS["CRM_COLUMN_ORDER_CHECK_PAYMENT_DESCR"] = "Płatność";
+$MESS["CRM_COLUMN_ORDER_CHECK_SHIPMENT_DESCR"] = "Wysyłka";
+$MESS["CRM_COLUMN_ORDER_CHECK_STATUS"] = "Status pokwitowania";
+$MESS["CRM_COLUMN_ORDER_CHECK_SUM"] = "Kwota pokwitowania";
+$MESS["CRM_COLUMN_ORDER_CHECK_TYPE"] = "Rodzaj pokwitowania";
+$MESS["CRM_MODULE_NOT_INSTALLED"] = "Moduł CRM nie jest zainstalowany.";
+$MESS["CRM_ORDER_CHECK_ADD_TITLE"] = "Dodaj nowe pokwitowanie";
+$MESS["CRM_ORDER_CHECK_LINK"] = "Link do pokwitowania";
+$MESS["CRM_ORDER_CHECK_TITLE"] = "Pokwitowanie ##ID# od #DATE_CREATE#";
+$MESS["CRM_ORDER_COPY_PAGE_TITLE"] = "Kopiuj pokwitowanie";
+$MESS["CRM_ORDER_NOT_FOUND"] = "Nie znaleziono zamówienia";
+$MESS["CRM_ORDER_PAYMENT"] = "Płatność ##PAYMENT_NUMBER#: #PAYSYSTEM_NAME#";
+$MESS["CRM_ORDER_PAYMENT_TITLE"] = "Płatność ##ACCOUNT_NUMBER# od #DATE_BILL#";
+$MESS["CRM_ORDER_SECTION_ADDITIONAL"] = "Szczegóły płatności";
+$MESS["CRM_ORDER_SECTION_MAIN"] = "Szczegóły pokwitowania";
+$MESS["CRM_ORDER_SHIPMENT"] = "Wysyłka ##SHIPMENT_NUMBER#: #DELIVERY_SYSTEM_NAME#";
+$MESS["CRM_ORDER_SHIPMENT_TITLE"] = "Wysyłka ##ACCOUNT_NUMBER# od #DATE_INSERT#";
+$MESS["CRM_PERMISSION_DENIED"] = "Odmowa dostępu";
+$MESS["CRM_SALE_MODULE_NOT_INSTALLED"] = "Moduł e-Sklepu nie jest zainstalowany.";

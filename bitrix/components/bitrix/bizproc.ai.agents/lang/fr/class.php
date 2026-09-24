@@ -1,0 +1,2 @@
+<?php
+$MESS["BIZPROC_AI_AGENTS_MENU_MY_AGENTS"] = "Agents IA";

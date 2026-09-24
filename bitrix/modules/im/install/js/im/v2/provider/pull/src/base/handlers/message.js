@@ -1,0 +1,598 @@
+import { Type } from 'main.core';
+import { EventEmitter } from 'main.core.events';
+import { type Store } from 'ui.vue3.vuex';
+
+import { Core } from 'im.v2.application.core';
+import { EventType, DialogScrollThreshold, UserRole } from 'im.v2.const';
+import { CopilotManager } from 'im.v2.lib.copilot';
+import { InputActionListener } from 'im.v2.lib.input-action';
+import { Logger } from 'im.v2.lib.logger';
+import { UserManager } from 'im.v2.lib.user';
+import { type ImModelChat, type ImModelMessage } from 'im.v2.model';
+import { MessageService } from 'im.v2.provider.service.message';
+
+import { type RawFile, type RawUser, type RawMessage } from '../../types/common';
+import {
+	type MessageAddParams,
+	type MessageUpdateParams,
+	type MessageDeleteParams,
+	type MessageDeleteCompleteParams,
+	type MultipleMessageDeleteParams,
+	type ReadMessageParams,
+	type ReadMessageOpponentParams,
+	type PinAddParams,
+	type PinDeleteParams,
+	type AddReactionParams,
+	type DeleteReactionParams,
+	type MessageDeleteCompletePreparedParams,
+	type PrepareDeleteMessageParams,
+	type RawReaction,
+	type MessageBlockElementAppendParams,
+	type MessageBlockElementDeleteParams,
+	type MessageBlockElementUpdateParams,
+} from '../../types/message';
+import { MessageDeleteManager } from './classes/message-delete-manager';
+import { NewMessageManager } from '../../classes/new-message-manager';
+
+type UserId = number;
+
+export class MessagePullHandler
+{
+	#store: Store;
+	#messageViews: {[messageId: string]: Set<UserId>} = {};
+	#messageDeleteManager: MessageDeleteManager;
+
+	constructor()
+	{
+		this.#store = Core.getStore();
+		this.#messageDeleteManager = new MessageDeleteManager();
+	}
+
+	handleMessageAdd(params: MessageAddParams)
+	{
+		Logger.warn('MessagePullHandler: handleMessageAdd', params);
+		this.#setMessageChat(params);
+		this.#setUsers(params.users);
+		this.#setFiles(params);
+		this.#setAdditionalEntities(params);
+		this.#setCommentInfo(params);
+		this.#setCopilotData(params);
+		this.#setMessagesAutoDeleteConfig(params);
+		this.#setStickers(params);
+		this.#setBuilder(params.message);
+
+		const messageWithTemplateId = this.#store.getters['messages/isInChatCollection']({
+			messageId: params.message.templateId,
+		});
+
+		const messageWithRealId = this.#store.getters['messages/isInChatCollection']({
+			messageId: params.message.id,
+		});
+
+		// update message with parsed link info
+		if (messageWithRealId)
+		{
+			Logger.warn('New message pull handler: we already have this message', params.message);
+			void this.#store.dispatch('messages/update', {
+				id: params.message.id,
+				fields: { ...params.message, error: false },
+			});
+			this.#sendScrollEvent(params.chatId);
+		}
+		else if (!messageWithRealId && messageWithTemplateId)
+		{
+			Logger.warn('New message pull handler: we already have the TEMPORARY message', params.message);
+			void this.#store.dispatch('messages/updateWithId', {
+				id: params.message.templateId,
+				fields: { ...params.message, error: false },
+			});
+		}
+		// it's an opponent message or our own message from somewhere else
+		else if (!messageWithRealId && !messageWithTemplateId)
+		{
+			const hasLoadingMessage: boolean = this.#store.getters['messages/hasLoadingMessageByMessageId'](
+				params.message.templateId,
+			);
+			if (hasLoadingMessage)
+			{
+				void this.#store.dispatch('messages/delete', {
+					id: params.message.templateId,
+				});
+			}
+
+			Logger.warn('New message pull handler: we dont have this message', params.message);
+			this.#handleAddingMessageToModel(params);
+		}
+
+		InputActionListener.getInstance().stopAction({
+			userId: params.message.senderId,
+			dialogId: params.dialogId,
+		});
+
+		this.#updateDialog(params);
+	}
+
+	handleMessageUpdate(params: MessageUpdateParams)
+	{
+		Logger.warn('MessagePullHandler: handleMessageUpdate', params);
+		InputActionListener.getInstance().stopAction({
+			userId: params.senderId,
+			dialogId: params.dialogId,
+		});
+		this.#store.dispatch('messages/update', {
+			id: params.id,
+			fields: {
+				text: params.text,
+				params: params.params,
+			},
+		});
+		this.#setBuilder(params);
+		this.#sendScrollEvent(params.chatId);
+	}
+
+	handleMessageDeleteV2(params: MultipleMessageDeleteParams)
+	{
+		Logger.warn('MessageDeletePullHandler: handleMultipleMessageDelete', params);
+
+		const messages = params.messages;
+
+		messages.forEach((message) => {
+			if (message.completelyDeleted)
+			{
+				const preparedParams = this.#prepareDeleteMessageParams(params, true, message);
+				this.#messageDeleteManager.deleteMessageComplete(preparedParams);
+
+				return;
+			}
+
+			const preparedParams = this.#prepareDeleteMessageParams(params, false, message);
+			this.#messageDeleteManager.deleteMessage(preparedParams);
+		});
+	}
+
+	handleMessageDelete(params: MessageDeleteParams)
+	{
+		Logger.warn('MessageDeletePullHandler: handleMessageDelete', params);
+		const preparedParams = this.#prepareDeleteMessageParams(params);
+		this.#messageDeleteManager.deleteMessage(preparedParams);
+	}
+
+	handleMessageDeleteComplete(params: MessageDeleteCompleteParams)
+	{
+		Logger.warn('MessageDeletePullHandler: handleMessageDeleteComplete', params);
+
+		const preparedParams = this.#prepareDeleteMessageParams(params, true);
+		this.#messageDeleteManager.deleteMessageComplete(preparedParams);
+	}
+
+	handleAddReaction(params: AddReactionParams)
+	{
+		Logger.warn('MessagePullHandler: handleAddReaction', params);
+		const {
+			actualReactions: { reaction: actualReactionsState, usersShort },
+			userId,
+			reaction,
+		} = params;
+
+		if (Core.getUserId() === userId)
+		{
+			actualReactionsState.ownReactions = [reaction];
+		}
+
+		const userManager = new UserManager();
+		void userManager.addUsersToModel(usersShort);
+
+		void this.#store.dispatch('messages/reactions/set', [actualReactionsState]);
+	}
+
+	handleDeleteReaction(params: DeleteReactionParams)
+	{
+		Logger.warn('MessagePullHandler: handleDeleteReaction', params);
+		const { actualReactions: { reaction: rawReaction }, reaction: reactionType, userId } = params;
+
+		const newReactionItem: RawReaction = { ...rawReaction };
+
+		if (Core.getUserId() === userId)
+		{
+			newReactionItem.ownReactionsToRemove = [reactionType];
+		}
+
+		void this.#store.dispatch('messages/reactions/set', [newReactionItem]);
+	}
+
+	handleMessageParamsUpdate(params)
+	{
+		Logger.warn('MessagePullHandler: handleMessageParamsUpdate', params);
+
+		this.#store.dispatch('messages/update', {
+			id: params.id,
+			chatId: params.chatId,
+			fields: { params: params.params },
+		});
+	}
+
+	handleReadMessage(params: ReadMessageParams)
+	{
+		Logger.warn('MessagePullHandler: handleReadMessage', params);
+		const { chatId, dialogId, viewedMessages, lastId, exact } = params;
+
+		void this.#store.dispatch('messages/readMessages', {
+			chatId,
+			messageIds: viewedMessages,
+			exact,
+		});
+
+		// Exact read: the server cursor didn't move, lastId here is the old value.
+		// Don't update lastReadId so the cursor isn't rolled back. Normal read (no flag) —
+		// prior behavior.
+		if (!exact)
+		{
+			void this.#store.dispatch('chats/update', {
+				dialogId,
+				fields: { lastId },
+			});
+		}
+	}
+
+	handleReadMessageOpponent(params: ReadMessageOpponentParams)
+	{
+		if (params.userId === Core.getUserId())
+		{
+			return;
+		}
+		Logger.warn('MessagePullHandler: handleReadMessageOpponent', params);
+		this.#updateMessageViewedByOthers(params);
+		this.#updateChatLastMessageViews(params);
+	}
+
+	handlePinAdd(params: PinAddParams)
+	{
+		Logger.warn('MessagePullHandler: handlePinAdd', params);
+		this.#setFiles(params);
+		this.#setUsers(params.users);
+		this.#store.dispatch('messages/store', params.additionalMessages);
+		this.#store.dispatch('messages/pin/add', {
+			chatId: params.pin.chatId,
+			messageId: params.pin.messageId,
+		});
+		if (Core.getUserId() !== params.pin.authorId)
+		{
+			// this.#sendScrollEvent(params.link.chatId);
+		}
+	}
+
+	handlePinDelete(params: PinDeleteParams)
+	{
+		Logger.warn('MessagePullHandler: handlePinDelete', params);
+		this.#store.dispatch('messages/pin/delete', {
+			chatId: params.chatId,
+			messageId: params.messageId,
+		});
+	}
+
+	handleMessageBlockElementAppend(params: MessageBlockElementAppendParams)
+	{
+		Logger.warn('MessagePullHandler: handleMessageBlockElementAppend', params);
+		const { element, messageId, text, chatId, files } = params;
+		void this.#store.dispatch('messages/builder/appendBlock', { messageId, block: element });
+		void this.#store.dispatch('messages/update', { id: messageId, fields: { text } });
+		void this.#store.dispatch('files/set', files);
+		this.#sendScrollEvent(chatId, DialogScrollThreshold.halfScreenUp);
+	}
+
+	handleMessageBlockElementUpdate(params: MessageBlockElementUpdateParams)
+	{
+		Logger.warn('MessagePullHandler: handleMessageBlockElementUpdate', params);
+		const { element, elementId, messageId, text, files } = params;
+		void this.#store.dispatch('messages/builder/updateBlock', { messageId, blockId: elementId, block: element });
+		void this.#store.dispatch('messages/update', { id: messageId, fields: { text } });
+		void this.#store.dispatch('files/set', files);
+	}
+
+	handleMessageBlockElementDelete(params: MessageBlockElementDeleteParams)
+	{
+		Logger.warn('MessagePullHandler: handleMessageBlockElementDelete', params);
+		const { elementId, messageId, text } = params;
+		void this.#store.dispatch('messages/builder/deleteBlock', { messageId, blockId: elementId });
+		void this.#store.dispatch('messages/update', { id: messageId, fields: { text } });
+	}
+
+	// helpers
+	#setMessageChat(params: MessageAddParams)
+	{
+		const manager = new NewMessageManager(params);
+
+		const chat = manager.getChat();
+		if (!chat)
+		{
+			return;
+		}
+
+		const chatToAdd = { ...chat, dialogId: params.dialogId };
+		const dialogExists = Boolean(this.#getDialog(params.dialogId));
+		const messageWithoutNotification = !params.notify || params.message?.params?.NOTIFY === 'N';
+		if (!dialogExists && !messageWithoutNotification && !chatToAdd.role)
+		{
+			chatToAdd.role = UserRole.member;
+		}
+
+		void this.#store.dispatch('chats/set', chatToAdd);
+	}
+
+	#setUsers(users: {[userId: string]: RawUser} | [])
+	{
+		if (!users)
+		{
+			return;
+		}
+
+		const userManager = new UserManager();
+		userManager.setUsersToModel(Object.values(users));
+	}
+
+	#setFiles(params: {files: {[fileId: string]: RawFile} | [], message?: RawMessage})
+	{
+		if (!params.files)
+		{
+			return;
+		}
+
+		const files = Object.values(params.files);
+		files.forEach((file: RawFile) => {
+			void this.#store.dispatch('files/set', file);
+		});
+	}
+
+	#setAdditionalEntities(params: MessageAddParams): void
+	{
+		if (!params.message.additionalEntities)
+		{
+			return;
+		}
+
+		const {
+			additionalMessages,
+			messages,
+			files,
+			users,
+			stickers,
+		} = params.message.additionalEntities;
+		const newMessages = [...messages, ...additionalMessages];
+		void this.#store.dispatch('messages/store', newMessages);
+		void this.#store.dispatch('files/set', files);
+		void this.#store.dispatch('users/set', users);
+		void this.#store.dispatch('stickers/set', stickers);
+		this.#setBuilder(newMessages);
+	}
+
+	#setCommentInfo(params: MessageAddParams): void
+	{
+		const manager = new NewMessageManager(params);
+
+		const chat = manager.getChat();
+		if (!chat || !manager.isCommentChat())
+		{
+			return;
+		}
+
+		this.#store.dispatch('messages/comments/set', {
+			messageId: chat.parent_message_id,
+			chatId: params.chatId,
+			messageCount: chat.message_count,
+		});
+		this.#store.dispatch('messages/comments/setLastUser', {
+			messageId: chat.parent_message_id,
+			newUserId: params.message.senderId,
+		});
+	}
+
+	#handleAddingMessageToModel(params: MessageAddParams)
+	{
+		const dialog = this.#getDialog(params.dialogId, true);
+		if (dialog.hasNextPage)
+		{
+			this.#store.dispatch('messages/store', params.message);
+
+			return;
+		}
+
+		const chatIsOpened = this.#store.getters['application/isChatOpen'](params.dialogId);
+		const unreadMessages: ImModelMessage[] = this.#store.getters['messages/getChatUnreadMessages'](params.chatId);
+		const RELOAD_LIMIT = MessageService.getMessageRequestLimit() * 5;
+		if (dialog.inited && !chatIsOpened && unreadMessages.length > RELOAD_LIMIT)
+		{
+			void this.#store.dispatch('messages/store', params.message);
+			const messageService = new MessageService({ chatId: params.chatId });
+			messageService.reloadMessageList();
+
+			return;
+		}
+
+		this.#addMessageToModel(params.message);
+		this.#sendScrollEvent(params.chatId);
+	}
+
+	#addMessageToModel(message)
+	{
+		const newMessage = { ...message };
+		if (message.senderId === Core.getUserId())
+		{
+			newMessage.unread = false;
+		}
+		else
+		{
+			newMessage.unread = true;
+			newMessage.viewed = false;
+		}
+		this.#store.dispatch('messages/setChatCollection', { messages: [newMessage] });
+	}
+
+	#updateDialog(params: MessageAddParams)
+	{
+		const manager = new NewMessageManager(params);
+		const { dialogId, chatId, message } = params;
+
+		const dialog = this.#getDialog(dialogId, true);
+
+		const dialogFieldsToUpdate = {};
+		if (message.id > dialog.lastMessageId)
+		{
+			dialogFieldsToUpdate.lastMessageId = message.id;
+		}
+
+		if (message.senderId === Core.getUserId() && message.id > dialog.lastReadId)
+		{
+			dialogFieldsToUpdate.lastId = message.id;
+		}
+
+		if (manager.isUserChat() && !dialog.chatId)
+		{
+			dialogFieldsToUpdate.chatId = chatId;
+		}
+
+		void this.#store.dispatch('chats/update', {
+			dialogId,
+			fields: dialogFieldsToUpdate,
+		});
+		void this.#store.dispatch('chats/clearLastMessageViews', {
+			dialogId,
+		});
+	}
+
+	#updateMessageViewedByOthers(params: ReadMessageOpponentParams)
+	{
+		this.#store.dispatch('messages/setViewedByOthers', { ids: params.viewedMessages });
+	}
+
+	#updateChatLastMessageViews(params: ReadMessageOpponentParams)
+	{
+		const dialog = this.#getDialog(params.dialogId);
+		if (!dialog)
+		{
+			return;
+		}
+
+		const isLastMessage = params.viewedMessages.includes(dialog.lastMessageId);
+		if (!isLastMessage)
+		{
+			return;
+		}
+
+		if (this.#checkMessageViewsRegistry(params.userId, dialog.lastMessageId))
+		{
+			return;
+		}
+
+		const hasFirstViewer = Boolean(dialog.lastMessageViews.firstViewer);
+		if (hasFirstViewer)
+		{
+			this.#store.dispatch('chats/incrementLastMessageViews', {
+				dialogId: params.dialogId,
+			});
+			this.#updateMessageViewsRegistry(params.userId, dialog.lastMessageId);
+
+			return;
+		}
+
+		this.#store.dispatch('chats/setLastMessageViews', {
+			dialogId: params.dialogId,
+			fields: {
+				userId: params.userId,
+				userName: params.userName,
+				date: params.date,
+				messageId: dialog.lastMessageId,
+			},
+		});
+
+		this.#updateMessageViewsRegistry(params.userId, dialog.lastMessageId);
+	}
+
+	#checkMessageViewsRegistry(userId: number, messageId: number): boolean
+	{
+		return Boolean(this.#messageViews[messageId]?.has(userId));
+	}
+
+	#updateMessageViewsRegistry(userId: number, messageId: number): void
+	{
+		if (!this.#messageViews[messageId])
+		{
+			this.#messageViews[messageId] = new Set();
+		}
+
+		this.#messageViews[messageId].add(userId);
+	}
+
+	#sendScrollEvent(
+		chatId: number,
+		threshold: $Values<typeof DialogScrollThreshold> = DialogScrollThreshold.nearTheBottom,
+	)
+	{
+		EventEmitter.emit(EventType.dialog.scrollToBottom, { chatId, threshold });
+	}
+
+	#getDialog(dialogId: string, temporary: boolean = false): ?ImModelChat
+	{
+		return this.#store.getters['chats/get'](dialogId, temporary);
+	}
+
+	#setCopilotData(params)
+	{
+		if (!params.copilot)
+		{
+			return;
+		}
+
+		const copilotManager = new CopilotManager();
+		void copilotManager.handleMessageAdd(params.copilot);
+	}
+
+	#setMessagesAutoDeleteConfig(params: MessageAddParams)
+	{
+		const { messagesAutoDeleteConfigs } = params;
+		void this.#store.dispatch('chats/autoDelete/set', messagesAutoDeleteConfigs);
+	}
+
+	#setStickers(params: MessageAddParams)
+	{
+		const hasMessageSticker = Type.isPlainObject(params.message.params.STICKER_PARAMS);
+		if (hasMessageSticker)
+		{
+			void this.#store.dispatch('stickers/messages/set', [{
+				messageId: params.message.id,
+				...params.message.params.STICKER_PARAMS,
+			}]);
+			void this.#store.dispatch('stickers/set', params.stickers);
+		}
+	}
+
+	#setBuilder(payload: RawMessage | RawMessage[])
+	{
+		const messages = Type.isArray(payload) ? payload : [payload];
+
+		void this.#store.dispatch('messages/builder/set', messages);
+	}
+
+	#prepareDeleteMessageParams(
+		params: PrepareDeleteMessageParams,
+		isComplete = false,
+		message = null,
+	): MessageDeleteCompletePreparedParams
+	{
+		const baseParams = {
+			id: message ? message.id : params.id,
+			senderId: message ? message.senderId : params.senderId,
+			dialogId: params.dialogId,
+		};
+
+		if (isComplete)
+		{
+			return {
+				...baseParams,
+				newLastMessage: params.newLastMessage,
+				lastMessageViews: params.lastMessageViews,
+			};
+		}
+
+		return baseParams;
+	}
+}

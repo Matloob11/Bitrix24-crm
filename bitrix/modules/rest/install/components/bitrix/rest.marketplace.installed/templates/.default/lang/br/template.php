@@ -1,0 +1,22 @@
+<?php
+$MESS["MARKETPLACE_APP_BUY"] = "Comprar";
+$MESS["MARKETPLACE_APP_CLEAN"] = "excluir configurações e dados do aplicativo";
+$MESS["MARKETPLACE_APP_DELETE_CONFIRM"] = "Você tem certeza de que deseja excluir o aplicativo?";
+$MESS["MARKETPLACE_APP_DELETE_ERROR"] = "Erro! O aplicativo não foi instalado.";
+$MESS["MARKETPLACE_APP_DEMO"] = "Demo";
+$MESS["MARKETPLACE_APP_FREE"] = "grátis";
+$MESS["MARKETPLACE_APP_INACTIVE"] = "excluída";
+$MESS["MARKETPLACE_APP_INSTALL"] = "Instalar";
+$MESS["MARKETPLACE_APP_INSTALL_CANCEL"] = "Cancelar";
+$MESS["MARKETPLACE_APP_INSTALL_PARTNER"] = "O aplicativo não está mais disponível. Utilize a <a href= \"http://www.bitrixsoft.com/personal/b24marketplace/\">conta parceira</a> para instalar aplicativos ocultos.";
+$MESS["MARKETPLACE_APP_ISTALL_ERROR"] = "Erro! O aplicativo não foi instalado.";
+$MESS["MARKETPLACE_APP_POPUP_LOAD"] = "Carregando";
+$MESS["MARKETPLACE_APP_PRICE"] = "#PRICE# por mês";
+$MESS["MARKETPLACE_APP_PROLONG"] = "Renovar";
+$MESS["MARKETPLACE_APP_TRIAL"] = "Experimentar";
+$MESS["MARKETPLACE_APP_TRIAL_FINISH"] = "Seu período de avaliação vai expirar em #NUM#";
+$MESS["MARKETPLACE_BUYS_EMPTY"] = "Você não tem nenhum aplicativo";
+$MESS["MARKETPLACE_DELETE_BUTTON"] = "Excluir";
+$MESS["MARKETPLACE_INSTALL_BUTTON"] = "Instalar";
+$MESS["MARKETPLACE_RIGHTS"] = "Permissões de Acesso";
+$MESS["MARKETPLACE_UPDATE_BUTTON"] = "Atualização";

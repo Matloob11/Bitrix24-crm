@@ -1,0 +1,20 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_API_KEY"] = "API-кілті";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_CHANGE_ANY_TIME"] = "Сіз оны кез келген уақытта өшіре аласыз немесе баптауларды өзгерте аласыз";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_CHANNEL"] = "Арна:";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_CONNECTED"] = "Wazzup қосылған";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_CONNECT_HELP"] = "<div class=\"imconnector-field-button-subtitle\">Мен</div>                                         Wazzup арқылы WhatsApp және Telegram <div class=\"imconnector-field-button-name\"><span class=\"imconnector-field-box-text-bold\">Қосқым</span> келеді </div>";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_CONNECT_STEP_NEW"] = "Қосылу үшін #LINK_START#бірнеше әрекетті орындау#LINK_END# қажет.";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_CONNECT_TITLE"] = "WhatsApp пен Telegram-ды ашық желіге қосыңыз";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_COPY"] = "Көшіру";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_FINAL_FORM_DESCRIPTION"] = "Арна қосылған. Енді Wazzup-тағы клиенттердің өтініштерінің барлығы Битрикс24-тегі Ашық желілеріңізге келеді";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INDEX_LIST_ITEM_1"] = "Байланыстар мен хаттар CRM-де сақталады";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INDEX_LIST_ITEM_2"] = "CRM клиентті сату иірім бойынша бағыттауға көмектеседі";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INDEX_LIST_ITEM_3"] = "Сіз клиенттерге тез және ыңғайлы жерде жауап бересіз";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INDEX_LIST_ITEM_4"] = "Клиенттердің сұрақтары кезек ережелері бойынша менеджерлер арасында автоматты түрде бөлінеді";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INDEX_SUBTITLE"] = "Клиенттерге ыңғайлы және таныс жерде жауап беріңіз. Егер клиенттер сізге WhatsApp немесе Telegram-да жазуды ыңғайлы деп тапса, оларға осы мүмкіндікті беріңіз";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INDEX_TITLE"] = "WhatsApp және Telegram-да клиенттермен байланысыңыз";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INFO"] = "Ақпарат";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_INSTRUCTION_TITLE"] = "WhatsApp пен Telegram-подключ қосу бойынша <span class=\"imconnector-field-box-text-bold\">Нұсқаулық</span>";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_I_KNOW_TOKEN"] = "Мен төкенді білемін";
+$MESS["IMCONNECTOR_COMPONENT_WAZZUP_TESTED"] = "Қосылымды сынау";

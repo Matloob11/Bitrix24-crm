@@ -1,0 +1,3 @@
+<?php
+$MESS["SELECTOR_COMPONENT_IBLOCK_ELEMENT_START_TYPING_TEXT"] = "No hay elementos.";
+$MESS["SELECTOR_COMPONENT_IBLOCK_ELEMENT_TITLE"] = "Elemento del bloque de información";

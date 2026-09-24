@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_TAG_SAVE_ERROR_EMPTY_TAG"] = "O marcador não existe.";
+$MESS["BICONNECTOR_CONTROLLER_DASHBOARD_TAG_SAVE_ERROR_HAS_EXIST_TAG"] = "Este marcador já existe. Escolha outro nome.";

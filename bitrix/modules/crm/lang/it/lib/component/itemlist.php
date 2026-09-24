@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_COMPONENT_ITEM_LIST"] = "Elementi";
+$MESS["CRM_COMPONENT_ITEM_LIST_AUTOMATED_SOLUTION_EXPORT_IMPORT_ITEM"] = "Preimpostazioni soluzione";
+$MESS["CRM_COMPONENT_ITEM_LIST_OLD_INVOICES_TRANSITION_SPOTLIGHT"] = "Puoi accedere alle tue fatture precedenti qui.";
+$MESS["CRM_COMPONENT_ITEM_LIST_SMART_INVOICE"] = "Fatture";
+$MESS["CRM_COMPONENT_ITEM_RECURRING_LIST"] = "Modelli di elementi ricorrenti";
+$MESS["CRM_COMPONENT_ITEM_RECURRING_LIST_SMART_INVOICE"] = "Modelli di fattura ricorrente";

@@ -1,0 +1,5 @@
+<?php
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_REVIEW_BUTTON_CLOSE"] = "Plus tard";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_REVIEW_BUTTON_START_SIGNING"] = "Examiner et approuver";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_REVIEW_DESCRIPTION"] = "Après votre approbation, le document [COLOR=\"#COLOR_OF_HIGHLIGHTED_TEXT#\"]#DOCUMENT_TITLE#[/COLOR] sera envoyé aux autres signataires.";
+$MESS["SIGN_MOBILE_DIALOG_REQUEST_REVIEW_TITLE"] = "Approuver le document";

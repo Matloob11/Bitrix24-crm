@@ -1,0 +1,24 @@
+<?php
+$MESS["TASKS_GRID_GROUP_ACTION_CANCELING"] = "Interruzione dell'azione di gruppo...";
+$MESS["TASKS_GRID_GROUP_ACTION_COUNTING_ELEMENTS_PROGRESS"] = "Conteggio degli elementi";
+$MESS["TASKS_GRID_GROUP_ACTION_DESCRIPTION"] = "L'azione di gruppo potrebbe richiedere del tempo per selezioni grandi. Attendi il completamento dell'azione o annullala.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME"] = "Azione di gruppo";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDACCOMPLICE"] = "Aggiunta dei partecipanti agli incarichi...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDAUDITOR"] = "Aggiunta osservatore agli incarichi...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDTOFAVORITE"] = "Aggiunta di incarichi ai Preferiti...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADJUSTDEADLINE"] = "Spostamento scadenze degli incarichi...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_COMPLETE"] = "Completamento degli incarichi selezionati...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_DELETE"] = "Eliminazione degli incarichi selezionati...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_MUTE"] = "Disattivazione notifiche degli incarichi...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_PING"] = "Invio di notifiche ping ai dipendenti...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_REMOVEFROMFAVORITE"] = "Rimozione di incarichi dai Preferiti...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETCOLLAB"] = "È in corso l'aggiunta di incarichi alla collab. L'azione di gruppo verrà interrotta se chiudi questa scheda o finestra del browser.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETDEADLINE"] = "Definizione scadenze degli incarichi...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETFLOW"] = "È in corso l'aggiunta di incarichi al flusso. L'azione di gruppo verrà interrotta se chiudi questa scheda o finestra del browser.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETGROUP"] = "Aggiunta di incarichi al gruppo di lavoro...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETORIGINATOR"] = "Cambio creatore dell'incarico...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETRESPONSIBLE"] = "Cambio responsabile dell'incarico...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL"] = "Disabilitazione della revisione al completamento...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL_YES"] = "È in corso l'attivazione della revisione dopo il completamento. L'azione di gruppo verrà interrotta se chiudi questa scheda o finestra del browser.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_UNMUTE"] = "Riattivazione notifiche degli incarichi...";
+$MESS["TASKS_GRID_GROUP_ACTION_NONE"] = "Nessuna azione selezionata.";

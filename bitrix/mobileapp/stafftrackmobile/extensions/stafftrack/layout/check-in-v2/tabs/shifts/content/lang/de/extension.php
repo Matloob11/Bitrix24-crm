@@ -1,0 +1,11 @@
+<?php
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_CHECKIN"] = "Sich melden";
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_CHECKINS"] = "Meldungen: #CHECKINS_COUNT#";
+$MESS["M_STAFFTRACK_CHECKIN_SHIFTS_LAST"] = "Zuletzt gemeldet #TIME#";
+$MESS["M_STAFFTRACK_CHECK_IN_DATE_PICKER_BUTTON"] = "Anzeigen";
+$MESS["M_STAFFTRACK_CHECK_IN_DATE_PICKER_TITLE"] = "Datum der Meldung";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_EMPTY_STATE_DESCRIPTION"] = "Versuchen Sie es mit den anderen Suchparametern.";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_EMPTY_STATE_TITLE"] = "Keine Meldungen";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_PRESET_DEPARTMENT"] = "Abteilungsmeldungen";
+$MESS["M_STAFFTRACK_CHECK_IN_SEARCH_PRESET_EMPLOYEES"] = "Mitarbeiter und Abteilungen";
+$MESS["M_STAFFTRACK_CHECK_IN_TOAST_ERROR"] = "Die Aktion kann nicht abgeschlossen werden. Bitte versuchen Sie es später erneut.";

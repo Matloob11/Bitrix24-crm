@@ -1,0 +1,20 @@
+<?php
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_ATTACHMENTS_DIALOG_TITLE"] = "Arquivos na postagem: #NUM#";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_BACKGROUNDS_DIALOG_TITLE"] = "Selecionar fundo";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_BACKGROUND_CONFIRM_MESSAGE"] = "Você irá alterar o tipo de postagem. Os dados do histórico de postagem serão perdidos";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_BUTTON_CANCEL"] = "Cancelar";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_BUTTON_OK"] = "OK";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_CONFIRM_TITLE"] = "Aviso";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_IMPORTANT_CONFIRM_MESSAGE"] = "Você irá alterar o tipo de postagem. Os dados de prioridade de postagem serão perdidos";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_MEDAL_CONFIRM_MESSAGE"] = "Você irá alterar o tipo de postagem. Os dados de recompensa serão perdidos";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CHANGETYPE_VOTE_CONFIRM_MESSAGE"] = "Você irá alterar o tipo de postagem. Os dados de pesquisa relacionados à postagem serão perdidos";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_BUTTON_CANCEL"] = "Cancelar";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_BUTTON_OK"] = "OK";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_MESSAGE"] = "Sua mensagem será perdida se você fechar o formulário. Continuar?";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_CLOSE_CONFIRM_TITLE"] = "Aviso";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_DESTINATIONS_EMPTY"] = "Selecione pelo menos um destinatário";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_DIALOG_MENTION_TITLE"] = "Menção";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_GRATITUDE_EMPLOYEE_EMPTY"] = "Nenhum colaborador selecionado para receber apreciação.";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_PANEL_ITEM_SELECTOR_VALUE_ALL"] = "Para todos os colaboradores";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_TEXT_EMPTY"] = "Digite o texto da postagem do feed";
+$MESS["MOBILE_EXT_LAYOUT_POSTFORM_TITLE_PLACEHOLDER_MSGVER_1"] = "Digite o título da postagem aqui";

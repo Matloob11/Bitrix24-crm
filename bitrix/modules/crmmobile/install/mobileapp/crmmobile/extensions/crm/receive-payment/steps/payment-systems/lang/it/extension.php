@@ -1,0 +1,22 @@
+<?php
+$MESS["M_RP_PS_CASHBOX_CONNECTED"] = "Registratori di cassa online connessi";
+$MESS["M_RP_PS_CASHBOX_NOT_CONNECTED"] = "Registratori di cassa online non connessi";
+$MESS["M_RP_PS_CASHBOX_SETTINGS_QRAUTH_TITLE"] = "Modifica registratori di cassa online";
+$MESS["M_RP_PS_NEXT_STEP"] = "Continua";
+$MESS["M_RP_PS_PAY_SYSTEM_DESC"] = "Ricevi i pagamenti online con il metodo preferito dal tuo cliente. Migliora la fidelizzazione dei clienti e aumenta il totale medio degli ordini.";
+$MESS["M_RP_PS_PAY_SYSTEM_NOT_WORK"] = "Sistemi di pagamento non connessi";
+$MESS["M_RP_PS_PAY_SYSTEM_SETTINGS_QRAUTH_TITLE"] = "Sistemi di pagamento";
+$MESS["M_RP_PS_PAY_SYSTEM_WORK"] = "Sistemi di pagamento connessi";
+$MESS["M_RP_PS_PROGRESS_BAR_TITLE"] = "Sistemi di pagamento e registratori di cassa online";
+$MESS["M_RP_PS_SETTINGS_BANNER_DESCRIPTION"] = "Questa operazione non richiederà molto tempo. Ti basterà accedere al profilo del tuo gestore del servizio di pagamento.";
+$MESS["M_RP_PS_SETTINGS_BANNER_TITLE"] = "Connetti sistema di pagamento";
+$MESS["M_RP_PS_SETTINGS_BUTTON_TITLE"] = "Connetti";
+$MESS["M_RP_PS_SETTINGS_CHOOSE"] = "Seleziona sistema di pagamento";
+$MESS["M_RP_PS_SETTINGS_LINK_TITLE"] = "Configura";
+$MESS["M_RP_PS_SETTINGS_OTHER"] = "Altro";
+$MESS["M_RP_PS_SETTINGS_RECOMMENDED"] = "Consigliato";
+$MESS["M_RP_PS_SETTINGS_TITLE"] = "Sistemi di pagamento";
+$MESS["M_RP_PS_SHOW_MORE"] = "Mostra altri #COUNT#";
+$MESS["M_RP_PS_SKIP_STEP"] = "Salta questo passaggio";
+$MESS["M_RP_PS_SKIP_STEP_DESC"] = "Puoi saltare questo passaggio in futuro se i sistemi di pagamento richiesti sono connessi e configurati";
+$MESS["M_RP_PS_TITLE"] = "Pagamento";

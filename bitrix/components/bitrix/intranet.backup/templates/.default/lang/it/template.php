@@ -1,0 +1,5 @@
+<?
+$MESS["BACKUP_CANCEL_BUTTON"] = "Annulla";
+$MESS["BACKUP_SAVE_BUTTON"] = "Salva";
+$MESS["BACKUP_STOP_BUTTON"] = "Annulla";
+?>

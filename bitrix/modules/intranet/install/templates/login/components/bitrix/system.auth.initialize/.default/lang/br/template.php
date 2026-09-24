@@ -1,0 +1,27 @@
+<?php
+$MESS["CT_MAIN_REG_INIT_AUTH_LINK"] = "Para autorizar ou recuperar a senha, prossiga para a <a href=\"#LINK#'>página de autorização</a>";
+$MESS["CT_MAIN_REG_INIT_CHECKWORD_TITLE"] = "Palavra de verificação";
+$MESS["CT_MAIN_REG_INIT_CONFIRM"] = "Confirmar";
+$MESS["CT_MAIN_REG_INIT_CONFIRM_PASSWORD_TITLE"] = "Confirmar Senha";
+$MESS["CT_MAIN_REG_INIT_FUTURE_COMMENT"] = "Você pode alterar suas informações pessoais na página de configurações de perfil.";
+$MESS["CT_MAIN_REG_INIT_LAST_NAME_TITLE"] = "Sobrenome";
+$MESS["CT_MAIN_REG_INIT_LOGIN_TITLE"] = "E-mail";
+$MESS["CT_MAIN_REG_INIT_NAME_TITLE"] = "Nome";
+$MESS["CT_MAIN_REG_INIT_PASSWORD_TITLE"] = "Senha <span class=\"login-label-thin\">(6 ou mais caracteres)</span>";
+$MESS["CT_MAIN_REG_INIT_PERSONAL_PHOTO_DOWNLOAD"] = "Procurar";
+$MESS["CT_MAIN_REG_INIT_PERSONAL_PHOTO_TITLE"] = "Imagem de perfil";
+$MESS["CT_MAIN_REG_INIT_REMEMBER_TITLE"] = "Lembre-me neste computador";
+$MESS["CT_MAIN_REG_INIT_REQUIRED_COMMENT"] = "Campo obrigatório";
+$MESS["CT_MAIN_REG_INIT_TITLE"] = "Confirmação do Cadastro";
+$MESS["CT_MAIN_REG_INIT_WORK_COMPANY_TITLE"] = "Empresa";
+$MESS["CT_MAIN_REG_INIT_WORK_PHONE_TITLE"] = "Telefone";
+$MESS["INTRANET_AUTH_CONFIRM_PASSWORD"] = "Confirmar senha";
+$MESS["INTRANET_AUTH_CONTINUE_BUTTON"] = "Continuar";
+$MESS["INTRANET_AUTH_EMAIL"] = "Endereço de e-mail";
+$MESS["INTRANET_AUTH_LAST_NAME"] = "Sobrenome";
+$MESS["INTRANET_AUTH_NAME"] = "Nome";
+$MESS["INTRANET_AUTH_PASSWORD"] = "Senha";
+$MESS["INTRANET_AUTH_REG_INIT_ERROR"] = "Seu link de cadastro não é válido. Por favor, entre em contato com o administrador do Bitrix24.";
+$MESS["INTRANET_AUTH_REMEMBER_ME"] = "Lembrar-me";
+$MESS["INTRANET_AUTH_TITLE"] = "Confirmação de cadastro";
+$MESS["INTRANET_INIT_USER_ALREADY_EXISTS"] = "Você já está participando deste Bitrix24. Digite seu login e senha para entrar.";

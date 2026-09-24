@@ -1,0 +1,25 @@
+<?php
+$MESS["JS_UI_VIEWER_DEFAULT_ERROR_TITLE"] = "Eso es un error.";
+$MESS["JS_UI_VIEWER_IMAGE_VIEW_FULL_SIZE_MSGVER_1"] = "Ver el archivo original";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_COPY_LINK"] = "Copiar enlace";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_COPY_LINK_ERROR"] = "Error al copiar el enlace.";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_COPY_LINK_SUCCESS"] = "Enlace copiado.";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_DELETE"] = "Eliminar";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_DOWNLOAD"] = "Descargar";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_EDIT"] = "Editar";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_INFO"] = "Más información";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_PRINT"] = "Imprimir";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_ROTATE"] = "Girar";
+$MESS["JS_UI_VIEWER_ITEM_ACTION_SHARE"] = "Compartir";
+$MESS["JS_UI_VIEWER_ITEM_PREPARING_TO_PRINT"] = "Preparar el documento para imprimirlo: #PROGRESS#%";
+$MESS["JS_UI_VIEWER_ITEM_TRANSFORMATION_ERROR"] = "Error en la conversión: no se puede abrir el archivo";
+$MESS["JS_UI_VIEWER_ITEM_TRANSFORMATION_ERROR_1"] = "No se puede abrir el archivo. Puede <a href=\"#DOWNLOAD_LINK#\" target=\"_blank\">descargarlo</a>.";
+$MESS["JS_UI_VIEWER_ITEM_TRANSFORMATION_HINT"] = "<a href=\"#\" onclick='top.BX.Helper.show(\"redirect=detail&code=8775937\");event.preventDefault();'>Leer más</a> sobre las posibles razones.";
+$MESS["JS_UI_VIEWER_ITEM_TRANSFORMATION_IN_PROGRESS"] = "La conversión está en progreso";
+$MESS["JS_UI_VIEWER_ITEM_TRANSFORMATION_TIMEOUT"] = "Ocurrió un error en la conversión. Aún puede descargar el archivo.";
+$MESS["JS_UI_VIEWER_ITEM_UNKNOWN_DOWNLOAD_ACTION"] = "Descargar archivo";
+$MESS["JS_UI_VIEWER_ITEM_UNKNOWN_NOTICE"] = "Puede verlo en su computadora";
+$MESS["JS_UI_VIEWER_ITEM_UNKNOWN_TITLE"] = "El formato de este archivo no es compatible";
+$MESS["JS_UI_VIEWER_SINGLE_DOCUMENT_LISTING_PAGES"] = "Página #CURRENT#<div class=\"ui-viewer-single-document-listing-pages-all\">/#ALL#</div>";
+$MESS["JS_UI_VIEWER_SINGLE_DOCUMENT_SCALE_ZOOM_IN"] = "Acercamiento";
+$MESS["JS_UI_VIEWER_SINGLE_DOCUMENT_SCALE_ZOOM_OUT"] = "Alejamiento";

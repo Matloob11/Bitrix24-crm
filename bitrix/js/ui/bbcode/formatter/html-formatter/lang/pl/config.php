@@ -1,0 +1,3 @@
+<?php
+$MESS["HTML_FORMATTER_COPY_TO_CLIPBOARD"] = "Kopiuj do schowka";
+$MESS["HTML_FORMATTER_SPOILER_TITLE"] = "Opis";

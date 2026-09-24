@@ -1,0 +1,10 @@
+<?php
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_SUBTITLE"] = "Przejrzyj kalendarz, aby znaleźć rezerwację online, której szukasz.";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_TITLE_PLURAL_0"] = "Znaleziono #COUNT# rezerwacji online";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_TITLE_PLURAL_1"] = "Znaleziono #COUNT# rezerwację online";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_AHA_MOMENT_TITLE_PLURAL_2"] = "Znaleziono #COUNT# rezerwacje online";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_COUNT_PLURAL_0"] = "Znaleziono #COUNT# rezerwacji online";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_COUNT_PLURAL_1"] = "Znaleziono #COUNT# rezerwację online";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_COUNT_PLURAL_2"] = "Znaleziono #COUNT# rezerwacje online";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_LIMIT_POPUP_SUBTITLE"] = "Zmień zakres dat i/lub filtry, aby znaleźć więcej rezerwacji online.";
+$MESS["BOOKING_BOOKING_FILTER_COUNTER_FLOATING_LIMIT_POPUP_TITLE"] = "Koniec wyników wyszukiwania";

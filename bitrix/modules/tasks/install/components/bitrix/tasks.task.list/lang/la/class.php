@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_GRID_STUB_DESCRIPTION"] = "Esta vista mostrará las tareas de las que usted y/o sus empleados son responsables.";
+$MESS["TASKS_GRID_STUB_DESCRIPTION_COLLAB"] = "No tiene ninguna tarea ahora.";
+$MESS["TASKS_GRID_STUB_NO_DATA_DESCRIPTION"] = "Intente restableciendo el filtro o cambie la frase de búsqueda.";
+$MESS["TASKS_GRID_STUB_NO_DATA_TITLE"] = "Su solicitud de busqueda no tiene ningún resultado";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_COLLAB"] = "En esta pantalla se mostrarán las tareas del collab";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_COLLAB_SUBTITLE"] = "Cree tareas en esta pantalla o directamente desde los mensajes de chat, y agregue participantes a las tareas. [helpdesklink]Más información[/helpdesklink]";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_PROJECT"] = "Aún no hay tareas del proyecto aquí";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_TASK"] = "Crear una tarea";
+$MESS["TASKS_GRID_STUB_PROJECT_CREATE_TASK_SUBTITLE"] = "Esta vista mostrará las tareas de las que usted y/o sus empleados son responsables. Cree su primera tarea para verla en esta página.";
+$MESS["TASKS_GRID_STUB_PROJECT_PROJECT_CREATED"] = "Se creó el proyecto";
+$MESS["TASKS_GRID_STUB_TITLE"] = "Crear una tarea";
+$MESS["TASKS_GROUP_ACTION_COMPLETE_SCRUM_TASK"] = "Desafortunadamente, no pudimos completar las tareas seleccionadas porque pertenecen a un equipo Scrum.";
+$MESS["TASKS_GROUP_ACTION_DAYS_NUM_INVALID_TEXT"] = "Este campo sólo puede contener números.";
+$MESS["TASKS_GROUP_ACTION_DAYS_NUM_INVALID_TITLE"] = "Entrada Inválida";
+$MESS["TASKS_GROUP_ACTION_ERROR_MESSAGE"] = "\"#MESSAGE#\" en estas tareas: #TASK_IDS#";
+$MESS["TASKS_GROUP_ACTION_ERROR_TITLE"] = "Hubo errores durante la actualización masiva de tareas";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_COME_BACK_LATER"] = "Vuelva más tarde";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_TEXT"] = "En este momento estamos actualizando las etiquetas para hacerlas más completas. Puede seguir utilizando otras secciones de su Bitrix24. Solo tardará un poco.";
+$MESS["TASKS_TASK_LIST_TAGS_ARE_CONVERTING_TITLE"] = "Tenga paciencia, las etiquetas llegarán pronto";
+$MESS["TASKS_TL_ACCESS_TO_COLLAB_DENIED"] = "No tiene permiso para ver las tareas de este collab.";
+$MESS["TASKS_TL_ACCESS_TO_COLLAB_DENIED_V2"] = "Permisos insuficientes para ver las tareas en este proyecto.";
+$MESS["TASKS_TL_ACCESS_TO_GROUP_DENIED"] = "No se puede ver la lista de tareas para este grupo.";
+$MESS["TASKS_TL_FORUM_MODULE_NOT_INSTALLED"] = "El módulo \"Forum\" no está instalado.";
+$MESS["TASKS_TL_SOCIALNETWORK_MODULE_NOT_INSTALLED"] = "El módulo \"Red social\" no está instalado.";

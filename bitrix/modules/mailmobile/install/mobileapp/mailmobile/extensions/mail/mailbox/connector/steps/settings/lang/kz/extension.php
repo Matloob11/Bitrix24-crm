@@ -1,0 +1,3 @@
+<?php
+$MESS["MAILBOX_CONNECTOR_SETTINGS_STEP_TITLE"] = "Жәшік бауптаулары";
+$MESS["MAILBOX_CONNECTOR_SETTINGS_TITLE"] = "Пошта байланысы";

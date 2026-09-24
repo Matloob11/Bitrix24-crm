@@ -1,0 +1,2 @@
+<?php
+$MESS["IM_LIST_CONTAINER_TASK_SEARCH_INPUT_PLACEHOLDER"] = "Найти задачу";

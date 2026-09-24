@@ -1,0 +1,19 @@
+<?php
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE"] = "El responsable puede cambiar la fecha límite";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_SUBTITLE"] = "El responsable puede cambiar la fecha límite de la tarea en cualquier momento.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE"] = "El responsable puede cambiar la fecha límite";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE_MSGVER_1"] = "El responsable puede cambiar la fecha límite";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL"] = "Requerir revisión de la tarea al cierre";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE"] = "Solo el creador de la tarea puede cerrarla después de haber verificado el resultado.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE_MSGVER_1"] = "La tarea completada se enviará al propietario de la tarea para su revisión. Este la aceptará y cerrará, o la devolverá para su revisión.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_TITLE"] = "Requiere aprobación después de que se completa";
+$MESS["M_TASKS_EXTRA_SETTINGS_DEADLINE_AUTO_CHANGED"] = "La fecha límite de la tarea se ajustó para tomar en cuenta los fines de semana.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME"] = "Mover la fecha límite si es en fin de semana";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE"] = "La fecha límite se ajustará si cae en fin de semana.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE_MSGVER_1"] = "La fecha límite de la tarea se extenderá si cae en fin de semana o día festivo.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_TITLE"] = "Omitir los fines de semana";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED"] = "No cerrar la tarea sin resumen de estado";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE"] = "El responsable debe proporcionar un resumen del estado al cerrar la tarea.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE_MSGVER_1"] = "El responsable tendrá que agregar un resumen del estado para marcar la tarea como completada.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE"] = "Se requiere un resumen del estado de la tarea";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE_MSGVER_1"] = "Requiere un resumen del estado de la tarea";

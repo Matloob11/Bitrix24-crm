@@ -1,0 +1,20 @@
+<?php
+$MESS["BIZPROC_USER_PARAMS_SAVE_ERROR"] = "Una o más actividades en la barra de \"Mis Actividades\", es demasiado larga. Los cambios no serán guardados.";
+$MESS["BIZPROC_WFEDIT_CATEGORY_CONSTR_1"] = "Control del flujo";
+$MESS["BIZPROC_WFEDIT_CATEGORY_DOC_1"] = "Procesamiento de elementos";
+$MESS["BIZPROC_WFEDIT_CATEGORY_INTER"] = "Comunicación";
+$MESS["BIZPROC_WFEDIT_CATEGORY_MAIN"] = "Principal";
+$MESS["BIZPROC_WFEDIT_CATEGORY_OTHER"] = "Otro";
+$MESS["BIZPROC_WFEDIT_CATEGORY_REST_1"] = "Actividades de la aplicación";
+$MESS["BIZPROC_WFEDIT_CATEGORY_TASKS_1"] = "Asignaciones";
+$MESS["BIZPROC_WFEDIT_CONSTANTS_SAVE_ERROR_MSGVER_1"] = "No se puede guardar la plantilla porque la constante de la plantilla es demasiado grande.";
+$MESS["BIZPROC_WFEDIT_DEFAULT_TITLE"] = "Plantilla de los procesos de negocios";
+$MESS["BIZPROC_WFEDIT_ERROR_COMPLEX_TYPE"] = "Esta plantilla no está asociada con este tipo de elemento.";
+$MESS["BIZPROC_WFEDIT_ERROR_TYPE_MSGVER_1"] = "El tipo de elemento del flujo de trabajo es obligatorio.";
+$MESS["BIZPROC_WFEDIT_IMPORT_ERROR"] = "Error al importar la plantilla de procesos de negocio.";
+$MESS["BIZPROC_WFEDIT_PARAMETERS_SAVE_ERROR_MSGVER_1"] = "No se puede guardar la plantilla porque el parámetro de la plantilla es demasiado grande.";
+$MESS["BIZPROC_WFEDIT_SAVE_ERROR"] = "Se produjo un error al guardar un objeto:";
+$MESS["BIZPROC_WFEDIT_SAVE_ERROR_CAUSE_FILTER"] = "Error al guardar la plantilla: Los datos activaron el filtro de seguridad.";
+$MESS["BIZPROC_WFEDIT_TITLE_ADD"] = "Nueva plantilla de proceso de negocios";
+$MESS["BIZPROC_WFEDIT_TITLE_EDIT"] = "Editar Plantilla de los procesos de negocios";
+$MESS["BIZPROC_WFEDIT_VARIABLES_SAVE_ERROR_MSGVER_1"] = "No se puede guardar la plantilla porque la variable de la plantilla es demasiado grande.";

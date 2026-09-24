@@ -1,0 +1,20 @@
+<?php
+$MESS['FDATE_LAST_MESSAGE'] = "data ostatniej wiadomości";
+$MESS['FMESSAGE_TOPIC'] = "temat wiadomości";
+$MESS['FNUM_ANSWERS'] = "liczba odpowiedzi";
+$MESS['FNUM_VIEWS'] = "liczba wyświetleń";
+$MESS['FSTART_DATE'] = "data utworzenia tematu";
+$MESS['FAUTHOR_TOPIC'] = "autor tematu";
+$MESS['FASC'] = "Rosnąco";
+$MESS['FDESC'] = "Malejąco";
+$MESS['FNO_ACCESS'] = "brak dostępu";
+$MESS['FREAD_ACCESS'] = "Odczyt";
+$MESS['FANSWER_ACCESS'] = "Odpowiedź";
+$MESS['FNEW_MESSAGE_ACCESS'] = "utwórz nowy temat";
+$MESS['FMODERATE_ACCESS'] = "moderuj";
+$MESS['FEDIT_ACCESS'] = "Edytuj";
+$MESS['FFULL_ACCESS'] = "pełny";
+$MESS['FSUBSC_NO_SPERMS'] = "Nie masz wystarczających uprawnień, aby usunąć tę subskrypcję";
+$MESS['FORUM_NO_MODULE'] = "Moduł Forum nie jest zainstalowany";
+$MESS['FR_VIDEO'] = "Wstaw wideo";
+$MESS['FR_VIDEO_P'] = "Ścieżka do wideo";

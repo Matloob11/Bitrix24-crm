@@ -1,0 +1,10 @@
+<?php
+$MESS["CRM_TIMELINE_ACTIVITY_DELETE_TAG_CONFIRM"] = "Czy chcesz usunąć status?";
+$MESS["CRM_TIMELINE_ACTIVITY_DELETION_CONFIRM"] = "Na pewno chcesz usunąć to wydarzenie?";
+$MESS["CRM_TIMELINE_POSTPONE"] = "Odrocz";
+$MESS["CRM_TIMELINE_POSTPONE_1D"] = "1 dzień";
+$MESS["CRM_TIMELINE_POSTPONE_1H"] = "1 godzina";
+$MESS["CRM_TIMELINE_POSTPONE_2D"] = "2 dni";
+$MESS["CRM_TIMELINE_POSTPONE_2H"] = "2 godziny";
+$MESS["CRM_TIMELINE_POSTPONE_3D"] = "3 dni";
+$MESS["CRM_TIMELINE_POSTPONE_3H"] = "3 godziny";

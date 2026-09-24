@@ -1,0 +1,3 @@
+<?php
+$MESS["SETTINGS_V2_CONTROLLER_RELOADED_SETTING_CHANGE_DESCRIPTION"] = "La aplicación se reiniciará para aplicar los cambios.";
+$MESS["SETTINGS_V2_CONTROLLER_RELOADED_SETTING_CHANGE_TITLE"] = "Atención";

@@ -1,0 +1,21 @@
+<?php
+$MESS["LANDING_COPILOT_DEMO_WISH_1"] = "Arquitetura";
+$MESS["LANDING_COPILOT_DEMO_WISH_2"] = "Agência web";
+$MESS["LANDING_COPILOT_DEMO_WISH_3"] = "Negócio de construção";
+$MESS["LANDING_COPILOT_DEMO_WISH_4"] = "Serviços de TI";
+$MESS["LANDING_COPILOT_DEMO_WISH_5"] = "Música";
+$MESS["LANDING_COPILOT_DEMO_WISH_6"] = "Entrega de comida";
+$MESS["LANDING_COPILOT_DEMO_WISH_7"] = "Cursos online";
+$MESS["LANDING_COPILOT_DEMO_WISH_8"] = "Entrega de flores";
+$MESS["LANDING_COPILOT_DEMO_WISH_9"] = "Portfólio de fotógrafo";
+$MESS["LANDING_COPILOT_DEMO_WISH_10"] = "SPA";
+$MESS["LANDING_COPILOT_DEMO_WISH_11"] = "Cosméticos artesanais";
+$MESS["LANDING_COPILOT_DEMO_WISH_12"] = "Serviços de contabilidade";
+$MESS["LANDING_COPILOT_DEMO_WISH_13"] = "Fliperama";
+$MESS["LANDING_COPILOT_DEMO_WISH_14"] = "Corretor de imóveis";
+$MESS["LANDING_COPILOT_DEMO_WISH_15"] = "Móveis sob medida";
+$MESS["LANDING_COPILOT_DEMO_WISH_16"] = "Advogado";
+$MESS["LANDING_COPILOT_DEMO_WISH_17"] = "Conserto de eletrodomésticos";
+$MESS["LANDING_COPILOT_DEMO_WISH_18"] = "Oficina mecânica";
+$MESS["LANDING_COPILOT_DEMO_WISH_19"] = "Serviços de conserto";
+$MESS["LANDING_COPILOT_DEMO_WISH_20"] = "Serviços jurídicos";

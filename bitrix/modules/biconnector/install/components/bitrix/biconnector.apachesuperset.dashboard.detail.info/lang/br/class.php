@@ -1,0 +1,3 @@
+<?php
+$MESS["BICONNECTOR_APACHESUPERSET_DASHBOARD_DETAIL_INFO_ACCESS_ERROR"] = "Permissão insuficiente para visualizar o painel.";
+$MESS["BICONNECTOR_APACHESUPERSET_DASHBOARD_DETAIL_INFO_NOT_FOUND"] = "O painel não foi encontrado.";

@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_COMPONENT_ITEM_LIST"] = "Pozycje";
+$MESS["CRM_COMPONENT_ITEM_LIST_AUTOMATED_SOLUTION_EXPORT_IMPORT_ITEM"] = "Szablony wstępne";
+$MESS["CRM_COMPONENT_ITEM_LIST_OLD_INVOICES_TRANSITION_SPOTLIGHT"] = "Tutaj możesz uzyskać dostęp do starszych faktur.";
+$MESS["CRM_COMPONENT_ITEM_LIST_SMART_INVOICE"] = "Faktury";
+$MESS["CRM_COMPONENT_ITEM_RECURRING_LIST"] = "Szablony elementów cyklicznych";
+$MESS["CRM_COMPONENT_ITEM_RECURRING_LIST_SMART_INVOICE"] = "Szablony faktur cyklicznych";

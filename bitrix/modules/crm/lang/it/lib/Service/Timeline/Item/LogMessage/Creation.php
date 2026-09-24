@@ -1,0 +1,15 @@
+<?php
+$MESS["CRM_TIMELINE_ACTIVITY_CREATION"] = "Attività creata: #TITLE#";
+$MESS["CRM_TIMELINE_COMPANY_CREATION"] = "Azienda creata";
+$MESS["CRM_TIMELINE_CONTACT_CREATION"] = "Contatto creato";
+$MESS["CRM_TIMELINE_DEAL_CREATION"] = "Affare creato";
+$MESS["CRM_TIMELINE_DEAL_CREATION_COPY"] = "Questo affare è una copia";
+$MESS["CRM_TIMELINE_DEAL_ORDER_TITLE"] = "Per l'ordine: <a href='#HREF#'>##ORDER_ID#</a> di #DATE_TIME# (per #PRICE_WITH_CURRENCY#)";
+$MESS["CRM_TIMELINE_INVOICE_CREATION"] = "Fattura creata";
+$MESS["CRM_TIMELINE_LEAD_CREATION"] = "Lead creato";
+$MESS["CRM_TIMELINE_ORDER_CREATION"] = "Ordine creato";
+$MESS["CRM_TIMELINE_ORDER_PAYMENT_CREATION"] = "Pagamento creato";
+$MESS["CRM_TIMELINE_ORDER_SHIPMENT_CREATION"] = "Spedizione creata";
+$MESS["CRM_TIMELINE_QUOTE_CREATION_MSGVER_1"] = "Preventivo creato";
+$MESS["CRM_TIMELINE_RECURRING_DEAL_CREATION"] = "Modello affare creato";
+$MESS["CRM_TIMELINE_TASK_CREATION"] = "Incarico creato: #TITLE#";

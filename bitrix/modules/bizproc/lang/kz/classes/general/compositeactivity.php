@@ -1,0 +1,25 @@
+<?php
+$MESS["BPCGCA_DEBUG_TRACE_CLEAR"] = "Кірістірілген Activity тазалау";
+$MESS["BPCGCA_DEBUG_TRACE_CLEAR_DONE"] = "Кірістірілген Activity тазартылды";
+$MESS["BPCGCA_DEBUG_TRACE_FINALIZE"] = "Композиттік Activity аяқталуы: #NAME#";
+$MESS["BPCGCA_DEBUG_TRACE_FINALIZE_CHILD"] = "Еншілес Activity аяқтау";
+$MESS["BPCGCA_DEBUG_TRACE_FINALIZE_DONE"] = "Композиттік Activity аяқталуы аяқталды";
+$MESS["BPCGCA_DEBUG_TRACE_FIX_RELATION"] = "Бас-ұрпақ байланысын орнату";
+$MESS["BPCGCA_DEBUG_TRACE_FIX_RELATION_DONE"] = "Еншілес Activity сәтті қосылды";
+$MESS["BPCGCA_DEBUG_TRACE_INIT"] = "Композиттік Activity инициализациялау: #NAME#";
+$MESS["BPCGCA_DEBUG_TRACE_INIT_CHILD"] = "Еншілес Activity инициализациялау: #TITLE#";
+$MESS["BPCGCA_DEBUG_TRACE_INIT_CHILD_DONE"] = "Еншілес Activity сәтті инициализацияланған";
+$MESS["BPCGCA_DEBUG_TRACE_INIT_DONE"] = "Композиттік Activity инициализациялау аяқталды";
+$MESS["BPCGCA_DEBUG_TRACE_INIT_ERROR"] = "Инициализация қатесі: #MESSAGE#";
+$MESS["BPCGCA_DEBUG_TRACE_PULL_PROPS"] = "Композиттік Activity мен кірістірілген әрекеттерден қасиеттерді жинау: #NAME#";
+$MESS["BPCGCA_DEBUG_TRACE_PULL_PROPS_CHILD"] = "Еншілес Activity қасиеттері жиналды";
+$MESS["BPCGCA_DEBUG_TRACE_PULL_PROPS_DONE"] = "Қасиеттерді жинау аяқталды";
+$MESS["BPCGCA_DEBUG_TRACE_REINIT"] = "Композиттік Activity реинициализациялау: #NAME#";
+$MESS["BPCGCA_DEBUG_TRACE_REINIT_CHILD"] = "Еншілес Activity реинициализациялау";
+$MESS["BPCGCA_DEBUG_TRACE_REINIT_DONE"] = "Реинициализациялау аяқталды";
+$MESS["BPCGCA_DEBUG_TRACE_SET_WF"] = "Композиттік Activity арналған  workflow орнату: #NAME#";
+$MESS["BPCGCA_DEBUG_TRACE_SET_WF_CHILD_DONE"] = "Workflow еншілес Activity үшін орнатылған";
+$MESS["BPCGCA_DEBUG_TRACE_SET_WF_DONE"] = "Workflow барлық кірістірілген Activity үшін сәтті орнатылды";
+$MESS["BPCGCA_DEBUG_TRACE_SET_WF_NO_METHOD"] = "SetWorkflow әдісі еншілес Activity-де табылмады";
+$MESS["BPCGCA_DEBUG_TRACE_UNSET_WF"] = "Композиттік Activity үшін workflow өшіру: #NAME#";
+$MESS["BPCGCA_DEBUG_TRACE_UNSET_WF_CHILD_DONE"] = "Workflow еншілес Activity үшін өшірілген";

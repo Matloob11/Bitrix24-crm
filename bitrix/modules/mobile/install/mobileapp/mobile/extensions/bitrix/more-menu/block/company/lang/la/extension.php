@@ -1,0 +1,8 @@
+<?php
+$MESS["MORE_MENU_COMPANY_DEMO_BUTTON"] = "Iniciar";
+$MESS["MORE_MENU_COMPANY_DEMO_DESCRIPTION"] = "Iniciar la prueba gratuita";
+$MESS["MORE_MENU_COMPANY_DEMO_TILL_DATE"] = "hasta el #TIME#";
+$MESS["MORE_MENU_COMPANY_DEMO_TITLE"] = "15 días de prueba gratuita";
+$MESS["MORE_MENU_COMPANY_SUPPORT"] = "Soporte";
+$MESS["MORE_MENU_COMPANY_TITLE"] = "Su Bitrix24";
+$MESS["MORE_MENU_COMPANY_WHATS_NEW"] = "Novedades";

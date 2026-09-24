@@ -1,0 +1,26 @@
+<?php
+$MESS["ROLE_MASTER_ABOUT_ROLE_MASTER_LINK"] = "En savoir plus";
+$MESS["ROLE_MASTER_BACK_TO_EDITOR_BTN"] = "Retour à l'éditeur";
+$MESS["ROLE_MASTER_CLOSE_BTN"] = "Fermer";
+$MESS["ROLE_MASTER_EDIT_WARNING_TEXT"] = "Cela mettra à jour le rôle pour tous ceux qui l'utilisent.";
+$MESS["ROLE_MASTER_FILE_DROPAREA_TEXT"] = "Faites glisser vos fichiers ici";
+$MESS["ROLE_MASTER_LOADER_TEXT"] = "Enregistrement du rôle...";
+$MESS["ROLE_MASTER_NEXT_BUTTON"] = "Suivant";
+$MESS["ROLE_MASTER_POPUP_TITLE"] = "Nouveau rôle";
+$MESS["ROLE_MASTER_POPUP_TITLE_EDIT_MODE"] = "Modifier le rôle";
+$MESS["ROLE_MASTER_PREV_BUTTON"] = "Retour";
+$MESS["ROLE_MASTER_REPEAT_REQUEST_BTN"] = "Réessayer";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD"] = "Nom et icône ";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD_PLACEHOLDER"] = "Max. 70 caractères";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD"] = "Description";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD_PLACEHOLDER"] = "J'analyserai les données, améliorerai le concept et créerai un résumé du projet";
+$MESS["ROLE_MASTER_ROLE_MAIN_STEP_TITLE"] = "Nom et autorisations";
+$MESS["ROLE_MASTER_ROLE_TEXT_FIELD_PLACEHOLDER"] = "Saisissez le texte de l'invite pour ce rôle. Par exemple, pour Architecte, l'invite pourrait se lire comme ceci. Agissez comme un architecte expérimenté. Votre travail consiste à m'aider à analyser les données du monde réel, comme les conditions géographiques et topographiques.";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE"] = "Ajoutez une invite pour ce rôle";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE_HINT"] = "Définissez le rôle et décrivez la tâche";
+$MESS["ROLE_MASTER_ROLE_USERS_WITH_ACCESS_FIELD"] = "Rendre disponible pour";
+$MESS["ROLE_MASTER_SAVE_BUTTON"] = "Enregistrer";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_SHORT_TEXT"] = "Impossible d'enregistrer le rôle.";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_TEXT"] = "Si le problème persiste, retournez à l'éditeur de message et copiez le texte du message pour vous assurer qu'il n'est pas perdu.";
+$MESS["ROLE_MASTER_SAVING_DONE"] = "Terminé";
+$MESS["ROLE_MASTER_USER_SELECTOR_ADD_BTN"] = "Modifier";

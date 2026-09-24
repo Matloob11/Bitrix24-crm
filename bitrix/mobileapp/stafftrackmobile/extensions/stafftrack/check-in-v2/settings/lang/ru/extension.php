@@ -1,0 +1,35 @@
+<?php
+
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_WIDGET_TITLE'] = 'Настроить';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_PERSONAL_SECTION_TITLE'] = 'Мои настройки';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_ADMIN_SECTION_TITLE'] = 'Настройки для всех сотрудников';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_TIMEMAN_SYNC_TITLE'] = 'Синхронизировать с рабочим временем';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_TIMEMAN_SYNC_DESCRIPTION'] = 'Учёт рабочего времени будет запускаться автоматически при отправке чекина';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_TIMEMAN_SYNC_ENABLED'] = 'Синхронизация с рабочим временем включена';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_TIMEMAN_SYNC_DISABLED'] = 'Синхронизация с рабочим временем отключена';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DEPARTMENTS_SECTION_TITLE'] = 'Настройки для отделов';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_AUTO_CHECK_IN_TITLE'] = 'Автоматический чекин';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_AUTO_CHECK_IN_DESCRIPTION'] = 'Помогает руководителям видеть маршруты сотрудников в течение дня. Фиксируется только при открытом мобильном приложении';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_AUTO_CHECK_IN_ENABLED'] = 'Автоматический чекин включён';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_AUTO_CHECK_IN_DISABLED'] = 'Автоматический чекин отключён';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_AUTO_CHECK_IN_HEAD_ONLY'] = 'Изменять настройки может только руководитель отдела';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_AUTO_CHECK_IN_HELP_LINK'] = 'Как это работает?';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_AUTO_CHECK_IN_HELP_DESCRIPTION'] = "Настройка применяется ко всем отделам, где вы руководитель, и к отделам в подчинении.\nРуководители подотделов могут отключить её для своих сотрудников";
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DAY_START_CHECK_IN_TITLE'] = 'Обязательный чекин при старте дня';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DAY_START_CHECK_IN_DESCRIPTION'] = 'Сотрудник отправит чекин сразу после начала рабочего дня';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DAY_START_CHECK_IN_ENABLED'] = 'Чекин в начале рабочего дня включён';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DAY_START_CHECK_IN_DISABLED'] = 'Чекин в начале рабочего дня отключён';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DAY_START_CHECK_IN_HEAD_ONLY'] = 'Изменять настройки может только руководитель отдела';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DAY_START_CHECK_IN_HELP_LINK'] = 'Как это работает?';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_DAY_START_CHECK_IN_HELP_DESCRIPTION'] = "Настройка применяется ко всем отделам, где вы руководитель, и к отделам в подчинении.\nРуководители подотделов могут отключить её для своих сотрудников";
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_TITLE'] = 'Чекин на работе';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_DISABLE'] = 'Отключить';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_ENABLE'] = 'Включить';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_DISABLE_CONFIRM_TITLE'] = 'Отключить чекин?';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_DISABLE_CONFIRM_DESCRIPTION'] = 'Сотрудники не смогут чекиниться на рабочем месте';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_DISABLE_CONFIRM_YES'] = 'Да, отключить';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_ENABLED'] = 'Чекин включён для всех';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_DISABLED'] = 'Чекин отключён для всех';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_ADMIN_ONLY'] = 'Изменять настройки может только администратор вашего Битрикс24';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_CHECK_IN_GLOBALLY_DISABLED'] = 'Чекин отключён в вашем Битрикс24. Обратитесь к своему руководителю или администратору';
+$MESS['STAFFTRACKMOBILE_CHECK_IN_SETTINGS_ERROR'] = 'Не удалось выполнить действие. Попробуйте ещё раз немного позже';

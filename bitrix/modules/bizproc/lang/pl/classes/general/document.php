@@ -1,0 +1,34 @@
+<?php
+$MESS["BPCGDOC_ADD"] = "Dodawanie";
+$MESS["BPCGDOC_AUTO_EXECUTE_CREATE"] = "Utwórz";
+$MESS["BPCGDOC_AUTO_EXECUTE_DELETE"] = "Usuń";
+$MESS["BPCGDOC_AUTO_EXECUTE_EDIT"] = "Aktualizacja";
+$MESS["BPCGDOC_AUTO_EXECUTE_NONE"] = "Nie";
+$MESS["BPCGDOC_DELEGATE_LOG_MSGVER_1"] = "Użytkownik #FROM# delegował zadanie \"#NAME#\" na #TO#";
+$MESS["BPCGDOC_DELEGATE_LOG_TITLE"] = "Delegowane";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_DEFAULT"] = "#AUTHOR# oddelegował Ci zadanie workflowu.";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_MSGVER_1"] = "Zadanie workflowu zostało przekazane Tobie: [URL=#TASK_URL#]#TASK_NAME#[/URL]";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_SIMPLE"] = "oddelegował Ci zadanie „#TASK_NAME#”, workflow: „#PROCESS_NAME#”.";
+$MESS["BPCGDOC_EMPTY_WD_ID_MSGVER_1"] = "Brakuje identyfikator szablonu workflowu";
+$MESS["BPCGDOC_ERROR_ACTION_MSGVER_1"] = "Zadanie \"#NAME#\": #ERROR#";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_MSGVER_1"] = "Zadanie \"#NAME#\" nie może zostać przekazane, ponieważ wybrany pracownik nie jest Twoim podwładnym.";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_SINGLE_MSGVER_1"] = "Wybrany pracownik nie jest Twoim podwładnym.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_MSGVER_1"] = "Zadanie \"#NAME#\" nie może zostać przekazane, ponieważ wybrany pracownik nie pracuje dla tej firmy.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_SINGLE_MSGVER_1"] = "Wybrany użytkownik nie jest pracownikiem firmy.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_MSGVER_1"] = "Zadania \"#NAME#\" nie można przekazać, ponieważ jest to zabronione w ustawieniach zadania.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_SINGLE_MSGVER_1"] = "Zadania nie można przekazać, ponieważ jest to zabronione w ustawieniach zadania.";
+$MESS["BPCGDOC_ERROR_DELEGATE_MSGVER_1"] = "Zadanie \"#NAME#\" nie może zostać przekazane, ponieważ wybrany pracownik jest aktualnie do niego przypisany.";
+$MESS["BPCGDOC_ERROR_DELEGATE_SINGLE_MSGVER_1"] = "Wybrany pracownik jest już uczestnikiem.";
+$MESS["BPCGDOC_ERROR_TASK_IS_NOT_INLINE_MSGVER_1"] = "Zadanie \"#NAME#\" nie może być zakończone w ten sposób.";
+$MESS["BPCGDOC_INVALID_TYPE"] = "Typ parametru jest niezdefiniowany.";
+$MESS["BPCGDOC_INVALID_WF_ID_MSGVER_1"] = "Nie można zaleźć szablonu dla workflowu #ID#";
+$MESS["BPCGDOC_INVALID_WF_MSGVER_1"] = "Workflow działa z innym elementem";
+$MESS["BPCGDOC_NO"] = "Nie";
+$MESS["BPCGDOC_WAIT"] = "czekaj...";
+$MESS["BPCGDOC_WI_B24_LIMITS_MESSAGE"] = "Niektóre elementy na portalu użytkownika mają uruchomione dwa workflowy jednocześnie. Wkrótce zostanie wprowadzone ograniczenie do dwóch jednoczesnych workflowów na jednostkę. Zaleca się zmianę logiki swoich workflowów. [URL=https://helpdesk.bitrix24.com/open/4838471/]Więcej informacji[/URL]";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE"] = "Niektóre z procesów, które uruchomiłeś (#CNT#) wywołały błędy lub nie zostały skończone prawidłowo.
+[URL=#PATH#]Zobacz te procesy[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT"] = "Niektóre z uruchomionych przez Ciebie workflowów (#CNT#) zakończyły się nieprawidłowo. [URL=#PATH#]Wyświetl te workflowy[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT_TITLE"] = "Workflowy";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_TITLE_MSGVER_1"] = "Powiadomienie systemowe";
+$MESS["BPCGDOC_YES"] = "Tak";

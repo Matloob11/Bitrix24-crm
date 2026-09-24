@@ -1,0 +1,3 @@
+<?php
+$MESS["MCRM_REQUISITE_DETAILS_CLOSE"] = "Zamknij";
+$MESS["MCRM_REQUISITE_DETAILS_EMPTY_LIST"] = "Szczegóły są puste";

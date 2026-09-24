@@ -1,0 +1,7 @@
+<?php
+$MESS["CRM_DOCGEN_DATAPROVIDER_PRODUCT_ID_TITLE"] = "ID";
+$MESS["CRM_DOCGEN_DATAPROVIDER_PRODUCT_PRICE_BRUTTO_TITLE"] = "Prix total avec taxes";
+$MESS["CRM_DOCGEN_DATAPROVIDER_PRODUCT_TAX_RATE_NAME_TITLE_MSGVER_1"] = "Taux de taxe (prend également en charge la valeur \"Sans taxe\")";
+$MESS["CRM_DOCGEN_DATAPROVIDER_PRODUCT_TAX_RATE_TITLE"] = "Taux de TVA";
+$MESS["CRM_DOCGEN_DATAPROVIDER_TITLE_FULL_TITLE"] = "Nom du produit, y compris les propriétés importantes";
+$MESS["CRM_DOCGEN_DATAPROVIDER_TITLE_TITLE"] = "Nom du produit";

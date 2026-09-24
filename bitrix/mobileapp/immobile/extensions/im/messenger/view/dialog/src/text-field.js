@@ -1,0 +1,382 @@
+/**
+ * @module im/messenger/view/dialog/text-field
+ */
+jn.define('im/messenger/view/dialog/text-field', (require, exports, module) => {
+	const {
+		EventFilterType,
+		EventType,
+	} = require('im/messenger/const');
+
+	const { Feature } = require('im/messenger/lib/feature');
+	const { StateManager } = require('im/messenger/view/lib/state-manager');
+	const { ProxyView } = require('im/messenger/view/lib/proxy-view');
+
+	/**
+	 * @class DialogTextField
+	 */
+	class DialogTextField extends ProxyView
+	{
+		#emitter = new JNEventEmitter();
+		#customEvents = new Set([
+			EventType.dialog.textField.textSet,
+		]);
+
+		/**
+		 * @constructor
+		 * @param {JNBaseClassInterface} ui
+		 * @param {EventFilter} eventFilter
+		 */
+		constructor(ui, eventFilter)
+		{
+			super(ui, eventFilter);
+
+			this.initStateManager();
+		}
+
+		initStateManager()
+		{
+			const state = {
+				isShow: true,
+				placeholder: null,
+				quoteParams: null,
+			};
+
+			this.stateManager = new StateManager(state);
+		}
+
+		/**
+		 * @return {AvailableEventCollection}
+		 */
+		getAvailableEvents()
+		{
+			return {
+				[EventFilterType.selectMessagesMode]: [],
+			};
+		}
+
+		/**
+		 * @param {string} eventName
+		 * @param {Function} handler
+		 * @return {this}
+		 */
+		on(eventName, handler)
+		{
+			if (this.#customEvents.has(eventName))
+			{
+				this.#emitter.on(eventName, handler);
+
+				return this;
+			}
+
+			return super.on(eventName, handler);
+		}
+
+		/**
+		 * @param {string} eventName
+		 * @param {Function} handler
+		 * @return {this}
+		 */
+		off(eventName, handler)
+		{
+			if (this.#customEvents.has(eventName))
+			{
+				this.#emitter.off(eventName, handler);
+
+				return this;
+			}
+
+			return super.off(eventName, handler);
+		}
+
+		/**
+		 * @param {string} text
+		 */
+		setText(text)
+		{
+			if (this.isUiAvailable())
+			{
+				this.ui.setText(text);
+				this.#emitter.emit(EventType.dialog.textField.textSet, [text ?? '']);
+			}
+		}
+
+		/**
+		 * @param {number} fromIndex
+		 * @param {number} toIndex
+		 * @param {string} bbCodeText
+		 */
+		replaceText(fromIndex, toIndex, bbCodeText)
+		{
+			if (this.isUiAvailable())
+			{
+				this.ui.replaceText(fromIndex, toIndex, bbCodeText);
+			}
+		}
+
+		/**
+		 * @return {string} text
+		 */
+		getText()
+		{
+			if (this.isUiAvailable())
+			{
+				return this.ui.getText();
+			}
+
+			return '';
+		}
+
+		/**
+		 * @param {string} text
+		 */
+		setPlaceholder(text)
+		{
+			const newState = { placeholder: text };
+			const hasChanges = this.stateManager.hasChanges(newState);
+
+			if (this.isUiAvailable() && hasChanges)
+			{
+				this.ui.setPlaceholder(text);
+				this.stateManager.updateState(newState);
+			}
+		}
+
+		/**
+		 * @return {number}
+		 */
+		getCursorIndex()
+		{
+			if (this.isUiAvailable())
+			{
+				return this.ui.getCursorIndex();
+			}
+
+			return 0;
+		}
+
+		/**
+		 * @param {boolean} [isAnimated=false]
+		 */
+		show(isAnimated = false)
+		{
+			const newState = { isShow: true };
+			const hasChanges = this.stateManager.hasChanges(newState);
+
+			if (this.isUiAvailable() && hasChanges)
+			{
+				this.ui.show({
+					animated: isAnimated,
+					spotlightIds: {
+						sendButton: 'sendButtonRef',
+						attachButton: 'attachButton',
+					},
+				});
+				this.stateManager.updateState(newState);
+			}
+		}
+
+		/**
+		 * @param {boolean} [isAnimated=false]
+		 */
+		hide(isAnimated = false)
+		{
+			const newState = { isShow: false };
+			const hasChanges = this.stateManager.hasChanges(newState);
+
+			if (this.isUiAvailable() && hasChanges)
+			{
+				this.ui.hide({ animated: isAnimated });
+				this.stateManager.updateState(newState);
+			}
+		}
+
+		/**
+		 * @void
+		 */
+		clear()
+		{
+			if (this.isUiAvailable())
+			{
+				this.ui.clear();
+				this.#emitter.emit(EventType.dialog.textField.textSet, ['']);
+			}
+		}
+
+		/**
+		 * @param {object} message
+		 * @param {QuoteParams} params
+		 */
+		setQuote(message, params)
+		{
+			const { type, openKeyboard, title, text } = params;
+			const newState = { quoteParams: { ...params } };
+			const hasChanges = this.stateManager.hasChanges(newState);
+
+			if (!this.isUiAvailable() || !hasChanges)
+			{
+				return;
+			}
+
+			if (Feature.isSetQuoteParamsSupported)
+			{
+				this.ui.setQuote(message, params);
+			}
+			else if (type)
+			{
+				this.ui.setQuote(message, type, openKeyboard, title, text);
+			}
+			else
+			{
+				this.ui.setQuote(message);
+			}
+
+			this.stateManager.updateState(newState);
+		}
+
+		/**
+		 * @void
+		 */
+		removeQuote()
+		{
+			const newState = { quoteParams: null };
+			const hasChanges = this.stateManager.hasChanges(newState);
+
+			if (this.isUiAvailable() && hasChanges)
+			{
+				this.ui.removeQuote();
+				this.stateManager.updateState(newState);
+			}
+		}
+
+		/**
+		 * @return {boolean} enable
+		 */
+		enableAlwaysSendButtonMode(enable)
+		{
+			if (this.isUiAvailable())
+			{
+				this.ui.enableAlwaysSendButtonMode(enable);
+			}
+		}
+
+		/**
+		 * @void
+		 */
+		showKeyboard()
+		{
+			if (this.isUiAvailable())
+			{
+				this.ui.showKeyboard?.();
+			}
+		}
+
+		/**
+		 * @void
+		 */
+		hideKeyboard()
+		{
+			if (this.isUiAvailable())
+			{
+				this.ui.hideKeyboard?.();
+			}
+		}
+
+		/**
+		 * @param {string} enabled
+		 * @param {string} disabled
+		 */
+		setSendButtonColors({ enabled, disabled })
+		{
+			if (this.isUiAvailable())
+			{
+				this.ui.setSendButtonColors?.({ enabled, disabled });
+			}
+		}
+
+		/**
+		 * @param {AssistantButton[]} buttons
+		 * @param {boolean} animated
+		 * @return {Promise<any>}
+		 */
+		showAssistantButtons(buttons, animated)
+		{
+			if (this.isUiAvailable())
+			{
+				return this.ui.showAssistantButtons(buttons, animated);
+			}
+
+			return Promise.resolve();
+		}
+
+		/**
+		 * @param {boolean} animated
+		 * @return {Promise<any>}
+		 */
+		hideAssistantButtons(animated)
+		{
+			if (this.isUiAvailable())
+			{
+				return this.ui.hideAssistantButtons(animated);
+			}
+
+			return Promise.resolve();
+		}
+
+		/**
+		 * @param {AssistantButton['id']} id
+		 * @param {AssistantButton} button
+		 * @param {boolean?} animated
+		 * @return {Promise<any>}
+		 */
+		updateAssistantButton(id, button, animated = true)
+		{
+			if (this.isUiAvailable())
+			{
+				return this.ui.updateAssistantButton(id, button, animated);
+			}
+
+			return Promise.resolve();
+		}
+
+		/**
+		 * @param {AssistantButton['id']} id
+		 * @return {Promise<any>}
+		 */
+		removeAssistantButton(id)
+		{
+			if (this.isUiAvailable())
+			{
+				return this.ui.removeAssistantButton(id);
+			}
+
+			return Promise.resolve();
+		}
+
+		/**
+		 * @param {Array<TextAction>} actions
+		 */
+		setTextActions(actions)
+		{
+			if (this.isUiAvailable() && Feature.isChatDialogTextFieldActionsSupported)
+			{
+				this.ui.setTextActions(actions);
+			}
+		}
+
+		/**
+		 * @param {number} startIndex
+		 * @param {number} endIndex
+		 */
+		setSelectionRange(startIndex, endIndex)
+		{
+			if (this.isUiAvailable() && Feature.isChatDialogTextFieldActionsSupported)
+			{
+				this.ui.setSelectionRange(startIndex, endIndex);
+			}
+		}
+	}
+
+	module.exports = {
+		DialogTextField,
+	};
+});

@@ -1,0 +1,27 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_VIBER_API_KEY"] = "Clave:";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_CHANGE_ANY_TIME"] = "Se puede editar o desactivar en cualquier momento";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_CONNECTED"] = "Viber conectado";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_CONNECT_HELP"] = "<div class=\"imconnector-field-button-subtitle\">Quiero </div><div class=\"imconnector-field-button-name\"><span class=\"imconnector-field-box-text-bold\">conectar</span> una cuenta</div>";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_CONNECT_STEP_NEW"] = "Debe #LINK_START#crear una cuenta pública de Viber#LINK_END# o usar la que ya tiene. Si no tiene una cuenta, lo ayudaremos a crearla y conectarla a su Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_CONNECT_TITLE"] = "Conecte Viber a su canal abierto";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_FINAL_FORM_DESCRIPTION"] = "Viber ha sido conectado a su canal abierto. Ahora todos los mensajes publicados en su cuenta pública serán redirigidos a su Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INDEX_ADDITIONAL_DESCRIPTION_NEW"] = "Debe #LINK_START#crear una cuenta pública de Viber#LINK_END# o usar la que ya tiene. Si no tiene una cuenta, lo ayudaremos a crearla y conectarla a su Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INDEX_LIST_ITEM_1"] = "Guarde los contactos y el historial de comunicaciones en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INDEX_LIST_ITEM_2"] = "Guíe al cliente a lo largo del embudo de ventas en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INDEX_LIST_ITEM_3"] = "Responda a sus clientes cuando y donde prefieran";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INDEX_LIST_ITEM_4"] = "Las consultas de los clientes se distribuyen entre los agentes de ventas según las reglas de la cola.";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INDEX_SUBTITLE"] = "Responda a sus clientes en la forma que prefieran. Si un cliente opina que Viber es más conveniente que otros medios de comunicación, reciba sus mensajes en su Bitrix24 y responda de inmediato.";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INDEX_TITLE"] = "Hable con sus clientes en Viber";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INFO"] = "Información";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INFO_ANDROID_CONNECT_ID"] = "redirect=detail&code=7417097";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INFO_CONNECT_ID"] = "redirect=detail&code=7417097";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INFO_IOS_CONNECT_ID"] = "redirect=detail&code=7417097";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_INSTRUCTION_TITLE"] = "<span class=\"imconnector-field-box-text-bold\">Cómo obtener una clave de cuenta pública</span>:";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_I_KNOW_KEY"] = "He obtenido la clave";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_LINK_CHAT_ONE_TO_ONE"] = "Enlace de persona a persona";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_NAME_BOT"] = "Nombre de la cuenta pública";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_TESTED"] = "Conexión de prueba";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_USING_ANDROID"] = "<span class=\"imconnector-field-box-text-bold\">ANDROID</span> APP";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_USING_IOS"] = "<span class=\"imconnector-field-box-text-bold\">IOS</span> APP";
+$MESS["IMCONNECTOR_COMPONENT_VIBER_USING_TITLE"] = "Estoy usando";

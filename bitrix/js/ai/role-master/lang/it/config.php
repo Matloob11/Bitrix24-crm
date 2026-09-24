@@ -1,0 +1,26 @@
+<?php
+$MESS["ROLE_MASTER_ABOUT_ROLE_MASTER_LINK"] = "Scopri di più";
+$MESS["ROLE_MASTER_BACK_TO_EDITOR_BTN"] = "Torna all'editor";
+$MESS["ROLE_MASTER_CLOSE_BTN"] = "Chiudi";
+$MESS["ROLE_MASTER_EDIT_WARNING_TEXT"] = "Il ruolo verrà aggiornato per chiunque lo utilizzi.";
+$MESS["ROLE_MASTER_FILE_DROPAREA_TEXT"] = "Trascina qui i tuoi file";
+$MESS["ROLE_MASTER_LOADER_TEXT"] = "Salvataggio del ruolo...";
+$MESS["ROLE_MASTER_NEXT_BUTTON"] = "Avanti";
+$MESS["ROLE_MASTER_POPUP_TITLE"] = "Nuovo ruolo";
+$MESS["ROLE_MASTER_POPUP_TITLE_EDIT_MODE"] = "Modifica ruolo";
+$MESS["ROLE_MASTER_PREV_BUTTON"] = "Indietro";
+$MESS["ROLE_MASTER_REPEAT_REQUEST_BTN"] = "Riprova";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD"] = "Nome e icona";
+$MESS["ROLE_MASTER_ROLE_AVATAR_AND_NAME_FIELD_PLACEHOLDER"] = "Massimo 70 caratteri";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD"] = "Descrizione";
+$MESS["ROLE_MASTER_ROLE_DESCRIPTION_FIELD_PLACEHOLDER"] = "Analizzerò i dati, migliorerò il concetto e creerò un riepilogo del progetto";
+$MESS["ROLE_MASTER_ROLE_MAIN_STEP_TITLE"] = "Nome e autorizzazioni";
+$MESS["ROLE_MASTER_ROLE_TEXT_FIELD_PLACEHOLDER"] = "Inserisci il testo del prompt per questo ruolo. Ad esempio, per il ruolo Architetto, il prompt potrebbe essere il seguente: \"Comportati come un architetto esperto; il tuo compito è aiutarmi ad analizzare dati del mondo reale, come condizioni geografiche e topografiche\".";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE"] = "Aggiungi un prompt per questo ruolo";
+$MESS["ROLE_MASTER_ROLE_TEXT_STEP_TITLE_HINT"] = "Definisci il ruolo e descrivi l'incarico";
+$MESS["ROLE_MASTER_ROLE_USERS_WITH_ACCESS_FIELD"] = "Rendi disponibile a";
+$MESS["ROLE_MASTER_SAVE_BUTTON"] = "Salva";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_SHORT_TEXT"] = "Impossibile salvare il ruolo.";
+$MESS["ROLE_MASTER_SAVE_PROMPT_ON_ERROR_TEXT"] = "Se il problema persiste, torna all'editor di prompt e copia il testo del prompt per assicurarti di non perderlo.";
+$MESS["ROLE_MASTER_SAVING_DONE"] = "Fatto";
+$MESS["ROLE_MASTER_USER_SELECTOR_ADD_BTN"] = "Modifica";

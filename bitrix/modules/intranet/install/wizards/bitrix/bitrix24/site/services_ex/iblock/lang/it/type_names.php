@@ -1,0 +1,19 @@
+<?
+$MESS["EVENTS_ELEMENT_NAME"] = "Eventi";
+$MESS["EVENTS_SECTION_NAME"] = "Calendari";
+$MESS["EVENTS_TYPE_NAME"] = "Calendario";
+$MESS["LIBRARY_ELEMENT_NAME"] = "File";
+$MESS["LIBRARY_SECTION_NAME"] = "Cartelle";
+$MESS["LIBRARY_TYPE_NAME"] = "Documenti";
+$MESS["NEWS_ELEMENT_NAME"] = "News";
+$MESS["NEWS_TYPE_NAME"] = "News";
+$MESS["PHOTOS_ELEMENT_NAME"] = "Foto";
+$MESS["PHOTOS_SECTION_NAME"] = "Album";
+$MESS["PHOTOS_TYPE_NAME"] = "Galleria fotografica";
+$MESS["SERVICES_ELEMENT_NAME"] = "Elementi";
+$MESS["SERVICES_SECTION_NAME"] = "Sezioni";
+$MESS["SERVICES_TYPE_NAME"] = "Servizi";
+$MESS["STRUCTURE_ELEMENT_NAME"] = "Elementi";
+$MESS["STRUCTURE_SECTION_NAME"] = "Sezioni";
+$MESS["STRUCTURE_TYPE_NAME"] = "Struttura azienda";
+?>

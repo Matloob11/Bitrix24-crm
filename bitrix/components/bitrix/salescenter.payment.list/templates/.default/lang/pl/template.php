@@ -1,0 +1,4 @@
+<?php
+$MESS["SPL_TEMPLETE_PAYMENT_TITLE"] = "Płatności dotyczące oferty";
+$MESS["SPL_TEMPLETE_SALESCENTER_PAYMENT_SENT_NOTIFICATION"] = "Płatność ##PAYMENT_ID# została wysłana";
+$MESS["SPL_TEMPLETE_SALESCENTER_SEND_PAYMENT"] = "Wyślij na czat";

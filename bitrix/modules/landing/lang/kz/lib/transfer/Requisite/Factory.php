@@ -1,0 +1,3 @@
+<?php
+$MESS["LANDING_IMPORT_FINISH_GOTO_SITE"] = "Сайтқа өту";
+$MESS["LANDING_IMPORT_FINISH_GOTO_PAGE"] = "Парақшаға өту";

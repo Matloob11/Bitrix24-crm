@@ -1,0 +1,24 @@
+<?php
+$MESS["BPAR_PD_TASK_BUTTON_CANCEL_MESSAGE_MSGVER_1"] = "Testo per pulsante \"Rifiuta\" nell'assegnazione";
+$MESS["BPRIA_PD_CANCEL_TYPE"] = "Rifiutabile da";
+$MESS["BPRIA_PD_CANCEL_TYPE_ALL"] = "Tutti i dipendenti";
+$MESS["BPRIA_PD_CANCEL_TYPE_ANY"] = "Qualsiasi dipendente";
+$MESS["BPRIA_PD_SAVE_VARIABLES"] = "Salva valori in caso di errore";
+$MESS["BPRIOA_ACT_APPROVE_TRACK"] = "L'utente #PERSON# ha fornito informazioni aggiuntive #COMMENT#";
+$MESS["BPRIOA_ACT_BUTTON1"] = "Salva";
+$MESS["BPRIOA_ACT_BUTTON2"] = "Rifiuta";
+$MESS["BPRIOA_ACT_CANCEL_TRACK"] = "L'utente #PERSON# ha annullato ulteriori informazioni #COMMENT#";
+$MESS["BPRIOA_ACT_COMMENT"] = "Commento";
+$MESS["BPRIOA_ACT_COMMENT_ERROR"] = "Il campo '#COMMENT_LABEL#' è obbligatorio.";
+$MESS["BPRIOA_ACT_INFO"] = "In attesa di informazioni aggiuntive";
+$MESS["BPRIOA_ACT_PROP_EMPTY1"] = "La proprietà 'Utenti' non è specificata.";
+$MESS["BPRIOA_ACT_PROP_EMPTY2"] = "Almeno un campo è obbligatorio.";
+$MESS["BPRIOA_ACT_PROP_EMPTY4"] = "La proprietà 'Nome' è mancante.";
+$MESS["BPRIOA_ACT_TRACK1"] = "Informazioni aggiuntive da fornire da #VAL#";
+$MESS["BPRIOA_ARGUMENT_NULL"] = "Il valore obbligatorio '#PARAM#' è mancante.";
+$MESS["BPRIOA_LOG_COMMENTS"] = "Commento";
+$MESS["BPSFA_COMMENT_REQUIRED_YA_1"] = "All'approvazione";
+$MESS["BPSFA_COMMENT_REQUIRED_YR_1"] = "Al rifiuto";
+$MESS["BPSFA_PD_CANCEL"] = "Annulla";
+$MESS["BPSFA_PD_NO"] = "No";
+$MESS["BPSFA_PD_YES"] = "Sì";

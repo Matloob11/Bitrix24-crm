@@ -1,0 +1,25 @@
+<?php
+$MESS["IM_CREATE_CHANNEL_CONFIRM"] = "Criar canal";
+$MESS["IM_CREATE_CHANNEL_DESCRIPTION_PLACEHOLDER_V3"] = "Digite a descrição do canal";
+$MESS["IM_CREATE_CHANNEL_DESCRIPTION_TITLE"] = "Descrição do canal";
+$MESS["IM_CREATE_CHANNEL_MEMBERS_HINT"] = "Adicione usuários ou departamentos ao canal. Se você adicionar um departamento, os novos colaboradores do departamento serão inscritos automaticamente.";
+$MESS["IM_CREATE_CHANNEL_MEMBERS_TITLE"] = "Inscritos #SUBTITLE_START#(adicione uma pessoa ou um departamento)#SUBTITLE_END#";
+$MESS["IM_CREATE_CHANNEL_TITLE_PLACEHOLDER_V2"] = "Nome do canal";
+$MESS["IM_CREATE_CHANNEL_USER_SELECTOR_ADD_MEMBERS"] = "Adicionar inscritos";
+$MESS["IM_CREATE_CHAT_CONFIRM"] = "Criar bate-papo";
+$MESS["IM_CREATE_CHAT_MEMBERS_TITLE"] = "Membros #SUBTITLE_START#(adicione uma pessoa ou um departamento)#SUBTITLE_END#";
+$MESS["IM_CREATE_CHAT_TITLE_PLACEHOLDER"] = "Digite o nome do bate-papo";
+$MESS["IM_CREATE_COLLAB_BANNER_TEXT_1"] = "Crie uma collab para obter resultados espetaculares. Tudo que você precisa: bate-papo, chamadas, arquivos, tarefas e calendário. Todo o histórico de comunicação é armazenado no Bitrix24 da sua empresa.";
+$MESS["IM_CREATE_COLLAB_BANNER_TEXT_2"] = "Você pode convidar outros usuários e pessoas assim que criar sua collab. [learn-more]Saiba mais[/learn-more]";
+$MESS["IM_CREATE_COLLAB_BANNER_TITLE"] = "[learn-more]Collab[/learn-more] é um espaço de trabalho em conjunto para colaborar com convidados externos e clientes.";
+$MESS["IM_CREATE_COLLAB_CHAT_BANNER_TEXT_MSGVER_1"] = "Um bate-papo do projeto é visível e só pode ser acessado pelos usuários adicionados ao bate-papo.#BR#Adicionar um usuário ao bate-papo do projeto também o adicionará ao projeto.";
+$MESS["IM_CREATE_COLLAB_CHAT_BANNER_TITLE"] = "Bate-papos do projeto";
+$MESS["IM_CREATE_COLLAB_CONFIRM"] = "Criar collab";
+$MESS["IM_CREATE_COLLAB_DESCRIPTION_PLACEHOLDER"] = "Conte aos outros usuários sobre o que é essa collab.";
+$MESS["IM_CREATE_COLLAB_DESCRIPTION_TITLE"] = "Descrição da collab";
+$MESS["IM_CREATE_COLLAB_TITLE_PLACEHOLDER"] = "Nome da collab";
+$MESS["IM_CREATE_CONFERENCE_CONFIRM"] = "Criar conferência";
+$MESS["IM_CREATE_CONFERENCE_TITLE_PLACEHOLDER"] = "Digite o nome da videoconferência";
+$MESS["IM_UPDATE_CHANNEL_COLLAPSED_ELEMENT"] = "Inscritos (#COUNT#)";
+$MESS["IM_UPDATE_CONFIRM"] = "Salvar alterações";
+$MESS["IM_UPDATE_GROUP_CHAT_COLLAPSED_ELEMENT"] = "Participantes do bate-papo (#COUNT#)";

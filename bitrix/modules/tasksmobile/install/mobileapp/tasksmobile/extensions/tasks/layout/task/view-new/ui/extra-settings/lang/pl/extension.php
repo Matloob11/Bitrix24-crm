@@ -1,0 +1,19 @@
+<?php
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE"] = "Odpowiedzialny może zmienić termin";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_SUBTITLE"] = "Odpowiedzialny może w każdej chwili zmienić termin zadania.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE"] = "Odpowiedzialny może zmienić termin";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_CHANGE_DEADLINE_TITLE_MSGVER_1"] = "Odpowiedzialny może zmienić termin";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL"] = "Przy zamykaniu wymagaj sprawdzenia zadania";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE"] = "Twórca zadania może je zamknąć dopiero po sprawdzeniu wyniku.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_SUBTITLE_MSGVER_1"] = "Zakończone zadanie zostanie przesłane do autora zadania do weryfikacji. Autor zaakceptuje i zamknie zadanie lub zwróci je do poprawy.";
+$MESS["M_TASKS_EXTRA_SETTINGS_ALLOW_TASK_CONTROL_TITLE"] = "Wymagaj zatwierdzenia po zakończeniu";
+$MESS["M_TASKS_EXTRA_SETTINGS_DEADLINE_AUTO_CHANGED"] = "Termin zadania został dostosowany ze względu na weekendy.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME"] = "Jeśli termin wypada w weekend, przesuń go";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE"] = "Jeśli termin wypada w weekend, zostanie dostosowany.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_SUBTITLE_MSGVER_1"] = "Jeśli termin zadania wypada w weekend lub święto, zostanie przedłużony.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_MATCH_WORK_TIME_TITLE"] = "Pomijaj weekendy";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED"] = "Nie zamykaj zadania bez podsumowania statusu";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE"] = "Odpowiedzialny musi podać podsumowanie statusu przy zamykaniu zadania.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_SUBTITLE_MSGVER_1"] = "Aby oznaczyć zadanie jako zakończone, odpowiedzialny będzie musiał dodać podsumowanie statusu.";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE"] = "Wymagaj podsumowania statusu zadania";
+$MESS["M_TASKS_EXTRA_SETTINGS_IS_RESULT_REQUIRED_TITLE_MSGVER_1"] = "Wymagaj podsumowania statusu zadania";

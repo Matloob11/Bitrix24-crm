@@ -1,0 +1,41 @@
+.booking-actions-popup__item-overbooking-label {
+	color: var(--ui-color-palette-gray-60);
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 15px;
+	text-align: left;
+	text-decoration: underline dashed;
+	text-underline-offset: 3px;
+	text-decoration-color: var(--ui-color-palette-gray-40);
+	transition: .2s;
+}
+
+.booking-actions-popup__item-overbooking-label:hover {
+	text-decoration-color: var(--ui-color-palette-gray-80);
+}
+
+.booking-actions-popup__item-overbooking-button {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	user-select: none;
+}
+
+.booking-actions-popup__item-overbooking-button.--end {
+	margin-left: 12px;
+}
+
+.booking-actions-popup__item-overbooking-button.--disabled {
+	opacity: 0.5;
+	cursor: unset;
+}
+
+.booking-actions-popup__item-overbooking-button.--locked .booking-actions-popup__item-overbooking-label {
+	color: var(--ui-color-base-3);
+	cursor: unset;
+}
+
+.booking-actions-popup__item-overbooking-row {
+	display: flex;
+	align-items: flex-end;
+}

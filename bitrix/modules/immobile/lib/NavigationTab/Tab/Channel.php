@@ -1,0 +1,78 @@
+<?php
+
+namespace Bitrix\ImMobile\NavigationTab\Tab;
+
+use Bitrix\Im\V2\Entity\User\UserType;
+use Bitrix\Im\V2\Folder\Folder;
+use Bitrix\ImMobile\NavigationTab\MessengerComponentTitle;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\ImMobile\User;
+
+class Channel extends BaseRecent
+{
+	use MessengerComponentTitle;
+
+	public function __construct(private readonly ?Folder $folder = null)
+	{
+		parent::__construct();
+	}
+
+	public function isAvailable(): bool
+	{
+		if ($this->folder !== null)
+		{
+			return true;
+		}
+
+		$userType = User::getCurrent()?->getType();
+
+		return $userType === UserType::USER;
+	}
+
+	public function isPreload(): bool
+	{
+		return false;
+	}
+
+	public function getId(): string
+	{
+		return 'channel';
+	}
+
+	public function getComponentCode(): string
+	{
+		return '';
+	}
+
+	public function getTabTitle(): ?string
+	{
+		return Loc::getMessage('IMMOBILE_NAVIGATION_TAB_CHANNEL_TAB_TITLE');
+	}
+
+	protected function getComponentName(): string
+	{
+		return 'im:channel-messenger';
+	}
+
+	protected function getParams(): array
+	{
+		return [];
+	}
+
+	protected function getWidgetSettings(): array
+	{
+		return [
+			'useSearch' => true,
+			'preload' => $this->isPreload(),
+			'titleParams' => [
+				'useLargeTitleMode' => true,
+				'text' => $this->getTitle(),
+			],
+		];
+	}
+
+	protected function isWidgetSupported(): bool
+	{
+		return true;
+	}
+}

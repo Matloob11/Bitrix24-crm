@@ -1,0 +1,22 @@
+<?php
+$MESS["IMOL_ADD_ERROR"] = "Errore durante la creazione del Canale aperto";
+$MESS["IMOL_CONFIG_CLOSE_TEXT"] = "Grazie per averci contattato! Facci sapere se il nostro servizio è di tuo gradimento.";
+$MESS["IMOL_CONFIG_CLOSE_TEXT_2"] = "Grazie per averci scelto come partner.";
+$MESS["IMOL_CONFIG_KPI_FIRST_ANSWER_TEXT"] = "#OPERATOR# ha superato il tempo di risposta iniziale massimo nella conversazione ##DIALOG#.";
+$MESS["IMOL_CONFIG_KPI_FURTHER_ANSWER_TEXT"] = "#OPERATOR# ha superato il tempo di risposta massimo nella conversazione ##DIALOG#.";
+$MESS["IMOL_CONFIG_LINE_NAME"] = "Canale aperto #NAME#";
+$MESS["IMOL_CONFIG_NO_ANSWER_NEW"] = "Sfortunatamente, al momento non possiamo soddisfare la tua richiesta. Ti risponderemo non appena possibile.";
+$MESS["IMOL_CONFIG_VOTE_MESSAGE_1_DISLIKE"] = "Siamo spiacenti di non poterti aiutare. La tua opinione ci aiuterà a migliorare il nostro servizio.";
+$MESS["IMOL_CONFIG_VOTE_MESSAGE_1_LIKE"] = "Grazie!";
+$MESS["IMOL_CONFIG_VOTE_MESSAGE_1_TEXT"] = "Dicci se sei soddisfatto.";
+$MESS["IMOL_CONFIG_VOTE_MESSAGE_2_DISLIKE"] = "Siamo spiacenti di non poterti aiutare. La tua opinione ci aiuterà a migliorare il nostro servizio.";
+$MESS["IMOL_CONFIG_VOTE_MESSAGE_2_LIKE"] = "Grazie!";
+$MESS["IMOL_CONFIG_VOTE_MESSAGE_2_TEXT"] = "Facci sapere cosa pensi del nostro operato.[br][br]Ti basta inviare 1 se sei soddisfatto o 0 se pensi che potremmo fare di meglio.";
+$MESS["IMOL_CONFIG_WELCOME_MESSAGE"] = "Benvenuto nel Canale aperto [b]#COMPANY_NAME#[/b]![br]Riceverai una risposta a breve. Attendi.";
+$MESS["IMOL_CONFIG_WORKTIME_DAYOFF_2"] = "Sfortunatamente, al momento non possiamo parlarti.[br][br]Digita la tua domanda e ti risponderemo al più presto.";
+$MESS["IMOL_CONFIG_WORKTIME_DAYOFF_3"] = "Benvenuto nel Canale aperto [b]#COMPANY_NAME#[/b]![br]Sfortunatamente, al momento non possiamo parlarti.[br][br]Digita la tua domanda e ti risponderemo al più presto.";
+$MESS["IMOL_ERROR_UPDATE_EMPTY_DEPARTMENT_QUEUE"] = "La coda richiede almeno una persona (il reparto che hai aggiunto non contiene dipendenti)";
+$MESS["IMOL_ERROR_UPDATE_EMPTY_QUEUE"] = "La coda richiede almeno una persona";
+$MESS["IMOL_ERROR_UPDATE_NO_LOAD_LINE"] = "Tentativo di aggiornare un Canale aperto inesistente";
+$MESS["IMOL_ERROR_UPDATE_NO_VALID_QUEUE"] = "Tentativo di salvare dati di coda non validi";
+$MESS["IMOL_UPDATE_ERROR"] = "Errore durante l'aggiornamento del Canale aperto";

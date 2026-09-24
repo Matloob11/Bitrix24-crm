@@ -1,0 +1,7 @@
+<?php
+$MESS["BIZPROC_STORAGE_LIST_ACTION_PANEL_DELETE"] = "Delete";
+$MESS["BIZPROC_STORAGE_LIST_ACTION_PANEL_PLACEHOLDER"] = "Select action";
+$MESS["BIZPROC_STORAGE_LIST_DELETE_CONFIRM"] = "Do you want to delete the selected storages?";
+$MESS["BIZPROC_STORAGE_LIST_DELETE_CONFIRM_OK"] = "Yes";
+$MESS["BIZPROC_STORAGE_LIST_MODULE_NOT_INSTALLED"] = "The \"Business Processes\" module is not installed.";
+$MESS["BIZPROC_STORAGE_LIST_TITLE"] = "Storages";

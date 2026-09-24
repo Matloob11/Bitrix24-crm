@@ -1,0 +1,20 @@
+<?php
+$MESS["BLG_NS"] = "Konwersacje (post na tablicy)";
+$MESS["BLG_NS_BROADCAST_COMMENT"] = "Dodaj komentarz do wiadomości dla wszystkich użytkowników";
+$MESS["BLG_NS_BROADCAST_POST_MSGVER_2"] = "Dodano nowy post rozgłoszeniowy";
+$MESS["BLG_NS_COMMENT_MSGVER_1"] = "Ktoś skomentował Twój post";
+$MESS["BLG_NS_GRAT_MSGVER_1"] = "Otrzymano uznanie";
+$MESS["BLG_NS_IM_ANSWER_ERROR"] = "Podczas publikacji komentarza wystąpił błąd";
+$MESS["BLG_NS_IM_ANSWER_SUCCESS"] = "Komentarz został opublikowany";
+$MESS["BLG_NS_MENTION"] = "Wspomniano Cię w poście";
+$MESS["BLG_NS_MENTION_COMMENT"] = "Wspomniano Cię w komentarzu";
+$MESS["BLG_NS_MODERATE_COMMENT"] = "Nowy niemoderowany komentarz";
+$MESS["BLG_NS_MODERATE_POST"] = "Nowy niemoderowany post";
+$MESS["BLG_NS_MSGVER_2"] = "Posty w Aktualnościach";
+$MESS["BLG_NS_POST_MAIL"] = "Twoja wiadomość została opublikowana na Aktualności";
+$MESS["BLG_NS_POST_MAIL_MSGVER_2"] = "Twoja wiadomość e-mail została opublikowana w Aktualnościach";
+$MESS["BLG_NS_POST_MSGVER_1"] = "Określono Cię jako odbiorcę posta";
+$MESS["BLG_NS_PUBLISHED_COMMENT"] = "Twój komentarz został opublikowany przez moderatora";
+$MESS["BLG_NS_PUBLISHED_POST"] = "Twój post został opublikowany przez moderatora";
+$MESS["BLG_NS_SHARE2USERS_MSGVER_1"] = "Ktoś udostępnił Ci post";
+$MESS["BLG_NS_SHARE_MSGVER_1"] = "Twój post został komuś udostępniony";

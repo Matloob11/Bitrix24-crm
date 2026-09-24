@@ -1,0 +1,67 @@
+.ui-access-rights-v2-dv-popup--line-container {
+	margin-bottom: 15px;
+	padding: 0 10px;
+}
+
+.ui-access-rights-v2-dv-popup--line {
+	font-size: var(--ui-font-size-md);
+	line-height: var(--ui-font-line-height-3xs);
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 38px;
+	margin-bottom: 5px;
+}
+
+.ui-access-rights-v2-dv-popup--line:last-child {
+	border-bottom: none;
+}
+
+.ui-access-rights-v2-dv-popup--line.--secondary {
+	justify-content: flex-start;
+	border-bottom: none;
+}
+
+.ui-access-rights-v2-dv-popup--line.--dependant {
+	padding-left: 30px;
+}
+
+.ui-access-rights-v2-dv-popup--line .ui-access-rights-v2-text-ellipsis {
+	max-width: 300px;
+}
+
+.ui-access-rights-v2-dv-popup--line.--secondary .ui-access-rights-v2-text-ellipsis {
+	max-width: 200px;
+}
+
+.ui-access-rights-v2-dv-popup--line-title {
+	display: flex;
+	align-items: center;
+	height: 20px; /* we need it for vertical alignment of text */
+	gap: 2px;
+}
+
+.ui-access-rights-v2-dv-popup--hint {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	color: var(--ui-color-palette-gray-50);
+}
+
+.ui-access-rights-v2-dv-fade-enter-active,
+.ui-access-rights-v2-dv-fade-leave-active {
+	transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.ui-access-rights-v2-dv-fade-enter-from,
+.ui-access-rights-v2-dv-fade-leave-to {
+	opacity: 0;
+	transform: translateY(-6px);
+}
+
+.ui-access-rights-v2-dv-fade-move {
+	transition: transform 150ms ease;
+}

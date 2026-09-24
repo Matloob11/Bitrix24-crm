@@ -1,0 +1,20 @@
+<?php
+$MESS["REST_CONFIGURATION_IMPORT_APP_ERROR_TYPE"] = "Esta aplicación no tiene archivo de configuración";
+$MESS["REST_CONFIGURATION_IMPORT_EASY_DELETE_APP"] = "No tiene ningún preset de Bitrix24 disponible, por lo que hemos eliminado la aplicación.";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_MAX_FILE_SIZE"] = "Tamaño máximo del archivo de importación: #SIZE# MB";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_BTN_COPY"] = "Copiar";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_LABEL"] = "Descripción del problema";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_PLACEHOLDER"] = "Texto de descripción del problema";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TITLE"] = "Reporte de errores";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_REPORT_BTN"] = "Reporte de errores";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_DESCRIPTION_MSGVER_1"] = "¡Todo está listo! Ahora puede empezar a editar su sitio.";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_ERROR_DESCRIPTION"] = "Se importaron las configuraciones; sin embargo, hubo problemas.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_TITLE_BLOCK"] = "Instalación de la aplicación";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_1"] = "Para eliminar la aplicación, seleccione alguna de las configuraciones de Bitrix24 disponibles o seleccione una nueva aplicación en Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_2"] = "Para eliminar la aplicación, seleccione alguna de las configuraciones de Bitrix24 disponibles o seleccione una nueva aplicación en Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_SUBMIT_BTN"] = "Aplicar";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_TITLE_BLOCK"] = "Recuperar preset de soluciones";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_BTN"] = "Importar";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_DESCRIPTION_MSGVER_1"] = "Cargue un archivo ZIP que exportó de otro Bitrix24. #LINK_START#Más información#LINK_END#";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_PROCESS"] = "Cargando archivo";
+$MESS["REST_CONFIGURATION_IMPORT_TITLE_BLOCK"] = "Importar preset de soluciones";

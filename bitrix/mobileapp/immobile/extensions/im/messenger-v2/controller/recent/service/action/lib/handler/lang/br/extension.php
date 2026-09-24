@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_MESSENGER_CONTROLLER_RECENT_SERVICE_ACTION_INVITE_RESEND_DONE"] = "O convite foi enviado com sucesso.";
+$MESS["IMMOBILE_MESSENGER_CONTROLLER_RECENT_SERVICE_ACTION_PIN_ERROR_MAX_PINNED"] = "Você pode fixar até 45 bate-papos, canais ou collabs.";

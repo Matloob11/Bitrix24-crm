@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKSMOBILE_SETTINGS_TASK_BETA_ACTIVE_TITLE"] = "Activer le mode bêta";
+$MESS["TASKSMOBILE_SETTINGS_TASK_BETA_NEW_CHECKLIST"] = "Nouvelles listes de vérification";
+$MESS["TASKSMOBILE_SETTINGS_TASK_BETA_NOTIFICATION"] = "Veuillez redémarrer l'application";
+$MESS["TASKSMOBILE_SETTINGS_TASK_BETA_TITLE"] = "Nouvelles tâches (bêta)";
+$MESS["TASKSMOBILE_SETTINGS_TASK_TITLE"] = "Tâches";

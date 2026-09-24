@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_DESCRIPTION"] = "Faça perguntas ao CoPilot e converse sobre ideias. As respostas do CoPilot ficarão visíveis para todos os participantes do bate-papo.";
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_HIDE"] = "Não mostrar isso novamente";
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_TITLE"] = "Adicionar usuários ao bate-papo do CoPilot";
+$MESS["IM_CONTENT_COPILOT_CONTEXT_MENU_FEEDBACK"] = "Feedback";
+$MESS["IM_CONTENT_COPILOT_DIALOG_STATUS_TYPING"] = "CoPilot está digitando uma resposta...";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_ASK_QUESTION"] = "Faça uma pergunta";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_ERROR_CREATING_CHAT"] = "Não é possível criar bate-papo. Tente mais tarde.";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_MESSAGE"] = "Oi! Sou o CoPilot, uma inteligência artificial.#BR#Estou pronto para sugerir soluções criativas,#BR#criar um novo texto ou melhorar o que você escreveu. #BR#Também estou pronto para conversar sobre quaisquer ideias que você possa ter.";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_MESSAGE_MSGVER_1"] = "Eu sou o CoPilot, uma IA.#BR#Posso conversar com você sobre suas ideias, criar um texto ou corrigir algo que você escreveu.#BR##BR#Selecione uma função para eu usar #BR#para que eu possa conversar como um especialista na área.";
+$MESS["IM_CONTENT_COPILOT_HEADER_OPEN_INVITE_POPUP_TITLE"] = "Adicionar participantes";
+$MESS["IM_CONTENT_COPILOT_HEADER_OPEN_MEMBERS_TITLE"] = "Clique para ver os participantes do bate-papo";
+$MESS["IM_CONTENT_COPILOT_HEADER_RENAME_ERROR"] = "Não é possível renomear bate-papo. Tente mais tarde.";
+$MESS["IM_CONTENT_COPILOT_HEADER_SUBTITLE"] = "on-line";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_0"] = "#COUNT# participante";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_1"] = "#COUNT# participantes";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_2"] = "#COUNT# participantes";
+$MESS["IM_CONTENT_COPILOT_TEXTAREA_AUDIO_INPUT_ERROR"] = "O reconhecimento de fala falhou. Tente novamente mais tarde.";
+$MESS["IM_CONTENT_COPILOT_TEXTAREA_PLACEHOLDER"] = "Escreva sua pergunta";

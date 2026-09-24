@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_PLACEHOLDER"] = "Use @ para mencionar uma pessoa, grupo de trabalho ou departamento";
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_TITLE"] = "Resumo do status";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_ADD_RESULT"] = "Adicionar outro resumo do status";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE"] = "Resumos do status";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE_MULTI"] = "Resumos de status: #COUNT#";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_0"] = "Mostrar mais #COUNT# resumo";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_1"] = "Mostrar mais #COUNT# resumos";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_2"] = "Mostrar mais #COUNT# resumos";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_TITLE"] = "Resumo do status";
+$MESS["TASKS_FIELDS_RESULT_V2_EMPTY_ERROR"] = "Digite o resumo do status da tarefa";
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_WIDGET_TITLE"] = "Resumos do status";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_REMOVE"] = "Excluir resumo do status";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_UPDATE"] = "Editar resumo do status";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_DESCRIPTION"] = "Você deseja desmarcar o comentário como resumo do status da tarefa? O comentário permanecerá na tarefa.";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_TITLE"] = "Remover resultado";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_YES"] = "Sim";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ACTION_COMPLETE"] = "Concluir Tarefa";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ANOTHER_RESULTS"] = "Outros resumos do status";

@@ -1,0 +1,5 @@
+<?
+$MESS["CRM_LEAD_COMPLEX_DESCRIPTION"] = "Lead";
+$MESS["CRM_LEAD_COMPLEX_NAME"] = "Lead";
+$MESS["CRM_LEAD_NAME"] = "Lead";
+?>

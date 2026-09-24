@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_ACTION_RESULT_REQUIRED"] = "Il creatore dell'incarico richiede che tu fornisca un rapporto sull'incarico.<br> Lascia un commento per l'incarico e contrassegnalo come riepilogo dello stato dell'incarico.";
+$MESS["TASKS_TASK_FLOW_DEADLINE_LABEL"] = "Impostazione automatica";
+$MESS["TASKS_TASK_FLOW_SECRET_PROJECT_LABEL"] = "Progetto nascosto";
+$MESS["TASKS_TASK_TAG_ACCESS_DENIED"] = "Autorizzazioni insufficienti.";
+$MESS["TASKS_TASK_TAG_ALREADY_EXISTS"] = "Questo tag esiste già.";
+$MESS["TASKS_TASK_TAG_UNKNOWN_ERROR"] = "Impossibile aggiungere il tag. Riprova.";
+$MESS["TASKS_TEMPLATE_CREATE_FORBIDDEN"] = "Impossibile creare il modello poiché l'accesso è stato negato";
+$MESS["TASKS_TT_AUTO_CHANGE_ASSIGNEE"] = "Il responsabile di questo incarico è stato modificato.";
+$MESS["TASKS_TT_AUTO_CHANGE_GROUP"] = "L'incarico è stato allegato al progetto corrente";
+$MESS["TASKS_TT_AUTO_CHANGE_ORIGINATOR"] = "Il creatore dell'incarico è stato modificato automaticamente all'utente corrente";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT"] = "L'incarico è stato allegato all'incarico principale";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT_GROUP"] = "L'incarico è stato allegato al progetto dell'incarico principale";
+$MESS["TASKS_TT_COPY_READ_ERROR"] = "Errore durante la lettura dell'oggetto da copiare";
+$MESS["TASKS_TT_FORUM_MODULE_NOT_INSTALLED"] = "Il modulo Forum non è installato.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE"] = "L'incarico non è stato trovato o l'accesso è stato negato.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE_COPY"] = "L'incarico da copiare non è stato trovato o l'accesso è stato negato.";
+$MESS["TASKS_TT_SAVE_AS_TEMPLATE_ERROR_MESSAGE_PREFIX"] = "Il modello non è stato creato";
+$MESS["TASKS_TT_SOCIALNETWORK_MODULE_NOT_INSTALLED"] = "Il modulo Social Network non è installato.";
+$MESS["TASKS_TT_TASKS_MODULE_NOT_INSTALLED"] = "Il modulo Incarichi non è installato.";

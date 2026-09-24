@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_COLUMN_PRODUCT_NAME"] = "Prodotto";
+$MESS["CRM_COLUMN_PRODUCT_PRICE"] = "Prezzo";
+$MESS["CRM_COLUMN_PRODUCT_QUANTITY"] = "Quantità";

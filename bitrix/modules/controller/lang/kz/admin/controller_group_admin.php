@@ -1,0 +1,22 @@
+<?php
+$MESS["CTRLE_GR_AD_COUNTER_FREE"] = "Бос орын есептеуішін жаңарту";
+$MESS["CTRLE_GR_AD_COUNTER_LAST_AU"] = "Соңғы авторлану есептеуішін жаңарту";
+$MESS["CTRLE_GR_AD_COUNTER_SITES"] = "Сайттар есептеуішін жаңарту";
+$MESS["CTRLE_GR_AD_COUNTER_UPD_PER"] = "Есептеуіштерді жаңарту кезеңі";
+$MESS["CTRLE_GR_AD_COUNTER_USERS"] = "Пайдаланушылар есептеуішін жаңарту";
+$MESS["CTRLR_GR_AD_COL_CRE"] = "Құрылған күні";
+$MESS["CTRLR_GR_AD_COL_CREBY"] = "Кім жасаған";
+$MESS["CTRLR_GR_AD_COL_DESC"] = "Сипаттама";
+$MESS["CTRLR_GR_AD_COL_ID"] = "ID";
+$MESS["CTRLR_GR_AD_COL_MOD"] = "Өзгерту күні";
+$MESS["CTRLR_GR_AD_COL_MODBY"] = "Кім өзгерткен";
+$MESS["CTRLR_GR_AD_COL_NAME"] = "Атауы";
+$MESS["CTRLR_GR_AD_ERR1"] = "Топ параметрлерін сақтау қатесі ";
+$MESS["CTRLR_GR_AD_ERR2"] = "Топты жою қатесі";
+$MESS["CTRLR_GR_AD_FLT_CREAT"] = "Жасау кезеңі";
+$MESS["CTRLR_GR_AD_FLT_MODIF"] = "Өзгерту кезеңі";
+$MESS["CTRLR_GR_AD_MENU_COPY"] = "Көшіру";
+$MESS["CTRLR_GR_AD_MENU_DEL"] = "Жою";
+$MESS["CTRLR_GR_AD_MENU_DEL_CONFIRM"] = "Топ және оның барлық баптаулары жойылады. Жалғастыру керек пе?";
+$MESS["CTRLR_GR_AD_MENU_EDIT"] = "Редакциялау";
+$MESS["CTRLR_GR_AD_TITLE"] = "Сайттар топтарын басқару";

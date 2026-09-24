@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_OPEN"] = "Ouvrir";
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_UPDATED"] = "Le modèle a été mis à jour.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_FAIL"] = "Impossible d'enregistrer le modèle.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_OPEN"] = "Ouvrir";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_SUCC"] = "Le modèle a été créé.";

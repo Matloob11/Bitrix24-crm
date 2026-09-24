@@ -1,0 +1,7 @@
+<?php
+$MESS["INTRANET_SETTINGS_FIELD_LABEL_COMPANY_TITLE"] = "Nome da empresa:";
+$MESS["INTRANET_SETTINGS_FIELD_LABEL_CONTACT_NAME"] = "Responsável pela proteção de dados:";
+$MESS["INTRANET_SETTINGS_FIELD_LABEL_DATE"] = "Data:";
+$MESS["INTRANET_SETTINGS_FIELD_LABEL_NOTIFICATION_EMAIL"] = "Enviar notificações por e-mail:";
+$MESS["INTRANET_SETTINGS_SECTION_TITLE_GDPR"] = "Conformidade com a LGPD";
+$MESS["SETTINGS_FORMAT_GDPR_EMAIL_ERROR"] = "O e-mail está incorreto.";

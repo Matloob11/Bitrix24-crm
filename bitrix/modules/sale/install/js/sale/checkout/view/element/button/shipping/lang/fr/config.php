@@ -1,0 +1,3 @@
+<?php
+$MESS["CHECKOUT_VIEW_ELEMENT_BUTTON_SHIPPING_NAME"] = "Paiement et livraison";
+$MESS["CHECKOUT_VIEW_ELEMENT_BUTTON_SHIPPING_NAME_NOW"] = "Payer maintenant";

@@ -1,0 +1,3 @@
+<?php
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_GETBYCLIENTIDACTION_TITLE"] = "Devuelve la aplicación mediante el ID del cliente OAuth";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_LISTACTION_TITLE"] = "Devuelve una lista de aplicaciones instaladas";

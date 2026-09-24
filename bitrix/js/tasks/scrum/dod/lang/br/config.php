@@ -1,0 +1,27 @@
+<?php
+$MESS["TASKS_SCRUM_BUTTON_TEXT_REMOVE"] = "Excluir";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE"] = "Você tem certeza que deseja excluir o tipo?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_NEW"] = "Tem certeza que deseja excluir a lista de verificação <b>#name#<b>?";
+$MESS["TASKS_SCRUM_CONFIRM_TEXT_REMOVE_TYPE_TITLE"] = "Excluir lista de verificação";
+$MESS["TASKS_SCRUM_CREATE_TYPE"] = "Criar tipo";
+$MESS["TASKS_SCRUM_CREATE_TYPE_PROMPT"] = "Criar novo tipo de tarefa";
+$MESS["TASKS_SCRUM_DOD_BTN_CREATE_TYPE"] = "Adicionar";
+$MESS["TASKS_SCRUM_DOD_BTN_EDIT_TYPE"] = "Renomear";
+$MESS["TASKS_SCRUM_DOD_BTN_REMOVE_TYPE"] = "Excluir";
+$MESS["TASKS_SCRUM_DOD_BTN_SAVE"] = "Salvar";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_COMPLETE_BUTTON_TEXT"] = "Fechar a tarefa";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_SAVE_BUTTON_TEXT"] = "Salvar";
+$MESS["TASKS_SCRUM_DOD_CONFIRM_TEXT_COMPLETE"] = "Você deseja fechar a tarefa como concluída ou salvar Definição de Pronto?";
+$MESS["TASKS_SCRUM_DOD_INFO_TEXT"] = "Todos os itens na Definição de Pronto devem ser concluídos para completar a tarefa";
+$MESS["TASKS_SCRUM_DOD_LABEL_EMPTY"] = "A Definição de Pronto precisa ser <span>configurada</span> ";
+$MESS["TASKS_SCRUM_DOD_LABEL_TYPES"] = "Tipo de tarefa";
+$MESS["TASKS_SCRUM_DOD_LABEL_USER_SELECTOR"] = "Perguntar DoD:";
+$MESS["TASKS_SCRUM_DOD_OPTIONS_REQUIRED_LABEL"] = "Esses itens são necessários para concluir";
+$MESS["TASKS_SCRUM_DOD_POPUP_EMPTY_NAME"] = "Digite o nome";
+$MESS["TASKS_SCRUM_DOD_POPUP_INPUT_PLACEHOLDER"] = "Nome";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_CREATE"] = "Criar lista de verificação";
+$MESS["TASKS_SCRUM_DOD_POPUP_TITLE_EDIT"] = "Renomear lista de verificação";
+$MESS["TASKS_SCRUM_DOD_SAVE_SETTINGS_NOTIFY"] = "As configurações foram salvas.";
+$MESS["TASKS_SCRUM_DOD_TITLE"] = "Definição de Pronto";
+$MESS["TASKS_SCRUM_DOD_TOOLBAR_SETTINGS"] = "Configurar";
+$MESS["TSD_ERROR_POPUP_TITLE"] = "Isso é um erro.";

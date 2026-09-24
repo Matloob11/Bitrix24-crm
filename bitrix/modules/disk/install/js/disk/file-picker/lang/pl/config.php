@@ -1,0 +1,21 @@
+<?php
+$MESS["DISK_FILE_PICKER_CANCEL_BUTTON"] = "Anuluj";
+$MESS["DISK_FILE_PICKER_EMPTY_DISK"] = "Na tym dysku nie ma plików ani folderów.";
+$MESS["DISK_FILE_PICKER_EMPTY_FOLDER"] = "Folder jest pusty.";
+$MESS["DISK_FILE_PICKER_EMPTY_STATE"] = "Aby wyświetlić szczegóły, wybierz plik.";
+$MESS["DISK_FILE_PICKER_FILE_DETAIL_MODIFIED"] = "Data modyfikacji";
+$MESS["DISK_FILE_PICKER_FILE_DETAIL_MODIFIED_BY"] = "Zmodyfikowane przez";
+$MESS["DISK_FILE_PICKER_FILE_DETAIL_SIZE"] = "Rozmiar";
+$MESS["DISK_FILE_PICKER_LAST_7_DAYS_GROUP"] = "Ostatnie 7 dni";
+$MESS["DISK_FILE_PICKER_LAST_30_DAYS_GROUP"] = "Ostatnie 30 dni";
+$MESS["DISK_FILE_PICKER_NO_SEARCH_RESULT"] = "Twoje wyszukiwanie nie dało żadnych wyników na tym dysku.\nSpróbuj innych słów kluczowych lub wybierz inny dysk.";
+$MESS["DISK_FILE_PICKER_NO_SEARCH_RESULT_WITH_ONE_DISK"] = "Twoje wyszukiwanie nie dało żadnych wyników.\nSpróbuj innych słów kluczowych.";
+$MESS["DISK_FILE_PICKER_SEARCH_PLACEHOLDER"] = "Wyszukaj";
+$MESS["DISK_FILE_PICKER_SELECTED_OBJECTS_COUNT"] = "Wybranych: #COUNT#";
+$MESS["DISK_FILE_PICKER_SELECT_BUTTON"] = "Wybierz";
+$MESS["DISK_FILE_PICKER_TABLE_COLUMN_MODIFIED"] = "Data modyfikacji";
+$MESS["DISK_FILE_PICKER_TABLE_COLUMN_NAME"] = "Nazwa";
+$MESS["DISK_FILE_PICKER_TABLE_COLUMN_SIZE"] = "Rozmiar";
+$MESS["DISK_FILE_PICKER_TITLE"] = "Wybierz pliki";
+$MESS["DISK_FILE_PICKER_VIEW_MODE_MASTER_DETAIL"] = "Lista";
+$MESS["DISK_FILE_PICKER_VIEW_MODE_TABLE"] = "Szczegóły";

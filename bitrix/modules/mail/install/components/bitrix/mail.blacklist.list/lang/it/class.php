@@ -1,0 +1,21 @@
+<?php
+$MESS["MAIL_BLACKLIST_LIST_AJAX_DELETE_CONFIRM"] = "Rimuovere questo indirizzo dall'elenco esclusi?";
+$MESS["MAIL_BLACKLIST_LIST_COLUMN_EMAIL"] = "Indirizzo e-mail";
+$MESS["MAIL_BLACKLIST_LIST_COLUMN_IS_FOR_ALL_USERS"] = "Per tutti gli utenti";
+$MESS["MAIL_BLACKLIST_LIST_CREATE_BLACKLIST"] = "Aggiungi a elenco esclusi";
+$MESS["MAIL_BLACKLIST_LIST_CREATE_BLACKLIST_2"] = "Aggiungi e-mail";
+$MESS["MAIL_BLACKLIST_LIST_DELETE_ERROR"] = "Impossibile rimuovere l'e-mail #EMAIL#";
+$MESS["MAIL_BLACKLIST_LIST_DELETE_TEXT"] = "Rimuovi e-mail da elenco esclusi";
+$MESS["MAIL_BLACKLIST_LIST_DELETE_TITLE"] = "Rimuovi";
+$MESS["MAIL_BLACKLIST_LIST_FILTER_DOMAIN_TITLE"] = "Dominio";
+$MESS["MAIL_BLACKLIST_LIST_FILTER_MAIL_TITLE"] = "Casella di posta";
+$MESS["MAIL_BLACKLIST_LIST_FILTER_TYPE"] = "Tipo record";
+$MESS["MAIL_BLACKLIST_LIST_INTERNAL_AJAX_DELETE_ERROR"] = "Errore durante l'eliminazione del record";
+$MESS["MAIL_BLACKLIST_LIST_INTERNAL_ERROR_TITLE"] = "Si è verificato un errore sconosciuto.";
+$MESS["MAIL_BLACKLIST_LIST_IS_FOR_ALL_USERS"] = "Sì";
+$MESS["MAIL_BLACKLIST_LIST_PAGE_TITLE"] = "Elenco esclusi e-mail";
+$MESS["MAIL_BLACKLIST_LIST_PAGE_TITLE_2"] = "Elenco esclusi";
+$MESS["MAIL_BLACKLIST_LIST_POPUP_BTN_ADD"] = "Aggiungi";
+$MESS["MAIL_BLACKLIST_LIST_POPUP_BTN_CLOSE"] = "Annulla";
+$MESS["MAIL_BLACKLIST_LIST_POPUP_CHECKBOX_TITLE"] = "Per tutti gli utenti";
+$MESS["MAIL_BLACKLIST_LIST_POPUP_TITLE"] = "Elenco esclusi";

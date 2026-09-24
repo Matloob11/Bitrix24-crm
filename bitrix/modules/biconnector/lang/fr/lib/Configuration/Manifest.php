@@ -1,0 +1,19 @@
+<?php
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_FINISH_DESCRIPTION"] = "Terminé ! Vous pouvez maintenant ouvrir le tableau de bord.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_INSTALL_STEP"] = "Le tableau de bord que vous avez sélectionné est en cours d'installation. Veuillez patienter un instant.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_TITLE_BLOCK"] = "Importer le tableau de bord";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_IMPORT_TITLE_PAGE"] = "BI Builder";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_APACHE_SUPERSET_TITLE"] = "Importer le tableau de bord";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_DESCRIPTION_UPLOAD"] = "Importer un fichier de modèle de rapport Google Data Studio.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_FINISH_DESCRIPTION"] = "Le modèle a bien été importé. Cliquez sur ce lien pour l'utiliser avec Google Data Studio :";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_TITLE_BLOCK"] = "Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_IMPORT_TITLE_PAGE"] = "Importer un modèle de rapport Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_DATA_STUDIO_TITLE"] = "Google Data Studio";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_DESCRIPTION_UPLOAD"] = "Importer un fichier de modèle de rapport Microsoft Power BI.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_FINISH_DESCRIPTION"] = "Le modèle a bien été importé. Téléchargez le modèle de rapport Microsoft Power BI :";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_TITLE_BLOCK"] = "Microsoft Power BI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_IMPORT_TITLE_PAGE"] = "Importer un modèle de rapport Microsoft Power BI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_POWER_BI_TITLE"] = "Microsoft Power BI";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_ACCESS_DENIED"] = "Autorisations insuffisantes pour importer des tableaux de bord BI Builder.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_TARIFF_ERROR"] = "BI Builder n'est pas disponible avec votre abonnement. Veuillez contacter votre administrateur Bitrix24.";
+$MESS["BI_CONNECTOR_CONFIGURATION_MANIFEST_SUPERSET_TOOL_DISABLED"] = "BI Builder est désactivé. Veuillez contacter votre superviseur ou l'administrateur Bitrix24.";

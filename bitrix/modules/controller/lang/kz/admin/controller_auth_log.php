@@ -1,0 +1,10 @@
+<?php
+$MESS["CONTROLLER_AUTH_LOG_FROM_CONTROLLER_MEMBER"] = "Пайдаланушы қай сайттан";
+$MESS["CONTROLLER_AUTH_LOG_ID"] = "ID";
+$MESS["CONTROLLER_AUTH_LOG_PAGES"] = "Авторланулар";
+$MESS["CONTROLLER_AUTH_LOG_TIMESTAMP_X"] = "Уақыт";
+$MESS["CONTROLLER_AUTH_LOG_TITLE"] = "Авторланулар";
+$MESS["CONTROLLER_AUTH_LOG_TO_CONTROLLER_MEMBER"] = "Қай сайтта авторланған";
+$MESS["CONTROLLER_AUTH_LOG_TYPE"] = "Түрі";
+$MESS["CONTROLLER_AUTH_LOG_USER"] = "Пайдаланушы";
+$MESS["CONTROLLER_AUTH_LOG_USER_ID"] = "Пайдаланушы идентификаторы";

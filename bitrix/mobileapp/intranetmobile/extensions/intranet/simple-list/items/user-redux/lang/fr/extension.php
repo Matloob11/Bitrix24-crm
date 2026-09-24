@@ -1,0 +1,23 @@
+<?php
+$MESS["M_INTRANET_PERSONAL_MOBILE_IS_NOT_FILLED"] = "L'utilisateur n'a pas fourni son numéro de téléphone";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_BUTTON_TEXT"] = "Assigner en tant qu'administrateur";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_DESCRIPTION"] = "Les administrateurs ont un accès complet aux informations personnelles des utilisateurs et des clients. Ils peuvent inviter et renvoyer les utilisateurs et les employés, et modifier les autorisations des utilisateurs et les paramètres de Bitrix24. Voulez-vous faire de cet utilisateur un administrateur ?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ASSIGN_USER_AS_ADMINISTRATOR_TITLE"] = "Assigner l'utilisateur en tant qu'administrateur ?";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_BUTTON_TEXT"] = "Envoyer une notification";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_DESCRIPTION"] = "Avec Bitrix24, les utilisateurs peuvent protéger leur compte avec un deuxième facteur d'authentification. Envoyez à l'utilisateur une notification suggérant d'activer la 2FA.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_ENABLE_2FA_TITLE"] = "Demandez à l'utilisateur de protéger son compte avec une authentification à deux facteurs (2FA)";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_ALREADY_INSTALLED"] = "L'application pour ordinateur est déjà installée";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_BUTTON_TEXT"] = "Suggérer";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_DESCRIPTION"] = "Il suffit de cliquer sur une icône placée sur le bureau au lieu d'ouvrir le navigateur. De plus, l'application pour ordinateur peut enregistrer des appels vidéo et sonner lors d'un appel téléphonique entrant.";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_IS_NOT_INSTALLED"] = "L'application pour ordinateur n'est pas installée";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_DESKTOP_TITLE"] = "Encouragez l'utilisateur à installer l'application pour ordinateur Bitrix24";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_ALREADY_INSTALLED"] = "L'application mobile est déjà installée";
+$MESS["M_INTRANET_RECOMMENDATION_TO_INSTALL_MOBILE_IS_NOT_INSTALLED"] = "L'application mobile n'est pas installée";
+$MESS["M_INTRANET_USER_STATUS_ADMIN"] = "Administrateur";
+$MESS["M_INTRANET_USER_STATUS_DESKTOP_INSTALLED"] = "Ordinateur";
+$MESS["M_INTRANET_USER_STATUS_EXTRANET"] = "Extranet";
+$MESS["M_INTRANET_USER_STATUS_GUEST"] = "Invité(e)";
+$MESS["M_INTRANET_USER_STATUS_INVITED"] = "Invitation en attente";
+$MESS["M_INTRANET_USER_STATUS_INVITE_IS_SENDED"] = "Invitation renvoyée";
+$MESS["M_INTRANET_USER_STATUS_MOBILE_APP_INSTALLED"] = "Téléphone";
+$MESS["M_INTRANET_USER_STATUS_PENDING"] = "En attente de confirmation de connexion";

@@ -1,0 +1,3 @@
+<?php
+$MESS["IM_AI_ASSISTANT_WIDGET_HEADER_CLOSE"] = "Закрити";
+$MESS["IM_AI_ASSISTANT_WIDGET_MINIMIZE"] = "Згорнути";

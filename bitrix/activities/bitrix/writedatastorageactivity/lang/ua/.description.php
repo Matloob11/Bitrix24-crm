@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_STORAGE_CATEGORY"] = "Сховище";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_DESCRIPTION"] = "Записує дані в сховище.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NAME"] = "Запис даних";

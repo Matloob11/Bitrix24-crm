@@ -1,0 +1,9 @@
+<?php
+$MESS["SIGN_MOBILE_MASTER_CLOSE_BUTTON_NAME"] = "Fechar";
+$MESS["SIGN_MOBILE_MASTER_DOCUMENT_CREATION_STEP_NEXT_STEP_BUTTON_TEXT"] = "Tentar novamente";
+$MESS["SIGN_MOBILE_MASTER_DOCUMENT_CREATION_STEP_TITLE"] = "Documento para assinatura";
+$MESS["SIGN_MOBILE_MASTER_DOCUMENT_SIGNING_STEP_TITLE"] = "Assinar documento";
+$MESS["SIGN_MOBILE_MASTER_EMPTY_STATE_DESCRIPTION_CREATION_ERROR"] = "Por favor, tente novamente. Se o problema persistir, entre em contato com seu supervisor.";
+$MESS["SIGN_MOBILE_MASTER_EMPTY_STATE_DESCRIPTION_DOCUMENT_CREATION"] = "O documento está quase pronto. Por favor, não feche esta tela.";
+$MESS["SIGN_MOBILE_MASTER_EMPTY_STATE_TITLE_CREATION_ERROR"] = "Não foi possível criar documento";
+$MESS["SIGN_MOBILE_MASTER_EMPTY_STATE_TITLE_DOCUMENT_CREATION"] = "Criando documento #SELECTED_TEMPLATE_TITLE#";

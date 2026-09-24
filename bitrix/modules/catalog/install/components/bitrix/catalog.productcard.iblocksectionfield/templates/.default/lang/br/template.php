@@ -1,0 +1,5 @@
+<?php
+$MESS["CATALOG_IBLOCKSECTIONFIELD_IS_EMPTY_SUBTITLE"] = "Criar nova seção?";
+$MESS["CATALOG_IBLOCKSECTIONFIELD_IS_EMPTY_TITLE"] = "A seção não foi encontrada";
+$MESS["CATALOG_IBLOCKSECTIONFIELD_PLACEHOLDER"] = "Encontre uma seção ou crie uma nova";
+$MESS["CATALOG_IBLOCKSECTIONFIELD_SELECT"] = "selecionar seção";

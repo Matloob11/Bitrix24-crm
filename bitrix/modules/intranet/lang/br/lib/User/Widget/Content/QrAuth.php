@@ -1,0 +1,4 @@
+<?php
+$MESS["INTRANET_USER_WIDGET_CONTENT_QR_AUTH_BUTTON_TITLE"] = "Mostrar código QR";
+$MESS["INTRANET_USER_WIDGET_CONTENT_QR_AUTH_POPUP_TITLE"] = "Fazer login no aplicativo móvel Bitrix24";
+$MESS["INTRANET_USER_WIDGET_CONTENT_QR_AUTH_TITLE"] = "Login no celular";

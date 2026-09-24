@@ -1,0 +1,4 @@
+<?
+$MESS["TIMEMAN_CONVERTER_SCHEDULE_FLEXTIME_NAME"] = "Elastyczny";
+$MESS["TIMEMAN_CONVERTER_SCHEDULE_FOR_ALL_USERS_NAME"] = "Dla wszystkich pracowników";
+?>

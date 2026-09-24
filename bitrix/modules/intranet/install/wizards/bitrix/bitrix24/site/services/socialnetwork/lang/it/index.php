@@ -1,0 +1,25 @@
+<?php
+$MESS["COMMENTS_GROUP_NAME"] = "Forum per commenti";
+$MESS["GENERAL_GROUP_NAME"] = "Forum generali";
+$MESS["HIDDEN_GROUP_NAME"] = "Forum nascosti";
+$MESS["SONET_GROUP_DESCRIPTION_NEW_1"] = "Usa questo gruppo per discutere dei progetti correnti. I nuovi membri devono ricevere conferma dal proprietario del gruppo o dall'amministratore per ottenere l'accesso. Questo gruppo è visibile a tutti.";
+$MESS["SONET_GROUP_DESCRIPTION_NEW_2"] = "Usalo per discussioni che richiedono la compartimentazione (ad esempio, topic finanziari). Solo le persone invitate possono ottenere l'accesso. Questo gruppo è visibile solo ai suoi membri.";
+$MESS["SONET_GROUP_DESCRIPTION_NEW_3"] = "Questo gruppo è aperto a tutti. Discuti di tutto ciò che ti piace: sport, musica, viaggi, vacanze. Questo gruppo è visibile a tutti; chiunque può entrare e non si richiede alcun invito.";
+$MESS["SONET_GROUP_DESCRIPTION_NEW_41"] = "Questo gruppo visibile privato è riservato agli utenti esterni. Il gruppo Extranet ospita subappaltatori, partner, clienti e altri utenti che non sono dipendenti dell'azienda. È richiesto un invito per unirsi al gruppo. Questo gruppo è l'unico visibile agli utenti esterni. Questi utenti non possono visualizzare altre informazioni su Bitrix24 né accedere alle stesse.";
+$MESS["SONET_GROUP_KEYWORDS_NEW_1"] = "progetti, routine quotidiana, ricerca";
+$MESS["SONET_GROUP_KEYWORDS_NEW_2"] = "mercato, merchandise, denaro, finanza, tender";
+$MESS["SONET_GROUP_KEYWORDS_NEW_3"] = "sport, viaggi, divertimento, calcio, musica";
+$MESS["SONET_GROUP_KEYWORDS_NEW_4"] = "progetti, freelance, partner";
+$MESS["SONET_GROUP_NAME_NEW_1"] = "Gruppo visibile privato";
+$MESS["SONET_GROUP_NAME_NEW_2"] = "Gruppo nascosto privato ";
+$MESS["SONET_GROUP_NAME_NEW_3"] = "Apri gruppo pubblico";
+$MESS["SONET_GROUP_NAME_NEW_4"] = "Extranet: gruppo per utenti esterni";
+$MESS["SONET_GROUP_SUBJECT_0"] = "Gruppi di lavoro";
+$MESS["SONET_TASK_DESCRIPTION_1"] = "Inserisci i dati del tuo profilo e carica la tua foto.";
+$MESS["SONET_TASK_DESCRIPTION_2"] = "Invita nuovi dipendenti a iscriversi al portale Intranet";
+$MESS["SONET_TASK_TITLE_1"] = "Compila i dati del profilo";
+$MESS["SONET_TASK_TITLE_2"] = "Invita nuovi dipendenti";
+$MESS["SONET_USER_TAG_1"] = "cinema";
+$MESS["SONET_USER_TAG_2"] = "sport";
+$MESS["SONET_USER_TAG_3"] = "musica";
+$MESS["SONET_USER_TAG_4"] = "viaggi";

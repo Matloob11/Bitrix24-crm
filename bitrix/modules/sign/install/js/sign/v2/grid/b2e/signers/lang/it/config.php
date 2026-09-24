@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_SIGNERS_DELETE_CONFIRMATION_MESSAGE"] = "Eliminare il gruppo? Questa azione non può essere annullata.";
+$MESS["SIGN_SIGNERS_DELETE_CONFIRMATION_TITLE"] = "Elimina gruppo";
+$MESS["SIGN_SIGNERS_GRID_COPY_HINT_FAIL"] = "Impossibile copiare il gruppo. Riprova.";
+$MESS["SIGN_SIGNERS_GRID_COPY_HINT_SUCCESS"] = "Il gruppo è stato copiato.";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_CANCEL_BUTTON_TEXT"] = "Annulla";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_CREATE_BUTTON_TEXT"] = "Crea";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_DESCRIPTION"] = "Crea un gruppo di dipendenti per una gestione più rapida dei documenti.";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_HINT_TITLE_NOT_EMPTY"] = "Il nome non può essere vuoto.";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_POPUP_INPUT_PLACEHOLDER"] = "Nome gruppo";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_POPUP_TITLE"] = "Nuovo gruppo";
+$MESS["SIGN_SIGNERS_GRID_CREATE_LIST_SAVE_BUTTON_TEXT"] = "Rinomina";
+$MESS["SIGN_SIGNERS_GRID_DELETE_HINT_FAIL"] = "Impossibile eliminare il gruppo. Riprova.";
+$MESS["SIGN_SIGNERS_GRID_DELETE_HINT_SUCCESS"] = "Il gruppo è stato eliminato.";
+$MESS["SIGN_SIGNERS_GRID_DELETE_POPUP_NO"] = "Annulla";
+$MESS["SIGN_SIGNERS_GRID_DELETE_POPUP_YES"] = "Sì";
+$MESS["SIGN_SIGNERS_GRID_LIST_CREATE_FAIL"] = "Errore durante la creazione del gruppo.";
+$MESS["SIGN_SIGNERS_GRID_LIST_CREATE_SUCCESS"] = "Il gruppo è stato creato.";
+$MESS["SIGN_SIGNERS_SIGNERS_GRID_DELETE_HINT_FAIL"] = "Impossibile rimuovere i dipendenti dal gruppo.";
+$MESS["SIGN_SIGNERS_SIGNERS_GRID_DELETE_HINT_SUCCESS"] = "I dipendenti sono stati rimossi dal gruppo.";
+$MESS["SIGN_SIGNERS_SIGNER_DELETE_CONFIRMATION_TITLE"] = "Rimuovi dipendenti";
+$MESS["SIGN_SIGNERS_SIGNER_GRID_DELETE_HINT_FAIL"] = "Impossibile rimuovere il dipendente dal gruppo.";
+$MESS["SIGN_SIGNERS_SIGNER_GRID_DELETE_HINT_SUCCESS"] = "Il dipendente è stato rimosso dal gruppo.";

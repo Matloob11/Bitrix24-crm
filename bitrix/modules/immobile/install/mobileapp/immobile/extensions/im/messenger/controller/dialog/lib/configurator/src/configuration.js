@@ -1,0 +1,113 @@
+/**
+ * @module im/messenger/controller/dialog/lib/configurator/configuration
+ */
+jn.define('im/messenger/controller/dialog/lib/configurator/configuration', (require, exports, module) => {
+	const defaultConfig = {
+		relatedEntity: {
+			type: 'default',
+			id: 0,
+			customData: {},
+		},
+		header: {
+			title: {
+				params: {},
+				controller: {
+					extensionName: '',
+					className: '',
+				},
+			},
+			buttons: {
+				controller: {
+					extensionName: '',
+					className: '',
+				},
+			},
+		},
+		sidebar: {
+			enabled: true,
+			params: {},
+		},
+		message: {
+			contextMenu: {
+				controller: {
+					extensionName: '',
+					className: '',
+				},
+			},
+		},
+	};
+
+	const baseDialogConfig = {
+		relatedEntity: defaultConfig.relatedEntity,
+		header: {
+			title: {
+				params: {},
+				controller: {
+					extensionName: 'im:messenger/controller/dialog/lib/header/title/title',
+					className: 'HeaderTitle',
+				},
+			},
+			buttons: {
+				controller: {
+					extensionName: 'im:messenger/controller/dialog/lib/header/buttons/buttons',
+					className: 'HeaderButtons',
+				},
+			},
+		},
+		sidebar: {
+			enabled: true,
+			params: {},
+		},
+		message: {
+			contextMenu: {
+				controller: {
+					extensionName: 'im:messenger/controller/dialog/lib/message-menu',
+					className: 'DialogMessageContextMenu',
+				},
+			},
+		},
+	};
+
+	const copilotDialogConfig = {
+		...baseDialogConfig,
+		message: {
+			contextMenu: {
+				controller: {
+					extensionName: 'im:messenger/controller/dialog/lib/message-menu',
+					className: 'CopilotMessageContextMenu',
+				},
+			},
+		},
+	};
+
+	const aiAssistantDialogConfig = {
+		...baseDialogConfig,
+		message: {
+			contextMenu: {
+				controller: {
+					extensionName: 'im:messenger/controller/dialog/lib/message-menu',
+					className: 'AiAssistantMessageContextMenu',
+				},
+			},
+		},
+	};
+
+	const channelCommentDialogConfig = {
+		header: {
+			title: {
+				controller: {
+					extensionName: 'im:messenger/controller/dialog/lib/header/title/comments',
+					className: 'CommentsHeaderTitle',
+				},
+			},
+		},
+	};
+
+	module.exports = {
+		defaultConfig,
+		baseDialogConfig,
+		channelCommentDialogConfig,
+		copilotDialogConfig,
+		aiAssistantDialogConfig,
+	};
+});

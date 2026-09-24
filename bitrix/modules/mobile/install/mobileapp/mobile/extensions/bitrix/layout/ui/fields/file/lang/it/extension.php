@@ -1,0 +1,19 @@
+<?php
+$MESS["FIELDS_FILE_ADD_FILE"] = "Aggiungi file";
+$MESS["FIELDS_FILE_ADD_FILES"] = "Aggiungi file";
+$MESS["FIELDS_FILE_ADD_IMAGE"] = "Aggiungi immagine";
+$MESS["FIELDS_FILE_ADD_VIDEO"] = "Aggiungi video";
+$MESS["FIELDS_FILE_ATTACHMENTS_NAVIGATION_TITLE"] = "File (#NUM#)";
+$MESS["FIELDS_FILE_CAMERA"] = "Scatta una foto";
+$MESS["FIELDS_FILE_EDIT"] = "Modifica";
+$MESS["FIELDS_FILE_EDIT_FILE"] = "Cambia file";
+$MESS["FIELDS_FILE_EDIT_IMAGE"] = "Cambia immagine";
+$MESS["FIELDS_FILE_EDIT_VIDEO"] = "Cambia video";
+$MESS["FIELDS_FILE_MEDIATEKA"] = "Seleziona da galleria";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_CONFIRM"] = "OK";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_DESCR"] = "Prova a caricare un file diverso.";
+$MESS["FIELDS_FILE_MEDIA_TYPE_ALERT_TITLE"] = "Tipo di file non valido";
+$MESS["FIELDS_FILE_OPEN_GALLERY"] = "Visualizzazione";
+$MESS["FIELDS_FILE_UPLOAD_ALERT_DESCR"] = "Riprova. \nSe il problema persiste, contatta il tuo amministratore Bitrix24.";
+$MESS["FIELDS_FILE_UPLOAD_ALERT_TITLE"] = "Errore di caricamento del file";
+$MESS["FIELDS_FILE_VALIDATION_ERROR"] = "Elimina il file e prova a caricarlo di nuovo.";

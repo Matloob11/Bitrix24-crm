@@ -1,0 +1,11 @@
+<?php
+
+return [
+	'extensions' => [
+		'layout/ui/wizard/step',
+		'mail:mailbox/connector/progress-bar-number',
+		'loc',
+		'apptheme',
+        'tokens',
+    ],
+];

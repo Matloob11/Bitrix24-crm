@@ -1,0 +1,19 @@
+<?php
+$MESS["ERROR_TASKS_GUID_NON_UNIQUE"] = "Wartość GUID musi być unikalna";
+$MESS["TASKS_BAD_ASSIGNEE_EX"] = "Nie znaleziono użytkownika określonego jako odpowiedzialnego.";
+$MESS["TASKS_BAD_ASSIGNEE_ID"] = "Nie określono odpowiedzialnego.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_COLLAB"] = "Odpowiedzialny za zadanie nie jest członkiem wybranego collaba.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_GROUP"] = "Odpowiedzialny za zadanie nie jest uczestnikiem wybranego projektu.";
+$MESS["TASKS_BAD_CREATED_BY"] = "Twórca zadania jest nieokreślony";
+$MESS["TASKS_BAD_DURATION"] = "Planowany czas trwania zadania jest za długi";
+$MESS["TASKS_BAD_GROUP"] = "Żaden projekt nie jest powiązany z tym zadaniem.";
+$MESS["TASKS_BAD_PARENT_ID"] = "Nie znaleziono zadania określonego w polu &quot;Podzadanie&quot;";
+$MESS["TASKS_BAD_PLAN_DATES"] = "Planowana data zakończenia jest wcześniejsza niż data rozpoczęcia.";
+$MESS["TASKS_BAD_TITLE"] = "Nazwa Zadanie nie została określona.";
+$MESS["TASKS_DEADLINE_OUT_OF_PROJECT_RANGE"] = "Termin wykonania zadania wykracza poza zakres dat projektu";
+$MESS["TASKS_DEPENDS_ON_SELF"] = "Zadanie nie może polegać na samym sobie.";
+$MESS["TASKS_INCORRECT_STATUS"] = "Nieprawidłowy status";
+$MESS["TASKS_IS_LINKED_END_DATE_PLAN_REMOVE"] = "Nie można usunąć czasu zakończenia zadania, ponieważ zadanie ma zależności";
+$MESS["TASKS_IS_LINKED_SET_PARENT"] = "Nie można przydzielić nadrzędnego zadania, ponieważ zadanie jest zależne od bieżącego zadania";
+$MESS["TASKS_PLAN_DATE_END_OUT_OF_PROJECT_RANGE"] = "Planowana data zakończenia zadania wykracza poza zakres dat projektu";
+$MESS["TASKS_PLAN_DATE_START_OUT_OF_PROJECT_RANGE"] = "Planowana data rozpoczęcia zadania wykracza poza zakres dat projektu";

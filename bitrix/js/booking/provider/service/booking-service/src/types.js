@@ -1,0 +1,71 @@
+import type { ClientDto } from 'booking.provider.service.client-service';
+import type { ResourceDto } from 'booking.provider.service.resources-service';
+import { BookingSource } from 'booking.const';
+
+export type BookingDto = {
+	id: number | null,
+	updatedAt: number,
+	resources: ResourceDto[],
+	primaryClient: ClientDto,
+	clients: ClientDto[],
+	counter: number,
+	counters: Array,
+	createdAt: number,
+	name: string,
+	datePeriod: DatePeriodDto,
+	isConfirmed: boolean | null,
+	visitStatus: string,
+	rrule: string | null,
+	note: string | null,
+	externalData: DealDataDto,
+	messages: MessageDto[],
+	skus: SkuDto[],
+	payment: PaymentDto,
+	source: $Values<typeof BookingSource>,
+};
+
+export type DealDataDto = {
+	moduleId: string,
+	entityTypeId: string,
+	value: string,
+	data: {
+		createdTimestamp: number,
+		currencyId: string,
+		opportunity: number,
+	},
+};
+
+export type BookingFromWaitListItemDto = {
+	waitListItemId: number,
+	datePeriod: DatePeriodDto,
+	resources: ResourceDto[],
+};
+
+export type SkuDto = {
+	id: number,
+	name: string,
+	price: number,
+	currencyId: string,
+};
+
+export type PaymentDto = {
+	id: number,
+	isPaid: boolean,
+	isPaidManually: boolean,
+};
+
+type DatePeriodDto = {
+	from: DatePeriodItem,
+	to: DatePeriodItem,
+};
+
+type DatePeriodItem = {
+	timestamp: number,
+	timezone: string,
+};
+
+type MessageDto = {
+	id: number,
+	bookingId: number,
+	notificationType: string,
+};

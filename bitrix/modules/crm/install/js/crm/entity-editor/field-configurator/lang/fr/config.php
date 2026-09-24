@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_PHONE_NUMBER_INPUT_FIELD_CONFIGURATOR_PLACEHOLDER"] = "Saisissez le code ou le nom du pays";
+$MESS["CRM_PHONE_NUMBER_INPUT_FIELD_CONFIGURATOR_TITLE"] = "Pays par défaut";
+$MESS["CRM_REQUISITE_DEFAULT_ADDRESS_TYPE_TITLE"] = "Type d'adresse par défaut";

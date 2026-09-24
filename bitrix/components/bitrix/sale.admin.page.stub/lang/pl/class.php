@@ -1,0 +1,25 @@
+<?php
+$MESS["SAPS_CAT_CONTRACTOR_LIST"] = "Strona Dostawcy jest teraz dostępna w Bitrix24";
+$MESS["SAPS_CAT_EXTRA"] = "Strona Typy dopłat jest teraz dostępna w Bitrix24";
+$MESS["SAPS_CAT_GROUP_ADMIN"] = "Przenieśliśmy stronę Typy cen do Bitrix24";
+$MESS["SAPS_CAT_MEASURE_LIST"] = "Przenieśliśmy stronę Jednostki miary do Bitrix24";
+$MESS["SAPS_CAT_ROUND_LIST"] = "Strona Reguły zaokrąglania cen jest teraz dostępna w Bitrix24";
+$MESS["SAPS_CAT_STORE_LIST"] = "Przenieśliśmy stronę Magazyny do Bitrix24";
+$MESS["SAPS_CAT_SUBSCRIPTION_LIST"] = "Strona Subskrypcje jest teraz dostępna w Bitrix24";
+$MESS["SAPS_CAT_VAT_ADMIN"] = "Przenieśliśmy stronę Stawki podatku do Bitrix24";
+$MESS["SAPS_SALE_ACCOUNT_ADMIN"] = "Przenieśliśmy stronę Konta klientów wewnętrznych do Bitrix24";
+$MESS["SAPS_SALE_BASKET"] = "Przenieśliśmy stronę Porzucone koszyki do Bitrix24";
+$MESS["SAPS_SALE_BUYERS"] = "Przenieśliśmy stronę Klienci do Bitrix24";
+$MESS["SAPS_SALE_DELIVERY_SERVICE_LIST"] = "Strona Usługi dostawy jest teraz dostępna w Bitrix24";
+$MESS["SAPS_SALE_DISCOUNT"] = "Przenieśliśmy stronę Reguły koszyka do Bitrix24";
+$MESS["SAPS_SALE_DISCOUNT_COUPONS"] = "Strona Kupony jest teraz dostępna w Bitrix24";
+$MESS["SAPS_SALE_LOCATION_GROUP_LIST"] = "Przenieśliśmy stronę Grupy lokalizacji do Bitrix24";
+$MESS["SAPS_SALE_LOCATION_NODE_LIST"] = "Przenieśliśmy stronę Lokalizacje do Bitrix24";
+$MESS["SAPS_SALE_LOCATION_TYPE_LIST"] = "Przenieśliśmy stronę Typy lokalizacji do Bitrix24";
+$MESS["SAPS_SALE_ORDER"] = "Wszystkie zamówienia są teraz przetwarzane w Bitrix24";
+$MESS["SAPS_SALE_PAY_SYSTEM"] = "Systemy płatności są teraz konfigurowane w Bitrix24";
+$MESS["SAPS_SALE_PERSON_TYPE"] = "Przenieśliśmy stronę Typy płatnika do Bitrix24";
+$MESS["SAPS_SALE_TAX"] = "Przenieśliśmy stronę Podatki do Bitrix24";
+$MESS["SAPS_SALE_TAX_EXEMPT"] = "Przenieśliśmy stronę Zwolnienia z podatku do Bitrix24";
+$MESS["SAPS_SALE_TAX_RATE"] = "Strona Stawki podatku jest teraz dostępna w Bitrix24";
+$MESS["SAPS_SALE_TRANSACT_ADMIN"] = "Strona Transakcje jest teraz dostępna w Bitrix24";

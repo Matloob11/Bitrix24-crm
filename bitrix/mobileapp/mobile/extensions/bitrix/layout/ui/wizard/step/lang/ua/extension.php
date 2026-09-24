@@ -1,0 +1,3 @@
+<?php
+$MESS["WIZARD_STEP_BUTTON_CONTINUE_TEXT"] = "Далі";
+$MESS["WIZARD_STEP_BUTTON_SKIP_TEXT"] = "Пропустити";

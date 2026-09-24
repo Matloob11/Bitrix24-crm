@@ -1,0 +1,18 @@
+<?php
+$MESS["STOCK_STOCK_PRODUCTS_FILTER_PRODUCTS_TITLE"] = "Prodotti";
+$MESS["STORE_STOCK_PRODUCTS_DEFAULT_STORE_NAME"] = "Senza titolo";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_AMOUNT_COLUMN"] = "Quantità";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_AMOUNT_COLUMN_HINT"] = "Giacenza attuale articolo";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN"] = "Quantità spedita";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_AMOUNT_SOLD_COLUMN_HINT"] = "Quantitativo totale di merci vendute per il periodo di riferimento come indicato dagli oggetti inventario di vendita";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_NO_READ_RIGHTS_ERROR"] = "Autorizzazione insufficiente per visualizzare l'elemento";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_PRODUCT_COLUMN"] = "Prodotto";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_QUANTITY_COLUMN"] = "Rimanenza a magazzino disponibile";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_QUANTITY_COLUMN_HINT"] = "Rimanenza a magazzino attuale disponibile per la vendita";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_QUANTITY_RESERVED_COLUMN"] = "Riservato";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_QUANTITY_RESERVED_COLUMN_HINT"] = "Articoli attualmente riservati";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_RECEIVED_QUANTITY_COLUMN"] = "Quantità arrivata";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN"] = "Saldo rimanenza a magazzino iniziale";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_GRID_STARTING_QUANTITY_COLUMN_HINT"] = "Saldo rimanenza a magazzino registrato all’inizio del periodo di riferimento";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_MEASURE_TEMPLATE"] = "#NUMBER# #MEASURE_SYMBOL#";
+$MESS["STORE_STOCK_PRODUCTS_REPORT_NO_PRODUCTS"] = "Il magazzino è vuoto";

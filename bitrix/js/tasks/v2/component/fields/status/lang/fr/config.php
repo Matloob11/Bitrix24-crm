@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_V2_STATUS_COMPLETED"] = "Terminée";
+$MESS["TASKS_V2_STATUS_COMPLETED_AT"] = "Terminée le #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_COMPLETED_AT_MSGVER_1"] = "Terminé le #DATE# à #TIME#";
+$MESS["TASKS_V2_STATUS_COMPLETED_MSGVER_1"] = "Terminé";
+$MESS["TASKS_V2_STATUS_COMPLETE_ACTION"] = "Terminer";
+$MESS["TASKS_V2_STATUS_CREATED_AT"] = "Créée le #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_DEFERRED"] = "Différée";
+$MESS["TASKS_V2_STATUS_DEFERRED_AT"] = "Différée le #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_DEFER_ACTION"] = "Reporter";
+$MESS["TASKS_V2_STATUS_FROM"] = "Depuis le #DATE# à #TIME#";
+$MESS["TASKS_V2_STATUS_IN_PROGRESS"] = "En cours";
+$MESS["TASKS_V2_STATUS_IN_PROGRESS_FROM"] = "En cours depuis le #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_NEEDS_CONTROL_HINT"] = "La tâche terminée sera envoyée au propriétaire de la tâche pour révision.";
+$MESS["TASKS_V2_STATUS_PAUSE_ACTION"] = "Pause";
+$MESS["TASKS_V2_STATUS_PENDING"] = "En attente";
+$MESS["TASKS_V2_STATUS_PENDING_FROM"] = "En attente depuis le #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_RENEW_ACTION"] = "Renvoyer pour révision";
+$MESS["TASKS_V2_STATUS_RESUME_ACTION"] = "Reprendre";
+$MESS["TASKS_V2_STATUS_START_ACTION"] = "Commencer";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED"] = "En cours de vérification";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED_FROM"] = "En cours de vérification depuis le #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED_FROM_MSGVER_1"] = "En attente de contrôle depuis le #DATE# #TIME#";
+$MESS["TASKS_V2_STATUS_SUPPOSEDLY_COMPLETED_MSGVER_1"] = "En attente de contrôle";
+$MESS["TASKS_V2_STATUS_TITLE"] = "Statut :";

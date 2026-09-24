@@ -1,0 +1,19 @@
+.socialnetwork--auto-delete-popup-radio__container {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	padding: 8px 0 0;
+	border: unset;
+}
+
+.socialnetwork--auto-delete-popup-radio__option {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 10px;
+}
+
+.socialnetwork--auto-delete-popup-radio__label {
+	font-size: 15px;
+	cursor: pointer;
+}

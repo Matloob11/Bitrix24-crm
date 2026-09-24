@@ -1,0 +1,25 @@
+<?php
+$MESS["OP_NAME_TM_MANAGE"] = "Mes pointages";
+$MESS["OP_NAME_TM_MANAGE_ALL"] = "Pointages de quelqu'un d'autre";
+$MESS["OP_NAME_TM_READ"] = "Afficher tous les enregistrements";
+$MESS["OP_NAME_TM_READ_SCHEDULES_ALL"] = "Afficher tous les horaires";
+$MESS["OP_NAME_TM_READ_SHIFT_PLANS_ALL"] = "Afficher tous les horaires de travail";
+$MESS["OP_NAME_TM_READ_SUBORDINATE"] = "Afficher mes enregistrements et ceux des subordonnés";
+$MESS["OP_NAME_TM_SETTINGS"] = "Modifier les paramètres du module";
+$MESS["OP_NAME_TM_UPDATE_SCHEDULES_ALL"] = "Modifier tous les horaires de travail";
+$MESS["OP_NAME_TM_UPDATE_SHIFT_PLANS_ALL"] = "Modifier tous les horaires de travail";
+$MESS["OP_NAME_TM_WRITE"] = "Modifier tous les enregistrements";
+$MESS["OP_NAME_TM_WRITE_SUBORDINATE"] = "Modifier mes enregistrements et ceux des subordonnés";
+$MESS["TASK_NAME_TIMEMAN_DENIED_CONVERTED_EDITABLE"] = "Accès refusé";
+$MESS["TASK_NAME_TIMEMAN_FULL_ACCESS_CONVERTED_EDITABLE"] = "Accès complet";
+$MESS["TASK_NAME_TIMEMAN_READ_CONVERTED_EDITABLE"] = "Service des ressources humaines";
+$MESS["TASK_NAME_TIMEMAN_SUBORDINATE_CONVERTED_EDITABLE"] = "Employé ou superviseur du département";
+$MESS["TASK_NAME_TIMEMAN_WRITE_CONVERTED_EDITABLE"] = "Conseil d'administration de l'entreprise";
+$MESS["TIMEMAN_SETTINGS_PERMS_ADD_ROLE_TITLE"] = "Créer un rôle";
+$MESS["TIMEMAN_SETTINGS_PERMS_CAN_NOT_EDIT_SYSTEM_TASK"] = "Les permissions d'accès système sont réservées au visionnage.";
+$MESS["TIMEMAN_SETTINGS_PERMS_EDIT_ROLE_NOT_FOUND"] = "Rôle introuvable";
+$MESS["TIMEMAN_SETTINGS_PERMS_EDIT_ROLE_TITLE"] = "Modifier le rôle : #ROLE#";
+$MESS["TIMEMAN_SETTINGS_PERMS_EDIT_SETTINGS"] = "Un utilisateur peut modifier les paramètres";
+$MESS["TIMEMAN_SETTINGS_PERMS_PERMISSIONS_ERROR"] = "Vous n'avez pas les permissions de modifier les permissions d'accès";
+$MESS["TIMEMAN_SETTINGS_PERMS_TITLE"] = "Droits d'accès";
+$MESS["TIMEMAN_SETTINGS_PERMS_UNKNOWN_ACCESS_CODE"] = "(ID d'accès inconnu)";

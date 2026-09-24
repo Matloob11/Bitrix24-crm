@@ -1,0 +1,245 @@
+:root{
+	--call-participants-permission-popup__width: 335px;
+	--call-participants-permission-popup__fallback-background-color: #012548;
+	--call-participants-permission-popup__text-letter-spacing: var(--call-view__letter-spacing);
+	--call-participants-permission-popup__top-list-item-text-color: var(--ui-color-palette-gray-03);
+	--call-participants-permission-popup__top-list-title-text-color: rgba(255, 255, 255, 0.80);
+	--call-participants-permission-popup__top-list-background-color: rgba(253, 253, 253, 0.10);
+	--call-participants-permission-popup__top-list-switch-disable-background-color: var(--ui-color-palette-gray-20);
+	--call-participants-permission-popup__top-list-switch-enabled-background-color: #0075FF;
+	--call-participants-permission-popup__control-buttons-label-text-letter-spacing: var(--call-view__letter-spacing);
+	--call-participants-permission-popup__control-buttons-label-text-line-height: 1.3;
+	--call-participants-permission-popup__control-button-text-line-height: 1.35;
+	--call-participants-permission-popup__control-button-text-letter-spacing: var(--call-view__letter-spacing);
+	--call-participants-permission-popup__control-button-text-color: rgba(255, 255, 255, 0.80);
+	--call-participants-permission-popup__control-buttons-label-text-color: rgba(255, 255, 255, 0.80);
+}
+
+.bx-call-participants-permission-popup {
+	width: var(--call-participants-permission-popup__width);
+	border-radius: 18px;
+	padding: 12px 10px;
+	letter-spacing: -0.05px;
+	background-color: var(--call-participants-permission-popup__fallback-background-color);
+	background-image: url('./images/participants_permission_popup_background.png');
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-size: auto;
+}
+
+.bx-call-participants-permission-popup__control-buttons-label {
+	font-size: var(--ui-font-size-sm);
+	color: var(--call-participants-permission-popup__control-buttons-label-text-color);
+	text-align: center;
+	margin-bottom: 12px;
+	font-weight: var(--ui-font-weight-medium, 500);
+	line-height: var(--call-participants-permission-popup__control-buttons-label-text-line-height);
+	letter-spacing: var(--call-participants-permission-popup__control-buttons-label-text-letter-spacing);
+}
+
+.bx-call-view-participants-control-stream-button {
+	margin-right: 8px;
+	cursor: pointer;
+	font: 14px/18px var(--ui-font-family-primary, var(--ui-font-family-helvetica));
+	background: #FDFDFD1A;
+	text-align: center;
+	border-radius: 14px;
+	line-height: var(--call-participants-permission-popup__control-button-text-line-height);
+	letter-spacing: var(--call-participants-permission-popup__control-button-text-letter-spacing);
+	flex: 1;
+	padding: 28px 8px 31px;
+	gap: 14px;
+	min-width: 96px;
+	min-height: 120px;
+	box-sizing: border-box;
+}
+
+.bx-call-view-participants-permissions-switch-wrapper:last-child{
+	margin-bottom: 8px;
+}
+
+.bx-call-view-participants-control-stream-button:hover {
+	background: #FDFDFD33;
+}
+
+.bx-call-participants-permission-popup__control-buttons {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.bx-call-view-participants-control-stream-button:last-child {
+	margin-right: 0;
+}
+
+.bx-call-view-participants-control-stream-button-action {
+	color: var(--call-participants-permission-popup__control-button-text-color);
+	margin-top: 9px;
+}
+
+.bx-call-view-participants-control-stream-button-icon {
+	width: 28px;
+	height: 28px;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+	background-size: contain;
+	display: inline-block;
+}
+
+.bx-call-view-participants-control-stream-button-icon-mic {
+	background-image: url('../../../images/microphone-crossed.svg?nocache');
+}
+
+.bx-call-view-participants-control-stream-button-icon-cam {
+	background-image: url('../../../images/camera-crossed.svg?nocache');
+}
+
+.bx-call-view-participants-control-stream-button-icon-screenshare {
+	background-image: url('../../../images/screenshare-crossed.svg');
+}
+
+.bx-call-view-participants-control-stream-notify-icon {
+	width: 22px;
+	height: 22px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	margin-right: 10px;
+	display: inline-block;
+	position: relative;
+	vertical-align: -7px;
+}
+
+.bx-call-view-participants-control-stream-notify-icon.bx-call-view-mic-muted  {
+	background-image: url('../../../images/notify-mic-muted.svg?nocache');
+}
+.bx-call-view-participants-control-stream-notify-icon.bx-call-view-cam-muted  {
+	background-image: url('../../../images/notify-cam-muted.svg?nocache');
+}
+.bx-call-view-participants-control-stream-notify-icon.bx-call-view-screenshare-muted  {
+	background-image: url('../../../images/notify-screenshare-muted.svg?nocache');
+}
+
+.bx-call-view-participants-control-stream-notify-icon.bx-call-view-mic-unmuted  {
+	background-image: url('../../../images/notify-mic-unmuted.svg');
+}
+.bx-call-view-participants-control-stream-notify-icon.bx-call-view-cam-unmuted  {
+	background-image: url('../../../images/notify-cam-unmuted.svg');
+}
+.bx-call-view-participants-control-stream-notify-icon.bx-call-view-screenshare-unmuted  {
+	background-image: url('../../../images/notify-screenshare-unmuted.svg');
+}
+
+.bx-call-view-device-selector-menu-container {
+	position: relative;
+	padding-bottom: 20px;
+	min-width: 200px;
+}
+
+.bx-call-view-participants-permissions-switch .ui-switcher-enabled {
+	font-size: 0;
+	background: var(--call-participants-permission-popup__top-list-switch-enabled-background-color);
+}
+
+.bx-call-view-participants-permissions-switch .ui-switcher-disabled {
+	font-size: 0;
+	background: var(--call-participants-permission-popup__top-list-switch-disable-background-color);
+}
+
+.bx-call-participants-permission-popup__permissions-title-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 17px 17px 8px 18px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	color: var(--call-participants-permission-popup__top-list-title-text-color);
+}
+
+.bx-call-participants-permission-popup__permissions-wrapper {
+	border-radius: 14px;
+	background-color: var(--call-participants-permission-popup__top-list-background-color);
+	/*padding: 10px 17px;*/
+	margin-bottom: 16px;
+	padding-bottom: 0;
+	font-size: 13px;
+	font-weight: var(--ui-font-weight-medium, 500);
+	letter-spacing: var(--call-participants-permission-popup__text-letter-spacing);
+	line-height: 17px;
+	color: var(--call-participants-permission-popup__top-list-item-text-color);
+}
+
+.bx-call-participants-permission-popup__permissions {
+	overflow: hidden;
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: transform 0.26s ease;
+	height: 0;
+	margin-top: 13px;
+}
+
+.bx-call-participants-permission-popup__permissions-wrapper.permissions-uncollapsed .bx-call-participants-permission-popup__permissions {
+	transform: scaleY(1);
+	height: auto;
+	padding: 0 18px 0 17px;
+}
+
+.bx-call-participants-permission-popup__permissions-title-arrow {
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../../../images/permission-arrow.svg');
+	cursor: pointer;
+	transform: rotate(180deg);
+	margin-right: 3px;
+}
+
+.bx-call-participants-permission-popup__permissions-wrapper.permissions-uncollapsed .bx-call-participants-permission-popup__permissions-title-arrow {
+	transform: rotate(0deg);
+}
+
+.bx-call-view-participants-permissions-label {
+	text-align: left;
+}
+
+.bx-call-view-participants-permissions-switch-wrapper {
+	display: flex;
+	flex-direction: row;
+	padding-bottom: 18px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.bx-call-view-participants-permissions-switch {
+	margin-left: 12px;
+	display: flex;
+}
+
+.bx-call-view-participants-permissions-switch .ui-switcher-size-sm.ui-switcher {
+	width: 27px;
+	height: 14px;
+}
+
+.bx-call-view-participants-permissions-switch .ui-switcher-size-sm .ui-switcher-cursor {
+	transform: translate(14px, 0);
+	width: 10px;
+	height: 10px;
+}
+
+.bx-call-view-participants-permissions-switch .ui-switcher-off .ui-switcher-cursor {
+	transform: translate(3px, 0);
+}
+
+.bx-call-view-participants-permissions-switch .ui-switcher-cursor {
+	top: 2px;
+}
+
+.bx-call-participants-permission-popup .popup-window-angly-top {
+	margin-left: 30px!important;
+}
+
+.bx-call-participants-permission-popup .popup-window-angly-top .popup-window-angly--arrow {
+	background: #132A45!important;
+}

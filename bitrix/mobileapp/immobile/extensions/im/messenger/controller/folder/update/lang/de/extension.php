@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_FOLDER_UPDATE_NAV_TITLE"] = "Ordner bearbeiten";
+$MESS["IMMOBILE_FOLDER_UPDATE_SAVE_BUTTON"] = "Speichern";

@@ -1,0 +1,20 @@
+<?php
+$MESS["IMBOT_COPILOT_AGREEMENT_RESTRICTION_ADMIN"] = "Należy zaakceptować Terms of Service. [URL=#LINK#]Dowiedz się więcej[/URL]";
+$MESS["IMBOT_COPILOT_AGREEMENT_RESTRICTION_ADMIN_MSGVER_1"] = "Należy zaakceptować Terms of Service. [URL=#LINK#]Dowiedz się więcej[/URL]";
+$MESS["IMBOT_COPILOT_AGREEMENT_RESTRICTION_BOX"] = "Aby korzystać z CoPilota, zaakceptuj „Bitrix24 CoPilot Additional Terms”. [URL=#LINK#]Dowiedz się więcej[/URL]";
+$MESS["IMBOT_COPILOT_AGREEMENT_RESTRICTION_BOX_MSGVER_1"] = "Aby korzystać z #COPILOT_NAME#a, zaakceptuj „Bitrix24 #COPILOT_NAME# Additional Terms”. [URL=#LINK#]Dowiedz się więcej[/URL]";
+$MESS["IMBOT_COPILOT_AGREEMENT_RESTRICTION_USER"] = "CoPilot nie będzie dostępny do momentu zaakceptowania przez administratora Terms of Service.";
+$MESS["IMBOT_COPILOT_AGREEMENT_RESTRICTION_USER_MSGVER_1"] = "#COPILOT_NAME# nie będzie dostępny do momentu zaakceptowania przez administratora Terms of Service.";
+$MESS["IMBOT_COPILOT_BOT_NAME"] = "CoPilot";
+$MESS["IMBOT_COPILOT_BOT_NAME_MSGVER_1"] = "#COPILOT_NAME#";
+$MESS["IMBOT_COPILOT_ERROR_LIMIT_BAAS"] = "Skończyły Ci się bezpłatne zapytania testowe. Możesz zwiększyć ich liczbę poprzez zakup [URL=#LINK#]rozszerzeń CoPilota[/URL].";
+$MESS["IMBOT_COPILOT_ERROR_LIMIT_BAAS_MSGVER_1"] = "Skończyły Ci się bezpłatne zapytania testowe. Możesz zwiększyć ich liczbę poprzez zakup [URL=#LINK#]rozszerzeń #COPILOT_NAME#a[/URL].";
+$MESS["IMBOT_COPILOT_ERROR_NETWORK_MSGVER_1"] = "Upłynął limit czasu żądania do dostawcy AI. Spróbuj ponownie później.";
+$MESS["IMBOT_COPILOT_ERROR_NOT_ACTIVE_MSGVER_1"] = "#COPILOT_NAME# w czatach jest wyłączony w Twoim Bitrix24. Skontaktuj się z administratorem Bitrix24.";
+$MESS["IMBOT_COPILOT_INPUT_ACTION_THINKING"] = "CoPilot myśli...";
+$MESS["IMBOT_COPILOT_INPUT_ACTION_THINKING_MSGVER_1"] = "#COPILOT_NAME# myśli...";
+$MESS["IMBOT_COPILOT_JOB_FAIL_MSGVER_1"] = "Upłynął limit czasu żądania do dostawcy AI. Spróbuj ponownie później.";
+$MESS["IMBOT_COPILOT_RESTRICTION"] = "Nie można zaprosić CoPilota do czatu.";
+$MESS["IMBOT_COPILOT_TARIFF_RESTRICTION"] = "Ta funkcja nie jest dostępna w bieżącym planie. Przejdź na plan obejmujący funkcję CoPilot.";
+$MESS["IMBOT_COPILOT_TARIFF_RESTRICTION_MSGVER_1"] = "Ta funkcja nie jest dostępna w bieżącym planie. Przejdź na plan obejmujący funkcję #COPILOT_NAME#.";
+$MESS["IMBOT_COPILOT_UNAVAILABLE"] = "Wymagany jest moduł „Integracja AI”. Skontaktuj się z administratorem Bitrix24.";

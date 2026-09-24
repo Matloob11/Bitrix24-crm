@@ -1,0 +1,22 @@
+<?php
+$MESS["STAT_ADV_DYN_PAGES"] = "Күндер";
+$MESS["STAT_ADV_LIST"] = "Жарнамалық науқандар тізімі";
+$MESS["STAT_BACK"] = "ВЗ";
+$MESS["STAT_BACK_ALT"] = "тікелей жарнамалық науқаннан кейінгі қайтарым бойынша";
+$MESS["STAT_DATE"] = "Күні";
+$MESS["STAT_EVENTS"] = "Оқиғалар";
+$MESS["STAT_EVENTS_LIST"] = "Оқиғалар тізімі";
+$MESS["STAT_F_PERIOD"] = "Кезең";
+$MESS["STAT_GRAPH"] = "Жарнама науқанының кестелері";
+$MESS["STAT_GUESTS"] = "Келуші";
+$MESS["STAT_HITS"] = "Хит";
+$MESS["STAT_HOSTS"] = "Хост";
+$MESS["STAT_INCORRECT_ADV_ID"] = "Жарнамалық науқан табылмады";
+$MESS["STAT_NEW"] = "НВ";
+$MESS["STAT_NEW_ALT"] = "Сайтқа алғаш рет кірген жаңа келушілер";
+$MESS["STAT_RECORDS_LIST"] = "Жарнамалық науқанның динамикасы";
+$MESS["STAT_SESSIONS"] = "Сессия";
+$MESS["STAT_STRAIGHT"] = "ПР";
+$MESS["STAT_STRAIGHT_ALT"] = "тікелей жарнама науқаны бойынша кірісу";
+$MESS["STAT_VIEW_EVENT_LIST"] = "Оқиғалар тізіміне өту";
+$MESS["STAT_VIEW_EVENT_LIST_BACK"] = "Қайтару бойынша оқиғалар тізімі";

@@ -1,0 +1,21 @@
+<?php
+$MESS["M_CRM_TL_PAYMENT_DETAILS_BACK_TO_PAYMENT_METHOD"] = "Volver a los métodos de pago";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_BUTTON_CONFIRM_TITLE"] = "OK";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_BUTTON_HELP_TITLE"] = "Detalles";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_MESSAGE"] = "Revise su conexión a Internet e intente de nuevo. Si el problema persiste, comuníquese con su administrador de bitrix24.";
+$MESS["M_CRM_TL_PAYMENT_PAY_DEFAULT_ERROR_TITLE"] = "No se puede completar la acción";
+$MESS["M_CRM_TL_PAYMENT_PAY_FAILURE_CHOOSE_OTHER_PAYMENT_METHOD"] = "Seleccionar un método de pago diferente";
+$MESS["M_CRM_TL_PAYMENT_PAY_FAILURE_ERROR_TEXT"] = "No se puede procesar el pago";
+$MESS["M_CRM_TL_PAYMENT_PAY_FAILURE_GET_NEW_QR_GET_NEW_QR"] = "Obtener un nuevo código QR";
+$MESS["M_CRM_TL_PAYMENT_PAY_NO_PAY_METHODS"] = "La terminal no puede recibir pagos actualmente. Active por lo menos un método de pago en la configuración de la terminal o póngase en contacto con su supervisor";
+$MESS["M_CRM_TL_PAYMENT_PAY_PAYMENT_LINK_NOT_CONNECTED"] = "El pago mediante enlace de pago no está activado";
+$MESS["M_CRM_TL_PAYMENT_PAY_PAYMENT_SYSTEM_CREATION_ERROR_MESSAGE"] = "Error al crear el sistema de pago";
+$MESS["M_CRM_TL_PAYMENT_PAY_PHONE_CONFIRMATION_TITLE"] = "Confirmar el número de teléfono";
+$MESS["M_CRM_TL_PAYMENT_PAY_PHONE_CONFIRMATION_WARNING_DESCRIPTION"] = "Confirme su número de teléfono para recibir pagos mediante el enlace de pago. Continúe con Bitrix24 en la web en su navegador para confirmar.";
+$MESS["M_CRM_TL_PAYMENT_PAY_PHONE_CONFIRMATION_WARNING_TITLE"] = "Confirmar el número de teléfono";
+$MESS["M_CRM_TL_PAYMENT_PAY_PLEASE_WAIT"] = "Por favor espere";
+$MESS["M_CRM_TL_PAYMENT_PAY_PRODUCTS_CNT"] = "Productos: #CNT#";
+$MESS["M_CRM_TL_PAYMENT_PAY_SCAN_QR"] = "Pida al cliente que escanee el código QR con su teléfono";
+$MESS["M_CRM_TL_PAYMENT_PAY_SUCCESS_BACK_TO_LIST"] = "Volver a los pagos";
+$MESS["M_CRM_TL_PAYMENT_PAY_SUCCESS_PAYMENT_PAID"] = "Pago ##NUMBER# completado";
+$MESS["M_CRM_TL_PAYMENT_PAY_VIA_QR_PAYMENT_LINK"] = "Pagar utilizando un enlace";

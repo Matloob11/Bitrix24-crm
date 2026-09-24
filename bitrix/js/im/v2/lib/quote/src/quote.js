@@ -1,0 +1,92 @@
+import { Loc } from 'main.core';
+
+import { CopilotManager } from 'im.v2.lib.copilot';
+import { Core } from 'im.v2.application.core';
+import { EventType, ChatType } from 'im.v2.const';
+import { DateFormatter, DateTemplate } from 'im.v2.lib.date-formatter';
+import { Parser } from 'im.v2.lib.parser';
+
+import type { ImModelMessage, ImModelUser, ImModelChat } from 'im.v2.model';
+import type { ApplicationContext } from 'im.v2.const';
+
+type SendQuoteEventPayload = {
+	message: ImModelMessage,
+	text: string,
+	dialogId: string,
+	context: ApplicationContext,
+};
+
+const QUOTE_DELIMITER = '-'.repeat(54);
+
+export const Quote = {
+	wrapWithDelimiters(text: string): string
+	{
+		return `${QUOTE_DELIMITER}\n${text}\n${QUOTE_DELIMITER}\n`;
+	},
+	sendQuoteEvent(payload: SendQuoteEventPayload)
+	{
+		const { text, dialogId, context: { emitter }, additionalParams = {} } = payload;
+
+		emitter.emit(EventType.textarea.insertText, {
+			text,
+			dialogId,
+			withNewLine: true,
+			...additionalParams,
+		});
+	},
+	prepareInlineQuote(textBefore: string, textAfter: string, quoteText: string): string
+	{
+		const needNewLineBefore = textBefore && !textBefore.endsWith('\n');
+		const formattedTextBefore = needNewLineBefore ? `${textBefore}\n` : textBefore;
+
+		const needNewLineAfter = textAfter && !textAfter.startsWith('\n');
+		const formattedTextAfter = needNewLineAfter ? `\n${textAfter}` : textAfter;
+
+		return `${formattedTextBefore}${QUOTE_DELIMITER}\n${quoteText}\n${QUOTE_DELIMITER}${formattedTextAfter}`;
+	},
+	prepareInlineMessageQuote(message: ImModelMessage, text: string): string
+	{
+		const dialog: ImModelChat = Core.getStore().getters['chats/getByChatId'](message.chatId);
+
+		let quoteTitle = Loc.getMessage('IM_DIALOG_CHAT_QUOTE_DEFAULT_TITLE');
+		if (message.authorId)
+		{
+			quoteTitle = getName(message);
+		}
+
+		const quoteDate = DateFormatter.formatByTemplate(message.date, DateTemplate.notification);
+
+		const quoteText = Parser.prepareQuote(message, text);
+
+		let quoteContext = '';
+		if (dialog && dialog.type === ChatType.user)
+		{
+			quoteContext = `#${dialog.dialogId}:${Core.getUserId()}/${message.id}`;
+		}
+		else
+		{
+			quoteContext = `#${dialog.dialogId}/${message.id}`;
+		}
+
+		const content = `${quoteTitle} [${quoteDate}] ${quoteContext}\n${quoteText}`;
+
+		return this.wrapWithDelimiters(content);
+	},
+};
+
+const getName = (message: ImModelMessage): string => {
+	let name = '';
+
+	const copilotManager = new CopilotManager();
+	if (copilotManager.isCopilotBot(message.authorId))
+	{
+		name = copilotManager.getNameWithRole(message.id);
+	}
+	else
+	{
+		const user: ImModelUser = Core.getStore().getters['users/get'](message.authorId);
+		name = user.name;
+	}
+
+	return name;
+};

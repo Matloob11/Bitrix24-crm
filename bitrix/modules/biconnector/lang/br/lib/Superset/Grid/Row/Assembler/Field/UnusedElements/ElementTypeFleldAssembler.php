@@ -1,0 +1,3 @@
+<?php
+$MESS["BI_UNUSED_ELEMENTS_GRID_TYPE_CHART"] = "Gráfico";
+$MESS["BI_UNUSED_ELEMENTS_GRID_TYPE_DATASET"] = "Conjunto de dados";

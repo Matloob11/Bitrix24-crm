@@ -1,0 +1,6 @@
+<?php
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_OPEN"] = "Apri";
+$MESS["TASKS_V2_NOTIFY_TASK_TEMPLATE_UPDATED"] = "Il modello è stato aggiornato.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_FAIL"] = "Impossibile salvare il modello.";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_OPEN"] = "Apri";
+$MESS["TASKS_V2_NOTIFY_TEMPLATE_CREATED_SUCC"] = "Il modello è stato creato.";

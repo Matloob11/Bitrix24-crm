@@ -1,0 +1,207 @@
+<?php
+
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+use \Bitrix\Crm;
+use Bitrix\Crm\Integration\Analytics\Dictionary;
+use \Bitrix\Main\Localization\Loc;
+
+$runtime = CBPRuntime::GetRuntime();
+$runtime->IncludeActivityFile('CrmCopyDynamicActivity');
+
+class CBPCrmChangeDynamicCategoryActivity extends CBPCrmCopyDynamicActivity
+{
+	const CYCLE_LIMIT = 150;
+
+	protected function canAccessResolvedTarget(array $documentId): bool
+	{
+		return $this->canUpdateResolvedTarget($documentId);
+	}
+
+	protected function prepareProperties(Crm\Service\Factory $factory, Crm\Item $item)
+	{
+		$this->preparedProperties = [
+			'CategoryId' => (int)$this->CategoryId,
+			'StageId' => CBPHelper::stringify($this->StageId),
+		];
+	}
+
+	protected function checkPreparedProperties(Crm\Service\Factory $factory): bool
+	{
+		$result = parent::checkPreparedProperties($factory);
+		if (!$result)
+		{
+			return false;
+		}
+		if (!$factory->isCategoriesEnabled())
+		{
+			$this->WriteToTrackingService(
+				Loc::getMessage('CRM_CDCA_ENABLING_CATEGORIES_ERROR'),
+				0,
+				CBPTrackingType::Error
+			);
+			return false;
+		}
+
+		$itemId = mb_split('_(?=[^_]*$)', $this->resolveTargetDocumentId()[2])[1];
+		$item = $factory->getItem($itemId);
+		if ($item->getCategoryId() === $this->preparedProperties['CategoryId'])
+		{
+			$this->WriteToTrackingService(
+				Loc::getMessage('CRM_CDCA_MOVE_ERROR_CATEGORY_NOT_CHANGED'),
+				0,
+				CBPTrackingType::Error
+			);
+
+			return false;
+		}
+
+		return true;
+	}
+
+	protected function applyPreparedProperties(Crm\Item $item)
+	{
+		$item->setCategoryId($this->preparedProperties['CategoryId']);
+		$item->setStageId($this->preparedProperties['StageId']);
+	}
+
+	protected function internalExecute(Crm\Service\Factory $factory, Crm\Item $item)
+	{
+		$operation = $factory->getUpdateOperation($item);
+		$operation->getContext()->setScope(Crm\Service\Context::SCOPE_AUTOMATION);
+		$operation
+			->disableBizProc()
+			->disableAllChecks()
+			->disableCheckWorkflows()
+			->disableAutomation()
+		;
+		$updateResult = $operation->launch();
+		$errorMessages = $updateResult->getErrorMessages();
+
+		if ($errorMessages)
+		{
+			$this->trackError(implode(', ', $errorMessages));
+			unset($errorMessages);
+		}
+
+			if ($updateResult->isSuccess())
+			{
+				$documentType = $this->resolveTargetDocumentType($this->resolveTargetDocumentId());
+				\CCrmBizProcHelper::sendOperationsAnalytics(
+					Dictionary::EVENT_ENTITY_EDIT,
+					$this,
+					$documentType[2] ?? '',
+			);
+
+			$terminateResult = $this->terminateDocumentWorkflows();
+			if (!$terminateResult->isSuccess())
+			{
+				$errorMessages = $terminateResult->getErrorMessages();
+				$this->trackError(implode(', ', $errorMessages));
+			}
+
+			$itemBeforeSave = $operation->getItemBeforeSave();
+			if ($itemBeforeSave)
+			{
+				$entityTypeId = $itemBeforeSave->getEntityTypeId();
+
+				$starter = new Crm\Integration\BizProc\Starter\CrmStarter(
+					new Crm\Integration\BizProc\Starter\Dto\DocumentDto($item->getEntityTypeId(), $item->getId())
+				);
+				$starter
+					->setContextModuleId('bizproc')
+					->runAutomation(
+						new Crm\Integration\BizProc\Starter\Dto\RunDataDto(
+							actualFields: Crm\Automation\Helper::prepareCompatibleData(
+								$entityTypeId,
+								$itemBeforeSave->getCompatibleData(\Bitrix\Main\ORM\Objectify\Values::CURRENT),
+							),
+							previousFields: Crm\Automation\Helper::prepareCompatibleData(
+								$entityTypeId,
+								$itemBeforeSave->getCompatibleData(\Bitrix\Main\ORM\Objectify\Values::ACTUAL),
+							),
+						),
+						\CCrmBizProcEventType::Edit
+					)
+				;
+			}
+
+			return CBPActivityExecutionStatus::Closed;
+		}
+	}
+
+	protected function terminateDocumentWorkflows(): \Bitrix\Main\Result
+	{
+		$result = new \Bitrix\Main\Result();
+
+		$documentId = $this->resolveTargetDocumentId();
+		$instanceIds = \CCrmBizProcHelper::getDocumentNotNodesInstanceIds($documentId);
+
+		foreach ($instanceIds as $instanceId)
+		{
+			$errors = [];
+
+			\CBPDocument::TerminateWorkflow(
+				$instanceId,
+				$documentId,
+				$errors,
+				Loc::getMessage('CRM_CDCA_MOVE_TERMINATION_TITLE')
+			);
+
+			foreach ($errors as $error)
+			{
+				$result->addError(new \Bitrix\Main\Error($error['message'], $error['code']));
+			}
+		}
+
+		return $result;
+	}
+
+	public static function GetPropertiesDialog(
+		$documentType,
+		$activityName,
+		$workflowTemplate,
+		$workflowParameters,
+		$workflowVariables,
+		$currentValues = null,
+		$formName = '',
+		$popupWindow = null,
+		$siteId = ''
+	)
+	{
+		$dialog = parent::GetPropertiesDialog(...func_get_args());
+		$dialog->setActivityFile(__FILE__);
+
+		$factory = static::getFactoryByType($documentType[2]);
+		if (!$factory->isCategoriesEnabled())
+		{
+			$dialog->setRuntimeData([
+				'errors' => [new \Bitrix\Main\Error(Loc::getMessage('CRM_CDCA_ENABLING_CATEGORIES_ERROR'))],
+			]);
+		}
+
+		return $dialog;
+	}
+
+	public static function getPropertiesDialogMap(\Bitrix\Bizproc\Activity\PropertiesDialog $dialog): array
+	{
+		$map = parent::getPropertiesDialogMap($dialog);
+
+		if (isset($map['CategoryId']))
+		{
+			$map['CategoryId']['Required'] = true;
+		}
+		if (isset($map['StageId']))
+		{
+			$map['StageId']['Required'] = true;
+		}
+
+		unset($map['ItemTitle']);
+		unset($map['Responsible']);
+
+		return $map;
+	}
+}

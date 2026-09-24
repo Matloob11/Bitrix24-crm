@@ -1,0 +1,20 @@
+<?php
+$MESS["TASKS_ACTION_RESULT_REQUIRED"] = "Le créateur de la tâche vous demande de fournir un rapport de tâche.<br>Laissez un commentaire sur la tâche et marquez-le comme résumé du statut de tâche.";
+$MESS["TASKS_TASK_FLOW_DEADLINE_LABEL"] = "Définir automatiquement";
+$MESS["TASKS_TASK_FLOW_SECRET_PROJECT_LABEL"] = "Projet caché";
+$MESS["TASKS_TASK_TAG_ACCESS_DENIED"] = "Permissions insuffisantes.";
+$MESS["TASKS_TASK_TAG_ALREADY_EXISTS"] = "Cette balise existe déjà.";
+$MESS["TASKS_TASK_TAG_UNKNOWN_ERROR"] = "Impossible d'ajouter la balise. Veuillez réessayer.";
+$MESS["TASKS_TEMPLATE_CREATE_FORBIDDEN"] = "Impossible de créer le modèle parce que l'accès a été refusé";
+$MESS["TASKS_TT_AUTO_CHANGE_ASSIGNEE"] = "Le responsable de cette tâche a été modifié.";
+$MESS["TASKS_TT_AUTO_CHANGE_GROUP"] = "La tâche a été rattachée au projet actuel";
+$MESS["TASKS_TT_AUTO_CHANGE_ORIGINATOR"] = "L'utilisateur actuel est automatiquement passé créateur de la tâche";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT"] = "La tâche a été rattachée à la tâche parente";
+$MESS["TASKS_TT_AUTO_CHANGE_PARENT_GROUP"] = "La tâche a été rattachée au projet de la tâche parente";
+$MESS["TASKS_TT_COPY_READ_ERROR"] = "Erreur lors de la lecture de l'objet à copier";
+$MESS["TASKS_TT_FORUM_MODULE_NOT_INSTALLED"] = "Le module Forum n'est pas installé.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE"] = "La tâche est introuvable ou l'accès est refusé.";
+$MESS["TASKS_TT_NOT_FOUND_OR_NOT_ACCESSIBLE_COPY"] = "La tâche à copier est introuvable ou l'accès est refusé.";
+$MESS["TASKS_TT_SAVE_AS_TEMPLATE_ERROR_MESSAGE_PREFIX"] = "Le modèle n'a pas été créé";
+$MESS["TASKS_TT_SOCIALNETWORK_MODULE_NOT_INSTALLED"] = "Le module Réseau social n'est pas installé.";
+$MESS["TASKS_TT_TASKS_MODULE_NOT_INSTALLED"] = "Le module Tasks n'est pas installé.";

@@ -1,0 +1,134 @@
+<?php
+
+namespace Bitrix\Crm\Service\UserPermissions\EntityPermissions;
+
+use Bitrix\Crm\Category\PermissionEntityTypeHelper;
+use Bitrix\Crm\EO_Status;
+use Bitrix\Crm\EO_Status_Collection;
+use Bitrix\Crm\Security\Role\PermissionsManager;
+use Bitrix\Crm\Service\UserPermissions;
+
+/**
+ * @internal
+ * Do not use directly, only through \Bitrix\Crm\Service\Container::getInstance()->getUserPermissions()->stage()
+ */
+
+class Stage
+{
+	use UserPermissions\AutomatedSolutionEntityLockedTrait;
+
+	public function __construct(
+		private readonly PermissionsManager $permissionsManager,
+	)
+	{
+	}
+
+	/**
+	 * Check if user can read items on $stageId.
+	 * @param int $entityTypeId
+	 * @param int|null $categoryId
+	 * @param string $stageId
+	 * @return bool
+	 */
+	public function canReadInStage(int $entityTypeId, ?int $categoryId, string $stageId): bool
+	{
+		return $this->hasPermissions($entityTypeId, $categoryId, $stageId, UserPermissions::OPERATION_READ);
+	}
+
+	/**
+	 * Check if user can add items on $stageId.
+	 * @param int $entityTypeId
+	 * @param int|null $categoryId
+	 * @param string $stageId
+	 * @return bool
+	 */
+	public function canAddInStage(int $entityTypeId, ?int $categoryId, string $stageId): bool
+	{
+		if ($this->isAutomatedSolutionEntityLocked($entityTypeId))
+		{
+			return false;
+		}
+
+		return $this->hasPermissions($entityTypeId, $categoryId, $stageId, UserPermissions::OPERATION_ADD);
+	}
+
+	/**
+	 * Check if user can update items on $stageId.
+	 * @param int $entityTypeId
+	 * @param int|null $categoryId
+	 * @param string $stageId
+	 * @return bool
+	 */
+	public function canUpdateInStage(int $entityTypeId, ?int $categoryId, string $stageId): bool
+	{
+		if ($this->isAutomatedSolutionEntityLocked($entityTypeId))
+		{
+			return false;
+		}
+
+		return $this->hasPermissions($entityTypeId, $categoryId, $stageId, UserPermissions::OPERATION_UPDATE);
+	}
+
+	/**
+	 * Return first stage identifier from $stages of entity with $entityTypeId on $categoryId
+	 * where user has permission to do $operation.
+	 * If such stage is not found - return null.
+	 *
+	 * @param int $entityTypeId - entity identifier.
+	 * @param ?int $categoryId - category identifier.
+	 * @param EO_Status_Collection $stages - collection of stages to search to.
+	 * @param string $operation - operation (ADD | UPDATE).
+	 * @return string|null
+	 */
+	public function getFirstAvailableForAddStageId(
+		int $entityTypeId,
+		?int $categoryId,
+		EO_Status_Collection $stages
+	): ?string
+	{
+		foreach ($stages as $stage)
+		{
+			if ($this->hasPermissions($entityTypeId, $categoryId, $stage->getStatusId(), UserPermissions::OPERATION_ADD))
+			{
+				return $stage->getStatusId();
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Filter $stages of entity with $entityTypeId on $categoryId
+	 * where user has permission to read.
+	 *
+	 * @param int $entityTypeId - entity identifier.
+	 * @param array<EO_Status> $stages - array of stages to filter.
+	 * @param ?int $categoryId - category identifier.
+	 * @return array<EO_Status>
+	 */
+	final public function filterAvailableForReadingStages(int $entityTypeId, array $stages, ?int $categoryId = null): array
+	{
+		return array_values(
+			array_filter(
+				$stages,
+				function (EO_Status $stage) use ($entityTypeId, $categoryId) {
+					return $this->canReadInStage($entityTypeId, $categoryId, $stage->getStatusId());
+				}
+			)
+		);
+	}
+
+	private function hasPermissions(int $entityTypeId, ?int $categoryId, string $stageId, string $permissionType): bool
+	{
+		$entityName = (new PermissionEntityTypeHelper($entityTypeId))->getPermissionEntityTypeForCategory((int)$categoryId);
+
+		$attributes = [];
+		$stageAttribute = \Bitrix\Crm\Service\UserPermissions\Helper\Stage::getStageIdAttributeByEntityTypeId($entityTypeId, $stageId);
+		if ($stageAttribute)
+		{
+			$attributes[] = $stageAttribute;
+		}
+
+		return $this->permissionsManager->hasPermissionByEntityAttributes($entityName, $permissionType, $attributes);
+	}
+}

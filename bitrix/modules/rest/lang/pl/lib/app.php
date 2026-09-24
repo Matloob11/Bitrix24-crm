@@ -1,0 +1,24 @@
+<?php
+$MESS["MP_ERROR_INCORRECT_URL_INSTALL"] = "Nieprawidłowe URL instalacji.";
+$MESS["PAYMENT_MESSAGE_D_N_Y"] = "Niektóre funkcje aplikacji są niedostępne. Aby zainstalować pełną wersję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_D_N_Y_A"] = "Niektóre funkcje aplikacji są niedostępne. Zakup pełną wersję.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y"] = "Subskrypcja aplikacji wygasła. Niektóre z funkcji aplikacji są niedostępne. Aby zainstalować pełną wersję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y_A"] = "Subskrypcja aplikacji wygasła. Niektóre z funkcji aplikacji są niedostępne.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD"] = "Ta aplikacja została zablokowana z powodu nadmiernego obciążenia. Skontaktuj się z administratorem Bitrix24.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD_A"] = "Ta aplikacja została zablokowana z powodu nadmiernego obciążenia. Skontaktuj się z zespołem pomocy, aby rozwiązać problem.";
+$MESS["PAYMENT_MESSAGE_P_N_Y"] = "Subskrypcja aplikacji wygaśnie za następującą liczbę dni: <b>#DAYS#</b>. Aby odnowić subskrypcję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_P_N_Y_A"] = "Subskrypcja aplikacji wygaśnie za następującą liczbę dni: <b>#DAYS#</b>.";
+$MESS["PAYMENT_MESSAGE_P_Y_N"] = "Aplikacja nie jest już dostępna, ponieważ subskrypcja wygasła. Aby odnowić subskrypcję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_P_Y_N_A"] = "Aplikacja nie jest już dostępna, ponieważ subskrypcja wygasła.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y"] = "Subskrypcja aplikacji wygasła. Aby zainstalować pełną wersję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y_A"] = "Subskrypcja aplikacji wygasła.";
+$MESS["PAYMENT_MESSAGE_S_N_Y"] = "Do wygaśnięcia subskrypcji pozostała następująca liczba dni: <b>#DAYS#</b>. Aby odnowić subskrypcję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_S_N_Y_A"] = "Do wygaśnięcia subskrypcji pozostała następująca liczba dni: <b>#DAYS#</b>.";
+$MESS["PAYMENT_MESSAGE_S_Y_N"] = "Aplikacja została zablokowana, ponieważ subskrypcja wygasła. Aby odnowić subskrypcję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_S_Y_N_A"] = "Aplikacja została zablokowana, ponieważ subskrypcja wygasła.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y"] = "Subskrypcja aplikacji wygasła. Aby odnowić subskrypcję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y_A"] = "Subskrypcja aplikacji wygasła.";
+$MESS["PAYMENT_MESSAGE_T_N_Y"] = "Okres próbny zakończy się za następującą liczbę dni: <b>#DAYS#</b>. Aby zainstalować pełną wersję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_T_N_Y_A"] = "Okres próbny zakończy się za następującą liczbę dni: <b>#DAYS#</b>.";
+$MESS["PAYMENT_MESSAGE_T_Y_N"] = "Okres próbny dobiegł końca. Aby zainstalować pełną wersję, skontaktuj się z administratorem.";
+$MESS["PAYMENT_MESSAGE_T_Y_N_A"] = "Okres próbny dobiegł końca. Zakup pełną wersję.";

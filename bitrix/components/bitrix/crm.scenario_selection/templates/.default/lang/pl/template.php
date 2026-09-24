@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_SCENARIO_SELECTION_ACTIVE_ORDERS"] = "Aktywnych zamówień: #ORDER_COUNT#";
+$MESS["CRM_SCENARIO_SELECTION_CONVERT_ACTIVE_ORDERS"] = "Konwertuj aktywne zamówienia na deale podczas zmiany trybu";
+$MESS["CRM_SCENARIO_SELECTION_DEALS"] = "Deale";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION"] = "Najlepszy wybór do sprzedaży osobistej";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_1"] = "Wszelkie prośby (z połączeń, czatów, formularzy CRM, zamówień w sklepie internetowym itp.) zostaną dodane do dealów CRM";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_2"] = "Komunikacja z klientem, etapy statusu płatności będą widoczne na osi czasu deala.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_DESCRIPTION_ITEM_3"] = "Przedstawiciele handlowi komunikują się z każdym klientem osobiście";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_ONLY_WARNING"] = "Jeśli zdecydujesz się obsługiwać wyłącznie deale, przetwarzanie zamówień będzie niedostępne.";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS"] = "Deale i zamówienia";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION"] = "Idealne do zautomatyzowanego przetwarzania zamówień";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_1"] = "Zamówienia ze sklepu internetowego są zachowywane wyłącznie w zamówieniach CRM, a nie dodawane do dealów";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_2"] = "Deale tworzone są jako odrębne obiekty (np. w celu świadczenia dodatkowych usług)";
+$MESS["CRM_SCENARIO_SELECTION_DEALS_PLUS_ORDERS_DESCRIPTION_ITEM_3"] = "Niektórzy przedstawiciele handlowi zajmują się dealami, podczas gdy inni sprzedawcy przetwarzają zamówienia ze sklepu internetowego";
+$MESS["CRM_SCENARIO_SELECTION_SAVE_ERROR"] = "Błąd podczas zmiany trybu";
+$MESS["CRM_SCENARIO_SELECTION_SELECT"] = "wybierz";
+$MESS["CRM_SCENARIO_SELECTION_SELECTED"] = "Wybrane";
+$MESS["CRM_SCENARIO_SELECTION_TITLE"] = "Tryb obsługi zamówień";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_CANCEL_BUTTON"] = "Przełącz na tryb deali";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_OK_BUTTON"] = "Pozostań w trybie dealów i zamówień";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_1"] = "Zamówienia ze sklepu internetowego staną się dealami, w ramach których można przyjmować płatności, tworzyć wysyłki i rezerwować stany magazynowe. Nie będzie samodzielnego obszaru \"Zamówienia\".";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_2"] = "Pamiętaj, że nie będzie można powrócić do trybu dealów i zamówień, ponieważ nie jest on już obsługiwany.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_1"] = "Przeczytaj więcej";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TEXT_3_PART_2"] = "o obu trybach, zanim zdecydujesz się na jeden z nich.";
+$MESS["CRM_SCENARIO_SELECTION_TO_DEAL_MODE_TITLE"] = "Zamierzasz przełączyć się na tryb dealów";

@@ -1,0 +1,50 @@
+<?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+return [
+	'css' => 'dist/time-tracking.bundle.css',
+	'js' => 'dist/time-tracking.bundle.js',
+	'rel' => [
+		'main.core',
+		'main.core.events',
+		'main.date',
+		'tasks.v2.component.elements.bottom-sheet',
+		'tasks.v2.component.elements.hint',
+		'tasks.v2.component.elements.hover-pill',
+		'tasks.v2.component.elements.settings-label',
+		'tasks.v2.component.elements.user-avatar',
+		'tasks.v2.component.elements.user-avatar-list',
+		'tasks.v2.component.elements.user-label',
+		'tasks.v2.const',
+		'tasks.v2.core',
+		'tasks.v2.lib.analytics',
+		'tasks.v2.lib.calendar',
+		'tasks.v2.lib.field-highlighter',
+		'tasks.v2.lib.highlighter',
+		'tasks.v2.lib.show-limit',
+		'tasks.v2.lib.timezone',
+		'tasks.v2.provider.service.state-service',
+		'tasks.v2.provider.service.status-service',
+		'tasks.v2.provider.service.task-service',
+		'tasks.v2.provider.service.time-tracking-service',
+		'ui.date-picker',
+		'ui.dialogs.messagebox',
+		'ui.icon-set.api.vue',
+		'ui.icon-set.outline',
+		'ui.switcher',
+		'ui.system.chip.vue',
+		'ui.system.input.vue',
+		'ui.system.skeleton.vue',
+		'ui.system.typography.vue',
+		'ui.tooltip',
+		'ui.vue3.components.button',
+		'ui.vue3.components.popup',
+		'ui.vue3.components.switcher',
+		'ui.vue3.directives.hint',
+		'ui.vue3.vuex',
+	],
+	'skip_core' => false,
+];

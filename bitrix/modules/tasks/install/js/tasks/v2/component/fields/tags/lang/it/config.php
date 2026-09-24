@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_V2_TAGS_TITLE"] = "Tag:";
+$MESS["TASKS_V2_TAGS_TITLE_CHIP"] = "Tag";

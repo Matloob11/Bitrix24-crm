@@ -1,0 +1,19 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_PLACEHOLDER"] = "Użyj znaku „@”, aby wspomnieć grupę roboczą lub dział";
+$MESS["TASKS_FIELDS_RESULT_V2_ADD_WIDGET_TITLE"] = "Podsumowanie statusu";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_ADD_RESULT"] = "Dodaj kolejne podsumowanie statusu";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE"] = "Podsumowania statusów";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_COMPACT_TITLE_MULTI"] = "Podsumowania statusów: #COUNT#";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_0"] = "Pokaż #COUNT# podsumowanie więcej";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_1"] = "Pokaż #COUNT# podsumowania więcej";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_SHOW_MORE_PLURAL_2"] = "Pokaż #COUNT# podsumowań więcej";
+$MESS["TASKS_FIELDS_RESULT_V2_AIR_TITLE"] = "Podsumowanie statusu";
+$MESS["TASKS_FIELDS_RESULT_V2_EMPTY_ERROR"] = "Wprowadź podsumowanie statusu zadania";
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_WIDGET_TITLE"] = "Podsumowania statusów";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_REMOVE"] = "Usuń podsumowanie statusu";
+$MESS["TASKS_FIELDS_RESULT_V2_MENU_UPDATE"] = "Edytuj podsumowanie statusu";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_DESCRIPTION"] = "Czy chcesz odznaczyć komentarz jako podsumowanie statusu zadania? Komentarz pozostanie w zadaniu.";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_TITLE"] = "Usuń wynik";
+$MESS["TASKS_FIELDS_RESULT_V2_REMOVE_CONFIRM_YES"] = "Tak";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ACTION_COMPLETE"] = "Zakończ zadanie";
+$MESS["TASKS_FIELDS_RESULT_V2_VIEW_ANOTHER_RESULTS"] = "Inne podsumowania statusów";

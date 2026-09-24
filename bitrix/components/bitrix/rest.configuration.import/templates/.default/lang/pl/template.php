@@ -1,0 +1,20 @@
+<?php
+$MESS["REST_CONFIGURATION_IMPORT_APP_ERROR_TYPE"] = "Nie możesz skonfigurować tej aplikacji";
+$MESS["REST_CONFIGURATION_IMPORT_EASY_DELETE_APP"] = "Nie masz dostępnych opcji zmiany ustawień Bitrix24, więc usunęliśmy aplikację";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_MAX_FILE_SIZE"] = "Maksymalny rozmiar importowanego pliku: #SIZE# MB";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_BTN_COPY"] = "Kopiuj";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_LABEL"] = "Opis problemu:";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TEXT_PLACEHOLDER"] = "Tekst opisu problemu";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_POPUP_TITLE"] = "Błędny raport";
+$MESS["REST_CONFIGURATION_IMPORT_ERRORS_REPORT_BTN"] = "Błędny raport";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_DESCRIPTION_MSGVER_1"] = "Wszystko gotowe! Możesz teraz rozpocząć edycję strony.";
+$MESS["REST_CONFIGURATION_IMPORT_FINISH_ERROR_DESCRIPTION"] = "Ustawienia zostały zaimportowane, ale z pewnymi błędami.";
+$MESS["REST_CONFIGURATION_IMPORT_INSTALL_APP_TITLE_BLOCK"] = "Instalacja aplikacji";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_1"] = "Aby usunąć aplikację, wybierz jedną z dostępnych konfiguracji Bitrix24 lub wybierz nową aplikację z Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_MODE_DESCRIPTION_2_MSGVER_2"] = "Aby usunąć aplikację, wybierz jedną z dostępnych konfiguracji Bitrix24 lub wybierz nową aplikację z Bitrix24 Market.";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_SUBMIT_BTN"] = "Zastosuj";
+$MESS["REST_CONFIGURATION_IMPORT_ROLLBACK_TITLE_BLOCK"] = "Przywróć szablony wstępne";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_BTN"] = "Importuj";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_DESCRIPTION_MSGVER_1"] = "Prześlij plik ZIP wyeksportowany z innego Bitrix24. #LINK_START#Dowiedz się więcej#LINK_END#";
+$MESS["REST_CONFIGURATION_IMPORT_SAVE_FILE_PROCESS"] = "Przesyłanie pliku";
+$MESS["REST_CONFIGURATION_IMPORT_TITLE_BLOCK"] = "Importuj szablony wstępne";

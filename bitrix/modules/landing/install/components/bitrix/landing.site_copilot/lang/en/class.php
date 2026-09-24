@@ -1,0 +1,5 @@
+<?php
+$MESS["LANDING_CMP_TOP_PANEL_FEATURES_BTN_TEXT"] = "Site features";
+$MESS["LANDING_CMP_TOP_PANEL_PREVIEW_BTN_TEXT"] = "Open site";
+$MESS["LANDING_CMP_TOP_PANEL_SITE_NAME_MSGVER_1"] = "#COPILOT_NAME# web designer";
+$MESS["LANDING_SITE_COPILOT_TRIGGER_INITIAL_MESSAGE"] = "#COPILOT_NAME# will help you create a website. Describe the site you need.";

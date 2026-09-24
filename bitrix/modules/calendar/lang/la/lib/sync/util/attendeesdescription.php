@@ -1,0 +1,6 @@
+<?php
+$MESS["CAL_SYNC_UTIL_ATTENDEES"] = "Asistentes";
+$MESS["CAL_SYNC_UTIL_ATTENDEES_STATUS_N"] = "Rechazado:";
+$MESS["CAL_SYNC_UTIL_ATTENDEES_STATUS_Q"] = "Invitado:";
+$MESS["CAL_SYNC_UTIL_ATTENDEES_STATUS_Y"] = "Asistiendo:";
+$MESS["CAL_SYNC_UTIL_DESCRIPTION"] = "Descripción del evento";

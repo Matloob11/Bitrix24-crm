@@ -1,0 +1,3 @@
+<?php
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_LOCAL_INSTALLACTION_TITLE"] = "Instaluje lokalną aplikację współdzieloną";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_LOCAL_UNINSTALLACTION_TITLE"] = "Odinstalowuje istniejącą lokalną aplikację współdzieloną";

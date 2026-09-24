@@ -1,0 +1,23 @@
+<?php
+$MESS["SIGN_CORE_BLOCK_DATE_HINT"] = "Usa questo campo per inserire i valori delle date (ad esempio la data del contratto, ecc.)";
+$MESS["SIGN_CORE_BLOCK_DATE_TITLE"] = "Data";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_HINT"] = "Questo campo contiene i dettagli della tua azienda.";
+$MESS["SIGN_CORE_BLOCK_MYREQUISITES_TITLE"] = "Dettagli";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_BLOCK_HINT"] = "Campo contenente la tua firma";
+$MESS["SIGN_CORE_BLOCK_MYSIGN_TITLE"] = "Firma";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_ERROR_EMPTY"] = "Il blocco del timbro dell'azienda è stato aggiunto ma non esiste alcuna immagine del timbro nei dettagli dell'azienda.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_HINT"] = "Il timbro della tua azienda.";
+$MESS["SIGN_CORE_BLOCK_MYSTAMP_TITLE"] = "Timbro";
+$MESS["SIGN_CORE_BLOCK_NUMBER_HINT"] = "Usa questo campo per indicare il numero di documento. Puoi inserire il numero come valore statico o utilizzare la funzione di numerazione automatica.";
+$MESS["SIGN_CORE_BLOCK_NUMBER_TITLE"] = "Numero";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_BLOCK_HINT"] = "Questo campo sarà compilato con i dati presenti nel tuo CRM. Se il tuo CRM non dispone di informazioni rilevanti e il campo rimane vuoto, i dati possono essere forniti da una delle parti firmatarie; in questo caso le nuove informazioni saranno salvate nel tuo CRM.";
+$MESS["SIGN_CORE_BLOCK_REFERENCE_TITLE"] = "Campo CRM";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_ERROR_EMPTY"] = "Il blocco \"Campo CRM\" non è configurato.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_HINT"] = "Questo campo contiene i dettagli del destinatario.";
+$MESS["SIGN_CORE_BLOCK_REQUISITES_TITLE"] = "Dettagli";
+$MESS["SIGN_CORE_BLOCK_SIGN_BLOCK_HINT"] = "Campo contenente la firma di un'altra parte firmataria";
+$MESS["SIGN_CORE_BLOCK_SIGN_TITLE"] = "Firma";
+$MESS["SIGN_CORE_BLOCK_STAMP_HINT"] = "Questo campo contiene il timbro del destinatario.";
+$MESS["SIGN_CORE_BLOCK_STAMP_TITLE"] = "Timbro";
+$MESS["SIGN_CORE_BLOCK_TEXT_HINT"] = "Questo campo può ricevere qualsiasi informazione testuale.";
+$MESS["SIGN_CORE_BLOCK_TEXT_TITLE"] = "Testo";

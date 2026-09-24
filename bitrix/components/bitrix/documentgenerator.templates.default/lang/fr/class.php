@@ -1,0 +1,12 @@
+<?php
+$MESS["DOCGEN_TEMPLATES_DEFAULT_ENTITIES"] = "Lier à la section";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_ERROR_MODULE"] = "Le module \"Document Generator\" n'est pas installé.";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_INSTALL"] = "Installer";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_MODULE_ERROR"] = "Impossible d'utiliser le module #MODULE_ID#";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_NAME"] = "Nom";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_REGION"] = "Pays";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_REINSTALL"] = "Réinstaller";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_SORT"] = "Trier";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TEMPLATE_NOT_FOUND"] = "Le template est introuvable";
+$MESS["DOCGEN_TEMPLATES_DEFAULT_TITLE"] = "Installer des modèles";
+$MESS["DOCGEN_TEMPLATES_PERMISSIONS_ERROR"] = "Vous n'êtes pas autorisé à éditer les modèles";

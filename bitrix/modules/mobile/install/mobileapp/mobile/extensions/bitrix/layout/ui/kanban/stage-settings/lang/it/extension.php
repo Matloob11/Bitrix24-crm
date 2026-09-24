@@ -1,0 +1,11 @@
+<?php
+$MESS["STAGE_DETAIL_COLOR_PICKER_TITLE"] = "Colore fase";
+$MESS["STAGE_DETAIL_DEFAULT_STAGE_DEFAULT_NAME"] = "Nuova fase";
+$MESS["STAGE_DETAIL_DEFAULT_STAGE_NAME"] = "Nome";
+$MESS["STAGE_DETAIL_DELETE"] = "Elimina fase";
+$MESS["STAGE_DETAIL_DELETE_TEXT"] = "Eliminare la fase?";
+$MESS["STAGE_DETAIL_FUNNEL"] = "Fase \"#STAGE_NAME#\"";
+$MESS["STAGE_DETAIL_FUNNEL_EMPTY"] = "Fase senza titolo";
+$MESS["STAGE_DETAIL_NAME"] = "Nome fase";
+$MESS["STAGE_DETAIL_NAME_ERROR"] = "Inserisci il nome della fase";
+$MESS["STAGE_DETAIL_SAVE"] = "Salva";

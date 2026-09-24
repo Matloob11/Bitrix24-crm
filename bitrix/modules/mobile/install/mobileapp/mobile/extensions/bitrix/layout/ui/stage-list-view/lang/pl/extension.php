@@ -1,0 +1,4 @@
+<?php
+$MESS["STAGE_LIST_VIEW_BACKDROP_DEFAULT_TITLE"] = "Wybierz etap";
+$MESS["STAGE_LIST_VIEW_BACKDROP_TUNNEL_TITLE"] = "Wybierz etap z docelowym tunelem";
+$MESS["STAGE_LIST_VIEW_FUNNEL_NOT_LOADED_TITLE2"] = "Lejek";

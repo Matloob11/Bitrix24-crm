@@ -1,0 +1,27 @@
+<?php
+$MESS["MESSAGE_SEND_BUTTON_SEND"] = "Wyślij";
+$MESS["MESSAGE_SEND_BUTTON_SENDING"] = "Wysyłanie...";
+$MESS["MESSAGE_SEND_BUTTON_UPLOADING_FILES"] = "Przesyłanie plików...";
+$MESS["MESSAGE_SEND_CONNECT_NEW_MAILBOX"] = "Dodaj nadawcę";
+$MESS["MESSAGE_SEND_CONTACT_PLACEHOLDER"] = "Wprowadź adres e-mail";
+$MESS["MESSAGE_SEND_EXIT_ALERT_CANCEL"] = "Kontynuuj edycję";
+$MESS["MESSAGE_SEND_EXIT_ALERT_DISCARD"] = "Wyjdź bez zapisywania";
+$MESS["MESSAGE_SEND_EXIT_ALERT_SAVE"] = "Wyślij i wyjdź";
+$MESS["MESSAGE_SEND_EXIT_ALERT_TEXT"] = "Jeśli teraz wyjdziesz, wszystkie zmiany zostaną utracone";
+$MESS["MESSAGE_SEND_EXIT_ALERT_TITLE"] = "Wysłać wiadomość e-mail?";
+$MESS["MESSAGE_SEND_FIELD_BCC"] = "UDW";
+$MESS["MESSAGE_SEND_FIELD_CC"] = "DW";
+$MESS["MESSAGE_SEND_FIELD_FROM"] = "Od";
+$MESS["MESSAGE_SEND_FIELD_MESSAGE_BODY_ERROR"] = "Nie można wysłać pustej wiadomości e-mail";
+$MESS["MESSAGE_SEND_FIELD_MESSAGE_BODY_PLACEHOLDER"] = "Tutaj wprowadź tekst wiadomości";
+$MESS["MESSAGE_SEND_FIELD_SHOW_MORE"] = "Więcej";
+$MESS["MESSAGE_SEND_FIELD_SUBJECT"] = "Temat";
+$MESS["MESSAGE_SEND_FIELD_SUBJECT_ERROR"] = "Temat wiadomości e-mail jest wymagany";
+$MESS["MESSAGE_SEND_FIELD_SUBJECT_PLACEHOLDER"] = "Tutaj wprowadź temat";
+$MESS["MESSAGE_SEND_FIELD_TO"] = "Do";
+$MESS["MESSAGE_SEND_SELECT_SENDER_TITLE"] = "Wybierz nadawcę";
+$MESS["MESSAGE_SEND_TITLE_FORWARD"] = "Odpowiedz wszystkim";
+$MESS["MESSAGE_SEND_TITLE_NEW"] = "Nowy e-mail";
+$MESS["MESSAGE_SEND_TITLE_REPLY"] = "Odpowiedz";
+$MESS["MESSAGE_SEND_WARNING_EMPTY_RECIPIENT_TEXT"] = "Wróć do szczegółów i dodaj adres e-mail";
+$MESS["MESSAGE_SEND_WARNING_EMPTY_RECIPIENT_TITLE"] = "Brak adresu e-mail do wysłania wiadomości";

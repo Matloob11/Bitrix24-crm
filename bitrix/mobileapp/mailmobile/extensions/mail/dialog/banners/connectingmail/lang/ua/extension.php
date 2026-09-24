@@ -1,0 +1,21 @@
+<?php
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CHATS"] = "Створюйте з листів завдання або обговорюйте їх із колегами прямо в чаті.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_CRM"] = "Зберігайте листи від клієнтів або партнерів у CRM.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BENEFIT_MOBILE"] = "Працюйте з корпоративною поштою, навіть якщо ви не в офісі.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_1"] = "Під'єднати";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_CONNECT"] = "Під'єднати пошту";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_BUTTON_REQUEST"] = "Допомога з під'єднанням";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_DESCRIPTION"] = "Ви зможете читати листи та відповідати на них, зберігати їх у CRM і залишатися на зв'язку.";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_1"] = "Під'єднайте пошту в Бітрікс24";
+$MESS["MAIL_CONNECTING_MAIL_BANNER_TITLE_PROMO"] = "Під'єднайте пошту в Бітрікс24";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_DESCRIPTION"] = "Адміністратор вашого Бітрікс24 отримає повідомлення та налаштує поштову скриньку. Коментар допоможе йому врахувати всі деталі.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_NETWORK_ERROR"] = "Не вдалося надіслати запит на під'єднання, спробуйте ще раз трохи пізніше.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_PLACEHOLDER"] = "Коментар для адміністратора";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUBMIT"] = "Надіслати";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_CLOSE"] = "Закрити";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_DESC"] = "Адміністратор отримає повідомлення та налаштує поштову скриньку.";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_SUCCESS_TITLE"] = "Запит надіслано";
+$MESS["MAIL_CONNECTION_REQUEST_FORM_TITLE"] = "Запит на під'єднання";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_CLOSE"] = "Закрити";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_DESC"] = "Якщо під'єднання затримується, зверніться до адміністратора вашого Бітрікс24.";
+$MESS["MAIL_CONNECTION_REQUEST_STATUS_TITLE"] = "Запит надіслано";

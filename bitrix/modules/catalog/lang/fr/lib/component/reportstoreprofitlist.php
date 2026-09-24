@@ -1,0 +1,5 @@
+<?php
+$MESS["CATALOG_REPORT_PROFIT_LIST_EMPTY_STORE_NAME"] = "Sans titre";
+$MESS["CATALOG_REPORT_PROFIT_LIST_NO_READ_RIGHTS_ERROR"] = "Vous ne disposez pas des permissions pour afficher.";
+$MESS["CATALOG_REPORT_PROFIT_LIST_OPEN_SLIDER_ALL"] = "Voir tous les produits";
+$MESS["CATALOG_REPORT_PROFIT_LIST_OVERALL_TOTAL"] = "Total";

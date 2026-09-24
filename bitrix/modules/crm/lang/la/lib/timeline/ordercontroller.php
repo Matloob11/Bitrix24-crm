@@ -1,0 +1,19 @@
+<?php
+$MESS["CRM_DEAL_CREATION_BASED_ON"] = "Creado con base en";
+$MESS["CRM_ORDER_ACTIVE"] = "En progreso";
+$MESS["CRM_ORDER_CANCELLED"] = "Cancelado";
+$MESS["CRM_ORDER_CONVERSION"] = "Creado con base en";
+$MESS["CRM_ORDER_CREATION"] = "Pedido creado";
+$MESS["CRM_ORDER_CREATION_MESSAGE_SUM"] = "(for #PRICE_WITH_CURRENCY#)";
+$MESS["CRM_ORDER_CREATION_TITLE"] = "#TITLE# del #DATE_INSERT#";
+$MESS["CRM_ORDER_DESTINATION_TITLE_BITRIX24"] = "usando Bitrix24";
+$MESS["CRM_ORDER_DESTINATION_TITLE_CHAT"] = "al chat";
+$MESS["CRM_ORDER_DESTINATION_TITLE_CONTROL_CENTER"] = "mediante el Centro de notificaciones";
+$MESS["CRM_ORDER_DESTINATION_TITLE_SMS"] = "vía sms";
+$MESS["CRM_ORDER_MODIFICATION_CANCELED"] = "Pedido cancelado";
+$MESS["CRM_ORDER_MODIFICATION_REASON_CANCELED"] = "Razón de la cancelación";
+$MESS["CRM_ORDER_MODIFICATION_RESTORED"] = "Pedido recuperado";
+$MESS["CRM_ORDER_MODIFICATION_STATUS"] = "Estado del pedido cambiado";
+$MESS["CRM_ORDER_VIEWED_HTML_TITLE"] = "pedido ##TITLE#";
+$MESS["CRM_ORDER_VIEWED_HTML_TITLE_2"] = "##ORDER_ID# del #DATE# por #SUM#";
+$MESS["CRM_PAYMENT_VIEWED_TITLE"] = "El cliente abrió la página de pagos";

@@ -1,0 +1,10 @@
+<?php
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_ADD_MAILBOX"] = "Adicionar caixa de e-mail";
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_FOLDERS_SETTINGS_BUTTON_TEXT"] = "Configurações de pastas";
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_REMOVE_MAILBOX_BUTTON_TEXT"] = "Desconectar caixa de e-mail";
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_REMOVE_MAILBOX_DIALOG_AGREE"] = "Sim";
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_REMOVE_MAILBOX_DIALOG_REFUSE"] = "Cancelar";
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_REMOVE_MAILBOX_DIALOG_TEXT"] = "Você não poderá enviar ou receber e-mails usando esta caixa de e-mail. Tem certeza de que deseja desconectá-la?";
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_REMOVE_MAILBOX_DIALOG_TITLE"] = "Desconectar caixa de e-mail";
+$MESS["MAILMOBILE_MAILBOX_SELECTOR_SETTINGS_BUTTON_TEXT"] = "Configurações da caixa de correio";
+$MESS["MAIL_FOLDER_SELECTOR_MAILBOXES_MENU_TITLE"] = "Caixas de e-mail conectadas";

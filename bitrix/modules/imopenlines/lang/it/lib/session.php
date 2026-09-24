@@ -1,0 +1,20 @@
+<?php
+$MESS["IMOL_SESSION_AGREEMENT_MESSAGE"] = "Continuando a utilizzare questa chat, acconsenti al#LINK_START#trattamento dei tuoi dati personali#LINK_END#.";
+$MESS["IMOL_SESSION_AGREEMENT_MESSAGE_OPERATOR"] = "Devi eliminare i dati personali del cliente dal CRM in caso di mancato consenso al trattamento dei dati personali.";
+$MESS["IMOL_SESSION_BUTTON_CHANGE"] = "Modifica";
+$MESS["IMOL_SESSION_CLOSE_AUTO"] = "Sessione chiusa automaticamente";
+$MESS["IMOL_SESSION_CLOSE_F"] = "#USER# ha chiuso la sessione";
+$MESS["IMOL_SESSION_CLOSE_FINAL"] = "Conversazione chiusa.";
+$MESS["IMOL_SESSION_CLOSE_M"] = "#USER# ha chiuso la sessione";
+$MESS["IMOL_SESSION_COMPANY"] = "Azienda";
+$MESS["IMOL_SESSION_CONTACT"] = "Contatto";
+$MESS["IMOL_SESSION_CRM_FOUND"] = "L'utente è stato aggiunto all'entità CRM: \"#ENTITY_NAME#\"";
+$MESS["IMOL_SESSION_DEAL"] = "Affare";
+$MESS["IMOL_SESSION_ERROR_NO_CHAT"] = "Impossibile caricare la conversazione";
+$MESS["IMOL_SESSION_ERROR_NO_IMOL_CONFIGURATION"] = "Impossibile caricare la configurazione Canale aperto";
+$MESS["IMOL_SESSION_ERROR_NO_LAST_SESSION"] = "Errore durante il recupero dell'ultima sessione";
+$MESS["IMOL_SESSION_ERROR_NO_USER_CODE"] = "Il campo obbligatorio USER_CODE è mancante";
+$MESS["IMOL_SESSION_LEAD_ADD"] = "Nuovo lead creato nel CRM: \"#LEAD_NAME#\"";
+$MESS["IMOL_SESSION_LINE_IS_CLOSED"] = "Il Canale aperto è inattivo; nessun messaggio sarà inviato al cliente.";
+$MESS["IMOL_TRACKER_BUTTON_CANCEL"] = "Annulla";
+$MESS["IMOL_TRACKER_BUTTON_CHANGE"] = "Modifica";

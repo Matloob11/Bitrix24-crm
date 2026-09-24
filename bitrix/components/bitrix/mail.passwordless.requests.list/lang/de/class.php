@@ -1,0 +1,3 @@
+<?php
+$MESS["MAIL_MAILBOX_LIST_GEAR_SENT_REQUESTS"] = "Gesendete Anfragen";
+$MESS["MAIL_PASSWORDLESS_REQUESTS_LIST_TITLE"] = "Gesendete Anfragen";

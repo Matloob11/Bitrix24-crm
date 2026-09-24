@@ -1,0 +1,20 @@
+<?php
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL"] = "Agregue un cliente y su número de teléfono para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_COMPANY"] = "Agregue un cliente y su número de teléfono a la compañía para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_CONTACT"] = "Agregue un número de teléfono al contacto para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_DEAL"] = "Agregue un cliente y su número de teléfono a la negociación para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_INVOICE"] = "Agregue un cliente y su número de teléfono a la factura para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_LEAD"] = "Agregue un cliente y su número de teléfono al prospecto para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_QUOTE"] = "Agregue un cliente y su número de teléfono a la cotización para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_CALL_SMART_INVOICE"] = "Agregue un cliente y su número de teléfono a la factura para hacer una llamada";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND"] = "Agregue un cliente y su dirección de correo electrónico para enviar un mensaje de correo";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_COMPANY"] = "Agregue un cliente y su dirección de correo electrónico a la compañía para enviar un mensaje de correo";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_CONTACT"] = "Agregue una dirección de correo electrónico al contacto para enviar un mensaje de correo";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_DEAL"] = "Agregue un cliente y su dirección de correo electrónico a la negociación para enviar un mensaje de correo";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_INVOICE"] = "Agregue un cliente y su dirección de correo electrónico a la factura para enviar un mensaje de correo";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_LEAD"] = "Agregue un cliente y su dirección de correo electrónico al prospecto para enviar un mensaje de correo electrónico";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_QUOTE"] = "Agregue un cliente y su dirección de correo electrónico a la cotización para enviar un mensaje de correo";
+$MESS["CRM_TOOLBAR_ADD_CLIENT_FOR_EMAIL_SEND_SMART_INVOICE"] = "Agregue un cliente y su dirección de correo electrónico a la factura para enviar un mensaje de correo";
+$MESS["CRM_TOOLBAR_BIZPROC_STARTER_LABEL"] = "Ejecutar flujo de trabajo";
+$MESS["CRM_TOOLBAR_INSTALL_CALENDAR_FOR_CALL"] = "Instale el módulo Calendario para hacer llamadas.";
+$MESS["CRM_TOOLBAR_TELEPHONY_NOT_SUPPORTED"] = "Las llamadas telefónicas no son compatibles en este contexto.";

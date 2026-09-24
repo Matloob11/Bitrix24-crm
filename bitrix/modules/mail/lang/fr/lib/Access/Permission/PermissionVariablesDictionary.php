@@ -1,0 +1,5 @@
+<?php
+$MESS["MAIL_ACCESS_RIGHTS_DEPARTMENT_WITH_SUBDEPARTMENTS"] = "Département et sous-départements";
+$MESS["MAIL_ACCESS_RIGHTS_SELF_DEPARTMENT"] = "Département";
+$MESS["MAIL_ACCESS_RIGHTS_VARIABLES_ALL"] = "Tous les employés";
+$MESS["MAIL_ACCESS_RIGHTS_VARIABLES_NONE"] = "Refuser l'accès";

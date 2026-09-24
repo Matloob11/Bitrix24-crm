@@ -1,0 +1,23 @@
+<?
+$MESS["TIMEMAN_MODULE_NOT_INSTALLED"] = "Il modulo <strong>Gestione orario di lavoro</strong> non è installato.";
+$MESS["TM_SCHEDULE_DELETE_CONFIRM"] = "Eliminare \"#SCHEDULE_NAME#\"?";
+$MESS["TM_SCHEDULE_DELETE_CONFIRM_NO"] = "Annulla";
+$MESS["TM_SCHEDULE_DELETE_CONFIRM_TITLE"] = "Conferma azione";
+$MESS["TM_SCHEDULE_DELETE_CONFIRM_YES"] = "Elimina";
+$MESS["TM_SCHEDULE_LIST_ACCESS_DENIED"] = "Autorizzazioni insufficienti.";
+$MESS["TM_SCHEDULE_LIST_ACTION_DELETE"] = "Elimina";
+$MESS["TM_SCHEDULE_LIST_ACTION_EDIT"] = "Modifica";
+$MESS["TM_SCHEDULE_LIST_ACTION_PLAN"] = "Pianificazione";
+$MESS["TM_SCHEDULE_LIST_ACTION_READ"] = "Visualizzazione";
+$MESS["TM_SCHEDULE_LIST_ACTION_SELECT"] = "Seleziona azione";
+$MESS["TM_SCHEDULE_LIST_ACTION_WORKTIME_STATS"] = "Presenze";
+$MESS["TM_SCHEDULE_LIST_ADD"] = "Aggiungi orario";
+$MESS["TM_SCHEDULE_LIST_COLUMN_ID"] = "ID";
+$MESS["TM_SCHEDULE_LIST_COLUMN_NAME"] = "Nome";
+$MESS["TM_SCHEDULE_LIST_COLUMN_PERIOD"] = "Periodo di riferimento";
+$MESS["TM_SCHEDULE_LIST_COLUMN_SHIFT_COUNT"] = "n. turni";
+$MESS["TM_SCHEDULE_LIST_COLUMN_TYPE"] = "Tipo";
+$MESS["TM_SCHEDULE_LIST_COLUMN_USER_COUNT"] = "n. dipendenti";
+$MESS["TM_SCHEDULE_LIST_DELETE_CONFIRM"] = "Eliminare #SCHEDULE_NAMES#?";
+$MESS["TM_SCHEDULE_LIST_TITLE"] = "Pianificazione lavoro";
+?>

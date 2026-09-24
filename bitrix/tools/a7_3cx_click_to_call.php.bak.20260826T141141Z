@@ -1,0 +1,3670 @@
+<?php
+
+/**
+ * A7 Group Bitrix24 -> 3CX recordings bridge.
+ *
+ * This file is intended to be hosted on the Bitrix24 on-premise server and used
+ * Recording sync/playback is enabled. Click-to-call endpoints are disabled.
+ */
+
+const A7_3CX_BASE_URL = 'https://a7properties.3cx.ae:5001';
+const A7_3CX_CLIENT_ID = 'recordings';
+const A7_3CX_CLIENT_SECRET = 'zD9eoPBqSnLnf1mXRKTjEWs3AyKFru1K';
+const A7_3CX_MAKECALL_CLIENT_ID = 'clicktocall';
+const A7_3CX_MAKECALL_CLIENT_SECRET = 'CTi0xcPC24nRy4zkuPQz13qEnFhloWAg';
+const A7_3CX_EXTENSION = '100';
+const A7_BITRIX_WEBHOOK_URL = 'https://crm.a7grouprealestatedxb.com/rest/1/h7mdv4vm9leu4agu/';
+const A7_HANDLER_URL = 'https://crm.a7grouprealestatedxb.com/bitrix/tools/a7_3cx_click_to_call.php';
+const A7_CONFIG_FILE = '/home/bitrix/www/upload/a7_3cx_click_to_call_config.json';
+const A7_LOG_FILE = '/home/bitrix/www/upload/a7_3cx_click_to_call.log';
+const A7_CALL_FEATURES_ENABLED = false;
+const A7_RECORDING_LOCK_FILE = '/home/bitrix/www/upload/a7_3cx_recording_sync.lock';
+// Leads and Owner Data are matched inside the same recording scan. Keep one
+// conservative agent cadence instead of creating a second Smart Process poller.
+const A7_RECORDING_MIN_SYNC_SECONDS = 300;
+const A7_RECORDING_MAX_LIMIT_PER_RUN = 10;
+const A7_RECORDING_MAX_WRITES_PER_RUN = 2;
+const A7_RECORDING_MAX_WRITES_PER_HOUR = 24;
+const A7_RECORDING_MAX_WRITES_PER_DAY = 100;
+const A7_RECORDING_READY_DELAY_SECONDS = 90;
+const A7_RECORDING_PROCESSED_CACHE_LIMIT = 700;
+const A7_RECORDING_MATCH_VERSION = 2;
+const A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS = 900;
+const A7_OWNER_DATA_ENTITY_TYPE_ID = 1042;
+const A7_OWNER_DATA_CATEGORY_ID = 14;
+
+$a7S3PlaybackHelper = '/opt/a7-3cx-worker/current/a7_playback_s3.php';
+if (is_readable($a7S3PlaybackHelper)) {
+    require_once $a7S3PlaybackHelper;
+}
+
+function a7_is_direct_request(): bool
+{
+    $script = realpath((string)($_SERVER['SCRIPT_FILENAME'] ?? ''));
+    $self = realpath(__FILE__);
+    return $script !== false && $self !== false && $script === $self;
+}
+
+if (a7_is_direct_request() && !headers_sent()) {
+    header('Content-Type: application/json; charset=utf-8');
+}
+
+function a7_log(string $message, array $context = []): void
+{
+    $safeContext = $context;
+    foreach (['access_token', 'refresh_token', 'client_secret', 'application_token'] as $secretKey) {
+        if (isset($safeContext[$secretKey])) {
+            $safeContext[$secretKey] = '***';
+        }
+    }
+
+    @file_put_contents(
+        A7_LOG_FILE,
+        json_encode([
+            'time' => date('c'),
+            'message' => $message,
+            'context' => $safeContext,
+        ], JSON_UNESCAPED_SLASHES) . PHP_EOL,
+        FILE_APPEND
+    );
+}
+
+function a7_json(array $payload, int $statusCode = 200): void
+{
+    while (ob_get_level() > 0) {
+        ob_end_clean();
+    }
+
+    if (!headers_sent()) {
+        header('Content-Type: application/json; charset=utf-8');
+        http_response_code($statusCode);
+    }
+
+    echo json_encode($payload, JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+function a7_handle_call_feature_disabled(string $feature): void
+{
+    a7_json([
+        'success' => false,
+        'enabled' => false,
+        'feature' => $feature,
+        'message' => '3CX call/click-to-call features are disabled. Recording sync and playback remain enabled.',
+    ]);
+}
+
+function a7_request_value(string $key, $default = null)
+{
+    return $_POST[$key] ?? $_GET[$key] ?? $default;
+}
+
+function a7_clean_phone(string $phone): string
+{
+    $phone = trim($phone);
+    $phone = preg_replace('/[^\d+]/', '', $phone) ?? '';
+    if (substr_count($phone, '+') > 1) {
+        $phone = preg_replace('/\+/', '', $phone) ?? $phone;
+    }
+    if (strpos($phone, '+') > 0) {
+        $phone = str_replace('+', '', $phone);
+    }
+    return $phone;
+}
+
+function a7_entity_type_id(string $entityType): int
+{
+    $map = [
+        'lead' => 1,
+        'deal' => 2,
+        'contact' => 3,
+        'company' => 4,
+    ];
+
+    $entityType = strtolower(trim($entityType));
+    return $map[$entityType] ?? 0;
+}
+
+function a7_require_bitrix_user(): int
+{
+    if (!defined('NO_KEEP_STATISTIC')) {
+        define('NO_KEEP_STATISTIC', true);
+    }
+    if (!defined('NOT_CHECK_PERMISSIONS')) {
+        define('NOT_CHECK_PERMISSIONS', false);
+    }
+
+    $documentRoot = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? '/home/bitrix/www'), '/');
+    $prolog = $documentRoot . '/bitrix/modules/main/include/prolog_before.php';
+    if (is_readable($prolog)) {
+        require_once $prolog;
+    }
+
+    global $USER;
+    if (!is_object($USER) || !method_exists($USER, 'IsAuthorized') || !$USER->IsAuthorized()) {
+        a7_json(['success' => false, 'message' => 'Bitrix login required'], 401);
+    }
+
+    if (strtoupper((string)($_SERVER['REQUEST_METHOD'] ?? 'GET')) === 'POST'
+        && function_exists('check_bitrix_sessid')
+        && !check_bitrix_sessid()
+    ) {
+        a7_json(['success' => false, 'message' => 'Invalid Bitrix session'], 403);
+    }
+
+    return (int) $USER->GetID();
+}
+
+function a7_read_config(): array
+{
+    if (!is_readable(A7_CONFIG_FILE)) {
+        return [];
+    }
+
+    $decoded = json_decode((string) file_get_contents(A7_CONFIG_FILE), true);
+    return is_array($decoded) ? $decoded : [];
+}
+
+function a7_write_config(array $config): void
+{
+    @file_put_contents(
+        A7_CONFIG_FILE,
+        json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+    );
+}
+
+function a7_int_between(int $value, int $min, int $max): int
+{
+    if ($value < $min) {
+        return $min;
+    }
+    if ($value > $max) {
+        return $max;
+    }
+    return $value;
+}
+
+function a7_recording_lock_acquire()
+{
+    $handle = @fopen(A7_RECORDING_LOCK_FILE, 'c');
+    if (!$handle) {
+        return null;
+    }
+
+    if (!@flock($handle, LOCK_EX | LOCK_NB)) {
+        @fclose($handle);
+        return null;
+    }
+
+    @ftruncate($handle, 0);
+    @fwrite($handle, json_encode(['pid' => getmypid(), 'time' => date('c')]));
+    return $handle;
+}
+
+function a7_recording_lock_release($handle): void
+{
+    if (is_resource($handle)) {
+        @flock($handle, LOCK_UN);
+        @fclose($handle);
+    }
+}
+
+function a7_recording_rate_prepare(array &$config): void
+{
+    $hour = date('Y-m-d-H');
+    $day = date('Y-m-d');
+    if (($config['recording_rate_hour'] ?? '') !== $hour) {
+        $config['recording_rate_hour'] = $hour;
+        $config['recording_rate_hour_writes'] = 0;
+    }
+    if (($config['recording_rate_day'] ?? '') !== $day) {
+        $config['recording_rate_day'] = $day;
+        $config['recording_rate_day_writes'] = 0;
+    }
+}
+
+function a7_recording_rate_remaining(array &$config): array
+{
+    a7_recording_rate_prepare($config);
+    $hourUsed = (int)($config['recording_rate_hour_writes'] ?? 0);
+    $dayUsed = (int)($config['recording_rate_day_writes'] ?? 0);
+    $hourRemaining = max(0, A7_RECORDING_MAX_WRITES_PER_HOUR - $hourUsed);
+    $dayRemaining = max(0, A7_RECORDING_MAX_WRITES_PER_DAY - $dayUsed);
+    return [
+        'hourUsed' => $hourUsed,
+        'dayUsed' => $dayUsed,
+        'hourRemaining' => $hourRemaining,
+        'dayRemaining' => $dayRemaining,
+        'allowedNow' => min($hourRemaining, $dayRemaining),
+    ];
+}
+
+function a7_recording_rate_register(array &$config, int $created): void
+{
+    if ($created <= 0) {
+        return;
+    }
+
+    a7_recording_rate_prepare($config);
+    $config['recording_rate_hour_writes'] = (int)($config['recording_rate_hour_writes'] ?? 0) + $created;
+    $config['recording_rate_day_writes'] = (int)($config['recording_rate_day_writes'] ?? 0) + $created;
+}
+
+function a7_recording_min_gap(array $config): int
+{
+    $configured = (int)($config['recording_agent_interval'] ?? 0);
+    if ($configured > 0) {
+        return max(A7_RECORDING_MIN_SYNC_SECONDS, $configured - 15);
+    }
+    return A7_RECORDING_MIN_SYNC_SECONDS;
+}
+
+function a7_recording_age_seconds(array $recording): ?int
+{
+    $value = (string)($recording['EndTime'] ?? ($recording['StartTime'] ?? ''));
+    if ($value === '') {
+        return null;
+    }
+
+    $timestamp = strtotime($value);
+    if ($timestamp === false) {
+        return null;
+    }
+
+    return time() - $timestamp;
+}
+
+function a7_recording_cache_ttl(string $status, string $reason): int
+{
+    if ($status === 'created' || $reason === 'already_synced') {
+        return 7 * 86400;
+    }
+
+    if (in_array($reason, [
+        'no_matching_bitrix_lead',
+        'ambiguous_or_unverified_bitrix_lead_match',
+        'no_matching_bitrix_entity',
+        'ambiguous_or_unverified_bitrix_entity_match',
+    ], true)) {
+        return 3600;
+    }
+
+    return 0;
+}
+
+function a7_recording_cached_skip(array $config, int $recordingId): ?array
+{
+    if ($recordingId <= 0) {
+        return null;
+    }
+
+    $cache = $config['recording_processed_cache'] ?? [];
+    if (!is_array($cache) || empty($cache[$recordingId]) || !is_array($cache[$recordingId])) {
+        return null;
+    }
+
+    $entry = $cache[$recordingId];
+    $ts = (int)($entry['ts'] ?? 0);
+    $status = (string)($entry['status'] ?? '');
+    $reason = (string)($entry['reason'] ?? '');
+    $matchVersion = (int)($entry['matchVersion'] ?? 0);
+    if ($matchVersion !== A7_RECORDING_MATCH_VERSION
+        && $status !== 'created'
+        && $reason !== 'already_synced'
+    ) {
+        return null;
+    }
+
+    $ttl = a7_recording_cache_ttl($status, $reason);
+    if ($ts <= 0 || $ttl <= 0 || (time() - $ts) >= $ttl) {
+        return null;
+    }
+
+    return [
+        'status' => 'skipped',
+        'reason' => 'cached_' . ($reason !== '' ? $reason : $status),
+        'cachedAt' => date('c', $ts),
+        'cacheTtlSeconds' => $ttl,
+    ];
+}
+
+function a7_recording_cache_register(array &$config, int $recordingId, array $sync): void
+{
+    if ($recordingId <= 0) {
+        return;
+    }
+
+    $status = (string)($sync['status'] ?? '');
+    $reason = (string)($sync['reason'] ?? '');
+    if (a7_recording_cache_ttl($status, $reason) <= 0) {
+        return;
+    }
+
+    $cache = $config['recording_processed_cache'] ?? [];
+    if (!is_array($cache)) {
+        $cache = [];
+    }
+
+    $cache[$recordingId] = [
+        'ts' => time(),
+        'status' => $status,
+        'reason' => $reason,
+        'matchVersion' => A7_RECORDING_MATCH_VERSION,
+    ];
+
+    uasort($cache, static function ($a, $b) {
+        return (int)($b['ts'] ?? 0) <=> (int)($a['ts'] ?? 0);
+    });
+
+    if (count($cache) > A7_RECORDING_PROCESSED_CACHE_LIMIT) {
+        $cache = array_slice($cache, 0, A7_RECORDING_PROCESSED_CACHE_LIMIT, true);
+    }
+
+    $config['recording_processed_cache'] = $cache;
+}
+
+function a7_recording_guarded_skip(string $reason, array $extra = []): array
+{
+    return array_merge([
+        'success' => true,
+        'ran' => false,
+        'reason' => $reason,
+        'dryRun' => false,
+        'writeModeSupported' => true,
+        'maxWrites' => 0,
+        'checkedRecordings' => 0,
+        'matchedCount' => 0,
+        'createdCount' => 0,
+        'skippedCount' => 0,
+        'failedCount' => 0,
+        'rows' => [],
+    ], $extra);
+}
+
+function a7_run_recording_sync_guarded(int $limit, bool $dryRun, int $maxWrites, int $userId, string $source = 'manual'): array
+{
+    $limit = a7_int_between($limit <= 0 ? 10 : $limit, 1, A7_RECORDING_MAX_LIMIT_PER_RUN);
+    $maxWrites = a7_int_between($maxWrites, 0, A7_RECORDING_MAX_WRITES_PER_RUN);
+
+    if ($dryRun) {
+        return a7_run_recording_sync($limit, true, 0, $userId, $source);
+    }
+
+    if ($maxWrites <= 0) {
+        return a7_recording_guarded_skip('max_writes_zero');
+    }
+
+    $lock = a7_recording_lock_acquire();
+    if (!$lock) {
+        return a7_recording_guarded_skip('lock_busy');
+    }
+
+    try {
+        $config = a7_read_config();
+        $now = time();
+        $lastAttemptTs = (int)($config['recording_guard_last_attempt_ts'] ?? 0);
+        $minGap = a7_recording_min_gap($config);
+        if ($lastAttemptTs > 0 && ($now - $lastAttemptTs) < $minGap) {
+            return a7_recording_guarded_skip('throttled', [
+                'lastAttempt' => (string)($config['recording_guard_last_attempt'] ?? ''),
+                'nextAllowedInSeconds' => $minGap - ($now - $lastAttemptTs),
+            ]);
+        }
+
+        $rate = a7_recording_rate_remaining($config);
+        if ($rate['allowedNow'] <= 0) {
+            $config['recording_guard_last_attempt_ts'] = $now;
+            $config['recording_guard_last_attempt'] = date('c', $now);
+            a7_write_config($config);
+            return a7_recording_guarded_skip('write_rate_limited', ['rate' => $rate]);
+        }
+
+        $maxWrites = min($maxWrites, (int)$rate['allowedNow']);
+        $config['recording_guard_last_attempt_ts'] = $now;
+        $config['recording_guard_last_attempt'] = date('c', $now);
+        a7_write_config($config);
+
+        $result = a7_run_recording_sync($limit, false, $maxWrites, $userId, $source);
+        $created = (int)($result['createdCount'] ?? 0);
+
+        $config = a7_read_config();
+        a7_recording_rate_register($config, $created);
+        $config['recording_guard_last_run'] = date('c');
+        $config['recording_guard_last_result'] = [
+            'source' => $source,
+            'limit' => $limit,
+            'maxWrites' => $maxWrites,
+            'createdCount' => $created,
+            'checkedRecordings' => (int)($result['checkedRecordings'] ?? 0),
+        ];
+        a7_write_config($config);
+
+        $result['ran'] = true;
+        $result['guard'] = [
+            'minGapSeconds' => $minGap,
+            'maxLimitPerRun' => A7_RECORDING_MAX_LIMIT_PER_RUN,
+            'maxWritesPerRun' => A7_RECORDING_MAX_WRITES_PER_RUN,
+            'maxWritesPerHour' => A7_RECORDING_MAX_WRITES_PER_HOUR,
+            'maxWritesPerDay' => A7_RECORDING_MAX_WRITES_PER_DAY,
+            'readyDelaySeconds' => A7_RECORDING_READY_DELAY_SECONDS,
+            'rate' => a7_recording_rate_remaining($config),
+        ];
+        return $result;
+    } finally {
+        a7_recording_lock_release($lock);
+    }
+}
+
+function a7_http_json(string $method, string $url, array $headers = [], $body = null): array
+{
+    $headerLines = ['Accept: application/json'];
+    foreach ($headers as $name => $value) {
+        $headerLines[] = $name . ': ' . $value;
+    }
+
+    $encodedBody = null;
+    if ($body !== null) {
+        $encodedBody = is_string($body) ? $body : json_encode($body, JSON_UNESCAPED_SLASHES);
+    }
+
+    if (!function_exists('curl_init')) {
+        $contextOptions = [
+            'http' => [
+                'method' => strtoupper($method),
+                'header' => implode("\r\n", $headerLines),
+                'ignore_errors' => true,
+                'timeout' => 30,
+            ],
+        ];
+
+        if ($encodedBody !== null) {
+            $contextOptions['http']['content'] = $encodedBody;
+        }
+
+        $context = stream_context_create($contextOptions);
+        $raw = @file_get_contents($url, false, $context);
+        $status = 0;
+
+        if (isset($http_response_header) && is_array($http_response_header)) {
+            foreach ($http_response_header as $line) {
+                if (preg_match('/^HTTP\/\S+\s+(\d{3})\b/', (string)$line, $matches)) {
+                    $status = (int)$matches[1];
+                    break;
+                }
+            }
+        }
+
+        $error = '';
+        if ($raw === false) {
+            $lastError = error_get_last();
+            $error = is_array($lastError) ? (string)($lastError['message'] ?? '') : 'HTTP request failed';
+            $raw = '';
+        }
+
+        $json = json_decode((string) $raw, true);
+        return [
+            'ok' => $error === '' && $status >= 200 && $status < 300,
+            'status' => $status,
+            'raw' => $raw,
+            'json' => is_array($json) ? $json : null,
+            'error' => $error,
+        ];
+    }
+
+    $curl = curl_init($url);
+
+    curl_setopt_array($curl, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => strtoupper($method),
+        CURLOPT_HTTPHEADER => $headerLines,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_CONNECTTIMEOUT => 10,
+    ]);
+
+    if ($encodedBody !== null) {
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $encodedBody);
+    }
+
+    $raw = curl_exec($curl);
+    $error = curl_error($curl);
+    $status = (int) curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    curl_close($curl);
+
+    $json = json_decode((string) $raw, true);
+    return [
+        'ok' => $error === '' && $status >= 200 && $status < 300,
+        'status' => $status,
+        'raw' => $raw,
+        'json' => is_array($json) ? $json : null,
+        'error' => $error,
+    ];
+}
+
+function a7_http_raw(string $method, string $url, array $headers = [], $body = null): array
+{
+    $headerLines = [];
+    foreach ($headers as $name => $value) {
+        $headerLines[] = $name . ': ' . $value;
+    }
+
+    $encodedBody = null;
+    if ($body !== null) {
+        $encodedBody = is_string($body) ? $body : json_encode($body, JSON_UNESCAPED_SLASHES);
+    }
+
+    if (!function_exists('curl_init')) {
+        $contextOptions = [
+            'http' => [
+                'method' => strtoupper($method),
+                'header' => implode("\r\n", $headerLines),
+                'ignore_errors' => true,
+                'timeout' => 60,
+            ],
+        ];
+
+        if ($encodedBody !== null) {
+            $contextOptions['http']['content'] = $encodedBody;
+        }
+
+        $context = stream_context_create($contextOptions);
+        $raw = @file_get_contents($url, false, $context);
+        $status = 0;
+        $contentType = '';
+
+        if (isset($http_response_header) && is_array($http_response_header)) {
+            foreach ($http_response_header as $line) {
+                if (preg_match('/^HTTP\/\S+\s+(\d{3})\b/', (string)$line, $matches)) {
+                    $status = (int)$matches[1];
+                    continue;
+                }
+                if (stripos((string)$line, 'Content-Type:') === 0) {
+                    $contentType = trim(substr((string)$line, strlen('Content-Type:')));
+                }
+            }
+        }
+
+        $error = '';
+        if ($raw === false) {
+            $lastError = error_get_last();
+            $error = is_array($lastError) ? (string)($lastError['message'] ?? '') : 'HTTP request failed';
+            $raw = '';
+        }
+
+        return [
+            'ok' => $error === '' && $status >= 200 && $status < 300,
+            'status' => $status,
+            'raw' => (string)$raw,
+            'content_type' => $contentType,
+            'error' => $error,
+        ];
+    }
+
+    $curl = curl_init($url);
+    curl_setopt_array($curl, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => strtoupper($method),
+        CURLOPT_HTTPHEADER => $headerLines,
+        CURLOPT_TIMEOUT => 60,
+        CURLOPT_CONNECTTIMEOUT => 10,
+    ]);
+
+    if ($encodedBody !== null) {
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $encodedBody);
+    }
+
+    $raw = curl_exec($curl);
+    $error = curl_error($curl);
+    $status = (int) curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $contentType = (string) curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
+    curl_close($curl);
+
+    return [
+        'ok' => $error === '' && $status >= 200 && $status < 300,
+        'status' => $status,
+        'raw' => (string)$raw,
+        'content_type' => $contentType,
+        'error' => $error,
+    ];
+}
+
+function a7_bitrix_call(string $method, array $params, array $auth): array
+{
+    $accessToken = (string)($auth['access_token'] ?? '');
+    $domain = (string)($auth['domain'] ?? ($_SERVER['HTTP_HOST'] ?? ''));
+    $endpoint = (string)($auth['client_endpoint'] ?? '');
+
+    if ($accessToken === '') {
+        return ['ok' => false, 'status' => 0, 'json' => null, 'error' => 'Missing Bitrix access token'];
+    }
+
+    if ($endpoint === '') {
+        $endpoint = 'https://' . $domain . '/rest/';
+    }
+
+    $url = rtrim($endpoint, '/') . '/' . $method . '.json';
+    $params['auth'] = $accessToken;
+
+    return a7_http_json(
+        'POST',
+        $url,
+        ['Content-Type' => 'application/json'],
+        $params
+    );
+}
+
+function a7_bitrix_webhook_call(string $method, array $params): array
+{
+    $webhook = trim(A7_BITRIX_WEBHOOK_URL);
+    if ($webhook === '' || strpos($webhook, '__') !== false) {
+        return ['ok' => false, 'status' => 0, 'json' => null, 'error' => 'Missing Bitrix webhook'];
+    }
+
+    return a7_http_json(
+        'POST',
+        rtrim($webhook, '/') . '/' . $method . '.json',
+        ['Content-Type' => 'application/json'],
+        $params
+    );
+}
+
+function a7_add_call_activity(string $phone, string $entityType, int $entityId, int $userId, string $extension, array $makeCall): void
+{
+    $ownerTypeId = a7_entity_type_id($entityType);
+    if ($ownerTypeId <= 0 || $entityId <= 0) {
+        return;
+    }
+
+    $description = '3CX outbound call started from Bitrix CRM.'
+        . "\nExtension: " . $extension
+        . "\nPhone: " . $phone;
+
+    $result = a7_bitrix_webhook_call('crm.activity.add', [
+        'fields' => [
+            'OWNER_TYPE_ID' => $ownerTypeId,
+            'OWNER_ID' => $entityId,
+            'TYPE_ID' => 2,
+            'SUBJECT' => '3CX outbound call started',
+            'START_TIME' => date('c'),
+            'END_TIME' => date('c'),
+            'COMPLETED' => 'N',
+            'DIRECTION' => 2,
+            'RESPONSIBLE_ID' => $userId,
+            'DESCRIPTION' => $description,
+            'COMMUNICATIONS' => [[
+                'ENTITY_TYPE_ID' => $ownerTypeId,
+                'ENTITY_ID' => $entityId,
+                'TYPE' => 'PHONE',
+                'VALUE' => $phone,
+            ]],
+        ],
+    ]);
+
+    a7_log('Bitrix call activity add attempted', [
+        'ok' => $result['ok'],
+        'status' => $result['status'],
+        'result' => $result['json']['result'] ?? null,
+        'error' => $result['error'] ?? '',
+    ]);
+}
+
+function a7_clean_extension($extension): string
+{
+    return preg_replace('/\D/', '', (string)$extension) ?? '';
+}
+
+function a7_entity_rest_prefix(string $entityType): string
+{
+    $map = [
+        'lead' => 'crm.lead',
+        'deal' => 'crm.deal',
+        'contact' => 'crm.contact',
+        'company' => 'crm.company',
+    ];
+
+    $entityType = strtolower(trim($entityType));
+    return $map[$entityType] ?? '';
+}
+
+function a7_get_entity_assigned_user_id(string $entityType, int $entityId): int
+{
+    $prefix = a7_entity_rest_prefix($entityType);
+    if ($prefix === '' || $entityId <= 0) {
+        return 0;
+    }
+
+    $result = a7_bitrix_webhook_call($prefix . '.get', ['id' => $entityId]);
+    if (!$result['ok'] || !is_array($result['json']['result'] ?? null)) {
+        a7_log('Bitrix entity owner lookup failed', [
+            'entity_type' => $entityType,
+            'entity_id' => $entityId,
+            'status' => $result['status'],
+            'error' => $result['error'] ?? '',
+        ]);
+        return 0;
+    }
+
+    return (int)($result['json']['result']['ASSIGNED_BY_ID'] ?? 0);
+}
+
+function a7_get_bitrix_user(int $userId): ?array
+{
+    static $cache = [];
+
+    if ($userId <= 0) {
+        return null;
+    }
+
+    if (array_key_exists($userId, $cache)) {
+        return $cache[$userId];
+    }
+
+    $result = a7_bitrix_webhook_call('user.get', ['ID' => $userId]);
+    if (!$result['ok'] || !is_array($result['json']['result'] ?? null) || empty($result['json']['result'][0])) {
+        a7_log('Bitrix user lookup failed', [
+            'user_id' => $userId,
+            'status' => $result['status'],
+            'error' => $result['error'] ?? '',
+        ]);
+        $cache[$userId] = null;
+        return null;
+    }
+
+    $cache[$userId] = $result['json']['result'][0];
+    return $cache[$userId];
+}
+
+function a7_user_display_name(array $user): string
+{
+    $name = trim((string)($user['NAME'] ?? '') . ' ' . (string)($user['LAST_NAME'] ?? ''));
+    if ($name !== '') {
+        return $name;
+    }
+
+    if (!empty($user['EMAIL'])) {
+        return (string)$user['EMAIL'];
+    }
+
+    return 'Bitrix user #' . (string)($user['ID'] ?? '');
+}
+
+function a7_resolve_owner_extension(string $entityType, int $entityId, int $fallbackUserId): array
+{
+    $ownerUserId = a7_get_entity_assigned_user_id($entityType, $entityId);
+    $source = 'entity_owner';
+
+    if ($ownerUserId <= 0) {
+        $ownerUserId = $fallbackUserId;
+        $source = 'current_user_fallback';
+    }
+
+    $user = a7_get_bitrix_user($ownerUserId);
+    if (!$user) {
+        throw new RuntimeException('Bitrix lead owner not found');
+    }
+
+    $extension = a7_clean_extension($user['UF_PHONE_INNER'] ?? '');
+    if ($extension === '') {
+        $name = a7_user_display_name($user);
+        throw new RuntimeException('3CX extension required for ' . $name . '. Please fill Bitrix Internal phone / UF_PHONE_INNER.');
+    }
+
+    return [
+        'extension' => $extension,
+        'bitrix_user_id' => (int)($user['ID'] ?? $ownerUserId),
+        'email' => (string)($user['EMAIL'] ?? ''),
+        'name' => a7_user_display_name($user),
+        'source' => $source,
+    ];
+}
+
+function a7_event_entity_type(array $data): string
+{
+    $raw = '';
+    foreach (['CRM_ENTITY_TYPE_NAME', 'CRM_ENTITY_TYPE', 'ENTITY_TYPE_NAME', 'ENTITY_TYPE', 'OWNER_TYPE', 'OWNER_TYPE_NAME'] as $key) {
+        if (!empty($data[$key])) {
+            $raw = (string)$data[$key];
+            break;
+        }
+    }
+
+    $value = strtolower(trim($raw));
+    if ($value === '') {
+        return '';
+    }
+
+    if (ctype_digit($value)) {
+        return [
+            1 => 'lead',
+            2 => 'deal',
+            3 => 'contact',
+            4 => 'company',
+        ][(int)$value] ?? '';
+    }
+
+    $value = str_replace(['crm_', 'ccrmownertype::'], '', $value);
+    switch ($value) {
+        case 'lead':
+        case 'leads':
+            return 'lead';
+        case 'deal':
+        case 'deals':
+            return 'deal';
+        case 'contact':
+        case 'contacts':
+            return 'contact';
+        case 'company':
+        case 'companies':
+            return 'company';
+        default:
+            return '';
+    }
+}
+
+function a7_event_entity_id(array $data): int
+{
+    foreach (['CRM_ENTITY_ID', 'ENTITY_ID', 'OWNER_ID', 'LEAD_ID', 'DEAL_ID', 'CONTACT_ID', 'COMPANY_ID'] as $key) {
+        if (!empty($data[$key])) {
+            return (int)$data[$key];
+        }
+    }
+
+    return 0;
+}
+
+function a7_3cx_token(string $clientId = '', string $clientSecret = ''): string
+{
+    $clientId = $clientId !== '' ? $clientId : A7_3CX_CLIENT_ID;
+    $clientSecret = $clientSecret !== '' ? $clientSecret : A7_3CX_CLIENT_SECRET;
+
+    $body = http_build_query([
+        'grant_type' => 'client_credentials',
+        'client_id' => $clientId,
+        'client_secret' => $clientSecret,
+    ]);
+
+    $response = a7_http_json(
+        'POST',
+        rtrim(A7_3CX_BASE_URL, '/') . '/connect/token',
+        ['Content-Type' => 'application/x-www-form-urlencoded'],
+        $body
+    );
+
+    if (!$response['ok'] || empty($response['json']['access_token'])) {
+        a7_log('3CX token failed', ['client_id' => $clientId, 'status' => $response['status'], 'error' => $response['error'], 'raw' => (string)$response['raw']]);
+        throw new RuntimeException('Unable to authenticate with 3CX Call Control API');
+    }
+
+    return (string) $response['json']['access_token'];
+}
+
+function a7_3cx_makecall_token(): string
+{
+    $clientId = (string) A7_3CX_MAKECALL_CLIENT_ID;
+    $clientSecret = (string) A7_3CX_MAKECALL_CLIENT_SECRET;
+
+    if ($clientId === '' || strpos($clientId, '__') === 0 || $clientSecret === '' || strpos($clientSecret, '__') === 0) {
+        return a7_3cx_token();
+    }
+
+    return a7_3cx_token($clientId, $clientSecret);
+}
+
+function a7_3cx_attached_data_strings(array $data): array
+{
+    $out = [];
+    foreach ($data as $key => $value) {
+        if (is_array($value) || is_object($value)) {
+            $out[(string)$key] = json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            continue;
+        }
+
+        if (is_bool($value)) {
+            $out[(string)$key] = $value ? '1' : '0';
+            continue;
+        }
+
+        if ($value === null) {
+            $out[(string)$key] = '';
+            continue;
+        }
+
+        $out[(string)$key] = (string)$value;
+    }
+
+    return $out;
+}
+
+function a7_3cx_make_call(string $destination, array $attachedData = [], string $sourceExtension = ''): array
+{
+    $attachedData = a7_3cx_attached_data_strings($attachedData);
+    $token = a7_3cx_makecall_token();
+    $base = rtrim(A7_3CX_BASE_URL, '/');
+    $extensionNumber = a7_clean_extension($sourceExtension);
+    if ($extensionNumber === '') {
+        $extensionNumber = a7_clean_extension(A7_3CX_EXTENSION);
+    }
+    if ($extensionNumber === '') {
+        throw new RuntimeException('3CX extension required');
+    }
+    $extension = rawurlencode($extensionNumber);
+    $headers = [
+        'Authorization' => 'Bearer ' . $token,
+        'Content-Type' => 'application/json',
+    ];
+
+    $devices = a7_http_json('GET', $base . '/callcontrol/' . $extension . '/devices', [
+        'Authorization' => 'Bearer ' . $token,
+    ]);
+
+    $payload = [
+        'destination' => $destination,
+        'timeout' => 30,
+        'timeoutSec' => 30,
+        'attachedData1' => $attachedData,
+        'attacheddata' => $attachedData,
+    ];
+
+    if ($devices['ok'] && is_array($devices['json']) && !empty($devices['json'][0]['device_id'])) {
+        $deviceId = rawurlencode((string) $devices['json'][0]['device_id']);
+        $deviceResponse = a7_http_json(
+            'POST',
+            $base . '/callcontrol/' . $extension . '/devices/' . $deviceId . '/makecall',
+            $headers,
+            $payload
+        );
+
+        if ($deviceResponse['ok']) {
+            return $deviceResponse;
+        }
+
+        a7_log('3CX device makecall failed, falling back to DN makecall', [
+            'extension' => $extensionNumber,
+            'status' => $deviceResponse['status'],
+            'raw' => (string)$deviceResponse['raw'],
+        ]);
+    }
+
+    return a7_http_json(
+        'POST',
+        $base . '/callcontrol/' . $extension . '/makecall',
+        $headers,
+        $payload
+    );
+}
+
+function a7_3cx_xapi_get_json(string $path): array
+{
+    $token = a7_3cx_token();
+    $base = rtrim(A7_3CX_BASE_URL, '/');
+
+    if ($path === '' || $path[0] !== '/') {
+        $path = '/' . $path;
+    }
+
+    return a7_http_json('GET', $base . $path, [
+        'Authorization' => 'Bearer ' . $token,
+    ]);
+}
+
+function a7_3cx_callcontrol_get_json(string $path): array
+{
+    $token = a7_3cx_makecall_token();
+    $base = rtrim(A7_3CX_BASE_URL, '/');
+
+    if ($path === '' || $path[0] !== '/') {
+        $path = '/' . $path;
+    }
+
+    return a7_http_json('GET', $base . $path, [
+        'Authorization' => 'Bearer ' . $token,
+    ]);
+}
+
+function a7_normalize_phone_digits(string $value): string
+{
+    $digits = preg_replace('/\D/', '', $value) ?? '';
+    if (strlen($digits) < 6) {
+        return '';
+    }
+
+    if (substr($digits, 0, 2) === '00') {
+        $digits = substr($digits, 2);
+    }
+
+    // UAE local mobile/landline style, e.g. 0501234567 -> 971501234567.
+    if (substr($digits, 0, 1) === '0' && strlen($digits) === 10) {
+        return '971' . substr($digits, 1);
+    }
+
+    return $digits;
+}
+
+function a7_phone_variants(string $digits): array
+{
+    $digits = a7_normalize_phone_digits($digits);
+    if ($digits === '') {
+        return [];
+    }
+
+    $variants = [$digits, '+' . $digits];
+    if (substr($digits, 0, 3) === '971' && strlen($digits) >= 11) {
+        $variants[] = '0' . substr($digits, 3);
+        $variants[] = substr($digits, 3);
+    }
+
+    return array_values(array_unique(array_filter($variants, static function ($value) {
+        return is_string($value) && $value !== '';
+    })));
+}
+
+function a7_mask_phone(string $value): string
+{
+    $text = trim($value);
+    $digits = preg_replace('/\D/', '', $text) ?? '';
+    if (strlen($digits) < 5) {
+        return $text;
+    }
+
+    $prefix = substr($text, 0, min(4, strlen($text)));
+    return $prefix . '***' . substr($digits, -4);
+}
+
+function a7_looks_internal_extension(string $value): bool
+{
+    $digits = preg_replace('/\D/', '', trim($value)) ?? '';
+    return strlen($digits) >= 2 && strlen($digits) <= 4;
+}
+
+function a7_recording_parties(array $recording): array
+{
+    $candidateKeys = [
+        'FromCallerNumber',
+        'FromDn',
+        'FromDisplayName',
+        'ToCallerNumber',
+        'ToDn',
+        'ToDisplayName',
+    ];
+
+    $candidates = [];
+    foreach ($candidateKeys as $key) {
+        $value = trim((string)($recording[$key] ?? ''));
+        if ($value !== '') {
+            $candidates[] = $value;
+        }
+    }
+
+    $internalExtension = '';
+    foreach (['FromDn', 'ToDn', 'FromCallerNumber', 'ToCallerNumber'] as $key) {
+        $value = trim((string)($recording[$key] ?? ''));
+        if ($value !== '' && a7_looks_internal_extension($value)) {
+            $internalExtension = preg_replace('/\D/', '', $value) ?? $value;
+            break;
+        }
+    }
+
+    $nonInternal = [];
+    $knownTrunks = ['10000', '10001', '10002'];
+    foreach ($candidates as $candidate) {
+        $digits = a7_normalize_phone_digits($candidate);
+        if ($digits === '' || a7_looks_internal_extension($candidate) || in_array($digits, $knownTrunks, true)) {
+            continue;
+        }
+
+        $nonInternal[] = [
+            'raw' => $candidate,
+            'digits' => $digits,
+        ];
+    }
+
+    $preferred = null;
+    $callType = (string)($recording['CallType'] ?? '');
+    if (stripos($callType, 'InboundExternal') !== false) {
+        $fromCallerDigits = a7_normalize_phone_digits((string)($recording['FromCallerNumber'] ?? ''));
+        foreach ($nonInternal as $candidate) {
+            if ($fromCallerDigits !== '' && $candidate['digits'] === $fromCallerDigits) {
+                $preferred = $candidate;
+                break;
+            }
+        }
+    } elseif (stripos($callType, 'OutboundExternal') !== false) {
+        $toCallerDigits = a7_normalize_phone_digits((string)($recording['ToCallerNumber'] ?? ''));
+        $toDnDigits = a7_normalize_phone_digits((string)($recording['ToDn'] ?? ''));
+        foreach ($nonInternal as $candidate) {
+            if (($toCallerDigits !== '' && $candidate['digits'] === $toCallerDigits)
+                || ($toDnDigits !== '' && $candidate['digits'] === $toDnDigits)
+            ) {
+                $preferred = $candidate;
+                break;
+            }
+        }
+    }
+
+    if ($preferred === null && !empty($nonInternal)) {
+        $preferred = $nonInternal[0];
+    }
+
+    return [
+        'internal_extension' => $internalExtension,
+        'external_phone_digits' => is_array($preferred) ? (string)$preferred['digits'] : '',
+        'external_phone_raw' => is_array($preferred) ? (string)$preferred['raw'] : '',
+    ];
+}
+
+function a7_find_bitrix_lead_matches(string $phoneDigits): array
+{
+    $matchedBy = [];
+    $leadIdMap = [];
+
+    $variants = a7_phone_variants($phoneDigits);
+    if (!empty($variants)) {
+        $response = a7_bitrix_webhook_call('crm.duplicate.findbycomm', [
+            'entity_type' => 'LEAD',
+            'type' => 'PHONE',
+            'values' => $variants,
+        ]);
+
+        if (!$response['ok']) {
+            a7_log('Bitrix duplicate phone lookup failed', [
+                'status' => $response['status'],
+                'error' => $response['error'] ?? '',
+                'phone' => a7_mask_phone($phoneDigits),
+            ]);
+        } else {
+            $ids = $response['json']['result']['LEAD'] ?? [];
+            if (is_array($ids) && !empty($ids)) {
+                $matchedBy[] = [
+                    'entityType' => 'lead',
+                    'value' => a7_mask_phone($phoneDigits),
+                    'variantsChecked' => count($variants),
+                    'count' => count($ids),
+                ];
+
+                foreach ($ids as $id) {
+                    $id = (int)$id;
+                    if ($id > 0) {
+                        $leadIdMap[$id] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    $leadIds = array_slice(array_keys($leadIdMap), 0, 5);
+    $leads = [];
+    if (!empty($leadIds)) {
+        $commands = [];
+        foreach ($leadIds as $leadId) {
+            $commands['lead_' . $leadId] = 'crm.lead.get?' . http_build_query(['id' => $leadId]);
+        }
+        $batch = a7_bitrix_webhook_call('batch', ['halt' => 0, 'cmd' => $commands]);
+        $batchResults = $batch['json']['result']['result'] ?? [];
+        if (!$batch['ok'] || !is_array($batchResults)) {
+            a7_log('Bitrix lead detail batch lookup failed', [
+                'status' => $batch['status'],
+                'error' => $batch['error'] ?? '',
+            ]);
+            $batchResults = [];
+        }
+
+        foreach ($leadIds as $leadId) {
+            $lead = $batchResults['lead_' . $leadId] ?? null;
+            if (!is_array($lead)) {
+                continue;
+            }
+
+            $leads[] = [
+                'entityType' => 'lead',
+                'ownerTypeId' => 1,
+                'id' => $leadId,
+                'title' => mb_substr((string)($lead['TITLE'] ?? ''), 0, 120),
+                'assignedById' => (int)($lead['ASSIGNED_BY_ID'] ?? 0),
+                'detailUrl' => '/crm/lead/details/' . $leadId . '/',
+            ];
+        }
+    }
+
+    return [
+        'leadIds' => $leadIds,
+        'leads' => $leads,
+        'matchedBy' => $matchedBy,
+    ];
+}
+
+function a7_owner_data_phone_fields(): array
+{
+    return [
+        'ufCrm5_1768317611513' => 'phone number',
+        'ufCrm5_1769416533028' => 'phone number 1',
+        'ufCrm5_1768314841508' => 'Import Owner Mobile',
+        'ufCrm5_1768317656051' => 'mobile number 2',
+        'ufCrm5_1777563197150' => 'Owner no 1',
+        'ufCrm5_1779805546251' => 'Owner phone extra',
+    ];
+}
+
+function a7_find_bitrix_owner_data_matches_by_phone_filter(string $phoneDigits): array
+{
+    $variants = a7_phone_variants($phoneDigits);
+    if (empty($variants)) {
+        return ['itemIds' => [], 'items' => [], 'matchedBy' => []];
+    }
+
+    $numericFields = [
+        'ufCrm5_1768317611513' => true,
+        'ufCrm5_1768317656051' => true,
+        'ufCrm5_1769416533028' => true,
+    ];
+    $numericVariants = [];
+    foreach ($variants as $variant) {
+        $digits = preg_replace('/\D/', '', (string)$variant) ?? '';
+        $key = ltrim($digits, '0');
+        if ($key !== '') {
+            $numericVariants[$key] = (float)$digits;
+        }
+    }
+
+    $commands = [];
+    $commandMeta = [];
+    $commandIndex = 0;
+    foreach (a7_owner_data_phone_fields() as $field => $label) {
+        $fieldFilters = isset($numericFields[$field])
+            ? array_map(static function ($value) use ($field) {
+                return [$field => $value];
+            }, array_values($numericVariants))
+            : [['@' . $field => $variants]];
+
+        foreach ($fieldFilters as $fieldFilter) {
+            $commandKey = 'owner_phone_' . $commandIndex++;
+            $params = [
+                'entityTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+                'select' => ['id', 'title', 'categoryId', 'assignedById', 'createdTime', 'updatedTime', $field],
+                'filter' => array_merge(['categoryId' => A7_OWNER_DATA_CATEGORY_ID], $fieldFilter),
+                'order' => ['updatedTime' => 'DESC'],
+                'start' => 0,
+            ];
+            $commands[$commandKey] = 'crm.item.list?' . http_build_query($params);
+            $commandMeta[$commandKey] = ['field' => $field, 'label' => $label];
+        }
+    }
+
+    $batch = a7_bitrix_webhook_call('batch', ['halt' => 0, 'cmd' => $commands]);
+    if (!$batch['ok']) {
+        a7_log('Bitrix Owner Data phone batch lookup failed', [
+            'status' => $batch['status'],
+            'error' => $batch['error'] ?? '',
+            'phone' => a7_mask_phone($phoneDigits),
+        ]);
+        return ['itemIds' => [], 'items' => [], 'matchedBy' => []];
+    }
+
+    $batchResults = $batch['json']['result']['result'] ?? [];
+    $batchErrors = $batch['json']['result']['result_error'] ?? [];
+    if (!empty($batchErrors)) {
+        a7_log('Some Bitrix Owner Data phone batch commands failed', [
+            'commands' => array_keys(is_array($batchErrors) ? $batchErrors : []),
+        ]);
+    }
+
+    $itemMap = [];
+    $fieldItemIds = [];
+    foreach ($commandMeta as $commandKey => $meta) {
+        $field = (string)$meta['field'];
+        $label = (string)$meta['label'];
+        $items = $batchResults[$commandKey]['items'] ?? [];
+        if (!is_array($items)) {
+            continue;
+        }
+
+        foreach ($items as $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+
+            $itemId = (int)($item['id'] ?? 0);
+            if ($itemId <= 0 || (int)($item['categoryId'] ?? 0) !== A7_OWNER_DATA_CATEGORY_ID) {
+                continue;
+            }
+
+            if (!isset($itemMap[$itemId])) {
+                $itemMap[$itemId] = [
+                    'entityType' => 'owner_data',
+                    'ownerTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+                    'categoryId' => A7_OWNER_DATA_CATEGORY_ID,
+                    'id' => $itemId,
+                    'title' => mb_substr((string)($item['title'] ?? ('Owner Data #' . $itemId)), 0, 120),
+                    'assignedById' => (int)($item['assignedById'] ?? 0),
+                    'createdTime' => (string)($item['createdTime'] ?? ''),
+                    'updatedTime' => (string)($item['updatedTime'] ?? ''),
+                    'detailUrl' => '/crm/type/' . A7_OWNER_DATA_ENTITY_TYPE_ID . '/details/' . $itemId . '/',
+                    'matchedPhoneFields' => [],
+                ];
+            }
+
+            $itemMap[$itemId]['matchedPhoneFields'][$field] = $label;
+            $fieldItemIds[$field][$itemId] = true;
+        }
+    }
+
+    $matchedBy = [];
+    foreach ($fieldItemIds as $field => $ids) {
+        $matchedBy[] = [
+            'entityType' => 'owner_data',
+            'field' => $field,
+            'fieldLabel' => a7_owner_data_phone_fields()[$field] ?? $field,
+            'value' => a7_mask_phone($phoneDigits),
+            'count' => count($ids),
+        ];
+    }
+
+    foreach ($itemMap as &$item) {
+        $item['matchedPhoneFields'] = array_values($item['matchedPhoneFields']);
+    }
+    unset($item);
+
+    return [
+        'itemIds' => array_keys($itemMap),
+        'items' => array_values($itemMap),
+        'matchedBy' => $matchedBy,
+    ];
+}
+
+function a7_owner_data_phone_matches(string $phoneDigits, array $item): array
+{
+    $keys = [];
+    foreach (a7_phone_variants($phoneDigits) as $variant) {
+        $digits = preg_replace('/\D/', '', (string)$variant) ?? '';
+        if ($digits !== '') {
+            $keys[$digits] = true;
+            $withoutLeadingZero = ltrim($digits, '0');
+            if ($withoutLeadingZero !== '') {
+                $keys[$withoutLeadingZero] = true;
+            }
+        }
+    }
+
+    $matchedFields = [];
+    foreach (a7_owner_data_phone_fields() as $field => $label) {
+        $value = $item[$field] ?? null;
+        $values = is_array($value) ? $value : [$value];
+        foreach ($values as $candidate) {
+            $digits = preg_replace('/\D/', '', (string)$candidate) ?? '';
+            if ($digits === '') {
+                continue;
+            }
+
+            if (isset($keys[$digits]) || isset($keys[ltrim($digits, '0')])) {
+                $matchedFields[$field] = $label;
+                break;
+            }
+        }
+    }
+
+    return $matchedFields;
+}
+
+function a7_owner_data_call_context(array $recording): array
+{
+    static $contexts = [];
+
+    $recordingStart = strtotime((string)($recording['StartTime'] ?? ''));
+    if ($recordingStart === false) {
+        return ['fromTs' => 0, 'toTs' => 0, 'activities' => [], 'items' => []];
+    }
+    $recordingEnd = strtotime((string)($recording['EndTime'] ?? ''));
+    if ($recordingEnd === false) {
+        $recordingEnd = $recordingStart;
+    }
+
+    $requiredFrom = $recordingStart - A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS;
+    $requiredTo = $recordingEnd + A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS;
+    foreach ($contexts as $context) {
+        if ($requiredFrom >= (int)$context['fromTs'] && $requiredTo <= (int)$context['toTs']) {
+            return $context;
+        }
+    }
+
+    $fromTs = $recordingStart - 3600;
+    $toTs = $recordingEnd + A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS;
+    $activities = [];
+    for ($start = 0; $start < 100; $start += 50) {
+        $response = a7_bitrix_webhook_call('crm.activity.list', [
+            'order' => ['ID' => 'DESC'],
+            'filter' => [
+                'OWNER_TYPE_ID' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+                'TYPE_ID' => 2,
+                '>=START_TIME' => date('c', $fromTs),
+                '<=START_TIME' => date('c', $toTs),
+            ],
+            'select' => ['ID', 'OWNER_TYPE_ID', 'OWNER_ID', 'START_TIME', 'END_TIME', 'DIRECTION', 'RESPONSIBLE_ID', 'PROVIDER_ID'],
+            'start' => $start,
+        ]);
+
+        $page = $response['json']['result'] ?? [];
+        if (!$response['ok'] || !is_array($page)) {
+            break;
+        }
+
+        $activities = array_merge($activities, $page);
+        if (count($page) < 50) {
+            break;
+        }
+    }
+
+    $ownerIds = [];
+    foreach ($activities as $activity) {
+        $ownerId = is_array($activity) ? (int)($activity['OWNER_ID'] ?? 0) : 0;
+        if ($ownerId > 0) {
+            $ownerIds[$ownerId] = true;
+        }
+    }
+
+    $items = [];
+    foreach (array_chunk(array_keys($ownerIds), 50) as $chunkIndex => $ownerIdChunk) {
+        $commands = [];
+        foreach ($ownerIdChunk as $ownerId) {
+            $commands['owner_item_' . $ownerId] = 'crm.item.get?' . http_build_query([
+                'entityTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+                'id' => (int)$ownerId,
+            ]);
+        }
+
+        $batch = a7_bitrix_webhook_call('batch', ['halt' => 0, 'cmd' => $commands]);
+        $batchResults = $batch['json']['result']['result'] ?? [];
+        if (!$batch['ok'] || !is_array($batchResults)) {
+            a7_log('Bitrix Owner Data call-context item batch failed', [
+                'chunk' => $chunkIndex,
+                'status' => $batch['status'],
+                'error' => $batch['error'] ?? '',
+            ]);
+            continue;
+        }
+
+        foreach ($ownerIdChunk as $ownerId) {
+            $item = $batchResults['owner_item_' . $ownerId]['item'] ?? null;
+            if (is_array($item) && (int)($item['categoryId'] ?? 0) === A7_OWNER_DATA_CATEGORY_ID) {
+                $items[(int)$ownerId] = $item;
+            }
+        }
+    }
+
+    $context = [
+        'fromTs' => $fromTs,
+        'toTs' => $toTs,
+        'activities' => $activities,
+        'items' => $items,
+    ];
+    $contexts[] = $context;
+    if (count($contexts) > 3) {
+        array_shift($contexts);
+    }
+
+    return $context;
+}
+
+function a7_find_bitrix_owner_data_matches(string $phoneDigits, array $recording): array
+{
+    $context = a7_owner_data_call_context($recording);
+    $recordingStart = strtotime((string)($recording['StartTime'] ?? ''));
+    if ($recordingStart === false) {
+        return ['itemIds' => [], 'items' => [], 'matchedBy' => []];
+    }
+    $recordingEnd = strtotime((string)($recording['EndTime'] ?? ''));
+    if ($recordingEnd === false) {
+        $recordingEnd = $recordingStart;
+    }
+
+    $recordingDirection = a7_recording_direction((string)($recording['CallType'] ?? ''));
+    $itemMap = [];
+    $matchedBy = [];
+    foreach ($context['activities'] as $activity) {
+        if (!is_array($activity)) {
+            continue;
+        }
+
+        $activityDirection = (int)($activity['DIRECTION'] ?? 0);
+        if ($recordingDirection > 0 && $activityDirection > 0 && $recordingDirection !== $activityDirection) {
+            continue;
+        }
+
+        $activityStart = strtotime((string)($activity['START_TIME'] ?? ''));
+        if ($activityStart === false) {
+            continue;
+        }
+        $delta = abs($activityStart - $recordingStart);
+        $activityEnd = strtotime((string)($activity['END_TIME'] ?? ''));
+        if ($activityEnd !== false) {
+            $delta = min($delta, abs($activityEnd - $recordingEnd));
+        }
+        if ($delta > A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS) {
+            continue;
+        }
+
+        $itemId = (int)($activity['OWNER_ID'] ?? 0);
+        $item = $context['items'][$itemId] ?? null;
+        if (!is_array($item)) {
+            continue;
+        }
+
+        $matchedFields = a7_owner_data_phone_matches($phoneDigits, $item);
+        if (empty($matchedFields)) {
+            continue;
+        }
+
+        if (!isset($itemMap[$itemId]) || $delta < (int)$itemMap[$itemId]['callTimeDeltaSeconds']) {
+            $itemMap[$itemId] = [
+                'entityType' => 'owner_data',
+                'ownerTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+                'categoryId' => A7_OWNER_DATA_CATEGORY_ID,
+                'id' => $itemId,
+                'title' => mb_substr((string)($item['title'] ?? ('Owner Data #' . $itemId)), 0, 120),
+                'assignedById' => (int)($item['assignedById'] ?? 0),
+                'createdTime' => (string)($item['createdTime'] ?? ''),
+                'updatedTime' => (string)($item['updatedTime'] ?? ''),
+                'detailUrl' => '/crm/type/' . A7_OWNER_DATA_ENTITY_TYPE_ID . '/details/' . $itemId . '/',
+                'matchedPhoneFields' => array_values($matchedFields),
+                'callActivityId' => (int)($activity['ID'] ?? 0),
+                'callTimeDeltaSeconds' => $delta,
+            ];
+        }
+    }
+
+    foreach ($itemMap as $item) {
+        $matchedBy[] = [
+            'entityType' => 'owner_data',
+            'itemId' => (int)$item['id'],
+            'value' => a7_mask_phone($phoneDigits),
+            'fields' => $item['matchedPhoneFields'],
+            'callActivityId' => (int)$item['callActivityId'],
+            'callTimeDeltaSeconds' => (int)$item['callTimeDeltaSeconds'],
+        ];
+    }
+
+    return [
+        'itemIds' => array_keys($itemMap),
+        'items' => array_values($itemMap),
+        'matchedBy' => $matchedBy,
+    ];
+}
+
+function a7_find_bitrix_recording_matches(string $phoneDigits, array $recording): array
+{
+    $leadMatch = a7_find_bitrix_lead_matches($phoneDigits);
+    $ownerDataMatch = a7_find_bitrix_owner_data_matches($phoneDigits, $recording);
+
+    return [
+        'leadIds' => $leadMatch['leadIds'],
+        'leads' => $leadMatch['leads'],
+        'ownerDataItemIds' => $ownerDataMatch['itemIds'],
+        'ownerDataItems' => $ownerDataMatch['items'],
+        'entities' => array_merge($leadMatch['leads'], $ownerDataMatch['items']),
+        'matchedBy' => array_merge($leadMatch['matchedBy'], $ownerDataMatch['matchedBy']),
+    ];
+}
+
+function a7_recording_candidate_key(int $ownerTypeId, int $ownerId): string
+{
+    return $ownerTypeId . ':' . $ownerId;
+}
+
+function a7_recording_call_time_matches(array $entities, array $recording): array
+{
+    $recordingStart = strtotime((string)($recording['StartTime'] ?? ''));
+    if ($recordingStart === false || empty($entities)) {
+        return [];
+    }
+
+    $recordingEnd = strtotime((string)($recording['EndTime'] ?? ''));
+    if ($recordingEnd === false) {
+        $recordingEnd = $recordingStart;
+    }
+
+    $groups = [];
+    $matches = [];
+    foreach ($entities as $entity) {
+        $ownerTypeId = (int)($entity['ownerTypeId'] ?? 0);
+        $ownerId = (int)($entity['id'] ?? 0);
+        if ($ownerTypeId <= 0 || $ownerId <= 0) {
+            continue;
+        }
+
+        $activityId = (int)($entity['callActivityId'] ?? 0);
+        $deltaSeconds = (int)($entity['callTimeDeltaSeconds'] ?? -1);
+        if ($activityId > 0 && $deltaSeconds >= 0 && $deltaSeconds <= A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS) {
+            $matches[a7_recording_candidate_key($ownerTypeId, $ownerId)] = [
+                'activityId' => $activityId,
+                'deltaSeconds' => $deltaSeconds,
+                'providerId' => '',
+            ];
+        } else {
+            $groups[$ownerTypeId][$ownerId] = true;
+        }
+    }
+
+    $recordingDirection = a7_recording_direction((string)($recording['CallType'] ?? ''));
+    foreach ($groups as $ownerTypeId => $ownerIds) {
+        $response = a7_bitrix_webhook_call('crm.activity.list', [
+            'order' => ['ID' => 'DESC'],
+            'filter' => [
+                'OWNER_TYPE_ID' => (int)$ownerTypeId,
+                '@OWNER_ID' => array_map('intval', array_keys($ownerIds)),
+                'TYPE_ID' => 2,
+                '>=START_TIME' => date('c', $recordingStart - A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS),
+                '<=START_TIME' => date('c', $recordingEnd + A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS),
+            ],
+            'select' => ['ID', 'OWNER_TYPE_ID', 'OWNER_ID', 'START_TIME', 'END_TIME', 'DIRECTION', 'RESPONSIBLE_ID', 'PROVIDER_ID'],
+            'start' => 0,
+        ]);
+
+        $activities = $response['json']['result'] ?? [];
+        if (!$response['ok'] || !is_array($activities)) {
+            continue;
+        }
+
+        foreach ($activities as $activity) {
+            if (!is_array($activity)) {
+                continue;
+            }
+
+            $activityDirection = (int)($activity['DIRECTION'] ?? 0);
+            if ($recordingDirection > 0 && $activityDirection > 0 && $recordingDirection !== $activityDirection) {
+                continue;
+            }
+
+            $activityStart = strtotime((string)($activity['START_TIME'] ?? ''));
+            if ($activityStart === false) {
+                continue;
+            }
+
+            $delta = abs($activityStart - $recordingStart);
+            $activityEnd = strtotime((string)($activity['END_TIME'] ?? ''));
+            if ($activityEnd !== false) {
+                $delta = min($delta, abs($activityEnd - $recordingEnd));
+            }
+            if ($delta > A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS) {
+                continue;
+            }
+
+            $key = a7_recording_candidate_key((int)$ownerTypeId, (int)($activity['OWNER_ID'] ?? 0));
+            if (!isset($matches[$key]) || $delta < (int)$matches[$key]['deltaSeconds']) {
+                $matches[$key] = [
+                    'activityId' => (int)($activity['ID'] ?? 0),
+                    'deltaSeconds' => $delta,
+                    'providerId' => (string)($activity['PROVIDER_ID'] ?? ''),
+                ];
+            }
+        }
+    }
+
+    return $matches;
+}
+
+function a7_choose_best_entity_for_recording(array $entities, string $internalExtension, array $recording): ?array
+{
+    if (empty($entities)) {
+        return null;
+    }
+
+    $internalExtension = a7_clean_extension($internalExtension);
+    $extensionMatches = [];
+    if ($internalExtension !== '') {
+        foreach ($entities as $entity) {
+            $user = a7_get_bitrix_user((int)($entity['assignedById'] ?? 0));
+            if (!$user) {
+                continue;
+            }
+
+            if (a7_clean_extension($user['UF_PHONE_INNER'] ?? '') === $internalExtension) {
+                $extensionMatches[] = $entity;
+            }
+        }
+    }
+
+    if (empty($extensionMatches)) {
+        if (count($entities) === 1 && (int)($entities[0]['ownerTypeId'] ?? 0) === 1) {
+            $entity = $entities[0];
+            $entity['selectedBecause'] = 'single_bitrix_lead_phone_match';
+            return $entity;
+        }
+        return null;
+    }
+
+    $timeMatches = a7_recording_call_time_matches($extensionMatches, $recording);
+    $ranked = [];
+    foreach ($extensionMatches as $entity) {
+        $key = a7_recording_candidate_key((int)$entity['ownerTypeId'], (int)$entity['id']);
+        if (!isset($timeMatches[$key])) {
+            continue;
+        }
+        $entity['callActivityId'] = (int)$timeMatches[$key]['activityId'];
+        $entity['callTimeDeltaSeconds'] = (int)$timeMatches[$key]['deltaSeconds'];
+        $ranked[] = $entity;
+    }
+
+    usort($ranked, static function ($a, $b) {
+        return (int)$a['callTimeDeltaSeconds'] <=> (int)$b['callTimeDeltaSeconds'];
+    });
+
+    if (!empty($ranked)) {
+        if (count($ranked) > 1 && (int)$ranked[0]['callTimeDeltaSeconds'] === (int)$ranked[1]['callTimeDeltaSeconds']) {
+            return null;
+        }
+        $ranked[0]['selectedBecause'] = 'phone_owner_extension_and_call_time_match';
+        return $ranked[0];
+    }
+
+    if (count($extensionMatches) === 1) {
+        $entity = $extensionMatches[0];
+        if ((int)($entity['ownerTypeId'] ?? 0) === A7_OWNER_DATA_ENTITY_TYPE_ID) {
+            return null;
+        }
+        $entity['selectedBecause'] = 'unique_phone_and_owner_extension_match';
+        return $entity;
+    }
+
+    return null;
+}
+
+function a7_bitrix_entity_title(string $entityType, array $entity): string
+{
+    $entityType = strtolower($entityType);
+    if ($entityType === 'lead') {
+        return mb_substr((string)($entity['TITLE'] ?? ('Lead #' . (string)($entity['ID'] ?? ''))), 0, 120);
+    }
+
+    if ($entityType === 'contact') {
+        $name = trim((string)($entity['NAME'] ?? '') . ' ' . (string)($entity['LAST_NAME'] ?? ''));
+        return mb_substr($name !== '' ? $name : ('Contact #' . (string)($entity['ID'] ?? '')), 0, 120);
+    }
+
+    return ucfirst($entityType) . ' #' . (string)($entity['ID'] ?? '');
+}
+
+function a7_find_bitrix_phone_matches(string $phoneDigits): array
+{
+    $matchedBy = [];
+    $entityIdMap = [
+        'lead' => [],
+        'contact' => [],
+    ];
+
+    foreach (a7_phone_variants($phoneDigits) as $variant) {
+        foreach ([
+            'LEAD' => 'lead',
+            'CONTACT' => 'contact',
+        ] as $bitrixEntity => $localEntity) {
+            $response = a7_bitrix_webhook_call('crm.duplicate.findbycomm', [
+                'entity_type' => $bitrixEntity,
+                'type' => 'PHONE',
+                'values' => [$variant],
+            ]);
+
+            if (!$response['ok']) {
+                a7_log('Bitrix duplicate phone lookup failed', [
+                    'entity_type' => $bitrixEntity,
+                    'status' => $response['status'],
+                    'error' => $response['error'] ?? '',
+                    'phone' => a7_mask_phone($variant),
+                ]);
+                continue;
+            }
+
+            $ids = $response['json']['result'][$bitrixEntity] ?? [];
+            if (!is_array($ids) || empty($ids)) {
+                continue;
+            }
+
+            $matchedBy[] = [
+                'entityType' => $localEntity,
+                'value' => a7_mask_phone($variant),
+                'count' => count($ids),
+            ];
+
+            foreach ($ids as $id) {
+                $id = (int)$id;
+                if ($id > 0) {
+                    $entityIdMap[$localEntity][$id] = true;
+                }
+            }
+        }
+    }
+
+    $entities = [];
+    foreach ($entityIdMap as $entityType => $idMap) {
+        $ids = array_slice(array_keys($idMap), 0, 5);
+        foreach ($ids as $entityId) {
+            $prefix = a7_entity_rest_prefix($entityType);
+            if ($prefix === '') {
+                continue;
+            }
+
+            $response = a7_bitrix_webhook_call($prefix . '.get', ['id' => $entityId]);
+            if (!$response['ok'] || !is_array($response['json']['result'] ?? null)) {
+                continue;
+            }
+
+            $entity = $response['json']['result'];
+            $ownerTypeId = a7_entity_type_id($entityType);
+            $entities[] = [
+                'entityType' => $entityType,
+                'ownerTypeId' => $ownerTypeId,
+                'id' => $entityId,
+                'title' => a7_bitrix_entity_title($entityType, $entity),
+                'assignedById' => (int)($entity['ASSIGNED_BY_ID'] ?? 0),
+                'detailUrl' => '/crm/' . $entityType . '/details/' . $entityId . '/',
+            ];
+        }
+    }
+
+    return [
+        'entities' => $entities,
+        'matchedBy' => $matchedBy,
+    ];
+}
+
+function a7_recording_playback_url(int $recordingId): string
+{
+    $url = A7_HANDLER_URL . '?action=recording&id=' . rawurlencode((string)$recordingId);
+    if (!function_exists('a7_s3_recording_signature')) {
+        return $url;
+    }
+
+    try {
+        $signature = a7_s3_recording_signature($recordingId);
+    } catch (Throwable $error) {
+        // Keep legacy playback available during a guarded rollout or rollback.
+        return $url;
+    }
+
+    return $url . '&sig=' . rawurlencode($signature);
+}
+
+/**
+ * Resolve a missing S3 signature only after a7_require_bitrix_user() succeeds.
+ * A supplied signature is never replaced, so malformed or forged values still
+ * reach the strict S3 helper and produce its normal 403 response.
+ */
+function a7_resolve_authenticated_recording_signature(
+    int $recordingId,
+    string $providedSignature
+): string {
+    if ($providedSignature !== ''
+        || $recordingId <= 0
+        || !function_exists('a7_s3_recording_signature')
+    ) {
+        return $providedSignature;
+    }
+
+    try {
+        return (string)a7_s3_recording_signature($recordingId);
+    } catch (Throwable $error) {
+        // Preserve the authenticated legacy 3CX fallback during rollout issues.
+        return '';
+    }
+}
+
+function a7_require_bitrix_admin(): int
+{
+    $userId = a7_require_bitrix_user();
+
+    global $USER;
+    if (!is_object($USER) || !method_exists($USER, 'IsAdmin') || !$USER->IsAdmin()) {
+        a7_json(['success' => false, 'message' => 'Bitrix admin required'], 403);
+    }
+
+    return $userId;
+}
+
+function a7_recording_direction(string $callType): int
+{
+    if (stripos($callType, 'Inbound') !== false) {
+        return 1;
+    }
+
+    if (stripos($callType, 'Outbound') !== false) {
+        return 2;
+    }
+
+    return 0;
+}
+
+function a7_recording_activity_subject(int $recordingId): string
+{
+    return '3CX Recording #' . $recordingId;
+}
+
+function a7_recording_origin_id(int $recordingId): string
+{
+    return 'A7_3CX_REC_' . $recordingId;
+}
+
+function a7_format_bitrix_datetime(string $value): string
+{
+    $timestamp = strtotime($value);
+    if ($timestamp === false) {
+        return date('c');
+    }
+
+    return date('c', $timestamp);
+}
+
+function a7_recording_activity_exists(int $ownerTypeId, int $ownerId, int $recordingId): bool
+{
+    if ($ownerTypeId <= 0 || $ownerId <= 0 || $recordingId <= 0) {
+        return false;
+    }
+
+    $originId = a7_recording_origin_id($recordingId);
+    $subject = a7_recording_activity_subject($recordingId);
+
+    foreach ([
+        ['ORIGIN_ID' => $originId],
+        ['SUBJECT' => $subject],
+    ] as $extraFilter) {
+        $response = a7_bitrix_webhook_call('crm.activity.list', [
+            'order' => ['ID' => 'DESC'],
+            'filter' => array_merge([
+                'OWNER_TYPE_ID' => $ownerTypeId,
+                'OWNER_ID' => $ownerId,
+            ], $extraFilter),
+            'select' => ['ID', 'SUBJECT', 'ORIGIN_ID'],
+            'start' => 0,
+        ]);
+
+        if (!$response['ok']) {
+            a7_log('Bitrix activity duplicate check failed', [
+                'owner_type_id' => $ownerTypeId,
+                'owner_id' => $ownerId,
+                'recording_id' => $recordingId,
+                'status' => $response['status'],
+                'error' => $response['error'] ?? '',
+            ]);
+            continue;
+        }
+
+        $result = $response['json']['result'] ?? [];
+        if (is_array($result) && !empty($result)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function a7_sync_recording_activity(array $recording, array $parties, array $selectedEntity, int $currentUserId): array
+{
+    $recordingId = (int)($recording['Id'] ?? 0);
+    $ownerTypeId = (int)($selectedEntity['ownerTypeId'] ?? 0);
+    $ownerId = (int)($selectedEntity['id'] ?? 0);
+    if ($recordingId <= 0 || $ownerTypeId <= 0 || $ownerId <= 0) {
+        return ['status' => 'skipped', 'reason' => 'missing_recording_or_crm_entity_id'];
+    }
+
+    if (a7_recording_activity_exists($ownerTypeId, $ownerId, $recordingId)) {
+        return [
+            'status' => 'skipped',
+            'reason' => 'already_synced',
+            'ownerTypeId' => $ownerTypeId,
+            'ownerId' => $ownerId,
+            'recordingId' => $recordingId,
+        ];
+    }
+
+    $callType = (string)($recording['CallType'] ?? '');
+    $direction = a7_recording_direction($callType);
+    $startTime = a7_format_bitrix_datetime((string)($recording['StartTime'] ?? ''));
+    $endTime = a7_format_bitrix_datetime((string)($recording['EndTime'] ?? ($recording['StartTime'] ?? '')));
+    $internalExtension = (string)($parties['internal_extension'] ?? '');
+    $phoneDigits = (string)($parties['external_phone_digits'] ?? '');
+    $phoneRaw = (string)($parties['external_phone_raw'] ?? '');
+    $phoneForCommunication = $phoneRaw !== '' ? $phoneRaw : ($phoneDigits !== '' ? '+' . $phoneDigits : '');
+    $maskedPhone = a7_mask_phone($phoneForCommunication);
+    $playbackUrl = a7_recording_playback_url($recordingId);
+    $responsibleId = (int)($selectedEntity['assignedById'] ?? 0);
+    if ($responsibleId <= 0) {
+        $responsibleId = $currentUserId;
+    }
+
+    $description = '<p><b>3CX recording synced to Bitrix.</b></p>'
+        . '<ul>'
+        . '<li>Recording ID: ' . htmlspecialchars((string)$recordingId, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '<li>Call type: ' . htmlspecialchars($callType, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '<li>3CX extension: ' . htmlspecialchars($internalExtension, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '<li>Phone: ' . htmlspecialchars($maskedPhone, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '<li>Start: ' . htmlspecialchars($startTime, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '</ul>'
+        . '<p><a href="' . htmlspecialchars($playbackUrl, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '" target="_blank">Play 3CX recording</a></p>';
+
+    $fields = [
+        'OWNER_TYPE_ID' => $ownerTypeId,
+        'OWNER_ID' => $ownerId,
+        'TYPE_ID' => 2,
+        'PROVIDER_ID' => 'A7_3CX',
+        'PROVIDER_TYPE_ID' => 'RECORDING',
+        'ORIGIN_ID' => a7_recording_origin_id($recordingId),
+        'SUBJECT' => a7_recording_activity_subject($recordingId),
+        'START_TIME' => $startTime,
+        'END_TIME' => $endTime,
+        'COMPLETED' => 'Y',
+        'RESPONSIBLE_ID' => $responsibleId,
+        'DESCRIPTION' => $description,
+        'DESCRIPTION_TYPE' => 3,
+    ];
+
+    if ($direction > 0) {
+        $fields['DIRECTION'] = $direction;
+    }
+
+    if ($phoneForCommunication !== '' && $ownerTypeId === 1) {
+        $fields['COMMUNICATIONS'] = [[
+            'ENTITY_TYPE_ID' => 1,
+            'ENTITY_ID' => $ownerId,
+            'TYPE' => 'PHONE',
+            'VALUE' => $phoneForCommunication,
+        ]];
+    }
+
+    $response = a7_bitrix_webhook_call('crm.activity.add', ['fields' => $fields]);
+    if (!$response['ok'] || empty($response['json']['result'])) {
+        a7_log('Bitrix recording activity add failed', [
+            'owner_type_id' => $ownerTypeId,
+            'owner_id' => $ownerId,
+            'entity_type' => (string)($selectedEntity['entityType'] ?? ''),
+            'recording_id' => $recordingId,
+            'status' => $response['status'],
+            'error' => $response['error'] ?? '',
+            'raw' => mb_substr((string)$response['raw'], 0, 300),
+        ]);
+
+        return [
+            'status' => 'failed',
+            'reason' => 'crm_activity_add_failed',
+            'ownerTypeId' => $ownerTypeId,
+            'ownerId' => $ownerId,
+            'recordingId' => $recordingId,
+            'bitrixStatus' => $response['status'],
+        ];
+    }
+
+    return [
+        'status' => 'created',
+        'activityId' => (int)$response['json']['result'],
+        'ownerTypeId' => $ownerTypeId,
+        'ownerId' => $ownerId,
+        'entityType' => (string)($selectedEntity['entityType'] ?? ''),
+        'recordingId' => $recordingId,
+        'responsibleId' => $responsibleId,
+    ];
+}
+
+function a7_participant_external_phone(array $participant): array
+{
+    $knownTrunks = ['10000', '10001', '10002'];
+    $candidates = [
+        (string)($participant['party_caller_id'] ?? ''),
+        (string)($participant['party_dn'] ?? ''),
+        (string)($participant['party_caller_name'] ?? ''),
+    ];
+
+    foreach ($candidates as $candidate) {
+        $digits = a7_normalize_phone_digits($candidate);
+        if ($digits === '') {
+            continue;
+        }
+
+        if (a7_looks_internal_extension($candidate) || in_array($digits, $knownTrunks, true)) {
+            continue;
+        }
+
+        return [
+            'raw' => $candidate,
+            'digits' => $digits,
+        ];
+    }
+
+    return ['raw' => '', 'digits' => ''];
+}
+
+function a7_live_call_direction(array $participant): int
+{
+    $status = strtolower((string)($participant['status'] ?? ''));
+    if ($status === 'ringing') {
+        return 1;
+    }
+
+    if ($status === 'dialing') {
+        return 2;
+    }
+
+    return 0;
+}
+
+function a7_live_call_origin_id(string $extension, array $participant): string
+{
+    $callId = preg_replace('/\D/', '', (string)($participant['callid'] ?? '')) ?? '';
+    $legId = preg_replace('/\D/', '', (string)($participant['legid'] ?? '')) ?? '';
+    $participantId = preg_replace('/\D/', '', (string)($participant['id'] ?? '')) ?? '';
+
+    if ($callId !== '') {
+        return 'A7_3CX_LIVE_' . $extension . '_' . $callId . ($legId !== '' ? '_' . $legId : '');
+    }
+
+    return 'A7_3CX_LIVE_' . $extension . '_' . ($participantId !== '' ? $participantId : md5(json_encode($participant)));
+}
+
+function a7_live_call_activity_exists(int $ownerTypeId, int $ownerId, string $originId): bool
+{
+    if ($ownerTypeId <= 0 || $ownerId <= 0 || $originId === '') {
+        return false;
+    }
+
+    $response = a7_bitrix_webhook_call('crm.activity.list', [
+        'order' => ['ID' => 'DESC'],
+        'filter' => [
+            'OWNER_TYPE_ID' => $ownerTypeId,
+            'OWNER_ID' => $ownerId,
+            'ORIGIN_ID' => $originId,
+        ],
+        'select' => ['ID', 'SUBJECT', 'ORIGIN_ID'],
+        'start' => 0,
+    ]);
+
+    if (!$response['ok']) {
+        a7_log('Bitrix live call duplicate check failed', [
+            'owner_type_id' => $ownerTypeId,
+            'owner_id' => $ownerId,
+            'origin_id' => $originId,
+            'status' => $response['status'],
+            'error' => $response['error'] ?? '',
+        ]);
+        return false;
+    }
+
+    $result = $response['json']['result'] ?? [];
+    return is_array($result) && !empty($result);
+}
+
+function a7_choose_live_call_entity(array $entities, int $bitrixUserId): ?array
+{
+    if (empty($entities)) {
+        return null;
+    }
+
+    foreach ($entities as $entity) {
+        if ((int)($entity['assignedById'] ?? 0) === $bitrixUserId) {
+            $entity['selectedBecause'] = 'assigned_to_current_bitrix_user';
+            return $entity;
+        }
+    }
+
+    if (count($entities) === 1) {
+        $entity = $entities[0];
+        $entity['selectedBecause'] = 'single_phone_match';
+        return $entity;
+    }
+
+    return null;
+}
+
+function a7_sync_live_call_activity(array $participant, array $selectedEntity, string $extension, string $phoneRaw, string $phoneDigits, int $bitrixUserId): array
+{
+    $ownerTypeId = (int)($selectedEntity['ownerTypeId'] ?? 0);
+    $ownerId = (int)($selectedEntity['id'] ?? 0);
+    if ($ownerTypeId <= 0 || $ownerId <= 0) {
+        return ['status' => 'skipped', 'reason' => 'missing_owner'];
+    }
+
+    $originId = a7_live_call_origin_id($extension, $participant);
+    if (a7_live_call_activity_exists($ownerTypeId, $ownerId, $originId)) {
+        return [
+            'status' => 'skipped',
+            'reason' => 'already_logged',
+            'originId' => $originId,
+        ];
+    }
+
+    $direction = a7_live_call_direction($participant);
+    $status = (string)($participant['status'] ?? 'Unknown');
+    $phoneForCommunication = $phoneRaw !== '' ? $phoneRaw : ($phoneDigits !== '' ? '+' . $phoneDigits : '');
+    $maskedPhone = a7_mask_phone($phoneForCommunication);
+    $subject = $direction === 2 ? '3CX outbound call detected' : '3CX incoming call detected';
+    $description = '<p><b>' . htmlspecialchars($subject, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</b></p>'
+        . '<ul>'
+        . '<li>3CX extension: ' . htmlspecialchars($extension, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '<li>Status: ' . htmlspecialchars($status, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '<li>Phone: ' . htmlspecialchars($maskedPhone, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '<li>Call ID: ' . htmlspecialchars((string)($participant['callid'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</li>'
+        . '</ul>';
+
+    $fields = [
+        'OWNER_TYPE_ID' => $ownerTypeId,
+        'OWNER_ID' => $ownerId,
+        'TYPE_ID' => 2,
+        'PROVIDER_ID' => 'A7_3CX',
+        'PROVIDER_TYPE_ID' => 'LIVE_CALL',
+        'ORIGIN_ID' => $originId,
+        'SUBJECT' => $subject,
+        'START_TIME' => date('c'),
+        'END_TIME' => date('c'),
+        'COMPLETED' => 'N',
+        'RESPONSIBLE_ID' => $bitrixUserId,
+        'DESCRIPTION' => $description,
+        'DESCRIPTION_TYPE' => 3,
+    ];
+
+    if ($direction > 0) {
+        $fields['DIRECTION'] = $direction;
+    }
+
+    if ($phoneForCommunication !== '') {
+        $fields['COMMUNICATIONS'] = [[
+            'ENTITY_TYPE_ID' => $ownerTypeId,
+            'ENTITY_ID' => $ownerId,
+            'TYPE' => 'PHONE',
+            'VALUE' => $phoneForCommunication,
+        ]];
+    }
+
+    $response = a7_bitrix_webhook_call('crm.activity.add', ['fields' => $fields]);
+    if (!$response['ok'] || empty($response['json']['result'])) {
+        a7_log('Bitrix live call activity add failed', [
+            'owner_type_id' => $ownerTypeId,
+            'owner_id' => $ownerId,
+            'origin_id' => $originId,
+            'status' => $response['status'],
+            'error' => $response['error'] ?? '',
+            'raw' => mb_substr((string)$response['raw'], 0, 300),
+        ]);
+
+        return [
+            'status' => 'failed',
+            'reason' => 'crm_activity_add_failed',
+            'originId' => $originId,
+            'bitrixStatus' => $response['status'],
+        ];
+    }
+
+    return [
+        'status' => 'created',
+        'activityId' => (int)$response['json']['result'],
+        'originId' => $originId,
+    ];
+}
+
+function a7_handle_live_calls_ping(): void
+{
+    $bitrixUserId = a7_require_bitrix_user();
+    $user = a7_get_bitrix_user($bitrixUserId);
+    if (!$user) {
+        a7_json(['success' => false, 'message' => 'Bitrix user not found'], 404);
+    }
+
+    $extension = a7_clean_extension($user['UF_PHONE_INNER'] ?? '');
+    if ($extension === '') {
+        a7_json([
+            'success' => true,
+            'enabled' => false,
+            'reason' => 'current_user_has_no_3cx_extension',
+            'calls' => [],
+        ]);
+    }
+
+    $response = a7_3cx_callcontrol_get_json('/callcontrol/' . rawurlencode($extension));
+    if (!$response['ok'] || !is_array($response['json'] ?? null)) {
+        a7_log('3CX live calls fetch failed', [
+            'extension' => $extension,
+            'status' => $response['status'],
+            'error' => $response['error'] ?? '',
+            'raw' => mb_substr((string)$response['raw'], 0, 300),
+        ]);
+        a7_json(['success' => false, 'message' => 'Unable to fetch live 3CX calls'], 502);
+    }
+
+    $participants = $response['json']['participants'] ?? [];
+    $calls = [];
+    $createdCount = 0;
+    foreach (is_array($participants) ? $participants : [] as $participant) {
+        if (!is_array($participant)) {
+            continue;
+        }
+
+        $phone = a7_participant_external_phone($participant);
+        if ($phone['digits'] === '') {
+            continue;
+        }
+
+        $match = a7_find_bitrix_phone_matches($phone['digits']);
+        $selectedEntity = a7_choose_live_call_entity($match['entities'], $bitrixUserId);
+        $sync = ['status' => 'skipped', 'reason' => 'no_unambiguous_match'];
+        if ($selectedEntity !== null) {
+            $sync = a7_sync_live_call_activity($participant, $selectedEntity, $extension, $phone['raw'], $phone['digits'], $bitrixUserId);
+            if (($sync['status'] ?? '') === 'created') {
+                $createdCount++;
+            }
+        }
+
+        $calls[] = [
+            'originId' => a7_live_call_origin_id($extension, $participant),
+            'extension' => $extension,
+            'status' => (string)($participant['status'] ?? ''),
+            'direction' => a7_live_call_direction($participant) === 2 ? 'outbound' : 'incoming',
+            'phoneMasked' => a7_mask_phone($phone['raw'] !== '' ? $phone['raw'] : $phone['digits']),
+            'phoneDigitsTail' => substr($phone['digits'], -4),
+            'matches' => array_map(static function ($entity) {
+                return [
+                    'entityType' => $entity['entityType'],
+                    'id' => $entity['id'],
+                    'title' => $entity['title'],
+                    'detailUrl' => $entity['detailUrl'],
+                ];
+            }, $match['entities']),
+            'selectedEntity' => $selectedEntity ? [
+                'entityType' => $selectedEntity['entityType'],
+                'id' => $selectedEntity['id'],
+                'title' => $selectedEntity['title'],
+                'detailUrl' => $selectedEntity['detailUrl'],
+            ] : null,
+            'sync' => $sync,
+        ];
+    }
+
+    a7_json([
+        'success' => true,
+        'enabled' => true,
+        'extension' => $extension,
+        'createdCount' => $createdCount,
+        'calls' => $calls,
+    ]);
+}
+
+function a7_auth_from_request(): array
+{
+    $auth = $_POST['auth'] ?? $_GET['auth'] ?? [];
+    if (is_array($auth) && !empty($auth)) {
+        return $auth;
+    }
+
+    $accessToken = (string) a7_request_value('AUTH_ID', '');
+    if ($accessToken === '') {
+        $accessToken = (string) a7_request_value('access_token', '');
+    }
+
+    $domain = (string) a7_request_value('DOMAIN', ($_SERVER['HTTP_HOST'] ?? ''));
+    $protocol = (string) a7_request_value('PROTOCOL', 'https');
+    if ($protocol !== 'http' && $protocol !== 'https') {
+        $protocol = 'https';
+    }
+
+    $clientEndpoint = (string) a7_request_value('client_endpoint', '');
+    if ($clientEndpoint === '' && $domain !== '') {
+        $clientEndpoint = $protocol . '://' . $domain . '/rest/';
+    }
+
+    return [
+        'access_token' => $accessToken,
+        'domain' => $domain,
+        'client_endpoint' => $clientEndpoint,
+        'application_token' => (string) a7_request_value('APP_SID', (string) a7_request_value('application_token', '')),
+    ];
+}
+
+function a7_handle_install(): void
+{
+    $auth = a7_auth_from_request();
+    if (empty($auth['access_token'])) {
+        a7_json(['success' => false, 'message' => 'Missing Bitrix install auth'], 400);
+    }
+
+    $config = a7_read_config();
+    $config['installed_at'] = date('c');
+    $config['domain'] = $auth['domain'] ?? ($_SERVER['HTTP_HOST'] ?? '');
+    $config['application_token'] = $auth['application_token'] ?? ($config['application_token'] ?? '');
+    a7_write_config($config);
+
+    $bind = a7_bitrix_call('event.bind', [
+        'EVENT' => 'ONEXTERNALCALLSTART',
+        'HANDLER' => A7_HANDLER_URL . '?action=event',
+    ], $auth);
+
+    $line = a7_bitrix_call('telephony.externalLine.add', [
+        'NUMBER' => 'A7-3CX-DYNAMIC',
+        'NAME' => 'A7 3CX Click-to-Call',
+        'CRM_AUTO_CREATE' => 'N',
+    ], $auth);
+
+    a7_log('install complete', [
+        'bind_ok' => $bind['ok'],
+        'bind_status' => $bind['status'],
+        'line_ok' => $line['ok'],
+        'line_status' => $line['status'],
+        'line_result' => $line['json']['result'] ?? null,
+    ]);
+
+    a7_json([
+        'success' => true,
+        'message' => 'A7 3CX Click-to-Call app installed',
+        'event_bind_ok' => $bind['ok'],
+        'external_line_ok' => $line['ok'],
+        'external_line' => $line['json']['result'] ?? null,
+    ]);
+}
+
+function a7_handle_event(): void
+{
+    $event = (string)($_POST['event'] ?? $_GET['event'] ?? '');
+    $data = $_POST['data'] ?? $_GET['data'] ?? [];
+    $auth = a7_auth_from_request();
+    $config = a7_read_config();
+
+    if ($event !== 'ONEXTERNALCALLSTART') {
+        a7_json(['success' => true, 'message' => 'Ignored event', 'event' => $event]);
+    }
+
+    if (!is_array($data)) {
+        $data = [];
+    }
+
+    if (!empty($config['application_token']) && !empty($auth['application_token'])) {
+        if (!hash_equals((string)$config['application_token'], (string)$auth['application_token'])) {
+            a7_log('invalid application token');
+            a7_json(['success' => false, 'message' => 'Invalid application token'], 403);
+        }
+    }
+
+    $phone = (string)($data['PHONE_NUMBER_INTERNATIONAL'] ?? $data['PHONE_NUMBER'] ?? '');
+    $callId = (string)($data['CALL_ID'] ?? '');
+    $userId = (int)($data['USER_ID'] ?? 0);
+    $eventEntityType = a7_event_entity_type($data);
+    $eventEntityId = a7_event_entity_id($data);
+
+    if ($phone === '') {
+        a7_json(['success' => false, 'message' => 'Missing phone number'], 400);
+    }
+
+    try {
+        $callOwner = a7_resolve_owner_extension($eventEntityType, $eventEntityId, $userId);
+
+        $makeCall = a7_3cx_make_call($phone, [
+            'bitrix_call_id' => $callId,
+            'bitrix_user_id' => $userId,
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'call_owner_email' => $callOwner['email'],
+            'entity_type' => $eventEntityType,
+            'entity_id' => $eventEntityId,
+            'source' => 'bitrix_native_event',
+        ], $callOwner['extension']);
+
+        if (!$makeCall['ok']) {
+            a7_log('3CX makecall failed', [
+                'phone' => $phone,
+                'extension' => $callOwner['extension'],
+                'call_owner_user_id' => $callOwner['bitrix_user_id'],
+                'status' => $makeCall['status'],
+                'raw' => (string)$makeCall['raw'],
+            ]);
+            if ($callId !== '' && $userId > 0) {
+                a7_bitrix_call('telephony.externalCall.finish', [
+                    'CALL_ID' => $callId,
+                    'USER_ID' => $userId,
+                    'DURATION' => 0,
+                    'STATUS_CODE' => '603',
+                    'ADD_TO_CHAT' => 1,
+                ], $auth);
+            }
+            a7_json(['success' => false, 'message' => '3CX makecall failed'], 502);
+        }
+
+        a7_log('3CX makecall started', [
+            'phone' => $phone,
+            'bitrix_call_id' => $callId,
+            'bitrix_user_id' => $userId,
+            'extension' => $callOwner['extension'],
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'entity_type' => $eventEntityType,
+            'entity_id' => $eventEntityId,
+            'threecx_status' => $makeCall['status'],
+        ]);
+
+        // Keep the Bitrix call record from hanging. A later recording-sync pass can
+        // attach the actual 3CX recording to this CALL_ID when available.
+        $finish = null;
+        if ($callId !== '' && $userId > 0) {
+            $finish = a7_bitrix_call('telephony.externalCall.finish', [
+                'CALL_ID' => $callId,
+                'USER_ID' => $userId,
+                'DURATION' => 0,
+                'STATUS_CODE' => '200',
+                'ADD_TO_CHAT' => 1,
+            ], $auth);
+        }
+
+        a7_json([
+            'success' => true,
+            'message' => '3CX call started',
+            'threecx_status' => $makeCall['status'],
+            'extension' => $callOwner['extension'],
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'call_owner_name' => $callOwner['name'],
+            'bitrix_finish_ok' => is_array($finish) ? $finish['ok'] : null,
+        ]);
+    } catch (Throwable $e) {
+        a7_log('event handler exception', ['error' => $e->getMessage()]);
+        a7_json(['success' => false, 'message' => $e->getMessage()], 500);
+    }
+}
+
+function a7_handle_manual_call(): void
+{
+    $userId = a7_require_bitrix_user();
+    $phone = a7_clean_phone((string) a7_request_value('phone', ''));
+    $entityType = strtolower((string) a7_request_value('entityType', ''));
+    $entityId = (int) a7_request_value('entityId', 0);
+    $pageUrl = (string) a7_request_value('pageUrl', '');
+
+    if ($phone === '' || strlen(preg_replace('/\D/', '', $phone) ?? '') < 6) {
+        a7_json(['success' => false, 'message' => 'Valid phone number missing'], 400);
+    }
+
+    try {
+        $callOwner = a7_resolve_owner_extension($entityType, $entityId, $userId);
+
+        $makeCall = a7_3cx_make_call($phone, [
+            'source' => 'bitrix_manual_click',
+            'bitrix_user_id' => $userId,
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'call_owner_email' => $callOwner['email'],
+            'entity_type' => $entityType,
+            'entity_id' => $entityId,
+            'page_url' => $pageUrl,
+        ], $callOwner['extension']);
+
+        if (!$makeCall['ok']) {
+            a7_log('manual 3CX makecall failed', [
+                'phone' => $phone,
+                'extension' => $callOwner['extension'],
+                'call_owner_user_id' => $callOwner['bitrix_user_id'],
+                'status' => $makeCall['status'],
+                'raw' => (string)$makeCall['raw'],
+            ]);
+            a7_json(['success' => false, 'message' => '3CX makecall failed'], 502);
+        }
+
+        a7_add_call_activity($phone, $entityType, $entityId, $callOwner['bitrix_user_id'], $callOwner['extension'], $makeCall);
+
+        a7_log('manual 3CX makecall started', [
+            'phone' => $phone,
+            'bitrix_user_id' => $userId,
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'call_owner_email' => $callOwner['email'],
+            'extension' => $callOwner['extension'],
+            'entity_type' => $entityType,
+            'entity_id' => $entityId,
+            'threecx_status' => $makeCall['status'],
+        ]);
+
+        a7_json([
+            'success' => true,
+            'message' => '3CX call started',
+            'phone' => $phone,
+            'extension' => $callOwner['extension'],
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'call_owner_name' => $callOwner['name'],
+        ]);
+    } catch (Throwable $e) {
+        a7_log('manual handler exception', ['error' => $e->getMessage()]);
+        a7_json(['success' => false, 'message' => $e->getMessage()], 500);
+    }
+}
+
+function a7_run_recording_sync(int $limit, bool $dryRun, int $maxWrites, int $userId, string $source = 'manual'): array
+{
+    if ($limit <= 0) {
+        $limit = 10;
+    }
+    if ($limit > A7_RECORDING_MAX_LIMIT_PER_RUN) {
+        $limit = A7_RECORDING_MAX_LIMIT_PER_RUN;
+    }
+
+    if ($maxWrites < 0) {
+        $maxWrites = 0;
+    }
+    if ($maxWrites > A7_RECORDING_MAX_WRITES_PER_RUN) {
+        $maxWrites = A7_RECORDING_MAX_WRITES_PER_RUN;
+    }
+
+    $path = '/xapi/v1/Recordings?$orderby=StartTime%20desc&$top=' . $limit;
+    $response = a7_3cx_xapi_get_json($path);
+    if (!$response['ok'] || !is_array($response['json']['value'] ?? null)) {
+        a7_log('3CX recordings sync fetch failed', [
+            'status' => $response['status'],
+            'error' => $response['error'] ?? '',
+            'raw' => mb_substr((string)$response['raw'], 0, 300),
+            'source' => $source,
+        ]);
+        throw new RuntimeException('Unable to fetch 3CX recordings');
+    }
+
+    $cacheConfig = $dryRun ? [] : a7_read_config();
+    $cacheChanged = false;
+    $rows = [];
+    $createdCount = 0;
+    $skippedCount = 0;
+    $failedCount = 0;
+    foreach ($response['json']['value'] as $recording) {
+        if (!is_array($recording)) {
+            continue;
+        }
+
+        $recordingId = (int)($recording['Id'] ?? 0);
+        $cachedSync = !$dryRun ? a7_recording_cached_skip($cacheConfig, $recordingId) : null;
+        if ($cachedSync !== null) {
+            $rows[] = [
+                'recordingId' => $recordingId,
+                'callType' => (string)($recording['CallType'] ?? ''),
+                'startTime' => (string)($recording['StartTime'] ?? ''),
+                'endTime' => (string)($recording['EndTime'] ?? ''),
+                'duration' => (string)($recording['Duration'] ?? ''),
+                'internalExtension' => '',
+                'externalPhone' => '',
+                'hasRecordingUrl' => !empty($recording['RecordingUrl']),
+                'playbackUrl' => $recordingId > 0 ? a7_recording_playback_url($recordingId) : '',
+                'bitrixLeadIds' => [],
+                'bitrixLeads' => [],
+                'bitrixOwnerDataItemIds' => [],
+                'bitrixOwnerDataItems' => [],
+                'matchedBy' => [],
+                'selectedLead' => null,
+                'selectedEntity' => null,
+                'wouldWrite' => false,
+                'sync' => $cachedSync,
+            ];
+            $skippedCount++;
+            continue;
+        }
+
+        $parties = a7_recording_parties($recording);
+        $ageSeconds = a7_recording_age_seconds($recording);
+        if (!$dryRun && $ageSeconds !== null && $ageSeconds < A7_RECORDING_READY_DELAY_SECONDS) {
+            $rows[] = [
+                'recordingId' => $recordingId,
+                'callType' => (string)($recording['CallType'] ?? ''),
+                'startTime' => (string)($recording['StartTime'] ?? ''),
+                'endTime' => (string)($recording['EndTime'] ?? ''),
+                'duration' => (string)($recording['Duration'] ?? ''),
+                'internalExtension' => $parties['internal_extension'],
+                'externalPhone' => a7_mask_phone($parties['external_phone_raw'] !== '' ? $parties['external_phone_raw'] : $parties['external_phone_digits']),
+                'hasRecordingUrl' => !empty($recording['RecordingUrl']),
+                'playbackUrl' => $recordingId > 0 ? a7_recording_playback_url($recordingId) : '',
+                'bitrixLeadIds' => [],
+                'bitrixLeads' => [],
+                'bitrixOwnerDataItemIds' => [],
+                'bitrixOwnerDataItems' => [],
+                'matchedBy' => [],
+                'selectedLead' => null,
+                'selectedEntity' => null,
+                'wouldWrite' => false,
+                'sync' => [
+                    'status' => 'skipped',
+                    'reason' => 'recording_ready_delay',
+                    'ageSeconds' => $ageSeconds,
+                    'requiredAgeSeconds' => A7_RECORDING_READY_DELAY_SECONDS,
+                ],
+            ];
+            $skippedCount++;
+            continue;
+        }
+
+        $match = [
+            'leadIds' => [],
+            'leads' => [],
+            'ownerDataItemIds' => [],
+            'ownerDataItems' => [],
+            'entities' => [],
+            'matchedBy' => [],
+        ];
+
+        if ($parties['external_phone_digits'] !== '') {
+            $match = a7_find_bitrix_recording_matches($parties['external_phone_digits'], $recording);
+        }
+
+        $selectedEntity = a7_choose_best_entity_for_recording($match['entities'], $parties['internal_extension'], $recording);
+        $selectedLead = $selectedEntity && (int)($selectedEntity['ownerTypeId'] ?? 0) === 1
+            ? $selectedEntity
+            : null;
+
+        $row = [
+            'recordingId' => $recordingId,
+            'callType' => (string)($recording['CallType'] ?? ''),
+            'startTime' => (string)($recording['StartTime'] ?? ''),
+            'endTime' => (string)($recording['EndTime'] ?? ''),
+            'duration' => (string)($recording['Duration'] ?? ''),
+            'internalExtension' => $parties['internal_extension'],
+            'externalPhone' => a7_mask_phone($parties['external_phone_raw'] !== '' ? $parties['external_phone_raw'] : $parties['external_phone_digits']),
+            'hasRecordingUrl' => !empty($recording['RecordingUrl']),
+            'playbackUrl' => $recordingId > 0 ? a7_recording_playback_url($recordingId) : '',
+            'bitrixLeadIds' => $match['leadIds'],
+            'bitrixLeads' => $match['leads'],
+            'bitrixOwnerDataItemIds' => $match['ownerDataItemIds'],
+            'bitrixOwnerDataItems' => $match['ownerDataItems'],
+            'matchedBy' => $match['matchedBy'],
+            'selectedLead' => $selectedLead,
+            'selectedEntity' => $selectedEntity,
+            'wouldWrite' => $selectedEntity !== null,
+        ];
+
+        if (!$dryRun) {
+            if ($selectedEntity === null) {
+                $row['sync'] = [
+                    'status' => 'skipped',
+                    'reason' => !empty($match['entities'])
+                        ? 'ambiguous_or_unverified_bitrix_entity_match'
+                        : 'no_matching_bitrix_entity',
+                ];
+                $skippedCount++;
+            } elseif ($createdCount >= $maxWrites) {
+                $row['sync'] = ['status' => 'skipped', 'reason' => 'max_writes_reached'];
+                $skippedCount++;
+            } else {
+                $sync = a7_sync_recording_activity($recording, $parties, $selectedEntity, $userId);
+                $row['sync'] = $sync;
+                if (($sync['status'] ?? '') === 'created') {
+                    $createdCount++;
+                } elseif (($sync['status'] ?? '') === 'failed') {
+                    $failedCount++;
+                } else {
+                    $skippedCount++;
+                }
+            }
+
+            a7_recording_cache_register($cacheConfig, $recordingId, $row['sync'] ?? []);
+            $cacheChanged = true;
+        }
+
+        $rows[] = $row;
+    }
+
+    if (!$dryRun && $cacheChanged) {
+        a7_write_config($cacheConfig);
+    }
+
+    $matchedCount = count(array_filter($rows, static function ($row) {
+        return !empty($row['wouldWrite']);
+    }));
+
+    a7_log($dryRun ? 'recording sync dry-run completed' : 'recording sync write completed', [
+        'user_id' => $userId,
+        'source' => $source,
+        'limit' => $limit,
+        'checked' => count($rows),
+        'matched' => $matchedCount,
+        'dry_run' => $dryRun,
+        'created' => $createdCount,
+        'skipped' => $skippedCount,
+        'failed' => $failedCount,
+    ]);
+
+    return [
+        'success' => true,
+        'dryRun' => $dryRun,
+        'writeModeSupported' => true,
+        'maxWrites' => $maxWrites,
+        'checkedRecordings' => count($rows),
+        'matchedCount' => $matchedCount,
+        'createdCount' => $createdCount,
+        'skippedCount' => $skippedCount,
+        'failedCount' => $failedCount,
+        'rows' => $rows,
+    ];
+}
+
+function a7_handle_recording_sync(): void
+{
+    $userId = a7_require_bitrix_user();
+    $limit = (int) a7_request_value('limit', 10);
+    $dryRunValue = strtolower(trim((string) a7_request_value('dryRun', '1')));
+    $dryRun = !in_array($dryRunValue, ['0', 'false', 'no'], true);
+
+    if (!$dryRun) {
+        $userId = a7_require_bitrix_admin();
+        if ((string) a7_request_value('confirm', '') !== 'A7_RECORDING_SYNC') {
+            a7_json([
+                'success' => false,
+                'message' => 'Write mode requires confirm=A7_RECORDING_SYNC',
+                'dryRun' => true,
+                'writeModeSupported' => true,
+            ], 400);
+        }
+    }
+
+    $maxWrites = (int) a7_request_value('maxWrites', $dryRun ? 0 : 1);
+
+    try {
+        a7_json(a7_run_recording_sync_guarded($limit, $dryRun, $maxWrites, $userId, 'manual'));
+    } catch (Throwable $e) {
+        a7_log('recording sync exception', ['error' => $e->getMessage()]);
+        a7_json(['success' => false, 'message' => $e->getMessage()], 500);
+    }
+}
+
+function a7_text_response(string $text, int $statusCode = 200, string $contentType = 'text/plain; charset=utf-8'): void
+{
+    while (ob_get_level() > 0) {
+        ob_end_clean();
+    }
+
+    if (!headers_sent()) {
+        header('Content-Type: ' . $contentType);
+        http_response_code($statusCode);
+    }
+
+    echo $text;
+    exit;
+}
+
+function a7_recording_agent_expression(string $token): string
+{
+    $url = A7_HANDLER_URL . '?action=recording-sync-agent&token=' . rawurlencode($token);
+    return 'file_get_contents(' . var_export($url, true) . ');';
+}
+
+function a7_recording_agent_include_expression(): string
+{
+    return 'call_user_func(function(){include_once $_SERVER["DOCUMENT_ROOT"]."/bitrix/tools/a7_3cx_click_to_call.php"; return a7_3cx_recording_sync_agent();});';
+}
+
+function a7_recording_agent_token(array &$config): string
+{
+    $token = (string)($config['recording_agent_token'] ?? '');
+    if ($token === '') {
+        $token = bin2hex(random_bytes(24));
+        $config['recording_agent_token'] = $token;
+    }
+
+    return $token;
+}
+
+function a7_handle_recording_sync_agent_run(): void
+{
+    $config = a7_read_config();
+    $expectedToken = (string)($config['recording_agent_token'] ?? '');
+    $token = (string) a7_request_value('token', '');
+
+    if ($expectedToken === '' || $token === '' || !hash_equals($expectedToken, $token)) {
+        a7_log('recording sync agent invalid token');
+        a7_text_response('', 403);
+    }
+
+    $expression = a7_recording_agent_expression($expectedToken);
+    if (($config['recording_agent_enabled'] ?? 'Y') !== 'Y') {
+        a7_log('recording sync agent disabled');
+        a7_text_response($expression);
+    }
+
+    $limit = (int)($config['recording_agent_limit'] ?? A7_RECORDING_MAX_LIMIT_PER_RUN);
+    $maxWrites = (int)($config['recording_agent_max_writes'] ?? A7_RECORDING_MAX_WRITES_PER_RUN);
+    $userId = (int)($config['recording_agent_user_id'] ?? 1);
+    if ($userId <= 0) {
+        $userId = 1;
+    }
+
+    try {
+        $result = a7_run_recording_sync_guarded($limit, false, $maxWrites, $userId, 'bitrix_agent');
+        $config = a7_read_config();
+        $config['recording_agent_last_run'] = date('c');
+        $config['recording_agent_last_error'] = '';
+        $config['recording_agent_last_result'] = [
+            'checkedRecordings' => $result['checkedRecordings'] ?? 0,
+            'matchedCount' => $result['matchedCount'] ?? 0,
+            'createdCount' => $result['createdCount'] ?? 0,
+            'skippedCount' => $result['skippedCount'] ?? 0,
+            'failedCount' => $result['failedCount'] ?? 0,
+        ];
+        a7_write_config($config);
+    } catch (Throwable $e) {
+        $config['recording_agent_last_run'] = date('c');
+        $config['recording_agent_last_error'] = $e->getMessage();
+        a7_write_config($config);
+        a7_log('recording sync agent exception', ['error' => $e->getMessage()]);
+    }
+
+    // Bitrix agents keep running only when the executed expression returns
+    // the next expression. This response body becomes that next expression.
+    a7_text_response($expression);
+}
+
+function a7_3cx_recording_sync_agent(): string
+{
+    $expression = a7_recording_agent_include_expression();
+    $config = a7_read_config();
+
+    if (($config['recording_agent_enabled'] ?? 'Y') !== 'Y') {
+        a7_log('recording sync include-agent disabled');
+        return $expression;
+    }
+
+    $limit = (int)($config['recording_agent_limit'] ?? A7_RECORDING_MAX_LIMIT_PER_RUN);
+    $maxWrites = (int)($config['recording_agent_max_writes'] ?? A7_RECORDING_MAX_WRITES_PER_RUN);
+    $userId = (int)($config['recording_agent_user_id'] ?? 1);
+    if ($userId <= 0) {
+        $userId = 1;
+    }
+
+    try {
+        $result = a7_run_recording_sync_guarded($limit, false, $maxWrites, $userId, 'bitrix_include_agent');
+        $config = a7_read_config();
+        $config['recording_agent_last_run'] = date('c');
+        $config['recording_agent_last_error'] = '';
+        $config['recording_agent_last_result'] = [
+            'checkedRecordings' => $result['checkedRecordings'] ?? 0,
+            'matchedCount' => $result['matchedCount'] ?? 0,
+            'createdCount' => $result['createdCount'] ?? 0,
+            'skippedCount' => $result['skippedCount'] ?? 0,
+            'failedCount' => $result['failedCount'] ?? 0,
+        ];
+        a7_write_config($config);
+    } catch (Throwable $e) {
+        $config['recording_agent_last_run'] = date('c');
+        $config['recording_agent_last_error'] = $e->getMessage();
+        a7_write_config($config);
+        a7_log('recording sync include-agent exception', ['error' => $e->getMessage()]);
+    }
+
+    return $expression;
+}
+
+function a7_agent_rows(string $expression): array
+{
+    if (!class_exists('CAgent')) {
+        return [];
+    }
+
+    $rows = [];
+    $result = CAgent::GetList(['ID' => 'DESC'], ['=NAME' => $expression]);
+    if (is_object($result) && method_exists($result, 'Fetch')) {
+        while ($row = $result->Fetch()) {
+            $rows[] = [
+                'ID' => (int)($row['ID'] ?? 0),
+                'ACTIVE' => (string)($row['ACTIVE'] ?? ''),
+                'AGENT_INTERVAL' => (int)($row['AGENT_INTERVAL'] ?? 0),
+                'IS_PERIOD' => (string)($row['IS_PERIOD'] ?? ''),
+                'LAST_EXEC' => (string)($row['LAST_EXEC'] ?? ''),
+                'NEXT_EXEC' => (string)($row['NEXT_EXEC'] ?? ''),
+            ];
+        }
+    }
+
+    return $rows;
+}
+
+function a7_handle_recording_agent_install(): void
+{
+    $userId = a7_require_bitrix_admin();
+    if (!class_exists('CAgent')) {
+        a7_json(['success' => false, 'message' => 'Bitrix CAgent class not available'], 500);
+    }
+
+    $interval = (int) a7_request_value('interval', A7_RECORDING_MIN_SYNC_SECONDS);
+    if ($interval < A7_RECORDING_MIN_SYNC_SECONDS) {
+        $interval = A7_RECORDING_MIN_SYNC_SECONDS;
+    }
+    if ($interval > 1800) {
+        $interval = 1800;
+    }
+
+    $limit = (int) a7_request_value('limit', A7_RECORDING_MAX_LIMIT_PER_RUN);
+    if ($limit <= 0) {
+        $limit = A7_RECORDING_MAX_LIMIT_PER_RUN;
+    }
+    if ($limit > A7_RECORDING_MAX_LIMIT_PER_RUN) {
+        $limit = A7_RECORDING_MAX_LIMIT_PER_RUN;
+    }
+
+    $maxWrites = (int) a7_request_value('maxWrites', A7_RECORDING_MAX_WRITES_PER_RUN);
+    if ($maxWrites <= 0) {
+        $maxWrites = 1;
+    }
+    if ($maxWrites > A7_RECORDING_MAX_WRITES_PER_RUN) {
+        $maxWrites = A7_RECORDING_MAX_WRITES_PER_RUN;
+    }
+
+    $config = a7_read_config();
+    $token = a7_recording_agent_token($config);
+    $config['recording_agent_enabled'] = 'Y';
+    $config['recording_agent_interval'] = $interval;
+    $config['recording_agent_limit'] = $limit;
+    $config['recording_agent_max_writes'] = $maxWrites;
+    $config['recording_agent_user_id'] = $userId;
+    a7_write_config($config);
+
+    $oldHttpExpression = a7_recording_agent_expression($token);
+    $expression = a7_recording_agent_include_expression();
+    CAgent::RemoveAgent($oldHttpExpression, '');
+    CAgent::RemoveAgent($expression, '');
+
+    $nextExec = '';
+    if (function_exists('ConvertTimeStamp')) {
+        $nextExec = ConvertTimeStamp(time() + 60, 'FULL');
+    }
+
+    $agentId = CAgent::AddAgent($expression, '', 'N', $interval, '', 'Y', $nextExec, 100, false, false);
+    if (!$agentId) {
+        a7_json(['success' => false, 'message' => 'Unable to add Bitrix agent'], 500);
+    }
+
+    a7_log('recording sync agent installed', [
+        'agent_id' => (int)$agentId,
+        'interval' => $interval,
+        'limit' => $limit,
+        'max_writes' => $maxWrites,
+        'user_id' => $userId,
+    ]);
+
+    a7_json([
+        'success' => true,
+        'message' => 'Recording auto-sync agent installed',
+        'agentId' => (int)$agentId,
+        'intervalSeconds' => $interval,
+        'limit' => $limit,
+        'maxWrites' => $maxWrites,
+        'agentRows' => a7_agent_rows($expression),
+    ]);
+}
+
+function a7_handle_recording_agent_status(): void
+{
+    a7_require_bitrix_admin();
+    $config = a7_read_config();
+    $token = (string)($config['recording_agent_token'] ?? '');
+    $expression = a7_recording_agent_include_expression();
+    $options = [];
+    if (class_exists('COption')) {
+        $options = [
+            'agents_use_crontab' => COption::GetOptionString('main', 'agents_use_crontab', ''),
+            'check_agents' => COption::GetOptionString('main', 'check_agents', ''),
+        ];
+    }
+
+    a7_json([
+        'success' => true,
+        'configured' => $token !== '',
+        'enabled' => (string)($config['recording_agent_enabled'] ?? '') === 'Y',
+        'serverTime' => date('c'),
+        'bitrixOptions' => $options,
+        'intervalSeconds' => (int)($config['recording_agent_interval'] ?? 0),
+        'limit' => (int)($config['recording_agent_limit'] ?? 0),
+        'maxWrites' => (int)($config['recording_agent_max_writes'] ?? 0),
+        'lastRun' => (string)($config['recording_agent_last_run'] ?? ''),
+        'lastError' => (string)($config['recording_agent_last_error'] ?? ''),
+        'lastResult' => $config['recording_agent_last_result'] ?? null,
+        'ownerData' => [
+            'enabled' => true,
+            'entityTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+            'categoryId' => A7_OWNER_DATA_CATEGORY_ID,
+            'phoneFields' => a7_owner_data_phone_fields(),
+            'matching' => 'phone_plus_responsible_extension_plus_call_time',
+            'callTimeRequired' => true,
+            'callTimeToleranceSeconds' => A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS,
+        ],
+        'guard' => [
+            'minSyncSeconds' => A7_RECORDING_MIN_SYNC_SECONDS,
+            'maxLimitPerRun' => A7_RECORDING_MAX_LIMIT_PER_RUN,
+            'maxWritesPerRun' => A7_RECORDING_MAX_WRITES_PER_RUN,
+            'maxWritesPerHour' => A7_RECORDING_MAX_WRITES_PER_HOUR,
+            'maxWritesPerDay' => A7_RECORDING_MAX_WRITES_PER_DAY,
+            'recordingReadyDelaySeconds' => A7_RECORDING_READY_DELAY_SECONDS,
+            'rateHourWrites' => (int)($config['recording_rate_hour_writes'] ?? 0),
+            'rateDayWrites' => (int)($config['recording_rate_day_writes'] ?? 0),
+            'lastGuardAttempt' => (string)($config['recording_guard_last_attempt'] ?? ''),
+            'lastGuardResult' => $config['recording_guard_last_result'] ?? null,
+        ],
+        'agentRows' => a7_agent_rows($expression),
+    ]);
+}
+
+function a7_handle_recording_agent_run_once(): void
+{
+    a7_require_bitrix_admin();
+    $config = a7_read_config();
+    $token = (string)($config['recording_agent_token'] ?? '');
+    if ($token === '') {
+        a7_json(['success' => false, 'message' => 'Recording sync agent is not configured'], 400);
+    }
+
+    $expression = a7_recording_agent_include_expression();
+    $returnedExpression = a7_3cx_recording_sync_agent();
+    $after = a7_read_config();
+
+    a7_json([
+        'success' => $returnedExpression === $expression,
+        'returnedExpressionMatches' => $returnedExpression === $expression,
+        'rawPreview' => mb_substr($returnedExpression, 0, 120),
+        'lastRun' => (string)($after['recording_agent_last_run'] ?? ''),
+        'lastError' => (string)($after['recording_agent_last_error'] ?? ''),
+        'lastResult' => $after['recording_agent_last_result'] ?? null,
+    ]);
+}
+
+function a7_handle_recording_agent_ping(): void
+{
+    $userId = a7_require_bitrix_user();
+    $config = a7_read_config();
+    if (($config['recording_agent_enabled'] ?? 'Y') !== 'Y') {
+        a7_json(['success' => true, 'ran' => false, 'reason' => 'disabled']);
+    }
+
+    $interval = (int)($config['recording_agent_interval'] ?? A7_RECORDING_MIN_SYNC_SECONDS);
+    if ($interval < A7_RECORDING_MIN_SYNC_SECONDS) {
+        $interval = A7_RECORDING_MIN_SYNC_SECONDS;
+    }
+
+    $lastRun = (string)($config['recording_agent_last_run'] ?? '');
+    $lastTs = $lastRun !== '' ? strtotime($lastRun) : false;
+    $minGap = max(60, $interval - 15);
+    if ($lastTs !== false && (time() - $lastTs) < $minGap) {
+        a7_json([
+            'success' => true,
+            'ran' => false,
+            'reason' => 'throttled',
+            'lastRun' => $lastRun,
+            'nextAllowedInSeconds' => $minGap - (time() - $lastTs),
+        ]);
+    }
+
+    $returnedExpression = a7_3cx_recording_sync_agent();
+    $after = a7_read_config();
+    $after['recording_agent_last_ping_user_id'] = $userId;
+    $after['recording_agent_last_ping_at'] = date('c');
+    a7_write_config($after);
+
+    a7_json([
+        'success' => true,
+        'ran' => true,
+        'returnedExpressionMatches' => $returnedExpression === a7_recording_agent_include_expression(),
+        'lastRun' => (string)($after['recording_agent_last_run'] ?? ''),
+        'lastError' => (string)($after['recording_agent_last_error'] ?? ''),
+        'lastResult' => $after['recording_agent_last_result'] ?? null,
+    ]);
+}
+
+function a7_send_recording_audio_response(string $raw, string $contentType, int $recordingId): void
+{
+    $size = strlen($raw);
+    $start = 0;
+    $end = $size > 0 ? $size - 1 : 0;
+    $statusCode = 200;
+
+    $range = (string)($_SERVER['HTTP_RANGE'] ?? '');
+    if ($range !== '' && preg_match('/bytes=(\d*)-(\d*)/', $range, $matches)) {
+        $rangeStart = (string)($matches[1] ?? '');
+        $rangeEnd = (string)($matches[2] ?? '');
+
+        if ($rangeStart === '' && $rangeEnd !== '') {
+            $suffixLength = (int)$rangeEnd;
+            if ($suffixLength > 0) {
+                $start = max(0, $size - $suffixLength);
+            }
+        } elseif ($rangeStart !== '') {
+            $start = (int)$rangeStart;
+            if ($rangeEnd !== '') {
+                $end = min($end, (int)$rangeEnd);
+            }
+        }
+
+        if ($size <= 0 || $start < 0 || $start >= $size || $end < $start) {
+            if (!headers_sent()) {
+                http_response_code(416);
+                header('Content-Range: bytes */' . $size);
+                header('Accept-Ranges: bytes');
+            }
+            exit;
+        }
+
+        $statusCode = 206;
+    }
+
+    $length = $end - $start + 1;
+    $body = $statusCode === 206 ? substr($raw, $start, $length) : $raw;
+
+    while (ob_get_level() > 0) {
+        ob_end_clean();
+    }
+
+    if (!headers_sent()) {
+        http_response_code($statusCode);
+        header('Content-Type: ' . ($contentType ?: 'audio/x-wav'));
+        header('Content-Disposition: inline; filename="3cx-recording-' . $recordingId . '.wav"');
+        header('Content-Length: ' . strlen($body));
+        header('Accept-Ranges: bytes');
+        header('Cache-Control: private, max-age=300');
+        header('X-Content-Type-Options: nosniff');
+        if ($statusCode === 206) {
+            header('Content-Range: bytes ' . $start . '-' . $end . '/' . $size);
+        }
+    }
+
+    echo $body;
+    exit;
+}
+
+function a7_handle_recording_download(): void
+{
+    a7_require_bitrix_user();
+    $recordingId = (int) a7_request_value('id', 0);
+    if ($recordingId <= 0) {
+        a7_json(['success' => false, 'message' => 'Recording id missing'], 400);
+    }
+
+    if (function_exists('a7_s3_try_redirect_recording')) {
+        $providedSignature = a7_request_value('sig', '');
+        if (!is_string($providedSignature)) {
+            $providedSignature = 'invalid-request-type';
+        }
+
+        $signature = a7_resolve_authenticated_recording_signature(
+            $recordingId,
+            $providedSignature
+        );
+        if (a7_s3_try_redirect_recording($recordingId, $signature)) {
+            exit;
+        }
+    }
+
+    try {
+        $token = a7_3cx_token();
+        $url = rtrim(A7_3CX_BASE_URL, '/') . '/xapi/v1/Recordings/Pbx.DownloadRecording(recId=' . rawurlencode((string)$recordingId) . ')';
+        $response = a7_http_raw('GET', $url, [
+            'Authorization' => 'Bearer ' . $token,
+            'Accept' => 'audio/*, application/octet-stream',
+        ]);
+
+        if (!$response['ok'] || $response['raw'] === '') {
+            a7_log('3CX recording download failed', [
+                'recording_id' => $recordingId,
+                'status' => $response['status'],
+                'error' => $response['error'] ?? '',
+            ]);
+            a7_json([
+                'success' => false,
+                'message' => 'Unable to download 3CX recording',
+                'threecx_status' => $response['status'],
+            ], 502);
+        }
+
+        a7_send_recording_audio_response($response['raw'], (string)($response['content_type'] ?? ''), $recordingId);
+    } catch (Throwable $e) {
+        a7_log('recording download exception', ['recording_id' => $recordingId, 'error' => $e->getMessage()]);
+        a7_json(['success' => false, 'message' => $e->getMessage()], 500);
+    }
+}
+
+
+/* === BEGIN A7_OWNER_DATA_CUSTOM_CALL HELPERS === */
+function a7_owner_data_normalize_phone_value($raw): string
+{
+    if ($raw === null) {
+        return '';
+    }
+    if (is_array($raw)) {
+        foreach ($raw as $part) {
+            $phone = a7_owner_data_normalize_phone_value($part);
+            if ($phone !== '') {
+                return $phone;
+            }
+        }
+        return '';
+    }
+    $text = trim((string)$raw);
+    if ($text === '' || $text === '0') {
+        return '';
+    }
+    return a7_clean_phone($text);
+}
+
+function a7_owner_data_collect_phones(array $item): array
+{
+    $out = [];
+    $seen = [];
+    foreach (a7_owner_data_phone_fields() as $field => $label) {
+        $value = $item[$field] ?? null;
+        $values = is_array($value) ? $value : [$value];
+        foreach ($values as $candidate) {
+            $phone = a7_owner_data_normalize_phone_value($candidate);
+            if ($phone === '') {
+                continue;
+            }
+            $digits = preg_replace('/\D/', '', $phone) ?? '';
+            if (strlen($digits) < 6) {
+                continue;
+            }
+            $key = strlen($digits) > 10 ? substr($digits, -10) : $digits;
+            if (isset($seen[$key])) {
+                continue;
+            }
+            $seen[$key] = true;
+            $out[] = [
+                'phone' => $phone,
+                'label' => $label,
+                'field' => $field,
+            ];
+        }
+    }
+    return $out;
+}
+
+function a7_owner_data_get_item(int $itemId): ?array
+{
+    if ($itemId <= 0) {
+        return null;
+    }
+    $response = a7_bitrix_webhook_call('crm.item.get', [
+        'entityTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+        'id' => $itemId,
+    ]);
+    $item = $response['json']['result']['item'] ?? null;
+    if (!$response['ok'] || !is_array($item)) {
+        return null;
+    }
+    return $item;
+}
+
+function a7_handle_owner_data_phones(): void
+{
+    a7_require_bitrix_user();
+    $itemId = (int)a7_request_value('id', 0);
+    if ($itemId <= 0) {
+        a7_json(['success' => false, 'message' => 'Owner Data item id missing'], 400);
+    }
+
+    $item = a7_owner_data_get_item($itemId);
+    if ($item === null) {
+        a7_json(['success' => false, 'message' => 'Owner Data item not found'], 404);
+    }
+
+    $phones = a7_owner_data_collect_phones($item);
+    a7_json([
+        'success' => true,
+        'itemId' => $itemId,
+        'title' => (string)($item['title'] ?? ''),
+        'categoryId' => (int)($item['categoryId'] ?? 0),
+        'phones' => $phones,
+        'count' => count($phones),
+    ]);
+}
+
+function a7_handle_owner_data_call(): void
+{
+    // Owner Data only — independent of global A7_CALL_FEATURES_ENABLED.
+    $userId = a7_require_bitrix_user();
+    $itemId = (int)a7_request_value('id', 0);
+    $phone = a7_clean_phone((string)a7_request_value('phone', ''));
+    $pageUrl = (string)a7_request_value('pageUrl', '');
+
+    if ($itemId <= 0) {
+        a7_json(['success' => false, 'message' => 'Owner Data item id missing'], 400);
+    }
+    if ($phone === '' || strlen(preg_replace('/\D/', '', $phone) ?? '') < 6) {
+        a7_json(['success' => false, 'message' => 'Valid phone number missing'], 400);
+    }
+
+    $item = a7_owner_data_get_item($itemId);
+    if ($item === null) {
+        a7_json(['success' => false, 'message' => 'Owner Data item not found'], 404);
+    }
+
+    $phones = a7_owner_data_collect_phones($item);
+    $allowed = false;
+    foreach ($phones as $row) {
+        $a = preg_replace('/\D/', '', (string)$row['phone']) ?? '';
+        $b = preg_replace('/\D/', '', $phone) ?? '';
+        if ($a !== '' && $b !== '' && (substr($a, -10) === substr($b, -10) || $a === $b)) {
+            $allowed = true;
+            break;
+        }
+    }
+    if (!$allowed) {
+        a7_json(['success' => false, 'message' => 'Phone is not on this Owner Data card'], 400);
+    }
+
+    try {
+        $assignedById = (int)($item['assignedById'] ?? 0);
+        $callOwner = a7_resolve_owner_extension('', 0, $assignedById > 0 ? $assignedById : $userId);
+        // Prefer current logged-in agent's extension for click-to-call UX.
+        $selfOwner = a7_resolve_owner_extension('', 0, $userId);
+        $callOwner = $selfOwner;
+
+        $makeCall = a7_3cx_make_call($phone, [
+            'source' => 'owner_data_custom_button',
+            'bitrix_user_id' => $userId,
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'call_owner_email' => $callOwner['email'],
+            'entity_type' => 'owner_data',
+            'entity_id' => $itemId,
+            'page_url' => $pageUrl,
+        ], $callOwner['extension']);
+
+        if (!$makeCall['ok']) {
+            a7_log('owner-data 3CX makecall failed', [
+                'phone' => $phone,
+                'item_id' => $itemId,
+                'extension' => $callOwner['extension'],
+                'status' => $makeCall['status'],
+                'raw' => (string)$makeCall['raw'],
+            ]);
+            a7_json(['success' => false, 'message' => '3CX makecall failed'], 502);
+        }
+
+        // Log activity on SPA item (entity type 1042).
+        $description = '3CX outbound call started from Owner Data custom button.'
+            . "\nExtension: " . $callOwner['extension']
+            . "\nPhone: " . $phone;
+        a7_bitrix_webhook_call('crm.activity.add', [
+            'fields' => [
+                'OWNER_TYPE_ID' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+                'OWNER_ID' => $itemId,
+                'TYPE_ID' => 2,
+                'SUBJECT' => 'Owner Data outbound call started',
+                'START_TIME' => date('c'),
+                'END_TIME' => date('c'),
+                'COMPLETED' => 'N',
+                'DIRECTION' => 2,
+                'RESPONSIBLE_ID' => $callOwner['bitrix_user_id'],
+                'DESCRIPTION' => $description,
+                'COMMUNICATIONS' => [[
+                    'ENTITY_TYPE_ID' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+                    'ENTITY_ID' => $itemId,
+                    'TYPE' => 'PHONE',
+                    'VALUE' => $phone,
+                ]],
+            ],
+        ]);
+
+        a7_log('owner-data 3CX makecall started', [
+            'phone' => $phone,
+            'item_id' => $itemId,
+            'bitrix_user_id' => $userId,
+            'extension' => $callOwner['extension'],
+            'threecx_status' => $makeCall['status'],
+        ]);
+
+        a7_json([
+            'success' => true,
+            'message' => '3CX call started',
+            'phone' => $phone,
+            'extension' => $callOwner['extension'],
+            'call_owner_user_id' => $callOwner['bitrix_user_id'],
+            'call_owner_name' => $callOwner['name'],
+            'itemId' => $itemId,
+        ]);
+    } catch (Throwable $e) {
+        a7_log('owner-data call exception', ['error' => $e->getMessage(), 'item_id' => $itemId]);
+        a7_json(['success' => false, 'message' => $e->getMessage()], 500);
+    }
+}
+/* === END A7_OWNER_DATA_CUSTOM_CALL HELPERS === */
+
+function a7_handle_owner_data_diagnostic(): void
+{
+    a7_require_bitrix_admin();
+    $itemId = (int)a7_request_value('id', 0);
+    if ($itemId <= 0) {
+        a7_json(['success' => false, 'message' => 'Owner Data item id missing'], 400);
+    }
+
+    $response = a7_bitrix_webhook_call('crm.item.get', [
+        'entityTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+        'id' => $itemId,
+    ]);
+    $item = $response['json']['result']['item'] ?? null;
+    if (!$response['ok'] || !is_array($item)) {
+        a7_json(['success' => false, 'message' => 'Owner Data item not found'], 404);
+    }
+
+    $phoneFields = [];
+    foreach (a7_owner_data_phone_fields() as $field => $label) {
+        $value = $item[$field] ?? null;
+        $values = is_array($value) ? $value : [$value];
+        $maskedValues = [];
+        foreach ($values as $candidate) {
+            if ($candidate !== null && trim((string)$candidate) !== '' && trim((string)$candidate) !== '0') {
+                $maskedValues[] = a7_mask_phone((string)$candidate);
+            }
+        }
+        $phoneFields[] = [
+            'field' => $field,
+            'label' => $label,
+            'hasValue' => !empty($maskedValues),
+            'maskedValues' => $maskedValues,
+        ];
+    }
+
+    $assignedById = (int)($item['assignedById'] ?? 0);
+    $user = a7_get_bitrix_user($assignedById);
+    $extension = $user ? a7_clean_extension($user['UF_PHONE_INNER'] ?? '') : '';
+    $activityResponse = a7_bitrix_webhook_call('crm.activity.list', [
+        'order' => ['ID' => 'DESC'],
+        'filter' => [
+            'OWNER_TYPE_ID' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+            'OWNER_ID' => $itemId,
+            'TYPE_ID' => 2,
+        ],
+        'select' => ['ID', 'START_TIME', 'END_TIME', 'DIRECTION', 'RESPONSIBLE_ID', 'PROVIDER_ID'],
+        'start' => 0,
+    ]);
+    $activities = $activityResponse['json']['result'] ?? [];
+    if (!is_array($activities)) {
+        $activities = [];
+    }
+
+    $hasPhone = count(array_filter($phoneFields, static function ($row) {
+        return !empty($row['hasValue']);
+    })) > 0;
+
+    a7_json([
+        'success' => true,
+        'readOnly' => true,
+        'clickToCallEnabled' => A7_CALL_FEATURES_ENABLED,
+        'item' => [
+            'id' => $itemId,
+            'title' => (string)($item['title'] ?? ''),
+            'entityTypeId' => A7_OWNER_DATA_ENTITY_TYPE_ID,
+            'categoryId' => (int)($item['categoryId'] ?? 0),
+            'detailUrl' => '/crm/type/' . A7_OWNER_DATA_ENTITY_TYPE_ID . '/details/' . $itemId . '/',
+        ],
+        'phoneFields' => $phoneFields,
+        'responsible' => [
+            'id' => $assignedById,
+            'name' => $user ? a7_user_display_name($user) : '',
+            'extension' => $extension,
+            'hasExtension' => $extension !== '',
+        ],
+        'recentCallActivities' => array_slice($activities, 0, 10),
+        'readyForNextCallMatch' => $hasPhone && $extension !== '',
+        'matchingRule' => 'phone_plus_responsible_extension_plus_call_time',
+        'callTimeToleranceSeconds' => A7_RECORDING_CALL_TIME_TOLERANCE_SECONDS,
+    ]);
+}
+
+function a7_route_request(): void
+{
+    $action = (string) a7_request_value('action', '');
+
+    if ($action === 'install' || isset($_REQUEST['install'])) {
+        if (!A7_CALL_FEATURES_ENABLED) {
+            a7_handle_call_feature_disabled('install');
+        }
+        a7_handle_install();
+    }
+
+    if ($action === 'event' || (string)($_REQUEST['event'] ?? '') === 'ONEXTERNALCALLSTART') {
+        if (!A7_CALL_FEATURES_ENABLED) {
+            a7_handle_call_feature_disabled('external_call_event');
+        }
+        a7_handle_event();
+    }
+
+    if ($action === 'manual') {
+        if (!A7_CALL_FEATURES_ENABLED) {
+            a7_handle_call_feature_disabled('manual_click_to_call');
+        }
+        a7_handle_manual_call();
+    }
+
+    if ($action === 'recording-sync') {
+        a7_handle_recording_sync();
+    }
+
+    if ($action === 'recording-sync-agent') {
+        a7_handle_recording_sync_agent_run();
+    }
+
+    if ($action === 'recording-agent-install') {
+        a7_handle_recording_agent_install();
+    }
+
+    if ($action === 'recording-agent-status') {
+        a7_handle_recording_agent_status();
+    }
+
+if ($action === 'recording-agent-run-once') {
+    a7_handle_recording_agent_run_once();
+}
+
+if ($action === 'recording-agent-ping') {
+    a7_handle_recording_agent_ping();
+}
+
+    if ($action === 'recording') {
+        a7_handle_recording_download();
+    }
+
+    
+    if ($action === 'owner-data-phones') {
+        a7_handle_owner_data_phones();
+    }
+
+    if ($action === 'owner-data-call') {
+        a7_handle_owner_data_call();
+    }
+
+    if ($action === 'owner-data-diagnostic') {
+        a7_handle_owner_data_diagnostic();
+    }
+
+if ($action === 'live-calls-ping') {
+    if (!A7_CALL_FEATURES_ENABLED) {
+        a7_handle_call_feature_disabled('live_calls_monitor');
+    }
+    a7_handle_live_calls_ping();
+}
+
+    a7_json([
+        'success' => true,
+        'message' => 'A7 3CX handler is online',
+        'installed' => is_readable(A7_CONFIG_FILE),
+    ]);
+}
+
+if (a7_is_direct_request()) {
+    a7_route_request();
+}
+?>

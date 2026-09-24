@@ -1,0 +1,486 @@
+<?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+/** @var array $arResult */
+/** @var array $arParams */
+/** @var CMain $APPLICATION */
+/** @var LandingEditComponent $component */
+
+// e2e accessibility coverage of this preview lives in a neighbouring component - this template ships
+// without a bundle config, so chef would find no tests directory here:
+// landing.site_tile/templates/.default/tests/e2e/template-gallery-accessibility.spec.ts
+
+use Bitrix\Landing\Manager;
+use Bitrix\Landing\Sanitizer;
+use Bitrix\Landing\Site\Type;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Page\Asset;
+use Bitrix\Main\UI\Extension;
+use Bitrix\Landing\Restriction;
+use Bitrix\Landing\Metrika;
+use Bitrix\Main\Web\Uri;
+use Bitrix\Rest\Marketplace\Client;
+use Bitrix\Rest\Marketplace\Url;
+
+Manager::setPageTitle(
+	Loc::getMessage('LANDING_TPL_TITLE')
+);
+
+// extensions, css, js
+Extension::load([
+	'ui.design-tokens',
+	'ui.fonts.opensans',
+	'ui.buttons',
+	'ui.buttons.icons',
+	'ui.hint',
+	'ui.alerts',
+	'ui.progressbar',
+	'ui.notification',
+	'landing.settingsform.colorpickertheme',
+	'landing.metrika',
+	'main.qrcode',
+	'ui.analytics',
+]);
+
+CJSCore::init([
+	'landing_master', 'loader'
+]);
+Asset::getInstance()->addJs(
+	'/bitrix/components/bitrix/landing.site_edit/templates/.default/landing-forms.js'
+);
+
+// vars
+$request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
+$template = $arResult['TEMPLATE'] ?? null;
+$hasAccessCreate = $arResult['RIGHTS_CREATE'] ?: null;
+$marketSubscriptionNeeded = false;
+if ($arResult['NEEDED_SUBSCRIPTION'] === true && !Client::isSubscriptionAvailable())
+{
+	$marketSubscriptionNeeded = true;
+}
+
+
+if (!$template)
+{
+	showError(Loc::getMessage('LANDING_404_ERROR'));
+	return;
+}
+
+// create store
+$externalImport = !empty($arResult['EXTERNAL_IMPORT']);
+$isCreateStore =
+	!$externalImport
+	&& !$arResult['DISABLE_IMPORT']
+	&& ($arParams['SITE_ID'] <= 0)
+	&& (in_array('STORE', (array)$template['TYPE'], true))
+;
+
+$isCreateVibe = (bool)($arParams['IS_VIBE'] ?? false);
+
+if ($isCreateStore)
+{
+	$uriSelect = new Uri($arResult['CUR_URI']);
+	$uriSelect->addParams([
+		'stepper' => 'store',
+		'param' => $template['DATA']['parent'] ?? $template['ID'],
+		'sessid' => bitrix_sessid()
+	]);
+}
+else
+{
+	$uriSelect = new Uri($arResult['CUR_URI']);
+	$host = Manager::getPreviewHost();
+	$host = str_replace(['http://', 'https://'], '', $host);
+	preg_match(
+		"/{$host}\\/pub\\/site\\/(\\d+)/i",
+		$template['PREVIEW_URL'] ?? '',
+		$matches
+	);
+	$previewId = $matches[1] ?? 0;
+	$uriSelect->addParams([
+		'action' => 'select',
+		'no_redirect' => ($request->get('no_redirect') === 'Y') ? 'Y' : 'N',
+		'param' => $template['DATA']['parent'] ?? $template['ID'],
+		'app_code' => $template['APP_CODE'],
+		'title' => $template['TITLE'],
+		'preview_id' => $previewId,
+		'sessid' => bitrix_sessid()
+	]);
+}
+
+// the url is built from the address of the current request: it leaves the template only through the guard
+$createUrl = Sanitizer::sanitizeHrefScheme($uriSelect->getUri());
+if ($createUrl === '')
+{
+	showError(Loc::getMessage('LANDING_TPL_CREATE_URL_ERROR'));
+	return;
+}
+$createUrl = htmlspecialcharsbx($createUrl);
+?>
+
+<div class="landing-template-demo-preview-header-container">
+	<div class="landing-template-demo-preview-header landing-ui-panel-top" data-testid="landing-demo-preview-header">
+		<div class="landing-template-demo-preview-header-logo">
+			<?php if (Manager::isB24()):?>
+				<span class="landing-ui-panel-top-logo-text"><?=Loc::getMessage('LANDING_TPL_HEADER_LOGO_BITRIX')?></span>
+				<span class="landing-ui-panel-top-logo-color">24</span>
+				<span class="landing-ui-panel-top-logo-icon far fa-clock-three"></span>
+				<?php if ($arParams['TYPE'] === 'KNOWLEDGE' || $arParams['TYPE'] === 'GROUP'):?>
+					<span class="landing-ui-panel-top-logo-text left-spaced"><?=Loc::getMessage('LANDING_TPL_HEADER_LOGO_KB')?></span>
+			<?php elseif ($isCreateVibe) : ?>
+					<span class="landing-ui-panel-top-logo-text left-spaced"><?=Loc::getMessage('LANDING_TPL_DEMO_PREVIEW_LOGO_WELCOME_PAGE')?></span>
+				<?php else:?>
+					<span class="landing-ui-panel-top-logo-text left-spaced"><?=Loc::getMessage('LANDING_TPL_HEADER_LOGO_SITE')?></span>
+				<?php endif;?>
+			<?php else:?>
+				<span class="landing-ui-panel-top-logo-text"><?=Loc::getMessage('LANDING_TPL_HEADER_LOGO_SITE')?></span>
+				<span class="landing-ui-panel-top-logo-color">24</span>
+				<span class="landing-ui-panel-top-logo-icon far fa-clock-three"></span>
+			<?php endif;?>
+		</div>
+		<h1 class="landing-template-demo-preview-header-title" tabindex="-1" data-testid="landing-demo-preview-title">
+			<?= htmlspecialcharsbx($template['TITLE'])?>
+		</h1>
+		<div class="right-part">
+			<?php if (!$isCreateVibe): ?>
+			<button
+				type="button"
+				class="mobile-view ui-btn ui-btn-light-border ui-btn-round"
+				aria-haspopup="dialog"
+				data-testid="landing-demo-preview-mobile-btn"
+			>
+				<?= Loc::getMessage('LANDING_TPL_BUTTON_SHOW_IN_MOBILE')?>
+			</button>
+			<?php endif;?>
+			<?php if (!$marketSubscriptionNeeded) : ?>
+				<div class="create">
+			<?php else : ?>
+				<div class="create needed-market-subscription">
+			<?php endif;?>
+				<?php
+				if (!$hasAccessCreate)
+				{
+					?>
+					<button
+						type="button"
+						class="ui-btn ui-btn-success ui-btn-round ui-btn-disabled"
+						aria-disabled="true"
+						aria-describedby="landing-template-preview-create-reason"
+						data-hint="<?= Loc::getMessage('LANDING_TPL_HEADER_RIGHT_CREATE_HINT_MSGVER_1') ?>"
+						data-hint-no-icon
+						data-testid="landing-demo-preview-create-disabled-btn"
+					>
+						<?php if(isset($arParams['REPLACE_LID']) && $arParams['REPLACE_LID'] !== 0) : ?>
+							<?=Loc::getMessage('LANDING_TPL_BUTTON_REPLACE_PAGE') ?>
+						<?php elseif ($arParams['SITE_ID'] || $arParams['REPLACE_SITE_ID']) : ?>
+							<?=Loc::getMessage('LANDING_TPL_BUTTON_CREATE_PAGE') ?>
+						<?php else : ?>
+							<?=Loc::getMessage('LANDING_TPL_BUTTON_CREATE_SITE') ?>
+						<?php endif;?>
+					</button>
+					<span
+						id="landing-template-preview-create-reason"
+						class="landing-template-preview-visually-hidden"
+					><?= Loc::getMessage('LANDING_TPL_HEADER_RIGHT_CREATE_HINT_MSGVER_1') ?></span>
+					<?php
+				}
+				elseif (!empty($arResult['EXTERNAL_IMPORT']))
+				{
+					?>
+					<button
+						type="button"
+						class="ui-btn ui-btn-success ui-btn-round"
+						<?php if (isset($arResult['EXTERNAL_IMPORT']['href'])){?>onclick="BX.SidePanel.Instance.open('<?=
+							htmlspecialcharsbx(CUtil::jsEscape($arResult['EXTERNAL_IMPORT']['href']))
+						?>', {width: 1028})"<?}?>
+						<?php if (isset($arResult['EXTERNAL_IMPORT']['onclick'])){?>onclick="<?=
+							htmlspecialcharsbx(CUtil::jsEscape($arResult['EXTERNAL_IMPORT']['onclick']))
+						?>"<?}?>
+						data-slider-ignore-autobinding="true"
+						data-testid="landing-demo-preview-create-btn"
+						title="<?=Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>"
+					>
+						<?=Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>
+					</button>
+					<a href="<?= $createUrl ?>" class="ui-btn ui-btn-success ui-btn-round landing-template-preview-create"
+						  title="<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>"
+						  data-slider-ignore-autobinding="true"
+						  style="display: none;"
+					>
+						<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>
+					</a>
+					<?php
+				}
+				elseif ($isCreateStore)
+				{
+					?>
+					<button
+						type="button"
+						data-href="<?= $createUrl ?>"
+						class="ui-btn ui-btn-success ui-btn-round landing-template-preview-create"
+						title="<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE_STORE') ?>"
+						data-slider-ignore-autobinding="true"
+						data-testid="landing-demo-preview-create-btn"
+					>
+						<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE_STORE') ?>
+					</button>
+					<?php
+				}
+				elseif (isset($arParams['REPLACE_LID']) && $arParams['REPLACE_LID'] !== 0)
+				{
+					?>
+					<a
+						href="<?= $createUrl ?>"
+						class="ui-btn ui-btn-success ui-btn-round landing-template-preview-create"
+						title="<?= Loc::getMessage('LANDING_TPL_BUTTON_REPLACE_PAGE') ?>"
+						data-slider-ignore-autobinding="true"
+						data-testid="landing-demo-preview-create-btn"
+					>
+						<?= Loc::getMessage('LANDING_TPL_BUTTON_REPLACE_PAGE') ?>
+					</a>
+					<?php
+				}
+				elseif ($arParams['SITE_ID'] || $arParams['REPLACE_SITE_ID'])
+				{
+					?>
+					<a
+						href="<?= $createUrl ?>"
+						class="ui-btn ui-btn-success ui-btn-round landing-template-preview-create"
+						title="<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE_PAGE') ?>"
+						data-slider-ignore-autobinding="true"
+						data-testid="landing-demo-preview-create-btn"
+					>
+						<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE_PAGE') ?>
+					</a>
+					<?php
+				}
+				else
+				{
+					?>
+					<a href="<?= $createUrl ?>" class="ui-btn ui-btn-success ui-btn-round landing-template-preview-create"
+					   title="<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE_SITE') ?>"
+					   data-slider-ignore-autobinding="true"
+					   data-testid="landing-demo-preview-create-btn">
+						<?php if ($arParams['TYPE'] === 'KNOWLEDGE' || $arParams['TYPE'] === 'GROUP'):?>
+							<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE_KB') ?>
+						<?php else:?>
+							<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE_SITE') ?>
+						<?php endif;?>
+					</a>
+					<?php
+				}
+				?>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="landing-template-preview-body" data-testid="landing-demo-preview-body">
+	<div class="landing-template-preview">
+		<div class="preview-container">
+			<div class="preview-left">
+				<?php if ($isCreateVibe):?>
+					<div class="preview-desktop --main-page">
+						<div class="preview-header">
+							<div class="preview-header-left">
+								<div class="preview-header-balloon"></div>
+							</div>
+							<div class="preview-header-right"></div>
+						</div>
+						<div class="preview-menu"></div>
+						<div class="preview-desktop-body">
+							<div class="preview-desktop-body-image"></div>
+							<div class="preview-desktop-body-loader-container"></div>
+						</div>
+						<div class="preview-sidebar"></div>
+					</div>
+				<?php else: ?>
+					<div class="preview-desktop">
+						<div class="preview-desktop-body">
+							<div class="preview-desktop-body-image"></div>
+							<div class="preview-desktop-body-loader-container"></div>
+						</div>
+					</div>
+				<?php endif;?>
+				<div class="landing-popup-import">
+					<div class="landing-popup-import-loader"></div>
+					<div class="landing-popup-import-repeat hide">
+						<div class="landing-popup-import-repeat-text">
+							<?= Loc::getMessage('LANDING_TPL_POPUP_REPEAT_TEXT') ?>
+						</div>
+						<button
+							type="button"
+							class="landing-popup-import-repeat-button ui-btn ui-btn-light-border ui-btn-round"
+							data-testid="landing-demo-preview-import-repeat-btn"
+						>
+							<?= Loc::getMessage('LANDING_TPL_POPUP_REPEAT_BUTTON') ?>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div hidden class="preview-data">
+					<input
+						type="text"
+						data-name="title"
+						class="landing-template-preview-input-title"
+						data-testid="landing-demo-preview-title-input"
+						value="<?= htmlspecialcharsbx($template['TITLE']) ?>"
+					>
+					<textarea
+						data-name="description"
+						class="landing-template-preview-input-description"
+						data-testid="landing-demo-preview-description-input"
+					><?= htmlspecialcharsbx($template['DESCRIPTION']) ?></textarea>
+					<?php if ($template['URL_PREVIEW']):?>
+						<div class="landing-template-preview-base-url" data-base-url="<?= htmlspecialcharsbx($template['URL_PREVIEW'])?>"></div>
+					<?php endif; ?>
+			</div>
+		</div>
+	</div>
+
+	<div class="<?if ($request->get('IFRAME') === 'Y'){?>landing-edit-footer-fixed <?}?>pinable-block">
+		<div class="landing-form-footer-container">
+			<?php
+			if (!empty($arResult['EXTERNAL_IMPORT']))
+			{
+				?>
+				<button
+					type="button"
+					class="ui-btn ui-btn-success"
+					<?php if (isset($arResult['EXTERNAL_IMPORT']['href'])){?>onclick="BX.SidePanel.Instance.open('<?=
+						htmlspecialcharsbx(CUtil::jsEscape($arResult['EXTERNAL_IMPORT']['href']))
+					?>', {width: 1028})"<?}?>
+					<?php if (isset($arResult['EXTERNAL_IMPORT']['onclick'])){?>onclick="<?=
+						htmlspecialcharsbx(CUtil::jsEscape($arResult['EXTERNAL_IMPORT']['onclick']))
+					?>"<?}?>
+					data-slider-ignore-autobinding="true"
+					data-testid="landing-demo-preview-create-footer-btn"
+					title="<?=Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>"
+				>
+					<?=Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>
+				</button>
+				<a href="<?= $createUrl ?>" class="ui-btn ui-btn-success landing-template-preview-create"
+				   title="<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>"
+				   data-slider-ignore-autobinding="true"
+				   style="display: none;">
+					<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>
+				</a>
+				<?php
+			}
+			elseif ($isCreateStore)
+			{
+				?>
+				<button
+					type="button"
+					data-href="<?= $createUrl ?>"
+					class="ui-btn ui-btn-success landing-template-preview-create"
+					title="<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>"
+					data-slider-ignore-autobinding="true"
+					data-testid="landing-demo-preview-create-footer-btn"
+				>
+					<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>
+				</button>
+				<?php
+			}
+			else
+			{
+				?>
+				<a href="<?= $createUrl ?>" class="ui-btn ui-btn-success landing-template-preview-create"
+				   title="<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>"
+				   data-slider-ignore-autobinding="true"
+				   data-testid="landing-demo-preview-create-footer-btn">
+					<?= Loc::getMessage('LANDING_TPL_BUTTON_CREATE') ?>
+				</a>
+				<?php
+			}
+			?>
+			<button
+				type="button"
+				class="ui-btn ui-btn-md ui-btn-link landing-template-preview-close"
+				data-testid="landing-demo-preview-cancel-btn"
+			>
+				<?= Loc::getMessage('LANDING_TPL_BUTTON_CANCEL') ?>
+			</button>
+		</div>
+	</div>
+</div>
+
+<?php if ($template['URL_PREVIEW']):?>
+<script>
+	// Force init template preview layout
+	<?php
+	$popupTextCode = 'LANDING_TPL_POPUP_TEXT';
+	if ($isCreateStore)
+	{
+		$popupTextCode = 'LANDING_TPL_POPUP_TEXT_STORE';
+	}
+	elseif ($arParams['TYPE'] === 'KNOWLEDGE' || $arParams['TYPE'] === 'GROUP')
+	{
+		$popupTextCode = 'LANDING_TPL_POPUP_TEXT_KB';
+	}
+
+	$isKnowledgeBase = $arParams['TYPE'] === Type::SCOPE_CODE_KNOWLEDGE || $arParams['TYPE'] === Type::SCOPE_CODE_GROUP;
+	$appCode = $template['APP_CODE'];
+	if ($appCode === '')
+	{
+		$appCode = $template['ID'];
+	}
+	$siteType = null;
+	$res = \Bitrix\Landing\Site::getList([
+		'select' => ['TYPE'],
+		'filter' => ['ID' => $arParams['SITE_ID']]
+	]);
+	if ($row = $res->fetch())
+	{
+		$siteType = $row['TYPE'];
+	}
+	if (is_string($siteType))
+	{
+		$tool = Metrika\Tools::getBySiteType($siteType)->value;
+	}
+	?>
+	BX.Landing.TemplatePreviewInstance = BX.Landing.TemplatePreview.getInstance({
+		createStore: <?= ($isCreateStore ? 'true' : 'false') ?>,
+		createVibe: <?= ($isCreateVibe ? 'true' : 'false') ?>,
+		isVibeExists: <?= ($arParams['IS_VIBE_EXISTS'] ?? false) ? 'true' : 'false' ?>,
+		disableClickHandler: <?=(isset($arResult['EXTERNAL_IMPORT']['onclick']) ? 'true' : 'false') ?>,
+		messages: {
+			LANDING_LOADER_WAIT: "<?= CUtil::jsEscape(Loc::getMessage('LANDING_LOADER_WAIT_MSGVER_1')) ?>",
+			LANDING_TPL_POPUP_TITLE: "<?= CUtil::jsEscape(Loc::getMessage('LANDING_TPL_BUTTON_SHOW_IN_MOBILE')) ?>",
+			LANDING_TPL_POPUP_TEXT: "<?= CUtil::jsEscape(Loc::getMessage($popupTextCode)) ?>",
+			LANDING_TPL_PREVIEW_FRAME_TITLE: "<?= CUtil::jsEscape(Loc::getMessage('LANDING_TPL_PREVIEW_FRAME_TITLE')) ?>",
+			LANDING_PREVIEW_MAINPAGE_MESSAGE: '<?= \CUtil::jsEscape(Loc::getMessage('LANDING_PREVIEW_MAINPAGE_MESSAGE'));?>',
+			LANDING_PREVIEW_MAINPAGE_TITLE: '<?= \CUtil::jsEscape(Loc::getMessage('LANDING_PREVIEW_MAINPAGE_TITLE'));?>',
+			LANDING_PREVIEW_MAINPAGE_BUTTON_OK_TEXT: '<?= \CUtil::jsEscape(Loc::getMessage('LANDING_PREVIEW_MAINPAGE_BUTTON_OK_TEXT'));?>',
+			LANDING_PREVIEW_MAINPAGE_BUTTON_CANCEL_TEXT: '<?= \CUtil::jsEscape(Loc::getMessage('LANDING_PREVIEW_MAINPAGE_BUTTON_CANCEL_TEXT'));?>',
+		},
+		disableStoreRedirect: <?= ($arParams['DISABLE_REDIRECT'] === 'Y') ? 'true' : 'false' ?>,
+		zipInstallPath: '<?= ($template['ZIP_ID'] ?? null) ? Url::getConfigurationImportZipUrl($template['ZIP_ID']) : '' ?>',
+		appCode: '<?= $template['APP_CODE'] ?>',
+		siteId: <?= (int)($arParams['SITE_ID'] ?? 0) ?>,
+		replaceLid: <?= (int)($arParams['REPLACE_LID'] ?? 0) ?>,
+		replaceSiteId: <?= (int)($arParams['REPLACE_SITE_ID'] ?? 0) ?>,
+		folderId: <?= (int)($arParams['FOLDER_ID'] ?? 0) ?>,
+		isCrmForm: '<?= $arParams['IS_CRM_FORM'] ?? 'N' ?>',
+		isKnowledgeBase: '<?= $isKnowledgeBase ? 'Y' : 'N' ?>',
+		langId: "<?= is_string($arParams['LANG_ID']) ? $arParams['LANG_ID'] : ''?>",
+		adminSection: <?= $arParams['ADMIN_SECTION'] === 'Y' ? 'true' : 'false'?>,
+		urlPreview: <?=CUtil::PhpToJSObject($template['URL_PREVIEW'])?>,
+		tool: "<?= $tool ?? null ?>",
+	});
+
+	<?php if (!$isCreateStore):?>
+	BX.ready(function(){
+		new BX.Landing.SaveBtn(document.querySelector(".landing-template-preview-create"));
+	});
+	<?php endif;?>
+</script>
+
+<script>
+	BX.ready(function() {
+		BX.UI.Hint.init(document.body);
+	})
+</script>
+<?php endif;?>

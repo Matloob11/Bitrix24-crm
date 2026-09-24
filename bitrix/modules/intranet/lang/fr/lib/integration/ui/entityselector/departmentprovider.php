@@ -1,0 +1,11 @@
+<?php
+$MESS["INTRANET_ENTITY_SELECTOR_ALL_EMPLOYEES_SUBDIVISIONS"] = "Tous les employés, y compris ceux des sous-services";
+$MESS["INTRANET_ENTITY_SELECTOR_ALL_EMPLOYEES_SUBDIVISIONS_MSGVER_1"] = "Tous les employés, y compris ceux des sous-services";
+$MESS["INTRANET_ENTITY_SELECTOR_ALL_EMPLOYEES_SUBDIVISIONS_MSGVER_2"] = "Employés de ce département et des sous-départements";
+$MESS["INTRANET_ENTITY_SELECTOR_DEPARTMENTS_TAB_TITLE"] = "Services";
+$MESS["INTRANET_ENTITY_SELECTOR_MANAGER"] = "Superviseur";
+$MESS["INTRANET_ENTITY_SELECTOR_ONLY_DEPARTMENT_EMPLOYEES"] = "Seuls les employés du service";
+$MESS["INTRANET_ENTITY_SELECTOR_ONLY_DEPARTMENT_EMPLOYEES_MSGVER_1"] = "Employés de ce département uniquement";
+$MESS["INTRANET_ENTITY_SELECTOR_ONLY_EMPLOYEES"] = "(employés uniquement)";
+$MESS["INTRANET_ENTITY_SELECTOR_ONLY_EMPLOYEES_MSGVER_1"] = "#DEPARTMENT_NAME# (sans sous-départements)";
+$MESS["INTRANET_ENTITY_SELECTOR_SELECT_DEPARTMENT"] = "Sélectionnez un service";

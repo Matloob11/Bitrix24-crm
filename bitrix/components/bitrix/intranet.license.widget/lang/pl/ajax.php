@@ -1,0 +1,2 @@
+<?php
+$MESS["INTRANET_LICENSE_TILL"] = "Ważna do #LICENSETILL#";

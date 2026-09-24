@@ -1,0 +1,26 @@
+<?php
+$MESS["authprov_project_v2_sg_a"] = "Власник проєкту";
+$MESS["authprov_project_v2_sg_e"] = "Модератори";
+$MESS["authprov_project_v2_sg_k"] = "Учасники проєкту";
+$MESS["authprov_sg_a"] = "Власник групи";
+$MESS["authprov_sg_a_v2"] = "Власник проєкту";
+$MESS["authprov_sg_current"] = "Поточна група";
+$MESS["authprov_sg_current_v2"] = "Поточний";
+$MESS["authprov_sg_e"] = "Модератори групи";
+$MESS["authprov_sg_e_v2"] = "Модератори";
+$MESS["authprov_sg_k"] = "Всі члени групи";
+$MESS["authprov_sg_k_v2"] = "Учасники проєкту";
+$MESS["authprov_sg_name"] = "Групи соціальної мережі";
+$MESS["authprov_sg_name_out"] = "Група соціальної мережі";
+$MESS["authprov_sg_name_out_v2"] = "Проєкт";
+$MESS["authprov_sg_name_v2"] = "Проєкти";
+$MESS["authprov_sg_panel_last"] = "Останні";
+$MESS["authprov_sg_panel_last_v2"] = "Останні";
+$MESS["authprov_sg_panel_my_group"] = "Мої групи";
+$MESS["authprov_sg_panel_my_group_v2"] = "Мої проєкти";
+$MESS["authprov_sg_panel_search"] = "Пошук";
+$MESS["authprov_sg_panel_search_text"] = "Введіть назву групи.";
+$MESS["authprov_sg_panel_search_text_v2"] = "Введіть назву проєкту.";
+$MESS["authprov_sg_panel_search_v2"] = "Пошук";
+$MESS["authprov_sg_socnet_group"] = "Група соцмережі";
+$MESS["authprov_sg_socnet_group_v2"] = "Проєкт";

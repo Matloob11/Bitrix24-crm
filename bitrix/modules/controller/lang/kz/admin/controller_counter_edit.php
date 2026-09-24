@@ -1,0 +1,24 @@
+<?php
+$MESS["CTRL_CNT_EDIT_TITLE"] = "##ID# есептеуішін редакциялау";
+$MESS["CTRL_CNT_EDIT_TITLE_NEW"] = "Жаңа есептеуіш";
+$MESS["CTRL_COUNTER_EDIT_COMMAND"] = "Пәрмен";
+$MESS["CTRL_COUNTER_EDIT_COMMAND_FILE"] = "Файл жолы";
+$MESS["CTRL_COUNTER_EDIT_COMMAND_SOURCE"] = "Кодты қайдан алуға болады";
+$MESS["CTRL_COUNTER_EDIT_COMMAND_SOURCE_FILE"] = "файлдан";
+$MESS["CTRL_COUNTER_EDIT_COMMAND_SOURCE_FORM"] = "қалыптан";
+$MESS["CTRL_COUNTER_EDIT_COMMAND_TITLE"] = "Есептеуіш пәрменінің коды";
+$MESS["CTRL_COUNTER_EDIT_CONTROLLER_GROUP"] = "Топтар";
+$MESS["CTRL_COUNTER_EDIT_CONTROLLER_GROUP_TITLE"] = "Сайттар топтарына есептеуішті байлау";
+$MESS["CTRL_COUNTER_EDIT_COUNTER_FORMAT"] = "Пішім";
+$MESS["CTRL_COUNTER_EDIT_COUNTER_TYPE"] = "Түрі";
+$MESS["CTRL_COUNTER_EDIT_ERROR"] = "Сақтау қатесі";
+$MESS["CTRL_COUNTER_EDIT_NAME"] = "Атауы";
+$MESS["CTRL_COUNTER_EDIT_OPEN_FILE_BUTTON"] = "Ашу...";
+$MESS["CTRL_COUNTER_EDIT_TAB1"] = "Есептеуіш";
+$MESS["CTRL_COUNTER_EDIT_TAB1_TITLE"] = "Есептеуіш параметрлері";
+$MESS["CTRL_COUNTER_EDIT_TOOLBAR_DELETE"] = "Жою";
+$MESS["CTRL_COUNTER_EDIT_TOOLBAR_DELETE_CONFIRM"] = "Бұл есептеуішті жойғыңыз келетініне сенімдісіз бе (барлық жиналған деректер жойылады)?";
+$MESS["CTRL_COUNTER_EDIT_TOOLBAR_HISTORY"] = "Пәрменді түзету тарихын көрсету";
+$MESS["CTRL_COUNTER_EDIT_TOOLBAR_HISTORY_TEXT"] = "Тарих";
+$MESS["CTRL_COUNTER_EDIT_TOOLBAR_LIST"] = "Тізім";
+$MESS["CTRL_COUNTER_EDIT_TOOLBAR_NEW"] = "Жаңа";

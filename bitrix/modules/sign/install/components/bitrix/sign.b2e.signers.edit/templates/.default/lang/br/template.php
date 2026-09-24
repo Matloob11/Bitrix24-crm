@@ -1,0 +1,6 @@
+<?php
+$MESS["SIGN_B2E_SIGNERS_LIST_ACTION_COPY"] = "Copiar";
+$MESS["SIGN_B2E_SIGNERS_LIST_ACTION_DELETE"] = "Remover do grupo";
+$MESS["SIGN_B2E_SIGNERS_LIST_ACTION_EDIT"] = "Editar";
+$MESS["SIGN_B2E_SIGNERS_LIST_ADD_NEW_TITLE"] = "Adicionar colaboradores";
+$MESS["SIGN_B2E_SIGNERS_LIST_TITLE"] = "Grupos de colaboradores";

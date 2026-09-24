@@ -1,0 +1,23 @@
+<?php
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION"] = "Animação do controle deslizante";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_HINT"] = "Selecione o efeito de animação para transição entre slides consecutivos. A animação fade in só está disponível se houver apenas um slide.";
+$MESS["LANDING_BLOCK_ATTRS_ANIMATION_OFF"] = "Nenhum";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS"] = "Design do botão";
+$MESS["LANDING_BLOCK_ATTRS_ARROWS_0"] = "Nenhum botão";
+$MESS["LANDING_BLOCK_ATTRS_AUTO"] = "Automático";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY"] = "Reprodução automática";
+$MESS["LANDING_BLOCK_ATTRS_AUTOPLAY_SPEED"] = "Velocidade";
+$MESS["LANDING_BLOCK_ATTRS_DOTS"] = "Mostrar pontos de navegação";
+$MESS["LANDING_BLOCK_ATTRS_NO"] = "Não";
+$MESS["LANDING_BLOCK_ATTRS_OFF"] = "Desativar";
+$MESS["LANDING_BLOCK_ATTRS_ON"] = "Ativar";
+$MESS["LANDING_BLOCK_ATTRS_PAUSE_HOVER"] = "Pausar ao passar o mouse";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW"] = "Slides na tela";
+$MESS["LANDING_BLOCK_ATTRS_SLIDES_SHOW_HINT"] = "O número de slides simultâneos que o usuário verá na tela, posicionados lado a lado. Esta opção só funciona ao visualizar o site em um computador desktop ou laptop.";
+$MESS["LANDING_BLOCK_ATTRS_TIME_1"] = "1 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_3"] = "3 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_5"] = "5 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_10"] = "10 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_15"] = "15 s";
+$MESS["LANDING_BLOCK_ATTRS_TIME_30"] = "30 s";
+$MESS["LANDING_BLOCK_ATTRS_YES"] = "Sim";

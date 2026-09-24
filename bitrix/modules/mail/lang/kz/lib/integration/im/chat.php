@@ -1,0 +1,8 @@
+<?php
+$MESS["MAIL_CREATE_MAIL_CHAT_EMPTY_SUBJECT"] = "Хат #MESSAGE_ID#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_BODY"] = "Хат мәтіні: #BODY#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_FROM"] = "Кімнен: #FROM#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_RECEIVED_DATE"] = "Алынған күні: #RECEIVED_DATE#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_SUBJECT"] = "Хат: \n #SUBJECT#";
+$MESS["MAIL_POST_DISCUSS_MESSAGE_TO"] = "Кімге: #TO#";
+$MESS["MAIL_POST_WELCOME_MESSAGE"] = "Чат \"#MAIL_TITLE#\" хатынан құрылды ";

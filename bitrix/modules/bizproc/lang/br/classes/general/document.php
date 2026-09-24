@@ -1,0 +1,34 @@
+<?php
+$MESS["BPCGDOC_ADD"] = "Adicionar";
+$MESS["BPCGDOC_AUTO_EXECUTE_CREATE"] = "Criar";
+$MESS["BPCGDOC_AUTO_EXECUTE_DELETE"] = "Deletar";
+$MESS["BPCGDOC_AUTO_EXECUTE_EDIT"] = "Update";
+$MESS["BPCGDOC_AUTO_EXECUTE_NONE"] = "Não";
+$MESS["BPCGDOC_DELEGATE_LOG_MSGVER_1"] = "O usuário #FROM# delegou a atribuição \"#NAME#\" para #TO#";
+$MESS["BPCGDOC_DELEGATE_LOG_TITLE"] = "Delegado";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_DEFAULT"] = "#AUTHOR# delegou a atribuição do fluxo de trabalho para você.";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_MSGVER_1"] = "Uma atribuição do fluxo de trabalho foi delegada a você: [URL=#TASK_URL#]#TASK_NAME#[/URL]";
+$MESS["BPCGDOC_DELEGATE_NOTIFY_TEXT_SIMPLE"] = "delegou para você a atribuição \"#TASK_NAME#\", fluxo de trabalho: \"#PROCESS_NAME#\".";
+$MESS["BPCGDOC_EMPTY_WD_ID_MSGVER_1"] = "O ID do modelo de fluxo de trabalho está faltando";
+$MESS["BPCGDOC_ERROR_ACTION_MSGVER_1"] = "Atribuição \"#NAME#\": #ERROR#";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_MSGVER_1"] = "A atribuição \"#NAME#\" não pode ser delegada porque o colaborador selecionado não é seu subordinado.";
+$MESS["BPCGDOC_ERROR_DELEGATE_0_SINGLE_MSGVER_1"] = "O colaborador selecionado não é seu subordinado.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_MSGVER_1"] = "A atribuição \"#NAME#\" não pode ser delegada porque o usuário selecionado não trabalha para esta empresa.";
+$MESS["BPCGDOC_ERROR_DELEGATE_1_SINGLE_MSGVER_1"] = "O usuário selecionado não é um colaborador da empresa.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_MSGVER_1"] = "A atribuição \"#NAME#\" não pode ser delegada porque a delegação foi proibida nas preferências de atribuição.";
+$MESS["BPCGDOC_ERROR_DELEGATE_2_SINGLE_MSGVER_1"] = "A atribuição não pode ser delegada porque é proibida nas preferências de atribuição.";
+$MESS["BPCGDOC_ERROR_DELEGATE_MSGVER_1"] = "A atribuição \"#NAME#\" não pode ser delegada porque o colaborador selecionado já está designado para a atribuição.";
+$MESS["BPCGDOC_ERROR_DELEGATE_SINGLE_MSGVER_1"] = "O colaborador selecionado já é um participante da atribuição.";
+$MESS["BPCGDOC_ERROR_TASK_IS_NOT_INLINE_MSGVER_1"] = "A atribuição \"#NAME#\" não pode ser executada desta forma.";
+$MESS["BPCGDOC_INVALID_TYPE"] = "O tipo de parâmetro não está definido.";
+$MESS["BPCGDOC_INVALID_WF_ID_MSGVER_1"] = "Não foi encontrado o modelo para o fluxo de trabalho #ID#";
+$MESS["BPCGDOC_INVALID_WF_MSGVER_1"] = "O fluxo de trabalho está sendo executado em um elemento diferente";
+$MESS["BPCGDOC_NO"] = "Não";
+$MESS["BPCGDOC_WAIT"] = "aguarde...";
+$MESS["BPCGDOC_WI_B24_LIMITS_MESSAGE"] = "Algumas das entidades no seu portal executam mais de dois fluxos de trabalho simultâneos. Em breve, será introduzida uma restrição de no máximo dois fluxos de trabalho simultâneos por entidade. É recomendável que você altere a lógica de seus fluxos de trabalho. [URL=https://helpdesk.bitrix24.com/open/4838471/]Saiba mais[/URL]";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE"] = "Alguns dos fluxos de trabalho que você iniciou (#CNT#) tiveram erros ou foram concluídos incorretamente.
+[URL=#PATH#]Visualizar esses fluxos de trabalho[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT"] = "Alguns dos fluxos de trabalho que você iniciou (#CNT#) foram concluídos incorretamente. [URL=#PATH#]Visualizar estes fluxos de trabalho[/URL].";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_MESSAGE_DEFAULT_TITLE"] = "Fluxos de trabalho";
+$MESS["BPCGDOC_WI_LOCKED_NOTICE_TITLE_MSGVER_1"] = "Notificação do sistema";
+$MESS["BPCGDOC_YES"] = "Sim";

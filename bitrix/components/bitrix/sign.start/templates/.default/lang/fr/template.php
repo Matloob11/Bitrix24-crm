@@ -1,0 +1,6 @@
+<?php
+$MESS["CRM_COMMON_ACTION_CREATE_36"] = "Signer";
+$MESS["SIGN_CMP_START_TPL_DOCS_TITLE"] = "Documents à signer";
+$MESS["SIGN_CMP_START_TPL_MENU_CONTACTS"] = "Contacts";
+$MESS["SIGN_CMP_START_TPL_MENU_INDEX"] = "Documents";
+$MESS["SIGN_CMP_START_TPL_MENU_MYSAFE"] = "Mon coffre";

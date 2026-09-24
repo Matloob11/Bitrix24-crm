@@ -1,0 +1,9 @@
+<?php
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_DELETE"] = "Eliminar";
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_EMAIL"] = "Mensaje de correo electrónico";
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_EXPORT"] = "Exportar";
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_LINK"] = "Entidad vinculada agregada";
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_UNLINK"] = "Se eliminó la entidad vinculada";
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_UPDATE"] = "Cambios";
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_USER"] = "Personalizado";
+$MESS["CRM_EVENT_HISTORY_EVENT_NAME_VIEW"] = "Ver";

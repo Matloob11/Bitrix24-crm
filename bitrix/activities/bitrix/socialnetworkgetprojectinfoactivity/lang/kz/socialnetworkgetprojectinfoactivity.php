@@ -1,0 +1,6 @@
+<?php
+$MESS["SN_GET_PROJECT_INFO_ERROR_DURING_FETCHING_DATA"] = "Жоба деректерін алу мүмкін болмады";
+$MESS["SN_GET_PROJECT_INFO_ERROR_NOT_FOUND"] = "Жоба табылмады";
+$MESS["SN_GET_PROJECT_INFO_FIELD_ERROR_INVALID_VALUE"] = "\"#PROPERTY_NAME#\" қасиеті үшін дұрыс емес мәні";
+$MESS["SN_GET_PROJECT_INFO_FIELD_PROJECT_ID"] = "Жоба";
+$MESS["SN_GET_PROJECT_INFO_FIELD_PROJECT_ID_NAME"] = "Жоба";

@@ -1,0 +1,4 @@
+<?php
+$MESS["M_BP_STARTER_PARAMETERS_STEP_FINISH_BUTTON_TEXT"] = "Iniciar";
+$MESS["M_BP_STARTER_PARAMETERS_STEP_SUCCESS_MESSAGE"] = "Flujo de trabajo iniciado";
+$MESS["M_BP_STARTER_PARAMETERS_STEP_TITLE"] = "Iniciar flujo de trabajo";

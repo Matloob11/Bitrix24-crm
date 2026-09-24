@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_RECENT_SERVICE_EMPTY_STATE_FILTER_TEXT"] = "Спробуйте змінити фільтр.";
+$MESS["IMMOBILE_RECENT_SERVICE_EMPTY_STATE_FILTER_TITLE"] = "Нічого не знайдено";

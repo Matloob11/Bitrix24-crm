@@ -1,0 +1,3 @@
+<?php
+$MESS["SELECTOR_COMPONENT_IBLOCK_SECTION_START_TYPING_TEXT"] = "No hay secciones.";
+$MESS["SELECTOR_COMPONENT_IBLOCK_SECTION_TITLE"] = "Sección del bloque de información";

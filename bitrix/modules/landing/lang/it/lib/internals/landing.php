@@ -1,0 +1,20 @@
+<?php
+$MESS["LANDING_TABLE_ERROR_CANT_BE_EMPTY"] = "L'indirizzo della pagina non può essere vuoto.";
+$MESS["LANDING_TABLE_ERROR_FOLDER_NOT_FOUND"] = "La cartella non è stata trovata.";
+$MESS["LANDING_TABLE_ERROR_LD_IS_LOCK"] = "La pagina non può essere eliminata";
+$MESS["LANDING_TABLE_ERROR_SITE_NOT_FOUND"] = "Il sito non è stato trovato.";
+$MESS["LANDING_TABLE_ERROR_SLASH_IS_NOT_ALLOWED"] = "Il carattere barra non può essere utilizzato in un indirizzo di destinazione.";
+$MESS["LANDING_TABLE_FIELD_CREATED_BY_ID"] = "Creato da ID utente";
+$MESS["LANDING_TABLE_FIELD_DATE_CREATE"] = "Creato il";
+$MESS["LANDING_TABLE_FIELD_DATE_MODIFY"] = "Modificato il";
+$MESS["LANDING_TABLE_FIELD_DATE_PUBLIC"] = "Pubblicato il";
+$MESS["LANDING_TABLE_FIELD_DESCRIPTION"] = "Breve descrizione";
+$MESS["LANDING_TABLE_FIELD_LANDING_ACTIVE"] = "Stato pagina";
+$MESS["LANDING_TABLE_FIELD_LANDING_CODE"] = "Percorso relativo";
+$MESS["LANDING_TABLE_FIELD_LANDING_PUBLIC"] = "Pubblico";
+$MESS["LANDING_TABLE_FIELD_LANDING_SITEMAP"] = "Mappa del sito";
+$MESS["LANDING_TABLE_FIELD_LANDING_TITLE"] = "Nome pagina";
+$MESS["LANDING_TABLE_FIELD_MODIFIED_BY_ID"] = "Modificato da ID utente";
+$MESS["LANDING_TABLE_FIELD_SITE_ID"] = "Sito web";
+$MESS["LANDING_TABLE_FIELD_TPL_ID"] = "Modello";
+$MESS["LANDING_TABLE_FIELD_XML_ID"] = "ID esterno";

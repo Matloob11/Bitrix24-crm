@@ -1,0 +1,39 @@
+.booking__yandex-integration-wizard_app {
+	height: 100%;
+}
+
+.booking-yiw__layout {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.booking-yiw__wrapper {
+	display: flex;
+	flex-direction: column;
+	padding: 18px 20px 18px 22px;
+	gap: 20px;
+	position: relative;
+	flex: 1;
+	overflow-y: scroll;
+}
+
+.booking-yiw__content.--loading {
+	opacity: 0.6;
+}
+
+.booking-yiw__loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.booking-yiw__wrapper::-webkit-scrollbar {
+	width: 5px;
+}
+
+.booking-yiw__wrapper::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background: var(--ui-color-base-20);
+}

@@ -1,0 +1,3 @@
+<?php
+$MESS["VOTE_IM_EDIT_COMPONENT_CANCEL_VOTE"] = "Annuler";
+$MESS["VOTE_IM_EDIT_COMPONENT_CREATE_VOTE"] = "Créer un sondage";

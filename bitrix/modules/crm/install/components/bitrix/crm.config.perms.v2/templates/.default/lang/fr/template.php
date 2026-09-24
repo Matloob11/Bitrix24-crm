@@ -1,0 +1,5 @@
+<?php
+$MESS["CRM_CONFIG_PERMS_HELP"] = "AIDE";
+$MESS["CRM_CONFIG_PERMS_HELP_MSGVER_1"] = "Aide";
+$MESS["CRM_CONFIG_PERMS_SAVE_POPUP_CANCEL"] = "Annuler";
+$MESS["CRM_CONFIG_PERMS_SAVE_POPUP_TITLE"] = "Enregistrer les modifications ?";

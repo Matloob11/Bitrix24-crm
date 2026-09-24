@@ -1,0 +1,4 @@
+<?php
+$MESS["SELECTOR_COMPONENT_SEARCH_PLACEHOLDER_ELEMENT"] = "Nome, telefone ou e-mail";
+$MESS["SELECTOR_COMPONENT_START_TYPING_TO_SEARCH_ELEMENT"] = "Comece a digitar para encontrar itens";
+$MESS["SELECTOR_COMPONENT_TITLE_ELEMENT"] = "Itens de CRM";

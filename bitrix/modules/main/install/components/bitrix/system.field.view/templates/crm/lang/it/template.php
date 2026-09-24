@@ -1,0 +1,8 @@
+<?php
+$MESS["CRM_ENTITY_TYPE_COMPANY"] = "Azienda";
+$MESS["CRM_ENTITY_TYPE_CONTACT"] = "Contatto";
+$MESS["CRM_ENTITY_TYPE_DEAL"] = "Affare";
+$MESS["CRM_ENTITY_TYPE_LEAD"] = "Lead";
+$MESS["CRM_ENTITY_TYPE_ORDER"] = "Ordine";
+$MESS["CRM_SIP_MGR_MAKE_CALL"] = "Chiama";
+$MESS["CRM_SIP_MGR_UNKNOWN_RECIPIENT"] = "Chiamante sconosciuto";

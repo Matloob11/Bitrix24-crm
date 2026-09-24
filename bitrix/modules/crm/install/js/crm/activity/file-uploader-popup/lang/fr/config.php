@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_FILE_UPLOADER_POPUP_CANCEL"] = "Annuler (Echap)";
+$MESS["CRM_FILE_UPLOADER_POPUP_TITLE_2"] = "Fichiers";

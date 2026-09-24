@@ -1,0 +1,203 @@
+import { ajax as Ajax, type AjaxResponse, Loc, Reflection } from 'main.core';
+import { App } from 'ui.accessrights.v2';
+import { ButtonSize, CancelButton, SaveButton, Button, AirButtonStyle } from 'ui.buttons';
+import { MessageBox } from 'ui.dialogs.messagebox';
+
+const namespace = Reflection.namespace('BX.Crm');
+
+class ConfigPermsComponent
+{
+	AccessRights: App;
+	AccessRightsOption: Object;
+	hasLeftMenu: boolean;
+	menuId: string;
+	useAirDesign: boolean;
+
+	constructor(config)
+	{
+		this.AccessRightsOption = config.AccessRightsOption;
+		this.AccessRights = config.AccessRights;
+		this.hasLeftMenu = config.hasLeftMenu;
+		this.menuId = config.menuId;
+		this.useAirDesign = config.useAirDesign ?? false;
+	}
+
+	init(): void
+	{
+		this.AccessRights.draw();
+		this.#renderHelpButton();
+
+		if (this.hasLeftMenu)
+		{
+			this.#addWrapperSliderContent();
+			this.#addWrapperLeftMenu();
+		}
+	}
+
+	#addWrapperSliderContent()
+	{
+		const sliderContent = document.getElementById('ui-page-slider-content');
+		if (sliderContent)
+		{
+			const wrapperSliderContent = document.createElement('div');
+			wrapperSliderContent.className = 'crm-config-perms-v2-slider-content';
+			sliderContent.parentNode.insertBefore(wrapperSliderContent, sliderContent);
+			wrapperSliderContent.appendChild(sliderContent);
+		}
+	}
+
+	#addWrapperLeftMenu()
+	{
+		const leftPanel = document.getElementById('left-panel');
+
+		if (leftPanel)
+		{
+			const wrapperLeftMenu = document.createElement('div');
+			wrapperLeftMenu.className = 'crm-config-perms-v2-sidebar';
+			leftPanel.parentNode.insertBefore(wrapperLeftMenu, leftPanel);
+			wrapperLeftMenu.appendChild(leftPanel);
+		}
+	}
+
+	#renderHelpButton()
+	{
+		const Helper = Reflection.getClass('top.BX.Helper');
+		const helpButton = new Button({
+			size: ButtonSize.SMALL,
+			text: Loc.getMessage('CRM_CONFIG_PERMS_HELP_MSGVER_1'),
+			style: AirButtonStyle.OUTLINE_NO_ACCENT,
+			useAirDesign: true,
+			onclick: () => {
+				const articleCode = '23240636';
+
+				Helper?.show(`redirect=detail&code=${articleCode}`);
+			},
+		});
+		const parentElement = document.querySelector('.crm-config-perms-v2-header');
+		helpButton.renderTo(parentElement);
+	}
+
+	openPermission(controllerData): void
+	{
+		if (this.menuId === controllerData.menuId)
+		{
+			return;
+		}
+
+		if (!this.AccessRights.hasUnsavedChanges())
+		{
+			this.redrawAccessRight(controllerData);
+		}
+		else
+		{
+			event.stopImmediatePropagation();
+			this.#confirmBeforeRedraw(controllerData);
+		}
+	}
+
+	redrawAccessRight(controllerData): void
+	{
+		const loader = new BX.Loader({
+			target: document.getElementById('bx-crm-perms-config-permissions'),
+		});
+		const selectedMember = this.AccessRights.getSelectedMember();
+		this.AccessRights.destroy();
+		loader.show();
+
+		this.#runGetDataAjaxRequest(controllerData)
+			.then((options) => {
+				this.AccessRightsOption = {
+					...options,
+					selectedMember,
+				};
+
+				this.AccessRights = new App(this.AccessRightsOption);
+				this.AccessRights.draw();
+				scrollTo({ top: 0 });
+
+				this.menuId = controllerData.menuId;
+			})
+			.catch((response: SaveAjaxResponse) => {
+				console.warn('ui.accessrights.v2: error during redraw', response);
+
+				this.#showNotification(response?.errors?.[0]?.message || 'Something went wrong');
+			})
+			.finally(() => {
+				loader.hide();
+			});
+	}
+
+	#runGetDataAjaxRequest(controllerData): Promise
+	{
+		return new Promise((resolve, reject) => {
+			Ajax.runComponentAction(
+				'bitrix:crm.config.perms.v2',
+				'getData',
+				{
+					mode: 'class',
+					json: {
+						controllerData,
+					},
+				},
+			)
+				.then((response: AjaxResponse) => {
+					resolve(response.data);
+				})
+				.catch(reject)
+			;
+		});
+	}
+
+	#confirmBeforeRedraw(controllerData): void
+	{
+		const box = MessageBox.create({
+			message: Loc.getMessage('CRM_CONFIG_PERMS_SAVE_POPUP_TITLE'),
+			modal: true,
+			useAirDesign: true,
+			buttons: [
+				new SaveButton({
+					size: ButtonSize.LARGE,
+					style: AirButtonStyle.FILLED,
+					useAirDesign: true,
+					onclick: (button) => {
+						button.setWaiting(true);
+
+						this.AccessRights.sendActionRequest()
+							.then(() => {
+								document.querySelector(`[data-menu-id="${controllerData.menuId}"]`).click();
+							})
+							.catch(() => {})
+							.finally(() => {
+								box.close();
+							});
+					},
+				}),
+				new CancelButton({
+					text: Loc.getMessage('CRM_CONFIG_PERMS_SAVE_POPUP_CANCEL'),
+					size: ButtonSize.LARGE,
+					style: AirButtonStyle.OUTLINE,
+					useAirDesign: true,
+					onclick: () => {
+						box.close();
+					},
+				}),
+			],
+			popupOptions: {
+				fixed: true,
+			},
+		});
+
+		box.show();
+	}
+
+	#showNotification(title): void
+	{
+		BX.UI.Notification.Center.notify({
+			content: title,
+			position: 'top-right',
+			autoHideDelay: 3000,
+		});
+	}
+}
+
+namespace.ConfigPermsComponent = ConfigPermsComponent;

@@ -1,0 +1,4 @@
+<?
+$MESS["IMOL_HELPER_TEMPLATE_COLORED"] = "Colorato";
+$MESS["IMOL_HELPER_TEMPLATE_TRANSPARENT"] = "Trasparente";
+?>

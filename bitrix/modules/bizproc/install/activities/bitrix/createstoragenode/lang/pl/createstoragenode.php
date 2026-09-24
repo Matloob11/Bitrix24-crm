@@ -1,0 +1,10 @@
+<?php
+$MESS["BPCSN_DESCRIPTION_CODE_FIELD_NAME"] = "Kod symboliczny magazynu";
+$MESS["BPCSN_DESCRIPTION_DESCRIPTION_FIELD_NAME"] = "Opis";
+$MESS["BPCSN_DESCRIPTION_EMPTY_FIELDS_ERROR"] = "Przynajmniej jedno pole jest wymagane.";
+$MESS["BPCSN_DESCRIPTION_FIELD_CODE_CAPTION"] = "skopiuj kod";
+$MESS["BPCSN_DESCRIPTION_FIELD_COPY_NOTIFICATION"] = "Skopiowano kod symboliczny pola.";
+$MESS["BPCSN_DESCRIPTION_MODE_FIELD_NAME"] = "Zaktualizuj magazyn, jeśli już istnieje";
+$MESS["BPCSN_DESCRIPTION_RETURN_CODE_FIELD_NAME"] = "Kod symboliczny rekordu";
+$MESS["BPCSN_DESCRIPTION_SELECTED_FIELDS_NAME"] = "Dodaj pole";
+$MESS["BPCSN_DESCRIPTION_TITLE_FIELD_NAME"] = "Nazwa";

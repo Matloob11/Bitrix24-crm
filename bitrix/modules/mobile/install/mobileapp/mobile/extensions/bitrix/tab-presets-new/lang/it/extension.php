@@ -1,0 +1,23 @@
+<?php
+$MESS["PRESET_INFO_CANCEL"] = "Annulla";
+$MESS["PRESET_INFO_SELECT"] = "Seleziona";
+$MESS["PRESET_INFO_SELECTED"] = "Selezionato";
+$MESS["PRESET_MANUAL_SETTINGS_BANNER_DESCRIPTION"] = "Seleziona e sistema le voci da visualizzare nel menu in basso. Le voci rimaste saranno disponibili nell'icona \"Altro\".";
+$MESS["PRESET_MANUAL_SETTINGS_BANNER_TITLE"] = "Crea il tuo menu personale";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_HIDE"] = "Nascondi";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_SAVE"] = "Fatto";
+$MESS["PRESET_MANUAL_SETTINGS_BUTTON_SHOW"] = "Aggiungi";
+$MESS["PRESET_MANUAL_SETTINGS_SECTION_MENU_TITLE"] = "Voci del menu in basso";
+$MESS["PRESET_MANUAL_SETTINGS_SECTION_MORE_TITLE"] = "Voci del menu Altro";
+$MESS["PRESET_MANUAL_SETTINGS_TITLE"] = "Menu personalizzato";
+$MESS["TAB_PRESETS_NEW_APPLY_ERROR"] = "Impossibile applicare le modifiche";
+$MESS["TAB_PRESETS_NEW_BANNER_DESCRIPTION"] = "Scegli un layout preimpostato per il menu in basso o seleziona \"Menu personalizzato\" per creare il tuo layout.";
+$MESS["TAB_PRESETS_NEW_BANNER_TITLE"] = "Seleziona menu in basso";
+$MESS["TAB_PRESETS_NEW_CONFIRM_ACCEPT"] = "OK";
+$MESS["TAB_PRESETS_NEW_CONFIRM_CLOSE"] = "Annulla";
+$MESS["TAB_PRESETS_NEW_CONFIRM_DESCRIPTION"] = "Vuoi modificare il menu in basso? Puoi cambiare opzione in qualsiasi momento.";
+$MESS["TAB_PRESETS_NEW_CONFIRM_TITLE"] = "Menu in basso";
+$MESS["TAB_PRESETS_NEW_EDIT"] = "Modifica";
+$MESS["TAB_PRESETS_NEW_ERROR"] = "Impossibile aprire la pagina delle impostazioni. Se il problema persiste, contatta il tuo amministratore Bitrix24.";
+$MESS["TAB_PRESETS_NEW_SELECT"] = "Seleziona";
+$MESS["TAB_PRESETS_NEW_SELECTED"] = "Selezionato";

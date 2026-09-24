@@ -1,0 +1,24 @@
+<?php
+$MESS["MP_ERROR_INCORRECT_URL_INSTALL"] = "Instalação URL incorreta.";
+$MESS["PAYMENT_MESSAGE_D_N_Y"] = "Alguns dos recursos do aplicativo estão indisponíveis. Por favor, entre em contato com seu administrador para instalar a versão completa.";
+$MESS["PAYMENT_MESSAGE_D_N_Y_A"] = "Alguns dos recursos do aplicativo estão indisponíveis. Compre a versão completa.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y"] = "A assinatura do seu aplicativo expirou. Alguns dos recursos do aplicativo estão indisponíveis. Por favor, entre em contato com seu administrador para instalar a versão completa.";
+$MESS["PAYMENT_MESSAGE_D_Y_Y_A"] = "A assinatura do seu aplicativo expirou. Alguns dos recursos do aplicativo estão indisponíveis.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD"] = "Este aplicativo foi bloqueado devido ao excesso de carga. Entre em contato com o administrador do Bitrix24.";
+$MESS["PAYMENT_MESSAGE_HOLD_OVERLOAD_A"] = "Este aplicativo foi bloqueado devido ao excesso de carga. Entre em contato com o Suporte Técnico para corrigir o problema.";
+$MESS["PAYMENT_MESSAGE_P_N_Y"] = "A assinatura do seu aplicativo irá expirar em <b>#DAYS#</b> dias. Entre em contato com o seu administrador para renovar a assinatura.";
+$MESS["PAYMENT_MESSAGE_P_N_Y_A"] = "A assinatura do seu aplicativo irá expirar em <b>#DAYS#</b> dias.";
+$MESS["PAYMENT_MESSAGE_P_Y_N"] = "O aplicativo não está mais disponível porque sua assinatura expirou. Por favor, entre em contato com seu administrador para renovar a assinatura.";
+$MESS["PAYMENT_MESSAGE_P_Y_N_A"] = "O aplicativo não está mais disponível porque sua assinatura expirou.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y"] = "A assinatura do seu aplicativo expirou. Por favor, entre em contato com seu administrador para instalar a versão completa.";
+$MESS["PAYMENT_MESSAGE_P_Y_Y_A"] = "A assinatura do seu aplicativo expirou.";
+$MESS["PAYMENT_MESSAGE_S_N_Y"] = "Você tem mais <b>#DAYS#</b> dias até que a assinatura do seu aplicativo expire. Por favor, entre em contato com o administrador para renovar a assinatura.";
+$MESS["PAYMENT_MESSAGE_S_N_Y_A"] = "Você tem mais <b>#DAYS#</b> dias até que a assinatura do seu aplicativo expire.";
+$MESS["PAYMENT_MESSAGE_S_Y_N"] = "O aplicativo foi bloqueado porque sua assinatura expirou. Por favor, entre em contato com o administrador para renovar a assinatura.";
+$MESS["PAYMENT_MESSAGE_S_Y_N_A"] = "O aplicativo foi bloqueado porque sua assinatura expirou.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y"] = "A assinatura do seu aplicativo expirou. Por favor, entre em contato com o administrador para renovar a assinatura.";
+$MESS["PAYMENT_MESSAGE_S_Y_Y_A"] = "A assinatura do seu aplicativo expirou.";
+$MESS["PAYMENT_MESSAGE_T_N_Y"] = "O período de teste vai expirar em <b>#DAYS#</b> dias. Por favor, entre em contato com seu administrador para instalar a versão completa.";
+$MESS["PAYMENT_MESSAGE_T_N_Y_A"] = "O período de avaliação vai expirar em <b>#DAYS#</b> dias.";
+$MESS["PAYMENT_MESSAGE_T_Y_N"] = "O período de teste expirou. Por favor, entre em contato com seu administrador para instalar a versão completa.";
+$MESS["PAYMENT_MESSAGE_T_Y_N_A"] = "O período de avaliação expirou. Compre a versão completa.";

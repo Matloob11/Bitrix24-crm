@@ -1,0 +1,19 @@
+<?php
+$MESS["ME_ACTION"] = "Inizia riunione";
+$MESS["ME_AGENDA"] = "Agenda";
+$MESS["ME_CHANGE"] = "modifica";
+$MESS["ME_CLOSE"] = "Termina riunione";
+$MESS["ME_COMMENTS"] = "Commenti";
+$MESS["ME_COPY"] = "Crea prossima riunione";
+$MESS["ME_CURRENT_STATE_MSGVER_1"] = "Stato:";
+$MESS["ME_DATE_START_MSGVER_1"] = "Inizio:";
+$MESS["ME_DESCR_TITLE"] = "Descrizione riunione";
+$MESS["ME_EDIT_TITLE"] = "Modifica";
+$MESS["ME_FILES_MSGVER_1"] = "File:";
+$MESS["ME_GROUP_MSGVER_1"] = "Progetto:";
+$MESS["ME_KEEPER_MSGVER_1"] = "Assistente amministrativo";
+$MESS["ME_LIST_TITLE"] = "Visualizza riunioni";
+$MESS["ME_OWNER"] = "Proprietario";
+$MESS["ME_PLACE_MSGVER_1"] = "Sede:";
+$MESS["ME_PREPARE"] = "Riprendi riunione";
+$MESS["ME_REFUSED"] = "Rifiutato";

@@ -1,0 +1,5 @@
+<?php
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_ACCESS_DELETEACTION_TITLE"] = "Supprime les codes d'accès de l'application";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_ACCESS_GETACTION_TITLE"] = "Renvoie les codes d'accès de l'application";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_ACCESS_RESETACTION_TITLE"] = "Réinitialise l'accès de l'application aux valeurs par défaut";
+$MESS["REST_INFRASTRUCTURE_REST_CONTROLLER_APPLICATION_ACCESS_SETACTION_TITLE"] = "Définit les codes d'accès de l'application";

@@ -1,0 +1,19 @@
+<?php
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_DESCRIPTION"] = "Posez des questions à CoPilot et discutez des idées ensemble. Les réponses de CoPilot seront visibles par tous les membres de la conversation.";
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_HIDE"] = "Ne plus afficher";
+$MESS["IM_CONTENT_COPILOT_ADD_TO_CHAT_HINT_TITLE"] = "Ajouter des utilisateurs à la conversation avec CoPilot";
+$MESS["IM_CONTENT_COPILOT_CONTEXT_MENU_FEEDBACK"] = "Commentaire";
+$MESS["IM_CONTENT_COPILOT_DIALOG_STATUS_TYPING"] = "CoPilot écrit une réponse...";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_ASK_QUESTION"] = "Poser une question";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_ERROR_CREATING_CHAT"] = "Impossible de créer le chat, veuillez réessayer plus tard.";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_MESSAGE"] = "Bonjour ! Je m'appelle CoPilot et je suis une intelligence artificielle.#BR#Je suis là pour suggérer des solutions créatives,#BR#créer un de nouveaux textes ou améliorer ceux que vous écrivez.#BR#Je peux également discuter de toutes les idées que vous pourriez envisager.";
+$MESS["IM_CONTENT_COPILOT_EMPTY_STATE_MESSAGE_MSGVER_1"] = "Je m'appelle CoPilot. Je suis une IA.#BR#Je peux discuter de vos idées avec vous, #BR#créer un texte ou en corriger un que vous avez écrit.#BR##BR#Sélectionnez le rôle que je dois utiliser #BR#afin que je puisse converser comme un expert dans le domaine.";
+$MESS["IM_CONTENT_COPILOT_HEADER_OPEN_INVITE_POPUP_TITLE"] = "Ajouter des membres";
+$MESS["IM_CONTENT_COPILOT_HEADER_OPEN_MEMBERS_TITLE"] = "Cliquez pour voir les membres de la conversation";
+$MESS["IM_CONTENT_COPILOT_HEADER_RENAME_ERROR"] = "Impossible de renommer le chat. Veuillez réessayer plus tard.";
+$MESS["IM_CONTENT_COPILOT_HEADER_SUBTITLE"] = "en ligne";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_0"] = "#COUNT# membre";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_1"] = "#COUNT# membres";
+$MESS["IM_CONTENT_COPILOT_HEADER_USER_COUNT_PLURAL_2"] = "#COUNT# membres";
+$MESS["IM_CONTENT_COPILOT_TEXTAREA_AUDIO_INPUT_ERROR"] = "La reconnaissance vocale a échoué. Veuillez réessayer plus tard.";
+$MESS["IM_CONTENT_COPILOT_TEXTAREA_PLACEHOLDER"] = "Écrivez votre question";

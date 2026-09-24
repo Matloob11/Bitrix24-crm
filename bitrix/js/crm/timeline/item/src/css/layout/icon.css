@@ -1,0 +1,71 @@
+.crm-timeline__card_icon_container {
+	position: absolute;
+	left: calc(var(--crm-timeline-card-icon-left-indent) - var(--crm-timeline-card-icon-size));
+	top: var(--crm-timeline-card-icon-top-indent);
+	z-index: 1000;
+}
+
+.crm-timeline__card_icon {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: calc(var(--crm-timeline-card-icon-size) - 2px);
+	height: calc(var(--crm-timeline-card-icon-size) - 2px);
+	--crm-timeline-card-icon-background: var(--ui-color-accent-main-primary-alt-2);
+	background-color: var(--crm-timeline-card-icon-background);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: 1px solid var(--crm-timeline-card-icon-background);
+	border-radius: 50%;
+	z-index: 1000;
+}
+
+.crm-timeline__card_icon i {
+	display: block;
+	width: 24px;
+	height: 24px;
+	background-image: none;
+	background-color: var(--ui-color-background-primary);
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	mask-position: center;
+	mask-image: url(../../../image/crm-timeline_icons-sprite.svg);
+	border-radius: 50%;
+}
+
+.crm-timeline__card_icon.--bg-primary_alt {
+	background-color: var(--ui-color-accent-main-success);
+	border-color: var(--ui-color-accent-main-success);
+}
+
+.crm-timeline__card_icon.--bg-failure {
+	background-color: var(--ui-color-text-alert, #ff5752);
+	border-color: var(--ui-color-text-alert, #ff5752);
+}
+
+.crm-timeline__card_icon.--muted {
+	background-color: var(--ui-color-background-primary, #fff);
+	border-color: var(--ui-color-divider-accent);
+}
+
+.crm-timeline__card_icon.--muted i {
+	background-color: var(--ui-color-base-40, #bdc1c6);
+}
+
+.crm-timeline__card_icon_counter {
+	position: absolute;
+	top: var(--ui-space-stack-xs-neg, -8px);
+	right: var(--ui-space-inline-xs-neg, -8px);
+}
+
+.crm-timeline__card_icon.--code-zoom i {
+	mask-image: url('../../images/timeline-card-icons/crm-timeline__zoom-icon.svg');
+}
+
+.crm-timeline__card_icon.--custom-bg i{
+	mask-image: none;
+	background-color: transparent;
+	background-size: contain;
+}

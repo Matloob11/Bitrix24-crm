@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_ERROR_CONFIGURATION_IMPORT_EXCEPTION_DEAL_STAGE_ADD"] = "Error al importar el pipeline \"#NAME#\".";
+$MESS["CRM_ERROR_CONFIGURATION_IMPORT_EXCEPTION_DYMANIC_ENTITY_CATEGORY_ADD"] = "No se pudo importar el pipeline del SPA \"#NAME#\".";

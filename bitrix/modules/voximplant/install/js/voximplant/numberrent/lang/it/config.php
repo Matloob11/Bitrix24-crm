@@ -1,0 +1,19 @@
+<?php
+$MESS["VI_CANCEL_DELETE_NUMBER_ERROR"] = "Il provider del numero di telefono ha restituito un errore durante il tentativo di annullare la disconnessione. Riprova più tardi.";
+$MESS["VI_DELETE_NUMBER_ERROR"] = "Il provider del numero di telefono ha restituito un errore in fase di disconnessione. Riprova più tardi.";
+$MESS["VI_NUMBER_BUNDLE_WILL_BE_DELETED"] = "Il bundle sarà disconnesso entro 24 ore.";
+$MESS["VI_NUMBER_CONFIRM_ACTION"] = "Conferma azione";
+$MESS["VI_NUMBER_CONFIRM_BUNDLE_DISCONNECTION"] = "Il bundle non può essere parzialmente disconnesso. Disconnettere tutti i numeri nel bundle?";
+$MESS["VI_NUMBER_ERROR"] = "Errore";
+$MESS["VI_NUMBER_NUMBER_DELETE_CONFIRM"] = "Disconnettere il numero #NUMBER# da Bitrix24?";
+$MESS["VI_NUMBER_NUMBER_RENTED_IN_BUNDLE"] = "Questo numero è stato noleggiato come bundle di #COUNT# numeri:";
+$MESS["VI_NUMBER_NUMBER_WILL_BE_DELETED"] = "Il numero sarà disconnesso entro 24 ore.";
+$MESS["VI_NUMBER_RENT_CLOSE"] = "Chiudi";
+$MESS["VI_NUMBER_RENT_CONFIGURE_NUMBER"] = "Configura numero";
+$MESS["VI_NUMBER_RENT_CONFIGURE_NUMBERS"] = "Configura numeri";
+$MESS["VI_NUMBER_RENT_CONGRATULATIONS"] = "Congratulazioni!";
+$MESS["VI_NUMBER_RENT_DOCUMENTS_REQUIRED"] = "Per iniziare a utilizzare il numero noleggiato, devi caricare la documentazione legale.";
+$MESS["VI_NUMBER_RENT_NUMBERS_ATTACHED"] = "I numeri #NUMBER# sono connessi al tuo Bitrix24!";
+$MESS["VI_NUMBER_RENT_NUMBER_ATTACHED"] = "Il numero #NUMBER# è connesso al tuo Bitrix24!";
+$MESS["VI_NUMBER_RENT_NUMBER_RESERVED"] = "Il numero #NUMBER# è riservato a te!";
+$MESS["VI_NUMBER_RENT_UPLOAD_DOCUMENTS"] = "Carica documentazione";

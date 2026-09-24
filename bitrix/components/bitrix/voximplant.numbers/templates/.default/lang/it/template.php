@@ -1,0 +1,35 @@
+<?
+$MESS["VI_CONFIG_NOTICE_2"] = "Seleziona qui il numero di chiamata in uscita predefinito: #LINK#";
+$MESS["VI_CONFIG_PAGE_CONFIGS"] = "Impostazioni telefonia";
+$MESS["VI_NUMBERS_APPLY"] = "Applica";
+$MESS["VI_NUMBERS_CANCEL"] = "Annulla";
+$MESS["VI_NUMBERS_CONFIG"] = "Configura";
+$MESS["VI_NUMBERS_CONFIG_BACKPHONE"] = "Numero predefinito per chiamate in uscita";
+$MESS["VI_NUMBERS_CONFIG_BACKPHONE_TITLE"] = "La persona che chiami vedrà questo numero quando effettui chiamate da Bitrix24";
+$MESS["VI_NUMBERS_COUNT_TOTAL"] = "Record totali";
+$MESS["VI_NUMBERS_CREATE_TITLE"] = "Modifica impostazioni";
+$MESS["VI_NUMBERS_DEFAULT"] = "Numero predefinito";
+$MESS["VI_NUMBERS_EDIT"] = "Modifica";
+$MESS["VI_NUMBERS_ERROR"] = "Errore";
+$MESS["VI_NUMBERS_ERR_AJAX"] = "Errore. Riprova.";
+$MESS["VI_NUMBERS_ERR_CODE"] = "Questo numero di interno è già in uso, inseriscine uno diverso.";
+$MESS["VI_NUMBERS_GRID_ACTION"] = "Azione";
+$MESS["VI_NUMBERS_GRID_CODE"] = "Numero di interno";
+$MESS["VI_NUMBERS_GRID_NAME"] = "Utenti";
+$MESS["VI_NUMBERS_GRID_PHONE"] = "Numero per chiamate in uscita";
+$MESS["VI_NUMBERS_GRID_PHONE_DEVICE"] = "Telefono SIP";
+$MESS["VI_NUMBERS_PHONE_CONNECT"] = "Connetti ​​telefono SIP";
+$MESS["VI_NUMBERS_PHONE_CONNECT_INFO"] = "Utilizza questi dati per la configurazione del telefono";
+$MESS["VI_NUMBERS_PHONE_CONNECT_LOGIN"] = "Accesso";
+$MESS["VI_NUMBERS_PHONE_CONNECT_OFF"] = "Off";
+$MESS["VI_NUMBERS_PHONE_CONNECT_ON"] = "On";
+$MESS["VI_NUMBERS_PHONE_CONNECT_PASSWORD"] = "Password";
+$MESS["VI_NUMBERS_PHONE_CONNECT_SERVER"] = "Server";
+$MESS["VI_NUMBERS_PHONE_DEVICE_DISABLE"] = "Non connesso";
+$MESS["VI_NUMBERS_PHONE_DEVICE_ENABLE"] = "Connesso";
+$MESS["VI_NUMBERS_SAVE"] = "Salva";
+$MESS["VI_NUMBERS_SEARCH"] = "Ricerca dipendenti";
+$MESS["VI_NUMBERS_SEARCH_BTN"] = "Trova";
+$MESS["VI_NUMBERS_SEARCH_CANCEL"] = "Annulla";
+$MESS["VI_NUMBERS_TITLE"] = "Configura numeri di telefono";
+?>

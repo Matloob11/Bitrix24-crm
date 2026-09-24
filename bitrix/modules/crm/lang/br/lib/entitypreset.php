@@ -1,0 +1,27 @@
+<?php
+$MESS["CRM_ENTITY_PRESET_ACTIVE_FIELD"] = "Ativo";
+$MESS["CRM_ENTITY_PRESET_COUNTRY_ID_FIELD"] = "ID do país";
+$MESS["CRM_ENTITY_PRESET_CREATED_BY_ID_FIELD"] = "Criado por";
+$MESS["CRM_ENTITY_PRESET_DATE_CREATE_FIELD"] = "Criado em";
+$MESS["CRM_ENTITY_PRESET_DATE_MODIFY_FIELD"] = "Modificado em";
+$MESS["CRM_ENTITY_PRESET_ENTITY_TYPE_ID_FIELD"] = "ID do tipo de entidade";
+$MESS["CRM_ENTITY_PRESET_ERR_DELETE_PRESET_DEF_FOR_COMPANY"] = "Você não pode excluir este modelo porque é um modelo padrão da empresa.";
+$MESS["CRM_ENTITY_PRESET_ERR_DELETE_PRESET_DEF_FOR_CONTACT"] = "Você não pode excluir este modelo porque é um modelo padrão de contato.";
+$MESS["CRM_ENTITY_PRESET_ERR_DELETE_PRESET_USED"] = "O modelo não pode ser excluído porque há dados criados nele.";
+$MESS["CRM_ENTITY_PRESET_ERR_INVALID_ENTITY_TYPE"] = "Tipo de entidade inválido para uso com o modelo.";
+$MESS["CRM_ENTITY_PRESET_ERR_PRESET_NOT_FOUND"] = "O modelo não foi encontrado.";
+$MESS["CRM_ENTITY_PRESET_FIELD_NAME_FIELD"] = "Nome";
+$MESS["CRM_ENTITY_PRESET_FIELD_TITLE_FIELD"] = "Nome no modelo";
+$MESS["CRM_ENTITY_PRESET_ID_FIELD"] = "ID";
+$MESS["CRM_ENTITY_PRESET_IN_SHORT_LIST_FIELD"] = "Mostrar no resumo";
+$MESS["CRM_ENTITY_PRESET_MODIFY_BY_ID_FIELD"] = "Modificado por";
+$MESS["CRM_ENTITY_PRESET_NAME_EMPTY"] = "Modelo sem título";
+$MESS["CRM_ENTITY_PRESET_NAME_FIELD"] = "Nome";
+$MESS["CRM_ENTITY_PRESET_SORT_FIELD"] = "Tipo";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_BOOLEAN"] = "Sim/Não";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_DATETIME"] = "Data";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_DOUBLE"] = "Número";
+$MESS["CRM_ENTITY_PRESET_UF_TYPE_STRING"] = "Série";
+$MESS["CRM_ENTITY_PRESET_XML_ID_FIELD"] = "ID externo";
+$MESS["CRM_ENTITY_TYPE_REQUISITE"] = "Dados";
+$MESS["CRM_ENTITY_TYPE_REQUISITE_DESC"] = "Modelos para detalhes de contato ou empresa";

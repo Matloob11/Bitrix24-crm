@@ -1,0 +1,24 @@
+<?php
+$MESS["NOTE_SIDEBAR_COLLECTIONS_COLLAPSE"] = "Ausblenden";
+$MESS["NOTE_SIDEBAR_COLLECTIONS_EXPAND"] = "Anzeigen";
+$MESS["NOTE_SIDEBAR_CREATE_COLLECTION_MENU"] = "Space erstellen";
+$MESS["NOTE_SIDEBAR_CREATE_DOCUMENT_MENU"] = "Artikel erstellen";
+$MESS["NOTE_SIDEBAR_CREATE_MENU"] = "Erstellen";
+$MESS["NOTE_SIDEBAR_IMPORT_COLLECTION_MENU"] = "Space importieren";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_CANCEL"] = "Abbrechen";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_FOOTER_CREATE"] = "Space erstellen:";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_PLACEHOLDER"] = "Space finden";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_PRIMARY"] = "Erstellen";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TEXT"] = "Wählen Sie ein Space für den neuen Artikel aus.";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TEXT_WITH_CREATE"] = "Wählen Sie ein Space für den neuen Artikel aus, oder fangen Sie an, den Namen einzugeben, um so ein neues Space zu erstellen.";
+$MESS["NOTE_SIDEBAR_PICK_COLLECTION_TITLE"] = "Space auswählen";
+$MESS["NOTE_SIDEBAR_RECYCLE_BIN"] = "Papierkorb";
+$MESS["NOTE_SIDEBAR_SEARCH_CLEAR"] = "Suche leeren";
+$MESS["NOTE_SIDEBAR_SEARCH_EMPTY"] = "Es wurde nichts gefunden.";
+$MESS["NOTE_SIDEBAR_SEARCH_ERROR"] = "Fehler beim Suchen";
+$MESS["NOTE_SIDEBAR_SEARCH_PLACEHOLDER"] = "Suchen";
+$MESS["NOTE_SIDEBAR_SEARCH_SHOW_ALL"] = "Alle Ergebnisse anzeigen";
+$MESS["NOTE_SIDEBAR_THEME_TO_DARK"] = "Dunkelmodus einschalten";
+$MESS["NOTE_SIDEBAR_THEME_TO_LIGHT"] = "Hellmodus einschalten";
+$MESS["NOTE_SIDEBAR_TOGGLE_COLLAPSE"] = "Menü ausblenden";
+$MESS["NOTE_SIDEBAR_TOGGLE_EXPAND"] = "Menü anzeigen";

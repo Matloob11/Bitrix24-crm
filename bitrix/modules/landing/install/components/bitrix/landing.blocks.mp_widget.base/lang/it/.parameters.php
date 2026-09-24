@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_MPWIDGET_BASE_COLOR_BUTTON"] = "Colore pulsante";
+$MESS["LANDING_MPWIDGET_BASE_COLOR_HEADERS"] = "Colore intestazione";
+$MESS["LANDING_MPWIDGET_BASE_COLOR_TEXT"] = "Colore testo";

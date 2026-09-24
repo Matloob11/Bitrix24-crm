@@ -1,0 +1,3 @@
+<?
+$MESS["TIMEMAN_EXPORT_POPUP_CLOSE"] = "Fermer";
+?>

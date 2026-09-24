@@ -1,0 +1,26 @@
+<?php
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_ACTIONS"] = "Działania";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_AD_ID"] = "Identyfikator reklamy";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_AD_NAME"] = "Nazwa reklamy";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CAMPAIGN_ID"] = "Identyfikator kampanii reklamowej";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CAMPAIGN_NAME"] = "Nazwa kampanii reklamowej";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CLICKS"] = "Kliknięcia";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CPC"] = "Koszt kliknięcia";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CPM"] = "Koszt tysiąca wyświetleń";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_CURRENCY"] = "Waluta";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_DATE"] = "Data";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_EXPENSES"] = "Dzienny koszt";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_GROUP_ID"] = "Identyfikator grupy reklam";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_GROUP_NAME"] = "Nazwa grupy reklam";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_IMPRESSIONS"] = "Wyświetlenia";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_SOURCE_ID"] = "Identyfikator źródła";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CAMPAIGN"] = "Identyfikator kampanii reklamowej";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CAMPAIGN_FULL"] = "Identyfikuje kampanię reklamową do przeanalizowania.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CONTENT"] = "Identyfikator elementu zawartości";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_CONTENT_FULL"] = "Użyj tego parametru, aby zidentyfikować konkretną wersję zawartości lub reklamy w ramach kampanii reklamowej.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_MEDIUM"] = "Identyfikator medium";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_MEDIUM_FULL"] = "Identyfikuje sposób, w jaki odwiedzający został skierowany na Twoją stronę.";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_SOURCE"] = "Identyfikator źródła";
+$MESS["TRACKING_SOURCE_EXPENSES_FIELD_UTM_SOURCE_FULL"] = "Identyfikuje źródło (stronę, kanał itp.) pochodzenia odwiedzającego.";
+$MESS["TRACKING_SOURCE_EXPENSES_TABLE"] = "Koszty reklam";
+$MESS["TRACKING_SOURCE_EXPENSES_TABLE_DESCRIPTION_FULL"] = "Dostarcza dzienne statystyki kosztów reklam, w tym walutę, liczbę kliknięć, wyświetlenia i działania.";

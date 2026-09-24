@@ -1,0 +1,119 @@
+<?php
+
+namespace Bitrix\Im\V2\Chat;
+
+use Bitrix\Im\Recent;
+use Bitrix\Im\V2\Chat;
+use Bitrix\Im\V2\Message;
+use Bitrix\Im\V2\Result;
+use Bitrix\Main\Loader;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Type\DateTime;
+
+class ChannelChat extends GroupChat
+{
+	private const MESSAGE_COMPONENT_START_CHANNEL = 'ChannelCreationMessage';
+
+	public function canHaveChild(Chat $child): bool
+	{
+		return $child instanceof CommentChat;
+	}
+
+	public function extendPullWatch(): void
+	{
+		if (!Loader::includeModule('pull'))
+		{
+			return;
+		}
+
+		\CPullWatch::Add($this->getContext()->getUserId(), "IM_PUBLIC_COMMENT_{$this->getId()}", true);
+	}
+
+	protected function updateStateAfterRelationsAdd(array $usersToAdd): Chat
+	{
+		$result = parent::updateStateAfterRelationsAdd($usersToAdd);
+		Recent::raiseChat($this, $this->getRelationsByUserIds($usersToAdd), new DateTime());
+
+		return $result;
+	}
+
+	public function onBeforeMentionsChange(Message\Send\Mention\MentionChange $mentionChange): Result
+	{
+		$parentResult = parent::onBeforeMentionsChange($mentionChange);
+		$commentGetResult = CommentChat::get($mentionChange->message);
+		$commentChat = $commentGetResult->getResult();
+
+		if ($commentChat === null)
+		{
+			return $parentResult;
+		}
+
+		$result = $commentChat->withContextUser(0)->subscribeUsers(true, $mentionChange->addedUserIds);
+
+		return Result::merge($parentResult, $result);
+	}
+
+	protected function sendGreetingMessage(?int $authorId = null)
+	{
+		$messageText = Loc::getMessage('IM_CHANNEL_CREATE');
+
+		\CIMMessage::Add([
+			'MESSAGE_TYPE' => $this->getType(),
+			'TO_CHAT_ID' => $this->getChatId(),
+			'FROM_USER_ID' => 0,
+			'MESSAGE' => $messageText,
+			'SYSTEM' => 'Y',
+			'PUSH' => 'N',
+			'SKIP_COUNTER_INCREMENTS' => 'Y',
+			'PARAMS' => [
+				'NOTIFY' => 'N',
+			],
+		]);
+	}
+
+	protected function getDefaultType(): string
+	{
+		return self::IM_TYPE_CHANNEL;
+	}
+
+	public function getDefaultManageMessages(): string
+	{
+		return self::MANAGE_RIGHTS_MANAGERS;
+	}
+
+	public function getDefaultManageUI(): string
+	{
+		return self::MANAGE_RIGHTS_MANAGERS;
+	}
+
+	protected function sendBanner(?int $authorId = null, bool $force = false): void
+	{
+		\CIMMessage::Add([
+			'MESSAGE_TYPE' => $this->getType(),
+			'TO_CHAT_ID' => $this->getChatId(),
+			'FROM_USER_ID' => 0,
+			'MESSAGE' => Loc::getMessage('IM_CHAT_CHANNEL_CREATE_WELCOME'),
+			'SYSTEM' => 'Y',
+			'PUSH' => 'N',
+			'PARAMS' => [
+				'COMPONENT_ID' => self::MESSAGE_COMPONENT_START_CHANNEL,
+			],
+			'SKIP_COUNTER_INCREMENTS' => 'Y',
+		]);
+	}
+
+	protected function needToSendMessageUserDelete(): bool
+	{
+		return false;
+	}
+
+	public function needToSendTaskCreationMessage(): bool
+	{
+		return false;
+	}
+
+	public function needToSendCalendarCreationMessage(): bool
+	{
+		return false;
+	}
+}

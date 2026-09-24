@@ -1,0 +1,25 @@
+<?php
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_AUTHOR_NOT_FOUND"] = "L'utilisateur sélectionné dans le champ \"Ajouter un enregistrement en tant que\" est introuvable.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_FIELD"] = "Créer un nouveau champ";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_CREATE_NEW_STORAGE"] = "Créer un nouvel espace de stockage";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_ADD_FIELD"] = "Ajouter un champ";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FIELDS_NOT_EXIST"] = "Au moins un champ est obligatoire.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_COLLAPSED_TEXT"] = "Filtre appliqué, cliquez sur Développer pour afficher.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_FILTER_FIELDS_PROPERTY"] = "Filtre de champ";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_ITEM_NOT_FOUND"] = "L'enregistrement avec l'ID #ITEM_ID# est introuvable dans l'espace de stockage.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_MERGE_FIELDS"] = "Ajouter de nouvelles données";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NEW_ITEM"] = "Créer un nouvel enregistrement";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_NOT_EXIST"] = "Le paramètre obligatoire \"#PROPERTY#\" est vide.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_OPEN_STORAGE_LIST"] = "Données de stockage";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_AUTHOR"] = "Ajouter un enregistrement en tant que";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_MODE"] = "Mode d'écriture";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_NAME"] = "Nom";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_RECORD_SORT"] = "Ordre de tri";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_REWRITE_FIELDS"] = "Remplacer l'enregistrement";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_SELECT_STORAGE"] = "Sélectionner un espace de stockage";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_NOT_FOUND"] = "Espace de stockage introuvable.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_STORAGE_TAB_TITLE"] = "Espaces de stockage";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_UNKNOWN_MODE"] = "Mode d'écriture inconnu : \"#MODE#\".";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_FIELD_VALUE"] = "Données incorrectes sélectionnées pour l'écriture dans l'espace de stockage.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_ITEM_ID"] = "L'ID de l'enregistrement de stockage doit être un nombre positif.";
+$MESS["BIZPROC_WRITE_DATA_ACTIVITY_WRONG_STORAGE_ID"] = "L'ID de l'espace de stockage doit être un nombre positif.";

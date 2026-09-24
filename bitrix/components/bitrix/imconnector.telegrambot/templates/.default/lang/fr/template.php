@@ -1,0 +1,32 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_API_TOKEN"] = "Jeton d'accès";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_BOT_LINK"] = "Lien du bot";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_BOT_NAME"] = "Nom du bot";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CHANGE_ANY_TIME"] = "Peut être édité ou désactivé à tout moment";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CONNECTED"] = "Telegram connecté";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CONNECT_BOT"] = "<span class=\"imconnector-field-box-text-bold\">Connecter un bot Telegram</span>";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CONNECT_ESHOP"] = "Connecter la boutique en ligne à mon bot Telegram";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CONNECT_ESHOP_MORE"] = "Détails";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CONNECT_HELP"] = "<div class=\"imconnector-field-button-subtitle\">Je voudrais</div>
+				<div class=\"imconnector-field-button-name\"><span class=\"imconnector-field-box-text-bold\">Connecter</span> un bot Telegram</div>";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CONNECT_STEP_NEW"] = "Vous devez #LINK_START#créer un bot Telegram#LINK_END# ou utiliser celui que vous avez déjà. Si vous n'avez pas de bot, nous vous aiderons à en créer un et à le connecter à votre Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CONNECT_TITLE"] = "Connecter Telegram à votre canal ouvert";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_CREATE_BOT"] = "<span class=\"imconnector-field-box-text-bold\">Créer un bot Telegram</span>";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_ESHOP_LINK"] = "Lien de la boutique en ligne";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_FINAL_FORM_DESCRIPTION"] = "Telegram est maintenant connecté à votre canal ouvert. Tous les messages envoyés via le bot finiront dans Bitrix24";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INDEX_ADDITIONAL_DESCRIPTION_NEW_MSGVER_2"] = "Pour connecter Telegram à votre compte Bitrix24, #LINK_START#créez un bot Telegram#LINK_END# ou connectez celui que vous utilisez déjà. Si vous n'avez pas de compte public, nous vous aiderons à le créer en quelques étapes.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INDEX_LIST_ITEM_1"] = "Enregistrez les contacts et l'historique des communications dans le CRM";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INDEX_LIST_ITEM_2"] = "Guidez le client à travers l'entonnoir de vente dans le CRM";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INDEX_LIST_ITEM_3"] = "Répondez à vos clients quand et où ils le souhaitent";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INDEX_LIST_ITEM_4"] = "Les demandes des clients sont réparties entre les commerciaux en fonction des règles de la file d'attente";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INDEX_SUBTITLE"] = "Répondez à vos clients comme ils le souhaitent. Si un client trouve Telegram plus pratique que les autres moyens de communication, recevez ses messages sur votre Bitrix24 et répondez-lui immédiatement.";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INDEX_TITLE"] = "Parlez à vos clients dans Telegram";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INFO"] = "Informations";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_INSTRUCTION_TITLE"] = "<span class=\"imconnector-field-box-text-bold\">Comment recevoir une clé de compte public</span> : ";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_I_KNOW_TOKEN"] = "J'ai le jeton";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_SELECT_ESHOP"] = "Sélectionnez une boutique en ligne";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_SELECT_ESHOP_EXTERNAL"] = "Boutique en ligne externe";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_TESTED"] = "Text de connexion";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_URL_ESHOP"] = "Saisissez l'URL de la boutique en ligne externe";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_USING_TITLE"] = "J'aimerais";
+$MESS["IMCONNECTOR_COMPONENT_TELEGRAMBOT_WELCOME_MESSAGE"] = "Le client verra ce message d'accueil avant d'envoyer son premier message à un agent";

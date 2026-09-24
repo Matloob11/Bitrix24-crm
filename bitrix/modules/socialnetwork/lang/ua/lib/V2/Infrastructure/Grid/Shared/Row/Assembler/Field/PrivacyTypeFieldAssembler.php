@@ -1,0 +1,4 @@
+<?php
+$MESS["SONET_V2_GRID_PRIVACY_TYPE_CLOSED"] = "Закритий";
+$MESS["SONET_V2_GRID_PRIVACY_TYPE_OPEN"] = "Відкритий";
+$MESS["SONET_V2_GRID_PRIVACY_TYPE_SECRET"] = "Секретний";

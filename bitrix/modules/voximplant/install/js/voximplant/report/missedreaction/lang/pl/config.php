@@ -1,0 +1,4 @@
+<?php
+$MESS["TELEPHONY_REPORT_MISSED_REACTION_AVG_RESPONSE_TIME"] = "Średni czas reakcji";
+$MESS["TELEPHONY_REPORT_MISSED_REACTION_MISSED"] = "Nieodebrane połączenia";
+$MESS["TELEPHONY_REPORT_MISSED_REACTION_UNANSWERED"] = "Bez odpowiedzi przez 24 godziny";

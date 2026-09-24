@@ -1,0 +1,27 @@
+<?php
+$MESS["LANDING_404_ERROR"] = "La plantilla no fue encontrada";
+$MESS["LANDING_LOADER_WAIT_MSGVER_1"] = "Espere, la tienda en línea se está creando en este momento...";
+$MESS["LANDING_PREVIEW_MAINPAGE_BUTTON_CANCEL_TEXT"] = "Cancelar";
+$MESS["LANDING_PREVIEW_MAINPAGE_BUTTON_OK_TEXT"] = "Sí";
+$MESS["LANDING_PREVIEW_MAINPAGE_MESSAGE"] = "Su página de inicio ya utiliza una plantilla. Al importar una nueva plantilla, se eliminará irreversiblemente la plantilla actual y todos los cambios que haya hecho en ella.<br />¿Desea eliminar la plantilla actual e instalar una nueva?";
+$MESS["LANDING_PREVIEW_MAINPAGE_TITLE"] = "Instalar una nueva plantilla";
+$MESS["LANDING_TPL_BUTTON_CANCEL"] = "Cancelar";
+$MESS["LANDING_TPL_BUTTON_CREATE"] = "Crear";
+$MESS["LANDING_TPL_BUTTON_CREATE_KB"] = "Crear base de conocimiento";
+$MESS["LANDING_TPL_BUTTON_CREATE_PAGE"] = "Crear página";
+$MESS["LANDING_TPL_BUTTON_CREATE_SITE"] = "Crear sitio";
+$MESS["LANDING_TPL_BUTTON_CREATE_STORE"] = "Crear una tienda online";
+$MESS["LANDING_TPL_BUTTON_REPLACE_PAGE"] = "Aplicar la plantilla";
+$MESS["LANDING_TPL_BUTTON_SHOW_IN_MOBILE"] = "Abrir en un dispositivo móvil";
+$MESS["LANDING_TPL_DEMO_PREVIEW_LOGO_WELCOME_PAGE"] = "Página de inicio";
+$MESS["LANDING_TPL_HEADER_LOGO_BITRIX"] = "Bitrix";
+$MESS["LANDING_TPL_HEADER_LOGO_KB"] = "Knowledge bases";
+$MESS["LANDING_TPL_HEADER_LOGO_MAINPAGE"] = "Vibe";
+$MESS["LANDING_TPL_HEADER_LOGO_SITE"] = "Sites";
+$MESS["LANDING_TPL_HEADER_RIGHT_CREATE_HINT_MSGVER_1"] = "No tiene permisos suficientes para crear sitios. Póngase en contacto con su administrador.";
+$MESS["LANDING_TPL_POPUP_REPEAT_BUTTON"] = "Reiniciar";
+$MESS["LANDING_TPL_POPUP_REPEAT_TEXT"] = "Algo salió mal. Haga clic en Reiniciar para intentarlo de nuevo.";
+$MESS["LANDING_TPL_POPUP_TEXT"] = "Escanee el código QR para abrir el sitio web";
+$MESS["LANDING_TPL_POPUP_TEXT_KB"] = "Escanee el código QR para abrir la base de conocimientos";
+$MESS["LANDING_TPL_POPUP_TEXT_STORE"] = "Escanee el código QR para ir a la tienda online";
+$MESS["LANDING_TPL_TITLE"] = "Vista Previa de la Plantilla";

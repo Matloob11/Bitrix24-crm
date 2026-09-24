@@ -1,0 +1,22 @@
+<?php
+$MESS["BPFCT_DOCUMENT_EMPTY"] = "Міндетті өріс толтырылмаған: Құжат";
+$MESS["BP_CRM_AUTOMATED_SOLUTION_CREATE_FCT_DESCR_DESCR"] = "Сандық жұмыс орны элементін жасау кезінде триггер іске қосылады";
+$MESS["BP_CRM_AUTOMATED_SOLUTION_CREATE_FCT_DESCR_NAME"] = "Сандық жұмыс орны құрылды";
+$MESS["BP_CRM_COMPANY_CREATE_FCT_DESCR_DESCR"] = "Компанияны құру кезінде триггер іске қосылады";
+$MESS["BP_CRM_COMPANY_CREATE_FCT_DESCR_NAME"] = "Компания құрылды";
+$MESS["BP_CRM_CONTACT_CREATE_FCT_DESCR_DESCR"] = "Байланыс жасалған кезде триггер іске қосылады";
+$MESS["BP_CRM_CONTACT_CREATE_FCT_DESCR_NAME"] = "Байланыс жасалды";
+$MESS["BP_CRM_DEAL_CREATE_FCT_DESCR_DESCR"] = "Мәміле жасалған кезде триггер іске қосылады";
+$MESS["BP_CRM_DEAL_CREATE_FCT_DESCR_NAME"] = "Мәміле жасалды";
+$MESS["BP_CRM_DYNAMIC_CREATE_FCT_DESCR_DESCR"] = "Смарт-процесс элементін жасау кезінде триггер іске қосылады";
+$MESS["BP_CRM_DYNAMIC_CREATE_FCT_DESCR_NAME"] = "Смарт-процесс құрылды";
+$MESS["BP_CRM_ENTITY_CREATE_TRIGGER_CATEGORY_ID"] = "Сату иірімі";
+$MESS["BP_CRM_FCT_DOCUMENT"] = "Құжат";
+$MESS["BP_CRM_LEAD_CREATE_FCT_DESCR_DESCR"] = "Лид жасау кезінде триггер іске қосылады";
+$MESS["BP_CRM_LEAD_CREATE_FCT_DESCR_NAME"] = "Лид жасалды";
+$MESS["BP_CRM_ORDER_CREATE_FCT_DESCR_DESCR"] = "Тапсырыс жасау кезінде триггер іске қосылады";
+$MESS["BP_CRM_ORDER_CREATE_FCT_DESCR_NAME"] = "Тапсырыс жасалды";
+$MESS["BP_CRM_QUOTE_CREATE_FCT_DESCR_DESCR"] = "Ұсыныс жасалған кезде триггер іске қосылады";
+$MESS["BP_CRM_QUOTE_CREATE_FCT_DESCR_NAME"] = "Ұсыныс жасалды";
+$MESS["BP_CRM_SMART_INVOICE_CREATE_FCT_DESCR_DESCR"] = "Шот жасау кезінде триггер іске қосылады";
+$MESS["BP_CRM_SMART_INVOICE_CREATE_FCT_DESCR_NAME"] = "Шот жасалды";

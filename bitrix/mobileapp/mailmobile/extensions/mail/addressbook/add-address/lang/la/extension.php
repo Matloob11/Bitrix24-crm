@@ -1,0 +1,6 @@
+<?php
+$MESS["MAIL_ADDRESS_BOOK_ADD_ADDRESS"] = "Nuevo contacto de correo electrónico";
+$MESS["MAIL_ADDRESS_BOOK_ADD_ADDRESS_BUTTON"] = "Guardar";
+$MESS["MAIL_ADDRESS_BOOK_ADD_ADDRESS_EMAIL_LABEL"] = "Dirección de correo electrónico";
+$MESS["MAIL_ADDRESS_BOOK_ADD_ADDRESS_EMAIL_PLACEHOLDER"] = "info@example.com";
+$MESS["MAIL_ADDRESS_BOOK_ADD_ADDRESS_NAME_LABEL"] = "Nombre";

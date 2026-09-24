@@ -1,0 +1,5 @@
+<?
+$MESS["CRM_REPORT_REGULAR_CUSTOMERS_CUSTOMERS_COUNT"] = "Clients";
+$MESS["CRM_REPORT_REGULAR_CUSTOMERS_RATING_TITLE"] = "Clients par nombre de transactions";
+$MESS["CRM_REPORT_REGULAR_CUSTOMERS_TITLE"] = "Clients fidèles";
+?>

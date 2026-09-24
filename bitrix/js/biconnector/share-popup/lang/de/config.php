@@ -1,0 +1,24 @@
+<?php
+$MESS["BICONNECTOR_SHARE_POPUP_COPY_LINK"] = "Link kopieren";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_LABEL"] = "Link gültig bis:";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PAST"] = "Der Tag und die Uhrzeit müssen in der Zukunft sein.";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_PLACEHOLDER"] = "Wählen Sie ein Datum aus";
+$MESS["BICONNECTOR_SHARE_POPUP_DATE_REQUIRED"] = "Das Datum ist erforderlich.";
+$MESS["BICONNECTOR_SHARE_POPUP_DISABLED_DESC"] = "Soland das Dashboard nicht freigegeben ist, können die Gäste es nicht anzeigen, selbst wenn sie einen Link und ein Passwort haben.";
+$MESS["BICONNECTOR_SHARE_POPUP_ENABLED_DESC"] = "Jeder mit einem Link und einem Passwort kann dieses Dashboard anzeigen.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR"] = "Der Link konnte nicht kopiert werden.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_ACTIVATE"] = "Das Dashboard konnte nicht freigegeben werden.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_DEACTIVATE"] = "Dashboard-Freigabe konnte nicht deaktiviert werden.";
+$MESS["BICONNECTOR_SHARE_POPUP_ERROR_SAVE"] = "Der Link konnte nicht aktualisiert werden.";
+$MESS["BICONNECTOR_SHARE_POPUP_FILTER_HINT"] = "Die Filter der Unternehmensstruktur, Workflows und Flows sind nicht verfügbar, wenn ein freigegebenes Dashboard angezeigt wird.";
+$MESS["BICONNECTOR_SHARE_POPUP_GENERATE_PASSWORD"] = "Passwort erstellen";
+$MESS["BICONNECTOR_SHARE_POPUP_LINK_COPIED"] = "Der Link wurde kopiert.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_GENERATED"] = "Das Passwort wurde erstellt.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_LABEL"] = "Passwort:";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_PLACEHOLDER"] = "Erstellen Sie ein Passwort";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_REQUIRED"] = "Das Passwort ist erforderlich.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_LONG"] = "Das Passwort darf 32 Zeichen nicht überschreiten.";
+$MESS["BICONNECTOR_SHARE_POPUP_PASSWORD_TOO_SHORT"] = "Das Passwort muss mindestens 8 Zeichen enthalten.";
+$MESS["BICONNECTOR_SHARE_POPUP_PUBLIC_LINK"] = "Dashboard freigeben";
+$MESS["BICONNECTOR_SHARE_POPUP_TIME_PAST"] = "Der Tag und die Uhrzeit müssen in der Zukunft sein.";
+$MESS["BICONNECTOR_SHARE_POPUP_TITLE"] = "Das Dashboard \"#NAME#\" freigeben";

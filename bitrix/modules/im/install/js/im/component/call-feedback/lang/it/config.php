@@ -1,0 +1,17 @@
+<?php
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_CHOOSE_ISSUE"] = "Seleziona il tuo problema, se pertinente";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_FILLED"] = "La tua valutazione è stata inviata a Bitrix24!";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_AUDIO_QUALITY"] = "Problema di qualità audio";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_CALL_INTERFACE_PROBLEM"] = "Problema interfaccia utente chiamate";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_CANT_HEAR_EACH_OTHER"] = "Problema audio, suono assente";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_CANT_SEE_EACH_OTHER"] = "I partecipanti non possono vedersi";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_DESCRIPTION"] = "Descrivi il tuo problema";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_GOT_DISCONNECTED"] = "Disconnessione improvvisa";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_OTHER"] = "Altro";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_RECORDING_PROBLEM"] = "Impossibile registrare la chiamata";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_SCREEN_SHARING_PROBLEM"] = "Condivisione dello schermo non funzionante";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_ISSUE_VIDEO_QUALITY"] = "Qualità video insufficiente";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_NO_ISSUE"] = "Nessun problema";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_RATE_QUALITY"] = "Valuta qualità connessione";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_SEND"] = "Invia";
+$MESS["BX_IM_COMPONENT_CALL_FEEDBACK_VIDEOCALL_FINISHED"] = "Videochiamata terminata";

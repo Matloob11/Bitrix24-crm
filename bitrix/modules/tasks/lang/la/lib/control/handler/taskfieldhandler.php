@@ -1,0 +1,19 @@
+<?php
+$MESS["ERROR_TASKS_GUID_NON_UNIQUE"] = "El valor GUID debe ser único";
+$MESS["TASKS_BAD_ASSIGNEE_EX"] = "No se encontró el usuario especificado como responsable.";
+$MESS["TASKS_BAD_ASSIGNEE_ID"] = "El responsable no está especificado.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_COLLAB"] = "El responsable de la tarea no es miembro del collab seleccionado.";
+$MESS["TASKS_BAD_ASSIGNEE_IN_GROUP"] = "El responsable de la tarea no es miembro del proyecto seleccionado.";
+$MESS["TASKS_BAD_CREATED_BY"] = "No se ha especificado el creador de la tarea.";
+$MESS["TASKS_BAD_DURATION"] = "El período de duración de la tarea planificada es demasiado largo";
+$MESS["TASKS_BAD_GROUP"] = "No hay ningún proyecto asociado a esta tarea.";
+$MESS["TASKS_BAD_PARENT_ID"] = "No se encontró una tarea especificada en el campo \"Subtarea\".";
+$MESS["TASKS_BAD_PLAN_DATES"] = "La fecha de finalización prevista es anterior a la fecha de inicio.";
+$MESS["TASKS_BAD_TITLE"] = "El nombre de la tarea no está especificado.";
+$MESS["TASKS_DEADLINE_OUT_OF_PROJECT_RANGE"] = "La fecha límite de la tarea, está fuera del rango de fechas del proyecto";
+$MESS["TASKS_DEPENDS_ON_SELF"] = "Una tarea no puede depender de si misma.";
+$MESS["TASKS_INCORRECT_STATUS"] = "Estado incorrecto";
+$MESS["TASKS_IS_LINKED_END_DATE_PLAN_REMOVE"] = "No se puede eliminar el tiempo de finalización de la tarea porque la tarea tiene dependencias";
+$MESS["TASKS_IS_LINKED_SET_PARENT"] = "No se puede asignar una tarea principal porque la tarea depende de la tarea actual";
+$MESS["TASKS_PLAN_DATE_END_OUT_OF_PROJECT_RANGE"] = "La fecha de finalización de la tarea planificada, está fuera del rango de fechas del proyecto";
+$MESS["TASKS_PLAN_DATE_START_OUT_OF_PROJECT_RANGE"] = "La fecha de inicio de la tarea planificada, está fuera del rango de fechas del proyecto";

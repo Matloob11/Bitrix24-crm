@@ -1,0 +1,3 @@
+<?php
+$MESS["BIZPROCDESIGNER_CONTROLLER_DIAGRAM_ERROR_TEMPLATE_TYPE"] = "Ten typ szablonu workflowu nie jest obsługiwany.";
+$MESS["BIZPROCDESIGNER_CONTROLLER_DIAGRAM_TEMPLATE_DEFAULT_TITLE"] = "Szablon workflowu";

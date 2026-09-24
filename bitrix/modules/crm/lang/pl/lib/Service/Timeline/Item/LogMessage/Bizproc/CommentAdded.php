@@ -1,0 +1,3 @@
+<?php
+$MESS["CRM_LOG_MESSAGE_BIZPROC_COMMENT_ADDED"] = "Nowe komentarze workflowu";
+$MESS["CRM_LOG_MESSAGE_BIZPROC_COMMENT_ADDED_STATUS"] = "Dodano";

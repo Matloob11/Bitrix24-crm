@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_QUOTE_CLOSED_TITLE_MSGVER_1"] = "Orçamento fechado";
+$MESS["CRM_QUOTE_QUOTE_NUMBER_TITLE_MSGVER_1"] = "Orçamento #";
+$MESS["CRM_QUOTE_TITLE_TITLE"] = "Assunto";

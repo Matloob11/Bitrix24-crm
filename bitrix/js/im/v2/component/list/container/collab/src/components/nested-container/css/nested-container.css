@@ -1,0 +1,33 @@
+.bx-im-nested-list-collab__header {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	overflow: hidden;
+}
+
+.bx-im-nested-list-collab__search {
+	flex-grow: 1;
+	margin-right: 8px;
+}
+
+.bx-im-nested-list-collab__section_container {
+	display: flex;
+	align-items: center;
+	height: 40px;
+}
+
+.bx-im-nested-list-collab__section {
+	margin-right: 6px;
+}
+
+.bx-im-nested-list-collab__subheader_create-button {
+	position: relative;
+}
+
+.bx-im-nested-list-collab__subheader_create-button.ui-highlighter::after {
+	inset: 0;
+	padding: 2px;
+	border-radius: 80px;
+	z-index: 1;
+}

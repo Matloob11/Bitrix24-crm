@@ -1,0 +1,24 @@
+<?php
+$MESS["TASKS_GRID_GROUP_ACTION_CANCELING"] = "Annulation de l'action de groupe...";
+$MESS["TASKS_GRID_GROUP_ACTION_COUNTING_ELEMENTS_PROGRESS"] = "Décompte des éléments";
+$MESS["TASKS_GRID_GROUP_ACTION_DESCRIPTION"] = "Une action de groupe peut prendre un certain temps pour une grande sélection. Veuillez attendre que l'action soit terminée ou annulez.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME"] = "Action de groupe";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDACCOMPLICE"] = "Ajout de participants aux tâches...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDAUDITOR"] = "Ajout d'un observateur aux tâches...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADDTOFAVORITE"] = "Ajout de tâches aux favoris...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_ADJUSTDEADLINE"] = "Déplacement des dates limites des tâches...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_COMPLETE"] = "Réalisation des tâches sélectionnées...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_DELETE"] = "Suppression des tâches sélectionnées...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_MUTE"] = "Désactivation des tâches...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_PING"] = "Impression des employés...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_REMOVEFROMFAVORITE"] = "Suppression des tâches des favoris...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETCOLLAB"] = "Ajouter des tâches à la collab. L'action de groupe s'arrêtera si vous fermez cet onglet ou cette fenêtre du navigateur.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETDEADLINE"] = "Définition des dates limites des tâches...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETFLOW"] = "Ajouter des tâches au flux. L'action de groupe s'arrêtera si vous fermez cet onglet ou cette fenêtre du navigateur.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETGROUP"] = "Ajout de tâches au groupe de travail...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETORIGINATOR"] = "Changement de créateur de tâches...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETRESPONSIBLE"] = "Changement de responsable...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL"] = "Désactivation de l'examen lorsque les conditions d'achèvement sont remplies...";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_SETTASKCONTROL_YES"] = "Activer la révision à l'achèvement. L'action de groupe s'arrêtera si vous fermez cet onglet ou cette fenêtre du navigateur.";
+$MESS["TASKS_GRID_GROUP_ACTION_NAME_UNMUTE"] = "Réactivation des tâches...";
+$MESS["TASKS_GRID_GROUP_ACTION_NONE"] = "Aucune action sélectionnée.";

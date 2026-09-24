@@ -1,0 +1,18 @@
+<?php
+$MESS["MAIL_CLIENT_ARCHIVE_ALIAS"] = "Мұрағат";
+$MESS["MAIL_CLIENT_DRAFT_ALIAS"] = "Бастапқы үлгілер";
+$MESS["MAIL_CLIENT_GAMES_ALIAS"] = "Ойындар";
+$MESS["MAIL_CLIENT_INBOX_ALIAS"] = "Кіріс";
+$MESS["MAIL_CLIENT_NEWSLETTERS_ALIAS"] = "Жіберілімдер";
+$MESS["MAIL_CLIENT_NEWS_ALIAS"] = "Жаңалықтар";
+$MESS["MAIL_CLIENT_NOTES_ALIAS"] = "Ескертпелер";
+$MESS["MAIL_CLIENT_OUTBOX_ALIAS"] = "Шығыс";
+$MESS["MAIL_CLIENT_OUTCOME_ALIAS"] = "Жіберілген";
+$MESS["MAIL_CLIENT_PUBLIC_SERVICES_ALIAS"] = "Мемлекеттік хаттар";
+$MESS["MAIL_CLIENT_RECEIPTS_ALIAS"] = "Чектер";
+$MESS["MAIL_CLIENT_SCHOOL_ALIAS"] = "Оқу";
+$MESS["MAIL_CLIENT_SOCIAL_ALIAS"] = "Әлеуметтік желілер";
+$MESS["MAIL_CLIENT_SPAM_ALIAS"] = "Спам";
+$MESS["MAIL_CLIENT_TEMPLATE_ALIAS"] = "Қалыптар";
+$MESS["MAIL_CLIENT_TOMYSELF_ALIAS"] = "Өзіңізге хаттар";
+$MESS["MAIL_CLIENT_TRASH_ALIAS"] = "Себет";

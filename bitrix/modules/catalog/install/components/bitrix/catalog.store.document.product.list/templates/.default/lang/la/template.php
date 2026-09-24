@@ -1,0 +1,26 @@
+<?php
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACCESS_DENIED_PRODUCT_CREATION_HINT"] = "Permisos insuficientes para crear un producto en el catálogo.";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACCESS_DENIED_PURCHASING_PRICE_HINT"] = "Permisos insuficientes para ver el precio de compra.";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACCESS_DENIED_STORE_HINT"] = "No tiene permiso para acceder al almacén de destino del producto. Póngase en contacto con su supervisor o administrador para obtener acceso.";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACCESS_DENIED_TEXT"] = "Permisos insuficientes.";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACTION_DEFAULT"] = "- acciones -";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACTION_STORE_CHANGED_HINT"] = "El almacén cambió a #STORE_NAME#";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACTION_STORE_FROM_INFO_CHANGED_HINT"] = "El almacén de origen cambió a #STORE_NAME#";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ACTION_STORE_TO_INFO_CHANGED_HINT"] = "El almacén de destino cambió a #STORE_NAME#";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ADD_PRODUCT"] = "Agregar fila";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_ADD_PRODUCT_TITLE"] = "Encontrar o crear un nuevo producto";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_BARCODE_SETTING_PRODUCT"] = "Configuración del escaneo";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_BARCODE_SETTING_PRODUCT_TITLE"] = "Configuración del escaneo";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_COPY_ACTION"] = "Copiar";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_CREATE_PRODUCT"] = "Crear un producto";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_CREATE_PRODUCT_TITLE"] = "Crear un nuevo producto del catálogo";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_DELETE_ACTION"] = "Eliminar";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_INVALID_AMOUNT_2"] = "Introduzca la cantidad del producto para procesar el objeto del inventario";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_INVALID_AMOUNT_REALIZATION"] = "Introduzca la cantidad de producto";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_IS_EMPTY"] = "Introduzca por lo menos un producto";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_NEGATIVE_PRICE_NOTICE"] = "El precio no puede ser negativo.";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_SETTING_DISABLED"] = "Parámetro \"#NAME#\" deshabilitado.";
+$MESS["CATALOG_DOCUMENT_PRODUCT_LIST_SETTING_ENABLED"] = "Parámetro \"#NAME#\" habilitado";
+$MESS["CATALOG_PRODUCT_SUM_TOTAL"] = "Importe total";
+$MESS["CATALOG_PRODUCT_SUM_TOTAL_BEFORE_TAX"] = "Total antes de impuestos";
+$MESS["CATALOG_PRODUCT_SUM_TOTAL_TAX"] = "Impuesto total";

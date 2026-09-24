@@ -1,0 +1,13 @@
+<?php
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_EXPIRED_TO_EMPLOYEE"] = "[b]El documento expiró.[/b][br][br]El documento \"#DOC_NAME#\" expiró. Puede iniciar el proceso de firma electrónica de nuevo.[br][br][url=#SIGN_URL#]Abrir el documento[/url]";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEE"] = "[b]Documento rechazado[/b][br][br]#INITIATOR_NAME# rechazó el documento #DOC_NAME#. Solucione los problemas y envíe el documento de nuevo.";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEEF"] = "[b]Documento rechazado[/b][br][br]#INITIATOR_NAME# rechazó el documento #DOC_NAME#. Solucione los problemas y envíe el documento de nuevo.";
+$MESS["SIGN_CALLBACK_BY_EMPLOYEE_CHAT_STOPPED_TO_EMPLOYEEM"] = "[b]Documento rechazado[/b][br][br]#INITIATOR_NAME# rechazó el documento #DOC_NAME#. Solucione los problemas y envíe el documento de nuevo.";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_COMPANY"] = "[b]Documento aprobado[/b][br][br]El documento \"#DOC_NAME#\" de #INITIATOR_NAME# fue aprobado y colocado en la bóveda de la empresa.";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEE"] = "[b]Documento aprobado[/b][br][br]#INITIATOR_NAME# aprobó \"#DOC_NAME#\". Está disponible para verlo y descargarlo en su perfil en la pestaña \"Mis documentos\"[br][br][url=#SIGN_URL#]Ver el documento[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEEF"] = "[b]Documento aprobado[/b][br][br]#INITIATOR_NAME# aprobó \"#DOC_NAME#\". Está disponible para verlo y descargarlo en su perfil en la pestaña \"Mis documentos\"[br][br][url=#SIGN_URL#]Ver el documento[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_DONE_EMPLOYEEM"] = "[b]Documento aprobado[/b][br][br]#INITIATOR_NAME# aprobó \"#DOC_NAME#\". Está disponible para verlo y descargarlo en su perfil en la pestaña \"Mis documentos\"[br][br][url=#SIGN_URL#]Ver el documento[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_COMPANY"] = "[b]Firmar documento[/b][br][br]#INITIATOR_NAME# le envió el documento #DOC_NAME# para que lo firme[br][br][url=#SIGN_URL#]Firmarlo ahora[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_EMPLOYEE"] = "[b]Firmar documento[/b][br][br]Firme el documento #DOC_NAME# y observe su progreso en su perfil en la pestaña \"Mis documentos\"[br][br][url=#SIGN_URL#]Firmarlo ahora[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_INVITE_REVIEWER"] = "[b]Aprobar documento[/b][br][br]#INITIATOR_NAME# envió el documento #DOC_NAME# para que lo apruebe[br][br][url=#SIGN_URL#]Aprobarlo[/url]";
+$MESS["SIGN_CALLBACK_CHAT_BY_EMPLOYEE_SIGNED_BY_EMPLOYEE"] = "[b]Documento enviado[/b][br][br]Usted firmó y envió el documento \"#DOC_NAME#\". Se le notificará en cuanto la empresa termine de procesarlo.[br][br][url=#SIGN_URL#]Ver el documento[/url]";

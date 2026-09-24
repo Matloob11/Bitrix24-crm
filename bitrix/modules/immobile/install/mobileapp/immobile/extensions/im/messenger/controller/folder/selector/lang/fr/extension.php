@@ -1,0 +1,3 @@
+<?php
+$MESS["IMMOBILE_FOLDER_PICKER_SAVE_BUTTON"] = "Enregistrer";
+$MESS["IMMOBILE_FOLDER_PICKER_TITLE"] = "Dossiers";

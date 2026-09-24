@@ -1,0 +1,20 @@
+<?php
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_HINT"] = "Jeśli potwierdzisz usunięcie – zostaniesz usunięty i nie będziesz mógł zalogować się do tego Bitrix24.\n\n[USER=#USER_ID#]#USER_NAME#[/USER] zostanie głównym administratorem.";
+$MESS["M_INTRANET_FIRE_ADMIN_AND_TRANSFER_RIGHTS_TITLE"] = "Potwierdź transfer uprawnień i swoje usunięcie";
+$MESS["M_INTRANET_FIRE_ADMIN_REQUEST_ERROR"] = "Nie można zakończyć działania.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONFIRM_BUTTON"] = "Wyślij wniosek";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_CONSENT_INSTRUCTION"] = "Czy chcesz wysłać wniosek o transfer jego uprawnień i zezwolenie na usunięcie?";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_DESCRIPTION"] = "Tego użytkownika nie można usunąć bez jego zgody.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_ERROR_TOAST"] = "Nie udało się wysłać wniosku o usunięcie. Spróbuj ponownie.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_HINT"] = "[USER=#USER_ID#]#USER_NAME#[/USER] jest głównym administratorem Twojego Bitrix24. Ma pełen dostęp do wszystkich ustawień i parametrów.";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_REJECT_BUTTON"] = "Anuluj";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TITLE"] = "Usuń głównego administratora";
+$MESS["M_INTRANET_REQUEST_ADMIN_FIRE_TOAST"] = "Wniosek został wysłany. Otrzymasz powiadomienie, gdy administrator odpowie na Twój wniosek.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_BUTTON"] = "Potwierdź";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONFIRM_WORD"] = "Transfer";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_CONSENT_INSTRUCTION"] = "Aby potwierdzić decyzję, wprowadź poniżej słowo „#CONFIRM_WORD#”:";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_DESCRIPTION"] = "W celu potwierdzenia tego działania wymagany jest dodatkowy krok, aby zapobiec przypadkowemu transferowi uprawnień.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_ERROR_INPUT_TEXT"] = "Wprowadź słowo „#CONFIRM_WORD#”";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_HINT"] = "Jeśli potwierdzisz transfer – stracisz uprawnienia dostępu do ustawień i parametrów Bitrix24.\n\n[USER=#USER_ID#]#USER_NAME#[/USER] zostanie głównym administratorem.";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_REJECT_BUTTON"] = "Odrzuć";
+$MESS["M_INTRANET_TRANSFER_ADMIN_RIGHTS_TITLE"] = "Potwierdź transfer uprawnień";

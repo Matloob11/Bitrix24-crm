@@ -1,0 +1,3 @@
+<?php
+$MESS["INTRANET_SETTINGS_TOOLS_SITES_AND_SHOP_MAIN"] = "Sitios web y tiendas";
+$MESS["INTRANET_SETTINGS_TOOLS_SITES_MAIN"] = "Sitios web";

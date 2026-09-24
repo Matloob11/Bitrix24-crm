@@ -1,0 +1,20 @@
+<?php
+$MESS["ME_ACTION"] = "Rozpocznij spotkanie";
+$MESS["ME_AGENDA"] = "Program";
+$MESS["ME_CHANGE"] = "zmień";
+$MESS["ME_CLOSE"] = "Zakończ spotkanie";
+$MESS["ME_COMMENTS"] = "Komentarze";
+$MESS["ME_COPY"] = "Utwórz kolejne spotkanie";
+$MESS["ME_CURRENT_STATE_MSGVER_1"] = "Status:";
+$MESS["ME_DATE_START_MSGVER_1"] = "Początek:";
+$MESS["ME_DESCR_TITLE"] = "Opis spotkania";
+$MESS["ME_EDIT_TITLE"] = "Edytuj";
+$MESS["ME_FILES_MSGVER_1"] = "Pliki:";
+$MESS["ME_GROUP_MSGVER_1"] = "Projekt:";
+$MESS["ME_KEEPER_MSGVER_1"] = "Asystent administracyjny";
+$MESS["ME_LIST_TITLE"] = "Wyświetl spotkania";
+$MESS["ME_MEMBERS"] = "Uczestnicy";
+$MESS["ME_OWNER"] = "Właściciel";
+$MESS["ME_PLACE_MSGVER_1"] = "Lokalizacja:";
+$MESS["ME_PREPARE"] = "Wznów spotkanie";
+$MESS["ME_REFUSED"] = "Odmówione";

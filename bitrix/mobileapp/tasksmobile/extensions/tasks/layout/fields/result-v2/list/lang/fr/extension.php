@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_ADD_RESULT"] = "Ajouter plus";
+$MESS["TASKS_FIELDS_RESULT_V2_LIST_WIDGET_TITLE"] = "Résumés de statut";

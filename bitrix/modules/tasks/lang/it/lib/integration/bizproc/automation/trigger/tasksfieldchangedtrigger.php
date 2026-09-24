@@ -1,0 +1,5 @@
+<?php
+$MESS["TASKS_AUTOMATION_TRIGGER_FIELD_CHANGED_DESCRIPTION"] = "Modifica la fase quando uno o più valori del campo dell'elemento cambiano.";
+$MESS["TASKS_AUTOMATION_TRIGGER_FIELD_CHANGED_NAME"] = "Monitora variazione campo";
+$MESS["TASKS_AUTOMATION_TRIGGER_FIELD_CHANGED_PROPERTY_FIELDS"] = "Monitora campi";
+$MESS["TASKS_AUTOMATION_TRIGGER_FIELD_CHANGED_PROPERTY_FIELDS_CHOOSE"] = "Seleziona campi";

@@ -1,0 +1,23 @@
+<?php
+$MESS["BPSGCA_EMPTY_VARIABLES"] = "Aucune valeur assignée aux variables globales";
+$MESS["BPSGVA_ADD_PARAMETER"] = "+ ajouter un paramètre";
+$MESS["BPSGVA_ADD_VARIABLE"] = "+ ajouter une variable";
+$MESS["BPSGVA_BOOL_NO"] = "Non";
+$MESS["BPSGVA_BOOL_YES"] = "Oui";
+$MESS["BPSGVA_CLEAR"] = "Réinitialiser";
+$MESS["BPSGVA_CREATE_GCONSTANT"] = "Créer une constante";
+$MESS["BPSGVA_CREATE_GCONSTANT_QUESTION"] = "Souhaitez-vous créer une nouvelle constante ?";
+$MESS["BPSGVA_CREATE_GVARIABLE"] = "Créer une variable";
+$MESS["BPSGVA_CREATE_GVARIABLE_QUESTION"] = "Souhaitez-vous créer une nouvelle variable ?";
+$MESS["BPSGVA_DOCUMENT"] = "Valeur du champ";
+$MESS["BPSGVA_EMPTY"] = "Non sélectionné";
+$MESS["BPSGVA_GCONSTANT_NOT_FOUND"] = "Constante introuvable";
+$MESS["BPSGVA_GCONSTANT_NO_EXIST"] = "Il n'y a pas de constantes";
+$MESS["BPSGVA_GVARIABLE_NOT_FOUND"] = "Variable introuvable";
+$MESS["BPSGVA_GVARIABLE_NO_EXIST"] = "Il n'y a pas de variables";
+$MESS["BPSGVA_INPUT_TEXT"] = "Saisissez la valeur";
+$MESS["BPSGVA_LIST_OF_VALUES"] = "Valeurs";
+$MESS["BPSGVA_PARAMETER"] = "Paramètre de sélection";
+$MESS["BPSGVA_TEXT"] = "Valeur personnalisée";
+$MESS["BPSGVA_TYPE_OF_PARAMETER"] = "Type de paramètre";
+$MESS["BPSGVA_VARIABLE"] = "Sélectionner une variable";

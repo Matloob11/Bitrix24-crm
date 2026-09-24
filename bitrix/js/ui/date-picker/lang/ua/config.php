@@ -1,0 +1,19 @@
+<?php
+$MESS["UI_DATE_PICKER_BACK_TO_DAYS"] = "Назад до вибору дати";
+$MESS["UI_DATE_PICKER_DIALOG_LABEL"] = "Календар";
+$MESS["UI_DATE_PICKER_HOURS"] = "Години";
+$MESS["UI_DATE_PICKER_MINUTES"] = "Хвилини";
+$MESS["UI_DATE_PICKER_MONTH_VIEW_LABEL"] = "Вибір місяця";
+$MESS["UI_DATE_PICKER_NEXT_DECADE"] = "Наступні 12 років";
+$MESS["UI_DATE_PICKER_NEXT_MONTH"] = "Наступний місяць";
+$MESS["UI_DATE_PICKER_NEXT_YEAR"] = "Наступний рік";
+$MESS["UI_DATE_PICKER_PRESETS_LABEL"] = "Швидкий вибір дати";
+$MESS["UI_DATE_PICKER_PREV_DECADE"] = "Попередні 12 років";
+$MESS["UI_DATE_PICKER_PREV_MONTH"] = "Попередній місяць";
+$MESS["UI_DATE_PICKER_PREV_YEAR"] = "Попередній рік";
+$MESS["UI_DATE_PICKER_RANGE_TIME"] = "Час діапазону";
+$MESS["UI_DATE_PICKER_RANGE_TIME_END"] = "Час закінчення";
+$MESS["UI_DATE_PICKER_RANGE_TIME_START"] = "Час початку";
+$MESS["UI_DATE_PICKER_TIME_LABEL"] = "Вибрати час";
+$MESS["UI_DATE_PICKER_TIME_VIEW_LABEL"] = "Вибір часу";
+$MESS["UI_DATE_PICKER_YEAR_VIEW_LABEL"] = "Вибір року";

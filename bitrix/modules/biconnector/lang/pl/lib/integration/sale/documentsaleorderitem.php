@@ -1,0 +1,15 @@
+<?php
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_AMOUNT"] = "Ilość";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_COST_CURRENCY"] = "Waluta ceny zakupu lub kosztu";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_COST_PRICE"] = "Cena zakupu lub koszt";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_DATE_INSERT"] = "Data dodania pozycji zamówienia";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_DOCUMENT_DATE_CREATE"] = "Data utworzenia obiektu magazynowego";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_DOCUMENT_ID"] = "Identyfikator obiektu magazynowego";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_ID"] = "Unikalny identyfikator";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_NAME"] = "Nazwa produktu";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_PRICE"] = "Cena sprzedaży";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_PRICE_CURRENCY"] = "Waluta ceny sprzedaży";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_PRODUCT_ID"] = "ID produktu";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_FIELD_STORE_ID"] = "Identyfikator magazynu";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_TABLE"] = "Pozycje obiektów magazynowych sprzedaży";
+$MESS["SALE_DOCUMENT_SALEORDER_ITEM_TABLE_DESCRIPTION_FULL"] = "Zawiera informacje o pozycjach w obiektach magazynowych sprzedaży.";

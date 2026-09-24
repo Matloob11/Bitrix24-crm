@@ -1,0 +1,704 @@
+/**
+ * @module im/messenger/controller/recent/service/action/lib/handler
+ */
+jn.define('im/messenger/controller/recent/service/action/lib/handler', (require, exports, module) => {
+	const { Type } = require('type');
+	const { UserProfile } = require('user-profile');
+	const { Loc } = require('im/messenger/loc');
+	const { ErrorType, OpenlineStatus, Analytics } = require('im/messenger/const');
+	const { MessengerParams } = require('im/messenger/lib/params');
+	const { MessengerNotifier } = require('im/messenger/lib/ui/notification/messenger-notifier');
+	const { openDialog } = require('im/messenger/controller/recent/service/select/lib/opener');
+	const { serviceLocator } = require('im/messenger/lib/di/service-locator');
+	const { ChatDeletionOrigin, ChatDeletionReason } = require('im/messenger/application/lib/chat-deletion-manager');
+	const { FolderCreate } = require('im/messenger/controller/folder/create');
+	const { FolderSelector } = require('im/messenger/controller/folder/selector');
+	const { AnalyticsService } = require('im/messenger/provider/services/analytics');
+
+	const {
+		RecentRest,
+		ChatRest,
+		UserRest,
+	} = require('im/messenger/provider/rest');
+	const {
+		RecentDataProvider,
+		ChatDataProvider,
+	} = require('im/messenger/provider/data');
+
+	const { clone } = require('utils/object');
+
+	/**
+	 * @param {MessengerCoreStore} store
+	 * @param {string} id
+	 * @return {?RecentModelState}
+	 */
+	function getRecentItemById(store, id)
+	{
+		return store.getters['recentModel/getById'](id);
+	}
+
+	/**
+	 * @param {MessengerCoreStore} store
+	 * @param {string} id
+	 * @return {?DialoguesModelState}
+	 */
+	function getDialogById(store, id)
+	{
+		return clone(store.getters['dialoguesModel/getById'](id));
+	}
+
+	/**
+	 * @param {MessengerCoreStore} store
+	 * @param {string} id
+	 * @return {?CounterModelState}
+	 */
+	function getCounterStateById(store, id)
+	{
+		const dialog = store.getters['dialoguesModel/getById'](id);
+		if (!dialog)
+		{
+			return null;
+		}
+
+		return clone(store.getters['counterModel/getByChatId'](dialog.chatId));
+	}
+
+	/**
+	 * Recent actions pass dialogId as itemId, while FolderService expects numeric chatId.
+	 *
+	 * @param {MessengerCoreStore} store
+	 * @param {string} itemId
+	 * @return {?number}
+	 */
+	function resolveChatIdForFolderSelector(store, itemId)
+	{
+		const dialog = store.getters['dialoguesModel/getById'](itemId);
+		if (Type.isNumber(dialog?.chatId))
+		{
+			return dialog.chatId;
+		}
+
+		const chatId = Number(itemId);
+		if (Number.isInteger(chatId) && chatId > 0)
+		{
+			return chatId;
+		}
+
+		return null;
+	}
+
+	/**
+	 * @param {MessengerCoreStore} store
+	 * @return {boolean}
+	 */
+	function hasPersonalFolders(store)
+	{
+		return store.getters['folderModel/getPersonalFolders']().length > 0;
+	}
+
+	/**
+	 * @param {RecentLocator} recentLocator
+	 */
+	function renderRecent(recentLocator)
+	{
+		recentLocator.get('render')?.renderInstant();
+	}
+
+	/**
+	 * @param {MessengerCoreStore} store
+	 * @param {Logger} logger
+	 * @param {RecentLocator} recentLocator
+	 * @param {string} itemId
+	 * @param {boolean} shouldMute
+	 */
+	async function handleMute({ store, logger, recentLocator }, itemId, shouldMute)
+	{
+		const dialog = getDialogById(store, itemId);
+		if (Type.isUndefined(dialog))
+		{
+			return;
+		}
+
+		const userId = MessengerParams.getUserId();
+		const muteList = new Set(dialog.muteList);
+
+		if (shouldMute)
+		{
+			muteList.add(userId);
+		}
+		else
+		{
+			muteList.delete(userId);
+		}
+
+		await store.dispatch('dialoguesModel/set', [{
+			dialogId: itemId,
+			muteList: [...muteList],
+		}]);
+
+		await store.dispatch('counterModel/setMuted', {
+			chatId: dialog.chatId,
+			isMuted: shouldMute,
+		});
+
+		try
+		{
+			await ChatRest.mute({ dialogId: itemId, shouldMute });
+		}
+		catch (error)
+		{
+			logger.error('Recent item mute error: ', error?.error?.() ?? error?.message);
+			await store.dispatch('dialoguesModel/set', [dialog]);
+			await store.dispatch('counterModel/setMuted', {
+				chatId: dialog.chatId,
+				isMuted: !shouldMute,
+			});
+
+			renderRecent(recentLocator);
+		}
+	}
+
+	/**
+	 * @param {{store: MessengerCoreStore, logger: Logger}} deps
+	 * @param {string} itemId
+	 * @returns {Promise<void>}
+	 */
+	async function handleDeleteChatFromRecentModel({ store, logger }, itemId)
+	{
+		const recentItem = getRecentItemById(store, itemId);
+		if (Type.isNil(recentItem))
+		{
+			return;
+		}
+
+		const recentProvider = new RecentDataProvider();
+
+		try
+		{
+			await recentProvider.deleteFromSource(RecentDataProvider.source.model, { dialogId: recentItem.id });
+		}
+		catch (error)
+		{
+			logger.error('handler delete recent item from model error: ', error);
+		}
+	}
+
+	/**
+	 * @param {{store: MessengerCoreStore, logger: Logger}} deps
+	 * @param {string} itemId
+	 * @returns {Promise<void>}
+	 */
+	async function handleFullDeleteChat({ store, logger }, itemId)
+	{
+		const recentItem = getRecentItemById(store, itemId);
+		if (Type.isNil(recentItem))
+		{
+			return;
+		}
+
+		const tabs = store.getters['recentModel/getTabsContainsItem'](recentItem.id);
+		// Copy the chat coordinates as primitives BEFORE deletion so the announce does
+		// not depend on the store object that delete() removes from the collection.
+		const dialog = store.getters['dialoguesModel/getById'](recentItem.id);
+		const snapshot = {
+			chatId: dialog?.chatId,
+			parentChatId: dialog?.parentChatId,
+			chatType: dialog?.type,
+		};
+		const recentProvider = new RecentDataProvider();
+
+		try
+		{
+			const chatProvider = new ChatDataProvider();
+			await recentProvider.delete({ dialogId: recentItem.id });
+			await chatProvider.delete({ dialogId: recentItem.id });
+
+			// Data is removed here (with rollback above); only announce the UI close so
+			// any open screen / project nested navigation is closed via the coordinator.
+			// TODO: open child screens are not closed here — this path keeps its own
+			// rollback and does not capture children. Route through ChatDeletionManager
+			// .delete() once the rollback is reconciled to also close project children.
+			serviceLocator.get('chat-deletion-manager').announceDeleted({
+				dialogId: recentItem.id,
+				chatId: snapshot.chatId,
+				parentChatId: snapshot.parentChatId,
+				chatType: snapshot.chatType,
+				origin: ChatDeletionOrigin.local,
+				reason: ChatDeletionReason.delete,
+				shouldShowAlert: false,
+				shouldSendDeleteAnalytics: false,
+			});
+		}
+		catch (error)
+		{
+			logger.error('handler full delete chat error: ', error);
+			await store.dispatch('recentModel/setByNavigationTabs', {
+				tabs,
+				itemList: [recentItem],
+			});
+		}
+	}
+
+	const handlers = {
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		hide: async ({ store, recentLocator, logger }, itemId) => {
+			const recentItem = getRecentItemById(store, itemId);
+			if (Type.isUndefined(recentItem))
+			{
+				return;
+			}
+			const counterState = getCounterStateById(store, itemId);
+
+			const counterChatId = Type.isPlainObject(counterState)
+				? counterState.chatId
+				: getDialogById(store, itemId).chatId
+			;
+
+			await store.dispatch('recentModel/hideByNavigationTabs', {
+				id: recentItem.id,
+				fromTabs: [recentLocator.get('id')],
+				parentChatId: recentLocator.get('parentChatId'),
+			});
+			if (Type.isPlainObject(counterState))
+			{
+				await store.dispatch('counterModel/delete', { chatIdList: [counterChatId] });
+			}
+			renderRecent(recentLocator);
+
+			try
+			{
+				await RecentRest.hideChat({ dialogId: recentItem.id });
+				await serviceLocator.get('counters-update-system').deleteCountersByChatIdList([counterChatId]);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item hide error: ', error?.error?.() ?? error?.message);
+				await store.dispatch('recentModel/setByNavigationTabs', {
+					tabs: [recentLocator.get('id')],
+					itemList: [recentItem],
+					parentChatId: recentLocator.get('parentChatId'),
+				});
+				if (Type.isPlainObject(counterState))
+				{
+					await store.dispatch('counterModel/setList', { counterList: [counterState] });
+				}
+				renderRecent(recentLocator);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		leave: async (deps, itemId) => {
+			const { logger } = deps;
+			try
+			{
+				await handleDeleteChatFromRecentModel(deps, itemId);
+				await ChatRest.leave({ dialogId: itemId });
+				await handleFullDeleteChat(deps, itemId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item leave error: ', error);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		pin: async ({ store, logger, recentLocator }, itemId) => {
+			await store.dispatch('recentModel/update', [{ id: itemId, pinned: true }]);
+			renderRecent(recentLocator);
+
+			try
+			{
+				await RecentRest.pinChat(itemId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item pin error: ', error);
+				const errorCode = error?.[0]?.code;
+				if (errorCode === ErrorType.recent.maxPin)
+				{
+					const { Alert, ButtonType } = require('alert');
+					Alert.confirm(
+						null,
+						Loc.getMessage('IMMOBILE_MESSENGER_CONTROLLER_RECENT_SERVICE_ACTION_PIN_ERROR_MAX_PINNED_V2'),
+						[{ type: ButtonType.DEFAULT }],
+					);
+				}
+				await store.dispatch('recentModel/update', [{ id: itemId, pinned: false }]);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		unpin: async ({ store, logger, recentLocator }, itemId) => {
+			await store.dispatch('recentModel/update', [{ id: itemId, pinned: false }]);
+			renderRecent(recentLocator);
+
+			try
+			{
+				await RecentRest.unpinChat(itemId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item unpin error: ', error);
+				await store.dispatch('recentModel/update', [{ id: itemId, pinned: true }]);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		read: async ({ store, logger, recentLocator }, itemId) => {
+			const recentItem = getRecentItemById(store, itemId);
+			if (Type.isUndefined(recentItem))
+			{
+				return;
+			}
+
+			const counterState = getCounterStateById(store, itemId);
+
+			if (!counterState)
+			{
+				return;
+			}
+
+			await store.dispatch('counterModel/setList', {
+				counterList: [{
+					...counterState,
+					counter: 0,
+				}],
+			});
+			await store.dispatch('recentModel/update', [{ id: itemId, unread: false }]);
+			renderRecent(recentLocator);
+
+			try
+			{
+				await RecentRest.readChat({ dialogId: itemId });
+				await serviceLocator.get('counters-update-system').readChat(counterState.chatId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item read error: ', error?.error?.() ?? error?.message);
+				await store.dispatch('counterModel/setList', {
+					counterList: [{
+						...counterState,
+						counter: 0,
+					}],
+				});
+				await store.dispatch('recentModel/update', [recentItem]);
+				renderRecent(recentLocator);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		unread: async ({ store, logger, recentLocator }, itemId) => {
+			const recentItem = getRecentItemById(store, itemId);
+			if (Type.isUndefined(recentItem))
+			{
+				return;
+			}
+
+			const dialog = getDialogById(store, itemId);
+			const counterState = getCounterStateById(store, itemId);
+			await store.dispatch('counterModel/setMarkedAsUnread', {
+				dialogId: itemId,
+				recentSection: recentLocator.get('recentSection'),
+				isMarkedAsUnread: true,
+			});
+
+			const updatedCounterState = getCounterStateById(store, itemId);
+			if (!updatedCounterState)
+			{
+				return;
+			}
+
+			await store.dispatch('recentModel/update', [{ id: itemId, unread: true }]);
+			renderRecent(recentLocator);
+
+			try
+			{
+				await RecentRest.unreadChat({ dialogId: itemId });
+				await serviceLocator.get('counters-update-system').updateCounterState(updatedCounterState);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item unread error: ', error?.error?.() ?? error?.message);
+				await store.dispatch('recentModel/update', [recentItem]);
+				if (counterState)
+				{
+					await store.dispatch('counterModel/setList', { counterList: [counterState] });
+				}
+				else if (Type.isNumber(dialog?.chatId))
+				{
+					await store.dispatch('counterModel/delete', { chatIdList: [dialog.chatId] });
+				}
+				renderRecent(recentLocator);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		mute: async (deps, itemId) => handleMute(deps, itemId, true),
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		unmute: async (deps, itemId) => handleMute(deps, itemId, false),
+
+		/**
+		 * @param {*} _deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		inviteResend: async (_deps, itemId) => {
+			try
+			{
+				await UserRest.resendInvite({ userId: itemId });
+				MessengerNotifier.show({
+					message: Loc.getMessage('IMMOBILE_MESSENGER_CONTROLLER_RECENT_SERVICE_ACTION_INVITE_RESEND_DONE'),
+				});
+			}
+			catch (response)
+			{
+				if (response.status === 'error')
+				{
+					MessengerNotifier.show({
+						message: response.errors.map((element) => element.message).join('. '),
+					});
+				}
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		inviteCancel: async ({ store, logger, recentLocator }, itemId) => {
+			const recentItem = getRecentItemById(store, itemId);
+			if (Type.isUndefined(recentItem))
+			{
+				return;
+			}
+
+			await store.dispatch('recentModel/delete', { id: recentItem.id });
+			renderRecent(recentLocator);
+
+			try
+			{
+				await UserRest.cancelInvite({ userId: itemId });
+			}
+			catch (response)
+			{
+				if (response.status === 'error')
+				{
+					MessengerNotifier.show({
+						message: response.errors.map((element) => element.message).join('. '),
+					});
+				}
+
+				logger.error('handler recent item inviteCancel error: ', response);
+				await store.dispatch('recentModel/update', [recentItem]);
+				renderRecent(recentLocator);
+			}
+		},
+
+		/**
+		 * @param {*} _deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		profile: async (_deps, itemId) => {
+			let ownerId = itemId;
+			if (Type.isString(itemId))
+			{
+				const numId = Number(itemId);
+				ownerId = Number.isNaN(numId) ? itemId : numId;
+			}
+			void UserProfile.open({
+				ownerId,
+				analyticsSection: 'im_messenger_recent_service_action_profile',
+			});
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		operatorAnswer: async ({ store, logger, recentLocator }, itemId) => {
+			const recentItem = getRecentItemById(store, itemId);
+			const dialog = getDialogById(store, itemId);
+			const counterState = getCounterStateById(store, itemId);
+			if (Type.isNil(dialog) || Type.isNil(recentItem) || Type.isNil(counterState))
+			{
+				return;
+			}
+
+			const { chatId } = dialog;
+			await store.dispatch('counterModel/setList', {
+				counterList: [{
+					...counterState,
+					counter: 0,
+				}],
+			});
+			await store.dispatch('dialoguesModel/openlinesModel/update', { chatId, fields: { status: OpenlineStatus.work } });
+			await store.dispatch('dialoguesModel/update', {
+				dialogId: itemId,
+				fields: {
+					owner: MessengerParams.getUserId(),
+				},
+			});
+
+			renderRecent(recentLocator);
+			openDialog(itemId);
+
+			try
+			{
+				await RecentRest.answerOpenline(chatId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item answer error: ', error);
+				await store.dispatch('dialoguesModel/openlinesModel/update', { chatId, fields: { status: OpenlineStatus.new } });
+				await store.dispatch('dialoguesModel/update', { dialogId: itemId, owner: 0 });
+
+				renderRecent(recentLocator);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		operatorSkip: async (deps, itemId) => {
+			const dialog = getDialogById(deps.store, itemId);
+			if (Type.isNil(dialog))
+			{
+				return;
+			}
+
+			const { logger } = deps;
+			try
+			{
+				await handleDeleteChatFromRecentModel(deps, itemId);
+				await RecentRest.skipOpenline(dialog.chatId);
+				await handleFullDeleteChat(deps, itemId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item operator skip error: ', error);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		operatorSpam: async (deps, itemId) => {
+			const dialog = getDialogById(deps.store, itemId);
+			if (Type.isNil(dialog))
+			{
+				return;
+			}
+
+			const { logger } = deps;
+			try
+			{
+				await handleDeleteChatFromRecentModel(deps, itemId);
+				await RecentRest.spamOpenline(dialog.chatId);
+				await handleFullDeleteChat(deps, itemId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item operator spam error: ', error);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		operatorFinish: async (deps, itemId) => {
+			const dialog = getDialogById(deps.store, itemId);
+			if (Type.isNil(dialog))
+			{
+				return;
+			}
+
+			const { logger } = deps;
+			try
+			{
+				await handleDeleteChatFromRecentModel(deps, itemId);
+				await RecentRest.finishOpenline(dialog.chatId);
+				await handleFullDeleteChat(deps, itemId);
+			}
+			catch (error)
+			{
+				logger.error('handler recent item operator finish error: ', error);
+			}
+		},
+
+		/**
+		 * @param {{store: MessengerCoreStore, logger: Logger, recentLocator: RecentLocator}} deps
+		 * @param {string} itemId
+		 * @returns {Promise<void>}
+		 */
+		addToFolder: async ({ store, logger }, itemId) => {
+			const chatId = resolveChatIdForFolderSelector(store, itemId);
+			if (!Type.isNumber(chatId))
+			{
+				logger.error('addToFolder: cannot resolve chatId', itemId);
+
+				return;
+			}
+
+			AnalyticsService.getInstance().sendAddToFolder({
+				dialogId: itemId,
+				subSection: Analytics.SubSection.recentSwipeMenu,
+			});
+
+			if (!hasPersonalFolders(store))
+			{
+				new FolderCreate({ initialChatIds: [itemId] }).openAsBottomSheet();
+
+				return;
+			}
+
+			FolderSelector.open({
+				chatId,
+				onComplete: () => {},
+			});
+		},
+	};
+
+	module.exports = { handlers };
+});

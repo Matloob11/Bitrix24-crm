@@ -1,0 +1,2 @@
+<?php
+$MESS["CRM_INVOICE_PAYABLE_ITEM_NOT_SUPPORTED"] = "O #METHOD_NAME# não é compatível";

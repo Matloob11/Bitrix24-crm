@@ -1,0 +1,6 @@
+<?php
+$MESS["M_CRM_CATEGORY_LIST_DEFAULT_CATEGORY_NAME2"] = "Nowy lejek";
+$MESS["M_CRM_CATEGORY_LIST_ERROR"] = "Błąd podczas ładowania danych";
+$MESS["M_CRM_CATEGORY_LIST_NAVIGATION_TITLE2"] = "Lejki i tunele";
+$MESS["M_CRM_CATEGORY_LIST_NAVIGATION_TITLE_ON_CHANGE_TUNNEL2"] = "Wybierz lejek dla tunelu";
+$MESS["M_CRM_CATEGORY_LIST_SUCCESS_CREATION2"] = "Utworzono lejek";

@@ -1,0 +1,3 @@
+<?php
+$MESS["SIGN_EDITOR_PLACEHOLDERS_WIDGET_BTN_CREATE_HINT"] = "Додати поле";
+$MESS["SIGN_EDITOR_PLACEHOLDERS_WIDGET_TITLE"] = "Список полів із кодами";

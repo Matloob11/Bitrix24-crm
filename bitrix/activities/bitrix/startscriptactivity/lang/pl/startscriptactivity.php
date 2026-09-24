@@ -1,0 +1,19 @@
+<?php
+$MESS["BP_SSA_ACTIVITY_EMPTY_DOCUMENT_ID"] = "Brak identyfikatora elementu.";
+$MESS["BP_SSA_ACTIVITY_EMPTY_START_BY"] = "Pole \"Uruchom jako użytkownik\" jest wymagane.";
+$MESS["BP_SSA_ACTIVITY_INCORRECT_TEMPLATE_ID"] = "Nieprawidłowy identyfikator szablonu.";
+$MESS["BP_SSA_ACTIVITY_LIMIT_DOCUMENT_IDS"] = "Przekroczono maksymalną liczbę uruchomień skryptu inteligentnego.";
+$MESS["BP_SSA_ACTIVITY_LIMIT_QUEUE"] = "Skrypt inteligentny jest nadal uruchomiony. Nie można go uruchomić ponownie.";
+$MESS["BP_SSA_ACTIVITY_LOOPING_ERROR"] = "Skrypt inteligentny został zablokowany, ponieważ wywołuje się w pętli.";
+$MESS["BP_SSA_ACTIVITY_MAP_DOCUMENT_ID"] = "Identyfikator elementu";
+$MESS["BP_SSA_ACTIVITY_MAP_PARAMETERS"] = "Parametry uruchomieniowe skryptu inteligentnego";
+$MESS["BP_SSA_ACTIVITY_MAP_PARAMETERS_HIDDEN"] = "Niewystarczające uprawnienia do edycji parametrów bieżącego skryptu inteligentnego.";
+$MESS["BP_SSA_ACTIVITY_MAP_START_BY"] = "Uruchom jako użytkownik";
+$MESS["BP_SSA_ACTIVITY_MAP_TEMPLATE_ID"] = "Skrypt inteligentny";
+$MESS["BP_SSA_ACTIVITY_NOT_FOUND_DOCUMENT"] = "Nie można znaleźć elementu o tym identyfikatorze.";
+$MESS["BP_SSA_ACTIVITY_NOT_FOUND_TEMPLATE"] = "Skrypt inteligentny nie został znaleziony lub jest nieaktywny.";
+$MESS["BP_SSA_ACTIVITY_NOT_MATCH_DOCUMENT_TYPE"] = "Typ wybranego identyfikatora elementu nie jest obsługiwany przez skrypty inteligentne.";
+$MESS["BP_SSA_ACTIVITY_TEMPLATE_PARAMETERS_ERROR"] = "Wymagany parametr jest pusty: #NAME#.";
+$MESS["BP_SSA_ACTIVITY_VALIDATE_EMPTY_DOCUMENT_ID"] = "Pole \"Identyfikator elementu\" jest wymagane.";
+$MESS["BP_SSA_ACTIVITY_VALIDATE_EMPTY_START_BY"] = "Pole \"Uruchom jako użytkownik\" jest wymagane.";
+$MESS["BP_SSA_ACTIVITY_VALIDATE_EMPTY_TEMPLATE_ID"] = "Pole \"Skrypt inteligentny\" jest wymagane.";

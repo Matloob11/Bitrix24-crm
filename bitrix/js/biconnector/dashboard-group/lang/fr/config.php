@@ -1,0 +1,25 @@
+<?php
+$MESS["BI_GROUP_ADD_DASHBOARD"] = "Ajouter des tableaux de bord";
+$MESS["BI_GROUP_DASHBOARD_SCOPES_EMPTY"] = "Sélectionner une portée";
+$MESS["BI_GROUP_EMPTY_SUBTITLE"] = "Cliquez sur \"Ajouter des tableaux de bord\" pour ajouter des tableaux de bord à ce groupe.";
+$MESS["BI_GROUP_EMPTY_TITLE"] = "Il n'y a pas de tableaux de bord dans ce groupe";
+$MESS["BI_GROUP_NAME_NEW"] = "Nouveau groupe";
+$MESS["BI_GROUP_SAVE"] = "Enregistrer";
+$MESS["BI_GROUP_SAVE_CANCEL_MSGVER_1"] = "Annuler";
+$MESS["BI_GROUP_SAVE_WARN_DONT_SHOW"] = "Ne plus afficher";
+$MESS["BI_GROUP_SAVE_WARN_NO"] = "Non";
+$MESS["BI_GROUP_SAVE_WARN_TEXT_MSGVER_1"] = "Voulez-vous vraiment retirer le tableau de bord de ce groupe ? Vous risquez de perdre l'accès au tableau de bord.";
+$MESS["BI_GROUP_SAVE_WARN_TITLE"] = "Retirer le tableau de bord du groupe";
+$MESS["BI_GROUP_SAVE_WARN_YES"] = "Oui";
+$MESS["BI_GROUP_SCOPES_DASHBOARD"] = "#FIRST_SCOPES# [hint]et #NUMBER# autres[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_EMPTY_MSGVER_1"] = "[title]Portée du tableau de bord :[/title] sélectionner";
+$MESS["BI_GROUP_SCOPES_GROUP_MANY_MSGVER_1"] = "[title]Portée du tableau de bord :[/title] #FIRST_SCOPES# [hint]et #NUMBER# de plus[/hint]";
+$MESS["BI_GROUP_SCOPES_GROUP_MSGVER_1"] = "[title]Portée du tableau de bord :[/title] #SCOPE#";
+$MESS["BI_GROUP_SCOPE_HINT_MSGVER_1"] = "Les portées sélectionnées seront appliquées à tous les tableaux de bord du groupe. [link]En savoir plus[/link]";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_0"] = "#COUNT# tableau de bord";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_1"] = "#COUNT# tableaux de bord";
+$MESS["BI_GROUP_SUBTITLE_PLURAL_2"] = "#COUNT# tableaux de bord";
+$MESS["BI_GROUP_SYSTEM_NAME_HINT"] = "Impossible de renommer un groupe système.";
+$MESS["BI_GROUP_SYSTEM_SCOPES_HINT"] = "Impossible de changer la portée d'un groupe système.";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE"] = "Pour supprimer la portée de ce tableau de bord, <br>supprimez le tableau de bord du groupe \"#GROUP_NAME#\".";
+$MESS["DASHBOARD_PARAMS_SELECTOR_NO_DELETE_GROUP_SCOPE_MANY"] = "Pour supprimer la portée de ce tableau de bord, <br>supprimez le tableau de bord de ces groupes :";

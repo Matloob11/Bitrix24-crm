@@ -1,0 +1,40 @@
+<?php
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CODE"] = "Código";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECT"] = "Conectar";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTED"] = "Bitrix24.Network conectado";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTED_MSGVER_1"] = "Bitrix24 Network conectado";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTION"] = "Conexión";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_CONNECTOR_ERROR_STATUS"] = "Bot error de procesamiento. Por favor, compruebe todos los ajustes y pruebe su bot de nuevo.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_COPY"] = "Copiar";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_1"] = "Nombre";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_2"] = "Breve descripción";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_3"] = "Mensaje de saludo";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4"] = "Avatar";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_DESCRIPTION_1"] = "único avatar que permitirá que sus clientes se encuentran más rápido.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_DESCRIPTION_2"] = "Cargar avatar";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_DESCRIPTION_3"] = "Eliminar imagen";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_4_HINT"] = "Se admiten archivos JPG y PNG, máximo 5000 píxeles en ambas dimensiones.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_5"] = "Búsqueda";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_6"] = "Código de búsqueda";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_6_TIP"] = "Este código permite a los usuarios encontrar su canal abierto en el messanger, incluso si no está disponible para la búsqueda.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_7_MSGVER_1"] = "Permitir varios chats simultáneos con el mismo cliente";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_7_TIP"] = "Si esta opción está activada, los agentes pueden abrir varios chats simultáneos con el cliente. De lo contrario, al abrirse un nuevo chat automáticamente se cerrará el chat activo.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_FIELD_8_MSGVER_1"] = "Número máximo de chats simultáneos con los clientes ";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_1"] = "Guarde los contactos y el historial de comunicaciones en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_2"] = "Guíe al cliente a lo largo del embudo de ventas en el CRM";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_3"] = "Responda a sus clientes cuando y donde prefieran";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_LIST_ITEM_4"] = "Las consultas de los clientes se distribuyen entre los agentes de ventas según las reglas de la cola.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_SUBTITLE"] = "Conecte Bitrix24.Network para recibir consultas de sus clientes, socios y colegas que también utilizan Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_SUBTITLE_MSGVER_1"] = "Conecte Bitrix24 Network para recibir consultas de sus clientes, socios y colegas que también utilizan Bitrix24.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_TITLE"] = "Utilice Bitrix24.Network para comunicarse con los clientes que también usan Bitrix24";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INDEX_TITLE_MSGVER_1"] = "Utilice Bitrix24 Network para comunicarse con los clientes que también usan Bitrix24";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_INFO"] = "Información";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_MAX_DIALOGS_INFINITE"] = "Ilimitados";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_NAME"] = "Nombre";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_REST_HELP"] = "No se puede crear el canal de soporte privado de búsqueda.<br> Por favor proporcione el código a sus clientes para que puedan ponerse en contacto con usted o conectarse al canal a través de REST API.<br> Canales abiertos REST API detalles están disponibles en #LINK_START#documentos#LINK_END#";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_REST_LINK"] = "https://bitrix24.com/~rest-join-network-en";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_SIMPLE_FORM_DESCRIPTION_1"] = "El canal abierto ya está conectado a Bitrix24.Network.
+<br> Puede cambiar la configuración, si es necesario.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_SIMPLE_FORM_DESCRIPTION_1_MSGVER_1"] = "El canal abierto ya está conectado a Bitrix24 Network.
+<br> Puede cambiar la configuración, si es necesario.";
+$MESS["IMCONNECTOR_COMPONENT_NETWORK_URL"] = "Enlazar";

@@ -1,0 +1,6 @@
+<?php
+$MESS["MOBILEAPP_CALL_LIST_INCOMING"] = "Кіріс қоңырауы";
+$MESS["MOBILEAPP_CALL_LIST_INCOMING_TIME"] = "Кіріс – #TIME#";
+$MESS["MOBILEAPP_CALL_LIST_OUTGOING"] = "Шығыс қоңырауы";
+$MESS["MOBILEAPP_CALL_LIST_OUTGOING_TIME"] = "Шығыс - #TIME#";
+$MESS["MOBILEAPP_CALL_LIST_MISSED"] = "Қабылданбаған қоңырау";

@@ -1,0 +1,3 @@
+<?php
+
+$MESS["DOCGEN_SETTINGS_PERMS_ROLE_CANCEL"] = "Отмена";

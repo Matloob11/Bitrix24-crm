@@ -1,0 +1,20 @@
+<?php
+$MESS["BPDCM_PD_ENTITY"] = "A";
+$MESS["BPDCM_PD_ENTITY_ID_COMMON"] = "Drive";
+$MESS["BPDCM_PD_ENTITY_ID_FOLDER"] = "Cartella";
+$MESS["BPDCM_PD_ENTITY_ID_SG"] = "Gruppo";
+$MESS["BPDCM_PD_ENTITY_ID_USER"] = "Utente";
+$MESS["BPDCM_PD_ENTITY_TYPE_COMMON"] = "Drive pubblico";
+$MESS["BPDCM_PD_ENTITY_TYPE_FOLDER_1"] = "Cartella drive";
+$MESS["BPDCM_PD_ENTITY_TYPE_SG"] = "Drive di gruppo social network";
+$MESS["BPDCM_PD_ENTITY_TYPE_USER"] = "Drive utente";
+$MESS["BPDCM_PD_LABEL_CHOOSE"] = "Seleziona:";
+$MESS["BPDCM_PD_LABEL_DISK_CHOOSE_FILE"] = "Seleziona file";
+$MESS["BPDCM_PD_LABEL_DISK_CHOOSE_FOLDER"] = "Seleziona cartella";
+$MESS["BPDCM_PD_LABEL_DISK_EMPTY"] = "Nessuna selezione";
+$MESS["BPDCM_PD_OPERATION"] = "Operazione";
+$MESS["BPDCM_PD_OPERATION_COPY"] = "Copia";
+$MESS["BPDCM_PD_OPERATION_MOVE"] = "Sposta";
+$MESS["BPDCM_PD_OPERATOR"] = "Esegui come";
+$MESS["BPDCM_PD_SOURCE_ID"] = "Oggetto di origine";
+$MESS["BPDCM_PD_SOURCE_ID_DESCR"] = "File o cartella drive";

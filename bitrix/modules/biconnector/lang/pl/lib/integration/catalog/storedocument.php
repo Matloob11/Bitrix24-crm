@@ -1,0 +1,19 @@
+<?php
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_CURRENCY"] = "Waluta obiektu magazynowego";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_CREATE"] = "Utworzono";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DATE_MODIFY"] = "Zmodyfikowano";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE"] = "Typ obiektu magazynowego";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_DOC_TYPE_CODE"] = "Kod typu obiektu magazynowego";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_ID"] = "Unikalny identyfikator obiektu magazynowego";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE"] = "Identyfikator i nazwa osoby odpowiedzialnej";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_ID"] = "Identyfikator osoby odpowiedzialnej";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_RESPONSIBLE_NAME"] = "Nazwa osoby odpowiedzialnej";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS"] = "Status obiektu magazynowego";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE"] = "Obiekt magazynowy przetworzony";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_STATUS_CODE_FULL"] = "Obiekt magazynowy przetworzony, Y/N";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TITLE"] = "Nazwa obiektu magazynowego";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_TOTAL"] = "Łącznie obiektów magazynowych";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED"] = "Obiekt magazynowy anulowany";
+$MESS["CATALOG_STORE_DOCUMENT_FIELD_WAS_CANCELLED_FULL"] = "Obiekt magazynowy anulowany, Y/N";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE"] = "Obiekty magazynowe";
+$MESS["CATALOG_STORE_DOCUMENT_TABLE_DESCRIPTION_FULL"] = "Zawiera informacje o obiektach magazynowych (kwit składowy, transfer, korekta itp.)";

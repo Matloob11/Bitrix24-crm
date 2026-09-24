@@ -1,0 +1,26 @@
+<?php
+$MESS["BPSFA_PD_CANCEL"] = "Annulla";
+$MESS["BPSFA_PD_CANCEL_HINT"] = "Esci senza salvare";
+$MESS["BPSFA_PD_DELETE"] = "Elimina";
+$MESS["BPSFA_PD_EMPTY_NAME"] = "Il codice del campo è mancante";
+$MESS["BPSFA_PD_EMPTY_TITLE"] = "Il nome del campo è mancante";
+$MESS["BPSFA_PD_FIELD"] = "Campo";
+$MESS["BPSFA_PD_FIELDS"] = "Campi";
+$MESS["BPSFA_PD_F_ADD"] = "Aggiungi campo...";
+$MESS["BPSFA_PD_F_DEF"] = "Valore predefinito";
+$MESS["BPSFA_PD_F_DESCR"] = "Descrizione";
+$MESS["BPSFA_PD_F_MULT"] = "Multiplo";
+$MESS["BPSFA_PD_F_NAME"] = "ID";
+$MESS["BPSFA_PD_F_REQ"] = "Obbligatorio";
+$MESS["BPSFA_PD_F_TITLE"] = "Nome";
+$MESS["BPSFA_PD_F_TYPE"] = "Tipo";
+$MESS["BPSFA_PD_F_VLIST"] = "Valori";
+$MESS["BPSFA_PD_F_VLIST_HINT"] = "(un valore per riga; se il valore della variante e il nome della variante non coincidono, specifica il valore a destra del nome riportandolo tra parentesi quadre. Ad esempio: [v1]Variante 1)";
+$MESS["BPSFA_PD_NO"] = "No";
+$MESS["BPSFA_PD_SAVE"] = "Salva";
+$MESS["BPSFA_PD_SAVE_HINT"] = "Salva campo";
+$MESS["BPSFA_PD_TIMEOUT_LIMIT"] = "Tempo di attesa minimo";
+$MESS["BPSFA_PD_WRONG_NAME"] = "Un codice di campo può contenere solo lettere e numeri latini e non può iniziare con una cifra.";
+$MESS["BPSFA_PD_YES"] = "Sì";
+$MESS["BP_WF_DOWN"] = "Giù";
+$MESS["BP_WF_UP"] = "Su";

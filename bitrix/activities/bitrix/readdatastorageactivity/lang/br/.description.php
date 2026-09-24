@@ -1,0 +1,4 @@
+<?php
+$MESS["BIZPROC_READ_DATA_ACTIVITY_DESCRIPTION"] = "Lê dados do armazenamento.";
+$MESS["BIZPROC_READ_DATA_ACTIVITY_NAME"] = "Ler dados";
+$MESS["BIZPROC_READ_DATA_STORAGE_CATEGORY"] = "Armazenamento";

@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_TIMELINE_ITEM_MARKET_DESCRIPTION"] = "Mais de 1000 adições para o seu CRM";
+$MESS["CRM_TIMELINE_ITEM_MARKET_READ_MORE"] = "Saiba mais";
+$MESS["CRM_TIMELINE_ITEM_MARKET_TITLE"] = "Bitrix24.Market";

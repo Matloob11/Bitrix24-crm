@@ -1,0 +1,10 @@
+<?php
+$MESS["LANDING_BLOCK_WIDGET_72_4_NAME"] = "Blocco con un'immagine a sinistra ed elenchi puntati a destra";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_CARD"] = "Riquadro";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_CARD_ICON"] = "Icona riquadro";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_CARD_TEXT"] = "Testo riquadro";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_CONTAINER"] = "Contenitore";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_CONTAINERS"] = "Contenitori";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_CONTAINER_CARD"] = "Contenitore a riquadri";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_IMAGE"] = "Immagine";
+$MESS["LANDING_BLOCK_WIDGET_72_4_NODE_TITLE"] = "Titolo";

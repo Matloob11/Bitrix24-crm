@@ -1,0 +1,267 @@
+import { Factory } from '../../field/factory';
+import { AbuseBlock } from './abuse';
+import { AgreementBlock } from './agreement';
+import { StateBlock } from './state';
+import { PagerBlock } from './pager';
+import { BasketBlock } from './basket';
+import ReCaptcha from './recaptcha';
+import YandexCaptcha from './yandexcaptcha';
+import { Aria } from '../../util/aria';
+
+// Expected: an instance of form/controller#Controller. We avoid importing
+// the class to keep this module out of the controller.js cycle (CF1006).
+// Duck-typing via known methods preserves the dev-time validation intent.
+const isFormController = (v) => v
+	&& typeof v.submit === 'function'
+	&& typeof v.getId === 'function';
+
+const Form = {
+	props: {
+		form: { validator: isFormController },
+	},
+
+	components:
+	{
+		field: Factory.getComponent(),
+		'abuse-block': AbuseBlock,
+		'agreement-block': AgreementBlock,
+		'state-block': StateBlock,
+		'pager-block': PagerBlock,
+		'basket-block': BasketBlock,
+		'recaptcha-block': ReCaptcha,
+		'yandex-captcha-block': YandexCaptcha,
+	},
+
+	computed:
+	{
+		hasErrors(): boolean
+		{
+			return this.form.validated && !this.form.valid();
+		},
+		abuseEnabled(): boolean
+		{
+			return Boolean(this.form?.abuse?.link);
+		},
+		abuseLink(): Object | string
+		{
+			return this.abuseEnabled ? this.getQueryParametersForAbuseLink() : '';
+		},
+		isDark(): boolean
+		{
+			return Boolean(this.form?.design?.isDark());
+		},
+		titleId(): string
+		{
+			return Aria.getFormElementId(this.form.getId(), 'title');
+		},
+		descId(): string
+		{
+			return Aria.getFormElementId(this.form.getId(), 'desc');
+		},
+	},
+
+	methods:
+	{
+		getQueryParametersForAbuseLink()
+		{
+			const url = new URL(this.form.abuse.link);
+
+			url.searchParams.set('b24_form_id', this.form.identification.id);
+			url.searchParams.set('b24_address', this.form.identification.address);
+			url.searchParams.set('b24_form_address', window.location.href);
+
+			return url;
+		},
+		prevPage(): void
+		{
+			this.form.loading = true;
+			setTimeout(() => {
+				this.form.loading = false;
+				this.form.pager.prev();
+			}, 300);
+		},
+		nextPage(): void
+		{
+			if (this.form.pager.current().validate())
+			{
+				this.form.loading = true;
+			}
+			setTimeout(() => {
+				this.form.loading = false;
+				this.form.pager.next();
+			}, 300);
+		},
+		getSignBy(): string
+		{
+			return this.form.messages.get('signBy').replace('24', '');
+		},
+		submit(e): void
+		{
+			if (!this.form.submit())
+			{
+				e.preventDefault();
+			}
+		},
+		classes(): []
+		{
+			const list = [];
+			if (this.form.view.type === 'inline' && this.form.design.shadow)
+			{
+				list.push('b24-form-shadow');
+			}
+
+			if (this.form.design.compact)
+			{
+				list.push('b24-form-compact');
+			}
+
+			const border = this.form.design.border;
+			for (const pos in border)
+			{
+				if (!border.hasOwnProperty(pos) || !border[pos])
+				{
+					continue;
+				}
+				list.push(`b24-form-border-${pos}`);
+			}
+
+			if (this.form.loading || this.form.sent || this.form.error || this.form.disabled)
+			{
+				list.push('b24-from-state-on');
+			}
+
+			return list;
+		},
+	},
+
+	template: `
+		<div class="b24-form-wrapper"
+			:class="classes()"
+		>
+			<div v-if="form.title || form.desc"
+				class="b24-form-header b24-form-padding-side"
+				role="region"
+				:aria-labelledby="form.title ? titleId : null"
+				:aria-describedby="form.desc ? descId : null"
+			>
+				<h2 v-if="form.title" :id="titleId" class="b24-form-header-title" v-text="form.title"></h2>
+				<p v-if="form.desc" :id="descId" class="b24-form-header-description" v-html="form.desc"></p>
+			</div>
+			<div v-else class="b24-form-header-padding"></div>
+
+			<div class="b24-form-content b24-form-padding-side">
+				<form
+					method="post"
+					novalidate
+					@submit="submit"
+					v-if="form.pager"
+				>
+					<component
+						:is="'pager-block'"
+						:pager="form.pager"
+						v-if="form.pager.iterable()"
+					></component>
+
+					<div v-if="!form.disabled">
+						<component
+							:is="'field'"
+							v-for="field in form.pager.current().fields"
+							:key="field.id"
+							:field="field"
+						></component>
+					</div>
+
+					<component
+						:is="'agreement-block'"
+						:formId="form.getId()"
+						:fields="form.agreements"
+						:view="form.view"
+						:messages="form.messages"
+						v-if="form.pager.ended()"
+					></component>
+
+					<component
+						:is="'basket-block'"
+						:basket="form.basket"
+						:messages="form.messages"
+					></component>
+
+					<div class="b24-form-btn-container">
+						<div class="b24-form-btn-block"
+							v-if="!form.pager.beginning()"
+							@click.prevent="prevPage()"
+						>
+							<button type="button" 
+								class="b24-form-btn b24-form-btn-white b24-form-btn-border"
+								:aria-label="form.messages.get('navBack')"
+							>
+								{{ form.messages.get('navBack') }}
+							</button>
+						</div>
+
+						<div class="b24-form-btn-block"
+							v-if="!form.pager.ended()"
+							@click.prevent="nextPage()"
+						>
+							<button type="button" 
+								class="b24-form-btn"
+								:aria-label="form.messages.get('navNext')"
+							>
+								{{ form.messages.get('navNext') }}
+							</button>
+						</div>
+						<div class="b24-form-btn-block"
+							v-if="form.pager.ended()"
+						>
+							<button type="submit" 
+								class="b24-form-btn"
+								:aria-label="form.buttonCaption || form.messages.get('defButton')" 
+								:aria-disabled="(form.loading || form.disabled) ? 'true' : null"
+							>
+								{{ form.buttonCaption || form.messages.get('defButton') }}
+							</button>
+						</div>
+					</div>
+
+					<span style="color: red;" v-show="false && hasErrors">
+						Debug: fill fields
+					</span>
+				</form>
+			</div>
+
+			<state-block :form="form" />
+
+			<recaptcha-block :form="form" />
+
+			<yandex-captcha-block :form="form" />
+
+			<div class="b24-form-sign">
+				<select v-show="false" v-model="form.messages.language">
+					<option
+						v-for="language in form.languages"
+						:value="language"
+					>
+						{{ language }}
+					</option>
+				</select>
+
+				<component
+					v-if="abuseEnabled"
+					:is="'abuse-block'"
+					:messages="form.messages"
+					:abuseLink="abuseLink"
+				></component>
+
+				<div class="b24-form-sign-info" v-if="form.useSign">
+					<span class="b24-form-sign-text">{{ form.messages.get('sign') }}</span>
+					<span class="b24-form-sign-bx">{{ getSignBy() }}</span>
+					<span class="b24-form-sign-24">24</span>
+				</div>
+			</div>
+		</div>
+	`,
+};
+
+export {
+	Form,
+};

@@ -1,0 +1,4 @@
+<?php
+$MESS["CRM_QUOTE_CLOSED_TITLE_MSGVER_1"] = "Cotización cerrada";
+$MESS["CRM_QUOTE_QUOTE_NUMBER_TITLE_MSGVER_1"] = "Cotización #";
+$MESS["CRM_QUOTE_TITLE_TITLE"] = "Asunto";

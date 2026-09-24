@@ -1,0 +1,4 @@
+<?php
+$MESS["CONTACT_CENTER_CRM_FORMS_CREATE"] = "Crea modulo";
+$MESS["CONTACT_CENTER_CRM_FORMS_HELP"] = "Come funziona?";
+$MESS["CONTACT_CENTER_CRM_FORMS_VIEW_ALL"] = "Moduli";

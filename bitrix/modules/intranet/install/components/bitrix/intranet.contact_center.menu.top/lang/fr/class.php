@@ -1,0 +1,5 @@
+<?php
+$MESS["MENU_CONTACT_CENTER"] = "Centre de contact";
+$MESS["MENU_CONTACT_CENTER_IMOL_DETAILED_STATISTICS"] = "Liste des chats";
+$MESS["MENU_CONTACT_CENTER_IMOL_STATISTICS"] = "Statistiques des chats";
+$MESS["MENU_CONTACT_CENTER_TELEPHONY_STATISTICS"] = "Statistiques d'appel";

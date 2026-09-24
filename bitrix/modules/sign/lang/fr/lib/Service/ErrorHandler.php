@@ -1,0 +1,21 @@
+<?php
+$MESS["SIGN_SERVICE_DEFAULT_ERROR"] = "Impossible de terminer l'action, veuillez réessayer plus tard.";
+$MESS["SIGN_SERVICE_DEFAULT_ERROR_WITH_CODE"] = "Impossible d'effectuer l'action. Veuillez réessayer plus tard (code d'erreur : #CODE#).";
+$MESS["SIGN_SERVICE_ERROR_BLANK_DELETE_FAILED"] = "Impossible de supprimer le modèle, veuillez réessayer plus tard.";
+$MESS["SIGN_SERVICE_ERROR_DELETE_DOCUMENTS_EXISTS"] = "Impossible de supprimer ce modèle, car il existe des documents basés sur celui-ci.";
+$MESS["SIGN_SERVICE_ERROR_DOCUMENT_SIGNING_EXPIRED"] = "La date limite de signature du document est expirée.";
+$MESS["SIGN_SERVICE_ERROR_DOCUMENT_TO_MANY_MEMBERS"] = "Deux parties signataires sont requises.";
+$MESS["SIGN_SERVICE_ERROR_EMPTY_MEMBER_CHANNEL"] = "Spécifiez le numéro de téléphone ou l'adresse e-mail pour signer la partie.";
+$MESS["SIGN_SERVICE_ERROR_FIELD_FILE_NOT_IMAGE"] = "Seuls les fichiers image peuvent être ajoutés à ce champ.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TOO_BIG"] = "Taille maximale du fichier dépassée.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TOO_BIG_SIZE_MSG_1"] = "Le fichier est trop volumineux. La taille maximale ne peut pas dépasser #SIZE# Mo.";
+$MESS["SIGN_SERVICE_ERROR_FILE_TO_MANY_PAGES_COUNT"] = "Le nombre maximal de pages du fichier ne peut pas dépasser : #COUNT#.";
+$MESS["SIGN_SERVICE_ERROR_MEMBERS_NOT_READY_FOR_RESEND"] = "Le document n'est pas prêt à être envoyé.";
+$MESS["SIGN_SERVICE_ERROR_MEMBER_INVALID_PHONE"] = "Saisissez un numéro de téléphone correct pour utiliser les SMS, ou sélectionnez une option de courrier électronique.";
+$MESS["SIGN_SERVICE_ERROR_MEMBER_PHONE_UNSUPPORTED_COUNTRY_CODE"] = "Ce numéro de téléphone n'est actuellement pas pris en charge. Veuillez utiliser le courrier électronique pour envoyer le document à signer.";
+$MESS["SIGN_SERVICE_ERROR_NO_FILE_TYPE"] = "Ce format de fichier n'est pas pris en charge. Vous pouvez ajouter des fichiers aux formats PDF, DOC, DOCX, RTF, ODT, JPG et PNG.";
+$MESS["SIGN_SERVICE_ERROR_PREVIOUS_MEMBER_NOT_DONE"] = "Veuillez patienter, l'une des parties signataires n'a pas encore signé le document.";
+$MESS["SIGN_SERVICE_ERROR_PROTECTED_PDF"] = "Le fichier est protégé par un mot de passe et ne peut pas être téléversé.";
+$MESS["SIGN_SERVICE_ERROR_REQUIRED_FIELDS_VALIDATION"] = "Un ou plusieurs des champs obligatoires sont vides.";
+$MESS["SIGN_SERVICE_ERROR_SMS_LIMIT_EXCEEDED"] = "Le nombre maximum de nouveaux SMS est dépassé.";
+$MESS["SIGN_SERVICE_ERROR_TOO_MANY_FILES_COUNT"] = "Vous pouvez soumettre pour signature un document PDF, DOC, DOCX, RTF ou ODT à la fois ou jusqu'à %imageCountLimit% images JPG/PNG.";

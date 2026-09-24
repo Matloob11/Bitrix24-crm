@@ -1,0 +1,2 @@
+<?php
+$MESS["INTRANET_CREATE_PORTAL_BUTTON_TITLE"] = "Cree su Bitrix24";

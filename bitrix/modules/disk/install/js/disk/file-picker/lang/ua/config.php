@@ -1,0 +1,21 @@
+<?php
+$MESS["DISK_FILE_PICKER_CANCEL_BUTTON"] = "Скасувати";
+$MESS["DISK_FILE_PICKER_EMPTY_DISK"] = "На цьому диску немає файлів або папок.";
+$MESS["DISK_FILE_PICKER_EMPTY_FOLDER"] = "У цій папці немає файлів.";
+$MESS["DISK_FILE_PICKER_EMPTY_STATE"] = "Натисніть на файл, щоб переглянути інформацію про нього.";
+$MESS["DISK_FILE_PICKER_FILE_DETAIL_MODIFIED"] = "Змінено";
+$MESS["DISK_FILE_PICKER_FILE_DETAIL_MODIFIED_BY"] = "Хто змінив";
+$MESS["DISK_FILE_PICKER_FILE_DETAIL_SIZE"] = "Розмір";
+$MESS["DISK_FILE_PICKER_LAST_7_DAYS_GROUP"] = "Останні 7 днів";
+$MESS["DISK_FILE_PICKER_LAST_30_DAYS_GROUP"] = "Останні 30 днів";
+$MESS["DISK_FILE_PICKER_NO_SEARCH_RESULT"] = "За вашим запитом на цьому диску нічого не знайдено.\nСпробуйте змінити запит або пошукати на інших дисках.";
+$MESS["DISK_FILE_PICKER_NO_SEARCH_RESULT_WITH_ONE_DISK"] = "За вашим запитом нічого не знайдено.\nСпробуйте змінити запит.";
+$MESS["DISK_FILE_PICKER_SEARCH_PLACEHOLDER"] = "Пошук";
+$MESS["DISK_FILE_PICKER_SELECTED_OBJECTS_COUNT"] = "Об'єкти (#COUNT#)";
+$MESS["DISK_FILE_PICKER_SELECT_BUTTON"] = "Вибрати";
+$MESS["DISK_FILE_PICKER_TABLE_COLUMN_MODIFIED"] = "Змінено";
+$MESS["DISK_FILE_PICKER_TABLE_COLUMN_NAME"] = "Назва";
+$MESS["DISK_FILE_PICKER_TABLE_COLUMN_SIZE"] = "Розмір";
+$MESS["DISK_FILE_PICKER_TITLE"] = "Вибір файлів";
+$MESS["DISK_FILE_PICKER_VIEW_MODE_MASTER_DETAIL"] = "Список";
+$MESS["DISK_FILE_PICKER_VIEW_MODE_TABLE"] = "Таблиця";

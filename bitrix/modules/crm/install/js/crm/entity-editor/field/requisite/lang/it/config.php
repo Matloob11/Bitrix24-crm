@@ -1,0 +1,16 @@
+<?php
+$MESS["CLIENT_REQUISITES_ADDRESS_SHOW_ADDRESS"] = "Mostra indirizzo";
+$MESS["REQUISITE_LABEL_DETAILS_SELECT"] = "seleziona da elenco";
+$MESS["REQUISITE_LABEL_DETAILS_TEXT"] = "dettagli";
+$MESS["REQUISITE_LIST_EMPTY_PRESET_LIST"] = "Nessun modello dettagli trovato";
+$MESS["REQUISITE_LIST_ITEM_DELETE_CONFIRMATION_CONTENT"] = "Eliminare i dettagli e tutti gli indirizzi associati?";
+$MESS["REQUISITE_LIST_ITEM_DELETE_CONFIRMATION_TITLE"] = "Elimina dettagli";
+$MESS["REQUISITE_LIST_ITEM_ERROR_CAPTION"] = "Errore";
+$MESS["REQUISITE_LIST_ITEM_HIDE_CONFIRMATION_CONTENT"] = "Cancellare i campi dei dettagli?";
+$MESS["REQUISITE_LIST_ITEM_HIDE_CONFIRMATION_TITLE"] = "Cancella campi dettagli";
+$MESS["REQUISITE_TOOLTIP_ADD"] = "Aggiungi dettagli";
+$MESS["REQUISITE_TOOLTIP_ADD_BANK_DETAILS"] = "aggiungi dettagli bancari";
+$MESS["REQUISITE_TOOLTIP_BANK_DETAILS_TITLE"] = "Dettagli bancari";
+$MESS["REQUISITE_TOOLTIP_DELETE"] = "elimina";
+$MESS["REQUISITE_TOOLTIP_EDIT"] = "modifica";
+$MESS["REQUISITE_TOOLTIP_SHOW_DETAILS"] = "dettagli";

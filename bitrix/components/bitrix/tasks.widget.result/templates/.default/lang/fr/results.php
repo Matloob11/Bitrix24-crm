@@ -1,0 +1,3 @@
+<?php
+$MESS["TASKS_RESULT_COLLAPSE_BUTTON"] = "Réduire";
+$MESS["TASKS_RESULT_EXPAND_BUTTON"] = "#NUM# de plus";

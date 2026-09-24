@@ -1,0 +1,14 @@
+<?php
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_ALERT_DESC"] = "Demandez au destinataire de trouver une solution immédiate à un problème.";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_ALERT_NAME"] = "Urgence";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_BUTTON_CANCEL"] = "Annuler";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_BUTTON_OK"] = "Sélectionner";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_IMPORTANT_DESC"] = "Envoyez un message nécessitant l'attention du destinataire.";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_IMPORTANT_NAME"] = "Important";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_NEWS_DESC"] = "Diffusez les actualités de l'entreprise.";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_NEWS_NAME"] = "Annonce";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_NOTIFY_DESC"] = "Avertissez les utilisateurs au sujet des modifications apportées à un élément.";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_NOTIFY_NAME"] = "Notification";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_PLAIN_DESC"] = "Envoyer un message commun.";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_PLAIN_NAME"] = "Général";
+$MESS["BX_IM_ROBOT_MESSAGE_TEMPLATE_SELECTOR_TITLE"] = "Types de messages";

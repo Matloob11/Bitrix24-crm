@@ -1,0 +1,22 @@
+<?php
+$MESS["CTRLR_MENU_AUTH"] = "Авторландыру";
+$MESS["CTRLR_MENU_AUTH_LOG"] = "Журнал";
+$MESS["CTRLR_MENU_AUTH_LOG_TITLE"] = "Авторлану журналы";
+$MESS["CTRLR_MENU_COUNTERS"] = "Есептеуіштер";
+$MESS["CTRLR_MENU_COUNTERS_HISTORY"] = "Тарих";
+$MESS["CTRLR_MENU_COUNTERS_HISTORY_TITLE"] = "Есептеуіштер тарихы";
+$MESS["CTRLR_MENU_COUNTERS_TITLE"] = "Есептеуіштерді баптау";
+$MESS["CTRLR_MENU_GROUP_NAME"] = "Топтар";
+$MESS["CTRLR_MENU_GROUP_TYPE"] = "Сайт топтарының баптауларын басқару";
+$MESS["CTRLR_MENU_LOG_NAME"] = "Журнал";
+$MESS["CTRLR_MENU_LOG_TITLE"] = "Контроллердің жұмыс журналы";
+$MESS["CTRLR_MENU_NAME"] = "Контроллер";
+$MESS["CTRLR_MENU_RUN_NAME"] = "Қашықтан пәрмендерді орындау";
+$MESS["CTRLR_MENU_RUN_TITLE"] = "Контроллерге бағынышты сайттарда PHP пәрмендерін орындау";
+$MESS["CTRLR_MENU_SITE_NAME"] = "Сайттар";
+$MESS["CTRLR_MENU_SITE_TITLE"] = "Бағынышты сайттарды басқару";
+$MESS["CTRLR_MENU_TASK_NAME"] = "Міндеттер";
+$MESS["CTRLR_MENU_TASK_TITLE"] = "Контроллер клиенттеріне орындалатын міндеттер";
+$MESS["CTRLR_MENU_TITLE"] = "Сайттар контроллері";
+$MESS["CTRLR_MENU_UPLOAD_NAME"] = "Файлды беру";
+$MESS["CTRLR_MENU_UPLOAD_TITLE"] = "Файлды контроллерге бағынышты сайттарға беру";

@@ -1,0 +1,21 @@
+<?php
+$MESS["CRM_LEAD_FILTER_ACTIVE_TIME_PERIOD"] = "Période d'activité";
+$MESS["CRM_LEAD_FILTER_ACTIVITY_COUNTER"] = "Activités";
+$MESS["CRM_LEAD_FILTER_ACTIVITY_RESPONSIBLE_IDS"] = "Personne responsable de l'activité";
+$MESS["CRM_LEAD_FILTER_COMMUNICATION_TYPE"] = "Communication";
+$MESS["CRM_LEAD_FILTER_COMPANY_ID"] = "Sociétés";
+$MESS["CRM_LEAD_FILTER_CONTACT_ID"] = "Contacts";
+$MESS["CRM_LEAD_FILTER_EMAIL"] = "E-mail";
+$MESS["CRM_LEAD_FILTER_IM"] = "Messagerie";
+$MESS["CRM_LEAD_FILTER_LAST_ACTIVITY_TIME"] = "Dernière mise à jour";
+$MESS["CRM_LEAD_FILTER_MOVED_BY_ID"] = "Étape modifiée par";
+$MESS["CRM_LEAD_FILTER_MOVED_TIME"] = "Date de changement d'étape";
+$MESS["CRM_LEAD_FILTER_PHONE"] = "Téléphone";
+$MESS["CRM_LEAD_FILTER_PRODUCT_ROW_PRODUCT_ID"] = "Produit";
+$MESS["CRM_LEAD_FILTER_STATUS_CONVERTED"] = "Converti";
+$MESS["CRM_LEAD_FILTER_STATUS_ID_FROM_HISTORY_MSGVER_1"] = "Étape dans l'historique";
+$MESS["CRM_LEAD_FILTER_STATUS_ID_FROM_SUPPOSED_HISTORY_MSGVER_1"] = "Étape dans l'historique (avec changements d'étape)";
+$MESS["CRM_LEAD_FILTER_STATUS_PROCESSED"] = "Fermé";
+$MESS["CRM_LEAD_FILTER_STATUS_SEMANTIC_ID"] = "Statut";
+$MESS["CRM_LEAD_FILTER_STATUS_SEMANTIC_ID_FROM_HISTORY"] = "Groupe de statuts dans l'historique";
+$MESS["CRM_LEAD_FILTER_WEB"] = "Site web";

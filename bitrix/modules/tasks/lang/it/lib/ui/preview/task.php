@@ -1,0 +1,7 @@
+<?php
+$MESS["TASK_PREVIEW_FIELD_ASSIGNEE"] = "Responsabile";
+$MESS["TASK_PREVIEW_FIELD_ASSIGNER"] = "Proprietario dell'incarico";
+$MESS["TASK_PREVIEW_FIELD_DEADLINE"] = "Scadenza";
+$MESS["TASK_PREVIEW_FIELD_DESCRIPTION"] = "Descrizione";
+$MESS["TASK_PREVIEW_FIELD_GROUP"] = "Project";
+$MESS["TASK_PREVIEW_FIELD_STATUS"] = "Stato";

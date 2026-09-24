@@ -1,0 +1,25 @@
+<?php
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_CRM"] = "Datos del CRM";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_DOCUMENT"] = "Documento";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_FILE"] = "Archivo";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_FILE_DISK"] = "Buscar archivo en Bitrix24";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_FILE_UPLOAD"] = "Subir archivo";
+$MESS["CRM_MESSAGESENDER_EDITOR_ADD_PAYMENT"] = "Recibir un pago";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_ADD"] = "Agregar";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_CANCEL"] = "Cancelar";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_NO_CHANNELS"] = "Conectar proveedores de mensajería";
+$MESS["CRM_MESSAGESENDER_EDITOR_BUTTON_SEND"] = "Enviar";
+$MESS["CRM_MESSAGESENDER_EDITOR_COUNTER"] = "[color]#COUNT#[/color] / #MAX#";
+$MESS["CRM_MESSAGESENDER_EDITOR_FROM"] = "El mensaje se enviará desde #FROM#";
+$MESS["CRM_MESSAGESENDER_EDITOR_GENERIC_ERROR"] = "No se puede completar la acción. Intente de nuevo.";
+$MESS["CRM_MESSAGESENDER_EDITOR_NO_RECEIVER"] = "El destinatario no está especificado";
+$MESS["CRM_MESSAGESENDER_EDITOR_NO_TEMPLATE_BODY"] = "Registre su plantilla en su canal de comunicación para enviar mensajes.";
+$MESS["CRM_MESSAGESENDER_EDITOR_NO_TEMPLATE_TITLE"] = "Crear plantilla de mensaje";
+$MESS["CRM_MESSAGESENDER_EDITOR_PLACEHOLDER"] = "Introduzca el texto del mensaje";
+$MESS["CRM_MESSAGESENDER_EDITOR_PLACEHOLDER_FILLED_LATER_HINT"] = "Algunos de los datos del mensaje se completarán después de que se envíe el mensaje.";
+$MESS["CRM_MESSAGESENDER_EDITOR_PREVIEW"] = "Vista previa del mensaje como cliente";
+$MESS["CRM_MESSAGESENDER_EDITOR_RECEIVER_SUBTITLE_TEMPLATE"] = "#ADDRESS#, #TYPE#";
+$MESS["CRM_MESSAGESENDER_EDITOR_SUGGEST_TEMPLATE"] = "Sugerir una plantilla";
+$MESS["CRM_MESSAGESENDER_EDITOR_TEMPLATES"] = "Plantillas";
+$MESS["CRM_MESSAGESENDER_EDITOR_TEMPLATE_MESSAGE"] = "Mensaje basado en una plantilla";
+$MESS["CRM_MESSAGESENDER_TEMPLATE_EDITOR_SELECT_FIELD"] = "Campo del CRM";

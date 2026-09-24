@@ -1,0 +1,3 @@
+<?
+$MESS["CRM_ENTITY_RQ_CONV_INTRO"] = "Vous n'avez plus besoin de saisir les mentions à chaque nouvelle facture. Fournissez vos mentions de contact une fois et utilisez-les dans chaque entité CRM. Nous vous recommandons de convertir les anciennes mentions en nouveau pour une utilisation ultérieure. <b>Le champ \"adresse\" sera aussi copié mais masqué.</b> <a id=\"#EXEC_ID#\" href=\"#EXEC_URL#\">Convertir maintenant</a> <a id=\"#SKIP_ID#\" href=\"#SKIP_URL#\">Passer</a>";
+?>

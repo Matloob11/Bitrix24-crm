@@ -1,0 +1,2 @@
+<?php
+$MESS["BIZPROC_PUBLIC_ACTIVITY_BCA_INVALID_CHILD"] = "Action non valide.";

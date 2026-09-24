@@ -1,0 +1,46 @@
+<?php
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_COMING_SOON'] = 'Скоро появится';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SUBSCRIBE_COMMENTS'] = 'Вы следите за комментариями к публикации';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_UNSUBSCRIBE_COMMENTS'] = 'Вы больше не следите за комментариями к публикации';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_DELETE_CHAT'] = 'Чат удалён';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_DELETE_CHANNEL'] = 'Канал удалён';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_DELETE_COLLAB'] = 'Удаляем коллабу. Это займёт какое-то время.';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_DELETE_PROJECT'] = 'Удаляем проект. Это займёт какое-то время.';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_ERROR'] = 'Не удалось выполнить действие. Попробуйте позже';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_CHAT_ACCESS_DENIED'] = 'Вы не добавлены в этот чат или чат уже удалён';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_MESSAGE_NOT_FOUND'] = 'Сообщение не найдено';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SEND_FILES_GALLERY_LIMIT_EXCEEDED'] = 'Можно отправить не больше 100 файлов за раз';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SELECT_MESSAGE_LIMIT'] = 'Выбрано максимальное количество сообщений';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_MESSAGES_AUTO_DELETE_DISABLED'] = 'Автоудаление отключено администратором вашего Битрикс24';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_MESSAGES_CLEAR_HISTORY'] = 'История сообщений очищена';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_AUTO_DELETE_ENABLED'] = 'Автоудаление включено';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_AUTO_DELETE_DISABLED'] = 'Автоудаление отключено';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_ERROR_CONVERT_ROUND_VIDEO'] = 'Не хватает памяти для записи, очистите место на устройстве';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_COPILOT_MODEL_CHANGED'] = 'Модель изменена';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_REASONING_DISABLED'] = 'Выбранная языковая модель не поддерживает функцию размышления';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_FORWARD_MESSAGE'] = 'Сообщение переслано';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_FORWARD_MESSAGES'] = 'Сообщения пересланы';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_BUTTON_GOTO'] = 'Перейти';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SHARING_LINK_COPIED'] = 'Ссылка скопирована';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SHARING_LINK_REGENERATED'] = 'Ссылка изменена. По старой ссылке больше не получится вступить в чат';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SHARING_LINK_REGENERATE_ERROR'] = 'Не удалось обновить ссылку';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SHARING_LINK_INVALID'] = 'Ссылка недействительна или была обновлена';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_SHARING_LINK_CHAT_NOT_FOUND'] = 'Чат не найден';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_MARKET_APPS_EMPTY'] = 'Вы пока не добавили приложения, установите их в Маркетплейсе';
+
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_FOLDER_UPDATED'] = 'Изменения сохранены';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_FOLDER_CREATED'] = 'Папка создана';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_FOLDER_DELETED'] = 'Папка удалена';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_FOLDER_SORTED'] = 'Порядок папок сохранён';
+$MESS['IMMOBILE_MESSENGER_UI_NOTIFY_TOAST_FOLDER_SET_CHAT'] = 'Папки чата обновлены';

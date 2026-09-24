@@ -1,0 +1,11 @@
+<?php
+$MESS["UI_STEP_PROCESSING_AUTH_ERROR"] = "Twoja sesja wygasła. Prosimy o ponowną autoryzację.";
+$MESS["UI_STEP_PROCESSING_BTN_CLOSE"] = "Zamknij";
+$MESS["UI_STEP_PROCESSING_BTN_START"] = "Uruchom";
+$MESS["UI_STEP_PROCESSING_BTN_STOP"] = "zatrzymaj";
+$MESS["UI_STEP_PROCESSING_CANCELED"] = "Anulowane";
+$MESS["UI_STEP_PROCESSING_COMPLETED"] = "Zakończone";
+$MESS["UI_STEP_PROCESSING_EMPTY_ERROR"] = "Pusto";
+$MESS["UI_STEP_PROCESSING_FILE_DELETE"] = "Usuń plik";
+$MESS["UI_STEP_PROCESSING_FILE_DOWNLOAD"] = "Pobierz Plik";
+$MESS["UI_STEP_PROCESSING_WAITING"] = "Proszę czekać...";

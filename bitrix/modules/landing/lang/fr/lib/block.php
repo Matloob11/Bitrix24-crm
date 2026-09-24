@@ -1,0 +1,19 @@
+<?php
+$MESS["LANDING_BLOCK_ACCESS_DENIED"] = "Accès refusé";
+$MESS["LANDING_BLOCK_BAD_ANCHOR"] = "L'ancre doit commencer par un caractère alphabétique (a-z) et ne peut contenir que les caractères « a-z », « 0-9 », « - », « _ », « . » et « : ».";
+$MESS["LANDING_BLOCK_BR1"] = "Catalogue";
+$MESS["LANDING_BLOCK_BR2"] = "Page du produit";
+$MESS["LANDING_BLOCK_CANT_BE_ADDED"] = "Impossible d'ajouter un bloc, car il n'est pas destiné à ce type de page.";
+$MESS["LANDING_BLOCK_CARD_NOT_FOUND"] = "Carte de bloc introuvable";
+$MESS["LANDING_BLOCK_INCORRECT_AFFECTED"] = "Les données avant et après l'enregistrement ne correspondent pas";
+$MESS["LANDING_BLOCK_LANDING_NOT_EXIST"] = "La page de destination n'existe pas";
+$MESS["LANDING_BLOCK_MESSAGE_ERROR_DYNAMIC_LIMIT_TITLE"] = "Limite dépassée";
+$MESS["LANDING_BLOCK_MESSAGE_ERROR_EVAL"] = "Erreur lors de l'exécution du bloc. Veuillez réessayer de l'ajouter.";
+$MESS["LANDING_BLOCK_MESSAGE_ERROR_LIMIT_BUTTON"] = "Mettre à niveau maintenant";
+$MESS["LANDING_BLOCK_NOT_FOUND"] = "Le bloc ou le contenu du bloc est introuvable";
+$MESS["LANDING_BLOCK_SEPARATOR_PARTNER_2_MSGVER_1"] = "Market";
+$MESS["LANDING_BLOCK_TEXT_FULL"] = "Dimensions du bloc hors limites";
+$MESS["LANDING_BLOCK_TITLE"] = "Titre de la Page";
+$MESS["LANDING_BLOCK_WRONG_VERSION"] = "La version du bloc ne correspond pas à la version du module";
+$MESS["LD_BLOCK_SECTION_FAVOURITE"] = "Favoris";
+$MESS["LD_BLOCK_SECTION_LAST"] = "Articles récents";

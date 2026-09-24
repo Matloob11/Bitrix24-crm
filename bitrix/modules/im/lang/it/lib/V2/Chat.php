@@ -1,0 +1,26 @@
+<?php
+$MESS["IM_CHANNEL_AVATAR_CHANGE_F"] = "#USER_NAME# ha modificato l'icona del canale.";
+$MESS["IM_CHANNEL_AVATAR_CHANGE_M"] = "#USER_NAME# ha modificato l'icona del canale.";
+$MESS["IM_CHANNEL_JOIN_F"] = "#USER_1_NAME# ha invitato #USER_2_NAME# al canale.";
+$MESS["IM_CHANNEL_JOIN_M"] = "#USER_1_NAME# ha invitato #USER_2_NAME# al canale.";
+$MESS["IM_CHAT_AVATAR_CHANGE_F"] = "#USER_NAME# ha modificato l'icona della chat.";
+$MESS["IM_CHAT_AVATAR_CHANGE_M"] = "#USER_NAME# ha modificato l'icona della chat.";
+$MESS["IM_CHAT_CAN_POST_ALL_MSGVER_1"] = "Tutti i membri";
+$MESS["IM_CHAT_CAN_POST_MANAGERS_MSGVER_1"] = "Proprietario e amministratori";
+$MESS["IM_CHAT_CAN_POST_NONE"] = "Nessuno";
+$MESS["IM_CHAT_CAN_POST_OWNER_MSGVER_1"] = "Proprietario";
+$MESS["IM_CHAT_JOIN_F"] = "#USER_1_NAME# ha invitato #USER_2_NAME# nella chat.";
+$MESS["IM_CHAT_JOIN_M"] = "#USER_1_NAME# ha invitato #USER_2_NAME# nella chat.";
+$MESS["IM_CHAT_KICK_F_MSGVER_1"] = "[USER=#CURRENT_USER_ID#][/USER] ha rimosso [USER=#DELETED_USER_ID#][/USER] dalla chat.";
+$MESS["IM_CHAT_KICK_M_MSGVER_1"] = "[USER=#CURRENT_USER_ID#][/USER] ha rimosso [USER=#DELETED_USER_ID#][/USER] dalla chat.";
+$MESS["IM_CHAT_KICK_NOTIFICATION_F"] = "#USER_NAME# ti ha rimosso dalla chat.";
+$MESS["IM_CHAT_KICK_NOTIFICATION_M"] = "#USER_NAME# ti ha rimosso dalla chat.";
+$MESS["IM_CHAT_LEAVE_F_MSGVER_1"] = "[USER=#USER_ID#][/USER] ha lasciato la chat.";
+$MESS["IM_CHAT_LEAVE_M_MSGVER_1"] = "[USER=#USER_ID#][/USER] ha lasciato la chat.";
+$MESS["IM_CHAT_NAME_FORMAT"] = "Chat #COLOR# ##NUMBER#";
+$MESS["IM_CHAT_OVERFLOW_DELETE_MESSAGE"] = "Questa chat ha più di #USER_COUNT# membri. Le notifiche sugli utenti rimossi e usciti dalla chat sono state disattivate per ridurre i messaggi indesiderati.";
+$MESS["IM_CHAT_SELF_JOIN"] = "#USERS_NAME# sono entrati in chat.";
+$MESS["IM_CHAT_SELF_JOIN_F"] = "#USER_NAME# è entrato nella chat.";
+$MESS["IM_CHAT_SELF_JOIN_M"] = "#USER_NAME# è entrato nella chat.";
+$MESS["IM_CHAT_SELF_JOIN_VIA_SHARING_LINK_F"] = "#INVITED_USER_NAME# ha ricevuto un invito da #LINK_AUTHOR_NAME# e fa ora parte della chat.";
+$MESS["IM_CHAT_SELF_JOIN_VIA_SHARING_LINK_M"] = "#INVITED_USER_NAME# ha ricevuto un invito da #LINK_AUTHOR_NAME# e fa ora parte della chat.";

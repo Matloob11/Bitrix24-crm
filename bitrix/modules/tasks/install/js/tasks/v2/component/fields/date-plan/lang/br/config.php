@@ -1,0 +1,25 @@
+<?php
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE"] = "O responsável pode editar o agendamento";
+$MESS["TASKS_V2_DATE_PLAN_ALLOW_CHANGE_TEMPLATE"] = "O responsável pode alterar a duração da tarefa e a data de início";
+$MESS["TASKS_V2_DATE_PLAN_BUTTON_SAVE"] = "Salvar";
+$MESS["TASKS_V2_DATE_PLAN_DAYS"] = "Dia(s)";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION"] = "Selecione a data de início e a data de término planejadas para esta tarefa. Como alternativa para selecionar a data de término, você pode especificar a duração planejada da tarefa.";
+$MESS["TASKS_V2_DATE_PLAN_DESCRIPTION_TEMPLATE"] = "Especifique quando sua tarefa iniciará e quanto tempo a conclusão deve levar.";
+$MESS["TASKS_V2_DATE_PLAN_DURATION"] = "Duração:";
+$MESS["TASKS_V2_DATE_PLAN_END"] = "Data de vencimento:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_END"] = "Data de vencimento:";
+$MESS["TASKS_V2_DATE_PLAN_FIELD_START"] = "Data de início:";
+$MESS["TASKS_V2_DATE_PLAN_HOURS"] = "Hora(s)";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME"] = "Sincronizar com os agendamentos das subtarefas";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_HINT"] = "O agendamento desta tarefa variará dependendo dos agendamentos de suas subtarefas.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_SUBTASKS_TIME_STATE"] = "Definido pelas subtarefas";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME"] = "Ignorar finais de semana";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT"] = "O agendamento será ajustado se cair em um final de semana ou feriado.";
+$MESS["TASKS_V2_DATE_PLAN_MATCH_WORK_TIME_HINT_TEMPLATE"] = "A data de início e a duração serão ajustadas se caírem em um fim de semana ou feriado.";
+$MESS["TASKS_V2_DATE_PLAN_MINUTES"] = "Minuto(s)";
+$MESS["TASKS_V2_DATE_PLAN_NO_SUBTASKS_HINT"] = "Esta tarefa ainda não tem subtarefas. Quando tiver, o agendamento será ajustado de acordo.";
+$MESS["TASKS_V2_DATE_PLAN_START"] = "Data de início:";
+$MESS["TASKS_V2_DATE_PLAN_START_AFTER"] = "Iniciar tarefa em:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE"] = "Agendamento:";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_CHIP"] = "Agendamento de tarefas";
+$MESS["TASKS_V2_DATE_PLAN_TITLE_SHEET"] = "Agendamento de tarefas";

@@ -1,0 +1,23 @@
+<?php
+$MESS["ROLE_LIBRARY_GRID_ACTION_OPEN_EDIT_MASTER_ERROR"] = "Rolleneditor konnte nicht geöffnet werden. Versuchen Sie es bitte erneut.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ACTIVATE"] = "Rolle \"#NAME#\" ist aktiv.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_DEACTIVATE"] = "Rolle \"#NAME#\" ist nicht aktiv.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_ADD"] = "Rolle \"#NAME#\" wurde zu Lesezeichen hinzugefügt.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_FAVOURITE_REMOVE"] = "Rolle \"#NAME#\" wurde aus Lesezeichen entfernt.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE"] = "Rolle \"#NAME#\" ist im CoPilot-Menü nicht sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_HIDE_MSGVER_1"] = "Die Rolle \"#NAME#\" ist im Menü \"Meine Rollen \" nicht sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTION_DEFAULT"] = "Aktion erfolgreich abgeschlossen.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_ACTIVATE"] = "Rollen sind aktiv.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_DEACTIVATE"] = "Rollen sind nicht aktiv.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE"] = "Rollen sind im Menü Meine Rollen nicht sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_HIDE_MSGVER_1"] = "Die Rollen sind im Menü \"Meine Rollen\" nicht sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW"] = "Rollen sind im Menü Meine Rollen sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_MASS_SHOW_MSGVER_1"] = "Die Rollen sind im Menü \"Meine Rollen\" sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_MASTER_OPEN_ERROR"] = "Rolleneditor konnte nicht geöffnet werden. Versuchen Sie es bitte erneut.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_ROLE_SAVE_SUCCESS"] = "Rolle \"#NAME#\" wurde gespeichert.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW"] = "Rolle \"#NAME#\" ist im Menü Meine Rollen nicht sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_MSGVER_1"] = "Die Rolle \"#NAME#\" ist im Menü \"Meine Rollen\" sichtbar.";
+$MESS["ROLE_LIBRARY_GRID_NOTIFICATION_SHOW_ROLE_USERS_ERROR"] = "Nutzerliste konnte nicht geladen werden. Versuchen Sie es bitte erneut.";
+$MESS["ROLE_LIBRARY_GRID_TOUR_DESCRIPTION"] = "Erstellen Sie Rollen und geben Sie sie für Ihre Kollegen frei";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE"] = "Fügen Sie Ihre Rolle zu CoPilot hinzu";
+$MESS["ROLE_LIBRARY_GRID_TOUR_TITLE_MSGVER_1"] = "Fügen Sie eine Rolle für #COPILOT_NAME# hinzu";
